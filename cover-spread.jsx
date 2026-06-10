@@ -23,6 +23,7 @@
         React.createElement("image-slot", {
           id: p.slot,
           shape: "rect",
+          src: p.src,
           placeholder: "Aerial \u2014 " + p.name
         })
       ),
