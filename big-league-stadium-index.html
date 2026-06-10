@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Big League NL · AL Ballparks — Stadium Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Ultra&display=swap" rel="stylesheet" />
+<style>
+  @font-face {
+    font-family: "Cooper Black";
+    src: url("Cooper-Black.woff2") format("woff2");
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #11100e;
+    font-family: "Spectral", Georgia, serif;
+    color: #1b1916;
+    -webkit-font-smoothing: antialiased;
+  }
+  #root {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 34px 0 54px;
+  }
+  .cv-index {
+    width: 1275px;
+    min-height: 1088px;
+    background: #e9e7db;
+    position: relative;
+    overflow: hidden;
+    --paper: #e9e7db;
+    --paper-hi: #f1efe6;
+    --ink: #16140f;
+    --cap: #1b1916;
+    --cap-city: #3f3a31;
+    --rule: #d3c8af;
+    font-kerning: normal;
+    text-rendering: geometricPrecision;
+  }
+  .cv-index-head {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 18px;
+    padding: 40px 46px 28px;
+  }
+  .cv-index-head::before,
+  .cv-index-head::after {
+    content: "";
+    height: 2px;
+    background: var(--rule);
+    box-shadow: 0 5px 0 rgba(22, 20, 15, .08);
+  }
+  .cv-logo {
+    font-family: "Cooper Black", "Ultra", Georgia, serif;
+    color: var(--ink);
+    text-align: center;
+    line-height: .9;
+    user-select: none;
+  }
+  .cv-logo-l1,
+  .cv-logo-l3 {
+    font-size: 68px;
+    letter-spacing: .002em;
+    white-space: nowrap;
+  }
+  .cv-logo-l2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 44px;
+    margin: 3px 0;
+  }
+  .cv-fieldicon {
+    width: 42px;
+    height: 42px;
+    position: relative;
+    top: 3px;
+  }
+  .cv-sub {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .11em;
+    color: #4a4439;
+    text-align: center;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  .cv-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 9px;
+    row-gap: 9px;
+    padding: 0 46px 46px;
+  }
+  .cv-cell {
+    margin: 0;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+  }
+  .cv-photo-link {
+    display: block;
+    flex: 0 0 178px;
+    min-height: 178px;
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+    outline: 0;
+  }
+  .cv-photo-link:focus-visible {
+    box-shadow: 0 0 0 3px #e9e7db, 0 0 0 6px #16140f;
+    z-index: 3;
+  }
+  .cv-photo {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, rgba(22, 20, 15, .08), rgba(22, 20, 15, 0)),
+      #d6d0bf;
+  }
+  .cv-photo image-slot {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .cv-cap {
+    flex: 0 0 auto;
+    padding: 8px 8px 4px;
+    font-family: "Spectral", Georgia, serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.05;
+    letter-spacing: .003em;
+    color: var(--cap);
+    text-align: center;
+    min-height: 42px;
+    align-content: center;
+  }
+  .cv-cap-city {
+    font-weight: 700;
+    color: var(--cap-city);
+  }
+  .cv-missing .cv-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(22, 20, 15, .14);
+    pointer-events: none;
+  }
+  .cv-foot {
+    padding: 0 46px 38px;
+    font: 700 12px/1.25 "Spectral", Georgia, serif;
+    color: #5b5447;
+    text-align: center;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+  <div id="root">
+    <main class="cv-index" aria-label="Big League stadium index">
+      <header class="cv-index-head">
+        <div></div>
+        <div>
+          <div class="cv-logo" aria-label="Big League NL AL Ballparks">
+            <div class="cv-logo-l1">Big League</div>
+            <div class="cv-logo-l2">
+              <span>NL</span>
+              <svg class="cv-fieldicon" viewBox="0 0 84 84" aria-hidden="true">
+                <g fill="none" stroke="#16140f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M42 70 L16 44 M42 70 L68 44"/>
+                  <path d="M16 44 A38 38 0 0 1 68 44"/>
+                </g>
+                <path d="M42 42 L56 56 L42 70 L28 56 Z" fill="#4a5a69" stroke="#16140f" stroke-width="4" stroke-linejoin="round"/>
+                <circle cx="42" cy="56" r="3" fill="#e9e7db"/>
+              </svg>
+              <span>AL</span>
+            </div>
+            <div class="cv-logo-l3">Ballparks</div>
+          </div>
+          <div class="cv-sub">42 stadium index</div>
+        </div>
+        <div></div>
+      </header>
+      <section id="stadium-grid" class="cv-grid" aria-label="All stadium pages"></section>
+      <footer class="cv-foot">Click a stadium photo to open its local spread page</footer>
+    </main>
+  </div>
+
+  <script src="image-slot.js"></script>
+  <script>
+    const PAGE_OVERRIDES = {
+      "Wrigley Field": "Wrigley Field Spread.html",
+      "Riverfront Stadium": "Riverfront Stadium Spread.html",
+      "Royals Stadium": "Royals Stadium Spread.html",
+      "Memorial Stadium": "Memorial Stadium Spread.html",
+      "Coors Field": "Coors Field Spread.html",
+      "PNC Park": "PNC Park Spread.html",
+      "Tiger Stadium": "Tiger Stadium Spread.html"
+    };
+
+    const EXISTING_PAGES = new Set([
+      "Wrigley Field Spread.html",
+      "Riverfront Stadium Spread.html",
+      "Royals Stadium Spread.html",
+      "Memorial Stadium Spread.html",
+      "Coors Field Spread.html",
+      "PNC Park Spread.html",
+      "Tiger Stadium Spread.html"
+    ]);
+
+    const SLOT_OVERRIDES = {
+      "Kauffman Stadium": "cv-kauffman",
+      "Riverfront Stadium": "rf-hero",
+      "Royals Stadium": "royals-hero",
+      "Tiger Stadium": "ts-hero",
+      "Memorial Stadium": "ms-hero",
+      "Coors Field": "coors-hero",
+      "PNC Park": "pnc-hero",
+      "Wrigley Field": "wrigley-aerial"
+    };
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [], cell = "", quote = false;
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i], next = text[i + 1];
+        if (quote) {
+          if (ch === '"' && next === '"') { cell += '"'; i++; }
+          else if (ch === '"') quote = false;
+          else cell += ch;
+        } else {
+          if (ch === '"') quote = true;
+          else if (ch === ",") { row.push(cell); cell = ""; }
+          else if (ch === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
+          else if (ch !== "\r") cell += ch;
+        }
+      }
+      if (cell || row.length) { row.push(cell); rows.push(row); }
+      const headers = rows.shift();
+      return rows.filter(r => r.length && r.some(Boolean)).map(r => Object.fromEntries(headers.map((h, i) => [h, r[i] || ""])));
+    }
+
+    function slug(name) {
+      return "idx-" + name.toLowerCase()
+        .replace(/\((1923|2009)\)/g, "$1")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+    }
+
+    function pageFor(stadium) {
+      return PAGE_OVERRIDES[stadium] || (stadium + " Spread.html");
+    }
+
+    function render(rows) {
+      const grid = document.getElementById("stadium-grid");
+      rows.sort((a, b) => (+a.visit_order || 999) - (+b.visit_order || 999));
+      grid.innerHTML = rows.map((p) => {
+        const page = pageFor(p.stadium_name);
+        const exists = EXISTING_PAGES.has(page);
+        const slot = SLOT_OVERRIDES[p.stadium_name] || slug(p.stadium_name);
+        const caption = `${p.stadium_name}${p.city ? `,&nbsp;<span class="cv-cap-city">${p.city}</span>` : ""}`;
+        const title = exists ? `Open ${p.stadium_name}` : `Future local target: ${page}`;
+        return `
+          <figure class="cv-cell ${exists ? "cv-linked" : "cv-missing"}">
+            <a class="cv-photo-link" href="${encodeURI(page)}" title="${title}">
+              <div class="cv-photo">
+                <image-slot id="${slot}" shape="rect" placeholder="Aerial - ${p.stadium_name.replace(/"/g, "&quot;")}"></image-slot>
+              </div>
+            </a>
+            <figcaption class="cv-cap">${caption}</figcaption>
+          </figure>`;
+      }).join("");
+    }
+
+    fetch("uploads/all-stadium-pages.csv")
+      .then(r => r.text())
+      .then(text => render(parseCSV(text)))
+      .catch(err => {
+        document.getElementById("stadium-grid").innerHTML =
+          `<p style="grid-column:1/-1;padding:20px;font-weight:700;">Could not load uploads/all-stadium-pages.csv: ${err.message}</p>`;
+      });
+  </script>
+</body>
+</html>
