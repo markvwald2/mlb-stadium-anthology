@@ -235,6 +235,22 @@
       "Wrigley Field": "wrigley-aerial"
     };
 
+    const IMAGE_OVERRIDES = {
+      "Wrigley Field": "cover-ready/Wrigley-cover-867x897.jpg",
+      "Milwaukee County Stadium": "cover-ready/Milwaukee-County-cover-867x897.jpg",
+      "Dodger Stadium": "cover-ready/Dodger-cover-867x897.jpg",
+      "Anaheim Stadium": "cover-ready/Angel-cover-867x897.jpg",
+      "Yankee Stadium (1923)": "cover-ready/Yankee-cover-867x897.jpg",
+      "Riverfront Stadium": "cover-ready/Riverfront-cover-867x897.jpg",
+      "Tiger Stadium": "cover-ready/Tiger-cover-867x897.jpg",
+      "Cleveland Municipal Stadium": "cover-ready/Cleveland_Municipal-cover-867x897.jpg",
+      "Three Rivers Stadium": "cover-ready/Three-Rivers-cover-867x897.jpg"
+    };
+
+    function escAttr(value) {
+      return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+    }
+
     function parseCSV(text) {
       const rows = [];
       let row = [], cell = "", quote = false;
@@ -274,13 +290,14 @@
         const page = pageFor(p.stadium_name);
         const exists = EXISTING_PAGES.has(page);
         const slot = SLOT_OVERRIDES[p.stadium_name] || slug(p.stadium_name);
+        const src = IMAGE_OVERRIDES[p.stadium_name];
         const caption = `${p.stadium_name}${p.city ? `,&nbsp;<span class="cv-cap-city">${p.city}</span>` : ""}`;
         const title = exists ? `Open ${p.stadium_name}` : `Future local target: ${page}`;
         return `
           <figure class="cv-cell ${exists ? "cv-linked" : "cv-missing"}">
             <a class="cv-photo-link" href="${encodeURI(page)}" title="${title}">
               <div class="cv-photo">
-                <image-slot id="${slot}" shape="rect" placeholder="Aerial - ${p.stadium_name.replace(/"/g, "&quot;")}"></image-slot>
+                <image-slot id="${slot}" shape="rect"${src ? ` src="${escAttr(src)}"` : ""} placeholder="Aerial - ${escAttr(p.stadium_name)}"></image-slot>
               </div>
             </a>
             <figcaption class="cv-cap">${caption}</figcaption>
