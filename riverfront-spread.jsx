@@ -47,9 +47,6 @@
 
         /* ===== LEFT / HERO ===== */
         React.createElement("div", { className: "rf-page rf-left" },
-          React.createElement("div", { className: "rf-hero-slot" },
-            React.createElement(Slot, { id: "rf-hero", placeholder: "Drop the Riverfront Stadium aerial \u2014 crop to the circular bowl" })
-          ),
           React.createElement("div", { className: "rf-hero-scrim" }),
           React.createElement(Rings, { className: "rf-hero-rings", stroke: "#EDEAE0", op: 0.16, rings: [250, 222, 196, 172] }),
           React.createElement("div", { className: "rf-hero-folio" }, "Plate 09"),
@@ -72,7 +69,6 @@
             /* exhibit header */
             React.createElement("div", { className: "rf-head" },
               React.createElement("div", { className: "hl" },
-                React.createElement("div", { className: "over" }, "Architectural Exhibit Panel"),
                 React.createElement("div", { className: "nm" }, "Riverfront Stadium"),
                 React.createElement("div", { className: "sub" }, D.classification_era + "  \u00b7  " + D.roof_type + "  \u00b7  " + D.location_classification)
               ),
@@ -91,7 +87,8 @@
               React.createElement("div", { className: "rf-photos" },
                 React.createElement(Slot, { id: "rf-p1", placeholder: "Exterior \u00b7 riverfront" }),
                 React.createElement(Slot, { id: "rf-p2", placeholder: "Interior \u00b7 baseball config" }),
-                React.createElement(Slot, { id: "rf-p3", placeholder: "Circular bowl structure" })
+                React.createElement(Slot, { id: "rf-p3", placeholder: "Circular bowl structure" }),
+                React.createElement(Slot, { id: "rf-p4", placeholder: "Detail \u00b7 concrete fa\u00e7ade" })
               ),
 
               React.createElement("div", { className: "rf-sgrid" },
@@ -114,7 +111,7 @@
                   factRow("Successor", D.succeeded_by),
                   React.createElement("div", { className: "rf-logos" },
                     React.createElement("img", { src: "assets/reds.svg", alt: "Cincinnati Reds", className: "rf-logo" }),
-                    React.createElement("img", { src: "assets/national-league.png", alt: "National League", className: "rf-logo" })
+                    React.createElement("img", { src: "assets/nl-logo.png", alt: "National League", className: "rf-logo" })
                   )
                 ),
 

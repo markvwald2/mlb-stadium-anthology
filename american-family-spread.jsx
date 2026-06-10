@@ -156,7 +156,7 @@
         e("div", { className: "amf-marks" },
           e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
           e("span", { className: "divln" }),
-          e("img", { className: "nl", src: "assets/national-league-logo.png", alt: "National League" }),
+          e("img", { className: "nl", src: "assets/nl-logo.png", alt: "National League" }),
           e("span", { className: "divln" }),
           e("span", { className: "dv" }, "National League \u00b7 " + D.division))
       ),

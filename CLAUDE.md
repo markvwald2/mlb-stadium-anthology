@@ -5,6 +5,10 @@ Landscape Photo Book (13 × 11 in nominal)**. Every spread is built on a
 **2550 × 1088 design canvas at 100 px/in** and exported at 3× =
 **7650 × 3264 px (~300 DPI)**.
 
+**Style/tone:** a premium baseball-architecture book — archival, precise,
+information-dense, restrained, and visually rich. Avoid sports-poster graphics
+and souvenir-collage energy.
+
 ## Canvas geometry & safe areas — AUTHORITATIVE (1 in = 100 px)
 These are the official production dimensions. Obey them on every spread.
 
@@ -48,6 +52,42 @@ art / color fields / quiet grid continuation may pass through.
 Hero spreads put a dark photo on the left page and warm paper on the right; the
 stadium-timeline interstitial is a data spread and uses warm paper across BOTH
 pages. Either way the geometry above is identical.
+
+## Design rules — every spread (AUTHORITATIVE)
+These are always in force, alongside the geometry above. They are the rules that
+get re-corrected most often, so treat them as hard constraints, not preferences.
+
+1. **No fake book depth.** Never add binding shadow, gutter shadow, fold shadow,
+   dark center gradient, simulated crease, page curl, or any "this is a physical
+   book" effect. The fold is a flat hairline / clean division at x = 1275 only.
+   No table surfaces, hands, device mockups, or surrounding environment either.
+2. **No module crosses the gutter.** Beyond keeping content out of the gutter
+   *zone*, every module/section must belong to exactly ONE page — nothing bridges
+   the center split. Only quiet full-bleed art / texture / color fields may pass
+   through. Stadium context may move to wherever it fits best, but stays whole
+   and on one page.
+3. **Data fidelity — never invent facts.** Use only the user-provided brief, CSV
+   row, existing project data, or explicit instruction as factual sources. Do NOT
+   invent, infer, normalize, supplement, or pull stadium facts from memory/web.
+   If a value is empty / unknown / `n/a` / `null`, OMIT that visible field. Preserve
+   populated values exactly (typography, line breaks, punctuation spacing, table
+   alignment, and clearly requested condensation are the only allowed changes).
+   Concept images are visual direction only — never copy text/numbers/labels from them.
+4. **Team colors are restrained accents,** never a dominant palette unless the
+   user explicitly asks. Prioritize clear hierarchy, readable type, and grid
+   discipline over decorative complexity.
+5. **Standard spread structure** (unless the user asks for a different type):
+   left page = full-bleed stadium hero with a compact title/city block, photo
+   stays dominant; right page = organized editorial/data page with a Stadium
+   Section and a Visit Section. Common modules: metadata ribbon, image strip,
+   stadium facts, construction/timeline, field dimensions/gameplay, visit/featured
+   game, weather, historical context, site/setting.
+6. **Never caption photos.** Photo `<image-slot>` plates carry NO visible
+   caption / figcaption / label of any kind — neither on hero nor editorial
+   images. Photos read on their own. (The `placeholder` text inside an empty slot
+   is fine — it is drop guidance, not a caption, and disappears once filled.)
+   Diagram figures like the field plan keep their existing labels; this rule is
+   about photographs only.
 
 ## Per-spread file pattern
 Each ballpark is a cluster of files: `<name>-data.js`, `<name>-spread.jsx` (or

@@ -83,7 +83,7 @@
 
           /* league + MLB marks — bottom-left colophon */
           React.createElement("div", { className: "cf-hero-marks" },
-            React.createElement("img", { className: "nl", src: "assets/national-league-logo.png", alt: "National League" }),
+            React.createElement("img", { className: "nl", src: "assets/nl-logo.png", alt: "National League" }),
             React.createElement("span", { className: "div" }),
             React.createElement("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" })
           )

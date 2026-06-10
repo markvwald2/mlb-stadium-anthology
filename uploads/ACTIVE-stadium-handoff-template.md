@@ -1,20 +1,10 @@
 # Active Stadium Handoff Template
 
-Use this compact template for each Claude Design request. Pair it with `ACTIVE-claude-design-context.md`.
-
-## One-Time Activation Prompt
-
-```text
-Please treat the attached active context files as the authoritative project guidance for this MLB ballpark book.
-
-Use ACTIVE-claude-design-context.md for dimensions, print safety, gutter rules, export rules, visual constraints, and data fidelity.
-
-Use ACTIVE-stadium-handoff-template.md for the expected shape of each stadium request.
-
-Older v1/v2 prompts and any conflicting generated concept text are historical only and superseded by these active files.
-
-When I attach a stadium brief or concept image later, use the active files as the rules. Treat the brief/data as factual authority and the image as visual direction only.
-```
+Use this compact template for each Claude Design request. The project's
+`CLAUDE.md` is the authoritative source for dimensions, print safety, gutter
+rules, export rules, visual constraints, and data fidelity — it loads
+automatically, so you don't need to attach anything for those. This file just
+captures the expected *shape* of each stadium request.
 
 ## New Stadium Spread Prompt
 
