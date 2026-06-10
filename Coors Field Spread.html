@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Coors Field — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #11100e;
+    font-family: "Spectral", Georgia, serif;
+    color: #24201C;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     COORS FIELD — "The Mile-High Datum"
+     Blurb Large Landscape 13 x 11 in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264 px = 300 DPI.
+     Center split x=1275. Bleed-only outer 12.5px; critical content >= 37.5px inside trim.
+     Light cream architectural survey; Rockies purple used sparingly.
+     ---------------------------------------------------------------- */
+  .cf-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #24201C;            /* warm charcoal */
+    --ink-2: #5A534A;
+    --ink-3: #8C8478;
+    --paper: #EFE7D6;          /* warm cream paper */
+    --paper-hi: #F5EEDF;
+    --paper-lo: #E4DAC5;
+    --rule: #D3C8AF;
+    --rule-strong: #B0A488;
+    --purple: #5A3E8E;         /* Rockies purple — accent only */
+    --purple-deep: #3C2A63;
+    --purple-hi: #7A5DB0;
+    --brick: #9B5A45;          /* weathered brick / sandstone red */
+    --sand: #C9A876;           /* sandstone tan */
+    --silver: #9DA0A4;
+    background: var(--paper);
+    font-kerning: normal;
+    text-rendering: geometricPrecision;
+  }
+  .cf-spread { --hair: #B0A488; }
+
+  /* pages */
+  .cf-page { position: absolute; top: 0; height: 1088px; }
+  .cf-left  { left: 0; width: 1275px; overflow: hidden; background: #1c1916; }
+  .cf-right { left: 1275px; width: 1275px; background: var(--paper); }
+
+  /* ---------- LEFT / HERO ---------- */
+  .cf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1; }
+  .cf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .cf-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none; z-index: 3;
+    background:
+      linear-gradient(180deg, rgba(20,18,15,.30) 0%, rgba(20,18,15,0) 22%),
+      linear-gradient(0deg, rgba(16,14,11,.90) 0%, rgba(16,14,11,.46) 26%, rgba(16,14,11,0) 52%);
+  }
+
+  /* the Mile-High Datum — surveyor benchmark + coordinate read-out, lower-right */
+  .cf-datum { position: absolute; right: 78px; bottom: 150px; z-index: 5; width: 360px; height: 300px; pointer-events: none; }
+  .cf-datum-grid { position: absolute; right: 0; bottom: 0; opacity: .55; }
+  .cf-datum-read {
+    position: absolute; right: 20px; bottom: 0; display: flex; flex-direction: column; gap: 7px;
+    background: linear-gradient(180deg, rgba(16,14,11,0) 0%, rgba(16,14,11,.34) 100%);
+    padding: 14px 0 0 18px;
+  }
+  .cf-datum .drow { display: grid; grid-template-columns: 52px auto; align-items: baseline; gap: 14px; }
+  .cf-datum .dk { font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .22em; color: var(--purple-hi); text-transform: uppercase; }
+  .cf-datum .dv { font-family: "Space Mono", monospace; font-size: 19px; letter-spacing: .06em; color: #EFE7D6; }
+  .cf-datum-tick { position: absolute; right: 0; top: 0; width: 1px; height: 300px; background: linear-gradient(180deg, transparent, rgba(122,93,176,.7) 60%, var(--purple-hi)); }
+
+  .cf-hero-title { position: absolute; left: 76px; bottom: 150px; z-index: 6; }
+  .cf-hero-name {
+    margin: 0; font-family: "Anton", sans-serif; font-weight: 400; white-space: nowrap;
+    color: #F3ECDB; font-size: 122px; line-height: .84; letter-spacing: .006em;
+    text-transform: uppercase; text-shadow: 0 3px 38px rgba(0,0,0,.55);
+  }
+  .cf-hero-loc {
+    margin-top: 16px; font-family: "Oswald", sans-serif; font-weight: 500; white-space: nowrap;
+    font-size: 33px; letter-spacing: .12em; text-transform: uppercase; color: #E7DDC8;
+  }
+  .cf-hero-rule { margin-top: 20px; width: 260px; height: 3px; background: var(--purple-hi); }
+  .cf-hero-era {
+    margin-top: 16px; display: flex; align-items: center; gap: 15px; white-space: nowrap;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 16px;
+    letter-spacing: .14em; text-transform: uppercase; color: #C8BEAC;
+  }
+  .cf-hero-era .dot { color: #9A7FD0; font-size: 20px; font-weight: 700; }
+
+  .cf-hero-marks { position: absolute; left: 76px; bottom: 56px; z-index: 6; display: flex; align-items: center; gap: 20px; }
+  .cf-hero-marks .nl { height: 58px; width: auto; display: block; }
+  .cf-hero-marks .div { width: 1px; height: 48px; background: rgba(232,226,214,.32); }
+  .cf-hero-marks .mlb { height: 42px; width: auto; display: block; }
+
+  /* ---------- RIGHT PAGE SHELL ---------- */
+  .cf-rp { position: absolute; inset: 0; padding: 40px 46px 40px 44px; display: flex; flex-direction: column; }
+
+  /* shared label / value type */
+  .cf-lbl { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .14em; color: var(--ink-3); }
+  .cf-mono { font-family: "Space Mono", monospace; }
+
+  /* section header — charcoal eyebrow on a hairline */
+  .cf-sec-h { display: flex; align-items: baseline; gap: 12px; border-bottom: 1.5px solid var(--ink); padding-bottom: 5px; margin-bottom: 8px; }
+  .cf-sec-h .tt { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; font-size: 15px; color: var(--ink); white-space: nowrap; }
+  .cf-sec-h .nt { margin-left: auto; font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* ---------- IMAGE STRIP ---------- */
+  .cf-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; flex: 0 0 auto; }
+  .cf-frame { margin: 0; display: flex; flex-direction: column; }
+  .cf-frame image-slot { width: 100%; height: 208px; display: block; border: 1.5px solid var(--ink); }
+
+  /* ---------- METADATA RIBBON ---------- */
+  .cf-ribbon {
+    display: flex; align-items: stretch; margin-top: 18px;
+    border-top: 2.5px solid var(--ink); border-bottom: 2.5px solid var(--ink);
+    position: relative;
+  }
+  .cf-ribbon .cell { flex: 1; padding: 11px 16px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+  .cf-ribbon .cell:first-child { border-left: 0; }
+  .cf-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .14em; color: var(--ink-3); font-size: 10px; }
+  .cf-ribbon .rv { font-family: "Spectral", serif; font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.05; }
+  .cf-ribbon .mark-cell { flex: 0 0 auto; align-items: center; justify-content: center; padding: 8px 18px; }
+  .cf-ribbon .mark-cell .rib-mark { height: 46px; width: auto; display: block; }
+  .cf-ribbon .visit-cell { flex: 0 0 auto; align-items: flex-end; justify-content: center; background: var(--purple); padding: 10px 20px; gap: 2px; }
+  .cf-ribbon .visit-cell .vn { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 22px; letter-spacing: .04em; color: #F3ECDB; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+  .cf-ribbon .visit-cell .vd { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 13px; letter-spacing: .16em; color: #D8C9F0; text-transform: uppercase; white-space: nowrap; }
+
+  /* ---------- INTEGRATED SCOREBOARD (inside Home Opener box) ---------- */
+  .cf-scoreboard { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; table-layout: fixed; }
+  .cf-scoreboard th, .cf-scoreboard td { text-align: center; border-bottom: 1px solid var(--rule); padding: 2px 0; color: var(--ink); }
+  .cf-scoreboard thead th { color: var(--ink-3); font-weight: 400; font-size: 10px; padding-bottom: 2px; }
+  .cf-scoreboard .inn { font-size: 13px; }
+  .cf-scoreboard tbody td.inn { color: var(--ink-2); }
+  .cf-scoreboard td.tm, .cf-scoreboard th.tm { text-align: left; font-family: "Oswald", sans-serif; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: 15px; color: var(--ink); width: 96px; padding-left: 2px; }
+  .cf-scoreboard .sep { border-left: 1.5px solid var(--ink); }
+  .cf-scoreboard .hecol { font-size: 13px; font-weight: 700; width: 30px; }
+  .cf-scoreboard thead th.sep, .cf-scoreboard thead th { width: 30px; }
+  .cf-scoreboard .rcol { font-family: "Anton", sans-serif; font-weight: 400; font-size: 20px; line-height: .85; width: 42px; color: var(--ink); }
+  .cf-scoreboard tbody tr:last-child td { border-bottom: 0; }
+  .cf-scoreboard tbody tr.win td.tm { color: var(--purple); }
+  .cf-scoreboard tbody tr.win .rcol { color: var(--purple); }
+
+  /* ---------- STADIUM SECTION ---------- */
+  .cf-stadium { display: grid; grid-template-columns: 700px 1fr; gap: 30px; margin-top: 12px; flex: 1 1 auto; min-height: 0; align-items: stretch; position: relative; }
+  .cf-stadium::after { content: ""; position: absolute; top: 4px; bottom: 4px; left: 715px; width: 1px; background: var(--rule-strong); }
+  .cf-col { display: flex; flex-direction: column; min-width: 0; }
+
+  /* facts column inner grid: table + (diagram + finance) */
+  .cf-facts-grid { display: grid; grid-template-columns: 1fr 240px; gap: 22px; align-items: stretch; flex: 1; }
+
+  /* facts table — roomier, stretches to match the History column height */
+  .cf-facts { border: 1px solid var(--rule-strong); align-self: stretch; display: flex; flex-direction: column; }
+  .cf-facts .row { display: grid; grid-template-columns: 112px 1fr; border-bottom: 1px solid var(--rule); flex: 1; }
+  .cf-facts .row:last-child { border-bottom: 0; }
+  .cf-facts .row .fl { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); font-size: 10.5px; padding: 4px 10px; border-right: 1px solid var(--rule); background: var(--paper-lo); display: flex; align-items: center; }
+  .cf-facts .row .fv { font-family: "Spectral", serif; font-weight: 500; color: var(--ink); font-size: 12px; line-height: 1.22; padding: 4px 11px; }
+
+  /* facts side: field diagram (no heading) + construction & finance */
+  .cf-facts-side { display: flex; flex-direction: column; gap: 10px; }
+  .cf-fieldfig { margin: 0; }
+  .cf-fieldwrap { width: 100%; max-width: 124px; margin: 0 auto; }
+  .cf-fieldfig figcaption { text-align: center; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-top: 1px; }
+  .cf-finance { border-top: 1.5px solid var(--ink); padding-top: 8px; }
+  .cf-finance .fin-h, .cf-renov .fin-h { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; font-size: 11.5px; color: var(--purple); margin-bottom: 5px; }
+  .cf-finance .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cf-finance .fin-row { padding: 6px 0 0; margin-top: 6px; border-top: 1px solid var(--rule); }
+  .cf-finance .fin-l { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 9px; color: var(--ink-3); }
+  .cf-finance .fin-v { font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px; color: var(--ink); line-height: 1.32; margin-top: 1px; }
+
+  /* renovations side block */
+  .cf-renov { border-top: 1.5px solid var(--ink); padding-top: 8px; }
+  .cf-renov .renov-v { font-family: "Spectral", serif; font-weight: 500; font-size: 11px; color: var(--ink); line-height: 1.3; margin: 0 0 5px; text-align: justify; hyphens: auto; }
+  .cf-renov .renov-v:last-child { margin-bottom: 0; }
+
+  /* context prose — two balanced columns */
+  .cf-ctx { columns: 2; column-gap: 22px; column-rule: 1px solid var(--rule); }
+  .cf-ctx p { margin: 0 0 5px; font-family: "Spectral", serif; font-size: 11px; line-height: 1.46; color: var(--ink); text-align: justify; hyphens: auto; }
+  .cf-ctx p:nth-child(1), .cf-ctx p:nth-child(2) { line-height: 1.48; }
+  .cf-ctx p:last-child { margin-bottom: 0; }
+  .cf-ctx p:first-child::first-letter {
+    font-family: "Anton", sans-serif; font-weight: 400; color: var(--purple);
+    -webkit-initial-letter: 2 2; initial-letter: 2 2; margin-right: 8px;
+  }
+
+  /* ---------- THE MILE-HIGH DATUM LINE ---------- */
+  .cf-datum-line { display: flex; align-items: center; gap: 16px; margin: 6px 0 7px; flex: 0 0 auto; padding-top: 10px; }
+  .cf-datum-line .cap { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .18em; font-size: 15px; color: var(--ink); white-space: nowrap; }
+  .cf-datum-line .rule { flex: 1; height: 2px; background: var(--purple); position: relative; }
+  .cf-datum-line .rule::after { content: ""; position: absolute; right: 0; top: -3px; width: 8px; height: 8px; background: var(--purple); transform: rotate(45deg); }
+
+  /* ---------- VISIT SECTION ---------- */
+  .cf-visit { display: grid; grid-template-columns: 1fr 354px; gap: 24px; flex: 0 0 auto; margin-top: 6px; align-items: stretch; }
+  .cf-visit-left { display: flex; flex-direction: column; gap: 9px; }
+
+  /* Home Opener box */
+  .cf-scorecard { border: 1.5px solid var(--ink); position: relative; background: var(--paper-hi); display: flex; }
+  .cf-scorecard .tab {
+    flex: 0 0 auto; width: 32px; background: var(--purple);
+    color: #F3ECDB; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .24em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cf-scorecard .sc-body { flex: 1; padding: 7px 18px 7px 20px; display: flex; flex-direction: column; min-width: 0; }
+  .cf-scorecard .sc-date { font-family: "Space Mono", monospace; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); border-bottom: 1px solid var(--rule); padding-bottom: 7px; margin-bottom: 5px; }
+  .cf-scorecard .sc-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 18px; margin: 7px 0 0; padding-top: 7px; border-top: 1px solid var(--rule); }
+  .cf-scorecard .scf-l { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 9.5px; color: var(--ink-3); }
+  .cf-scorecard .scf-v { font-family: "Spectral", serif; font-weight: 600; font-size: 13.5px; color: var(--ink); margin-top: 1px; }
+  .cf-scorecard .sc-foot { margin-top: auto; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); border-top: 1px solid var(--rule); padding-top: 7px; }
+
+  /* visit photo */
+  .cf-visit-photo { margin: 0; display: flex; flex-direction: column; }
+  .cf-visit-photo image-slot { width: 100%; flex: 1; min-height: 150px; display: block; border: 1.5px solid var(--ink); }
+
+  /* weather — single line */
+  .cf-weather-strip { display: flex; align-items: center; gap: 0; border: 1.5px solid var(--ink); }
+  .cf-weather-strip .wlabel { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .2em; font-size: 12px; color: #F3ECDB; background: var(--purple); align-self: stretch; display: flex; align-items: center; padding: 0 18px; }
+  .cf-weather-strip .witem { flex: 1; display: flex; align-items: center; gap: 11px; padding: 6px 18px; border-left: 1px solid var(--rule); }
+  .cf-weather-strip .witem:first-of-type { border-left: 0; }
+  .cf-weather-strip .witem .ico { flex: 0 0 auto; }
+  .cf-weather-strip .witem b { font-family: "Spectral", serif; font-weight: 700; font-size: 19px; color: var(--ink); line-height: 1; }
+  .cf-weather-strip .witem .t { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; font-size: 13px; color: var(--ink-2); }
+  .cf-weather-strip .witem .k { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; color: var(--ink-3); margin-right: 3px; }
+
+  /* field-diagram (window.FieldDiagram .fd-* classes) tuned for cream/purple */
+  .fd-wrap { width: 100%; }
+  .fd-svg { width: 100%; height: auto; display: block; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#EFE7D6"/>
+      <rect x="22" y="40" width="56" height="34" fill="none" stroke="#24201C" stroke-width="2"/>
+      <path d="M22 58 L78 58" stroke="#5A3E8E" stroke-width="2.5"/>
+      <path d="M30 74 L30 48 L50 40 L70 48 L70 74 Z" fill="#9B5A45" opacity="0.3"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="coors-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="protractor-diagram.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="coors-spread.jsx"></script>
+  <script type="text/babel" src="coors-app.jsx"></script>
+</body>
+</html>

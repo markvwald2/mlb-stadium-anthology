@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Riverfront Stadium — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Archivo:wght@400;500;600;700&family=Archivo+Expanded:wght@600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #20242A;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     SPREAD — Blurb Large Landscape 13 x 11 in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264 px = 300 DPI.
+     Center split x=1275. Bleed-only outer 12.5px; critical content >= 37.5px inside trim.
+     Gutter safe zone x=1237.5-1312.5.
+     ---------------------------------------------------------------- */
+  .rf-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    /* concrete + blueprint system */
+    --ink: #20242A;
+    --ink-2: #515963;
+    --ink-3: #7C828B;
+    --concrete: #E6E4DE;       /* exposed-concrete paper */
+    --concrete-hi: #EFEDE7;
+    --concrete-lo: #D8D5CC;
+    --blueprint: #46586B;      /* technical linework / slate */
+    --rule: #C4C1B7;
+    --rule-strong: #9A968B;
+    --red: #C6011F;            /* Reds — accent only */
+    --black: #101012;
+    --panel: #1A1D22;          /* dark concrete for visit band */
+    --panel-2: #121418;
+    --panel-ink: #E7E5DE;
+    --panel-dim: #969CA4;
+    background: var(--concrete);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .rf-page { position: absolute; top: 0; height: 1088px; }
+  .rf-left  { left: 0; width: 1275px; background: #15171b; overflow: hidden; }
+  .rf-right { left: 1275px; width: 1275px; background: var(--concrete); }
+  .rf-gutter { display: none; }
+
+  /* ---------- LEFT / HERO ---------- */
+  .rf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .rf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .rf-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(10,12,15,.30) 0%, rgba(10,12,15,0) 24%),
+      linear-gradient(0deg, rgba(10,12,15,.88) 0%, rgba(10,12,15,.45) 24%, rgba(10,12,15,0) 48%);
+  }
+  /* faint bowl-ring motif over the hero (top-right) */
+  .rf-hero-rings { position: absolute; top: -260px; right: -240px; width: 760px; height: 760px; opacity: .5; pointer-events: none; }
+  .rf-hero-folio {
+    position: absolute; left: 80px; top: 66px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 16px; letter-spacing: .28em;
+    color: rgba(232,228,222,.6); text-transform: uppercase;
+  }
+  .rf-hero-title { position: absolute; left: 80px; bottom: 92px; z-index: 5; }
+  .rf-hero-name {
+    margin: 0; color: #EFEAE0; font-family: "Spectral", serif; font-weight: 700;
+    font-size: 150px; line-height: .85; letter-spacing: -.022em;
+    text-shadow: 0 2px 34px rgba(0,0,0,.5);
+  }
+  .rf-hero-name .l2 { display: block; font-weight: 300; letter-spacing: .01em; color: #DfD9CC; }
+  .rf-hero-loc {
+    display: inline-flex; align-items: center; gap: 14px; margin-top: 28px;
+  }
+  .rf-hero-loc .bar { width: 46px; height: 3px; background: var(--red); }
+  .rf-hero-loc .txt {
+    font-family: "Archivo", sans-serif; font-weight: 600; font-size: 24px;
+    letter-spacing: .34em; text-transform: uppercase; color: #E7E2D6;
+  }
+  .rf-hero-meta {
+    margin-top: 20px; color: #B9B3A6; font-family: "Space Mono", monospace;
+    font-size: 16px; letter-spacing: .16em; text-transform: uppercase;
+  }
+  .rf-hero-meta .dem { color: var(--red); }
+
+  /* ---------- RIGHT PAGE ---------- */
+  .rf-rp { position: absolute; inset: 0; padding: 40px 46px 40px 44px; display: flex; flex-direction: column; }
+  /* large faint concentric-ring watermark — the organizing bowl */
+  .rf-watermark { position: absolute; top: 150px; right: -360px; width: 1020px; height: 1020px; opacity: .9; pointer-events: none; z-index: 0; }
+  .rf-rp > * { position: relative; z-index: 1; }
+
+  /* exhibit header */
+  .rf-head { display: flex; align-items: flex-end; justify-content: space-between; border-top: 2px solid var(--red); padding-top: 11px; }
+  .rf-head .hl { flex: 1; min-width: 0; padding-right: 24px; }
+  .rf-head .hr { flex: none; }
+  .rf-head .over { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 7px; }
+  .rf-head .nm { font-family: "Archivo Expanded", "Archivo", sans-serif; font-weight: 700; font-size: 26px; letter-spacing: .02em; text-transform: uppercase; color: var(--ink); line-height: 1; }
+  .rf-head .sub { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); margin-top: 7px; }
+  .rf-head .hr { text-align: right; }
+  .rf-head .hr .k { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .2em; color: var(--ink-3); text-transform: uppercase; }
+  .rf-head .hr .v { font-family: "Archivo Expanded", "Archivo", sans-serif; font-weight: 700; font-size: 22px; color: var(--ink); letter-spacing: .04em; }
+
+  /* section labels */
+  .rf-seclbl { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .rf-seclbl .dot { width: 7px; height: 7px; background: var(--red); border-radius: 50%; flex: none; }
+  .rf-seclbl .t { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .26em; text-transform: uppercase; color: var(--ink); }
+  .rf-seclbl .ln { flex: 1; height: 1px; background: var(--rule); }
+
+  .lbl { font-family: "Archivo", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-3); font-size: 10px; }
+  .val { font-family: "Spectral", serif; font-weight: 500; color: var(--ink); font-size: 13px; line-height: 1.3; }
+  .mono { font-family: "Space Mono", monospace; }
+
+  /* ---------- STADIUM SECTION ---------- */
+  .rf-stadium { margin-top: 8px; }
+  .rf-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 10px; }
+  .rf-photos image-slot { width: 100%; height: 84px; display: block; border: 1px solid var(--rule-strong); }
+
+  .rf-sgrid { display: grid; grid-template-columns: 350px 280px 1fr; gap: 28px; align-items: stretch; }
+
+  /* facts table */
+  .colhdr { margin: 0 0 10px; padding-bottom: 7px; border-bottom: 1px solid var(--rule-strong); font-size: 10px; letter-spacing: .14em; }
+  .rf-facts { display: flex; flex-direction: column; }
+  .rf-facts .row { display: grid; grid-template-columns: 98px 1fr; gap: 11px; padding: 3.4px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+  .rf-facts .row:first-of-type { border-top: 0; }
+  .rf-facts .row .lbl { padding-top: 2px; font-size: 9.5px; }
+  .rf-facts .row .val { font-size: 11px; line-height: 1.2; }
+
+  /* lineage under diagram */
+  .rf-logos { display: flex; align-items: center; justify-content: center; gap: 32px; margin: auto 0; padding: 8px 0; }
+  .rf-logo { height: 84px; width: auto; display: block; }
+  .rf-mid .rf-fd-wrap { max-width: 196px; margin: 0 auto 2px; }
+  .rf-mid .blk { margin-top: 8px; }
+  .rf-mid .blk .k { margin-bottom: 3px; font-size: 9.5px; }
+  .rf-mid .blk .v { font-size: 10.5px; line-height: 1.26; }
+
+  /* context */
+  .rf-context .body { column-count: 1; }
+  .rf-context p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 14px; line-height: 1.25; color: var(--ink); text-align: justify; hyphens: auto; }
+  .rf-context p:first-child::first-letter { font-weight: 700; font-size: 33px; line-height: .8; float: left; padding: 3px 7px 0 0; color: var(--blueprint); }
+
+  /* circle diagram */
+  .rf-fd-wrap { width: 100%; }
+  .rf-fd-svg { width: 100%; height: auto; display: block; }
+  .rf-fd-dist { font-family: "Space Mono", monospace; font-size: 17px; font-weight: 700; fill: var(--ink); }
+  .rf-fd-n { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 13px; fill: var(--ink-2); }
+  .rf-fd-axis { font-family: "Archivo Expanded","Archivo",sans-serif; font-weight: 700; font-size: 18px; fill: var(--red); }
+  .rf-fd-cap { display: flex; justify-content: space-between; margin-top: 6px; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; }
+
+  /* ---------- VISIT SECTION (dark concrete band) ---------- */
+  .rf-visit { margin-top: auto; border-top: 3px solid var(--ink); padding-top: 0; }
+  .rf-vband { background: linear-gradient(168deg, var(--panel) 0%, var(--panel-2) 100%); color: var(--panel-ink); display: grid; grid-template-columns: 350px 1fr 336px; }
+  .rf-vband > div { padding: 9px 22px; }
+  .rf-vband .vcol { border-left: 1px solid rgba(255,255,255,.12); }
+  .rf-vband .vcol:first-child { border-left: 0; }
+
+  .rf-vlbl { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .rf-vlbl .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+  .rf-vlbl .t { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #fff; }
+  .rf-vlbl .pill { margin-left: auto; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,.4); padding: 3px 8px; }
+
+  /* score module (circular) */
+  .rf-score { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; }
+  .rf-score .date { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .18em; color: var(--panel-dim); text-transform: uppercase; margin-bottom: 0; }
+  .rf-circle { position: relative; width: 152px; height: 152px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .rf-circle svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .rf-circle .tm { display: flex; align-items: baseline; gap: 12px; }
+  .rf-circle .tm .ab { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .1em; color: var(--panel-dim); width: 36px; text-align: right; }
+  .rf-circle .tm .sc { font-family: "Spectral", serif; font-weight: 700; font-size: 38px; line-height: .9; color: #fff; width: 44px; text-align: left; }
+  .rf-circle .tm.win .sc { color: var(--red); }
+  .rf-circle .tm.win .ab { color: #fff; }
+  .rf-circle .div { width: 60px; height: 1px; background: rgba(255,255,255,.2); margin: 5px 0; }
+  .rf-score .final { margin-top: 8px; font-family: "Spectral", serif; font-style: italic; font-size: 12.5px; color: #EceADf; }
+  .rf-score .att { margin-top: 3px; font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em; color: var(--panel-dim); }
+
+  /* line score */
+  .rf-box { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; margin-bottom: 16px; }
+  .rf-box { margin-bottom: 8px; }
+  .rf-box th, .rf-box td { text-align: center; font-size: 10px; padding: 2.2px 0; color: #DEDCD3; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .rf-box thead th { color: var(--panel-dim); font-weight: 400; font-size: 9.5px; }
+  .rf-box td.tm, .rf-box th.tm { text-align: left; font-family: "Archivo", sans-serif; font-weight: 700; letter-spacing: .06em; color: #fff; font-size: 12px; padding-right: 8px; }
+  .rf-box .rhe { font-weight: 700; color: #fff; }
+  .rf-box .rcol { color: var(--red); }
+  .rf-box .sep { border-left: 1px solid rgba(255,255,255,.24); }
+
+  /* visit info rows */
+  .rf-vrow { display: grid; grid-template-columns: 100px 1fr; gap: 8px; padding: 2.2px 0; align-items: baseline; }
+  .rf-vrow .k { font-family: "Archivo", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--panel-dim); font-size: 9.5px; }
+  .rf-vrow .v { font-family: "Spectral", serif; font-weight: 500; color: #EFece2; font-size: 11.5px; }
+  .rf-vsub { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .14em; color: var(--panel-dim); text-transform: uppercase; margin: 8px 0 4px; }
+
+  /* weather strip */
+  .rf-wx { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,.2); margin-top: 9px; align-items: stretch; }
+  .rf-wx .c { padding: 4px 4px; text-align: center; border-left: 1px solid rgba(255,255,255,.14); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .rf-wx .c:first-child { border-left: 0; }
+  .rf-wx .big { font-family: "Spectral", serif; font-weight: 700; font-size: 15px; color: #fff; line-height: 1; min-height: 14px; display: flex; align-items: center; }
+  .rf-wx .small { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 10px; color: #EDEAdf; margin-top: 2px; min-height: 14px; display: flex; align-items: center; }
+  .rf-wx .cap { font-family: "Space Mono", monospace; font-size: 7.5px; letter-spacing: .1em; color: var(--panel-dim); text-transform: uppercase; margin-top: 3px; }
+  .rf-wx .ico { display: block; margin: 0 auto 3px; }
+
+  /* footer colophon */
+  .rf-foot { margin-top: 0; display: flex; align-items: center; gap: 24px; padding: 11px 0 12px; border-top: 1px solid var(--rule); }
+  .rf-foot .plate { font-family: "Archivo Expanded","Archivo",sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+  .rf-foot .mono { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .04em; color: var(--ink-2); }
+  .rf-foot .sep { color: var(--rule-strong); }
+  .rf-foot .colors { margin-left: auto; display: flex; gap: 14px; }
+  .rf-foot .sw { display: flex; align-items: center; gap: 7px; }
+  .rf-foot .chip { width: 14px; height: 14px; border: 1px solid var(--rule-strong); }
+  .rf-foot .nm { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#E6E4DE"/>
+      <circle cx="50" cy="50" r="26" fill="none" stroke="#46586B" stroke-width="2.5"/>
+      <circle cx="50" cy="50" r="19" fill="none" stroke="#46586B" stroke-width="1.2"/>
+      <rect x="47" y="47" width="6" height="6" fill="#C6011F"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="riverfront-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="circle-diagram.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="riverfront-spread.jsx"></script>
+  <script type="text/babel" src="riverfront-app.jsx"></script>
+</body>
+</html>

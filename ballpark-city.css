@@ -1,0 +1,382 @@
+/* ballpark-city.css — shared editorial system for "The Ballpark and the City".
+   Premium architectural-history monograph: warm paper, charcoal serif body,
+   condensed display heads, muted brick / steel / olive accents.
+   Geometry lives on a 2550 x 1088 design canvas (100 px/in), fold at x=1275. */
+
+:root {
+  --paper:    #ECE3D0;   /* warm off-white book stock */
+  --paper-hi: #F3ECDA;
+  --paper-lo: #E3D8C0;   /* slightly deeper field for panels */
+  --ink:      #221E18;   /* charcoal */
+  --ink-2:    #514A3F;   /* secondary text */
+  --ink-3:    #897F6E;   /* captions / metadata */
+  --rule:     #C8BA9C;   /* hairlines */
+  --rule-2:   #AF9F7F;   /* stronger rule */
+  --navy:     #20384C;   /* steel-blue display / title */
+  --brick:    #9C3A28;   /* section heads, pull quotes */
+  --brick-dk: #6E2718;
+  --olive:    #6E7A4F;
+  --steel:    #3F6075;
+  --concrete: #8A8276;
+  --green:    #4F6B57;
+  --gold:     #A8772A;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* ── spread shell ─────────────────────────────────────────────────────────*/
+.bc-spread {
+  position: relative;
+  width: 2550px;
+  height: 1088px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Spectral", Georgia, serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+.bc-region { position: absolute; }
+
+/* page-tone separation: a hair-deeper field on facing page + center seam */
+.bc-fold-seam {
+  position: absolute; top: 0; height: 1088px; width: 1px; left: 1275px;
+  background: rgba(34,30,24,0.10);
+}
+.bc-fold-shade {
+  position: absolute; top: 0; height: 1088px; width: 70px; left: 1240px;
+  background: linear-gradient(90deg, rgba(34,30,24,0) 0%, rgba(34,30,24,0.05) 48%, rgba(34,30,24,0.05) 52%, rgba(34,30,24,0) 100%);
+  pointer-events: none;
+}
+
+/* ── display title ────────────────────────────────────────────────────────*/
+.bc-title {
+  font-family: "Anton", "Oswald", sans-serif;
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 0.95;
+  letter-spacing: 0.005em;
+  margin: 0;
+  text-transform: uppercase;
+}
+.bc-title .l1, .bc-title .l2 { display: block; white-space: nowrap; }
+
+.bc-chapter-kicker {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brick);
+}
+.bc-deck {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink-2);
+  line-height: 1.42;
+}
+
+/* ── section heads ────────────────────────────────────────────────────────*/
+.bc-sectionhead {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--brick);
+  letter-spacing: 0.07em;
+}
+.bc-sectionhead .txt { white-space: nowrap; }
+.bc-sectionhead .rule {
+  flex: 1 1 auto;
+  height: 0;
+  border-top: 1.5px solid var(--brick);
+  opacity: 0.55;
+}
+.bc-sectionnum {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  color: var(--brick);
+  opacity: 0.8;
+}
+
+/* ── body text ────────────────────────────────────────────────────────────*/
+.bc-body {
+  font-family: "Spectral", Georgia, serif;
+  color: var(--ink);
+  font-size: 14.5px;
+  line-height: 1.5;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  text-wrap: pretty;
+}
+.bc-body p { margin: 0; }
+.bc-body p + p { text-indent: 1.25em; }
+.bc-cols { column-gap: 30px; column-fill: balance; }
+.bc-cols-2 { column-count: 2; }
+.bc-cols-3 { column-count: 3; }
+.bc-cols-4 { column-count: 4; }
+
+/* first-paragraph drop cap for the opening of a section */
+.bc-dropcap::first-letter {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  color: var(--navy);
+  float: left;
+  font-size: 3.05em;
+  line-height: 0.74;
+  padding: 6px 8px 0 0;
+  margin-top: 2px;
+}
+
+/* ── pull quotes ──────────────────────────────────────────────────────────*/
+.bc-pullquote {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--brick);
+  line-height: 1.16;
+  letter-spacing: 0.01em;
+  position: relative;
+}
+.bc-pullquote .mark {
+  font-family: "Spectral", serif;
+  font-weight: 700;
+  color: var(--brick);
+  opacity: 0.42;
+  line-height: 0.6;
+}
+.bc-pullquote.serif {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-weight: 500;
+  text-transform: none;
+  color: var(--navy);
+  letter-spacing: 0;
+  line-height: 1.24;
+}
+
+/* ── figures / image slots ────────────────────────────────────────────────*/
+.bc-figure { position: absolute; }
+.bc-figure image-slot {
+  display: block;
+  width: 100%;
+  background: var(--paper-lo);
+}
+/* archival duotone wash sits over the slot frame */
+.bc-figure .frame-rule {
+  position: absolute; inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(34,30,24,0.22);
+  pointer-events: none;
+}
+.bc-cap-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  font-size: 12.5px;
+  line-height: 1.18;
+  margin-top: 9px;
+}
+.bc-cap-meta {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--brick);
+  font-size: 10px;
+  margin-top: 3px;
+  text-transform: uppercase;
+}
+.bc-cap-body {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  color: var(--ink-2);
+  font-size: 12px;
+  line-height: 1.34;
+  margin-top: 5px;
+}
+
+/* ── outer-margin era timeline (Spread 1 left) ────────────────────────────*/
+.bc-rail-head {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  color: var(--ink-2);
+  line-height: 1.3;
+}
+.bc-era-date {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+}
+.bc-era-name {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 15px;
+  line-height: 1.0;
+  color: var(--ink);
+  margin-top: 4px;
+  white-space: nowrap;
+}
+.bc-era-desc {
+  font-family: "Spectral", serif;
+  font-size: 11.5px;
+  line-height: 1.28;
+  color: var(--ink-2);
+  margin-top: 5px;
+}
+
+/* ── atlas table ──────────────────────────────────────────────────────────*/
+.bc-atlas { width: 100%; }
+.bc-atlas-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--brick);
+  font-size: 17px;
+}
+.bc-atlas-grid { display: grid; width: 100%; }
+.bc-atlas-colhead {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10.5px;
+  color: var(--ink-3);
+  padding: 0 0 7px 0;
+}
+.bc-atlas-cell {
+  padding: 11px 14px 11px 0;
+  border-top: 1px solid var(--rule);
+  vertical-align: top;
+}
+.bc-atlas-era {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 13.5px;
+  color: var(--ink);
+  line-height: 1.05;
+}
+.bc-atlas-years {
+  font-family: "Space Mono", monospace;
+  font-size: 9.5px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.bc-atlas-text {
+  font-family: "Spectral", serif;
+  font-size: 12px;
+  line-height: 1.3;
+  color: var(--ink-2);
+}
+.bc-atlas-text.parks { font-style: italic; color: var(--ink); }
+
+/* ── micro labels / folio ─────────────────────────────────────────────────*/
+.bc-folio {
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.bc-microlabel {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  color: var(--ink-2);
+}
+
+/* annotation callout (thin diagram label) */
+.bc-annot {
+  font-family: "Space Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+  line-height: 1.3;
+}
+
+/* ── "Systems Beneath the Skyline" sidebar module ─────────────────────────*/
+.bc-sidebar {
+  background: var(--paper-lo);
+  border-top: 3px solid var(--brick);
+  box-shadow: inset 0 0 0 1px rgba(34,30,24,0.10);
+  padding: 18px 20px 20px;
+}
+.bc-sidebar-kicker {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brick);
+}
+.bc-sidebar-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: 19.5px;
+  line-height: 1.02;
+  color: var(--navy);
+  margin-top: 7px;
+}
+.bc-sidebar-standfirst {
+  font-family: "Spectral", serif;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 1.34;
+  color: var(--ink-2);
+  margin-top: 9px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid var(--rule);
+}
+.bc-sysrow { padding: 12px 0 11px; border-bottom: 1px solid var(--rule); }
+.bc-sysrow:last-child { border-bottom: 0; padding-bottom: 2px; }
+.bc-sysrow-head { display: flex; align-items: center; gap: 9px; }
+.bc-sysrow-icon {
+  flex: 0 0 auto; width: 27px; height: 27px;
+  display: flex; align-items: center; justify-content: center;
+}
+.bc-sysrow-label {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 12.5px;
+  color: var(--ink);
+}
+.bc-sysrow-body {
+  font-family: "Spectral", serif;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--ink-2);
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* forces tag row */
+.bc-force {
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 11.5px;
+  color: var(--ink);
+  white-space: nowrap;
+}

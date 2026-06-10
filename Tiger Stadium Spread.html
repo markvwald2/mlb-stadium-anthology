@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tiger Stadium — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #20201D;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* =====================================================================
+     "THE CORNER LOT" — Tiger Stadium plat / engineering-drawing spread
+     .ts-  · blueprint drafting lines · charcoal type · Detroit orange
+     ===================================================================== */
+  .ts-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --paper: #ECE6D6; --paper-2: #E3DCC9; --paper-hi: #F3EEE0; --ledger: #EFEADB;
+    --ink: #20201D; --ink-2: #55514A; --ink-3: #8A857B;
+    --rule: #CAC2AF; --rule-2: #ADA48E;
+    --blue: #5E6E7E; --blue-soft: #93A0AB; --blue-deep: #41505C;
+    --navy: #0C2340; --orange: #C5491B; --orange-2: #D9622A;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.38' intercept='0.69'/%3E%3CfeFuncG type='linear' slope='0.38' intercept='0.69'/%3E%3CfeFuncB type='linear' slope='0.38' intercept='0.69'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper); font-family: "Spectral", Georgia, serif; color: var(--ink);
+    text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .ts-page { position: absolute; top: 0; height: 1088px; }
+  .ts-left  { left: 0;     width: 1275px; background: #161514; overflow: hidden; }
+  .ts-right { left: 1275px; width: 1275px; background: var(--paper); }
+  /* center page split — flat hairline only */
+  .ts-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.22); z-index: 8; pointer-events: none; }
+
+  /* =================== LEFT / AERIAL PLATE =================== */
+  .ts-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .ts-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .ts-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(0deg, rgba(11,11,10,.94) 0%, rgba(11,11,10,.66) 20%, rgba(11,11,10,.10) 40%, rgba(11,11,10,0) 52%),
+      linear-gradient(90deg, rgba(11,11,10,.62) 0%, rgba(11,11,10,.18) 26%, rgba(11,11,10,0) 46%); }
+  /* faint parcel/plat linework emanating across the plate */
+  .ts-plat-lines { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .5; }
+
+  /* masthead — folio + logo wells */
+  .ts-hero-mast { position: absolute; top: 54px; left: 64px; right: 64px; z-index: 5;
+    display: flex; align-items: flex-start; justify-content: flex-end; }
+  .ts-folio { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px;
+    letter-spacing: .34em; text-transform: uppercase; color: #D8D2C2; }
+  .ts-folio .sub { display: block; font-family: "Oswald", sans-serif; font-weight: 300;
+    font-size: 11px; letter-spacing: .22em; color: #9C968A; margin-top: 7px; }
+  .ts-mast-logos { display: flex; align-items: center; gap: 14px; }
+  .ts-logo-well { width: 58px; height: 58px; border: 1px solid rgba(0,0,0,.22);
+    display: flex; align-items: center; justify-content: center; position: relative;
+    background: #F3EEE0; box-shadow: 0 2px 10px rgba(0,0,0,.4); }
+  .ts-logo-well::before, .ts-logo-well::after { content: ""; position: absolute; width: 7px; height: 7px;
+    border-color: var(--orange); border-style: solid; }
+  .ts-logo-well::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .ts-logo-well::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+  .ts-logo-well img { max-width: 42px; max-height: 42px; width: auto; height: auto; display: block; }
+  .ts-logo-well.club img { max-height: 44px; }
+
+  /* title block bottom-left */
+  .ts-hero-block { position: absolute; left: 64px; bottom: 74px; right: 230px; z-index: 5; }
+  .ts-hero-survey { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px;
+    letter-spacing: .26em; text-transform: uppercase; color: var(--orange-2); margin-bottom: 18px;
+    display: flex; align-items: center; gap: 12px; }
+  .ts-hero-survey::before { content: ""; width: 30px; height: 1.5px; background: var(--orange-2); display: block; }
+  .ts-hero-name { margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 158px; line-height: .82; letter-spacing: .006em; text-transform: uppercase; color: #F2ECDC;
+    text-shadow: 0 3px 30px rgba(0,0,0,.62); }
+  .ts-hero-name .l2 { display: block; }
+  .ts-hero-loc { display: flex; align-items: center; gap: 16px; margin-top: 22px; }
+  .ts-hero-loc .bar { width: 64px; height: 3px; background: var(--orange); display: block; flex: none; }
+  .ts-hero-loc .txt { font-family: "Spectral", serif; font-style: italic; font-weight: 500; font-size: 33px;
+    color: #ECE6D6; text-shadow: 0 2px 14px rgba(0,0,0,.55); }
+  .ts-hero-meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px 22px;
+    font-family: "Oswald", sans-serif; font-weight: 400; font-size: 14px; letter-spacing: .16em;
+    text-transform: uppercase; color: #D5CFBF; }
+  .ts-hero-meta b { color: #FFFFFF; font-weight: 600; }
+  .ts-hero-meta .dem { color: var(--orange-2); font-weight: 600; }
+  .ts-hero-meta .dot { color: #7E7A6F; }
+  /* street labels along plate edges */
+  .ts-street { position: absolute; z-index: 4; font-family: "Oswald", sans-serif; font-weight: 500;
+    font-size: 13px; letter-spacing: .42em; text-transform: uppercase; color: rgba(236,230,214,.5); pointer-events: none; }
+  .ts-street.michigan { left: 70px; top: 50%; transform: rotate(-90deg); transform-origin: left center; }
+  .ts-street.trumbull { right: 26px; top: 50%; transform: rotate(90deg); transform-origin: right center; }
+
+  /* =================== RIGHT / PLAT SHEET =================== */
+  .ts-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .4; mix-blend-mode: multiply; }
+  .ts-rp { position: absolute; inset: 28px; z-index: 2; display: flex; flex-direction: column;
+    border: 1.5px solid var(--blue-deep); padding: 17px 26px 12px; }
+  /* survey corner crosses on the plat border */
+  .ts-corner { position: absolute; width: 18px; height: 18px; z-index: 4; pointer-events: none; }
+  .ts-corner::before, .ts-corner::after { content: ""; position: absolute; background: var(--orange); }
+  .ts-corner::before { left: 8px; top: 0; width: 1.5px; height: 18px; }
+  .ts-corner::after  { top: 8px; left: 0; height: 1.5px; width: 18px; }
+  .ts-corner.tl { left: 20px; top: 20px; } .ts-corner.tr { right: 20px; top: 20px; }
+  .ts-corner.bl { left: 20px; bottom: 20px; } .ts-corner.br { right: 20px; bottom: 20px; }
+
+  /* sheet header / title-block */
+  .ts-head { display: flex; align-items: flex-end; justify-content: space-between;
+    border-bottom: 2.5px solid var(--ink); padding-bottom: 8px; flex: none; }
+  .ts-head .hl .over { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    letter-spacing: .26em; text-transform: uppercase; color: var(--orange); }
+  .ts-head .hl .nm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 27px;
+    letter-spacing: .03em; text-transform: uppercase; color: var(--ink); line-height: 1.05; margin-top: 3px; white-space: nowrap; }
+  .ts-head .hr { display: flex; gap: 0; }
+  .ts-head .hr .cell { padding: 0 16px; border-left: 1px solid var(--rule-2); text-align: right; }
+  .ts-head .hr .cell:first-child { border-left: 0; }
+  .ts-head .hr .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
+  .ts-head .hr .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 14px;
+    color: var(--navy); margin-top: 4px; white-space: nowrap; }
+
+  /* parcel label bars */
+  .ts-parcel-lbl { display: flex; align-items: center; gap: 13px; flex: none; }
+  .ts-parcel-lbl .badge { width: 30px; height: 30px; background: var(--navy); color: #F2ECDC; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15px; letter-spacing: .02em; }
+  .ts-parcel-lbl .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+  .ts-parcel-lbl .ribbon { flex: 1; display: flex; gap: 18px; justify-content: flex-end;
+    font-family: "Oswald", sans-serif; font-weight: 400; font-size: 10.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .ts-parcel-lbl .ribbon b { color: var(--navy); font-weight: 600; }
+  .ts-parcel-lbl .ln { height: 1px; background: var(--rule-2); flex: 1; }
+  .ts-parcel-lbl .pill { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10px;
+    letter-spacing: .1em; text-transform: uppercase; color: #F2ECDC; background: var(--orange);
+    padding: 3px 9px; }
+
+  /* lifecycle data strip */
+  .ts-lifecycle { display: grid; grid-template-columns: repeat(4, 1fr); flex: none;
+    border-top: 1px solid var(--rule-2); border-bottom: 1px solid var(--rule-2); margin-top: 11px; }
+  .ts-lc { padding: 6px 14px; border-left: 1px solid var(--rule); }
+  .ts-lc:first-child { border-left: 0; padding-left: 0; }
+  .ts-lc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--ink-3); }
+  .ts-lc .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 14px;
+    color: var(--ink); margin-top: 4px; }
+
+  /* ---- PARCEL I : THE STADIUM ---- */
+  .ts-stadium { flex: none; margin-top: 13px; }
+  .ts-sgrid { display: grid; grid-template-columns: 318px 1fr 214px; gap: 0; margin-top: 12px; }
+
+  /* facts table */
+  .ts-facts { padding-right: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+  .ts-ftable { width: 100%; border-collapse: collapse; }
+  .ts-ftable tr { border-bottom: 1px solid var(--rule); }
+  .ts-ftable tr:last-child { border-bottom: 0; }
+  .ts-ftable th { text-align: left; vertical-align: baseline; width: 96px; padding: 3px 10px 3px 0;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .ts-ftable td { vertical-align: baseline; padding: 3px 0; font-family: "Spectral", serif;
+    font-size: 11.5px; line-height: 1.4; color: var(--ink); }
+  .ts-ftable td b { color: var(--navy); font-weight: 600; }
+
+  /* center: prose with superimposed field-plan watermark + inline angle figure */
+  .ts-center { position: relative; padding: 0 22px; border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule); display: flex; flex-direction: column; min-width: 0; }
+  .ts-fieldwm { position: absolute; inset: 0; z-index: 0; display: flex; align-items: center;
+    justify-content: center; pointer-events: none; }
+  .ts-fieldwm svg { width: 94%; height: auto; max-height: 96%; }
+  .ts-center .ctxh { position: relative; z-index: 1; display: flex; align-items: center; gap: 10px;
+    margin-bottom: 9px; flex: none; }
+  .ts-center .ctxh .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--navy); }
+  .ts-center .ctxh .ln { flex: 1; height: 1px; background: var(--rule); }
+  .ts-ctx { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; align-items: start; }
+  .ts-ctx .col { min-width: 0; }
+  .ts-ctx .col:first-child { padding-right: 11px; }
+  .ts-ctx .col:last-child { padding-left: 11px; border-left: 1px solid var(--rule); }
+  .ts-ctx p { margin: 0 0 11px; font-family: "Spectral", serif; font-size: 13px; line-height: 1.62;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .ts-ctx .col p:last-child { margin-bottom: 0; }
+  .ts-ctx .col:first-child p:first-child::first-letter { font-family: "Anton", sans-serif; font-size: 34px; float: left;
+    line-height: .78; padding: 3px 7px 0 0; color: var(--orange); }
+  /* field-orientation (protractor) box beneath the facts table */
+  .ts-anglebox { margin-top: 13px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 14px; }
+  .ts-anglebox svg { width: 100px; height: auto; flex: none; }
+  .ts-angletext { display: flex; flex-direction: column; gap: 6px; max-width: 150px; }
+  .ts-angletext .hd { font-family: "Oswald", sans-serif; font-weight: 600;
+    font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--navy); line-height: 1.22; }
+  .ts-angletext .or { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 9px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* photo column */
+  .ts-photos { display: flex; flex-direction: column; gap: 11px; padding-left: 20px; }
+  .ts-pcard { flex: 1; display: flex; flex-direction: column; }
+  .ts-pcard .frame { position: relative; flex: 1; border: 1px solid var(--rule-2); overflow: hidden;
+    background: var(--paper-2); min-height: 142px; }
+  .ts-pcard .frame image-slot { width: 100%; height: 100%; display: block; }
+
+  /* subdivision survey line between parcels */
+  .ts-subdiv { flex: none; margin: 14px 0; height: 0; border-top: 2px solid var(--ink);
+    position: relative; }
+  .ts-subdiv::before { content: ""; position: absolute; left: 0; right: 0; top: 3px;
+    border-top: 1px solid var(--rule-2); }
+  .ts-subdiv .tick { position: absolute; top: -5px; width: 1.5px; height: 11px; background: var(--orange); }
+
+  /* ---- PARCEL II : THE VISIT (archival score ledger) ---- */
+  .ts-visit { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+  .ts-ledger { flex: 1; display: grid; grid-template-columns: 1fr 1.18fr 0.86fr; margin-top: 9px;
+    border: 1px solid var(--rule-2); background: var(--ledger);
+    min-height: 0; }
+  .ts-ledger > div { padding: 11px 18px; border-left: 1px solid var(--rule); min-width: 0;
+    display: flex; flex-direction: column; }
+  .ts-ledger > div:first-child { border-left: 0; }
+  .ts-led-h { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
+
+  /* result block */
+  .ts-result { display: flex; flex-direction: column; }
+  .ts-result .ts-led-h { flex: none; }
+  .ts-result .date { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
+    letter-spacing: .04em; color: var(--navy); margin-bottom: 4px; }
+  .ts-result .ts-scorerow:first-of-type { margin-top: 3px; }
+  .ts-scorerow { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 4px 0; border-bottom: 1px solid var(--rule); flex: 1; }
+  .ts-scorerow:last-of-type { border-bottom: 0; }
+  .ts-scorerow .tm { font-family: "Anton", sans-serif; font-weight: 400; font-size: 30px; line-height: 1;
+    letter-spacing: .01em; color: var(--ink-2); }
+  .ts-scorerow.win .tm { color: var(--navy); }
+  .ts-scorerow .sc { font-family: "Anton", sans-serif; font-size: 30px; line-height: 1; color: var(--ink-2);
+    font-variant-numeric: tabular-nums; }
+  .ts-scorerow.win .sc { color: var(--orange); }
+  .ts-result .venue { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 9px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-top: 10px; line-height: 1.5; flex: none; }
+
+  /* line score + pitching */
+  .ts-mid { display: flex; flex-direction: column; }
+  .ts-mid .ts-led-h { flex: none; }
+  .ts-line { width: 100%; border-collapse: collapse; table-layout: fixed; font-variant-numeric: tabular-nums; }
+  .ts-line th, .ts-line td { font-family: "Space Mono", monospace; font-size: 10px; text-align: center;
+    padding: 2px 0; color: var(--ink-2); border-bottom: 1px solid var(--rule); }
+  .ts-line thead th { color: var(--ink-3); font-weight: 400; border-bottom: 1px solid var(--rule-2); }
+  .ts-line td.tm, .ts-line th.tm { width: 38px; text-align: left; font-weight: 700; color: var(--ink);
+    font-family: "Oswald", sans-serif; letter-spacing: .04em; }
+  .ts-line tr.away td.tm { color: var(--ink-2); }
+  .ts-line tr.home td.tm { color: var(--navy); }
+  .ts-line .sep { border-left: 1px solid var(--rule-2); }
+  .ts-line .rhe { font-weight: 700; color: var(--ink); }
+  .ts-line tbody tr:last-child td { border-bottom: 0; }
+  .ts-pitch { margin-top: auto; padding-top: 10px; }
+  .ts-prow { display: flex; flex-direction: column; gap: 1px; margin-bottom: 5px; }
+  .ts-prow:last-child { margin-bottom: 0; }
+  .ts-prow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--ink-3); }
+  .ts-prow .v { font-family: "Spectral", serif; font-size: 11.5px; color: var(--ink); line-height: 1.3; }
+  .ts-prow .v b { color: var(--navy); font-weight: 600; }
+
+  /* visit info rows */
+  .ts-vinfo { display: flex; flex-direction: column; }
+  .ts-vinfo .ts-led-h { flex: none; }
+  .ts-virow { display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+    padding: 4px 0; border-bottom: 1px dotted var(--rule-2); flex: 1; }
+  .ts-virow:last-child { border-bottom: 0; }
+  .ts-virow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .ts-virow .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
+    color: var(--ink); text-align: right; }
+  .ts-virow .v.navy { color: var(--navy); }
+
+  /* weather strip */
+  .ts-weather { flex: none; display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 11px;
+    border-top: 1px solid var(--ink); }
+  .ts-wx { display: flex; align-items: center; gap: 11px; padding: 9px 16px; border-left: 1px solid var(--rule); }
+  .ts-wx:first-child { border-left: 0; padding-left: 2px; }
+  .ts-wx .ico { width: 24px; height: 24px; flex: none; stroke: var(--navy); }
+  .ts-wx .txt { display: flex; flex-direction: column; gap: 1px; }
+  .ts-wx .val { font-family: "Space Mono", monospace; font-weight: 700; font-size: 14px; color: var(--ink); line-height: 1; }
+  .ts-wx .lab { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 8px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3); }
+
+  /* footer colophon */
+  .ts-foot { flex: none; display: flex; align-items: center; gap: 14px; margin-top: 12px;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .04em; color: var(--ink-3); }
+  .ts-foot .plate { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
+  .ts-foot .sep { color: var(--rule-2); }
+  .ts-foot .end { margin-left: auto; color: var(--orange); font-weight: 700; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#ECE6D6"/>
+      <g stroke="#5E6E7E" stroke-width="1.6" opacity="0.7" fill="none">
+        <path d="M16 18 H84 V82 H16 Z M16 50 H84 M50 18 V50 M38 50 V82 M64 50 V82"/>
+      </g>
+      <g stroke="#C5491B" stroke-width="2">
+        <path d="M22 18 V12 M16 24 H10"/>
+      </g>
+      <rect x="40" y="30" width="20" height="14" fill="#0C2340"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="tiger-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="tiger-field.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="tiger-spread.jsx"></script>
+  <script type="text/babel" src="tiger-app.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Memorial Stadium — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #1C1B19;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     SPREAD — Blurb Large Landscape 13 x 11 in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264 = 300 DPI.
+     Center split x=1275. Memorial Stadium — "The Gateway Before the Revolution".
+     ---------------------------------------------------------------- */
+  .ms-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #1C1B19;            /* warm charcoal */
+    --ink-2: #555046;          /* warm gray */
+    --ink-3: #847E70;          /* light label gray */
+    --paper: #E8E3D6;          /* warm off-white catalog stock */
+    --paper-hi: #F1ECDF;
+    --paper-lo: #DCD5C4;
+    --stone: #D9D2C2;          /* engraved stone tone */
+    --rule: #CDC6B5;
+    --rule-strong: #ADA590;
+    --rule-ink: #6F6857;
+    --black: #1A1815;
+    --orange: #B8461E;         /* Orioles orange — restrained accent */
+    --orange-bright: #D8541B;
+    --orange-deep: #8C3415;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.4' intercept='0.64'/%3E%3CfeFuncG type='linear' slope='0.4' intercept='0.64'/%3E%3CfeFuncB type='linear' slope='0.4' intercept='0.64'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .ms-page { position: absolute; top: 0; height: 1088px; }
+  .ms-left  { left: 0; width: 1275px; background: #15140f; overflow: hidden; }
+  .ms-right { left: 1275px; width: 1275px; background: var(--paper); }
+  .ms-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .5; mix-blend-mode: multiply; }
+  /* thin center division line */
+  .ms-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px; background: rgba(0,0,0,.18); z-index: 6; pointer-events: none; }
+
+  /* ============ LEFT / HERO — monument facade ============ */
+  .ms-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .ms-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .ms-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(10,9,6,.46) 0%, rgba(10,9,6,0) 24%),
+      linear-gradient(0deg, rgba(10,9,6,.95) 0%, rgba(10,9,6,.74) 18%, rgba(10,9,6,.20) 40%, rgba(10,9,6,0) 56%);
+  }
+  /* faint inscription baseline rules — orange accent only */
+  .ms-hero-folio {
+    position: absolute; left: 64px; top: 62px; z-index: 5;
+    display: flex; align-items: center; gap: 18px;
+    font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .30em;
+    color: rgba(232,226,213,.72); text-transform: uppercase;
+  }
+  .ms-hero-folio .tick { width: 34px; height: 2px; background: var(--orange-bright); }
+
+  .ms-hero-title { position: absolute; left: 64px; right: 64px; bottom: 150px; z-index: 5; }
+  .ms-hero-name {
+    margin: 0; font-family: "Cinzel", serif; font-weight: 800;
+    font-size: 130px; line-height: .92; letter-spacing: .015em; text-transform: uppercase;
+    color: #ECE3CF;
+    /* incised / carved-into-stone bevel */
+    text-shadow:
+      0 2px 0 rgba(0,0,0,.55),
+      0 -1px 0 rgba(255,247,228,.18),
+      0 6px 30px rgba(0,0,0,.55);
+  }
+  .ms-hero-name .l2 { display: block; }
+  .ms-hero-rule { width: 132px; height: 3px; background: var(--orange-bright); margin: 30px 0 22px; }
+  .ms-hero-loc {
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 27px;
+    letter-spacing: .34em; text-transform: uppercase; color: #E6DFCD;
+  }
+  .ms-hero-colophon {
+    position: absolute; left: 64px; right: 64px; bottom: 58px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 13.5px;
+    letter-spacing: .10em; text-transform: uppercase; color: rgba(199,192,174,.82);
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .ms-hero-colophon .dot { color: var(--orange-bright); }
+  .ms-hero-colophon .hl { color: var(--orange-bright); }
+
+  /* ============ RIGHT PAGE ============ */
+  /* outer padding clears the 0.375in trim-safe margin + gutter safety on the left. */
+  .ms-rp { position: absolute; inset: 0; padding: 38px 40px 36px 44px; display: flex; flex-direction: column; gap: 16px; z-index: 2; }
+
+  /* monograph section header — thin double rule, carved label */
+  .ms-sec {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    border-bottom: 2px solid var(--ink); padding-bottom: 7px; flex: none;
+  }
+  .ms-sec .lbl { display: flex; align-items: baseline; gap: 16px; }
+  .ms-sec .num {
+    font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px;
+    letter-spacing: .12em; color: var(--orange-deep);
+  }
+  .ms-sec .t {
+    font-family: "Cinzel", serif; font-weight: 700; font-size: 19px;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--ink); line-height: 1;
+  }
+  .ms-sec .meta {
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px;
+    letter-spacing: .20em; text-transform: uppercase; color: var(--ink-3);
+  }
+
+  /* ---- photo plate strip (5 across, full-width museum-plate framing) ---- */
+  .ms-plates { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; flex: none; }
+  .ms-plate { position: relative; aspect-ratio: 4 / 3; padding: 6px;
+    border: 1px solid var(--rule-strong); background: var(--paper-hi); }
+  .ms-plate .inner { position: relative; width: 100%; height: 100%; border: 1px solid var(--rule); overflow: hidden; }
+  .ms-plate image-slot { width: 100%; height: 100%; display: block; }
+
+  /* ============ GATEWAY — three-bay memorial grid ============ */
+  .ms-gateway { flex: 1; display: grid; grid-template-columns: 360px 338px 1fr; min-height: 0; position: relative; }
+
+  .ms-bay { position: relative; min-height: 0; display: flex; flex-direction: column; }
+  .ms-bay.left  { padding-right: 30px; }
+  .ms-bay.center { padding: 0 30px; align-items: center; }
+  .ms-bay.right { padding-left: 30px; }
+  /* pilasters between bays — the gateway's vertical structure */
+  .ms-bay.center::before, .ms-bay.center::after {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 0;
+    border-left: 1px solid var(--rule); border-right: 1px solid var(--rule);
+  }
+  .ms-bay.center::before { left: 0; }
+  .ms-bay.center::after { right: 0; }
+
+  /* bay heading — carved */
+  .ms-bayh {
+    font-family: "Cinzel", serif; font-weight: 700; font-size: 14px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--ink);
+    padding-bottom: 6px; margin-bottom: 8px; border-bottom: 1px solid var(--rule-strong);
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .ms-bayh .sub { font-family: "Space Mono", monospace; font-weight: 400; font-size: 10px;
+    letter-spacing: .10em; color: var(--ink-3); text-transform: none; }
+
+  /* ---- LEFT BAY : Artifact Record (museum object label) ---- */
+  .ms-record { display: flex; flex-direction: column; }
+  .ms-record .row { display: grid; grid-template-columns: 110px 1fr; gap: 12px;
+    padding: 3px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .ms-record .row:last-child { border-bottom: 0; }
+  .ms-record .k {
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3);
+  }
+  .ms-record .v {
+    font-family: "Spectral", serif; font-weight: 500; font-size: 11.5px;
+    color: var(--ink); line-height: 1.26;
+  }
+  .ms-record .v b { font-weight: 600; }
+  .ms-record .v .mono { font-family: "Space Mono", monospace; font-size: 11.5px; letter-spacing: .01em; }
+  .ms-record .v .sm { color: var(--ink-2); font-size: 11px; }
+
+  /* ---- CENTER BAY : the void / memorial arch ---- */
+  .ms-void { position: relative; flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: flex-start; width: 100%; min-height: 0; }
+  /* faint stadium-bowl footprint behind the protractor */
+  .ms-footprint { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 214px; height: 266px; opacity: .13; pointer-events: none; z-index: 0; }
+  .ms-arch { position: relative; z-index: 1; width: 198px; flex: none; }
+  .ms-arch-label {
+    position: absolute; left: 0; right: 0; top: 47px; text-align: center;
+    font-family: "Cinzel", serif; font-weight: 700; font-size: 14px;
+    letter-spacing: .26em; text-transform: uppercase; color: var(--ink);
+  }
+  /* matchup — two mini-columns (team code + logo), "AT" between them */
+  .ms-matchup { display: flex; align-items: baseline; justify-content: center; gap: 26px; margin-top: 4px; }
+  .ms-matchup .team-col { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .ms-matchup .tcode { font-family: "Cinzel", serif; font-weight: 700; font-size: 30px;
+    letter-spacing: .01em; line-height: 1; }
+  .ms-matchup .tcode.away { color: var(--orange-deep); }
+  .ms-matchup .tcode.home { color: var(--ink); }
+  .ms-matchup .at { font-family: "Space Mono", monospace; font-weight: 400; font-size: 13px;
+    letter-spacing: .12em; color: var(--ink-3); }
+  .ms-matchup .away-logo { height: 54px; width: auto; display: block; }
+  .ms-matchup .home-logo { height: 40px; width: auto; display: block; }
+
+  /* league / MLB marks — bottom-right beneath Visit Information */
+  .ms-leaguemarks { margin-top: auto; padding-top: 16px; display: flex; align-items: center;
+    justify-content: flex-end; gap: 18px; }
+  .ms-leaguemarks .league { height: 40px; width: auto; display: block; opacity: .92; }
+  .ms-leaguemarks .mlb { height: 30px; width: auto; display: block; opacity: .92; }
+
+  .ms-orient { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center;
+    margin-top: 7px; flex: none; width: 100%; }
+  .ms-stage { position: relative; width: 100%; height: 266px; }
+  .ms-orient .fd-wrap { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-54%);
+    z-index: 1; display: flex; justify-content: center; }
+  .ms-orient .fd-svg { width: 182px; height: 174px; max-width: 100%; display: block; }
+  .ms-orient .cap {
+    position: relative; z-index: 1;
+    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .20em;
+    text-transform: uppercase; color: var(--ink-2); margin-top: 8px;
+  }
+
+  /* cornerstone civic record at the base of the arch */
+  .ms-cornerstone { position: relative; z-index: 1; margin-top: auto; width: 100%;
+    border-top: 1px solid var(--rule-strong); padding-top: 8px; }
+  .ms-cornerstone .ttl {
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--ink-3);
+    text-align: center; margin-bottom: 7px;
+  }
+  .ms-cs-rows { display: flex; flex-direction: column; }
+  .ms-cs-row { display: flex; align-items: baseline; justify-content: space-between;
+    padding: 3px 0; border-bottom: 1px solid var(--rule); }
+  .ms-cs-row:last-child { border-bottom: 0; }
+  .ms-cs-row .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+  .ms-cs-row .v { font-family: "Cinzel", serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .04em; color: var(--ink); white-space: nowrap; }
+  .ms-cs-row.end .v { color: var(--orange-deep); }
+
+  /* ---- RIGHT BAY : Stadium Context prose ---- */
+  .ms-ctx { columns: 2; column-gap: 26px; column-rule: 1px solid var(--rule); }
+  .ms-ctx p { margin: 0 0 8px; font-family: "Spectral", serif; font-size: 11.5px; line-height: 1.57;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .ms-ctx p:first-child::first-letter {
+    font-family: "Cinzel", serif; font-weight: 700; font-size: 40px; line-height: .82;
+    float: left; padding: 4px 7px 0 0; color: var(--orange-deep);
+  }
+  .ms-ctx p:last-child { margin-bottom: 0; }
+
+  /* ============ VISIT SECTION — scorebook sheet ============ */
+  .ms-visit { flex: none; }
+  .ms-scorebook { display: grid; grid-template-columns: 290px 1fr 312px; margin-top: 9px; }
+  .ms-scorebook > div { padding: 0 24px; }
+  .ms-scorebook > div:first-child { padding-left: 0; }
+  .ms-scorebook > div:last-child { padding-right: 0; }
+  .ms-sbcol { border-left: 1px solid var(--rule); display: flex; flex-direction: column; }
+
+  .ms-modlbl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .20em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
+
+  /* featured game result */
+  .ms-game { display: flex; flex-direction: column; height: 100%; }
+  .ms-game .finalscore-lbl { margin-top: auto; margin-bottom: 6px; }
+  .ms-game .trip {
+    display: inline-block; font-family: "Space Mono", monospace; font-size: 11px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--orange-deep);
+    border: 1px solid var(--orange); padding: 3px 9px; margin-bottom: 11px;
+  }
+  .ms-game .match {
+    display: flex; align-items: baseline; gap: 12px; font-family: "Cinzel", serif;
+    font-weight: 700; font-size: 27px; letter-spacing: .01em; line-height: 1;
+  }
+  .ms-game .match .away { color: var(--orange-deep); }
+  .ms-game .match .home { color: var(--ink); }
+  .ms-game .match .at { font-family: "Space Mono", monospace; font-weight: 400; font-size: 13px;
+    letter-spacing: .12em; color: var(--ink-3); }
+  .ms-game .date { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .10em;
+    text-transform: uppercase; color: var(--ink-2); margin-top: 14px; }
+  .ms-game .venue { font-family: "Spectral", serif; font-style: italic; font-size: 13px;
+    color: var(--ink-2); margin-top: 8px; line-height: 1.3; text-align: center; }
+  .ms-game .result { font-family: "Spectral", serif; font-weight: 700; font-size: 20px; color: var(--ink);
+    margin-top: 0; letter-spacing: .005em; }
+
+  /* line score — scorebook grid */
+  .ms-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
+  .ms-box th, .ms-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 4px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .ms-box thead th { color: var(--ink-3); font-weight: 500; font-size: 11px; border-bottom: 1.5px solid var(--ink); }
+  .ms-box td.tm, .ms-box th.tm { text-align: left; font-weight: 600; font-size: 12px; letter-spacing: .08em;
+    padding-right: 14px; width: 1%; white-space: nowrap; }
+  .ms-box .rhe { font-weight: 700; }
+  .ms-box th.sep, .ms-box td.sep { border-left: 1.5px solid var(--ink); padding-left: 8px; }
+  .ms-box thead th:last-child, .ms-box tbody td:last-child,
+  .ms-box thead th:nth-last-child(2), .ms-box tbody td:nth-last-child(2),
+  .ms-box thead th.sep, .ms-box tbody td.sep { width: 30px; }
+  .ms-box tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+  .ms-box tbody tr.away td.tm { color: var(--orange-deep); }
+
+  .ms-pitchrow { display: flex; justify-content: space-between; align-items: baseline; gap: 18px;
+    margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--rule); }
+  .ms-pitchrow .item { display: flex; align-items: baseline; gap: 11px; min-width: 0; }
+  .ms-pitchrow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+  .ms-pitchrow .v { font-family: "Spectral", serif; font-size: 11.5px; color: var(--ink); white-space: nowrap; }
+  .ms-pitchrow .v b { font-weight: 700; }
+
+  /* right column: visit info + weather */
+  .ms-vinfo { display: flex; flex-direction: column; }
+  .ms-vrow { display: flex; align-items: baseline; justify-content: space-between;
+    padding: 2.5px 0; border-bottom: 1px solid var(--rule); }
+  .ms-vrow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+  .ms-vrow .v { font-family: "Spectral", serif; font-weight: 600; font-size: 14px; color: var(--ink); }
+  .ms-vrow.lead .v { color: var(--orange-deep); }
+
+  .ms-weather { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 19px;
+    border-top: 1.5px solid var(--ink); padding-top: 8px; }
+  .ms-wx { display: flex; flex-direction: column; align-items: center; gap: 5px;
+    padding: 0 4px; border-left: 1px solid var(--rule); }
+  .ms-wx:first-child { border-left: 0; }
+  .ms-wx svg { stroke: var(--ink-2); }
+  .ms-wx .val { font-family: "Spectral", serif; font-weight: 600; font-size: 14px; color: var(--ink); }
+  .ms-wx .lab { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* colophon footer */
+  .ms-foot { display: flex; align-items: center; justify-content: space-between; flex: none;
+    border-top: 1px solid var(--rule); padding-top: 9px; }
+  .ms-foot .end { font-family: "Cinzel", serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--ink-2); }
+  .ms-foot .swatches { display: flex; align-items: center; gap: 14px; }
+  .ms-foot .sw { display: flex; align-items: center; gap: 6px;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .ms-foot .sw i { width: 11px; height: 11px; display: block; border: 1px solid rgba(0,0,0,.2); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#E8E3D6"/>
+      <path d="M30 74 V46 a20 20 0 0 1 40 0 V74" fill="none" stroke="#1A1815" stroke-width="3.4" stroke-linejoin="round"/>
+      <line x1="50" y1="34" x2="50" y2="74" stroke="#1A1815" stroke-width="2"/>
+      <rect x="28" y="78" width="44" height="4.5" fill="#B8461E"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="memorial-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="memorial-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="memorial-spread.jsx"></script>
+  <script type="text/babel" src="memorial-app.jsx"></script>
+</body>
+</html>

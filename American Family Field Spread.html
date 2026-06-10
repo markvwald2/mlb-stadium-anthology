@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>American Family Field — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #23232a;
+    font-family: "Spectral", Georgia, serif;
+    color: #23211C;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     AMERICAN FAMILY FIELD — Blurb Large Landscape 13 x 11 in spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264.
+     Center split x=1275. "The Fan" — the page IS the fan-roof plan.
+     ---------------------------------------------------------------- */
+  .amf-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #23211C;
+    --ink-2: #564E40;
+    --ink-3: #8C8470;
+    --paper: #ECE4D2;
+    --paper-hi: #F4EDDD;
+    --paper-lo: #DED3BC;
+    --rule: #C8BDA6;
+    --rule-strong: #A99C80;
+    --navy: #13294B;
+    --navy-deep: #0E1E38;
+    --gold: #B68A2E;
+    --gold-hi: #C9A24B;
+    --brick: #9E3B2E;
+    --brick-deep: #7E2C22;
+    --steel: #7C7A72;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.40' intercept='0.62'/%3E%3CfeFuncG type='linear' slope='0.40' intercept='0.62'/%3E%3CfeFuncB type='linear' slope='0.40' intercept='0.62'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .amf-page { position: absolute; top: 0; height: 1088px; }
+  .amf-left  { left: 0; width: 1275px; background: #0E1722; overflow: hidden; }
+  .amf-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; }
+  .amf-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .38; mix-blend-mode: multiply; }
+  .amf-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.14); z-index: 30; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .amf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .amf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .amf-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(8,12,20,.52) 0%, rgba(8,12,20,0) 22%),
+      linear-gradient(0deg, rgba(8,11,18,.94) 0%, rgba(8,11,18,.68) 20%, rgba(8,11,18,.12) 40%, rgba(8,11,18,0) 52%); }
+
+  .amf-hero-logo { position: absolute; left: 60px; top: 52px; height: 104px; width: auto; z-index: 5;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,.5)); }
+  .amf-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
+    color: rgba(226,222,210,.62); text-transform: uppercase; }
+  .amf-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .34em;
+    color: rgba(226,222,210,.48); text-transform: uppercase; white-space: nowrap; }
+
+  .amf-roofline { position: absolute; left: 64px; right: 64px; top: 214px; z-index: 4;
+    display: flex; align-items: center; gap: 12px; opacity: .52; pointer-events: none; }
+  .amf-roofline .ln { flex: 1; height: 1px; background: rgba(226,222,210,.42); }
+  .amf-roofline .tk { width: 1px; height: 11px; background: rgba(226,222,210,.55); flex: none; }
+  .amf-roofline .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em;
+    color: rgba(226,222,210,.7); text-transform: uppercase; flex: none; }
+
+  .amf-hero-title { position: absolute; left: 58px; right: 58px; bottom: 176px; z-index: 5; }
+  .amf-name {
+    position: relative; margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 152px; line-height: .82; letter-spacing: .004em; text-transform: uppercase;
+    color: #F2ECDC; -webkit-text-fill-color: #F2ECDC; text-shadow: 0 4px 30px rgba(0,0,0,.5);
+  }
+  .amf-name::after {
+    content: attr(data-t); position: absolute; left: 0; top: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 240px 168px;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent; mix-blend-mode: multiply; opacity: .5;
+  }
+  .amf-sub { display: flex; align-items: center; gap: 18px; margin-top: 26px; }
+  .amf-sub .bar { width: 56px; height: 3px; background: var(--gold); flex: none; }
+  .amf-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 30px;
+    letter-spacing: .3em; text-transform: uppercase; color: var(--gold-hi); white-space: nowrap; }
+
+  .amf-marks { position: absolute; left: 60px; bottom: 70px; z-index: 5;
+    display: flex; align-items: center; gap: 18px; white-space: nowrap; }
+  .amf-marks .mlb { height: 46px; width: auto; display: block; }
+  .amf-marks .nl { height: 44px; width: auto; display: block; opacity: .95; }
+  .amf-marks .divln { width: 1px; height: 30px; background: rgba(226,222,210,.34); }
+  .amf-marks .lg { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 16px;
+    letter-spacing: .26em; text-transform: uppercase; color: #DAD4C4; }
+  .amf-marks .dv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 16px;
+    letter-spacing: .26em; text-transform: uppercase; color: var(--gold-hi); }
+
+  /* ============ RIGHT PAGE — THE ROOF PLAN ============ */
+  .amf-roofsvg { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1; pointer-events: none; }
+
+  /* ---- photo panels fanned across the crown ---- */
+  .amf-fan { position: absolute; inset: 0; z-index: 4; }
+  .amf-panel { position: absolute; margin: 0; transform-origin: center center; }
+  .amf-panel image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    border: 2px solid var(--paper-hi); outline: 1px solid var(--navy-deep);
+    box-shadow: 0 6px 16px rgba(20,18,12,.30); }
+  .amf-panel figcaption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+    padding: 13px 7px 4px; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px;
+    letter-spacing: .06em; text-transform: uppercase; color: #F3EEDF; line-height: 1.15;
+    background: linear-gradient(0deg, rgba(14,18,28,.86), rgba(14,18,28,0)); pointer-events: none; }
+
+  /* ---- section eyebrow on a hairline ---- */
+  .amf-h { display: flex; align-items: baseline; gap: 9px; padding-bottom: 5px; margin-bottom: 7px;
+    border-bottom: 1px solid var(--rule-strong); }
+  .amf-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13.5px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .amf-h.brick .t { color: var(--brick); }
+  .amf-h .n { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
+
+  /* ---- identity / classification — main roof track ---- */
+  .amf-identity { position: absolute; left: 38px; top: 222px; width: 798px; z-index: 6;
+    display: flex; align-items: stretch;
+    border-top: 1.5px solid var(--navy); border-bottom: 1.5px solid var(--navy);
+    background: linear-gradient(0deg, rgba(236,228,210,.55), rgba(244,237,221,.85)); }
+  .amf-id-mark { flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+    padding: 6px 14px 6px 4px; position: relative; }
+  .amf-id-mark::after { content: ""; position: absolute; right: 0; top: 10px; bottom: 10px; width: 3px; background: var(--gold); }
+  .amf-id-mark img { height: 50px; width: auto; display: block; }
+  .amf-id-cell { flex: 1 1 0; min-width: 0; padding: 8px 12px; border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center; gap: 3px; }
+  .amf-id-cell .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--brick); white-space: nowrap; }
+  .amf-id-cell .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13.5px;
+    letter-spacing: .01em; text-transform: uppercase; color: var(--ink); line-height: 1.06; }
+
+  /* ---- specs: facts (left bay) + construction (right bay) ---- */
+  .amf-specs { position: absolute; left: 38px; top: 300px; width: 798px; z-index: 6;
+    display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; }
+  .amf-bay.right { border-left: 1px solid var(--rule); padding-left: 28px; }
+  .amf-facts { display: flex; flex-direction: column; }
+  .amf-frow { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: baseline;
+    padding: 3px 0; border-bottom: 1px solid var(--rule); }
+  .amf-facts.tight .amf-frow { padding: 2px 0; }
+  /* airier row spacing in the two spec columns to fill the white space beneath */
+  .amf-specs .amf-bay.left .amf-frow { padding: 5px 0; }
+  .amf-specs .amf-bay.right .amf-frow { padding: 7px 0; }
+  .amf-frow:last-child { border-bottom: 0; }
+  .amf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .amf-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .amf-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.22; }
+  .amf-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10.5px;
+    color: var(--ink-2); line-height: 1.24; }
+  .amf-namenow { margin-top: 8px; display: flex; align-items: baseline; gap: 8px; padding-top: 7px;
+    border-top: 1.5px solid var(--navy); }
+  .amf-namenow .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--brick); }
+  .amf-namenow .val { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 14px; letter-spacing: .01em;
+    text-transform: uppercase; color: var(--navy); }
+  .amf-namenow .yr { font-family: "Space Mono", monospace; font-size: 9.5px; color: var(--ink-3); margin-left: auto; }
+
+  /* ---- the pivot hub: field dimensions + protractor ---- */
+  .amf-hub { position: absolute; left: 524px; top: 540px; width: 240px; z-index: 7;
+    display: flex; flex-direction: column; align-items: center; }
+  .amf-hub-head { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-bottom: 2px; }
+  .amf-hub-head .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--navy); }
+  .amf-hub-head .n { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .amf-fieldfig { margin: 0; width: 220px; }
+  .amf-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .amf-fieldfig .fd-svg { width: 220px; height: auto; max-width: 100%; display: block; }
+
+  /* ---- the apron beneath the fan: the visit ---- */
+  .amf-apron { position: absolute; left: 38px; top: 782px; width: 798px; z-index: 6; }
+  .amf-apron-head { display: flex; align-items: baseline; gap: 14px; padding-bottom: 8px; margin-bottom: 10px;
+    border-bottom: 2px solid var(--navy); }
+  .amf-apron-head .tag { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--paper-hi); background: var(--brick); padding: 4px 11px; }
+  .amf-apron-head .ttl { font-family: "Anton", sans-serif; font-weight: 400; font-size: 27px; letter-spacing: .01em;
+    text-transform: uppercase; color: var(--navy); line-height: 1; white-space: nowrap; }
+  .amf-apron-head .meta { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-2); margin-left: auto; }
+
+  .amf-apron-grid { display: grid; grid-template-columns: 1.42fr 1.06fr 1.42fr; column-gap: 22px; align-items: start; }
+  .amf-acol.mid { border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); padding: 0 18px; }
+  .amf-acol .amf-h { margin-top: 0; }
+  .amf-acol.mid .amf-h:nth-of-type(2) { margin-top: 12px; }
+
+  .amf-pitch .match { display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
+    margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12.5px; color: var(--ink);
+    line-height: 1.18; white-space: nowrap; }
+  .amf-pitch .match em { font-family: "Space Mono", monospace; font-style: normal; font-size: 10px;
+    letter-spacing: .04em; color: var(--brick); font-weight: 700; }
+  .amf-pitch .match .vs { font-style: italic; color: var(--ink-3); margin: 2px 0; }
+  .amf-pitch .dec { display: flex; flex-direction: column; gap: 2px; }
+  .amf-pitch .dec p { margin: 0; font-family: "Spectral", serif; font-size: 12px; color: var(--ink); white-space: nowrap; }
+  .amf-pitch .dec p b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: .04em;
+    color: var(--brick-deep); display: inline-block; width: 14px; }
+  .amf-pitch .dec p i { font-style: italic; }
+  .amf-pitch .dec p.sv { color: var(--ink-2); }
+
+  .amf-weather { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 12px; }
+  .amf-weather.row { grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 0 14px; flex: 1; }
+  .amf-wcell { display: flex; align-items: center; gap: 9px; }
+  .amf-wcell .amf-wico { flex: none; }
+  .amf-wcell .tx { display: flex; flex-direction: column; }
+  .amf-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 18px; color: var(--ink); line-height: 1; }
+  .amf-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
+
+  /* weather as a roof-track band beneath the line score */
+  .amf-wx-track { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding-top: 12px;
+    border-top: 1.5px solid var(--navy); }
+  .amf-wx-rail { flex: none; font-family: "Oswald", sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--paper-hi); background: var(--brick); padding: 4px 8px; }
+
+  .amf-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
+  .amf-box th, .amf-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 3px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .amf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10.5px; border-bottom: 1.5px solid var(--navy); }
+  .amf-box td.tm, .amf-box th.tm { text-align: left; font-weight: 700; font-size: 12px; letter-spacing: .07em;
+    padding-right: 10px; width: 1%; white-space: nowrap; }
+  .amf-box .rcol { font-weight: 700; }
+  .amf-box .hecol { color: var(--ink-2); }
+  .amf-box th.sep, .amf-box td.sep { border-left: 1.5px solid var(--navy); padding-left: 7px; }
+  .amf-box thead th:last-child, .amf-box tbody td:last-child,
+  .amf-box thead th:nth-last-child(2), .amf-box tbody td:nth-last-child(2),
+  .amf-box thead th.sep, .amf-box tbody td.sep { width: 24px; }
+  .amf-box tbody tr.win td { color: var(--brick-deep); }
+  .amf-box tbody tr:last-child td { border-bottom: 1.5px solid var(--navy); }
+  .amf-gcap { display: flex; align-items: center; gap: 8px; margin-top: 7px;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .amf-gcap .sp { color: var(--rule-strong); }
+
+  /* ---- outermost roof panel: stadium context ---- */
+  .amf-context { position: absolute; left: 858px; top: 96px; width: 378px; bottom: 44px; z-index: 6;
+    display: flex; flex-direction: column; }
+  .amf-context .amf-h { border-bottom-color: var(--navy); border-bottom-width: 1.5px; }
+  .amf-context .amf-h, .amf-prose { position: relative; z-index: 1; }
+  .amf-prose { margin-top: 2px; columns: 1; }
+  .amf-prose p { margin: 0 0 14px; font-family: "Spectral", serif; font-size: 14.4px; line-height: 1.76;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .amf-prose p:first-of-type::first-letter { font-family: "Anton", sans-serif; font-weight: 400;
+    float: left; font-size: 56px; line-height: .8; padding: 4px 9px 0 0; color: var(--brick); }
+  .amf-prose p:last-child { margin-bottom: 0; }
+
+  /* Wisconsin state-outline watermark behind the context prose */
+  .amf-ctx-watermark { position: absolute; left: 50%; top: 53%; transform: translate(-50%, -50%);
+    width: 338px; z-index: 0; opacity: .09; pointer-events: none; }
+  .amf-ctx-watermark img { width: 100%; height: auto; display: block; }
+
+  /* a bold steel mullion dividing the fan from the context panel */
+  .amf-mullion { position: absolute; left: 846px; top: 90px; bottom: 40px; width: 2px; z-index: 5;
+    background: var(--rule-strong); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#ECE4D2"/>
+      <g stroke="#13294B" fill="none" stroke-width="2.2">
+        <path d="M50 84 L20 34"/><path d="M50 84 L35 30"/><path d="M50 84 L50 28"/><path d="M50 84 L65 30"/><path d="M50 84 L80 34"/>
+        <path d="M22 40 A 36 36 0 0 1 78 40" stroke-width="2.6"/>
+        <path d="M30 54 A 24 24 0 0 1 70 54"/>
+      </g>
+      <circle cx="50" cy="84" r="3.4" fill="#9E3B2E"/>
+      <rect x="34" y="22" width="32" height="4" rx="1" fill="#B68A2E"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="american-family-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="american-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="american-family-spread.jsx"></script>
+  <script type="text/babel" src="american-family-app.jsx"></script>
+</body>
+</html>
