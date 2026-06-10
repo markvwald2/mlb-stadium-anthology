@@ -10,7 +10,7 @@
 <style>
   @font-face {
     font-family: "Cooper Black";
-    src: url("Cooper-Black.woff2") format("woff2");
+    src: url("../Cooper-Black.woff2") format("woff2");
     font-weight: 400 900;
     font-style: normal;
     font-display: swap;
@@ -45,18 +45,28 @@
     text-rendering: geometricPrecision;
   }
   .cv-index-head {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    position: relative;
+    display: flex;
     align-items: center;
-    gap: 18px;
+    justify-content: center;
     padding: 40px 46px 28px;
   }
   .cv-index-head::before,
   .cv-index-head::after {
     content: "";
+    position: absolute;
+    top: 138px;
     height: 2px;
     background: var(--rule);
     box-shadow: 0 5px 0 rgba(22, 20, 15, .08);
+  }
+  .cv-index-head::before {
+    left: 46px;
+    right: calc(50% + 190px);
+  }
+  .cv-index-head::after {
+    left: calc(50% + 190px);
+    right: 46px;
   }
   .cv-logo {
     font-family: "Cooper Black", "Ultra", Georgia, serif;
@@ -100,6 +110,77 @@
     column-gap: 9px;
     row-gap: 9px;
     padding: 0 46px 46px;
+  }
+  .qc-section {
+    border-top: 2px solid var(--rule);
+    margin: 0 46px 34px;
+    padding-top: 24px;
+  }
+  .qc-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 12px;
+  }
+  .qc-title {
+    margin: 0;
+    font-family: "Cooper Black", "Ultra", Georgia, serif;
+    font-size: 34px;
+    line-height: .95;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .qc-count {
+    font: 700 12px/1 "Spectral", Georgia, serif;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #5b5447;
+    white-space: nowrap;
+  }
+  .qc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 9px;
+  }
+  .qc-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    background: var(--paper);
+    outline: 0;
+  }
+  .qc-card:focus-visible {
+    box-shadow: 0 0 0 3px #e9e7db, 0 0 0 6px #16140f;
+    z-index: 3;
+  }
+  .qc-thumb {
+    position: relative;
+    height: 178px;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(22, 20, 15, .08), rgba(22, 20, 15, 0)),
+      #d6d0bf;
+    border: 1px solid rgba(22, 20, 15, .14);
+  }
+  .qc-thumb img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background: #e9e7db;
+  }
+  .qc-name {
+    min-height: 42px;
+    padding: 8px 8px 4px;
+    align-content: center;
+    color: var(--cap);
+    font: 700 14px/1.05 "Spectral", Georgia, serif;
+    letter-spacing: .003em;
+    text-align: center;
   }
   .cv-cell {
     margin: 0;
@@ -198,18 +279,29 @@
         <div></div>
       </header>
       <section id="stadium-grid" class="cv-grid" aria-label="All stadium pages"></section>
-      <footer class="cv-foot">Click a stadium photo to open its local spread page</footer>
+      <section class="qc-section" aria-label="Non-stadium pages">
+        <div class="qc-head">
+          <h2 class="qc-title">Book Extras</h2>
+          <div class="qc-count">5 pages</div>
+        </div>
+        <div id="extra-grid" class="qc-grid"></div>
+      </section>
+      <footer class="cv-foot">Click any thumbnail to open its local page</footer>
     </main>
   </div>
 
-  <script src="image-slot.js"></script>
+  <script src="../image-slot.js"></script>
   <script>
+    const ROOT = "../";
+
     const PAGE_OVERRIDES = {
       "Wrigley Field": "Wrigley Field Spread.html",
       "Riverfront Stadium": "Riverfront Stadium Spread.html",
       "Royals Stadium": "Royals Stadium Spread.html",
       "Memorial Stadium": "Memorial Stadium Spread.html",
+      "American Family Field": "American Family Field Spread.html",
       "Coors Field": "Coors Field Spread.html",
+      "Chase Field": "Chase Field Spread.html",
       "PNC Park": "PNC Park Spread.html",
       "Tiger Stadium": "Tiger Stadium Spread.html"
     };
@@ -219,7 +311,9 @@
       "Riverfront Stadium Spread.html",
       "Royals Stadium Spread.html",
       "Memorial Stadium Spread.html",
+      "American Family Field Spread.html",
       "Coors Field Spread.html",
+      "Chase Field Spread.html",
       "PNC Park Spread.html",
       "Tiger Stadium Spread.html"
     ]);
@@ -236,16 +330,28 @@
     };
 
     const IMAGE_OVERRIDES = {
-      "Wrigley Field": "cover-ready/Wrigley-cover-867x897.jpg",
-      "Milwaukee County Stadium": "cover-ready/Milwaukee-County-cover-867x897.jpg",
-      "Dodger Stadium": "cover-ready/Dodger-cover-867x897.jpg",
-      "Anaheim Stadium": "cover-ready/Angel-cover-867x897.jpg",
-      "Yankee Stadium (1923)": "cover-ready/Yankee-cover-867x897.jpg",
-      "Riverfront Stadium": "cover-ready/Riverfront-cover-867x897.jpg",
-      "Tiger Stadium": "cover-ready/Tiger-cover-867x897.jpg",
-      "Cleveland Municipal Stadium": "cover-ready/Cleveland_Municipal-cover-867x897.jpg",
-      "Three Rivers Stadium": "cover-ready/Three-Rivers-cover-867x897.jpg"
+      "Wrigley Field": "assets/cover-ready/Wrigley-cover-867x897.jpg",
+      "Milwaukee County Stadium": "assets/cover-ready/Milwaukee-County-cover-867x897.jpg",
+      "Dodger Stadium": "assets/cover-ready/Dodger-cover-867x897.jpg",
+      "Anaheim Stadium": "assets/cover-ready/Angel-cover-867x897.jpg",
+      "Yankee Stadium (1923)": "assets/cover-ready/Yankee-cover-867x897.jpg",
+      "Riverfront Stadium": "assets/cover-ready/Riverfront-cover-867x897.jpg",
+      "Royals Stadium": "assets/cover-ready/Kauffman-cover-867x897.jpg",
+      "Tiger Stadium": "assets/cover-ready/Tiger-cover-867x897.jpg",
+      "Cleveland Municipal Stadium": "assets/cover-ready/Cleveland_Municipal-cover-867x897.jpg",
+      "Three Rivers Stadium": "assets/cover-ready/Three-Rivers-cover-867x897.jpg",
+      "Coors Field": "assets/cover-ready/Coors-cover-867x897.jpg",
+      "American Family Field": "assets/cover-ready/Miller-cover-867x897.jpg",
+      "Chase Field": "assets/cover-ready/Chase-cover-867x897.jpg"
     };
+
+    const EXTRA_PAGES = [
+      { title: "Big League Cover", page: "Big League Cover.html", thumb: "assets/page-thumbnails/big-league-cover.jpg" },
+      { title: "Field Plan Studies", page: "Field Plan Studies.html", thumb: "assets/page-thumbnails/field-plan-studies.jpg" },
+      { title: "Stadium Timeline", page: "MLB Stadium Timeline Spread.html", thumb: "assets/page-thumbnails/stadium-timeline.jpg" },
+      { title: "Ballpark and the City 1", page: "The Ballpark and the City - Spread 1.html", thumb: "assets/page-thumbnails/ballpark-city-1.jpg" },
+      { title: "Ballpark and the City 2", page: "The Ballpark and the City - Spread 2.html", thumb: "assets/page-thumbnails/ballpark-city-2.jpg" }
+    ];
 
     function escAttr(value) {
       return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
@@ -290,12 +396,12 @@
         const page = pageFor(p.stadium_name);
         const exists = EXISTING_PAGES.has(page);
         const slot = SLOT_OVERRIDES[p.stadium_name] || slug(p.stadium_name);
-        const src = IMAGE_OVERRIDES[p.stadium_name];
+        const src = exists ? IMAGE_OVERRIDES[p.stadium_name] : null;
         const caption = `${p.stadium_name}${p.city ? `,&nbsp;<span class="cv-cap-city">${p.city}</span>` : ""}`;
         const title = exists ? `Open ${p.stadium_name}` : `Future local target: ${page}`;
         return `
           <figure class="cv-cell ${exists ? "cv-linked" : "cv-missing"}">
-            <a class="cv-photo-link" href="${encodeURI(page)}" title="${title}">
+            <a class="cv-photo-link" href="${ROOT + encodeURI(page)}" title="${title}">
               <div class="cv-photo">
                 <image-slot id="${slot}" shape="rect"${src ? ` src="${escAttr(src)}"` : ""} placeholder="Aerial - ${escAttr(p.stadium_name)}"></image-slot>
               </div>
@@ -305,13 +411,27 @@
       }).join("");
     }
 
-    fetch("uploads/all-stadium-pages.csv")
+    function renderExtras() {
+      document.getElementById("extra-grid").innerHTML = EXTRA_PAGES.map((p) => {
+        const href = ROOT + encodeURI(p.page);
+        return `
+          <a class="qc-card" href="${href}" title="Open ${escAttr(p.title)}">
+            <div class="qc-thumb">
+              <img src="${escAttr(p.thumb)}" alt="${escAttr(p.title)} thumbnail">
+            </div>
+            <div class="qc-name">${escAttr(p.title)}</div>
+          </a>`;
+      }).join("");
+    }
+
+    fetch(ROOT + "uploads/all-stadium-pages.csv")
       .then(r => r.text())
       .then(text => render(parseCSV(text)))
       .catch(err => {
         document.getElementById("stadium-grid").innerHTML =
-          `<p style="grid-column:1/-1;padding:20px;font-weight:700;">Could not load uploads/all-stadium-pages.csv: ${err.message}</p>`;
+          `<p style="grid-column:1/-1;padding:20px;font-weight:700;">Could not load ${ROOT}uploads/all-stadium-pages.csv: ${err.message}</p>`;
       });
+    renderExtras();
   </script>
 </body>
 </html>
