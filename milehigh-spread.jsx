@@ -181,7 +181,7 @@
                         orientation: D.orientation, degrees: D.orientation_degrees, accent: C.primary.hex
                       }) : null
                     ),
-                    React.createElement("figcaption", null, "Field plan \u00b7 LF " + D.left_field_distance + " \u00b7 CF " + D.center_field_distance + " \u00b7 RF " + D.right_field_distance)
+                    React.createElement("figcaption", { style: { letterSpacing: "0.3px" } }, "Field plan \u00b7 LF " + D.left_field_distance + " \u00b7 CF " + D.center_field_distance + " \u00b7 RF " + D.right_field_distance)
                   ),
                   React.createElement("div", { className: "mh-finance" },
                     React.createElement("div", { className: "fin-h" }, "Cost & Financing"),
@@ -189,7 +189,7 @@
                       React.createElement("span", { className: "fc-v" }, D.stadium_cost),
                       React.createElement("span", { className: "fc-adj" }, D.stadium_cost_adjusted + " adj.")
                     ),
-                    React.createElement("p", { className: "fin-v" }, D.financing_method)
+                    React.createElement("p", { className: "fin-v", style: { fontSize: "13px" } }, D.financing_method)
                   )
                 )
               ),

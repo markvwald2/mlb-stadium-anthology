@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cleveland Municipal Stadium — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&family=Saira+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #1B1A17;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* =====================================================================
+     "LAKEFRONT CIVIC DATUM" — Cleveland Municipal Stadium spread.
+     .cm-  · civic-plate rules · weathered steel · navy & muted red accents.
+     A 1930s public-works presentation plate crossed with a baseball monograph.
+     ===================================================================== */
+  .cm-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --paper: #E7E1D2; --paper-2: #DED7C4; --paper-hi: #F1ECDE; --ledger: #EBE6D7;
+    --ink: #1B1A17; --ink-2: #514D45; --ink-3: #847F74;
+    --rule: #C7BFAC; --rule-2: #ABA28C;
+    --steel: #5C6B78; --steel-soft: #8C97A1; --steel-deep: #44525E;
+    --navy: #0C2340; --navy-deep: #081A30;
+    --red: #A4332B; --red-bright: #C8102E;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.36' intercept='0.71'/%3E%3CfeFuncG type='linear' slope='0.36' intercept='0.70'/%3E%3CfeFuncB type='linear' slope='0.36' intercept='0.67'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper); font-family: "Spectral", Georgia, serif; color: var(--ink);
+    text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .cm-page { position: absolute; top: 0; height: 1088px; }
+  .cm-left  { left: 0;     width: 1275px; background: #12161B; overflow: hidden; }
+  .cm-right { left: 1275px; width: 1275px; background: var(--paper); }
+  .cm-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.22); z-index: 8; pointer-events: none; }
+
+  /* =================== LEFT / AERIAL HERO PLATE =================== */
+  .cm-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .cm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .cm-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(0deg, rgba(10,12,16,.95) 0%, rgba(10,12,16,.70) 19%, rgba(10,12,16,.12) 40%, rgba(10,12,16,0) 54%),
+      linear-gradient(90deg, rgba(10,12,16,.60) 0%, rgba(10,12,16,.16) 26%, rgba(10,12,16,0) 46%); }
+  /* faint datum / survey linework over the plate */
+  .cm-plat-lines { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .5; }
+
+  /* masthead — logo wells top-right */
+  .cm-hero-mast { position: absolute; top: 54px; left: 64px; right: 64px; z-index: 5;
+    display: flex; align-items: flex-start; justify-content: flex-end; }
+  .cm-mast-logos { display: flex; align-items: center; gap: 14px; }
+  .cm-logo-well { width: 58px; height: 58px; border: 1px solid rgba(0,0,0,.22);
+    display: flex; align-items: center; justify-content: center; position: relative;
+    background: #F1ECDE; box-shadow: 0 2px 10px rgba(0,0,0,.4); }
+  .cm-logo-well::before, .cm-logo-well::after { content: ""; position: absolute; width: 7px; height: 7px;
+    border-color: var(--red); border-style: solid; }
+  .cm-logo-well::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .cm-logo-well::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+  .cm-logo-well img { max-width: 42px; max-height: 42px; width: auto; height: auto; display: block; }
+  .cm-logo-well.club img { max-height: 46px; }
+
+  /* coordinates datum tag, top-left */
+  .cm-hero-datum { position: absolute; top: 58px; left: 64px; z-index: 5;
+    font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px;
+    letter-spacing: .26em; text-transform: uppercase; color: #C9D2D8; }
+  .cm-hero-datum .sub { display: block; font-family: "Oswald", sans-serif; font-weight: 300;
+    font-size: 11px; letter-spacing: .2em; color: #8C97A1; margin-top: 7px; }
+
+  /* title block bottom-left — engraved civic-monument lettering */
+  .cm-hero-block { position: absolute; left: 64px; bottom: 50px; right: 120px; z-index: 5; }
+  .cm-hero-kicker { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px;
+    letter-spacing: .28em; text-transform: uppercase; color: #D9B7B0; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px; }
+  .cm-hero-kicker::before { content: ""; width: 30px; height: 1.5px; background: var(--red-bright); display: block; }
+  .cm-hero-name { margin: 0; font-family: "Saira Condensed", sans-serif; text-transform: uppercase;
+    color: #F1ECDE; text-shadow: 0 3px 28px rgba(0,0,0,.6); }
+  .cm-hero-name .l1 { display: block; font-weight: 500; font-size: 54px; line-height: 1.05;
+    letter-spacing: .14em; color: #CBD2D6; }
+  .cm-hero-name .l2 { display: block; font-weight: 800; font-size: 96px; line-height: 1.0;
+    letter-spacing: .01em; }
+  .cm-hero-loc { display: flex; align-items: center; gap: 16px; margin-top: 28px; }
+  .cm-hero-loc .bar { width: 60px; height: 3px; background: var(--red-bright); display: block; flex: none; }
+  .cm-hero-loc .txt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 27px;
+    letter-spacing: .03em; text-transform: uppercase; color: var(--red-bright);
+    text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+  .cm-hero-team { margin-top: 10px; font-family: "Oswald", sans-serif; font-weight: 400; font-size: 21px;
+    letter-spacing: .12em; text-transform: uppercase; color: #E4DECF; text-shadow: 0 2px 12px rgba(0,0,0,.55); }
+  .cm-hero-era { margin-top: 20px; display: flex; align-items: center; gap: 14px; }
+  .cm-hero-era .cmark { width: 36px; height: 50px; flex: none; opacity: .96; }
+  .cm-hero-era .cmark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .cm-hero-era .etext .e1 { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .2em; text-transform: uppercase; color: #CDD4D8; }
+  .cm-hero-era .etext .e2 { font-family: "Space Mono", monospace; font-weight: 700; font-size: 14px;
+    letter-spacing: .06em; color: #E4DECF; margin-top: 4px; }
+  /* shoreline label along left edge */
+  .cm-shore { position: absolute; z-index: 4; font-family: "Oswald", sans-serif; font-weight: 500;
+    font-size: 13px; letter-spacing: .44em; text-transform: uppercase; color: rgba(201,210,216,.5);
+    pointer-events: none; left: 70px; top: 50%; transform: rotate(-90deg); transform-origin: left center; }
+
+  /* =================== RIGHT / CIVIC PLATE =================== */
+  .cm-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
+  .cm-rp { position: absolute; top: 34px; left: 24px; right: 24px; bottom: 34px; padding: 0 14px; z-index: 2; display: flex; flex-direction: column; }
+  /* survey corner crosses */
+  .cm-corner { position: absolute; width: 16px; height: 16px; z-index: 4; pointer-events: none; }
+  .cm-corner::before, .cm-corner::after { content: ""; position: absolute; background: var(--red); }
+  .cm-corner::before { left: 7px; top: 0; width: 1.5px; height: 16px; }
+  .cm-corner::after  { top: 7px; left: 0; height: 1.5px; width: 16px; }
+  .cm-corner.tl { left: 14px; top: 14px; } .cm-corner.tr { right: 14px; top: 14px; }
+  .cm-corner.bl { left: 14px; bottom: 14px; } .cm-corner.br { right: 14px; bottom: 14px; }
+
+  /* ---- section header bar (navy / red) with pilaster motifs ---- */
+  .cm-secbar { position: relative; display: flex; align-items: center; justify-content: center;
+    height: 36px; flex: none; padding: 0 32px; }
+  .cm-secbar.navy { background: var(--navy); }
+  .cm-secbar.red  { background: var(--red); }
+  .cm-secbar .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 16px;
+    letter-spacing: .32em; text-transform: uppercase; color: #F1ECDE; white-space: nowrap; }
+  .cm-secbar .t { flex: none; }
+  .cm-secbar .t .n { color: #C9A24A; }
+  .cm-secbar .t .rn { color: #F1D7BE; }
+  /* hairline frieze that fills the stripe from the pilasters to the title cartouche */
+  .cm-secbar .rule { flex: 1 1 auto; height: 1px; background: rgba(241,236,222,.30);
+    margin: 0 22px; position: relative; }
+  .cm-secbar .rule::after { content: ""; position: absolute; top: -2.75px; width: 5.5px; height: 5.5px;
+    background: rgba(241,236,222,.72); transform: rotate(45deg); }
+  .cm-secbar .rule.l::after { right: -3px; }
+  .cm-secbar .rule.r::after { left: -3px; }
+  /* pilaster: fluted half-column motif at each end */
+  .cm-pilaster { position: absolute; top: 0; bottom: 0; width: 34px; display: flex; flex-direction: column; }
+  .cm-pilaster.l { left: 0; } .cm-pilaster.r { right: 0; }
+  .cm-pilaster .cap { height: 7px; background: rgba(241,236,222,.85); }
+  .cm-pilaster .shaft { flex: 1; background:
+    repeating-linear-gradient(90deg, rgba(241,236,222,0) 0 4px, rgba(241,236,222,.55) 4px 5px, rgba(241,236,222,0) 5px 9px);
+    border-top: 1px solid rgba(241,236,222,.5); border-bottom: 1px solid rgba(241,236,222,.5); }
+  .cm-pilaster .base { height: 7px; background: rgba(241,236,222,.85); }
+
+  /* ---- panoramic datum strip ---- */
+  .cm-datum { position: relative; flex: none; height: 108px; margin-top: 10px;
+    border: 1.5px solid var(--steel-deep); background: var(--paper-2); overflow: hidden; }
+  .cm-datum .cm-datum-slot { position: absolute; inset: 0; }
+  .cm-datum image-slot { width: 100%; height: 100%; display: block; }
+  .cm-datum .zones { position: absolute; left: 0; right: 0; bottom: 0; height: 26px; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    background: linear-gradient(0deg, rgba(8,18,30,.86), rgba(8,18,30,0)); }
+  .cm-datum .zones .z { display: flex; align-items: center; justify-content: center;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .22em;
+    text-transform: uppercase; color: #EAE7DC; border-left: 1px solid rgba(234,231,220,.28); }
+  .cm-datum .zones .z:first-child { border-left: 0; }
+  .cm-datum .tick { position: absolute; top: 0; width: 1px; height: 12px; background: var(--steel-deep); z-index: 2; }
+
+  /* ---- lifecycle band ---- */
+  .cm-lifecycle { display: grid; grid-template-columns: repeat(6, 1fr); flex: none;
+    border-bottom: 1px solid var(--rule-2); margin-top: 10px; }
+  .cm-lc { padding: 4px 16px; border-left: 1px solid var(--rule); }
+  .cm-lc:first-child { border-left: 0; padding-left: 2px; }
+  .cm-lc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--ink-3); }
+  .cm-lc .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13.5px;
+    color: var(--ink); margin-top: 4px; }
+  .cm-lc .v.dem { color: var(--red); }
+
+  /* ---- Stadium Section main grid ---- */
+  .cm-stadium { flex: none; height: 400px; display: grid; grid-template-columns: 296px 1fr 286px;
+    gap: 0; margin-top: 10px; overflow: hidden; }
+
+  /* facts column */
+  .cm-facts { padding-right: 20px; display: flex; flex-direction: column; }
+  .cm-coltitle { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; flex: none; }
+  .cm-coltitle .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--navy); }
+  .cm-coltitle .ln { flex: 1; height: 1px; background: var(--rule); }
+  .cm-ftable { width: 100%; border-collapse: collapse; }
+  .cm-ftable tr { border-bottom: 1px solid var(--rule); }
+  .cm-ftable tr:last-child { border-bottom: 0; }
+  .cm-ftable th { text-align: left; vertical-align: baseline; width: 90px; padding: 2.5px 9px 2.5px 0;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .cm-ftable td { vertical-align: baseline; padding: 2.5px 0; font-family: "Spectral", serif;
+    font-size: 10.5px; line-height: 1.26; color: var(--ink); }
+  .cm-ftable td b { color: var(--navy); font-weight: 600; }
+
+  /* center: context prose with faint field-plan watermark */
+  .cm-center { position: relative; padding: 0 22px; border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule); display: flex; flex-direction: column; min-width: 0; }
+  .cm-fieldwm { position: absolute; inset: 0; z-index: 0; display: flex; align-items: center;
+    justify-content: center; pointer-events: none; }
+  .cm-fieldwm svg { width: 96%; height: auto; max-height: 98%; }
+  .cm-center .ctxh { position: relative; z-index: 1; display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 9px; flex: none; }
+  .cm-center .ctxh .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--navy); }
+  .cm-center .ctxh .sub { font-family: "Space Mono", monospace; font-weight: 700; font-size: 8.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+  .cm-center .ctxh .ln { flex: 1; height: 1px; background: var(--rule); }
+  .cm-ctx { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr;
+    align-items: start; min-height: 0; }
+  .cm-ctx .col { min-width: 0; }
+  .cm-ctx .col:first-child { padding-right: 12px; }
+  .cm-ctx .col:last-child { padding-left: 12px; border-left: 1px solid var(--rule); }
+  .cm-ctx p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 11.6px; line-height: 1.52;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .cm-ctx .col p:last-child { margin-bottom: 0; }
+  .cm-ctx .col:first-child p:first-child::first-letter { font-family: "Saira Condensed", sans-serif;
+    font-weight: 800; font-size: 38px; float: left; line-height: .76; padding: 4px 8px 0 0; color: var(--red); }
+
+  /* colloquial nickname epithet — anchored in the white band below the context prose */
+  .cm-nick { position: relative; z-index: 1; margin-top: auto; margin-bottom: auto; text-align: center; }
+  .cm-nick .kick { display: flex; align-items: center; justify-content: center; gap: 13px;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .3em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .cm-nick .kick::before, .cm-nick .kick::after { content: ""; width: 38px; height: 1px;
+    background: var(--rule-2); }
+  .cm-nick .name { margin-top: 9px; font-family: "Spectral", serif; font-style: italic; font-weight: 500;
+    font-size: 29px; line-height: 1.0; letter-spacing: .005em; color: var(--ink); }
+  .cm-nick .name .q { font-family: "Spectral", serif; font-style: italic; font-weight: 600;
+    font-size: 38px; line-height: 0; color: var(--red); vertical-align: -6px; }
+  .cm-nick .name .q.o { margin-right: 3px; }
+  .cm-nick .name .q.c { margin-left: 1px; }
+
+  /* right: photo grid + protractor + field dims */
+  .cm-rcol { padding-left: 20px; display: flex; flex-direction: column; min-width: 0; }
+  .cm-photos { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 9px; flex: 1; min-height: 0; }
+  .cm-pcard { position: relative; border: 1px solid var(--rule-2); overflow: hidden; background: var(--paper-2); }
+  .cm-pcard image-slot { width: 100%; height: 100%; display: block; }
+  .cm-instr { display: grid; grid-template-columns: 124px 1fr; gap: 12px; align-items: center;
+    margin-top: 11px; flex: none; border-top: 1px solid var(--rule-2); padding-top: 10px; }
+  .cm-instr svg { width: 124px; height: auto; }
+  .cm-fdims .h { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--navy); margin-bottom: 7px; }
+  .cm-fdims .row { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); }
+  .cm-fdims .row .c { padding: 5px 0; text-align: center; border-left: 1px solid var(--rule); }
+  .cm-fdims .row .c:first-child { border-left: 0; }
+  .cm-fdims .row .c .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .cm-fdims .row .c .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 14px;
+    color: var(--ink); margin-top: 3px; }
+  .cm-fdims .orient { margin-top: 7px; display: flex; align-items: baseline; justify-content: space-between;
+    border-top: 1px solid var(--rule); padding-top: 6px; }
+  .cm-fdims .orient .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  .cm-fdims .orient .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: var(--red); }
+
+  /* ---- civic ribbon ---- */
+  .cm-ribbon { flex: none; margin-top: 10px; height: 46px; background: var(--navy); color: #EDE8DA;
+    display: grid; grid-template-columns: 56px 1fr 1fr 1fr 1.1fr 56px; align-items: stretch; }
+  .cm-ribbon .end { display: flex; align-items: center; justify-content: center; background: var(--navy); }
+  .cm-ribbon .end img { max-width: 34px; max-height: 38px; display: block; }
+  .cm-ribbon .cell { display: flex; flex-direction: column; justify-content: center; gap: 2px;
+    padding: 0 18px; border-left: 1px solid rgba(237,232,218,.16); }
+  .cm-ribbon .cell .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px;
+    line-height: 1; letter-spacing: .18em; text-transform: uppercase; color: #93A0AC; }
+  .cm-ribbon .cell .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    line-height: 1.04; letter-spacing: .06em; text-transform: uppercase; color: #F1ECDE; }
+  .cm-ribbon .cell .v.dem { color: #F1ECDE; }
+  .cm-ribbon .cell .v.sub { font-weight: 400; font-size: 10px; line-height: 1; color: #B9C2CB; margin-top: 2px; letter-spacing: .1em; }
+  .cm-swatches { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+  .cm-swatches .sw { width: 16px; height: 16px; border: 1px solid rgba(237,232,218,.4); }
+
+  /* ---- Visit Section ---- */
+  .cm-visit { flex: none; margin-top: 10px; }
+  .cm-vgrid { display: grid; grid-template-columns: 1fr 1.32fr 0.62fr 0.92fr; margin-top: 10px;
+    height: 252px; border: 1px solid var(--rule-2); background: var(--ledger); }
+  .cm-vgrid > div { border-left: 1px solid var(--rule); min-width: 0; }
+  .cm-vgrid > div:first-child { border-left: 0; }
+  .cm-vcol { padding: 10px 15px; display: flex; flex-direction: column; overflow: hidden; }
+  .cm-vh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 7px; flex: none; }
+
+  /* visit info rows with civic icons */
+  .cm-virow { display: flex; align-items: center; gap: 11px; padding: 3.5px 0; flex: 1 1 0; min-height: 0;
+    border-bottom: 1px dotted var(--rule-2); }
+  .cm-virow:last-child { border-bottom: 0; }
+  .cm-virow .ico { width: 18px; height: 18px; flex: none; stroke: var(--navy); fill: none; }
+  .cm-virow .kv { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex: 1; min-width: 0; }
+  .cm-virow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); flex: none; }
+  .cm-virow .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    color: var(--ink); text-align: right; }
+  .cm-virow .v.navy { color: var(--navy); }
+
+  /* result + line score + decisions */
+  .cm-result { display: flex; flex-direction: column; }
+  .cm-result .gr { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 27px;
+    letter-spacing: .01em; text-transform: uppercase; color: var(--ink); line-height: 1; margin-bottom: 3px; }
+  .cm-result .gr .win { color: var(--red); }
+  .cm-result .matchup { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 9px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 9px; }
+  .cm-line { width: 100%; border-collapse: collapse; table-layout: fixed; font-variant-numeric: tabular-nums; }
+  .cm-line th, .cm-line td { font-family: "Space Mono", monospace; font-size: 10px; text-align: center;
+    padding: 2.5px 0; color: var(--ink-2); border-bottom: 1px solid var(--rule); }
+  .cm-line thead th { color: var(--ink-3); font-weight: 400; border-bottom: 1px solid var(--rule-2); }
+  .cm-line td.tm, .cm-line th.tm { width: 38px; text-align: left; font-weight: 700;
+    font-family: "Oswald", sans-serif; letter-spacing: .04em; }
+  .cm-line tr.away td.tm { color: var(--ink-2); }
+  .cm-line tr.home td.tm { color: var(--navy); }
+  .cm-line .sep { border-left: 1px solid var(--rule-2); }
+  .cm-line .rhe { font-weight: 700; color: var(--ink); }
+  .cm-line tbody tr:last-child td { border-bottom: 0; }
+  .cm-decis { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; margin-top: 10px;
+    border-top: 1px solid var(--rule); padding-top: 8px; }
+  .cm-decis .blk .bh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+  .cm-decis .blk:last-child { border-left: 1px solid var(--rule); padding-left: 14px; }
+  .cm-prow { display: flex; align-items: baseline; gap: 7px; margin-bottom: 2px; }
+  .cm-prow .tag { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 9px; color: var(--red);
+    width: 28px; flex: none; letter-spacing: .04em; }
+  .cm-prow .nm { font-family: "Spectral", serif; font-size: 11px; color: var(--ink); line-height: 1.25; }
+  .cm-prow .nm b { color: var(--navy); font-weight: 600; }
+
+  /* weather column */
+  .cm-weather { display: flex; flex-direction: column; }
+  .cm-wx { display: flex; align-items: center; gap: 10px; padding: 6px 0; flex: 1 1 0; min-height: 0; border-bottom: 1px solid var(--rule); }
+  .cm-wx:last-child { border-bottom: 0; }
+  .cm-wx .ico { width: 20px; height: 20px; flex: none; stroke: var(--navy); fill: none; }
+  .cm-wx .txt { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .cm-wx .val { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px; color: var(--ink); line-height: 1; }
+  .cm-wx .lab { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 7.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3); }
+
+  /* night-game photo */
+  .cm-vphoto { position: relative; border-left: 1px solid var(--rule); overflow: hidden; background: var(--paper-2); }
+  .cm-vphoto image-slot { width: 100%; height: 100%; display: block; }
+
+  /* footer colophon */
+  .cm-foot { flex: none; display: flex; align-items: center; gap: 14px; margin-top: 8px;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .04em; color: var(--ink-3); }
+  .cm-foot .plate { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
+  .cm-foot .sep { color: var(--rule-2); }
+  .cm-foot .end { margin-left: auto; color: var(--red); font-weight: 700;
+    font-family: "Oswald", sans-serif; letter-spacing: .14em; text-transform: uppercase; font-size: 10px; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#E7E1D2"/>
+      <rect x="14" y="16" width="72" height="12" fill="#0C2340"/>
+      <g stroke="#5C6B78" stroke-width="1.4" fill="none" opacity="0.8">
+        <ellipse cx="50" cy="60" rx="30" ry="20"/>
+        <path d="M50 74 L34 52 M50 74 L66 52"/>
+      </g>
+      <rect x="14" y="80" width="72" height="6" fill="#A4332B"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="cleveland-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="cleveland-field.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="cleveland-spread.jsx"></script>
+  <script type="text/babel" src="cleveland-app.jsx"></script>
+</body>
+</html>

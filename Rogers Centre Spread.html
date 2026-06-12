@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rogers Centre — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #22262C;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     ROGERS CENTRE — Blurb Large Landscape 13 x 11 in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264.
+     Center split x=1275. "The Retractable Machine." Blueprint plate.
+     ---------------------------------------------------------------- */
+  .rc-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #22262C;
+    --ink-2: #535A62;
+    --ink-3: #8A8E92;
+    --paper: #ECE4D2;
+    --paper-hi: #F4EEDF;
+    --paper-lo: #E1D8C2;
+    --rule: #CDC6B3;
+    --rule-strong: #ADA58C;
+    --royal: #1453a0;
+    --navy: #0e2a55;
+    --red: #b4232a;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.42' intercept='0.62'/%3E%3CfeFuncG type='linear' slope='0.42' intercept='0.62'/%3E%3CfeFuncB type='linear' slope='0.42' intercept='0.62'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .rc-page { position: absolute; top: 0; height: 1088px; }
+  .rc-left  { left: 0; width: 1275px; background: #0f151d; overflow: hidden; }
+  .rc-right { left: 1275px; width: 1275px; background: var(--paper); }
+  .rc-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .38; mix-blend-mode: multiply; }
+  .rc-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.16); z-index: 6; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .rc-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .rc-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .rc-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background:
+      linear-gradient(180deg, rgba(8,12,18,.42) 0%, rgba(8,12,18,0) 18%),
+      linear-gradient(0deg, rgba(8,11,16,.94) 0%, rgba(8,11,16,.7) 20%, rgba(8,11,16,.14) 40%, rgba(8,11,16,0) 52%);
+  }
+  .rc-hero-compass { position: absolute; right: -120px; bottom: -110px; z-index: 3; pointer-events: none; }
+
+  .rc-folio { position: absolute; right: 58px; top: 60px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .24em;
+    color: rgba(206,222,242,.6); text-transform: uppercase; }
+  .rc-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .32em;
+    color: rgba(206,222,242,.46); text-transform: uppercase; white-space: nowrap; }
+
+  .rc-roofline { position: absolute; left: 64px; right: 64px; top: 206px; z-index: 4;
+    display: flex; align-items: center; gap: 12px; opacity: .62; pointer-events: none; }
+  .rc-roofline .ln { flex: 1; height: 1px; background: rgba(206,222,242,.4); }
+  .rc-roofline .tk { width: 1px; height: 11px; background: rgba(206,222,242,.6); flex: none; }
+  .rc-roofline .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .26em;
+    color: rgba(206,222,242,.74); text-transform: uppercase; flex: none; }
+
+  .rc-hero-title { position: absolute; left: 60px; right: 60px; bottom: 70px; z-index: 5; }
+  .rc-name {
+    margin: 0; font-family: "Saira", sans-serif; font-weight: 500;
+    font-size: 132px; line-height: .9; letter-spacing: .04em; text-transform: uppercase;
+    color: #EEF2F7; text-shadow: 0 4px 30px rgba(0,0,0,.5);
+    font-stretch: expanded;
+  }
+  .rc-name .ln2 { display: block; font-weight: 300; color: #C9D6E6; letter-spacing: .055em; }
+  .rc-sub { display: flex; align-items: center; gap: 18px; margin-top: 22px; }
+  .rc-sub .bar { width: 58px; height: 3px; background: var(--royal); flex: none; }
+  .rc-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 27px;
+    letter-spacing: .3em; text-transform: uppercase; color: #9CC0EC; white-space: nowrap; }
+
+  .rc-identity { display: flex; align-items: center; gap: 18px; margin-top: 30px; }
+  .rc-team-logo { height: 70px; width: auto; display: block;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,.45)); }
+  .rc-id-txt { display: flex; flex-direction: column; gap: 5px; }
+  .rc-id-txt .rc-team { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 25px;
+    letter-spacing: .04em; text-transform: uppercase; color: #EAEFF6; line-height: 1; }
+  .rc-id-txt .rc-lg { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 15px;
+    letter-spacing: .18em; text-transform: uppercase; color: #AFC4DC; display: flex; align-items: center; gap: 9px; }
+  .rc-id-txt .rc-lg .dot { color: rgba(175,196,220,.5); }
+  .rc-id-txt .rc-lg .dv { color: var(--red); font-weight: 600; }
+  .rc-id-div { width: 1px; height: 52px; background: rgba(206,222,242,.26); flex: none; }
+  .rc-mlb { height: 40px; width: auto; display: block; opacity: .92; }
+  .rc-al { height: 46px; width: auto; display: block; opacity: .92; }
+
+  /* ============ RIGHT PAGE ============ */
+  /* left pad clears the fold + gutter (content starts x=1275+44=1319). */
+  .rc-rp { position: absolute; inset: 0; padding: 40px 40px 38px 44px; z-index: 2;
+    display: grid; grid-template-columns: 1.72fr 1fr; gap: 0; }
+  .rc-stadium { padding-right: 30px; display: flex; flex-direction: column; min-width: 0; }
+  .rc-visit { padding-left: 30px; border-left: 1.5px solid var(--rule-strong);
+    display: flex; flex-direction: column; min-width: 0; }
+
+  /* ---- section heads ---- */
+  .rc-bighead { display: flex; align-items: center; gap: 12px; flex: none; margin-bottom: 10px; }
+  .rc-cross { flex: none; }
+  .rc-bigtitle { margin: 0; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 23px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .rc-bigrule { flex: 1; height: 2px; background: var(--navy); opacity: .85; }
+  .rc-bigsub { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-2); white-space: nowrap; flex: none; }
+
+  .rc-modhead { display: flex; align-items: baseline; gap: 9px; padding-bottom: 5px; margin-bottom: 8px;
+    border-bottom: 1px solid var(--rule-strong); }
+  .rc-modtitle { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--royal); white-space: nowrap; }
+  .rc-modnote { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); }
+
+  .rc-mod { display: flex; flex-direction: column; min-width: 0; }
+
+  /* ---- photo strip (3 frames) — grows to fill the top ---- */
+  .rc-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; flex: 1 1 auto;
+    min-height: 150px; margin-bottom: 18px; }
+  .rc-frame { position: relative; margin: 0; min-height: 0; }
+  .rc-frame image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    border: 1px solid var(--rule-strong); }
+
+  /* ---- data cluster (facts, field dims, at a glance, context) pinned to bottom ---- */
+  .rc-dcluster { flex: none; display: flex; flex-direction: column; }
+  /* ---- facts (full-width, two columns) ---- */
+  .rc-mod.facts-mod { flex: none; margin-bottom: 12px; }
+  .rc-facts.twocol { display: block; column-count: 2; column-gap: 32px; }
+  .rc-facts.twocol .rc-frow { break-inside: avoid; }
+  /* ---- protractor | meta row ---- */
+  .rc-drow { display: grid; grid-template-columns: 1fr 0.92fr; gap: 26px; flex: none;
+    margin-bottom: 12px; align-items: stretch; }
+  .rc-mod.meta-mod { margin-top: 0; display: flex; flex-direction: column; }
+  .rc-mod.field { margin-top: 0; }
+
+  /* facts tables */
+  .rc-facts { display: flex; flex-direction: column; }
+  .rc-frow { display: grid; grid-template-columns: 84px 1fr; gap: 10px; align-items: baseline;
+    padding: 1.5px 0; border-bottom: 1px solid var(--rule); }
+  .rc-frow:last-child { border-bottom: 0; }
+  .rc-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .rc-frow .v { display: flex; flex-direction: column; gap: 1px; }
+  .rc-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 10.5px; color: var(--ink); line-height: 1.18; white-space: pre-line; }
+  .rc-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 9.5px;
+    color: var(--ink-2); line-height: 1.18; }
+  .rc-facts.tight .rc-frow { padding: 2px 0; }
+
+  /* context — full-width two-column band */
+  .rc-mod.context.band { flex: none; }
+  .rc-prose { column-count: 2; column-gap: 30px; }
+  .rc-prose p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 11px; line-height: 1.5;
+    color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
+  .rc-prose p:last-child { margin-bottom: 0; }
+
+  /* protractor (column 2, pinned to bottom) */
+  .rc-fieldfig { margin: 0; display: flex; justify-content: center; align-items: flex-start; }
+  .rc-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .rc-fieldfig .fd-svg { width: 100%; max-width: 250px; height: auto; display: block; }
+
+  /* meta ribbon (At a Glance) — rows stretch to fill beside the protractor */
+  .rc-meta { display: flex; flex-direction: column; flex: 1;
+    border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+  .rc-meta .rc-mcell { flex: 1; display: flex; align-items: center; gap: 11px;
+    padding: 4px 2px; border-bottom: 1px solid var(--rule); min-height: 34px; }
+  .rc-meta .rc-mcell:last-child { border-bottom: 0; }
+  .rc-meta .micon { flex: none; width: 19px; height: 19px; display: flex; align-items: center; justify-content: center; }
+  .rc-meta .micon svg { width: 19px; height: 19px; }
+  .rc-meta .ml { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--royal); }
+  .rc-meta .mv { margin-left: auto; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: .02em; text-transform: uppercase; color: var(--ink); text-align: right; line-height: 1.1; }
+
+  /* ============ VISIT SECTION ============ */
+  .rc-navbar { display: flex; align-items: center; gap: 9px; flex: none;
+    background: var(--navy); color: #EAEFF6; padding: 7px 13px; margin-bottom: 14px; }
+  .rc-navbar .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; white-space: nowrap; }
+  .rc-navbar .sep { color: rgba(234,239,246,.5); }
+  .rc-navbar .val { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11.5px; letter-spacing: .07em;
+    text-transform: uppercase; white-space: nowrap; }
+  .rc-navbar.result { justify-content: center; background: var(--royal); padding: 9px 14px; margin: 0 0 12px; }
+  .rc-navbar.result .val.big { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .08em; white-space: nowrap; }
+
+  /* visit-section caption under the big head */
+  .rc-visit-cap { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-2); margin: -4px 0 14px; padding-bottom: 9px;
+    border-bottom: 1px solid var(--rule); }
+
+  /* stat strip */
+  .rc-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; flex: none; margin-bottom: 11px;
+    border-bottom: 1px solid var(--rule); padding-bottom: 10px; }
+  .rc-stat { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; min-width: 0; }
+  .rc-stat .rc-ico { width: 21px; height: 21px; margin-bottom: 1px; }
+  .rc-stat .sv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0;
+    color: var(--ink); line-height: 1.05; white-space: nowrap; }
+  .rc-stat .sl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+
+  /* weather */
+  .rc-mod.weather { flex: none; margin-bottom: 11px; }
+  .rc-wx { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 10px; align-items: center; }
+  .rc-wcell { display: flex; align-items: center; gap: 9px; }
+  .rc-wcell .tx { display: flex; flex-direction: column; }
+  .rc-wcell .wv { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 26px; color: var(--ink); line-height: 1; }
+  .rc-wcell .wv.sm { font-size: 15px; font-weight: 600; }
+  .rc-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
+
+  /* matchup */
+  .rc-matchup { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex: none;
+    padding: 2px 0 11px; }
+  .rc-matchup .mlogo { height: 56px; width: 56px; object-fit: contain; flex: none; }
+  .rc-matchup .mtxt { flex: 1; text-align: center; display: flex; flex-direction: column; gap: 2px; }
+  .rc-matchup .mtxt .away, .rc-matchup .mtxt .home { font-family: "Oswald", sans-serif; font-weight: 600;
+    font-size: 17px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); line-height: 1.05; }
+  .rc-matchup .mtxt .at { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .2em;
+    color: var(--ink-3); }
+
+  /* line score */
+  .rc-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; margin-bottom: 12px; }
+  .rc-box th, .rc-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 4px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .rc-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10px; border-bottom: 1.5px solid var(--navy); }
+  .rc-box td.tm, .rc-box th.tm { text-align: left; font-weight: 700; font-size: 12px; letter-spacing: .06em;
+    padding-right: 8px; width: 1%; white-space: nowrap; color: var(--navy); }
+  .rc-box .rcol { font-weight: 700; }
+  .rc-box .hecol { color: var(--ink-2); }
+  .rc-box th.sep, .rc-box td.sep { border-left: 1.5px solid var(--navy); padding-left: 7px; }
+  .rc-box thead th:last-child, .rc-box tbody td:last-child,
+  .rc-box thead th:nth-last-child(2), .rc-box tbody td:nth-last-child(2),
+  .rc-box thead th.sep, .rc-box tbody td.sep { width: 22px; }
+  .rc-box tbody tr:last-child td { border-bottom: 1.5px solid var(--navy); }
+  .rc-box tbody tr.win td.tm { color: var(--red); }
+
+  /* starters / decision */
+  .rc-decgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .rc-dcol { display: flex; flex-direction: column; gap: 2px; }
+  .rc-dcol .dh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--royal); margin-bottom: 3px; }
+  .rc-dcol p { margin: 0; font-family: "Spectral", serif; font-size: 12px; color: var(--ink); line-height: 1.4; }
+  .rc-dcol p b { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; }
+  .rc-dcol p b.w { color: #1b7a45; } .rc-dcol p b.l { color: var(--red); }
+  .rc-dcol p i { font-style: italic; color: var(--ink-2); }
+  .rc-dcol p.vs { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink-3); margin: 1px 0; }
+  .rc-dcol p.sv { color: var(--ink-2); }
+
+  /* visit photo — grows to fill remaining column space (toward 4:3) */
+  .rc-vphoto { position: relative; margin: 12px 0; flex: 1 1 auto; min-height: 150px; }
+  .rc-vphoto image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    border: 1px solid var(--rule-strong); }
+
+  /* design & construction */
+  .rc-mod.build { flex: none; }
+  .rc-mod.build .rc-facts.tight .rc-frow { grid-template-columns: 100px 1fr; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#ECE4D2"/>
+      <path d="M22 60 A28 28 0 0 1 78 60" fill="none" stroke="#1453a0" stroke-width="3.2"/>
+      <path d="M22 60 A28 28 0 0 1 50 32" fill="none" stroke="#0e2a55" stroke-width="4.4"/>
+      <path d="M20 64 h60" stroke="#b4232a" stroke-width="2.6"/>
+      <circle cx="50" cy="60" r="3" fill="#0e2a55"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="rogers-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="rogers-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="rogers-spread.jsx"></script>
+  <script type="text/babel" src="rogers-app.jsx"></script>
+</body>
+</html>
