@@ -184,7 +184,7 @@
                   e("span", { className: "at" }, "AT"),
                   e("div", { className: "team-col" },
                     e("span", { className: "tcode home" }, D.home_team_abbreviation),
-                    e("img", { className: "home-logo", src: "assets/baltimore-orioles-logo.svg", alt: "Baltimore Orioles" }))),
+                    e("img", { className: "home-logo", src: "assets/orioles-cartoon-logo.svg", alt: "Baltimore Orioles" }))),
                 e("div", { className: "venue" }, D.away_team + " at " + D.home_team),
                 e("div", { className: "ms-modlbl finalscore-lbl" }, "Final Score"),
                 e("div", { className: "result" }, D.game_result)),

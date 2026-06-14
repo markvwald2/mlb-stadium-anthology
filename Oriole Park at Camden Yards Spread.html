@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Oriole Park at Camden Yards — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #211E18;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================================================================
+     Oriole Park at Camden Yards — "The Warehouse Datum"
+     Blurb Large Landscape 13x11in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Fold x=1275. Export 3x = 300 DPI.
+     ================================================================ */
+  .cy-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --ink: #211E18;            /* warm charcoal */
+    --ink-2: #574F3F;          /* warm gray ink */
+    --ink-3: #8C8270;          /* label gray */
+    --paper: #E7E0D0;          /* warm mortar/stone paper */
+    --paper-hi: #F1EADB;
+    --paper-lo: #DAD1BD;
+    --rule: #CEC5AF;
+    --rule-strong: #B0A691;
+    --brick: #9B3A24;          /* brick red */
+    --brick-deep: #7C2E1B;
+    --steel: #3C5A48;          /* weathered green steel */
+    --steel-deep: #2D4435;
+    --steel-pale: #C0CBBF;     /* light text on steel */
+    --orange: #DF5A1E;         /* Orioles orange — restrained accent only */
+    --orange-deep: #C24A14;
+    --black: #16140F;          /* warm black hero */
+    --panel: #EDE7D7;          /* visit panel tint */
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.4' intercept='0.64'/%3E%3CfeFuncG type='linear' slope='0.4' intercept='0.64'/%3E%3CfeFuncB type='linear' slope='0.4' intercept='0.64'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision; font-kerning: normal;
+  }
+
+  .cy-page { position: absolute; top: 0; height: 1088px; }
+  .cy-left  { left: 0; width: 1275px; background: var(--black); overflow: hidden; }
+  .cy-right { left: 1275px; width: 1275px; background: var(--paper); }
+  .cy-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
+  .cy-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px; background: rgba(0,0,0,.18); z-index: 6; pointer-events: none; }
+
+  /* ===================== LEFT / HERO ===================== */
+  .cy-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .cy-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .cy-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(12,11,8,.42) 0%, rgba(12,11,8,0) 24%),
+      linear-gradient(0deg, rgba(12,11,8,.95) 0%, rgba(12,11,8,.72) 17%, rgba(12,11,8,.18) 38%, rgba(12,11,8,0) 52%); }
+  /* faint architectural / rail-alignment grid over the image */
+  .cy-hero-grid { position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 71px, rgba(231,224,208,.05) 71px 72px),
+      repeating-linear-gradient(90deg, transparent 0 71px, rgba(231,224,208,.05) 71px 72px);
+    -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.15) 46%, transparent 62%);
+    mask-image: linear-gradient(0deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.15) 46%, transparent 62%); }
+
+  .cy-bracket { position: absolute; z-index: 5; width: 44px; height: 44px; }
+  .cy-bracket.tl { top: 46px; left: 46px; border-top: 2px solid var(--orange); border-left: 2px solid var(--orange); }
+
+  .cy-hero-folio { position: absolute; left: 96px; top: 52px; z-index: 5;
+    display: flex; align-items: center; gap: 13px;
+    font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .28em;
+    color: rgba(231,224,208,.7); text-transform: uppercase; }
+  .cy-hero-folio .tick { width: 26px; height: 2px; background: var(--orange); }
+
+  /* hero title — Freight Nameplate (B&O railroad / boxcar wayfinding, mounted on the wall) */
+  .cy-hero-plate { position: absolute; left: 56px; bottom: 150px; z-index: 5;
+    padding: 26px 36px 22px; border: 2px solid rgba(192,203,191,.5);
+    background: linear-gradient(180deg, rgba(22,28,22,.42), rgba(12,15,12,.30));
+    box-shadow: 0 10px 34px rgba(0,0,0,.35); }
+  .cy-hero-plate .bolt { position: absolute; width: 8px; height: 8px; border-radius: 50%;
+    background: #C0CBBF; opacity: .72; }
+  .cy-hero-plate .bolt.tl { left: 8px; top: 8px; }
+  .cy-hero-plate .bolt.tr { right: 8px; top: 8px; }
+  .cy-hero-plate .bolt.bl { left: 8px; bottom: 8px; }
+  .cy-hero-plate .bolt.br { right: 8px; bottom: 8px; }
+  .cy-hero-name { margin: 0; font-family: "Bebas Neue", sans-serif; line-height: .9;
+    letter-spacing: .045em; color: #EFE8D6; text-shadow: 0 2px 18px rgba(0,0,0,.5); }
+  .cy-hero-name .l1, .cy-hero-name .l2 { display: block; white-space: nowrap; font-size: 104px; }
+  .cy-hero-rule { height: 1px; background: rgba(231,224,208,.34); margin: 14px 0 11px; }
+  .cy-hero-sub { display: flex; justify-content: space-between; align-items: center; gap: 34px;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; }
+  .cy-hero-sub .city { color: #E6DEC9; }
+  .cy-hero-sub .mk { color: var(--orange); border: 1px solid rgba(223,90,30,.6); padding: 3px 9px;
+    font-weight: 700; letter-spacing: .14em; }
+
+  /* hero field plan (lower-right) */
+  .cy-hero-field { position: absolute; right: 56px; bottom: 156px; z-index: 5;
+    width: 348px; display: flex; align-items: center; gap: 14px; }
+  .cy-field { display: flex; align-items: center; gap: 16px; }
+  .cy-fd-graphic { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+  .cy-fd-svg { width: 196px; height: 158px; display: block; }
+  .cy-fd-orient { display: flex; flex-direction: column; align-items: center; gap: 1px;
+    font-family: "Space Mono", monospace; color: rgba(231,224,208,.82); }
+  .cy-fd-orient > span:first-child { font-size: 17px; letter-spacing: .04em; color: var(--orange); font-weight: 700; }
+  .cy-fd-orient .ol { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(231,224,208,.6); }
+  .cy-fd-dims { display: flex; flex-direction: column; gap: 12px; padding-left: 2px;
+    border-left: 1px solid rgba(231,224,208,.22); padding-left: 16px; }
+  .cy-fd-dim { display: flex; align-items: baseline; gap: 9px; }
+  .cy-fd-dim .num { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 30px;
+    color: var(--orange); line-height: 1; min-width: 56px; }
+  .cy-fd-dim .lab { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 14px;
+    letter-spacing: .22em; text-transform: uppercase; color: rgba(231,224,208,.78); }
+
+  /* hero marks + colophon */
+  .cy-hero-marks { position: absolute; left: 64px; bottom: 50px; z-index: 5;
+    display: flex; align-items: center; gap: 20px; }
+  .cy-hero-marks .cap { height: 50px; width: auto; display: block; }
+  .cy-hero-marks .mlb { height: 26px; width: auto; display: block; opacity: .92; }
+  .cy-hero-colophon { position: absolute; left: 250px; bottom: 58px; z-index: 5;
+    display: flex; align-items: center; gap: 14px;
+    font-family: "Space Mono", monospace; font-size: 12.5px; letter-spacing: .06em;
+    color: rgba(231,224,208,.74); }
+  .cy-hero-colophon .dot { color: var(--orange); font-size: 9px; }
+  .cy-hero-colophon .hl { font-style: normal; color: var(--orange); }
+
+  /* ===================== RIGHT PAGE ===================== */
+  .cy-rp { position: absolute; inset: 0; padding: 40px; display: flex; flex-direction: column;
+    gap: 15px; z-index: 2; }
+
+  /* photo strip — warehouse bays */
+  .cy-photos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; flex: none; }
+  .cy-pcard { position: relative; aspect-ratio: 4 / 3; }
+  .cy-pcard image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    border: 1px solid var(--rule-strong); }
+
+  /* metadata datum ribbon — the warehouse spine (green steel) */
+  .cy-ribbon { display: flex; align-items: stretch; flex: none; background: var(--steel);
+    border-top: 1px solid rgba(231,224,208,.16); border-bottom: 4px solid var(--steel-deep); }
+  .cy-rc { flex: 1; padding: 11px 20px; border-left: 1px solid rgba(231,224,208,.16);
+    display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
+  .cy-rc:first-child { border-left: 0; }
+  .cy-rc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--steel-pale); }
+  .cy-rc .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .05em;
+    text-transform: uppercase; color: #F1EADB; line-height: 1.05; }
+  .cy-rc .v.mono { font-family: "Space Mono", monospace; font-weight: 400; font-size: 13px; letter-spacing: 0; }
+  .cy-rc .v.big { font-size: 24px; }
+  .cy-rc.brand { flex: 0 0 auto; flex-direction: row; align-items: center; gap: 18px; padding-left: 20px; padding-right: 28px; }
+  .cy-rc.brand .cap { height: 52px; width: auto; display: block; }
+  .cy-rc.brand .team { font-family: "Anton", sans-serif; font-weight: 400; font-size: 27px;
+    letter-spacing: .01em; text-transform: uppercase; color: #F1EADB; line-height: .96; white-space: nowrap; }
+  .cy-rc.brand .id { display: flex; flex-direction: column; gap: 1px; }
+  .cy-rc.brand .sub { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--steel-pale); line-height: 1.34; white-space: nowrap; }
+  .cy-rc.vo { flex: 0 0 auto; }
+  .cy-rc.vo .v { white-space: nowrap; }
+
+  /* ===================== BODY — two zones on the datum ===================== */
+  .cy-body { flex: 1; display: grid; grid-template-columns: 1.92fr 1fr; gap: 0; min-height: 0; }
+
+  .cy-zone { min-height: 0; display: flex; flex-direction: column; }
+  .cy-zone.stadium { padding-right: 30px; }
+  .cy-zone.visit { padding: 0 0 0 30px; position: relative; }
+  .cy-zone.visit::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--steel); }
+
+  .cy-zoneh { display: flex; align-items: center; gap: 13px; padding-bottom: 9px; margin-bottom: 12px;
+    border-bottom: 2px solid var(--ink); }
+  .cy-zoneh .num { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px;
+    color: #fff; background: var(--ink); width: 24px; height: 24px; display: flex; align-items: center;
+    justify-content: center; flex: none; }
+  .cy-zoneh .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--ink); }
+  .cy-zoneh .ix { margin-left: auto; font-family: "Space Mono", monospace; font-size: 12px;
+    letter-spacing: .08em; color: var(--brick); }
+
+  /* stadium sub-columns: facts | context */
+  .cy-stadium-cols { flex: 1; display: grid; grid-template-columns: 0.84fr 1fr; gap: 0; min-height: 0; }
+  .cy-stadium-cols .cy-facts { padding-right: 26px; display: flex; flex-direction: column; }
+  .cy-stadium-cols .cy-ctx-block { padding-left: 26px; border-left: 1px solid var(--rule); }
+
+  /* field plan (protractor) — sits in the open space below the facts table */
+  .cy-fieldplan { margin: auto 0 0; padding-top: 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .cy-fieldplan .cy-modh.sm { align-self: stretch; margin-bottom: 2px; }
+  .cy-fieldplan .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .cy-fieldplan .fd-svg { width: auto; height: 100px; max-width: 100%; display: block; }
+  .cy-fp-cap { display: flex; justify-content: space-between; align-items: baseline; width: 100%;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-2); }
+  .cy-fp-cap span:first-child { color: var(--brick); }
+
+  .cy-modh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--brick); padding-bottom: 6px; margin-bottom: 8px;
+    border-bottom: 1px solid var(--rule-strong); }
+  .cy-modh.sm { font-size: 11px; }
+
+  .cy-table { display: flex; flex-direction: column; }
+  .cy-row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 3.5px 0;
+    border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .cy-row:last-child { border-bottom: 0; }
+  .cy-row .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .cy-row .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.3; }
+  .cy-row.renos .v, .cy-row.facade .v, .cy-row.style .v { font-size: 11.5px; line-height: 1.32; }
+
+  .cy-ctx { columns: 2; column-gap: 24px; }
+  .cy-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.44;
+    color: var(--ink); text-align: justify; hyphens: auto; -webkit-hyphens: auto;
+    break-inside: avoid-column; }
+  .cy-ctx p:last-child { margin-bottom: 0; }
+
+  /* ===================== VISIT ZONE ===================== */
+  .cy-zone.visit .cy-zoneh.on-panel { border-bottom-color: var(--steel); }
+  .cy-zone.visit .cy-zoneh.on-panel .num { background: var(--steel); }
+  .cy-zone.visit .cy-zoneh.on-panel .t { color: var(--steel-deep); }
+
+  .cy-game { padding: 2px 0 12px; }
+  .cy-game .eyebrow { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-2); margin-bottom: 12px; }
+  .cy-game .match { display: flex; justify-content: center; align-items: center; gap: 30px; }
+  .cy-game .match .tcol { display: flex; flex-direction: column; align-items: center; gap: 9px; }
+  .cy-game .match .tcol img { height: 60px; width: auto; display: block; }
+  .cy-game .match .code { font-family: "Anton", sans-serif; font-weight: 400; font-size: 40px;
+    letter-spacing: .01em; line-height: 1; color: var(--ink); }
+  .cy-game .match .code.away { color: var(--brick); }
+  .cy-game .match .at { font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .14em;
+    color: var(--ink-3); }
+  .cy-game .result { font-family: "Spectral", serif; font-weight: 700; font-size: 25px; color: var(--ink);
+    margin-top: 14px; letter-spacing: .005em; }
+  .cy-game .gmeta { display: flex; gap: 28px; margin-top: 13px; }
+  .cy-gs .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 3px; }
+  .cy-gs .v { font-family: "Spectral", serif; font-weight: 600; font-size: 16px; color: var(--ink); }
+
+  /* line score */
+  .cy-score { margin-top: 4px; }
+  .cy-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; margin-top: 6px; }
+  .cy-box th, .cy-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 4px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .cy-box thead th { color: var(--ink-3); font-weight: 500; font-size: 11px; border-bottom: 1.5px solid var(--ink); }
+  .cy-box td.tm, .cy-box th.tm { text-align: left; font-weight: 600; font-size: 12px; letter-spacing: .06em;
+    color: var(--ink); padding-right: 12px; width: 1%; white-space: nowrap; }
+  .cy-box .rhe { font-weight: 700; }
+  .cy-box th.sep, .cy-box td.sep { border-left: 1.5px solid var(--ink); padding-left: 8px; }
+  .cy-box thead th:last-child, .cy-box tbody td:last-child { padding-right: 6px; }
+  .cy-box thead th:last-child, .cy-box tbody td:last-child,
+  .cy-box thead th:nth-last-child(2), .cy-box tbody td:nth-last-child(2),
+  .cy-box thead th.sep, .cy-box tbody td.sep { width: 26px; }
+  .cy-box tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+  .cy-box tbody tr.win td.tm { color: var(--brick); }
+  .cy-box tbody tr:first-child td.tm { color: var(--brick); }
+
+  /* pitching */
+  .cy-pitch { margin-top: 13px; display: flex; flex-direction: column; gap: 9px; }
+  .cy-pitch .pr { display: flex; flex-direction: column; gap: 3px; }
+  .cy-pitch .pr .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--steel); }
+  .cy-pitch .pr .v { font-family: "Spectral", serif; font-size: 13px; color: var(--ink); line-height: 1.3; }
+
+  /* weather */
+  .cy-weather { margin-top: 15px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid var(--rule); padding-top: 13px; }
+  .cy-wx { display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center;
+    border-left: 1px solid var(--rule); padding: 0 6px; }
+  .cy-wx:first-child { border-left: 0; }
+  .cy-wx .cy-wx-ico { display: block; }
+  .cy-wx .val { font-family: "Spectral", serif; font-weight: 700; font-size: 16px; color: var(--ink); line-height: 1; }
+  .cy-wx .lab { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink-3); }
+
+  .cy-fc.marks { display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding-left: 24px; }
+  .cy-fc.marks .league { height: 32px; width: auto; display: block; }
+  .cy-fc.marks .mlb { height: 23px; width: auto; display: block; opacity: .85; }
+
+  /* ===================== FOOTER — construction & finance datum ===================== */
+  .cy-finance { flex: none; display: grid; grid-template-columns: 0.9fr 1.25fr 1fr 2fr auto; gap: 0;
+    border-top: 2px solid var(--steel); padding-top: 11px; }
+  .cy-fc { padding: 0 22px; border-left: 1px solid var(--rule); min-width: 0; }
+  .cy-fc:first-child { padding-left: 0; border-left: 0; }
+  .cy-fc:last-child { padding-right: 0; }
+  .cy-fc .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
+  .cy-fc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; line-height: 1.3; color: var(--ink); }
+  .cy-fc.cost .v.big { font-family: "Anton", sans-serif; font-weight: 400; font-size: 22px; line-height: .95; letter-spacing: .01em; }
+  .cy-fc.cost .v.adj { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink-2); margin-top: 4px; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#E7E0D0"/>
+      <rect x="14" y="40" width="72" height="34" fill="#9B3A24"/>
+      <path d="M14 40 L26 32 L38 40 L50 32 L62 40 L74 32 L86 40" fill="none" stroke="#2D4435" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="14" y="80" width="72" height="5" fill="#DF5A1E"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="camden-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="camden-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="camden-spread.jsx"></script>
+  <script type="text/babel" src="camden-app.jsx"></script>
+</body>
+</html>
