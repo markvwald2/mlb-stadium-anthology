@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Marlins Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2e2f;
+    font-family: "Spectral", Georgia, serif;
+    color: #1C2A30;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     MARLINS PARK / loanDepot park — Blurb Large Landscape 13 x 11 in.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264.
+     Center split x=1275. "Climate Vessel."
+     ---------------------------------------------------------------- */
+  .mla-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #1C2A30;
+    --ink-2: #46555C;
+    --ink-3: #7C8A90;
+    --paper: #ECF0EF;
+    --paper-hi: #F6F8F7;
+    --paper-lo: #E0E6E5;
+    --rule: #CAD4D3;
+    --rule-strong: #A6B4B3;
+    --miami: #0E84B4;          /* Miami Blue — accent only */
+    --miami-deep: #0A6087;
+    --caliente: #D8473E;       /* Caliente Red — small electric cuts */
+    --caliente-deep: #B5362E;
+    --slate: #41748D;
+    --glass-tint: rgba(180,210,212,.20);
+    --glass-line: rgba(120,162,166,.55);
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .mla-page { position: absolute; top: 0; height: 1088px; }
+  .mla-left  { left: 0; width: 1275px; background: #15252C; overflow: hidden; }
+  .mla-right { left: 1275px; width: 1275px; background: var(--paper); }
+  /* faint pale-aqua vertical "glass mullion" rhythm on the right page */
+  .mla-right::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: .5;
+    background:
+      linear-gradient(90deg, transparent 0, transparent calc(33.33% - 1px), rgba(120,162,166,.14) 33.33%, transparent calc(33.33% + 1px)),
+      linear-gradient(90deg, transparent 0, transparent calc(66.66% - 1px), rgba(120,162,166,.14) 66.66%, transparent calc(66.66% + 1px)),
+      linear-gradient(180deg, #F2F6F5 0%, #EAEFEE 60%, #E6ECEB 100%); }
+  .mla-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.14); z-index: 6; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .mla-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .mla-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .mla-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(12,22,28,.42) 0%, rgba(12,22,28,0) 20%),
+      linear-gradient(0deg, rgba(10,20,26,.94) 0%, rgba(10,20,26,.62) 20%, rgba(10,20,26,.10) 40%, rgba(10,20,26,0) 52%);
+  }
+
+  .mla-hero-logo { position: absolute; left: 60px; top: 54px; height: 92px; width: auto; z-index: 5;
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,.45)); }
+  .mla-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
+    color: rgba(228,238,238,.66); text-transform: uppercase; }
+
+  .mla-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .30em;
+    color: rgba(224,236,236,.52); text-transform: uppercase; white-space: nowrap; }
+
+  /* roof-truss datum line — the climate vessel */
+  .mla-roofline { position: absolute; left: 64px; right: 64px; top: 196px; z-index: 4;
+    display: flex; align-items: center; gap: 12px; opacity: .55; pointer-events: none; }
+  .mla-roofline .ln { flex: 1; height: 3px; border-top: 1px solid rgba(228,238,238,.42); border-bottom: 1px solid rgba(228,238,238,.42); }
+  .mla-roofline .tk { width: 1px; height: 12px; background: rgba(228,238,238,.6); flex: none; }
+  .mla-roofline .cap { font-family: "Space Mono", monospace; font-size: 10.5px; letter-spacing: .26em;
+    color: rgba(228,238,238,.72); text-transform: uppercase; flex: none; }
+
+  /* Art-Deco signage title block */
+  .mla-hero-title { position: absolute; left: 58px; right: 64px; bottom: 150px; z-index: 5; }
+  .mla-deco-rule { display: flex; align-items: center; gap: 10px; height: 9px; }
+  .mla-deco-rule.top { margin-bottom: 14px; }
+  .mla-deco-rule.bot { margin-top: 12px; }
+  .mla-deco-rule .l { flex: 1; height: 5px; border-top: 1px solid rgba(228,238,238,.5);
+    border-bottom: 1px solid rgba(228,238,238,.5); }
+  .mla-deco-rule .step { flex: none; width: 26px; height: 9px; position: relative; }
+  .mla-deco-rule.top .step::before, .mla-deco-rule.bot .step::before {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 4px; background: var(--caliente); }
+  .mla-deco-rule.top .step::after, .mla-deco-rule.bot .step::after {
+    content: ""; position: absolute; top: 2px; bottom: 2px; left: 8px; width: 4px; background: rgba(14,132,180,.9); }
+
+  .mla-name {
+    margin: 0; font-family: "Saira Condensed", "Oswald", sans-serif; font-weight: 700;
+    font-size: 158px; line-height: .80; letter-spacing: .045em; text-transform: uppercase;
+    color: #F2F6F6; -webkit-text-fill-color: #F2F6F6;
+    text-shadow: 0 3px 26px rgba(0,0,0,.45);
+  }
+  .mla-name + .mla-name { margin-top: 2px; }
+  .mla-sub { display: flex; align-items: center; gap: 16px; margin-top: 22px; flex-wrap: nowrap; }
+  .mla-sub .bar { width: 50px; height: 3px; background: var(--miami); flex: none; }
+  .mla-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 27px;
+    letter-spacing: .30em; text-transform: uppercase; color: #E7EFEF; white-space: nowrap; }
+  .mla-sub .tag { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
+    letter-spacing: .14em; text-transform: uppercase; color: #cfe6ef; white-space: nowrap;
+    border: 1px solid rgba(14,132,180,.7); padding: 4px 10px; border-radius: 2px; margin-left: 4px; }
+
+  .mla-marks { position: absolute; left: 60px; bottom: 66px; z-index: 5;
+    display: flex; align-items: center; gap: 16px; white-space: nowrap; }
+  .mla-marks .mlb { height: 42px; width: auto; display: block; }
+  .mla-marks .div { width: 1px; height: 28px; background: rgba(228,238,238,.4); }
+  .mla-marks .lg { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 15px;
+    letter-spacing: .24em; text-transform: uppercase; color: #D5E0E0; }
+  .mla-marks .dv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15px;
+    letter-spacing: .24em; text-transform: uppercase; color: var(--caliente); }
+
+  /* ============ RIGHT PAGE ============ */
+  /* 42px left padding clears the 0.25in safe inset + gutter (content starts x=1317). */
+  .mla-rp { position: absolute; inset: 0; padding: 40px 38px 38px 42px;
+    display: flex; flex-direction: column; gap: 15px; z-index: 2; }
+
+  /* glass panel base */
+  .panel { position: relative; background:
+      linear-gradient(180deg, rgba(255,255,255,.62), rgba(236,243,242,.30) 42%, var(--glass-tint));
+    border: 1px solid var(--glass-line); border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 0 0 1px rgba(255,255,255,.35) inset; }
+  .panel::before { content: ""; position: absolute; left: 10px; right: 10px; top: 0; height: 1px;
+    background: rgba(255,255,255,.85); }
+
+  /* ---- roof-cassette photo bay ---- */
+  .mla-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; flex: none; }
+  .mla-cassette { position: relative; margin: 0; height: 172px; padding: 8px;
+    background: linear-gradient(180deg, #F8FAFA, #EBF0EF); border: 1px solid #AFBFBF;
+    box-shadow: 0 1px 0 rgba(255,255,255,.85) inset; }
+  .mla-cassette::before { content: ""; position: absolute; left: 8px; right: 8px; top: 3px; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(14,132,180,.5), transparent); }
+  .mla-cassette image-slot { position: absolute; left: 8px; right: 8px; top: 8px; bottom: 8px;
+    width: auto; height: auto; display: block; border: 1px solid #97A9A9; }
+
+  /* ---- identity ribbon ---- */
+  .mla-ribbon { display: flex; align-items: stretch; flex: none;
+    border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink);
+    background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(232,240,239,.3)); }
+  .mla-ribbon .cell { flex: 1; padding: 9px 14px; border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
+  .mla-ribbon .cell.mark { flex: 0 0 auto; align-items: center; justify-content: center;
+    border-left: 0; padding: 6px 16px 6px 2px; position: relative; }
+  .mla-ribbon .cell.mark::after { content: ""; position: absolute; right: 0; top: 11px; bottom: 11px;
+    width: 3px; background: var(--caliente); }
+  .mla-ribbon .rib-logo { height: 44px; width: auto; display: block; }
+  .mla-ribbon .cell.coords { flex: 1.2; }
+  .mla-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--miami-deep); white-space: nowrap; }
+  .mla-ribbon .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .02em; text-transform: uppercase; color: var(--ink); line-height: 1.05; }
+  .mla-ribbon .cell.coords .rv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11.5px;
+    letter-spacing: 0; white-space: nowrap; }
+
+  /* ---- three-column body ---- */
+  .mla-body { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1.08fr; gap: 14px; min-height: 0; }
+  .mla-col { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding: 13px 15px 14px; }
+  .mla-col.stack { padding: 0; gap: 12px; }
+  .mla-subpanel { padding: 13px 15px 14px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .mla-subpanel.fieldbox { margin-top: auto; gap: 0; }
+  .mla-col.visit, .mla-subpanel.visit { background:
+      linear-gradient(180deg, rgba(214,231,233,.5), rgba(196,222,224,.28) 42%, rgba(176,210,213,.30)); }
+
+  /* module + Miami-blue section header */
+  .mla-mod { display: flex; flex-direction: column; min-width: 0; }
+  .mla-mod.sub { margin-top: 7px; }
+  /* distribute the entire Stadium Facts / Design & Lifecycle column to fill its height */
+  .mla-col.col1 > .mla-mod.fill { flex: 1; display: flex; flex-direction: column; }
+  .mla-col.col1 .mla-facts.distribute { flex: 1 1 auto; justify-content: space-between; }
+  .mla-subdiv { display: flex; align-items: center; gap: 8px; padding: 8px 0 5px; }
+  .mla-subdiv::before { content: ""; flex: none; width: 6px; height: 6px; background: var(--miami); box-shadow: 2px 2px 0 rgba(216,71,62,.5); }
+  .mla-subdiv .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .13em; text-transform: uppercase; color: var(--miami-deep); }
+  .mla-mod.field { margin-top: 0; }
+  .mla-mod.field .mla-h { margin-bottom: 3px; }
+  .mla-h { display: flex; align-items: baseline; gap: 9px; padding-bottom: 6px; margin-bottom: 8px;
+    border-bottom: 1px solid var(--rule-strong); }
+  .mla-h::before { content: ""; align-self: center; flex: none; width: 7px; height: 7px;
+    background: var(--miami); transform: translateY(-1px); box-shadow: 2px 2px 0 rgba(216,71,62,.55); }
+  .mla-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--miami-deep); white-space: nowrap; }
+  .mla-h .n { margin-left: auto; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+
+  /* facts / visit tables */
+  .mla-facts { display: flex; flex-direction: column; }
+  .mla-frow { display: grid; grid-template-columns: 104px 1fr; gap: 10px; align-items: baseline;
+    padding: 2px 0; border-bottom: 1px solid var(--rule); }
+  .mla-facts.compact .mla-frow { padding: 1.5px 0; }
+  .mla-frow:last-child { border-bottom: 0; }
+  .mla-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); line-height: 1.16; }
+  .mla-frow .v { display: flex; flex-direction: column; gap: 2px; }
+  .mla-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.24; white-space: pre-line; }
+  .mla-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10.5px;
+    color: var(--ink-2); line-height: 1.28; }
+
+  /* field diagram instrument */
+  .mla-fieldfig { margin: 4px 0 0; display: flex; justify-content: center; }
+  .mla-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .mla-fieldfig .fd-svg { width: 150px; height: auto; max-width: 100%; display: block; }
+
+  /* weather — 2 x 2 */
+  .mla-weather { display: grid; grid-template-columns: 1fr 1fr; gap: 11px 12px; }
+  .mla-wcell { display: flex; align-items: center; gap: 10px; }
+  .mla-wcell .mla-wico { flex: none; }
+  .mla-wcell .tx { display: flex; flex-direction: column; }
+  .mla-wcell .wv { font-family: "Spectral", serif; font-weight: 600; font-size: 21px; color: var(--ink); line-height: 1; }
+  .mla-wcell .wv .wunit { font-size: 13px; font-weight: 500; font-variant: small-caps; letter-spacing: .03em; color: var(--ink-3); }
+  .mla-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .11em;
+    text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
+
+  /* line score */
+  .mla-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; margin-top: 1px; }
+  .mla-box th, .mla-box td { text-align: center; font-size: 11.5px; font-weight: 400; padding: 3.5px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .mla-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10.5px; border-bottom: 1.5px solid var(--ink); }
+  .mla-box td.tm, .mla-box th.tm { text-align: left; font-weight: 700; font-size: 11.5px; letter-spacing: .06em;
+    padding-right: 10px; width: 1%; white-space: nowrap; }
+  .mla-box .rcol { font-weight: 700; }
+  .mla-box .hecol { color: var(--ink-2); }
+  .mla-box th.sep, .mla-box td.sep { border-left: 1.5px solid var(--ink); padding-left: 7px; }
+  .mla-box thead th:last-child, .mla-box tbody td:last-child,
+  .mla-box thead th:nth-last-child(2), .mla-box tbody td:nth-last-child(2),
+  .mla-box thead th.sep, .mla-box tbody td.sep { width: 24px; }
+  .mla-box tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+  .mla-box tbody tr.win td.tm { color: var(--caliente-deep); }
+
+  /* game caption + decisions */
+  .mla-gcap { display: flex; align-items: center; gap: 8px; margin-top: 7px;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .mla-gcap .sep { color: var(--rule-strong); }
+  .mla-dec { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
+  .mla-dec p { margin: 0; font-family: "Spectral", serif; font-size: 11.5px; color: var(--ink); line-height: 1.3; }
+  .mla-dec p b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .05em;
+    color: var(--miami-deep); }
+  .mla-dec p i { font-style: italic; }
+  .mla-dec p.sv { color: var(--ink-2); }
+
+  /* ---- stadium context: frosted-glass museum panel (column 3) ---- */
+  .mla-col.col3.glass { background:
+      linear-gradient(160deg, rgba(255,255,255,.74), rgba(232,243,243,.44) 48%, rgba(202,226,227,.36)); }
+  .mla-prose { columns: 1; }
+  .mla-prose p { margin: 0 0 11px; font-family: "Spectral", serif; font-size: 13px; line-height: 1.80;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .mla-prose p:last-child { margin-bottom: 0; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#ECF0EF"/>
+      <ellipse cx="50" cy="52" rx="34" ry="15" fill="none" stroke="#1C2A30" stroke-width="3.2"/>
+      <path d="M16 52 a34 15 0 0 1 68 0" fill="#cfe4e6" stroke="#1C2A30" stroke-width="2.4"/>
+      <rect x="34" y="40" width="32" height="4" rx="1" fill="#0E84B4"/>
+      <circle cx="50" cy="30" r="4.5" fill="#D8473E"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="marlins-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="marlins-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="marlins-spread.jsx"></script>
+  <script type="text/babel" src="marlins-app.jsx"></script>
+</body>
+</html>

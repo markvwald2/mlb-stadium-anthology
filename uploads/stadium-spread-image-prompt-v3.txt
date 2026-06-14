@@ -1,0 +1,271 @@
+# Stadium Spread Image Prompt V3
+
+Use this prompt structure when the user asks for the image-generation prompt instead of direct image generation.
+
+Replace bracketed placeholders with values from the selected row in `all-stadium-pages.csv`. Omit any line whose value is empty, `n/a`, `N/A`, `unknown`, `not applicable`, `None`, or `null`. Do not show the label, row, module item, or placeholder for that value.
+
+Do not invent facts. Do not add labels not listed here or in `template prompt v3.txt`.
+
+==================================================
+PROMPT START
+==================================================
+
+Create a finished premium large-format landscape two-page coffee-table book spread for an MLB stadium anthology.
+
+Physical size, mandatory: 25.50 inches wide x 10.88 inches tall.
+
+Target print/export resolution: 7650 pixels wide x 3264 pixels tall, 300 DPI, full landscape spread.
+
+Blurb production basis: Large Landscape Photo Book 13 x 11 in. Single page with bleed is 12.75 x 10.88 in; trimmed page is 12.50 x 10.63 in. Bleed art must extend at least 0.125 in beyond final trim, and critical text or image details must stay at least 0.25 in inside final trim.
+
+The size and aspect ratio are non-negotiable. Preserve the exact 25.50:10.88 landscape aspect ratio. Do not generate a square image, portrait image, cropped spread, single-page layout, or alternate-aspect composition.
+
+If exact 7650 x 3264 px output cannot be guaranteed by the image tool, render the closest supported pixel size that preserves the exact 25.50:10.88 aspect ratio. Do not refuse solely because exact pixel dimensions are unavailable. Treat 7650 x 3264 px as the print/export target.
+
+This is a finished print-ready editorial spread, not a mockup. Do not include a book cover, page curl, binding hardware, table surface, hands, outside shadows, or surrounding environment.
+
+Use a precise, dense, archival, architectural editorial design system combining vintage baseball programs, architectural monographs, museum-quality infographics, and modern magazine layouts. Avoid sports-poster aesthetics, ESPN-style graphics, sentimental nostalgia, fantasy lighting, souvenir collage composition, or loose mockup styling.
+
+Use no data or information that is not contained in the local uploaded data files. Never use web browsing, web search, model memory, general baseball knowledge, or plausible filler for stadium facts, visit facts, game facts, metrics, dates, statistics, captions, labels, editorial claims, or explanatory copy. Do not invent metrics, categories, ratings, comparisons, rankings, or editorial interpretations.
+
+Use `stadium-field-map.md` as the fixed assignment of CSV fields to the Stadium Section and Visit Section.
+
+Photos may be externally sourced or generated, but they may not introduce visible factual claims. Do not label anything from a photo unless the label comes from the local data files.
+
+The spread is a physical two-page layout:
+
+* Left page: x = 0 to 12.75 inches.
+* Right page: x = 12.75 to 25.50 inches.
+* Exact center split: x = 12.75 inches.
+* Show a subtle visible vertical page split at x = 12.75 inches as a flat hairline or clean page division only.
+* Maintain a no-critical-content gutter zone from x = 12.375 inches to x = 13.125 inches.
+* No readable text, data tables, score lines, labels, section headings, faces, important stadium details, or key image subjects may appear inside the gutter zone.
+* The gutter may contain only background continuation, quiet texture, or nonessential abstract design elements.
+* Do not add a binding shadow, gutter shadow, fold shadow, dark center gradient, or simulated book crease.
+* Do not place any module across the gutter.
+* Every major module must belong clearly to either the left page or the right page.
+
+Each visible data value may appear only once on the spread. If the same value could appear in multiple places, choose the strongest single module and omit the duplicate everywhere else. Do not repeat values between the metadata ribbon, facts table, construction data values, field module, featured game module, weather module, or Stadium Context callouts. For example, do not show `Open Air` twice, and do not repeat `years_active` in both the ribbon and construction data.
+
+If a value exists in the selected CSV row and is not empty, `n/a`, `N/A`, `unknown`, `not applicable`, `None`, or `null`, it must appear on the spread exactly once.
+
+Color fields count as used when they are applied as visual accent colors; their color names do not need to be printed as text unless the layout explicitly needs a color legend.
+
+All structured fields must follow the fixed Stadium/Visit assignment in `stadium-field-map.md`.
+
+Use restrained accent colors from the selected CSV row:
+
+* Primary accent: [primary_home_team_color]
+* Secondary accent: [secondary_home_team_color]
+* Tertiary accent: [home_team_accent_color]
+
+Use these colors only for thin rules, small labels, section markers, chart accents, and metadata details. Do not let team colors dominate the page.
+
+==================================================
+SELECTED CSV ROW
+==================================================
+
+The following selected row is the only source for structured factual content. Use CSV values exactly, with only light typographic formatting. Omit values that are empty, `n/a`, `N/A`, `unknown`, `not applicable`, `None`, `null`, or another placeholder value. Do not display fields that are internal or not called for by the layout.
+
+Stadium: [stadium_name]
+City: [city]
+State: [state]
+Team: [team_name]
+League: [league]
+Division: [division]
+Opened: [opened]
+Years Active: [years_active]
+Status: [status]
+Renovations: [renovations]
+MLB All-Star Game Years: [mlb_all_star_game_years]
+Opening Capacity: [capacity_opening]
+Current Capacity: [capacity_current]
+Surface Type: [playing_surface_type]
+Surface: [surface]
+Architect: [architect]
+Facade: [facade_material]
+Style: [architectural_style]
+Era: [classification_era]
+Stadium Type: [stadium_type]
+Roof: [roof_type]
+Name History: [name_history]
+Preceded By: [preceded_by]
+Succeeded By: [succeeded_by]
+Elevation: [elevation]
+Coordinates: [coordinates]
+Original Cost: [stadium_cost]
+Adjusted Cost: [stadium_cost_adjusted]
+Financing: [financing_method]
+Address: [address]
+Location: [location_classification]
+Construction Start: [construction_start]
+Opening Day: [opening_day]
+Final Game: [final_game]
+Demolition: [demolition_year]
+LF: [left_field_distance]
+CF: [center_field_distance]
+RF: [right_field_distance]
+Orientation: [orientation]
+Bearing: [orientation_degrees]
+Visit No.: [visit_order]
+Total Visits: [visit_count]
+First Visit Date: [first_visit_date]
+Featured Visit Day: [featured_visit_day]
+Featured Visit: [featured_visit_date]
+Featured Game Title: [featured_game_title]
+Other Visits: [other_visits]
+Trip: [trip_name]
+Home: [home_team] ([home_team_abbreviation])
+Away: [away_team] ([away_team_abbreviation])
+Result: [rendered_score_line]
+Attendance: [attendance]
+First Pitch: [start_time] [time_zone]
+Duration: [game_duration]
+Game Type: [day_night]
+Home Starter: [home_starting_pitcher]
+Away Starter: [away_starting_pitcher]
+Winning Pitcher: [winning_pitcher]
+Losing Pitcher: [losing_pitcher]
+Save: [save_pitcher]
+Innings: [innings_played]
+Temperature: [temperature]
+Conditions: [conditions]
+Wind: [wind]
+Humidity: [humidity]
+
+==================================================
+PAGE STRUCTURE
+==================================================
+
+Build the spread with these sections only:
+
+1. Left Page Hero
+2. Right Page Stadium Section
+3. Right Page Visit Section
+
+Do not add other top-level sections, badges, ratings, tags, invented charts, slogans, captions, or factual callouts.
+
+The left page must be the hero image with overlaid Stadium Title Block only. Do not place right-page data modules on the left page.
+
+The right page must be divided into two visually distinct sections:
+
+* Stadium Section: stadium facts, construction data values, field dimensions, Stadium Context, and optional supporting image strip.
+* Visit Section: featured game title, visit context, matchup, score/result, attendance, time, pitchers, innings, trip, other visits, and weather.
+
+LEFT PAGE HERO:
+
+Use a dramatic high-resolution full-bleed aerial or elevated panoramic documentary-style image showing the stadium integrated into its surrounding environment. Emphasize stadium geometry, surrounding infrastructure, parking or circulation systems when visually relevant, skyline or regional setting when visually relevant, and architectural character. These may appear visually, but do not label them unless the label comes from the selected CSV row.
+
+STADIUM TITLE BLOCK:
+
+Place the title block on the left page over the hero image, entirely outside the gutter zone. Keep it compact enough that the stadium photograph remains the dominant left-page subject; do not use oversized poster-style title type that covers important stadium architecture, field, seating, skyline, roof, or site details. Style the title typography so it subtly echoes the stadium's architecture, era, materials, site, or signage character; avoid generic sports-poster lettering.
+
+Primary headline: [stadium_name]
+Subtitle: [city], [state]
+
+Do not add nicknames or alternate titles unless they appear in Name History, and keep those only in the facts table.
+
+METADATA RIBBON:
+
+If used, place the metadata ribbon inside the Right Page Stadium Section, never crossing the gutter.
+
+Allowed labels:
+
+* Team: [team_name]
+* League: [league]
+* Division: [division]
+* Era: [classification_era]
+* Years: [years_active]
+* Visit No.: [visit_order]
+* Visits: [visit_count]
+* Elevation: [elevation]
+* Opening Capacity: [capacity_opening]
+
+RIGHT PAGE IMAGE STRIP:
+
+If used, place a curated supporting image strip inside the Right Page Stadium Section, outside the gutter. Images may show exterior, seating bowl, scoreboard, concourse, historical imagery, skyline, neighborhood, suburb, or infrastructure integration. Do not overlay factual labels unless they come directly from the selected CSV row.
+
+STADIUM FACTS TABLE:
+
+Create a compact museum-style table inside the Right Page Stadium Section using only populated selected-row values from the selected CSV row. Allowed labels are the labels listed in the selected CSV row section above. Use `Name History`, not `Previous Names`. Omit rows whose values already appear elsewhere on the spread.
+
+CONSTRUCTION DATA VALUES:
+
+Display construction and lifecycle information as compact data values, not as a timeline. Use only populated values from:
+
+* Construction Start
+* Opening Day
+* Final Game
+* Demolition
+* Opened
+* Years Active
+* Renovations
+
+Do not arrange these values as a timeline, milestone strip, sequence with dots, connecting line, or chronological graphic. Present them as a compact table, stacked data block, sidebar, or integrated rows within the Stadium Facts Table. Do not invent milestones or add extra dates. Omit values already shown in the metadata ribbon or facts table.
+
+FIELD DIMENSIONS & GAMEPLAY MODULE:
+
+Create a compact field-dimensions module with a simplified baseball diamond or outfield arc. Use only:
+
+* LF: [left_field_distance]
+* CF: [center_field_distance]
+* RF: [right_field_distance]
+* Orientation: [orientation]
+* Bearing: [orientation_degrees]
+
+Render these values as a small protractor-style field diagram, approximately 1 in x 1 in or smaller, inside the Stadium Section. It should read as a compact measuring instrument or field-angle symbol, not as a dominant illustration or separate major section. Include a semicircular or quarter-circle arc, tick marks, LF/CF/RF labels, and a visible orientation/bearing cue; do not let it default to a generic baseball diamond icon.
+
+Do not label the field symmetrical or asymmetrical. Do not add fence heights, foul territory, wall materials, scoreboard position, or lighting.
+
+FEATURED GAME MODULE:
+
+Create a visually distinct featured-game module inside the Right Page Visit Section. It should read as the personal visit/game artifact on an otherwise stadium-focused page. Separate the Visit Section from the Stadium Section through placement, framing, background tone, scoreboard styling, ticket-stub/program-inspired details, or a deliberate typographic shift while keeping the design premium and controlled.
+
+Use [featured_game_title] as the module title when populated; it should be the first and most prominent text in the module after the stadium page title. If it is empty, use the neutral heading Featured Game and do not invent a title.
+
+If visit/game fields contain paired semicolon-separated values for two featured games, render two separate game blocks in the Visit Section: Game 1 and Game 2. Align paired values across date, result, attendance, time, duration, pitchers, weather, and related fields.
+
+Use the rendered score line exactly:
+
+[rendered_score_line]
+
+Show populated visit and game fields only. If `first_visit_date` and `featured_visit_date` are identical, prefer Featured Visit and do not show both as separate prominent callouts. Omit Other Visits when empty or when `visit_count` is 1 and `other_visits` is empty. Omit Save when `save_pitcher` is empty.
+
+VISIT WEATHER MODULE:
+
+Create a small weather strip or sidebar connected to the featured game using only populated weather fields:
+
+* Temperature: [temperature]
+* Conditions: [conditions]
+* Wind: [wind]
+* Humidity: [humidity]
+
+If all weather fields are empty, omit the weather module entirely.
+
+STADIUM CONTEXT:
+
+Include a text block titled Stadium Context.
+
+Use only the matching finished prose from `stadium-context.csv` when available, not lorem ipsum. Use the full `stadium_context` text verbatim. Do not summarize, abbreviate, excerpt, rewrite, or shorten it. Do not write new editorial prose. If no matching Stadium Context exists locally, omit the prose block rather than drafting a replacement.
+
+Stadium Context may appear anywhere on the spread except the gutter if that is necessary to fit the full text.
+
+Stadium Context body:
+
+[stadium_context]
+
+==================================================
+TEXT AND FACT SAFETY
+==================================================
+
+Every visible factual value must come from the selected row of `all-stadium-pages.csv`.
+
+Do not invent visible facts. Do not use external knowledge. Do not use model memory. Do not use common baseball knowledge. Do not fill empty data with plausible copy.
+
+If information is missing, leave quiet whitespace, rules, texture, or photography. Missing data must never be replaced with invented facts.
+
+Major headings and stadium facts must be readable. Long values may be wrapped or typeset smaller, but they must remain visually controlled.
+
+==================================================
+PROMPT END
+==================================================

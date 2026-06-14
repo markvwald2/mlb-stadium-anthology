@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Great American Ball Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Saira+Condensed:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #1F1B17;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     GREAT AMERICAN BALL PARK — Blurb Large Landscape 13 x 11 in spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264 @ 300 DPI.
+     Center split x = 1275. "Riverboat Reds Frame."
+     ---------------------------------------------------------------- */
+  .gabp-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #1F1B17;            /* warm charcoal */
+    --ink-2: #5A5147;          /* warm gray */
+    --ink-3: #8A8072;          /* label gray */
+    --paper: #E9E4D7;          /* warm cast-stone stock */
+    --paper-hi: #F2EEE2;
+    --paper-lo: #DDD6C5;
+    --cast: #D9CEB8;           /* cast-stone beige */
+    --rule: #CFC7B6;
+    --rule-strong: #B0A892;
+    --black: #1A1714;          /* warm black bars */
+    --red: #B11E2A;            /* brick red — restrained accent */
+    --red-deep: #8E1822;
+    --red-bright: #C6011F;     /* Reds red — logo / score */
+    --steel: #DDDCD8;          /* white-painted steel */
+    --steel-lo: #C9C8C4;
+    --steel-line: #9D9E9F;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.38' intercept='0.66'/%3E%3CfeFuncG type='linear' slope='0.38' intercept='0.64'/%3E%3CfeFuncB type='linear' slope='0.38' intercept='0.6'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --wave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='14'%3E%3Cpath d='M0 4 Q8 0 16 4 T32 4' fill='none' stroke='%23A9A08C' stroke-width='1.1'/%3E%3Cpath d='M0 10 Q8 6 16 10 T32 10' fill='none' stroke='%23A9A08C' stroke-width='1.1'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .gabp-page { position: absolute; top: 0; height: 1088px; }
+  .gabp-left  { left: 0; width: 1275px; background: #14110E; overflow: hidden; }
+  .gabp-right { left: 1275px; width: 1275px; background: var(--paper); }
+  /* Ohio-River course watermark — faint river-haze tint behind all content */
+  .gabp-river-wm { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
+    pointer-events: none; opacity: .19; mix-blend-mode: multiply; transform: translate(-48px, -62px); }
+  .gabp-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
+  /* center fold — flat hairline only */
+  .gabp-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px; background: rgba(0,0,0,.16); z-index: 6; pointer-events: none; }
+
+  /* ============ STEEL TRUSS (smokestack / light-tower) ============ */
+  .gabp-stack { flex: 0 0 18px; width: 18px; align-self: stretch; display: flex; flex-direction: column; }
+  .gabp-stack .cap { flex: 0 0 11px; background: var(--red); border: 1px solid var(--red-deep); border-bottom: 0; }
+  .gabp-stack .foot { flex: 0 0 9px; background: var(--red); border: 1px solid var(--red-deep); border-top: 0; }
+  .gabp-stack .shaft {
+    flex: 1 1 auto; min-height: 0;
+    border-left: 1px solid var(--steel-line); border-right: 1px solid var(--steel-line);
+    background:
+      repeating-linear-gradient(45deg, transparent 0 5px, rgba(120,123,127,.42) 5px 6px),
+      repeating-linear-gradient(-45deg, transparent 0 5px, rgba(120,123,127,.42) 5px 6px),
+      linear-gradient(90deg, var(--steel-lo) 0%, var(--steel) 48%, var(--steel-lo) 100%);
+  }
+
+  /* ============ RIVER DATUM RULE ============ */
+  .gabp-river { width: 100%; height: 14px; background-image: var(--wave); background-repeat: repeat-x; background-position: center; opacity: .85; }
+  .gabp-river.under-ribbon { margin-top: 6px; }
+  .gabp-river.over-foot { margin-bottom: 7px; }
+
+  /* ============ LEFT / HERO ============ */
+  .gabp-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .gabp-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .gabp-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(10,9,8,.40) 0%, rgba(10,9,8,0) 24%),
+      linear-gradient(0deg, rgba(10,9,8,.90) 0%, rgba(10,9,8,.58) 22%, rgba(10,9,8,.10) 44%, rgba(10,9,8,0) 58%);
+  }
+  .gabp-hero-folio {
+    position: absolute; left: 60px; top: 56px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
+    color: rgba(236,230,216,.66); text-transform: uppercase;
+  }
+
+  /* signage panel framed by trusses */
+  .gabp-sign {
+    position: absolute; left: 58px; bottom: 196px; z-index: 5;
+    display: flex; align-items: stretch; gap: 0;
+    background: linear-gradient(180deg, rgba(18,14,11,.18), rgba(18,14,11,.46));
+    padding: 0; box-shadow: 0 18px 50px rgba(0,0,0,.4);
+  }
+  .gabp-sign .sign-stack { flex: 0 0 16px; width: 16px; }
+  .gabp-sign-inner {
+    padding: 26px 40px 24px; display: flex; flex-direction: column; align-items: center;
+    border-top: 2px solid rgba(231,224,206,.30); border-bottom: 2px solid rgba(231,224,206,.30);
+  }
+  .gabp-hero-name {
+    margin: 0; font-family: "Big Shoulders Display", sans-serif; font-weight: 800;
+    font-size: 120px; line-height: .84; letter-spacing: .005em; text-transform: uppercase;
+    text-align: center; color: #F0E9D7;
+    text-shadow: 0 2px 22px rgba(0,0,0,.5);
+  }
+  .gabp-hero-loc { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 22px; }
+  .gabp-hero-loc .bar { width: 46px; height: 3px; background: var(--red-bright); flex: none; }
+  .gabp-hero-loc .txt {
+    font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 26px;
+    letter-spacing: .34em; text-transform: uppercase; color: #EAE3D3; padding-left: .34em;
+  }
+
+  /* bottom identity metadata */
+  .gabp-meta {
+    position: absolute; left: 60px; right: 60px; bottom: 92px; z-index: 5;
+    display: flex; align-items: stretch;
+    border-top: 1px solid rgba(228,220,200,.34); border-bottom: 1px solid rgba(228,220,200,.34);
+  }
+  .gabp-meta .mcell { padding: 13px 30px; border-left: 1px solid rgba(228,220,200,.18);
+    display: flex; flex-direction: column; justify-content: center; gap: 3px; }
+  .gabp-meta .mcell:first-child { border-left: 0; padding-left: 0; }
+  .gabp-meta .mcell .k { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(206,198,180,.7); }
+  .gabp-meta .mcell .v { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; color: #ECE6D8; line-height: 1.18; }
+  .gabp-meta .mcell .v.mono { font-family: "Space Mono", monospace; font-weight: 400; font-size: 13px; letter-spacing: .01em; }
+  .gabp-meta .logos { margin-left: auto; flex-direction: row; align-items: center; gap: 22px; border-left: 0; padding-right: 0; }
+  .gabp-meta .logos .reds { height: 60px; width: auto; display: block; }
+  .gabp-meta .logos .logos-r { display: flex; align-items: center; gap: 18px; padding-left: 22px; border-left: 1px solid rgba(228,220,200,.18); }
+  .gabp-meta .logos .mlb { height: 42px; width: auto; display: block; }
+  .gabp-meta .logos .nl { height: 50px; width: auto; display: block; }
+  .gabp-addr {
+    position: absolute; left: 60px; right: 60px; bottom: 54px; z-index: 5;
+    font-family: "Saira Condensed", sans-serif; font-weight: 400; font-size: 15px;
+    letter-spacing: .14em; text-transform: uppercase; color: #C9C2B0;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .gabp-addr .dot { color: var(--red-bright); font-size: 9px; }
+
+  /* ============ RIGHT PAGE ============ */
+  .gabp-rp { position: absolute; inset: 0; padding: 36px 38px 30px 40px; z-index: 2;
+    display: flex; flex-direction: column; gap: 9px; }
+
+  /* photo strip */
+  .gabp-strip { display: flex; align-items: stretch; flex: none; height: 196px; }
+  .gabp-well { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; }
+  .gabp-well .wframe { flex: 1 1 auto; min-height: 0; position: relative; border: 1px solid var(--rule-strong);
+    background: linear-gradient(155deg, var(--paper-hi) 0%, var(--paper-lo) 100%); overflow: hidden; }
+  .gabp-well image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .gabp-well .wbase { flex: 0 0 6px; background: var(--red); border: 1px solid var(--red-deep); border-top: 0; }
+
+  /* metadata ribbon */
+  .gabp-ribbon-wrap { flex: none; }
+  .gabp-ribbon { display: grid; grid-template-columns: repeat(8, 1fr);
+    border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+  .gabp-ribbon .rcell { padding: 9px 12px; border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
+  .gabp-ribbon .rcell:first-child { border-left: 0; }
+  .gabp-ribbon .rcell .k { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .gabp-ribbon .rcell .v { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .02em; text-transform: uppercase; color: var(--ink); line-height: 1.1; }
+
+  /* section bar (two major sections) */
+  .gabp-sectbar { display: flex; align-items: center; gap: 11px; flex: none; padding-bottom: 6px; border-bottom: 2px solid var(--ink); }
+  .gabp-sectbar .ix { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
+    letter-spacing: .1em; color: #FBF6EC; background: var(--red); padding: 3px 9px 2px; line-height: 1; }
+  .gabp-sectbar .t { font-family: "Big Shoulders Display", sans-serif; font-weight: 700; font-size: 17px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+  .gabp-sectbar .rule { display: none; }
+
+  /* module header */
+  .gabp-modh { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--ink); padding-bottom: 6px; margin-bottom: 8px;
+    border-bottom: 1.5px solid var(--rule-strong); }
+  .gabp-modh.ctr { text-align: center; }
+  .gabp-modh.fd-rule { padding-bottom: 0; margin-bottom: 10px; }
+  .gabp-modh .vidx { font-family: "Space Mono", monospace; font-weight: 400; font-size: 10px; letter-spacing: .04em; color: var(--ink-3); }
+
+  /* ===== STADIUM SECTION row ===== */
+  .gabp-stadium { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 350px 250px 1fr; }
+  .gabp-stadium .gabp-col { min-width: 0; padding: 0 24px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; }
+  .gabp-stadium .gabp-col:first-child { padding-left: 0; border-left: 0; }
+  .gabp-stadium .gabp-col:last-child { padding-right: 0; }
+
+  .gabp-table { display: flex; flex-direction: column; }
+  .gabp-table .row { display: grid; grid-template-columns: 116px 1fr; gap: 12px; padding: 3px 0;
+    border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .gabp-table .row:last-child { border-bottom: 0; }
+  .gabp-table .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .gabp-table .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.3; }
+
+  /* predecessor lineage rail */
+  .gabp-lineage { list-style: none; margin: 0 0 8px; padding: 0; position: relative; display: flex; flex-direction: column; }
+  .gabp-lineage::before { content: ""; position: absolute; left: 3px; top: 8px; bottom: 8px; width: 1px; background: var(--rule-strong); }
+  .gabp-lineage li { display: flex; align-items: center; gap: 9px; padding: 1px 0; position: relative; }
+  .gabp-lineage .dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--paper-hi);
+    border: 1.5px solid var(--rule-strong); position: relative; z-index: 1; }
+  .gabp-lineage li.last .dot { background: var(--red); border-color: var(--red-deep); }
+  .gabp-lineage .nm { font-family: "Spectral", serif; font-size: 11.5px; color: var(--ink-2); line-height: 1.18; }
+  .gabp-lineage li.last .nm { color: var(--ink); font-weight: 600; }
+
+  .gabp-fp { margin: 4px 0 0; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .gabp-fp .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .gabp-fp .fd-svg { width: 122px; height: 120px; max-width: 100%; display: block; }
+
+  .gabp-ctx { display: flex; gap: 20px; align-items: flex-start; }
+  .gabp-ctx .ccol { flex: 1 1 0; min-width: 0; }
+  .gabp-ctx p { margin: 0 0 5px; font-family: "Spectral", serif; font-size: 11.5px; line-height: 1.36;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .gabp-ctx p:last-child { margin-bottom: 0; }
+
+  /* ===== VISIT SECTION row ===== */
+  .gabp-visit { flex: none; display: grid; grid-template-columns: 300px 150px 1fr; }
+  .gabp-visit .gabp-col { min-width: 0; padding: 0 24px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; }
+  .gabp-visit .gabp-col:first-child { padding-left: 0; border-left: 0; }
+  .gabp-visit .gabp-col:last-child { padding-right: 0; }
+
+  .gabp-visit .irows { display: flex; flex-direction: column; flex: 1 1 auto; }
+  .gabp-visit .irow { display: grid; grid-template-columns: 104px 1fr; gap: 10px; padding: 3.5px 0;
+    border-bottom: 1px solid var(--rule); align-items: center; flex: 1 1 0; }
+  .gabp-visit .irow:last-child { border-bottom: 0; }
+  .gabp-visit .irow .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .gabp-visit .irow .v { font-family: "Spectral", serif; font-weight: 600; font-size: 13px; color: var(--ink); }
+
+  /* weather */
+  .gabp-wx { display: flex; flex-direction: column; flex: 1 1 auto; }
+  .gabp-wx .wxmain { display: flex; align-items: center; gap: 10px; flex: 1 1 0; }
+  .gabp-wx .wxtemp { display: flex; flex-direction: column; }
+  .gabp-wx .wxtemp .deg { font-family: "Spectral", serif; font-weight: 700; font-size: 25px; color: var(--ink); line-height: 1; }
+  .gabp-wx .wxtemp .cond { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-2); margin-top: 3px; }
+  .gabp-wx .wxrows { display: flex; flex-direction: column; flex: 2 1 0; }
+  .gabp-wx .wxr { display: flex; align-items: center; gap: 9px; padding: 6px 0; border-top: 1px solid var(--rule); flex: 1 1 0; }
+  .gabp-wx .wxr-txt { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .gabp-wx .wxr .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .gabp-wx .wxr .v { font-family: "Spectral", serif; font-weight: 600; font-size: 13px; color: var(--ink); }
+
+  /* featured game card */
+  .feat-card { border: 1.5px solid var(--ink); padding: 12px 16px 13px; display: flex; flex-direction: column;
+    background: linear-gradient(160deg, rgba(255,255,255,.18), rgba(217,206,184,.14)); }
+  .feat-score { display: flex; align-items: center; gap: 13px; padding-bottom: 10px; margin-bottom: 10px;
+    border-bottom: 1px solid var(--rule); }
+  .feat-score .tlogo { height: 48px; width: auto; flex: none; display: block; }
+  .feat-score .tname { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 16px;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .feat-score .tname.home { color: var(--red-bright); }
+  .feat-score .rn { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; font-size: 50px;
+    color: var(--ink); line-height: .82; }
+  .feat-score .rn.home { color: var(--red-bright); }
+  .feat-score .vs { font-family: "Spectral", serif; font-style: italic; font-size: 14px; color: var(--ink-3); }
+  .feat-score .feat-pitchers { display: flex; flex-direction: column; gap: 3px; padding-left: 4px;
+    border-left: 1px solid var(--rule); }
+  .feat-score .feat-pitchers .pl { font-family: "Spectral", serif; font-style: italic; font-size: 11.5px;
+    line-height: 1.15; color: var(--ink-2); white-space: nowrap; }
+
+  .gabp-box { width: 100%; border-collapse: collapse; font-family: "Saira Condensed", sans-serif; }
+  .gabp-box th, .gabp-box td { text-align: center; font-size: 12.5px; font-weight: 400; padding: 3px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .gabp-box thead th { color: var(--ink-3); font-weight: 600; font-size: 11px; border-bottom: 1.5px solid var(--ink); }
+  .gabp-box td.tm, .gabp-box th.tm { text-align: left; font-weight: 700; font-size: 12.5px; letter-spacing: .08em;
+    color: var(--ink); padding-right: 14px; width: 1%; white-space: nowrap; }
+  .gabp-box td.x { color: var(--ink-3); }
+  .gabp-box .rhe { font-weight: 700; }
+  .gabp-box th.sep, .gabp-box td.sep { border-left: 1.5px solid var(--ink); }
+  .gabp-box thead th:last-child, .gabp-box tbody td:last-child,
+  .gabp-box thead th:nth-last-child(2), .gabp-box tbody td:nth-last-child(2),
+  .gabp-box thead th.sep, .gabp-box tbody td.sep { width: 26px; }
+  .gabp-box tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+  .gabp-box tbody tr.win td.tm { color: var(--red-bright); }
+
+  .feat-dec { display: flex; gap: 28px; margin-top: 11px; }
+  .feat-dec .di { display: flex; align-items: baseline; gap: 8px; }
+  .feat-dec .di .k { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .06em; color: var(--red-deep); }
+  .feat-dec .di .v { font-family: "Spectral", serif; font-size: 13px; color: var(--ink); }
+
+  /* footer river band */
+  .gabp-footwrap { flex: none; }
+  .gabp-foot { display: grid; grid-template-columns: repeat(6, 1fr);
+    border-top: 1.5px solid var(--ink); }
+  .gabp-foot .fcell { display: flex; align-items: center; gap: 10px; padding: 8px 14px;
+    border-left: 1px solid var(--rule); }
+  .gabp-foot .fcell:first-child { border-left: 0; padding-left: 0; }
+  .gabp-foot .ftxt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .gabp-foot .ftxt .k { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .gabp-foot .ftxt .v { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--ink); line-height: 1.08; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#E9E4D7"/>
+      <rect x="26" y="20" width="6" height="46" fill="#DDDCD8" stroke="#9D9E9F" stroke-width="1"/>
+      <rect x="26" y="16" width="6" height="5" fill="#C6011F"/>
+      <rect x="68" y="20" width="6" height="46" fill="#DDDCD8" stroke="#9D9E9F" stroke-width="1"/>
+      <rect x="68" y="16" width="6" height="5" fill="#C6011F"/>
+      <path d="M20 78 Q30 72 40 78 T60 78 T80 78" fill="none" stroke="#A9A08C" stroke-width="2"/>
+      <path d="M20 86 Q30 80 40 86 T60 86 T80 86" fill="none" stroke="#A9A08C" stroke-width="2"/>
+      <text x="50" y="58" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="30" fill="#B11E2A">R</text>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="gabp-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="gabp-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="gabp-spread.jsx"></script>
+  <script type="text/babel" src="gabp-app.jsx"></script>
+</body>
+</html>
