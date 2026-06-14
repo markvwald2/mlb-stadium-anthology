@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Target Field — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #23232a;
+    font-family: "Spectral", Georgia, serif;
+    color: #232019;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     TARGET FIELD — Blurb Large Landscape 13 x 11 in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264.
+     Center split x=1275. "The Urban Seam."
+     ---------------------------------------------------------------- */
+  .tf-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #232019;
+    --ink-2: #564E3F;
+    --ink-3: #8B8170;
+    --paper: #ECE4D1;
+    --paper-hi: #F4EDDC;
+    --paper-lo: #DCD0B6;
+    --rule: #C6BAA0;
+    --rule-strong: #A99B7E;
+    --navy: #002B5C;            /* Twins navy — accent */
+    --navy-deep: #001B3D;
+    --red: #C8102E;             /* Twins red — accent */
+    --gold: #9C7C36;            /* Kasota limestone gold — accent */
+    --limestone: #CDBE9A;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.40' intercept='0.62'/%3E%3CfeFuncG type='linear' slope='0.40' intercept='0.62'/%3E%3CfeFuncB type='linear' slope='0.40' intercept='0.62'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .tf-page { position: absolute; top: 0; height: 1088px; }
+  .tf-left  { left: 0; width: 1275px; background: #0F1620; overflow: hidden; }
+  .tf-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; }
+  .tf-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .40; mix-blend-mode: multiply; }
+
+  /* ---- Minnesota silhouette watermark behind the whole right page ---- */
+  .tf-mn-wm { position: absolute; z-index: 0; pointer-events: none;
+    left: 50%; top: 50%; transform: translate(-50%, -50%);
+    height: 89%; width: auto; opacity: .1; }
+  .tf-mn-wm path { fill: #5A5235; }
+  .tf-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.15); z-index: 30; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .tf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .tf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .tf-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(8,12,18,.50) 0%, rgba(8,12,18,0) 22%),
+      linear-gradient(0deg, rgba(8,11,16,.94) 0%, rgba(8,11,16,.66) 22%, rgba(8,11,16,.12) 42%, rgba(8,11,16,0) 54%); }
+
+  .tf-hero-logo { position: absolute; left: 60px; top: 52px; height: 104px; width: auto; z-index: 5;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,.5)); }
+  .tf-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
+    color: rgba(228,222,206,.62); text-transform: uppercase; }
+  .tf-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .34em;
+    color: rgba(228,222,206,.48); text-transform: uppercase; white-space: nowrap; }
+
+  .tf-roofline { position: absolute; left: 64px; right: 64px; top: 214px; z-index: 4;
+    display: flex; align-items: center; gap: 12px; opacity: .55; pointer-events: none; }
+  .tf-roofline .ln { flex: 1; height: 1px; background: rgba(228,222,206,.42); }
+  .tf-roofline .tk { width: 1px; height: 11px; background: rgba(228,222,206,.55); flex: none; }
+  .tf-roofline .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em;
+    color: rgba(228,222,206,.72); text-transform: uppercase; flex: none; }
+
+  .tf-hero-title { position: absolute; left: 58px; right: 58px; bottom: 150px; z-index: 5; }
+  .tf-name {
+    position: relative; margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 170px; line-height: .82; letter-spacing: .004em; text-transform: uppercase;
+    color: #F1EAD6; -webkit-text-fill-color: #F1EAD6; text-shadow: 0 4px 30px rgba(0,0,0,.5);
+  }
+  .tf-name::after {
+    content: attr(data-t); position: absolute; left: 0; top: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 240px 168px;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent; mix-blend-mode: multiply; opacity: .5;
+  }
+  .tf-sub { display: flex; align-items: center; gap: 18px; margin-top: 24px; }
+  .tf-sub .bullseye { height: 50px; width: auto; display: block; flex: none;
+    filter: drop-shadow(0 2px 9px rgba(0,0,0,.5)); }
+  .tf-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 30px;
+    letter-spacing: .3em; text-transform: uppercase; color: #E7B7BE; white-space: nowrap; }
+  .tf-coords { margin-top: 20px; display: flex; align-items: center; gap: 12px;
+    font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .08em;
+    color: rgba(228,222,206,.82); }
+  .tf-coords .dot { color: var(--gold); }
+
+  .tf-marks { position: absolute; left: 60px; bottom: 66px; z-index: 5;
+    display: flex; align-items: center; gap: 18px; white-space: nowrap; }
+  .tf-marks .mlb { height: 46px; width: auto; display: block; }
+  .tf-marks .al { height: 46px; width: auto; display: block; }
+  .tf-marks .divln { width: 1px; height: 30px; background: rgba(228,222,206,.34); }
+  .tf-marks .dv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 16px;
+    letter-spacing: .24em; text-transform: uppercase; color: #E7B7BE; }
+
+  /* ============ RIGHT PAGE / THE TWIN LEDGERS ============ */
+  /* Two structurally identical columns — STADIUM | VISIT — share a top
+     metadata ribbon and stand on a full-width STADIUM CONTEXT ground plane.
+     40px padding clears the 0.25in safe inset + gutter zone (content x>=1315). */
+  .tf-rp { position: absolute; inset: 0; padding: 38px 40px 40px 40px;
+    display: flex; flex-direction: column; z-index: 2; }
+
+  /* ---- top metadata ribbon — the bridge between the twins ---- */
+  .tf-ribbon { display: flex; align-items: stretch; flex: none;
+    border-top: 1.5px solid var(--navy); border-bottom: 1.5px solid var(--navy); }
+  .tf-ribbon .cell { flex: 1; padding: 8px 14px; border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
+  .tf-ribbon .cell:first-child { border-left: 0; padding-left: 2px; }
+  .tf-ribbon .cell.coords { flex: 1.3; }
+  .tf-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--red); white-space: nowrap; }
+  .tf-ribbon .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .015em; text-transform: uppercase; color: var(--ink); line-height: 1.12; }
+  .tf-ribbon .rv.withlogo { display: flex; align-items: center; gap: 7px; }
+  .tf-ribbon .rib-mk { height: 21px; width: auto; display: block; flex: none; }
+  .tf-ribbon .cell.coords .rv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    letter-spacing: 0; white-space: nowrap; }
+
+  /* ---- the twin ledgers ---- */
+  .tf-ledgers { position: relative; flex: 1 1 auto; min-height: 0;
+    display: grid; grid-template-columns: 1fr 1fr; padding: 16px 0 18px; }
+  .tf-ledger { display: flex; flex-direction: column; min-width: 0; }
+  .tf-ledger.stadium { padding-right: 38px; }
+  .tf-ledger.visit { padding-left: 38px; }
+
+  /* center datum — a thin Kasota-gold architectural joint, like a masonry
+     expansion joint / rail alignment, dividing the twins without weight. */
+  .tf-datum { position: absolute; top: 2px; bottom: 2px; left: 50%; width: 5px;
+    transform: translateX(-50%); pointer-events: none; }
+  .tf-datum::before, .tf-datum::after { content: ""; position: absolute; top: 0; bottom: 0;
+    width: 1px; background: var(--gold); opacity: .5; }
+  .tf-datum::before { left: 0; }
+  .tf-datum::after { right: 0; }
+
+  /* ---- Target bullseye: a quiet limestone-gold keystone on the axis of
+         symmetry, riding the central seam between the twin ledgers ---- */
+  .tf-axis-mark { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle, var(--paper) 54%, rgba(236,228,209,0) 70%);
+    z-index: 3; pointer-events: none; }
+  .tf-axis-mark .bull { width: 19px; height: 19px; background: var(--red); opacity: 1;
+    -webkit-mask: url("assets/target-bullseye.svg") center / contain no-repeat;
+            mask: url("assets/target-bullseye.svg") center / contain no-repeat; }
+
+  /* ---- the twin column labels ---- */
+  .tf-ledger-h { display: flex; align-items: baseline; gap: 12px;
+    padding-bottom: 7px; margin-bottom: 15px; border-bottom: 2px solid var(--navy); }
+  .tf-ledger-h .lbl { font-family: "Anton", sans-serif; font-weight: 400; font-size: 33px;
+    line-height: .86; letter-spacing: .015em; text-transform: uppercase; color: var(--navy); }
+  .tf-ledger-h .idx { font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
+
+  /* ---- twin photo grids: full 4:3-ish frames that fill the upper column,
+         no captions (book rule), identical across both ledgers ---- */
+  .tf-pgrid { flex: none; height: 360px; display: grid;
+    grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; margin: 0 0 15px; }
+  .tf-pcell { position: relative; min-width: 0; min-height: 0; }
+  .tf-pgrid image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    border: 1px solid var(--rule-strong); outline: 1px solid rgba(0,43,92,.16); outline-offset: -3px; }
+
+  /* ---- stadium data: facts table beside the (untitled) field diagram,
+         centred in the column space below the grid ---- */
+  .tf-sd { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1fr 0.7fr;
+    column-gap: 22px; align-items: start; align-content: start; }
+  .tf-sd-facts { min-width: 0; }
+  .tf-sd .tf-fieldfig { margin: 0; width: 100%; align-self: center; }
+  .tf-sd .tf-fieldfig .fd-svg { width: 100%; max-width: 215px; }
+
+  .tf-block { display: flex; flex-direction: column; }
+  .tf-block.plate { margin-top: 16px; }
+
+  /* ---- section sub-head on a hairline ---- */
+  .tf-h { display: flex; align-items: baseline; gap: 9px; padding-bottom: 5px; margin-bottom: 9px;
+    border-bottom: 1.5px solid var(--navy); }
+  .tf-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .tf-h.red .t { color: var(--red); }
+  .tf-h .n { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
+
+  /* ---- fact tables ---- */
+  .tf-facts { display: flex; flex-direction: column; }
+  .tf-frow { display: grid; grid-template-columns: 116px 1fr; gap: 10px; align-items: start;
+    padding: 2.5px 0; border-bottom: 1px solid var(--rule); }
+  /* stadium facts breathe to fill the column space beneath them */
+  .tf-sd-facts .tf-frow { padding: 5.5px 0; }
+  .tf-frow:last-child { border-bottom: 0; }
+  .tf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--ink-3); line-height: 1.3; }
+  .tf-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .tf-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.2; white-space: pre-line; }
+  .tf-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10.5px;
+    color: var(--ink-2); line-height: 1.26; }
+
+  /* visit information: a two-column filing grid; keys read in Twins red ---- */
+  .tf-block.visitinfo .tf-facts { display: grid; grid-template-columns: 1fr 1fr; column-gap: 26px; }
+  .tf-block.visitinfo .tf-frow { grid-template-columns: 84px 1fr; }
+  .tf-block.visitinfo .tf-frow .k { color: var(--red); font-weight: 600; }
+
+  /* ---- conditions: a 2×2 cluster of typographic instrument gauges (no icons) ---- */
+  .tf-wx { margin-top: 13px; }
+  .tf-wx-h { display: flex; align-items: baseline; gap: 9px; margin-bottom: 3px; }
+  .tf-wx-h .lbl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .tf-wx-h .n { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
+  .tf-wx-row { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 18px; }
+  .tf-wcell { display: flex; flex-direction: column; gap: 3px; min-width: 0;
+    padding-top: 8px; border-top: 1px solid var(--rule); }
+  .tf-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 18px; color: var(--ink);
+    line-height: 1; white-space: nowrap; }
+  .tf-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--ink-3); }
+
+  /* ---- field dimensions plate ---- */
+  .tf-fieldfig { margin: 4px 0 0; display: flex; flex-direction: column; align-items: center; }
+  .tf-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .tf-fieldfig .fd-svg { width: 184px; height: auto; max-width: 100%; display: block; }
+  .tf-fieldfig figcaption { margin-top: 2px; font-family: "Space Mono", monospace; font-size: 9px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* ---- line score ---- */
+  .tf-scorewrap { margin-top: 2px; }
+  .tf-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; table-layout: fixed; }
+  .tf-box th, .tf-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 2.5px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .tf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10px; border-bottom: 1.5px solid var(--navy); }
+  .tf-box td.tm, .tf-box th.tm { text-align: left; font-weight: 700; font-size: 12px; letter-spacing: .06em;
+    padding-right: 9px; width: 56px; white-space: nowrap; }
+  .tf-box .rcol { font-weight: 700; }
+  .tf-box td.sc { color: var(--red); font-weight: 700; }
+  .tf-box .hecol { color: var(--ink-2); }
+  .tf-box th.sep, .tf-box td.sep { border-left: 1.5px solid var(--navy); }
+  .tf-box thead th:last-child, .tf-box tbody td:last-child,
+  .tf-box thead th:nth-last-child(2), .tf-box tbody td:nth-last-child(2),
+  .tf-box thead th.sep, .tf-box tbody td.sep { width: 26px; }
+  .tf-box tbody tr.win td { color: var(--navy-deep); }
+  .tf-box tbody tr.win td.sc { color: var(--red); }
+  .tf-box tbody tr:last-child td { border-bottom: 1.5px solid var(--navy); }
+
+  /* ---- decisions ---- */
+  .tf-dec { margin-top: 8px; display: flex; flex-direction: column; gap: 2px; }
+  .tf-dec p { margin: 0; font-family: "Spectral", serif; font-size: 11.5px; color: var(--ink); }
+  .tf-dec .decline { line-height: 1.5; }
+  .tf-dec .decline .vs { font-style: italic; color: var(--ink-3); }
+  .tf-dec .decline b { min-width: 0; display: inline; margin: 0 2px; }
+  .tf-dec p b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: .05em;
+    color: var(--red); display: inline-block; min-width: 18px; }
+  .tf-dec p i { font-style: italic; }
+  .tf-dec p.sp { color: var(--ink-2); }
+  .tf-dec p.sp b { color: var(--ink-3); }
+
+  /* ---- shared ground plane — STADIUM CONTEXT supports both twins ---- */
+  .tf-context { flex: none; border-top: 2px solid var(--navy); padding-top: 11px; }
+  .tf-context .tf-h { border-bottom: 0; padding-bottom: 0; margin-bottom: 10px; }
+  .tf-prose4 { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 26px; }
+  .tf-prose4 p { margin: 0; font-family: "Spectral", serif; font-size: 11.5px; line-height: 1.5;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .tf-prose4 p:first-child::first-letter { font-family: "Anton", sans-serif; font-weight: 400;
+    float: left; font-size: 38px; line-height: .72; padding: 4px 7px 0 0; color: var(--red); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#ECE4D1"/>
+      <g stroke="#002B5C" fill="none" stroke-width="2.4" stroke-linecap="round">
+        <path d="M14 70 L86 58"/>
+        <path d="M14 78 L86 66"/>
+        <path d="M30 32 A 26 26 0 0 1 70 32" stroke-width="2.8"/>
+        <path d="M40 24 L40 86 M60 22 L60 84" opacity="0.5"/>
+      </g>
+      <circle cx="50" cy="46" r="4" fill="#C8102E"/>
+      <rect x="34" y="14" width="32" height="4" rx="1" fill="#9C7C36"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="target-field-data.js"></script>
+  <script src="mn-outline.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="target-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="target-field-spread.jsx"></script>
+  <script type="text/babel" src="target-field-app.jsx"></script>
+</body>
+</html>
