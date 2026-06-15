@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>T-Mobile Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #23232a;
+    font-family: "Spectral", Georgia, serif;
+    color: #23211C;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     T-MOBILE PARK — Blurb Large Landscape 13 x 11 in spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264.
+     Center split x=1275. "Shelter Without Walls" — the page is roof bays
+     beneath a retractable steel canopy. Northwest Green + Navy + Silver.
+     ---------------------------------------------------------------- */
+  .tm-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #23211C;
+    --ink-2: #514B40;
+    --ink-3: #857C6B;
+    --paper: #EAE3D3;
+    --paper-hi: #F3ECDC;
+    --paper-lo: #DCD2BC;
+    --rule: #C6BBA3;
+    --rule-strong: #A99C80;
+    --navy: #0C2C56;
+    --navy-deep: #06203F;
+    --green: #0E5650;
+    --green-hi: #1C766D;
+    --steel: #7E878D;
+    --steel-deep: #525A60;
+    --silver: #AEB6BB;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.40' intercept='0.62'/%3E%3CfeFuncG type='linear' slope='0.40' intercept='0.62'/%3E%3CfeFuncB type='linear' slope='0.40' intercept='0.62'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .tm-page { position: absolute; top: 0; height: 1088px; }
+  .tm-left  { left: 0; width: 1275px; background: #0C1E22; overflow: hidden; }
+  .tm-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; }
+  .tm-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .34; mix-blend-mode: multiply; }
+  .tm-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.14); z-index: 30; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .tm-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .tm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .tm-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(8,16,18,.50) 0%, rgba(8,16,18,0) 22%),
+      linear-gradient(0deg, rgba(7,14,16,.95) 0%, rgba(7,14,16,.70) 21%, rgba(7,14,16,.14) 42%, rgba(7,14,16,0) 54%); }
+
+  .tm-hero-logo { position: absolute; left: 58px; top: 52px; height: 100px; width: auto; z-index: 5;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,.55)); }
+  .tm-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
+    color: rgba(214,222,224,.62); text-transform: uppercase; }
+  .tm-spine { position: absolute; left: 38px; top: 50%; z-index: 5;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .34em;
+    color: rgba(214,222,224,.46); text-transform: uppercase; white-space: nowrap; }
+
+  .tm-roofline { position: absolute; left: 60px; right: 60px; top: 206px; z-index: 4;
+    display: flex; align-items: center; gap: 12px; opacity: .55; pointer-events: none; }
+  .tm-roofline .ln { flex: 1; height: 1px; background: rgba(214,222,224,.42); }
+  .tm-roofline .tk { width: 1px; height: 11px; background: rgba(214,222,224,.55); flex: none; }
+  .tm-roofline .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .3em;
+    color: rgba(220,228,228,.78); text-transform: uppercase; flex: none; }
+
+  .tm-hero-title { position: absolute; left: 56px; right: 56px; bottom: 184px; z-index: 5; }
+  .tm-name {
+    margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 138px; line-height: .82; letter-spacing: .006em; text-transform: uppercase;
+    color: #F2ECDC; -webkit-text-fill-color: #F2ECDC; text-shadow: 0 4px 30px rgba(0,0,0,.5);
+  }
+  .tm-sub { display: flex; align-items: center; gap: 18px; margin-top: 26px; }
+  .tm-sub .bar { width: 56px; height: 3px; background: var(--green-hi); flex: none; }
+  .tm-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 30px;
+    letter-spacing: .3em; text-transform: uppercase; color: #BFD7D2; white-space: nowrap; }
+
+  /* engineering-annotation metadata stack */
+  .tm-annot { position: absolute; right: 62px; bottom: 196px; z-index: 5;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 12px; text-align: right; }
+  .tm-annot-row { display: flex; align-items: baseline; gap: 12px; }
+  .tm-annot-row .al { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .22em; text-transform: uppercase; color: rgba(191,215,210,.78); }
+  .tm-annot-row .av { font-family: "Space Mono", monospace; font-weight: 700; font-size: 17px;
+    letter-spacing: .02em; color: #ECE6D8; }
+
+  .tm-marks { position: absolute; left: 58px; bottom: 70px; z-index: 5;
+    display: flex; align-items: center; gap: 18px; white-space: nowrap; }
+  .tm-marks .mlb { height: 44px; width: auto; display: block; }
+  .tm-marks .al { height: 50px; width: auto; display: block; filter: drop-shadow(0 1px 4px rgba(0,0,0,.4)); }
+  .tm-marks .divln { width: 1px; height: 30px; background: rgba(214,222,224,.32); }
+  .tm-marks .dv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 16px;
+    letter-spacing: .22em; text-transform: uppercase; color: #BFD7D2; }
+
+  /* ============ RIGHT PAGE — THE ROOF BAYS ============ */
+  .tm-armature { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 0; pointer-events: none; }
+
+  /* ---- section eyebrow on a hairline ---- */
+  .tm-h { display: flex; align-items: baseline; gap: 9px; padding-bottom: 5px; margin-bottom: 7px;
+    border-bottom: 1px solid var(--rule-strong); }
+  .tm-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .tm-h.green .t { color: var(--green); }
+  .tm-h .n { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
+
+  /* ---- top photo strip (roof bays / structural observations) ---- */
+  .tm-strip { position: absolute; left: 37.5px; top: 37px; width: 1200px; height: 128px; z-index: 6;
+    display: flex; gap: 5px; background: var(--steel-deep); padding: 5px;
+    box-shadow: 0 4px 14px rgba(20,18,12,.22); outline: 1px solid var(--steel-deep); }
+  .tm-plate { flex: 1 1 0; margin: 0; position: relative; min-width: 0; }
+  .tm-plate image-slot { display: block; width: 100%; height: 100%; }
+
+  /* ---- identity / classification — the main canopy track ---- */
+  .tm-identity { position: absolute; left: 37.5px; top: 166px; width: 1200px; z-index: 6;
+    display: flex; align-items: stretch;
+    border-top: 1.5px solid var(--navy); border-bottom: 1.5px solid var(--navy);
+    background: linear-gradient(0deg, rgba(220,210,188,.42), rgba(243,236,220,.82)); }
+  .tm-id-mark { flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
+    padding: 6px 14px 6px 6px; position: relative; }
+  .tm-id-mark::after { content: ""; position: absolute; right: 0; top: 10px; bottom: 10px; width: 3px; background: var(--green); }
+  .tm-id-mark img { height: 48px; width: auto; display: block; }
+  .tm-id-cell { flex: 1 1 0; min-width: 0; padding: 7px 12px; border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center; gap: 3px; }
+  .tm-id-cell .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--green); white-space: nowrap; }
+  .tm-id-cell .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11.8px;
+    letter-spacing: .01em; text-transform: uppercase; color: var(--ink); line-height: 1.08; }
+
+  /* ---- heavy truss section rule ---- */
+  .tm-sec-rule { position: absolute; left: 37.5px; width: 1200px; z-index: 6;
+    display: flex; align-items: baseline; gap: 14px;
+    border-bottom: 2.5px solid var(--navy); padding-bottom: 5px; }
+  .tm-sec-rule .lbl { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 15px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--navy); }
+  .tm-sec-rule .sub { font-family: "Spectral", serif; font-style: italic; font-size: 13px; color: var(--ink-2); }
+  .tm-sec-rule.tm-sec-stadium { top: 240px; }
+  .tm-sec-rule .lbl::before { content: ""; display: inline-block; width: 18px; height: 9px;
+    margin-right: 11px; border: 1.5px solid var(--green); border-bottom: none; vertical-align: middle; }
+
+  /* ---- data shelf: 3 roof bays ---- */
+  .tm-shelf { position: absolute; left: 37.5px; top: 274px; width: 1200px; height: 208px; z-index: 6;
+    display: grid; grid-template-columns: 318px 322px 1fr; }
+  .tm-bay { padding: 0 22px; }
+  .tm-bay.b1 { padding-left: 0; }
+  .tm-bay.b2 { border-left: 1px solid var(--rule); }
+  .tm-bay.b3 { border-left: 1px solid var(--rule); padding-right: 0; }
+
+  .tm-facts { display: flex; flex-direction: column; }
+  .tm-frow { display: grid; grid-template-columns: 90px 1fr; gap: 9px; align-items: baseline;
+    padding: 1.8px 0; border-bottom: 1px solid var(--rule); }
+  .tm-frow:last-child { border-bottom: 0; }
+  .tm-facts.tight .tm-frow { padding: 2.6px 0; }
+  .tm-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .tm-frow .v { display: flex; flex-direction: column; gap: 0px; min-width: 0; }
+  .tm-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 11.5px; color: var(--ink); line-height: 1.18; }
+  .tm-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10px;
+    color: var(--ink-2); line-height: 1.2; }
+
+  .tm-namehist { margin-top: 7px; padding-top: 6px; border-top: 1.5px solid var(--navy); }
+  .tm-namehist .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--green); margin-bottom: 2px; }
+  .tm-namehist .val { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .01em;
+    text-transform: uppercase; color: var(--navy); line-height: 1.2; }
+  .tm-reno { margin-top: 6px; font-family: "Spectral", serif; font-style: italic; font-size: 10px;
+    line-height: 1.3; color: var(--ink-2); }
+
+  /* bay 3 — field instrument + affiliation + tags */
+  /* bay 3 — field instrument + affiliation, both filling the band to a shared baseline */
+  .tm-b3-top { display: grid; grid-template-columns: 212px 1fr; column-gap: 18px; align-items: stretch; height: 100%; }
+  .tm-field { display: flex; flex-direction: column; height: 100%; }
+  .tm-field .tm-h { justify-content: center; }
+  .tm-fieldfig { flex: 1; margin: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
+  .tm-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .tm-fieldfig .fd-svg { width: 172px; height: auto; max-width: 100%; display: block; }
+
+  .tm-marks-r { display: flex; flex-direction: column; height: 100%; }
+  .tm-marks-body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0 1px; }
+  .tm-marks-row { display: flex; align-items: center; gap: 18px; }
+  .tm-marks-row img { height: 50px; width: auto; display: block; }
+  .tm-marks-row img.mlb { height: 37px; }
+  .tm-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tm-tag { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--steel-deep); border: 1px solid var(--rule-strong);
+    background: rgba(255,255,255,.34); padding: 4px 9px; }
+  .tm-class { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--ink-3); line-height: 1.4; padding-top: 8px;
+    border-top: 1px solid var(--rule); }
+
+  /* ---- unified Stadium Context — full-width 3-bay text field ---- */
+  .tm-context { position: absolute; left: 37.5px; top: 490px; width: 1200px; height: 382px; z-index: 6;
+    display: flex; flex-direction: column; overflow: hidden; }
+  .tm-context .tm-h { border-bottom-color: var(--navy); border-bottom-width: 1.5px; }
+  .tm-prose { margin-top: 8px; flex: 1; min-height: 0;
+    column-count: 3; column-gap: 36px; column-rule: 1px solid var(--rule); }
+  .tm-prose p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 11.4px; line-height: 1.46;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .tm-prose p:first-of-type::first-letter { font-family: "Anton", sans-serif; font-weight: 400;
+    float: left; font-size: 46px; line-height: .76; padding: 5px 8px 0 0; color: var(--green); }
+  .tm-prose p:last-child { margin-bottom: 0; }
+
+  /* ============ VISIT SECTION ============ */
+  .tm-visit { position: absolute; left: 37.5px; top: 878px; width: 1200px; bottom: 38px; z-index: 6;
+    border-top: 2.5px solid var(--green); padding-top: 0; }
+  .tm-visit-head { display: flex; align-items: baseline; gap: 14px; padding: 4px 0 4px; margin-bottom: 5px;
+    border-bottom: 1px solid var(--rule-strong); }
+  .tm-visit-head .tag { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--paper-hi); background: var(--green); padding: 4px 11px; }
+  .tm-visit-head .ttl { font-family: "Anton", sans-serif; font-weight: 400; font-size: 23px; letter-spacing: .01em;
+    text-transform: uppercase; color: var(--navy); line-height: 1; white-space: nowrap; }
+  .tm-visit-head .meta { font-family: "Space Mono", monospace; font-size: 10.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-2); margin-left: auto; }
+
+  .tm-visit-grid { display: grid; grid-template-columns: 1fr 1fr 1.55fr; column-gap: 26px; align-items: start; }
+  .tm-vcol.pitch { border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); padding: 0 22px; }
+  .tm-vcol.score { padding-left: 4px; padding-right: 10px; }
+
+  .tm-pitch .match { margin: 0 0 4px; font-family: "Spectral", serif; font-size: 11.5px; color: var(--ink);
+    line-height: 1.18; }
+  .tm-pitch .match em { font-family: "Space Mono", monospace; font-style: normal; font-size: 10px;
+    letter-spacing: .04em; color: var(--green); font-weight: 700; }
+  .tm-pitch .match .vs { font-style: italic; color: var(--ink-3); }
+  .tm-pitch .dec { margin: 0; font-family: "Spectral", serif; font-size: 11.5px; color: var(--ink); line-height: 1.18; }
+  .tm-pitch .dec b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: .04em;
+    color: var(--navy); }
+  .tm-pitch .dec i { font-style: italic; }
+  .tm-pitch .dec .sp { color: var(--rule-strong); }
+  .tm-cond { margin-top: 5px; padding-top: 5px; border-top: 1px solid var(--rule);
+    font-family: "Spectral", serif; font-style: italic; font-size: 9.5px; line-height: 1.28; color: var(--ink-2); }
+
+  /* line score — the dominant object, in a navy-framed scorecard */
+  .tm-vcol.score .tm-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif;
+    margin-top: 2px; }
+  .tm-box th, .tm-box td { text-align: center; font-size: 13px; font-weight: 400; padding: 2px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .tm-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10.5px; border-bottom: 1.5px solid var(--navy); }
+  .tm-box td.tm, .tm-box th.tm { text-align: left; font-weight: 700; font-size: 13px; letter-spacing: .07em;
+    padding-right: 10px; width: 1%; white-space: nowrap; color: var(--navy); }
+  .tm-box .rcol { font-weight: 700; font-size: 14px; }
+  .tm-box .hecol { color: var(--ink-2); }
+  .tm-box th.sep, .tm-box td.sep { border-left: 1.5px solid var(--navy); padding-left: 8px; }
+  .tm-box thead th:last-child, .tm-box tbody td:last-child,
+  .tm-box thead th:nth-last-child(2), .tm-box tbody td:nth-last-child(2),
+  .tm-box thead th.sep, .tm-box tbody td.sep { width: 26px; }
+  .tm-box tbody tr.win td { color: var(--green); font-weight: 700; }
+  .tm-box tbody tr.win td.tm { color: var(--green); }
+  .tm-box tbody tr:last-child td { border-bottom: 1.5px solid var(--navy); }
+  .tm-gcap { display: flex; align-items: center; gap: 9px; margin-top: 5px;
+    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .tm-gcap .sp { color: var(--rule-strong); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#EAE3D3"/>
+      <g stroke="#0C2C56" fill="none" stroke-width="2.2">
+        <path d="M12 44 A 46 46 0 0 1 88 44"/>
+        <path d="M16 52 A 40 40 0 0 1 84 52"/>
+        <path d="M20 60 A 34 34 0 0 1 80 60"/>
+        <path d="M50 30 L50 60 M30 33 L33 60 M70 33 L67 60"/>
+      </g>
+      <circle cx="50" cy="74" r="9" fill="none" stroke="#0E5650" stroke-width="2.4"/>
+      <path d="M44 70 Q50 74 56 70 M44 78 Q50 74 56 78" stroke="#0E5650" stroke-width="1.4" fill="none"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="tmobile-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="tmobile-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="tmobile-spread.jsx"></script>
+  <script type="text/babel" src="tmobile-app.jsx"></script>
+</body>
+</html>

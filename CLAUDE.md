@@ -79,15 +79,26 @@ get re-corrected most often, so treat them as hard constraints, not preferences.
 5. **Standard spread structure** (unless the user asks for a different type):
    left page = full-bleed stadium hero with a compact title/city block, photo
    stays dominant; right page = organized editorial/data page with a Stadium
-   Section and a Visit Section. Common modules: metadata ribbon, image strip,
-   stadium facts, construction/timeline, field dimensions/gameplay, visit/featured
-   game, weather, historical context, site/setting.
+   Section and a Visit Section. Common modules may include: metadata, supporting
+   images, stadium facts, construction/lifecycle data, field dimensions, visit/featured
+   game, weather, historical context, and site/setting. These modules may be
+   arranged in any stadium-specific structure that keeps Stadium and Visit content distinct.
 6. **Never caption photos.** Photo `<image-slot>` plates carry NO visible
    caption / figcaption / label of any kind — neither on hero nor editorial
    images. Photos read on their own. (The `placeholder` text inside an empty slot
    is fine — it is drop guidance, not a caption, and disappears once filled.)
    Diagram figures like the field plan keep their existing labels; this rule is
    about photographs only.
+7. **Vary the page architecture.** The required Stadium Section and Visit Section
+   are content zones, not a fixed visual template. Do not default to a top photo
+   strip, horizontal fact ribbon, large prose block, and bottom visit box unless
+   the stadium-specific concept truly calls for it. For each ballpark, derive the
+   right-page architecture from the stadium's own form, site, era, materials, or
+   field geometry: facade bays, rotunda arches, roof trusses, bowl geometry,
+   scoreboard hierarchy, civic grid, transit/site-plan logic, masonry blocks,
+   vertical columns, radial systems, or asymmetrical image/data placement. The
+   spread should still be readable, print-safe, and data-complete, but the
+   composition should not feel reusable by swapping only photos, colors, and names.
 
 ## Per-spread file pattern
 Each ballpark is a cluster of files: `<name>-data.js`, `<name>-spread.jsx` (or

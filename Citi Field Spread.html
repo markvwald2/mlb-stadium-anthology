@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Citi Field — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #23252A;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================================================================
+     Citi Field — "The Rotunda Grid"
+     Blurb Large Landscape 13x11in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Fold x=1275. Export 3x = 300 DPI.
+     ================================================================ */
+  .cf-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --ink: #23252A;            /* granite charcoal */
+    --ink-2: #5A5447;          /* warm gray ink */
+    --ink-3: #8B826C;          /* label gray */
+    --paper: #EAE2D0;          /* limestone cream paper */
+    --paper-hi: #F3EDDD;
+    --paper-lo: #DED4BC;
+    --rule: #D2C9B2;
+    --rule-strong: #B6AB90;
+    --brick: #9A3B28;          /* Citi brick red */
+    --brick-deep: #7A2E1E;
+    --limestone: #C9BD9E;      /* limestone trim */
+    --granite: #2D3036;        /* granite / graphite datum */
+    --granite-2: #3D424B;
+    --granite-pale: #CFC9BC;   /* light text on granite */
+    --blue: #16438F;           /* Mets royal blue — restrained accent */
+    --blue-deep: #0E2F6B;
+    --orange: #E8551E;         /* Mets orange — restrained accent */
+    --orange-deep: #C7440F;
+    --black: #141312;          /* warm-dark hero */
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.4' intercept='0.66'/%3E%3CfeFuncG type='linear' slope='0.4' intercept='0.66'/%3E%3CfeFuncB type='linear' slope='0.4' intercept='0.66'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision; font-kerning: normal;
+  }
+
+  .cf-page { position: absolute; top: 0; height: 1088px; }
+  .cf-left  { left: 0; width: 1275px; background: var(--black); overflow: hidden; }
+  .cf-right { left: 1275px; width: 1275px; background: var(--paper); }
+  .cf-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .4; mix-blend-mode: multiply; }
+  .cf-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px; background: rgba(0,0,0,.16); z-index: 6; pointer-events: none; }
+
+  /* ===================== LEFT / HERO ===================== */
+  .cf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .cf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .cf-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(14,12,10,.46) 0%, rgba(14,12,10,0) 26%),
+      linear-gradient(0deg, rgba(14,12,10,.94) 0%, rgba(14,12,10,.74) 16%, rgba(14,12,10,.18) 40%, rgba(14,12,10,0) 56%); }
+  /* faint civic / rail-alignment grid over the image */
+  .cf-hero-grid { position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0 71px, rgba(234,226,208,.05) 71px 72px),
+      repeating-linear-gradient(90deg, transparent 0 71px, rgba(234,226,208,.05) 71px 72px);
+    -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.15) 48%, transparent 64%);
+    mask-image: linear-gradient(0deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.15) 48%, transparent 64%); }
+
+  .cf-bracket { position: absolute; z-index: 5; width: 44px; height: 44px; }
+  .cf-bracket.tl { top: 46px; left: 46px; border-top: 2px solid var(--orange); border-left: 2px solid var(--orange); }
+
+  .cf-hero-folio { position: absolute; left: 96px; top: 52px; z-index: 5;
+    display: flex; align-items: center; gap: 13px;
+    font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .26em;
+    color: rgba(234,226,208,.72); text-transform: uppercase; }
+  .cf-hero-folio .tick { width: 26px; height: 2px; background: var(--orange); }
+
+  /* hero title — carved-stone civic signage (subway-era condensed proportions) */
+  .cf-hero-plate { position: absolute; left: 60px; bottom: 182px; z-index: 5; max-width: 1120px; }
+  .cf-hero-eyebrow { font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .24em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+  .cf-hero-name { margin: 0; font-family: "Oswald", sans-serif; font-weight: 600;
+    text-transform: uppercase; line-height: .86; letter-spacing: .05em; font-size: 134px;
+    color: #EFE9D8; text-shadow: 0 1px 0 rgba(0,0,0,.5), 0 3px 24px rgba(0,0,0,.45); white-space: nowrap; }
+  .cf-hero-rule { position: relative; height: 2px; background: rgba(234,226,208,.36); margin: 22px 0 14px; }
+  .cf-hero-rule .arch { position: absolute; left: 0; bottom: 0; width: 84px; height: 18px;
+    border: 2px solid var(--orange); border-bottom: 0; border-radius: 42px 42px 0 0; }
+  .cf-hero-sub { display: block; white-space: nowrap;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 22px; letter-spacing: .2em;
+    text-transform: uppercase; }
+  .cf-hero-sub .city { color: #EAE2D0; }
+  .cf-hero-sub .midf { color: rgba(234,226,208,.4); margin: 0 18px; letter-spacing: 0; }
+  .cf-hero-sub .est { color: rgba(234,226,208,.62); font-size: 16px; letter-spacing: .18em; }
+  .cf-hero-sub .est em { font-style: normal; color: var(--orange); }
+
+  /* hero marks + colophon */
+  .cf-hero-marks { position: absolute; left: 64px; bottom: 52px; z-index: 5;
+    display: flex; align-items: center; gap: 20px; }
+  .cf-hero-marks .cap { height: 60px; width: auto; display: block; }
+  .cf-hero-marks .mlb { height: 27px; width: auto; display: block; opacity: .92; }
+  .cf-hero-colophon { position: absolute; left: 240px; bottom: 60px; z-index: 5;
+    display: flex; align-items: center; gap: 14px;
+    font-family: "Space Mono", monospace; font-size: 12.5px; letter-spacing: .05em;
+    color: rgba(234,226,208,.74); }
+  .cf-hero-colophon .dot { color: var(--orange); font-size: 9px; }
+  .cf-hero-colophon .hl { font-style: normal; color: var(--orange); }
+
+  /* ===================== RIGHT PAGE ===================== */
+  .cf-rp { position: absolute; inset: 0; padding: 32px 40px; display: flex; flex-direction: column;
+    gap: 11px; z-index: 2; }
+
+  /* arched photo arcade (rotunda bays) */
+  .cf-arcade { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; flex: none; }
+  .cf-bay { position: relative; }
+  .cf-bay-frame { position: relative; height: 64px; overflow: hidden;
+    border: 2px solid var(--brick); background: var(--paper-lo);
+    border-radius: 50% 50% 4px 4px / 34% 34% 0 0;
+    box-shadow: inset 0 0 0 3px var(--paper-hi); }
+  .cf-bay-frame image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .cf-bay-key { position: absolute; top: -7px; left: 50%; transform: translateX(-50%); z-index: 3;
+    width: 18px; height: 13px; background: var(--limestone); border: 1.5px solid var(--brick-deep);
+    border-radius: 3px 3px 0 0; }
+
+  /* limestone metadata datum ribbon (granite band) */
+  .cf-ribbon { display: flex; align-items: stretch; flex: none; background: var(--granite);
+    border-top: 1px solid rgba(234,226,208,.14); border-bottom: 4px solid #14161A; }
+  .cf-rc { flex: 1 1 auto; padding: 9px 18px; border-left: 1px solid rgba(234,226,208,.14);
+    display: flex; flex-direction: column; justify-content: center; gap: 3px; min-width: 0; }
+  .cf-rc:first-child { border-left: 0; }
+  .cf-rc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--granite-pale); white-space: nowrap; }
+  .cf-rc .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .04em;
+    text-transform: uppercase; color: #F2ECDC; line-height: 1.06; white-space: nowrap; }
+  .cf-rc .v.mono { font-family: "Space Mono", monospace; font-weight: 400; font-size: 12px; letter-spacing: 0;
+    text-transform: none; }
+  .cf-rc .v.big { font-size: 23px; }
+  .cf-rc.brand { flex: 0 0 auto; flex-direction: row; align-items: center; gap: 14px; padding-left: 20px; padding-right: 24px; }
+  .cf-rc.brand .cap { height: 48px; width: auto; display: block; flex: none; }
+  .cf-rc.brand .id { display: flex; flex-direction: column; gap: 2px; }
+  .cf-rc.brand .team { font-family: "Anton", sans-serif; font-weight: 400; font-size: 18px;
+    letter-spacing: .01em; text-transform: uppercase; color: #F2ECDC; line-height: 1; white-space: nowrap; }
+  .cf-rc.brand .sub { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10.5px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--granite-pale); line-height: 1.32; white-space: nowrap; }
+  .cf-rc.vo { flex: 1 1 auto; }
+  .cf-rc.asg { flex: 1 1 auto; }
+  .cf-rc.status { flex: 1 1 auto; }
+  .cf-rc.status .v { color: var(--orange); }
+  .cf-rc.vo .v { color: var(--orange); white-space: nowrap; }
+  .cf-rc.cap-cell { flex: 1 1 auto; }
+
+  /* ===================== ZONE HEADERS ===================== */
+  .cf-zoneh { display: flex; align-items: center; gap: 14px; margin-bottom: 13px; }
+  .cf-zoneh .key { flex: none; width: 34px; height: 34px; background: var(--brick); color: #F3EDDD;
+    border-radius: 2px; display: flex; align-items: center; justify-content: center;
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .06em;
+    box-shadow: inset 0 0 0 2px rgba(243,237,221,.2), inset 0 -3px 0 rgba(0,0,0,.18); }
+  .cf-zoneh .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .24em;
+    text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+  .cf-zoneh .arch { flex: 1; height: 0; border-bottom: 2px solid var(--ink); }
+  .cf-interlock { position: relative; flex: none; width: 18px; height: 18px; display: inline-block; }
+  .cf-interlock .v { position: absolute; left: 8px; top: 0; width: 2px; height: 18px; background: var(--blue); }
+  .cf-interlock .h { position: absolute; top: 8px; left: 0; width: 18px; height: 2px; background: var(--orange); }
+
+  .cf-modh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--brick); padding-bottom: 6px; margin-bottom: 9px;
+    border-bottom: 1px solid var(--rule-strong); }
+  .cf-modh.sm { font-size: 10.5px; }
+
+  /* ===================== STADIUM SECTION ===================== */
+  .cf-zone { display: flex; flex-direction: column; min-height: 0; }
+  .cf-zone.stadium { flex: 1; min-height: 0; }
+  .cf-stadium-cols { flex: 1; display: grid; grid-template-columns: 0.72fr 0.9fr 1.52fr; min-height: 0; }
+  .cf-stadium-cols > div { padding: 0 24px; border-left: 1px solid var(--rule); }
+  .cf-stadium-cols > div:first-child { padding-left: 0; border-left: 0; }
+  .cf-stadium-cols > div:last-child { padding-right: 0; }
+
+  .cf-table { display: flex; flex-direction: column; }
+  .cf-row { display: grid; grid-template-columns: 1fr; gap: 1px; padding: 2px 0;
+    border-bottom: 1px solid var(--rule); }
+  .cf-row:last-child { border-bottom: 0; }
+  .cf-row .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .cf-row .v { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink); line-height: 1.28; }
+
+  .cf-arch-col .cf-arch { display: flex; flex-direction: column; gap: 7px; }
+  .cf-arch-col .ab .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 2px; }
+  .cf-arch-col .ab .v { font-family: "Spectral", serif; font-weight: 400; font-size: 11.5px; color: var(--ink);
+    line-height: 1.34; }
+
+  /* field plan (protractor) sits below architecture notes */
+  .cf-fieldplan { margin: 16px 0 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .cf-fieldplan .cf-modh.sm { align-self: stretch; margin-bottom: 2px; }
+  .cf-fieldplan .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .cf-fieldplan .fd-svg { width: auto; height: 158px; max-width: 100%; display: block; }
+  .cf-fp-cap { display: flex; justify-content: space-between; align-items: baseline; width: 100%;
+    font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--ink-2); }
+  .cf-fp-cap span:first-child { color: var(--brick); }
+
+  .cf-ctx { columns: 2; column-gap: 26px; column-rule: 1px solid var(--rule); }
+  .cf-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 1.46;
+    color: var(--ink); text-align: justify; hyphens: auto; -webkit-hyphens: auto; break-inside: avoid-column; }
+  .cf-ctx p:last-child { margin-bottom: 0; }
+
+  /* ===================== VISIT SECTION (modern scorecard panel) ===================== */
+  .cf-zone.visit { flex: none; background: var(--paper-hi); border: 1px solid var(--rule-strong);
+    border-top: 3px solid var(--brick); padding: 10px 22px 10px; }
+  .cf-zone.visit .cf-zoneh { margin-bottom: 8px; }
+  .cf-zone.visit .cf-zoneh .key { background: var(--granite); box-shadow: inset 0 -3px 0 rgba(0,0,0,.22); }
+  .cf-zone.visit .cf-zoneh .arch { border-bottom-color: var(--granite); }
+
+  .cf-visit-grid { display: grid; grid-template-columns: 1fr 1.18fr 0.66fr; }
+  .cf-visit-grid > div { padding: 0 22px; border-left: 1px solid var(--rule); }
+  .cf-visit-grid > div:first-child { padding-left: 0; border-left: 0; }
+  .cf-visit-grid > div:last-child { padding-right: 0; }
+
+  .cf-game { display: flex; flex-direction: column; }
+  .cf-game-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .cf-game .eyebrow { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .cf-game .fin { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3); border: 1px solid var(--rule-strong);
+    padding: 2px 8px; border-radius: 2px; white-space: nowrap; }
+  .cf-game-date { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 7px; }
+  .cf-versus { display: flex; flex-direction: column; border-top: 1.5px solid var(--ink); }
+  .cf-trow { display: grid; grid-template-columns: 40px 1fr auto auto; align-items: center;
+    column-gap: 13px; padding: 8px 4px; border-bottom: 1px solid var(--rule); }
+  .cf-trow.win { background: linear-gradient(90deg, rgba(22,67,143,.07), rgba(22,67,143,0) 72%); }
+  .cf-trow .logo { width: 40px; height: 40px; object-fit: contain; display: block; }
+  .cf-trow .id { min-width: 0; }
+  .cf-trow .id .nm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 17px;
+    letter-spacing: .03em; text-transform: uppercase; line-height: 1.02; white-space: nowrap; color: var(--ink); }
+  .cf-trow .id .mt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
+  .cf-trow.reds .id .nm { color: var(--brick); }
+  .cf-trow.mets .id .nm { color: var(--blue); }
+  .cf-trow .wl { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    width: 21px; height: 21px; display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--rule-strong); border-radius: 2px; color: var(--ink-3); }
+  .cf-trow .runs { font-family: "Anton", sans-serif; font-weight: 400; font-size: 36px; line-height: .82;
+    color: var(--ink-3); letter-spacing: .01em; text-align: right; min-width: 34px; }
+  .cf-trow.win.mets .runs { color: var(--blue); }
+  .cf-trow.win.mets .wl { background: var(--blue); border-color: var(--blue); color: #F3EDDD; }
+  .cf-trow.win.reds .runs { color: var(--brick); }
+  .cf-trow.win.reds .wl { background: var(--brick); border-color: var(--brick); color: #F3EDDD; }
+  .cf-game .gmeta { display: flex; gap: 22px; margin-top: 9px; padding-top: 7px;
+    border-top: 1px solid var(--rule); }
+  .cf-gs .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 3px; }
+  .cf-gs .v { font-family: "Spectral", serif; font-weight: 600; font-size: 15px; color: var(--ink); }
+
+  /* line score */
+  .cf-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; margin-top: 4px; }
+  .cf-box th, .cf-box td { text-align: center; font-size: 11.5px; font-weight: 400; padding: 2px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .cf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10.5px; border-bottom: 1.5px solid var(--ink); }
+  .cf-box td.tm, .cf-box th.tm { text-align: left; font-weight: 600; font-size: 11.5px; letter-spacing: .05em;
+    color: var(--ink); padding-right: 10px; width: 1%; white-space: nowrap; }
+  .cf-box .rhe { font-weight: 700; }
+  .cf-box th.sep, .cf-box td.sep { border-left: 1.5px solid var(--ink); padding-left: 7px; }
+  .cf-box thead th:last-child, .cf-box tbody td:last-child { padding-right: 5px; }
+  .cf-box thead th:last-child, .cf-box tbody td:last-child,
+  .cf-box thead th:nth-last-child(2), .cf-box tbody td:nth-last-child(2),
+  .cf-box thead th.sep, .cf-box tbody td.sep { width: 24px; }
+  .cf-box tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+  .cf-box tbody tr.win td.tm { color: var(--blue); }
+  .cf-box tbody tr:first-child td.tm { color: var(--brick); }
+
+  .cf-pitch { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+  .cf-pitch .pr { display: flex; flex-direction: column; gap: 3px; }
+  .cf-pitch .pr .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--blue); }
+  .cf-pitch .pr .v { font-family: "Spectral", serif; font-size: 12.5px; color: var(--ink); line-height: 1.3; }
+
+  .cf-note { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--rule);
+    display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: start; }
+  .cf-note .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--brick); white-space: nowrap; padding-top: 2px; }
+  .cf-note .txt { font-family: "Spectral", serif; font-style: italic; font-size: 11.5px; line-height: 1.4;
+    color: var(--ink); text-wrap: pretty; }
+
+  /* weather */
+  .cf-weatherwrap { display: flex; flex-direction: column; }
+  .cf-weather { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 8px; row-gap: 30px;
+    flex: 1; align-content: center; }
+  .cf-wx { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+  .cf-wx .cf-wx-ico { display: block; }
+  .cf-wx .val { font-family: "Spectral", serif; font-weight: 700; font-size: 14px; color: var(--ink); line-height: 1.05; }
+  .cf-wx .lab { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--ink-3); }
+
+  /* ===================== FOOTER — construction & finance datum ===================== */
+  .cf-finance { flex: none; display: grid; grid-template-columns: 0.85fr 1.15fr 1fr 2fr auto; gap: 0;
+    border-top: 2px solid var(--granite); padding-top: 11px; }
+  .cf-fc { padding: 0 20px; border-left: 1px solid var(--rule); min-width: 0; }
+  .cf-fc:first-child { padding-left: 0; border-left: 0; }
+  .cf-fc:last-child { padding-right: 0; }
+  .cf-fc .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
+  .cf-fc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; line-height: 1.3; color: var(--ink); }
+  .cf-fc.cost .v.big { font-family: "Anton", sans-serif; font-weight: 400; font-size: 22px; line-height: .95; letter-spacing: .01em; }
+  .cf-fc.cost .v.adj { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink-2); margin-top: 4px; }
+  .cf-fc.marks { display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding-left: 22px; }
+  .cf-fc.marks .league { height: 36px; width: auto; display: block; }
+  .cf-fc.marks .mlb { height: 23px; width: auto; display: block; opacity: .85; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#EAE2D0"/>
+      <path d="M22 70 V44 a14 14 0 0 1 28 0 V70 Z" fill="#9A3B28"/>
+      <path d="M50 70 V44 a14 14 0 0 1 28 0 V70 Z" fill="#9A3B28"/>
+      <rect x="18" y="70" width="64" height="8" fill="#2D3036"/>
+      <rect x="44" y="24" width="3" height="14" fill="#16438F"/>
+      <rect x="38" y="29" width="14" height="3" fill="#E8551E"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="citi-field-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="citi-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="citi-spread.jsx"></script>
+  <script type="text/babel" src="citi-app.jsx"></script>
+</body>
+</html>

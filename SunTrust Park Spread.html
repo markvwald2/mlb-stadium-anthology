@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SunTrust Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #23232a;
+    font-family: "Spectral", Georgia, serif;
+    color: #211d18;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     SUNTRUST PARK — Blurb Large Landscape 13 x 11 in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264.
+     Center split x=1275. "The Anchor Tenant."
+     ---------------------------------------------------------------- */
+  .st-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #211d18;
+    --ink-2: #4f4639;
+    --ink-3: #877c6a;
+    --paper: #E9DEC9;
+    --paper-hi: #F2E9D6;
+    --paper-lo: #DDCFB4;
+    --rule: #C7B89A;
+    --rule-strong: #A8946F;
+    --navy: #13294B;            /* Braves navy — accent */
+    --navy-deep: #0B1A33;
+    --scarlet: #C8102E;         /* Braves scarlet — accent */
+    --gold: #9B7B33;            /* muted Braves gold — accent */
+    --brick: #9A4B33;           /* brick-red material cue */
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.40' intercept='0.62'/%3E%3CfeFuncG type='linear' slope='0.40' intercept='0.62'/%3E%3CfeFuncB type='linear' slope='0.40' intercept='0.62'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .st-page { position: absolute; top: 0; height: 1088px; }
+  .st-left  { left: 0; width: 1275px; background: #141A22; overflow: hidden; }
+  .st-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; }
+  .st-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .42; mix-blend-mode: multiply; }
+  .st-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.16); z-index: 30; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .st-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .st-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .st-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(11,14,20,.52) 0%, rgba(11,14,20,0) 24%),
+      linear-gradient(0deg, rgba(9,11,16,.95) 0%, rgba(9,11,16,.70) 22%, rgba(9,11,16,.14) 44%, rgba(9,11,16,0) 56%); }
+
+  .st-hero-logo { position: absolute; left: 60px; top: 54px; height: 70px; width: auto; z-index: 5;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,.55)); }
+  .st-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
+    color: rgba(231,224,206,.64); text-transform: uppercase; }
+  .st-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .34em;
+    color: rgba(231,224,206,.46); text-transform: uppercase; white-space: nowrap; }
+
+  .st-roofline { position: absolute; left: 64px; right: 64px; top: 210px; z-index: 4;
+    display: flex; align-items: center; gap: 12px; opacity: .55; pointer-events: none; }
+  .st-roofline .ln { flex: 1; height: 1px; background: rgba(231,224,206,.42); }
+  .st-roofline .tk { width: 1px; height: 11px; background: rgba(231,224,206,.55); flex: none; }
+  .st-roofline .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em;
+    color: rgba(231,224,206,.74); text-transform: uppercase; flex: none; }
+
+  .st-hero-title { position: absolute; left: 58px; right: 58px; bottom: 152px; z-index: 5; }
+  .st-eyebrow { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 16px;
+    letter-spacing: .34em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+  .st-name {
+    position: relative; margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 120px; line-height: .9; letter-spacing: .012em; text-transform: uppercase;
+    color: #F1EAD6; -webkit-text-fill-color: #F1EAD6; text-shadow: 0 4px 30px rgba(0,0,0,.5);
+    white-space: nowrap;
+  }
+  .st-name::after {
+    content: attr(data-t); position: absolute; left: 0; top: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 240px 168px;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent; mix-blend-mode: multiply; opacity: .42;
+  }
+  .st-sub { display: flex; align-items: center; gap: 18px; margin-top: 22px; }
+  .st-sub .st-rule { width: 64px; height: 2px; background: var(--scarlet); flex: none; }
+  .st-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 27px;
+    letter-spacing: .26em; text-transform: uppercase; color: #E7A7AE; white-space: nowrap; }
+  .st-coords { margin-top: 22px; display: flex; align-items: center; gap: 12px;
+    font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .08em;
+    color: rgba(231,224,206,.84); }
+  .st-coords .dot { color: var(--gold); }
+
+  .st-marks { position: absolute; left: 60px; bottom: 64px; z-index: 5;
+    display: flex; align-items: center; gap: 18px; white-space: nowrap; }
+  .st-marks .mlb { height: 44px; width: auto; display: block; }
+  .st-marks .divln { width: 1px; height: 30px; background: rgba(231,224,206,.34); }
+  .st-marks .dv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 16px;
+    letter-spacing: .22em; text-transform: uppercase; color: #E7A7AE; }
+
+  /* ============ RIGHT PAGE / THE SITE PLAN ============ */
+  /* 40px padding clears the 0.25in safe inset + gutter zone (content x>=1315). */
+  .st-rp { position: absolute; inset: 0; padding: 38px 40px 40px 40px;
+    display: flex; flex-direction: column; z-index: 2; }
+
+  /* ---- top metadata ribbon ---- */
+  .st-ribbon { display: flex; align-items: stretch; flex: none;
+    border-top: 1.5px solid var(--navy); border-bottom: 1.5px solid var(--navy); }
+  .st-ribbon .cell { flex: 1; padding: 8px 13px; border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
+  .st-ribbon .cell:first-child { border-left: 0; padding-left: 2px; }
+  .st-ribbon .cell.wide { flex: 1.5; }
+  .st-ribbon .cell.coords { flex: 1.35; }
+  .st-ribbon .cell.feature { flex: 1.3; background: var(--navy); border-left: 1.5px solid var(--navy);
+    padding: 5px 16px; justify-content: center; }
+  .st-ribbon .cell.feature .rl { color: var(--gold); }
+  .st-ribbon .rv.feat { display: flex; align-items: baseline; gap: 5px; }
+  .st-ribbon .rv.feat .fnum { font-family: "Anton", sans-serif; font-weight: 400; font-size: 27px;
+    line-height: .86; letter-spacing: .01em; color: var(--paper-hi); }
+  .st-ribbon .rv.feat .fof { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .02em; color: rgba(242,233,214,.66); }
+  .st-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--scarlet); white-space: nowrap; }
+  .st-ribbon .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .015em; text-transform: uppercase; color: var(--ink); line-height: 1.12;
+    display: flex; align-items: baseline; gap: 7px; }
+  .st-ribbon .rv .rsub { font-family: "Spectral", serif; font-style: italic; font-weight: 400;
+    font-size: 10px; letter-spacing: 0; text-transform: none; color: var(--ink-3); }
+  .st-ribbon .rv.withlogo { align-items: center; }
+  .st-ribbon .rib-mk { height: 22px; width: auto; max-width: 40px; object-fit: contain; display: block; flex: none; }
+  .st-ribbon .cell.coords .rv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11.5px;
+    letter-spacing: 0; white-space: nowrap; }
+
+  /* ---- upper district photo row: five 4:3 wells, no captions ---- */
+  .st-pstrip { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+    margin: 16px 0 0; }
+  .st-pcell { position: relative; aspect-ratio: 4 / 3; min-width: 0; }
+  .st-pstrip image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+    border: 1px solid var(--rule-strong); outline: 1px solid rgba(19,41,75,.16); outline-offset: -3px; }
+
+  /* ---- parcel grid ---- */
+  .st-parcels { flex: 1 1 auto; min-height: 0; display: grid;
+    grid-template-columns: 340px 1fr 360px; column-gap: 26px;
+    padding: 17px 0 16px; }
+  .st-parcel { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+  .st-parcel.game { padding-left: 26px; border-left: 1px solid var(--rule); justify-content: space-between; }
+  .st-parcel.field { padding-left: 26px; border-left: 1px solid var(--rule); }
+
+  /* ---- section sub-head on a hairline ---- */
+  .st-h { display: flex; align-items: baseline; gap: 9px; padding-bottom: 5px; margin-bottom: 9px;
+    border-bottom: 1.5px solid var(--navy); flex: none; }
+  .st-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .st-h.scarlet .t { color: var(--scarlet); }
+  .st-h .n { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); margin-left: auto; white-space: nowrap; }
+
+  /* ---- fact tables ---- */
+  .st-facts { display: flex; flex-direction: column; flex: 1 1 auto; justify-content: space-between; }
+  .st-facts .st-frow { padding: 2.5px 0; }
+  .st-frow { display: grid; grid-template-columns: 104px 1fr; gap: 10px; align-items: start;
+    padding: 4px 0; border-bottom: 1px solid var(--rule); }
+  .st-frow:last-child { border-bottom: 0; }
+  .st-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--ink-3); line-height: 1.3; }
+  .st-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .st-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink);
+    line-height: 1.22; white-space: pre-line; }
+  .st-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10.5px;
+    color: var(--ink-2); line-height: 1.26; }
+
+  /* ---- visit headline title ---- */
+  .st-vtitle { flex: none; display: flex; flex-direction: column; gap: 3px;
+    padding-bottom: 9px; border-bottom: 1px solid var(--rule); }
+  .st-vtitle .vt-note { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 17px;
+    letter-spacing: .05em; text-transform: uppercase; color: var(--scarlet); line-height: 1; }
+  .st-vtitle .vt-date { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 14px;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); line-height: 1; }
+
+  /* ---- visit information: two-column filing grid, scarlet keys ---- */
+  .st-visitinfo { display: grid; grid-template-columns: 1fr 1fr; column-gap: 22px; flex: none; }
+  .st-visitinfo .st-frow { grid-template-columns: 70px 1fr; padding: 4px 0; }
+  .st-visitinfo .st-frow .k { color: var(--scarlet); font-weight: 600; }
+
+  /* ---- result banner ---- */
+  .st-result { flex: none; margin: 0; display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; background: var(--navy); padding: 10px 14px; }
+  .st-result .rscore { font-family: "Anton", sans-serif; font-weight: 400; font-size: 18px;
+    letter-spacing: .02em; text-transform: uppercase; color: var(--paper-hi); white-space: nowrap; }
+  .st-result .ratt { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10.5px;
+    letter-spacing: .06em; color: #E7B6A2; white-space: nowrap; }
+
+  /* ---- line score ---- */
+  .st-scorewrap { flex: none; }
+  .st-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; table-layout: fixed; }
+  .st-box th, .st-box td { text-align: center; font-size: 12.5px; font-weight: 400; padding: 4px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .st-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10px; border-bottom: 1.5px solid var(--navy); }
+  .st-box td.tm, .st-box th.tm { text-align: left; font-weight: 700; font-size: 12px; letter-spacing: .06em;
+    padding-right: 9px; width: 52px; white-space: nowrap; }
+  .st-box .rcol { font-weight: 700; }
+  .st-box td.sc { color: var(--scarlet); font-weight: 700; }
+  .st-box .hecol { color: var(--ink-2); }
+  .st-box th.sep, .st-box td.sep { border-left: 1.5px solid var(--navy); }
+  .st-box thead th:last-child, .st-box tbody td:last-child,
+  .st-box thead th:nth-last-child(2), .st-box tbody td:nth-last-child(2),
+  .st-box thead th.sep, .st-box tbody td.sep { width: 26px; }
+  .st-box tbody tr.win td { color: var(--navy-deep); }
+  .st-box tbody tr.win td.sc { color: var(--scarlet); }
+  .st-box tbody tr:last-child td { border-bottom: 1.5px solid var(--navy); }
+
+  /* ---- decisions ---- */
+  .st-dec { margin-top: 7px; display: flex; flex-direction: column; gap: 2px; }
+  .st-dec p { margin: 0; font-family: "Spectral", serif; font-size: 11.5px; color: var(--ink); }
+  .st-dec .decline { line-height: 1.5; }
+  .st-dec .decline .vs { font-style: italic; color: var(--ink-3); }
+  .st-dec p b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: .05em;
+    color: var(--scarlet); display: inline-block; min-width: 16px; }
+  .st-dec p i { font-style: italic; }
+
+  /* ---- conditions: a prominent 4-up cluster of typographic gauges (no icons) ---- */
+  .st-wx { flex: none; }
+  .st-wx .st-h { margin-bottom: 9px; }
+  .st-wx-row { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .st-wcell { display: flex; flex-direction: column; gap: 4px; min-width: 0;
+    padding: 0 13px; border-left: 1px solid var(--rule); }
+  .st-wcell:first-child { border-left: 0; padding-left: 0; }
+  .st-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 17px; color: var(--ink);
+    line-height: 1.12; }
+  .st-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--scarlet); }
+
+  /* ---- field & orientation plate ---- */
+  .st-fieldfig { flex: 1 1 auto; min-height: 0; margin: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 4px; }
+  .st-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .st-fieldfig .fd-svg { width: 100%; max-width: 268px; height: auto; display: block; }
+  .st-fieldfig figcaption { margin-top: 2px; font-family: "Space Mono", monospace; font-size: 9px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); text-align: center; }
+
+  .st-logos { flex: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-around; gap: 14px; }
+  .st-logocell { display: flex; align-items: center; justify-content: center; height: 56px; flex: 1; min-width: 0; }
+  .st-logocell img { max-height: 100%; max-width: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+  .st-logocell:first-child img { max-height: 40px; }
+
+  /* ---- ground band: unified context + development/life-cycle parcel ---- */
+  .st-ground { flex: none; display: grid; grid-template-columns: 1.62fr 1fr; column-gap: 30px;
+    border-top: 2px solid var(--navy); padding-top: 12px; }
+  .st-context .st-h { border-bottom: 0; padding-bottom: 0; margin-bottom: 9px; }
+  .st-prose { column-count: 2; column-gap: 24px; }
+  .st-prose p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 1.56;
+    color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid; }
+  .st-prose p + p { text-indent: 13px; }
+  .st-prose p:last-child { margin-bottom: 0; }
+  .st-prose p:first-child::first-letter { font-family: "Anton", sans-serif; font-weight: 400;
+    float: left; font-size: 42px; line-height: .72; padding: 4px 8px 0 0; color: var(--scarlet); }
+
+  .st-lifecycle { padding-left: 30px; border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; }
+  .st-lifecycle .st-h { border-bottom: 0; padding-bottom: 0; margin-bottom: 8px; }
+  .st-lc-cols { flex: 1 1 auto; display: grid; grid-template-columns: 1fr 1fr; column-gap: 22px; align-items: stretch; }
+  .st-lc-col { display: flex; flex-direction: column; justify-content: space-between; }
+  .st-lc-col .st-frow { grid-template-columns: 92px 1fr; padding: 5px 0; }
+  .st-lc-col .st-frow .v .vm { font-size: 12px; line-height: 1.3; }
+  .st-lc-col .st-frow .v .vs { font-size: 10.5px; }
+  .st-finnote { margin-top: 9px; padding-top: 9px; border-top: 1px solid var(--rule);
+    display: grid; grid-template-columns: 64px 1fr; column-gap: 10px; align-items: start; }
+  .st-finnote .fk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--scarlet); line-height: 1.3; }
+  .st-finnote .fv { font-family: "Spectral", serif; font-size: 10.5px; line-height: 1.4; color: var(--ink-2); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#E9DEC9"/>
+      <g stroke="#13294B" fill="none" stroke-width="2">
+        <rect x="20" y="20" width="60" height="60"/>
+        <rect x="28" y="28" width="20" height="14"/>
+        <rect x="52" y="28" width="20" height="14"/>
+        <rect x="28" y="58" width="20" height="14"/>
+        <rect x="52" y="58" width="20" height="14"/>
+      </g>
+      <rect x="40" y="40" width="20" height="20" rx="5" fill="#6E8B5E" stroke="#13294B" stroke-width="2"/>
+      <circle cx="50" cy="56" r="2.6" fill="#C8102E"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="suntrust-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="suntrust-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="suntrust-spread.jsx"></script>
+  <script type="text/babel" src="suntrust-app.jsx"></script>
+</body>
+</html>
