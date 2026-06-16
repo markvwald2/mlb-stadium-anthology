@@ -76,7 +76,6 @@
         e("div", { className: "vet-hero-slot" },
           e("image-slot", { id: "vet-hero",
             placeholder: "Elevated aerial \u2014 complete circular bowl, surrounding parking fields, South Philadelphia sports complex; skyline secondary",
-            src: "uploads/veterans-visualization-thumbnail.jpg",
             shape: "rect" })),
         e("div", { className: "vet-hero-scrim" }),
         e(Survey, { className: "vet-hero-survey", stroke: "#CFC8B6", op: 0.16 }),

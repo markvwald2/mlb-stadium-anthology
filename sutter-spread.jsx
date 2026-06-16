@@ -10,7 +10,7 @@
   const e = React.createElement;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, src: props.src, shape: props.shape || "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" });
   }
 
   /* ---- logo wells (Bay 1) ---- */
@@ -92,7 +92,7 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         e("div", { className: "shp-page shp-left", "data-screen-label": "Sutter Health Park hero" },
           e("div", { className: "shp-hero-slot" },
-            e(Slot, { id: "sutter-hero", placeholder: "Drop the Sutter Health Park aerial \u2014 ballpark + Sacramento River + Tower Bridge + urban edge", src: "uploads/sutter-visualization-thumbnail.jpeg" })),
+            e(Slot, { id: "sutter-hero", placeholder: "Drop the Sutter Health Park aerial \u2014 ballpark + Sacramento River + Tower Bridge + urban edge" })),
           e("div", { className: "shp-hero-scrim" }),
           e("div", { className: "shp-hero-folio" }, "Interim Riverfront Warehouse \u00b7 Temporary MLB"),
 
