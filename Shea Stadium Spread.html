@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shea Stadium — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@400;500;600;700;800&family=Archivo:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #23211C;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     SHEA STADIUM — "The Fairgrounds Grid".
+     Blurb Large Landscape two-page spread. 2550 x 1088 px
+     (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264 px.
+     Fold x=1275. Bleed-only outer 12.5px; safe content >= 37.5px inside trim.
+     Gutter no-content zone x=1237.5-1312.5.
+     Left = full-bleed aerial hero (World's Fair signage title block).
+     Right = exhibition-panel grid: Stadium Section + Visit Section.
+     ---------------------------------------------------------------- */
+  .shea-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #23211C;
+    --ink-2: #514E45;
+    --ink-3: #807A6E;
+    --paper: #E9E4D7;
+    --paper-hi: #F1ECE0;
+    --paper-lo: #DED8C8;
+    --rule: #C9C3B4;
+    --rule-strong: #A6A091;
+    --blue: #0A2E73;
+    --blue-dim: #21478C;
+    --orange: #E8531A;
+    --orange-dim: #C2470F;
+    --apple: #B11226;
+    --grass: #6E7C52;
+    --black: #14161C;
+    --black-2: #0F1116;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.34' intercept='0.68'/%3E%3CfeFuncG type='linear' slope='0.34' intercept='0.66'/%3E%3CfeFuncB type='linear' slope='0.34' intercept='0.62'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .shea-page { position: absolute; top: 0; height: 1088px; }
+  .shea-left  { left: 0; width: 1275px; background: var(--black); overflow: hidden; }
+  .shea-right { left: 1275px; width: 1275px; background: var(--paper); }
+  .shea-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .5; mix-blend-mode: multiply; z-index: 0; }
+  /* flat hairline fold — no fake book depth */
+  .shea-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.16); z-index: 6; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .shea-hero-slot { position: absolute; inset: 0; }
+  .shea-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .shea-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background:
+      linear-gradient(180deg, rgba(14,16,22,.5) 0%, rgba(14,16,22,0) 24%),
+      linear-gradient(0deg, rgba(11,12,17,.95) 0%, rgba(11,12,17,.74) 22%, rgba(11,12,17,.14) 47%, rgba(11,12,17,0) 62%);
+  }
+  /* faint open-air bowl plan integrated low-left */
+  .shea-hero-bowl { position: absolute; left: -150px; bottom: -180px; width: 720px; height: 720px; z-index: 3; pointer-events: none; }
+
+  /* top-left World's Fair wayfinding marker (years) */
+  .shea-marker { position: absolute; left: 60px; top: 58px; z-index: 5; display: flex; align-items: stretch;
+    border: 2px solid rgba(233,228,215,.6); }
+  .shea-marker .panel { width: 9px; background: var(--orange); }
+  .shea-marker .yrs { display: flex; flex-direction: column; }
+  .shea-marker .yr { font-family: "Saira Semi Condensed", sans-serif; font-weight: 700; font-size: 25px; letter-spacing: .12em;
+    color: #ECE6D6; padding: 5px 16px 4px; line-height: 1; }
+  .shea-marker .yr.bot { border-top: 2px solid rgba(233,228,215,.6); color: #EBC7A6; }
+
+  .shea-hero-folio { position: absolute; right: 64px; top: 64px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .22em;
+    color: rgba(233,228,215,.62); text-transform: uppercase; text-align: right; line-height: 1.5; }
+
+  /* bottom-left signage title block — World's Fair / highway-wayfinding sign system */
+  .shea-hero-title { position: absolute; left: 60px; bottom: 60px; z-index: 5; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; width: max-content; max-width: 1150px; }
+  /* main blue sign bar + orange globe tab */
+  .shea-sign-main { display: inline-flex; align-items: stretch; width: max-content; background: var(--blue); box-shadow: 0 3px 18px rgba(8,10,16,.42); }
+  .shea-sign-main .nm { flex: none; font-family: "Saira Semi Condensed", sans-serif; font-weight: 800;
+    font-size: 74px; line-height: 1; letter-spacing: .005em; text-transform: uppercase; color: #F1ECDF;
+    padding: 16px 58px 19px 34px; white-space: nowrap; }
+  .shea-sign-globe { width: 104px; flex: none; background: var(--orange); display: flex; align-items: center; justify-content: center; }
+  .shea-sign-globe svg { display: block; }
+  /* cream city bar — stretches to the main bar's width */
+  .shea-sign-city { align-self: stretch; background: #ECE6D7; padding: 9px 34px 11px;
+    box-shadow: inset 0 0 0 1px rgba(35,33,28,.08); }
+  .shea-sign-city span { font-family: "Saira Semi Condensed", sans-serif; font-weight: 700; font-size: 31px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--blue); line-height: 1; }
+  /* cream coordinate / elevation bar */
+  .shea-sign-coord { display: flex; align-items: center; gap: 16px; background: #ECE6D7; padding: 9px 22px 10px;
+    margin-top: 3px; box-shadow: inset 0 0 0 1px rgba(35,33,28,.08); }
+  .shea-sign-coord .dot { width: 15px; height: 15px; border-radius: 50%; background: var(--orange); flex: none; }
+  .shea-sign-coord .crd { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 17px; letter-spacing: .02em;
+    color: #23211C; white-space: nowrap; }
+  .shea-sign-coord .divv { width: 1px; height: 19px; background: rgba(35,33,28,.28); flex: none; }
+  .shea-sign-coord .elev { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 17px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--blue); white-space: nowrap; }
+  /* understated meta caption */
+  .shea-sign-meta { margin-top: 6px; padding-left: 2px; font-family: "Space Mono", monospace; font-size: 12.5px;
+    letter-spacing: .1em; text-transform: uppercase; color: #ADA694; }
+  .shea-sign-meta .dem { color: var(--orange); }
+
+  /* bottom-right identity + logo wells */
+  .shea-hero-foot { position: absolute; right: 60px; bottom: 56px; z-index: 5; display: flex; flex-direction: column;
+    align-items: flex-end; gap: 12px; }
+  .shea-hero-ident { text-align: right; }
+  .shea-hero-ident .nm { font-family: "Saira Semi Condensed", sans-serif; font-weight: 700; font-size: 22px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--orange); line-height: 1; }
+  .shea-hero-ident .sub { font-family: "Saira Semi Condensed", sans-serif; font-weight: 500; font-size: 13px;
+    letter-spacing: .2em; text-transform: uppercase; color: #C8C1AF; margin-top: 4px; }
+  .shea-wells { display: flex; gap: 12px; }
+  .shea-well { width: 74px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .shea-well .box { width: 74px; height: 74px; border: 1px solid rgba(233,228,215,.3); background: rgba(16,17,22,.5);
+    display: flex; align-items: center; justify-content: center; }
+  .shea-well .box img { max-width: 50px; max-height: 50px; width: auto; height: auto; display: block; }
+  .shea-well .cap { font-family: "Space Mono", monospace; font-size: 8px; letter-spacing: .1em; text-transform: uppercase;
+    color: #9C9582; text-align: center; line-height: 1.3; }
+
+  /* ============ RIGHT PAGE ============ */
+  .shea-rp { position: absolute; inset: 0; padding: 39.5px 40px; display: flex; flex-direction: column; z-index: 2; }
+
+  /* ---- placard tab + section header ---- */
+  .shea-tab { width: 13px; flex: none; align-self: stretch; display: flex; flex-direction: column; }
+  .shea-tab i { flex: 1; display: block; }
+  .shea-sechead { display: flex; align-items: stretch; gap: 12px; }
+  .shea-sechead .htxt { display: flex; align-items: center; gap: 13px; flex: 1; padding-bottom: 7px;
+    border-bottom: 2px solid var(--ink); }
+  .shea-sechead h2 { margin: 0; flex: none; white-space: nowrap; font-family: "Saira Semi Condensed", sans-serif;
+    font-weight: 700; font-size: 26px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); line-height: 1; }
+  .shea-sechead .eyebrow { font-family: "Space Mono", monospace; font-size: 10.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+  .shea-sechead .ln { flex: 1; height: 1px; background: var(--rule-strong); align-self: center; }
+  .shea-sechead .num { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .1em; color: var(--ink-3); }
+
+  /* ---- metadata datum (transit/parkway route rule) ---- */
+  .shea-datum { display: grid; grid-template-columns: 0.85fr 1fr 1.45fr 0.95fr 1.45fr 1fr 0.9fr; flex: none;
+    margin-top: 9px; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+  .shea-dc { padding: 6px 14px 7px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
+  .shea-dc:first-child { border-left: 0; padding-left: 1px; }
+  .shea-dc .k { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .shea-dc .v { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .01em;
+    text-transform: uppercase; color: var(--ink); line-height: 1.08; }
+  .shea-dc .v.mono { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10.5px; letter-spacing: 0; white-space: nowrap; }
+  .shea-dc .v.blue { color: var(--blue); }
+  .shea-dc .v.orange { color: var(--orange-dim); }
+
+  /* ---- three exhibition photo panels ---- */
+  .shea-plates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; flex: none; margin-top: 13px; }
+  .shea-plate { background: var(--paper-hi); border: 1px solid var(--rule-strong); padding: 8px; position: relative; }
+  .shea-plate image-slot { width: 100%; height: 224px; display: block; }
+  .shea-plate .pnum { position: absolute; top: 8px; left: 8px; z-index: 3; font-family: "Space Mono", monospace;
+    font-size: 9px; font-weight: 700; letter-spacing: .08em; color: #EEE9DA; background: rgba(20,22,28,.66);
+    padding: 2px 6px; }
+  .shea-plate .tick { position: absolute; bottom: 8px; right: 8px; width: 14px; height: 14px; z-index: 3;
+    border-right: 1.5px solid rgba(233,228,215,.7); border-bottom: 1.5px solid rgba(233,228,215,.7); }
+
+  /* ---- center: Stadium Context exhibition panel ---- */
+  .shea-context-wrap { flex: 1; min-height: 0; margin-top: 13px; display: flex; flex-direction: column; }
+  .shea-context-head { display: flex; align-items: center; gap: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--rule-strong); }
+  .shea-context-head .lab { font-family: "Saira Semi Condensed", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .24em; text-transform: uppercase; color: var(--ink); }
+  .shea-context-head .meta { margin-left: auto; font-family: "Space Mono", monospace; font-size: 9.5px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .shea-context { column-count: 3; column-gap: 28px; column-rule: 1px solid var(--rule); margin-top: 10px; flex: 1; min-height: 0; }
+  .shea-context p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 13.8px; line-height: 1.38;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .shea-context p:last-child { margin-bottom: 0; }
+  .shea-context p:first-of-type::first-letter { font-family: "Saira Semi Condensed", sans-serif; font-weight: 800;
+    font-size: 50px; line-height: .72; float: left; padding: 5px 9px 0 0; color: var(--blue); }
+
+  /* ---- bottom: data bays ---- */
+  .shea-bays { display: grid; grid-template-columns: 2.32fr 1.5fr; gap: 0; flex: none; margin-top: 13px;
+    border-top: 2px solid var(--ink); }
+  .shea-bay { padding: 11px 18px 4px; border-left: 1px solid var(--rule); }
+  .shea-bay:first-child { border-left: 0; padding-left: 1px; }
+  .shea-bay-hd { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+  .shea-bay-hd .bt { font-family: "Saira Semi Condensed", sans-serif; font-weight: 700; font-size: 14.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .shea-bay-hd .bn { margin-left: auto; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .06em; color: var(--ink-3); white-space: nowrap; }
+
+  /* Section A — Stadium Facts + Lifecycle + field diagram + lineage strip */
+  .shea-sec2 { display: flex; flex-direction: column; }
+  .shea-sec2-top { display: flex; gap: 18px; align-items: stretch; flex: 1; }
+  .shea-sec2-facts { flex: 1.85; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; }
+  .shea-sec2-life { flex: 1; min-width: 0; border-left: 1px solid var(--rule); padding-left: 17px; display: flex; flex-direction: column; }
+  .shea-life-diagram { margin-top: auto; padding-top: 8px; display: flex; justify-content: center; }
+
+  .shea-frow { display: grid; grid-template-columns: 74px 1fr; gap: 9px; padding: 2px 0;
+    border-bottom: 1px solid var(--rule); align-items: baseline; }
+  .shea-frow:last-child { border-bottom: 0; }
+  .shea-frow .k { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 7.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-3); line-height: 1.16; }
+  .shea-frow .v { font-family: "Spectral", serif; font-weight: 500; font-size: 10.4px; color: var(--ink); line-height: 1.2; }
+  .shea-frow .v .mono { font-family: "Space Mono", monospace; font-size: 9.4px; }
+
+  .shea-prot-wrap { width: 112px; }
+  .shea-prot-svg { width: 112px; height: auto; display: block; }
+
+  /* lifecycle civic-schedule ledger */
+  .shea-life { display: flex; flex-direction: column; }
+  .shea-lrow { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 2px 0; align-items: baseline;
+    border-bottom: 1px solid var(--rule); }
+  .shea-lrow:last-child { border-bottom: 0; }
+  .shea-lrow .k { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 8px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .shea-lrow .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10px; color: var(--ink); white-space: nowrap; }
+
+  /* compact one-line lineage strip pinned to the bottom of the section */
+  .shea-lin-strip { display: flex; align-items: center; flex: none; margin-top: 10px; padding-top: 9px;
+    border-top: 1.5px solid var(--ink); }
+  .shea-lin-strip .ln-node { flex: none; white-space: nowrap; }
+  .shea-lin-strip .ln-node:first-child { margin-left: 33px; }
+  .shea-lin-strip .ln-node:last-child { margin-right: 33px; }
+  .shea-lin-strip .ln-end { font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px; color: var(--ink); }
+  .shea-lin-strip .ln-cur { font-family: "Saira Semi Condensed", sans-serif; font-weight: 700; font-size: 15px;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--orange-dim); display: inline-flex; align-items: baseline; gap: 8px; }
+  .shea-lin-strip .ln-cur .yr { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    letter-spacing: 0; text-transform: none; color: var(--ink-2); }
+  .shea-lin-strip .ln-arr { flex: 1; min-width: 30px; position: relative; height: 12px; margin: 0 16px; }
+  .shea-lin-strip .ln-arr::before { content: ""; position: absolute; left: 0; right: 7px; top: 50%; height: 1.5px;
+    background: var(--rule-strong); }
+  .shea-lin-strip .ln-arr::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    border-left: 7px solid var(--rule-strong); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+
+  /* ---- VISIT SECTION — scoreboard placard (distinct, dark) ---- */
+  .shea-visit-bay { padding: 0; border-left: 1.5px solid var(--ink); }
+  .shea-scoreboard { background: var(--black); height: 100%; display: flex; flex-direction: column;
+    position: relative; padding: 11px 16px 12px; }
+  .shea-scoreboard::before { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(232,83,26,.2); pointer-events: none; }
+  .shea-sb-hd { display: flex; align-items: center; gap: 9px; position: relative; z-index: 1; padding-bottom: 7px;
+    border-bottom: 1px solid rgba(233,228,215,.16); }
+  .shea-sb-hd .bt { font-family: "Saira Semi Condensed", sans-serif; font-weight: 700; font-size: 14.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: #F1ECDF; line-height: 1; }
+  .shea-sb-hd .eg { margin-left: auto; font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--orange); }
+  .shea-sb-body { display: flex; gap: 11px; position: relative; z-index: 1; margin-top: 9px; flex: 1; min-height: 0; }
+  .shea-sb-info { width: 126px; flex: none; display: flex; flex-direction: column; justify-content: space-between; }
+  .shea-sb-main { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; }
+
+  .shea-girow { display: flex; flex-direction: column; gap: 2px; }
+  .shea-girow .k { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 7.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: #8E887A; }
+  .shea-girow .v { font-family: "Spectral", serif; font-weight: 600; font-size: 11px; color: #E8E2D3; line-height: 1.16; }
+  .shea-girow .v.mono { font-family: "Space Mono", monospace; font-weight: 700; font-size: 9.5px; }
+  .shea-girow .v.win { color: var(--orange); }
+
+  /* line score — focal mini-scoreboard */
+  .shea-sb-date { font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase;
+    color: #8E887A; margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .shea-box { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; }
+  .shea-box th, .shea-box td { text-align: center; font-size: 12.5px; font-weight: 700; padding: 3px 0;
+    color: #E8E2D3; border-bottom: 1px solid rgba(233,228,215,.14); }
+  .shea-box thead th { color: #837D6E; font-size: 9px; font-weight: 400; padding: 2px 0;
+    border-bottom: 1.5px solid rgba(232,83,26,.4); }
+  .shea-box td.tm, .shea-box th.tm { text-align: left; font-family: "Saira Semi Condensed", sans-serif; font-weight: 700;
+    font-size: 14px; letter-spacing: .05em; color: #E8E2D3; padding-right: 12px; width: 1%; white-space: nowrap; }
+  .shea-box td.x { color: #837D6E; }
+  .shea-box .sep { border-left: 1.5px solid rgba(232,83,26,.4); }
+  .shea-box thead th.sep, .shea-box tbody td.sep { }
+  .shea-box thead th:nth-last-child(-n+3), .shea-box tbody td:nth-last-child(-n+3) { width: 26px; }
+  .shea-box tbody tr:last-child td { border-bottom: 0; }
+  .shea-box tbody tr.win td.tm, .shea-box tbody tr.win td.rhe.sep { color: var(--orange); }
+  .shea-box td.rhe { font-weight: 700; }
+
+  .shea-sb-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; gap: 10px; }
+  .shea-dec { display: flex; gap: 13px; }
+  .shea-dec .di { display: flex; align-items: baseline; gap: 5px; }
+  .shea-dec .di .dk { font-family: "Saira Semi Condensed", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .06em; color: var(--orange); }
+  .shea-dec .di .dv { font-family: "Spectral", serif; font-size: 10.5px; color: #E8E2D3; }
+  /* apple-red registration mark — appears once */
+  .shea-apple { display: inline-flex; align-items: center; gap: 7px; font-family: "Space Mono", monospace;
+    font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #B9B2A2; }
+  .shea-apple .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--apple); flex: none; }
+
+  /* weather strip inside scoreboard */
+  /* weather strip — single baseline row: cloud · 82° · Overcast │ wind │ humidity */
+  .shea-wx { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 21px;
+    padding-top: 12px; border-top: 1px solid rgba(233,228,215,.16); }
+  .shea-wx .wx-icon { display: flex; align-items: center; flex: none; }
+  .shea-wx .wx-deg { flex: none; font-family: "Spectral", serif; font-weight: 700; font-size: 19px; color: #F1ECDF;
+    line-height: 1; }
+  .shea-wx .wx-cond { flex: none; font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px;
+    letter-spacing: .02em; color: var(--orange); }
+  .shea-wx .wx-metric { flex: none; display: inline-flex; align-items: center; gap: 7px; padding-left: 15px;
+    border-left: 1px solid rgba(233,228,215,.16); }
+  .shea-wx .wx-metric svg { flex: none; display: block; }
+  .shea-wx .wx-metric .wxv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px; color: #E8E2D3;
+    white-space: nowrap; }
+
+  /* first-visit banner — bottom-right of the scoreboard, below the weather */
+  .shea-firstvisit { align-self: stretch; margin-top: auto; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;
+    padding: 6px 11px 7px; background: rgba(232,83,26,.16); border-left: 3px solid var(--orange); }
+  .shea-firstvisit .fk { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--orange); white-space: nowrap; }
+  .shea-firstvisit .fdiv { width: 1px; height: 12px; background: rgba(232,83,26,.45); }
+  .shea-firstvisit .ftrip { font-family: "Saira Semi Condensed", sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: .1em; text-transform: uppercase; color: #ECE6D6; white-space: nowrap; }
+  .shea-firstvisit .fv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: #ECE6D6; white-space: nowrap; }
+
+  /* ---- material / memory cue rail ---- */
+  .shea-cues { display: grid; grid-template-columns: repeat(6, 1fr); margin-top: 11px; flex: none;
+    border-top: 1.5px solid var(--ink); padding-top: 8px; }
+  .shea-cue { padding: 0 12px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px;
+    justify-content: center; }
+  .shea-cue:first-child { border-left: 0; padding-left: 0; }
+  .shea-cue .t { font-family: "Saira Semi Condensed", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .03em;
+    text-transform: uppercase; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .shea-cue .s { font-family: "Space Mono", monospace; font-size: 7.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#E9E4D7"/>
+      <circle cx="50" cy="50" r="30" fill="none" stroke="#0A2E73" stroke-width="2.2"/>
+      <circle cx="50" cy="50" r="15" fill="none" stroke="#23211C" stroke-width="1.2"/>
+      <rect x="20" y="14" width="9" height="9" fill="#0A2E73"/>
+      <rect x="32" y="14" width="9" height="9" fill="#E8531A"/>
+      <circle cx="68" cy="34" r="4" fill="#B11226"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="shea-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="shea-diagrams.jsx"></script>
+  <script type="text/babel" src="shea-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="shea-spread.jsx"></script>
+  <script type="text/babel" src="shea-app.jsx"></script>
+</body>
+</html>
