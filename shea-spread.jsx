@@ -73,6 +73,7 @@
         e("div", { className: "shea-hero-slot" },
           e("image-slot", { id: "shea-hero",
             placeholder: "Elevated aerial \u2014 complete open-air circular bowl, blue-and-orange panel fa\u00e7ade, Flushing Meadows parkland and transit/parkway approach; skyline secondary",
+            src: "uploads/shea-visualization-thumbnail.jpg",
             shape: "rect" })),
         e("div", { className: "shea-hero-scrim" }),
         e(Bowl, { className: "shea-hero-bowl", stroke: "#CFC9BA", op: 0.17, accent: "#E0A06A", degrees: D.orientation_degrees }),
