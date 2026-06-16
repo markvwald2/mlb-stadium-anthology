@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Milwaukee County Stadium — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&family=Saira+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #1a1d22;
+    font-family: "Spectral", Georgia, serif;
+    color: #ece3cf;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* =====================================================================
+     "LAMP-MATRIX MUNICIPAL" — Milwaukee County Stadium spread.
+     .lm-  · the right page is a reconstructed scoreboard face built from
+     illuminated information bays; amber lamp glow on painted steel & deep
+     navy; warm enamel sign panel for the long-form context. A postwar,
+     publicly-financed, fairgrounds municipal ballpark — floodlit, functional.
+     ===================================================================== */
+  .lm-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    /* board / steel */
+    --steel-bg: #1a2233; --steel: #2a3c52; --steel-hi: #3d536e; --steel-deep: #06101e;
+    --board: #0b1626; --board-2: #0d1d33; --panel: #102640; --panel-2: #0c1d33;
+    --well: #081222;
+    /* lamps */
+    --amber: #f4b223; --amber-hi: #ffd35e; --amber-dim: #9a7e3a;
+    --red: #d2502a; --red-hi: #e87344;
+    --royal: #2f63b5; --gold: #ffc436;
+    /* neutrals / text on dark */
+    --cream: #ece3cf; --muted: #93a6bd; --muted-2: #6c819a; --rule: rgba(244,178,35,.16);
+    --green: #4a7a44;
+    /* enamel sign panel (context) */
+    --enamel: #dcd2b8; --enamel-2: #cdc1a3; --enamel-ink: #20242a; --enamel-ink2: #4a4a44;
+    --enamel-rule: #b3a989;
+    background: var(--board); font-family: "Spectral", Georgia, serif; color: var(--cream);
+    text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .lm-page { position: absolute; top: 0; height: 1088px; }
+  .lm-left  { left: 0;     width: 1275px; background: #080d15; overflow: hidden; }
+  .lm-right { left: 1275px; width: 1275px;
+    background:
+      repeating-linear-gradient(180deg, rgba(255,255,255,.018) 0 2px, rgba(0,0,0,.05) 2px 4px),
+      linear-gradient(96deg, #20283a 0%, #161d2b 50%, #1c2436 100%); }
+  .lm-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.4); z-index: 9; pointer-events: none; }
+
+  /* lamp label — small lit caption used on every bay header */
+  .lm-lbl { display: flex; align-items: center; gap: 8px; font-family: "Saira Condensed", sans-serif;
+    font-weight: 600; font-size: 11px; letter-spacing: .24em; text-transform: uppercase;
+    color: var(--amber); white-space: nowrap; }
+  .lm-lbl::before { content: ""; width: 5px; height: 5px; border-radius: 50%; flex: none;
+    background: var(--amber); box-shadow: 0 0 5px 1px rgba(244,178,35,.7); }
+  .lm-lbl .ln { flex: 1 1 auto; height: 1px; background: var(--rule); }
+
+  /* bulb-matrix display lettering (clipped lamp grid) — the hero title device */
+  .lm-bulb { color: transparent; -webkit-background-clip: text; background-clip: text;
+    background-color: transparent;
+    background-image: radial-gradient(circle at 50% 50%, #ffd866 0 1.5px, #f4b223 1.5px 2.5px, rgba(244,178,35,.10) 2.9px, transparent 3.3px);
+    background-size: 9px 9px; background-position: 0 0;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px rgba(244,178,35,.40)); }
+  .lm-bulb.sm { background-size: 6.5px 6.5px;
+    background-image: radial-gradient(circle at 50% 50%, #ffd866 0 1.05px, #f4b223 1.05px 1.85px, rgba(244,178,35,.10) 2.1px, transparent 2.5px); }
+
+  /* ============================ LEFT / NIGHT-AERIAL HERO ============================ */
+  .lm-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .lm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .lm-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(0deg, rgba(6,10,18,.97) 0%, rgba(6,10,18,.74) 20%, rgba(6,10,18,.12) 42%, rgba(6,10,18,0) 56%),
+      linear-gradient(90deg, rgba(6,10,18,.62) 0%, rgba(6,10,18,.14) 30%, rgba(6,10,18,0) 50%),
+      radial-gradient(120% 80% at 50% 8%, rgba(244,178,35,.05), transparent 55%); }
+
+  /* coordinate datum tag, top-left */
+  .lm-hero-datum { position: absolute; top: 56px; left: 64px; z-index: 5;
+    font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px;
+    letter-spacing: .22em; text-transform: uppercase; color: #d6c79f; }
+  .lm-hero-datum .sub { display: block; font-family: "Saira Condensed", sans-serif; font-weight: 400;
+    font-size: 11.5px; letter-spacing: .2em; color: #8aa0bb; margin-top: 7px; }
+
+  /* logo wells top-right — scoreboard identity plates */
+  .lm-hero-mast { position: absolute; top: 50px; right: 64px; z-index: 5; display: flex; align-items: center; gap: 13px; }
+  .lm-well { position: relative; display: flex; align-items: center; justify-content: center;
+    background: #ece3cf; border: 1.5px solid #2c466a; }
+  .lm-mwell { width: 62px; height: 62px; background: #ece3cf; border: 1.5px solid #2c466a;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,.05), 0 2px 9px rgba(0,0,0,.55); }
+
+  /* title block bottom-left — assembled scoreboard signage */
+  .lm-hero-block { position: absolute; left: 64px; bottom: 56px; right: 120px; z-index: 5; }
+  .lm-hero-kicker { display: flex; align-items: center; gap: 12px; font-family: "Saira Condensed", sans-serif;
+    font-weight: 600; font-size: 13px; letter-spacing: .3em; text-transform: uppercase; color: var(--amber);
+    margin-bottom: 18px; }
+  .lm-hero-kicker::before { content: ""; width: 30px; height: 2px; background: var(--amber); display: block; }
+  .lm-hero-name { margin: 0; font-family: "Saira Condensed", sans-serif; text-transform: uppercase;
+    line-height: .92; }
+  .lm-hero-name .l1 { display: block; font-weight: 700; font-size: 96px; letter-spacing: .02em; }
+  .lm-hero-name .l2 { display: block; font-weight: 800; font-size: 96px; letter-spacing: .015em; margin-top: 2px; }
+  /* dot-matrix title — uses a real dot-matrix typeface (the glyphs ARE the lamps),
+     so the original lamp-dot text-clip is switched off and the letters are filled
+     solid amber with a lit glow. Local @font-face files embed in both the browser
+     and the PDF export, so unlike a remote display font they screenshot correctly.
+     To audition a different face, point --matrix-face's src at another uploaded file:
+       DangerOnTheMotorway-xV10.ttf  (round dots, bold — current)
+       MUSICNET.ttf                  (square dots, heavy/blocky)
+       S4QUFX.otf                    (round dots, fine/light VMS) */
+  @font-face { font-family: "MatrixTitle";
+    src: url("uploads/DangerOnTheMotorway-xV10.ttf") format("truetype"); font-display: swap; }
+  .lm-hero-name.lm-matrix .l1,
+  .lm-hero-name.lm-matrix .l2 { font-family: "MatrixTitle", "Saira Condensed", sans-serif;
+    font-weight: 400; letter-spacing: .01em; line-height: 1.0; }
+  .lm-hero-name.lm-matrix .l1 { font-size: 92px; }
+  .lm-hero-name.lm-matrix .l2 { font-size: 92px; margin-top: 16px; }
+  /* the font supplies the dots — neutralize the lamp-dot clip, fill solid + glow */
+  .lm-hero-name.lm-matrix .lm-bulb { background: none;
+    -webkit-background-clip: border-box; background-clip: border-box;
+    -webkit-text-fill-color: #f7c23a; color: #f7c23a;
+    filter: drop-shadow(0 0 7px rgba(244,178,35,.5)) drop-shadow(0 0 18px rgba(244,178,35,.22)); }
+  .lm-hero-loc { display: flex; align-items: center; gap: 16px; margin-top: 30px; }
+  .lm-hero-loc .bar { width: 58px; height: 3px; background: var(--red); display: block; flex: none;
+    box-shadow: 0 0 8px rgba(210,80,42,.6); }
+  .lm-hero-loc .txt { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 28px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--cream); }
+  .lm-hero-sub { margin-top: 16px; font-family: "Saira Condensed", sans-serif; font-weight: 400;
+    font-size: 19px; letter-spacing: .12em; text-transform: uppercase; color: #b9c6d6; }
+  .lm-hero-era { margin-top: 22px; display: inline-flex; align-items: center; gap: 12px;
+    padding: 7px 16px 7px 13px; border: 1px solid rgba(244,178,35,.45); background: rgba(8,14,24,.5); }
+  .lm-hero-era .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber);
+    box-shadow: 0 0 6px 1px rgba(244,178,35,.7); flex: none; }
+  .lm-hero-era .t { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 13.5px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--amber); }
+  .lm-hero-era .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px;
+    letter-spacing: .04em; color: var(--cream); }
+
+  /* ============================ RIGHT / SCOREBOARD FACE ============================ */
+  /* lit board inside the painted-steel housing */
+  .lm-board { position: absolute; inset: 22px; background:
+      radial-gradient(130% 100% at 50% 0%, #122440 0%, #0b1626 60%, #081120 100%);
+    border: 2px solid var(--steel-deep);
+    box-shadow: inset 0 0 0 2px var(--steel-hi), inset 0 0 70px rgba(0,0,0,.6), 0 0 30px rgba(0,0,0,.5); }
+  /* faint unlit bulb grid across the board */
+  .lm-board::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: radial-gradient(circle, rgba(255,214,102,.05) 0 1.1px, transparent 1.7px);
+    background-size: 15px 15px; }
+  /* corner bolts on the steel housing */
+  .lm-bolt { position: absolute; width: 13px; height: 13px; border-radius: 50%; z-index: 6;
+    background: radial-gradient(circle at 38% 34%, #6a778a, #2c384a 70%, #161e2b);
+    box-shadow: 0 1px 2px rgba(0,0,0,.7), inset 0 1px 1px rgba(255,255,255,.25); }
+  .lm-bolt.tl { left: 6px; top: 6px; } .lm-bolt.tr { right: 6px; top: 6px; }
+  .lm-bolt.bl { left: 6px; bottom: 6px; } .lm-bolt.br { right: 6px; bottom: 6px; }
+
+  .lm-rp { position: absolute; inset: 40px 38px 38px 38px; z-index: 2; display: flex; flex-direction: column; }
+
+  /* engraved board nameplate (the board's own label) */
+  .lm-boardlabel { flex: none; display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin-bottom: 14px; }
+  .lm-boardlabel .t { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .34em; text-transform: uppercase; color: #7f93ab; white-space: nowrap; }
+  .lm-boardlabel .ln { width: 64px; height: 1px; background: rgba(127,147,171,.4); }
+
+  /* ---- bay (illuminated information panel) ---- */
+  .lm-bay { position: relative; display: flex; flex-direction: column; min-width: 0;
+    background: linear-gradient(180deg, #112842 0%, #0c1d34 100%);
+    border: 1px solid #26415f;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.05), inset 0 0 24px rgba(0,0,0,.35), 0 2px 9px rgba(0,0,0,.4); }
+  .lm-bay > .hd { flex: none; display: flex; align-items: center; gap: 8px; padding: 8px 13px 7px;
+    border-bottom: 1px solid #20374f; background: linear-gradient(180deg, rgba(244,178,35,.07), transparent); }
+  .lm-bay > .bd { flex: 1 1 auto; min-height: 0; padding: 9px 13px 11px; display: flex; flex-direction: column; }
+
+  /* k/v rows in a bay */
+  .lm-kv { display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+    padding: 3.5px 0; border-bottom: 1px solid rgba(244,178,35,.12); }
+  .lm-kv:last-child { border-bottom: 0; }
+  .lm-kv .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--muted); flex: none; }
+  .lm-kv .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px; color: var(--cream);
+    text-align: right; line-height: 1.25; }
+  .lm-kv .v.amber { color: var(--amber-hi); }
+  .lm-kv .v.red { color: var(--red-hi); }
+  .lm-kv .v.sm { font-size: 9.5px; font-weight: 400; line-height: 1.32; }
+  /* wrapping descriptive row (full width, value below key) */
+  .lm-kvw { padding: 4px 0; border-bottom: 1px solid rgba(244,178,35,.12); }
+  .lm-kvw:last-child { border-bottom: 0; }
+  .lm-kvw .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .lm-kvw .v { font-family: "Spectral", serif; font-size: 10px; color: #cdd9e6; line-height: 1.36; margin-top: 2px; }
+
+  /* ---- upper row: identity + photo bays ---- */
+  .lm-upper { flex: none; height: 196px; display: grid; grid-template-columns: 352px 1fr; gap: 14px; }
+  .lm-identity { position: relative; display: flex; flex-direction: column; justify-content: space-between;
+    background: linear-gradient(180deg, #112135 0%, #0a1730 100%);
+    border: 1px solid #2c466a; padding: 16px 18px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.05), inset 0 0 28px rgba(0,0,0,.4), 0 2px 9px rgba(0,0,0,.4); }
+  .lm-id-top { display: flex; align-items: center; gap: 15px; }
+  .lm-id-glove { width: 86px; height: 86px; flex: none; display: flex; align-items: center; justify-content: center;
+    background: #ece3cf; border: 1.5px solid #2c466a; box-shadow: inset 0 0 0 2px rgba(0,0,0,.05), 0 2px 8px rgba(0,0,0,.45); position: relative; }
+  .lm-id-glove img { width: 70px; height: 70px; object-fit: contain; display: block; }
+  .lm-id-name { min-width: 0; }
+  .lm-id-name .nm { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 35px;
+    line-height: .92; letter-spacing: .01em; text-transform: uppercase; color: var(--cream); }
+  .lm-id-name .lg { margin-top: 2px; font-family: "Saira Condensed", sans-serif; font-weight: 500;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--amber); }
+  /* lit scoreboard lamp bar — fills the identity bay's mid band */
+  .lm-id-lamps { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 0 3px; height: 8px; }
+  .lm-id-lamps::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(244,178,35,.16); }
+  .lm-id-lamps .b { position: relative; width: 7px; height: 7px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 34%, #ffd866, #f4b223 58%, #9a7e3a); box-shadow: 0 0 5px 1px rgba(244,178,35,.45); }
+  .lm-id-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    border-top: 1px solid rgba(244,178,35,.18); padding-top: 12px; }
+  .lm-id-tag { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px; letter-spacing: .04em;
+    color: #b9c6d6; }
+  .lm-id-tag span { color: var(--amber-hi); }
+  .lm-id-wells { display: flex; align-items: center; gap: 10px; }
+  .lm-id-well { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center;
+    background: #ece3cf; border: 1px solid #2c466a; }
+  .lm-id-well img { max-width: 38px; max-height: 38px; display: block; }
+
+  .lm-photos { display: flex; gap: 12px; }
+  .lm-photo { position: relative; height: 100%; aspect-ratio: 4 / 3; flex: 1 1 0; min-width: 0;
+    background: #0a1424; border: 1px solid #2a466a; overflow: hidden;
+    box-shadow: inset 0 0 0 3px #0a1830, inset 0 0 18px rgba(0,0,0,.5); }
+  .lm-photo image-slot { width: 100%; height: 100%; display: block; }
+
+  /* ---- data bays grid ---- */
+  .lm-data { flex: none; height: 252px; display: grid; gap: 12px;
+    grid-template-columns: 1.32fr 1fr 1fr 1.04fr; margin-top: 14px; }
+  .lm-stack { display: grid; grid-template-rows: 1fr auto; gap: 9px; min-height: 0; }
+  /* compress the stacked Classification + Financing bays so Financing fits its
+     cell instead of overflowing down into the context panel below */
+  .lm-stack .lm-bay > .hd { padding: 6px 13px 5px; }
+  .lm-stack .lm-bay > .bd { padding: 6px 13px 7px; }
+  .lm-stack .lm-kv { padding: 1.5px 0; }
+  /* spread the Classification rows to fill the bay's leftover height */
+  .lm-stack .lm-bay:first-child > .bd { justify-content: space-between; }
+  .lm-stack .lm-bay:first-child .lm-kv { padding: 4px 0; }
+  .lm-stack .lm-kvw { padding: 2.5px 0; }
+
+  /* facts table */
+  .lm-ftab { width: 100%; border-collapse: collapse; }
+  .lm-ftab tr { border-bottom: 1px solid rgba(244,178,35,.12); }
+  .lm-ftab tr:last-child { border-bottom: 0; }
+  .lm-ftab th { text-align: left; vertical-align: baseline; width: 82px; padding: 3px 9px 3px 0;
+    font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted); }
+  .lm-ftab td { vertical-align: baseline; padding: 3px 0; font-family: "Space Mono", monospace;
+    font-size: 10px; line-height: 1.3; color: var(--cream); }
+  .lm-ftab td.desc { font-family: "Spectral", serif; font-size: 9.5px; color: #cdd9e6; line-height: 1.34; }
+  .lm-ftab td b { color: var(--amber-hi); font-weight: 700; }
+
+  /* all-star highlight row */
+  .lm-allstar { margin-top: auto; display: flex; align-items: center; justify-content: space-between;
+    gap: 10px; padding: 7px 10px; background: rgba(244,178,35,.1); border: 1px solid rgba(244,178,35,.35); }
+  .lm-allstar .k { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 9px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+  .lm-allstar .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px; color: var(--amber-hi);
+    text-shadow: 0 0 7px rgba(244,178,35,.45); letter-spacing: .04em; }
+
+  /* field-dimensions bay */
+  /* pin the protractor toward the top of its bay so its lower bearing label
+     clears the field-dimension numbers underneath */
+  .lm-fd-instr { display: flex; align-items: flex-start; justify-content: center; flex: 1 1 auto; min-height: 0; padding-top: 3px; }
+  .lm-fd-instr svg { width: 122px; height: auto; }
+  .lm-fd-rows { flex: none; border-top: 1px solid rgba(244,178,35,.16); padding-top: 7px; }
+  .lm-fd-dims { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .lm-fd-dims .c { text-align: center; border-left: 1px solid rgba(244,178,35,.14); padding: 1px 0; }
+  .lm-fd-dims .c:first-child { border-left: 0; }
+  .lm-fd-dims .c .k { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 8.5px;
+    letter-spacing: .14em; color: var(--muted); }
+  .lm-fd-dims .c .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 15px; color: var(--amber-hi);
+    text-shadow: 0 0 6px rgba(244,178,35,.35); margin-top: 1px; }
+  .lm-fd-orient { display: flex; align-items: baseline; justify-content: space-between; margin-top: 6px;
+    border-top: 1px solid rgba(244,178,35,.14); padding-top: 5px; }
+  .lm-fd-orient .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .lm-fd-orient .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px; color: var(--red-hi); }
+
+  /* ---- STADIUM CONTEXT — warm enamel sign panel (largest) ---- */
+  .lm-context { flex: 1 1 auto; min-height: 0; margin-top: 14px; position: relative;
+    background: linear-gradient(176deg, var(--enamel) 0%, var(--enamel-2) 100%);
+    border: 2px solid var(--steel-deep);
+    box-shadow: inset 0 0 0 2px #b9af90, inset 0 0 40px rgba(120,108,76,.25), 0 3px 12px rgba(0,0,0,.4);
+    padding: 13px 22px 15px; display: flex; flex-direction: column; }
+  .lm-context .hd { flex: none; display: flex; align-items: center; gap: 12px; margin-bottom: 9px; }
+  .lm-context .hd .t { flex: none; font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 14px;
+    letter-spacing: .26em; text-transform: uppercase; color: #12243e; white-space: nowrap; }
+  .lm-context .hd .sub { flex: none; font-family: "Space Mono", monospace; font-weight: 700; font-size: 9px;
+    letter-spacing: .08em; text-transform: uppercase; color: #9a5a2a; white-space: nowrap; }
+  .lm-context .hd .ln { flex: 1; height: 2px; background: linear-gradient(90deg, #b3a989, rgba(179,169,137,0)); }
+  .lm-ctx-cols { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 26px; align-content: start; }
+  .lm-ctx-cols .col { min-width: 0; }
+  .lm-ctx-cols .col:last-child { border-left: 1px solid var(--enamel-rule); padding-left: 26px; }
+  .lm-ctx-cols p { margin: 0 0 8px; font-family: "Spectral", serif; font-size: 11.3px; line-height: 1.46;
+    color: var(--enamel-ink); text-align: justify; hyphens: auto; }
+  .lm-ctx-cols .col p:last-child { margin-bottom: 0; }
+  .lm-ctx-cols .col:first-child p:first-child::first-letter { font-family: "Saira Condensed", sans-serif;
+    font-weight: 800; font-size: 42px; float: left; line-height: .74; padding: 5px 9px 0 0; color: #b8451f; }
+
+  /* ---- GAME SCOREBOARD PANEL (second-largest) ---- */
+  .lm-game { flex: none; height: 238px; margin-top: 14px; display: grid;
+    grid-template-columns: 1fr 1.46fr 0.92fr; gap: 12px; }
+  /* result / visit column */
+  .lm-gresult { display: flex; flex-direction: column; }
+  .lm-gresult .bd { gap: 0; }
+  .lm-score-line { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 25px;
+    line-height: 1; letter-spacing: .01em; text-transform: uppercase; color: var(--cream); }
+  .lm-score-line .win { color: var(--amber-hi); text-shadow: 0 0 9px rgba(244,178,35,.45); }
+  .lm-matchup { font-family: "Saira Condensed", sans-serif; font-weight: 400; font-size: 10px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; margin-bottom: 8px; }
+  .lm-vrows { display: flex; flex-direction: column; flex: 1 1 auto; }
+  .lm-vrow { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+    padding: 2.5px 0; border-bottom: 1px dotted rgba(244,178,35,.18); }
+  .lm-vrow:last-child { border-bottom: 0; }
+  .lm-vrow .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .lm-vrow .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10.5px; color: var(--cream); text-align: right; }
+  .lm-vrow .v.amber { color: var(--amber-hi); }
+  /* highlighted first-visit line pinned to the bottom of the Game column */
+  .lm-firstvisit { flex: none; margin-top: 9px; display: flex; align-items: baseline;
+    justify-content: space-between; gap: 10px; padding: 7px 10px;
+    background: rgba(244,178,35,.1); border: 1px solid rgba(244,178,35,.32); }
+  .lm-firstvisit .k { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 9px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--amber); flex: none; }
+  .lm-firstvisit .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    letter-spacing: .02em; color: var(--amber-hi); text-align: right; }
+
+  /* line score — lamp cells */
+  .lm-line-wrap { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
+  .lm-line { width: 100%; border-collapse: separate; border-spacing: 3px; table-layout: fixed;
+    font-variant-numeric: tabular-nums; }
+  .lm-line { border-spacing: 3px; }
+  .lm-line th, .lm-line td { text-align: center; font-family: "Space Mono", monospace; font-size: 12.5px; }
+  .lm-line thead th { font-weight: 400; font-size: 9px; color: var(--muted-2); letter-spacing: .04em; padding-bottom: 3px; }
+  .lm-line td.tm, .lm-line th.tm { width: 44px; text-align: left; }
+  .lm-line .cell { background: var(--well); border: 1px solid #1d3350;
+    color: #cfe0f1; font-weight: 700; padding: 5px 0; box-shadow: inset 0 0 5px rgba(0,0,0,.6); }
+  .lm-line tr.home .cell { color: var(--amber-hi); }
+  .lm-line .tmcell { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: .04em; color: var(--cream); padding: 4px 4px 4px 0; text-align: left; }
+  .lm-line tr.home .tmcell { color: var(--amber); }
+  .lm-line .rhe { background: #0a1a30; border-color: #2b4a72; font-weight: 700; }
+  .lm-line .rcol { color: var(--amber-hi) !important; box-shadow: inset 0 0 8px rgba(244,178,35,.2); }
+  .lm-line thead .rhe-h { color: var(--amber); }
+  .lm-line-cap { text-align: center; margin-top: 7px; font-family: "Saira Condensed", sans-serif;
+    font-weight: 500; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--amber-dim); }
+
+  /* weather + pitching column */
+  /* conditions laid out as a 2x2 grid so the readings fill the box width */
+  .lm-wxgrid { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr; column-gap: 18px; }
+  .lm-wxgrid .lm-wx { border-bottom: 0; }
+  .lm-wxgrid .lm-wx:nth-child(1), .lm-wxgrid .lm-wx:nth-child(2) {
+    border-bottom: 1px solid rgba(244,178,35,.12); }
+  .lm-wxgrid .lm-wx .ico { width: 22px; height: 22px; }
+  .lm-wxgrid .lm-wx .val { font-size: 13px; }
+  .lm-wxgrid .lm-wx .lab { font-size: 8.5px; }
+  .lm-wx { display: flex; align-items: center; gap: 9px; padding: 4px 0; flex: 1 1 0; min-height: 0;
+    border-bottom: 1px solid rgba(244,178,35,.12); }
+  .lm-wx:last-child { border-bottom: 0; }
+  .lm-wx .ico { width: 19px; height: 19px; flex: none; stroke: var(--amber); fill: none; }
+  .lm-wx .txt { display: flex; flex-direction: column; gap: 1px; }
+  .lm-wx .val { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11.5px; color: var(--cream); line-height: 1; }
+  .lm-wx .lab { font-family: "Saira Condensed", sans-serif; font-weight: 400; font-size: 8px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted); }
+  .lm-pitch { flex: none; border-top: 1px solid rgba(244,178,35,.16); padding-top: 7px; margin-top: 3px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+  .lm-pitch .pr { display: flex; align-items: baseline; gap: 7px; padding: 1.5px 0; }
+  .lm-pitch .pr .tag { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 9px;
+    color: var(--amber); width: 18px; flex: none; }
+  .lm-pitch .pr .nm { font-family: "Spectral", serif; font-size: 10px; color: var(--cream); line-height: 1.2; }
+
+  /* pitching block relocated into the Line Score bay (starters matchup + W/L decisions) */
+  .lm-line-pitch { flex: none; border-top: 1px solid rgba(244,178,35,.16); padding-top: 6px; margin-top: 6px; }
+  .lm-line-pitch .pr { display: flex; align-items: baseline; gap: 9px; padding: 1.5px 0; }
+  .lm-line-pitch .pr .tag { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 9px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--amber); flex: none; }
+  .lm-line-pitch .pr.match .tag { width: 64px; }
+  .lm-line-pitch .pr .nm { font-family: "Spectral", serif; font-size: 10px; color: var(--cream); line-height: 1.25; }
+  .lm-line-pitch .wl { display: grid; grid-template-columns: max-content max-content; justify-content: start;
+    column-gap: 48px; margin-top: 3px;
+    border-top: 1px solid rgba(244,178,35,.1); padding-top: 4px; }
+  .lm-line-pitch .wl .tag { width: 14px; }
+
+  /* ---- footer colophon ---- */
+  .lm-foot { flex: none; display: flex; align-items: center; gap: 13px; margin-top: 12px;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .03em; color: var(--muted-2); }
+  .lm-foot .plate { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--muted); white-space: nowrap; flex: none; }
+  .lm-foot .sep { color: #2c466a; }
+  .lm-foot .end { margin-left: auto; color: var(--amber); font-weight: 700; font-family: "Saira Condensed", sans-serif;
+    letter-spacing: .2em; text-transform: uppercase; font-size: 10px; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#0b1626"/>
+      <rect x="12" y="14" width="76" height="16" rx="1" fill="#0a1830" stroke="#2c466a"/>
+      <g fill="#f4b223">
+        <circle cx="22" cy="22" r="2"/><circle cx="30" cy="22" r="2"/><circle cx="38" cy="22" r="2"/>
+        <circle cx="50" cy="22" r="2"/><circle cx="58" cy="22" r="2"/><circle cx="66" cy="22" r="2"/><circle cx="74" cy="22" r="2"/>
+      </g>
+      <rect x="12" y="40" width="36" height="22" fill="#102640" stroke="#26415f"/>
+      <rect x="52" y="40" width="36" height="22" fill="#dcd2b8" stroke="#2a3c52"/>
+      <rect x="12" y="70" width="76" height="16" fill="#081222" stroke="#2b4a72"/>
+      <circle cx="80" cy="78" r="3" fill="#f4b223"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="county-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="county-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="county-spread.jsx"></script>
+  <script type="text/babel" src="county-app.jsx"></script>
+</body>
+</html>
