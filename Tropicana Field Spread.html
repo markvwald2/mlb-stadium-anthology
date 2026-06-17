@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tropicana Field — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700&family=Saira+Condensed:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2c2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #23262A;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     TROPICANA FIELD — Blurb Large Landscape 13 x 11 in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264.
+     Center split x=1275. "The Service Deck" — baseball inside a garage.
+     Cool concrete/roof-white paper; horizontal roof-bay service grid.
+     ---------------------------------------------------------------- */
+  .tf-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #23262A;
+    --ink-2: #4C5358;
+    --ink-3: #7E868C;
+    --concrete: #E2E4E2;
+    --concrete-hi: #ECEEEC;
+    --concrete-lo: #D2D5D3;
+    --steel: #C4C8C6;
+    --steel-strong: #A7ACAB;
+    --seam: #9097A0;
+    --navy: #092C5C;
+    --columbia: #8FBCE6;
+    --col-ink: #2E6AA6;
+    --yellow: #F5D130;
+    --turf: #2E8B4E;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.34' intercept='0.7'/%3E%3CfeFuncG type='linear' slope='0.34' intercept='0.71'/%3E%3CfeFuncB type='linear' slope='0.34' intercept='0.7'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--concrete);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .tf-page { position: absolute; top: 0; height: 1088px; }
+  .tf-left  { left: 0; width: 1275px; background: #0d1217; overflow: hidden; }
+  .tf-right { left: 1275px; width: 1275px; background: var(--concrete); overflow: hidden; }
+  .tf-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
+  .tf-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.14); z-index: 6; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .tf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .tf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .tf-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background:
+      linear-gradient(180deg, rgba(8,11,15,.5) 0%, rgba(8,11,15,0) 20%),
+      linear-gradient(0deg, rgba(7,10,14,.92) 0%, rgba(7,10,14,.62) 22%, rgba(7,10,14,.1) 44%, rgba(7,10,14,0) 58%);
+  }
+
+  /* faint catwalk-ring motif lower-right over photo */
+  .tf-hero-rings { position: absolute; right: -150px; bottom: -150px; z-index: 3; pointer-events: none; }
+
+  .tf-folio { position: absolute; right: 56px; top: 56px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .24em;
+    color: rgba(195,210,228,.62); text-transform: uppercase; display: flex; gap: 10px; align-items: center; }
+  .tf-folio b { color: rgba(143,188,230,.9); font-weight: 700; }
+  .tf-spine { position: absolute; left: 38px; top: 50%; z-index: 5;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .32em;
+    color: rgba(195,210,228,.46); text-transform: uppercase; white-space: nowrap; }
+
+  /* roof-track datum line near top */
+  .tf-roofline { position: absolute; left: 56px; right: 56px; top: 188px; z-index: 4;
+    display: flex; align-items: center; gap: 12px; opacity: .6; pointer-events: none; }
+  .tf-roofline .ln { flex: 1; height: 1px; background: rgba(195,210,228,.4); }
+  .tf-roofline .tk { width: 1px; height: 10px; background: rgba(195,210,228,.6); flex: none; }
+  .tf-roofline .cap { font-family: "Space Mono", monospace; font-size: 10.5px; letter-spacing: .26em;
+    color: rgba(195,210,228,.74); text-transform: uppercase; flex: none; }
+
+  /* ---- title plaque mounted into the architecture (civic wayfinding) ---- */
+  .tf-plate { position: absolute; left: 0; bottom: 64px; z-index: 5;
+    width: 812px; padding: 30px 60px 30px 60px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.05)),
+      repeating-linear-gradient(90deg, #d9dcda 0px, #e4e6e4 2px, #d4d7d5 4px),
+      #dde0de;
+    border-top: 3px solid var(--navy);
+    border-right: 1px solid #b9bdbb;
+    border-bottom: 1px solid #b9bdbb;
+  }
+  .tf-plate::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 1px;
+    background: rgba(255,255,255,.6); }
+  /* panel rivets */
+  .tf-plate .rivet { position: absolute; width: 7px; height: 7px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fbfcfb, #9aa0a0 70%, #7d8383);
+    box-shadow: none; }
+  .tf-plate .rv1 { right: 16px; top: 14px; } .tf-plate .rv2 { right: 16px; bottom: 14px; }
+
+  .tf-plate-name { margin: 0; font-family: "Saira Condensed", "Saira", sans-serif; font-weight: 600;
+    font-size: 86px; line-height: .92; letter-spacing: .005em; text-transform: uppercase;
+    color: var(--navy); white-space: nowrap; }
+  .tf-plate-name .l2 { display: inline; font-weight: 500; color: #163a6b; letter-spacing: .02em; }
+  .tf-plate-city { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+  .tf-plate-city .bar { width: 52px; height: 4px; background: var(--col-ink); flex: none; }
+  .tf-plate-city .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 25px;
+    letter-spacing: .26em; text-transform: uppercase; color: #2c3238; white-space: nowrap; }
+
+  .tf-identity { display: flex; align-items: center; gap: 18px; margin-top: 24px;
+    padding-top: 20px; border-top: 1px solid #bcc0be; }
+  .tf-team-logo { height: 60px; width: auto; display: block; }
+  .tf-id-txt { display: flex; flex-direction: column; gap: 4px; }
+  .tf-id-txt .tm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 22px;
+    letter-spacing: .03em; text-transform: uppercase; color: var(--navy); line-height: 1; }
+  .tf-id-txt .lg { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 13px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); display: flex; align-items: center; gap: 9px; }
+  .tf-id-txt .lg .dv { color: var(--col-ink); font-weight: 600; }
+  .tf-id-div { width: 1px; height: 48px; background: #bcc0be; flex: none; }
+  .tf-mlb { height: 34px; width: auto; display: block; }
+  .tf-al  { height: 40px; width: auto; display: block; }
+
+  /* ============ RIGHT PAGE — ROOF-SERVICE DECK ============ */
+  .tf-rp { position: absolute; inset: 0; z-index: 2; }
+  /* faint structural underlay: slanted dome plane + catwalk rings + grid */
+  .tf-underlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+
+  .tf-bay { position: absolute; z-index: 3; }
+
+  /* full-width seam rule between roof bays (flat hairline + rivet caps) */
+  .tf-seam { position: absolute; height: 0; z-index: 4; pointer-events: none;
+    border-top: 1.5px solid var(--seam); }
+  .tf-seam .cap { position: absolute; top: -4.5px; width: 8px; height: 8px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f4f5f3, #aeb3b1 72%, #8d9290); }
+  .tf-seam .cap.l { left: -1px; } .tf-seam .cap.r { right: -1px; }
+
+  /* ---- section header strip (Bay 1) ---- */
+  .tf-sec { display: flex; align-items: center; gap: 14px; }
+  .tf-sec .marque { display: flex; align-items: center; gap: 11px; flex: none; }
+  .tf-sec .glyph { flex: none; }
+  .tf-sec h2 { margin: 0; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 25px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .tf-sec .scale { flex: 1; display: flex; align-items: center; gap: 0; height: 14px; opacity: .8; }
+  .tf-sec .scale .t { width: 1px; height: 7px; background: var(--steel-strong); margin-right: 11px; }
+  .tf-sec .scale .t.big { height: 13px; background: var(--seam); }
+  .tf-sec .stamp { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3); white-space: nowrap; flex: none; }
+
+  /* ---- bay head (small panel label) ---- */
+  .tf-head { display: flex; align-items: baseline; gap: 9px; padding-bottom: 5px; margin-bottom: 9px;
+    border-bottom: 1.5px solid var(--steel-strong); }
+  .tf-head .nm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .tf-head .code { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
+
+  /* ---- Bay A : stacked roof-bay photos ---- */
+  .tf-roofstack { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+  .tf-frame { position: relative; flex: 1 1 0; min-height: 0; border: 1px solid var(--steel-strong);
+    background: #cfd3d1; }
+  .tf-frame image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .tf-frame .tag { position: absolute; left: 0; top: 0; z-index: 3;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: #e8edf2; background: rgba(9,15,21,.74); padding: 3px 8px; pointer-events: none; }
+
+  /* ---- Bay B : facility specification register (two field columns) ---- */
+  .tf-spec { column-count: 2; column-gap: 30px; }
+  .tf-srow { break-inside: avoid; display: grid; grid-template-columns: 96px 1fr; gap: 9px;
+    align-items: baseline; padding: 3.5px 0; border-bottom: 1px solid var(--steel); }
+  .tf-srow .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .tf-srow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .tf-srow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 11px; color: var(--ink);
+    line-height: 1.22; white-space: pre-line; }
+  .tf-srow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 9.5px;
+    color: var(--ink-2); line-height: 1.2; }
+
+  /* ---- Bay C : unified stadium context (2 columns, generous measure) ---- */
+  .tf-ctx-prose { column-count: 2; column-gap: 36px; }
+  .tf-ctx-prose p { margin: 0 0 12px; font-family: "Spectral", serif; font-size: 13.3px; line-height: 1.57;
+    color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
+  .tf-ctx-prose p:last-child { margin-bottom: 0; }
+  .tf-ctx-prose p:first-child::first-letter { font-family: "Oswald", sans-serif; font-weight: 600;
+    font-size: 39px; line-height: .82; float: left; margin: 5px 9px 0 0; color: var(--navy); }
+  /* landscape photo embedded in the context flow; prose flows around it */
+  .tf-ctx-photo { position: relative; display: block; width: 100%; height: 291px;
+    margin: 3px 0 13px; border: 1px solid var(--steel-strong); background: #cfd3d1;
+    break-inside: avoid; }
+  .tf-ctx-photo image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .tf-ctx-photo .tag { position: absolute; left: 0; top: 0; z-index: 3;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: #e8edf2; background: rgba(9,15,21,.74); padding: 3px 8px; pointer-events: none; }
+
+  /* supporting photo flanking the context (Bay F) */
+  .tf-ctxphoto { position: relative; width: 100%; height: 100%; border: 1px solid var(--steel-strong);
+    background: #cfd3d1; }
+  .tf-ctxphoto image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .tf-ctxphoto .tag { position: absolute; left: 0; top: 0; z-index: 3;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: #e8edf2; background: rgba(9,15,21,.74); padding: 3px 8px; pointer-events: none; }
+
+  /* ---- Bay D : game-operations display (dark electronic panel) ---- */
+  .tf-ops { position: relative; height: 100%; background:
+      linear-gradient(180deg, #161b20, #11161b);
+    border: 1.5px solid #2b333b; padding: 8px 16px 9px; display: flex; flex-direction: column;
+    justify-content: flex-start;
+    --led: #9fc6ee; }
+  .tf-ops::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px, transparent 1px, transparent 3px); }
+  .tf-ops-head { display: flex; align-items: center; justify-content: space-between; flex: none;
+    padding-bottom: 6px; margin-bottom: 7px; border-bottom: 1px solid #2b333b; position: relative; z-index: 2; }
+  .tf-ops-head .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .16em;
+    text-transform: uppercase; color: #cfd9e2; }
+  .tf-ops-head .no { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: #7d8b97; }
+
+  .tf-ops-body { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1.04fr;
+    grid-template-rows: 1fr; gap: 16px; flex: 1 1 auto; min-height: 0; }
+  .tf-ops-col { display: flex; flex-direction: column; min-width: 0; justify-content: space-between; }
+  .tf-ops-col.div { border-left: 1px solid #2b333b; padding-left: 16px; }
+
+  /* matchup */
+  .tf-match { display: flex; align-items: center; gap: 10px; flex: none; margin-bottom: 9px; }
+  .tf-match img { height: 44px; width: 44px; object-fit: contain; flex: none; }
+  .tf-match .vs { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .18em; color: #7d8b97; }
+  .tf-match .tn { display: flex; flex-direction: column; }
+  .tf-match .tn .ab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .06em;
+    color: #e7edf3; line-height: 1.05; }
+  .tf-match .tn .nm { font-family: "Space Mono", monospace; font-size: 8px; letter-spacing: .08em;
+    text-transform: uppercase; color: #7d8b97; }
+
+  .tf-result { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--yellow); margin-bottom: 8px; flex: none; }
+
+  /* LED line score */
+  .tf-board { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; flex: none; }
+  .tf-board th, .tf-board td { text-align: center; font-size: 10px; font-weight: 400; padding: 3px 0;
+    color: #c7d2dc; }
+  .tf-board thead th { color: #6f7d89; font-weight: 700; font-size: 8.5px; border-bottom: 1px solid #2b333b; }
+  .tf-board td.tm, .tf-board th.tm { text-align: left; font-family: "Oswald", sans-serif; font-weight: 600;
+    font-size: 11px; letter-spacing: .06em; padding-right: 7px; width: 1%; white-space: nowrap; color: var(--led); }
+  .tf-board td.rc { color: var(--yellow); font-weight: 700; }
+  .tf-board th.sep, .tf-board td.sep { border-left: 1px solid #2b333b; padding-left: 6px; }
+  .tf-board tbody tr.win td.tm { color: var(--yellow); }
+  .tf-board tbody tr:first-child td { border-bottom: 1px solid #20272d; }
+
+  /* ops detail rows (right ops column) */
+  .tf-ops-sub { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .14em;
+    text-transform: uppercase; color: #7d8b97; margin: 0 0 3px; }
+  .tf-gi-wrap { display: flex; flex-direction: column; align-items: stretch; width: 100%; }
+  .tf-gi { display: flex; flex-direction: column; gap: 0; flex: none; margin-bottom: 6px; }
+  .tf-gi .row { display: flex; justify-content: space-between; align-items: baseline; padding: 2px 0;
+    border-bottom: 1px solid #20272d; }
+  .tf-gi .row .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .08em;
+    text-transform: uppercase; color: #8b98a4; }
+  .tf-gi .row .v { font-family: "Space Mono", monospace; font-size: 10px; color: #e2e9ef; font-weight: 700; }
+  .tf-gi .row.combo { gap: 14px; }
+  .tf-gi .row.combo .pair { display: flex; align-items: baseline; gap: 7px; min-width: 0; }
+
+  .tf-starters { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 7px; flex: none;
+    margin-bottom: 6px; }
+  .tf-starters .nm { font-family: "Spectral", serif; font-size: 11px; font-weight: 500; color: #e2e9ef; }
+  .tf-starters .ab { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .06em; color: #7d8b97; }
+  .tf-starters .vs { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .08em; color: #5f6d79; padding: 0 1px; }
+
+  .tf-wx { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 12px; flex: none; margin-bottom: 2px; }
+  .tf-wx .wc { display: flex; align-items: center; gap: 7px; }
+  .tf-wx .wc .tx { display: flex; flex-direction: column; }
+  .tf-wx .wc .wv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; color: #e2e9ef; line-height: 1; white-space: nowrap; }
+  .tf-wx .wc .wl { font-family: "Space Mono", monospace; font-size: 7.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: #7d8b97; margin-top: 2px; }
+
+  .tf-dec { display: flex; gap: 14px; flex: none; }
+  .tf-dec .d { display: flex; align-items: baseline; gap: 6px; }
+  .tf-dec .d .t { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 9px; letter-spacing: .06em; }
+  .tf-dec .d .t.w { color: #5fd08a; } .tf-dec .d .t.l { color: #e7727a; } .tf-dec .d .t.s { color: var(--led); }
+  .tf-dec .d .n { font-family: "Spectral", serif; font-size: 10px; color: #cfd9e2; }
+
+  /* ---- Bay E : field diagram | data column ---- */
+  .tf-e-grid { display: grid; grid-template-columns: 212px 1fr; gap: 18px; height: 100%; }
+  .tf-e-visual { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .tf-e-photo { position: relative; flex: none; height: 150px; border: 1px solid var(--steel-strong);
+    background: #cfd3d1; }
+  .tf-e-photo image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .tf-e-photo .tag { position: absolute; left: 0; top: 0; z-index: 3;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: #e8edf2; background: rgba(9,15,21,.74); padding: 3px 8px; pointer-events: none; }
+
+  .tf-fieldfig { display: flex; flex-direction: column; min-width: 0; justify-content: center; }
+  .tf-fieldfig .fd-wrap { width: 100%; flex: none; display: flex; justify-content: center; align-items: flex-end; }
+  .tf-fieldfig .fd-svg { width: 100%; max-width: 196px; height: auto; display: block; }
+  .tf-fieldfig .tf-colorkey { justify-content: center; margin-top: 11px; }
+
+  .tf-life { display: flex; flex-direction: column; min-width: 0; height: 100%; }
+  .tf-life .rows { display: flex; flex-direction: column; flex: 1 1 auto;
+    padding: 6px 0 2px; }
+  .tf-lrow { display: grid; grid-template-columns: 104px 1fr; gap: 8px; align-items: baseline;
+    flex: 1 1 auto;
+    padding: 3px 0; border-bottom: 1px solid var(--steel); }
+  .tf-lrow.tall { align-items: baseline; }
+  .tf-lrow:last-child { border-bottom: 0; }
+  .tf-lrow .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--ink-3); line-height: 1.3; }
+  .tf-lrow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 11.5px; color: var(--ink); line-height: 1.3; white-space: pre-line; }
+  .tf-lrow .v .vs { font-family: "Spectral", serif; font-style: italic; font-size: 9.5px; color: var(--ink-2); margin-left: 5px; }
+
+  .tf-keyfoot { display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+    margin-top: auto; padding-top: 7px; }
+  .tf-colorkey { display: flex; align-items: center; gap: 14px; }
+  .tf-colorkey .ck { display: flex; align-items: center; gap: 6px; }
+  .tf-colorkey .ck .sw { width: 13px; height: 13px; border: 1px solid rgba(0,0,0,.18); flex: none; }
+  .tf-colorkey .ck .lb { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .tf-logos { display: flex; align-items: center; justify-content: center; gap: 18px; align-self: center; }
+  .tf-logos img { height: 44px; width: auto; display: block; }
+  .tf-logos img.al { height: 50px; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#E2E4E2"/>
+      <path d="M16 40 Q50 18 84 40" fill="none" stroke="#A7ACAB" stroke-width="2.4"/>
+      <path d="M22 44 Q50 27 78 44" fill="none" stroke="#A7ACAB" stroke-width="1.6"/>
+      <ellipse cx="50" cy="40" rx="13" ry="4.5" fill="none" stroke="#092C5C" stroke-width="2"/>
+      <path d="M34 68 L50 58 L66 68 L50 78 Z" fill="#2E8B4E" stroke="#1F5E37" stroke-width="1.6"/>
+      <circle cx="50" cy="40" r="2.4" fill="#F5D130"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="tropicana-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="tropicana-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="tropicana-spread.jsx"></script>
+  <script type="text/babel" src="tropicana-app.jsx"></script>
+</body>
+</html>

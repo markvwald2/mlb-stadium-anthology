@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Petco Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Saira+Condensed:wght@500;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #121009;
+    font-family: "Spectral", Georgia, serif;
+    color: #E6DCC8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================================================================
+     PETCO PARK — "Dark Urban Monograph"
+     Blurb Large Landscape 13 x 11 in spread. 2550 x 1088 px @ 100ppi.
+     Export 3x = 7650 x 3264. Center split / fold at x = 1275.
+     A premium redevelopment-district monograph: dark charcoal paper across both
+     pages, the right page read as an architectural drawing pinned to a graphite
+     board. Steel drafting rules — not masonry — divide four warehouse-derived
+     bays. Brick appears only as a few small accents where the Western Metal
+     Supply story is referenced. Material mix ≈ 60% charcoal / 25% steel-graphite
+     / 10% sandstone / 5% brick.
+       LEFT  page = near full-bleed dusk district aerial + a slim black-steel
+         title rail (vertically mounted industrial signage) on the outer edge.
+       RIGHT page = four bays as drawing fields:
+         A Identity & Specifications (+ field protractor instrument)
+         B Stadium Context (narrative sheet)
+         C Architectural Story (three steel window openings)
+         D Game Artifact (blackened-steel scoreboard)
+     ================================================================ */
+  .pk-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --char: #1E1B15; --char-hi: #25221B; --char-lo: #15130D; --board: #110F09;
+    --graphite: #2E2A22; --graphite-hi: #38332A;
+    --ink-on: #E8DEC9; --ink-on2: #B4A98F; --ink-on3: #877E69;
+    --rule: #423D34; --rule-hi: #5E5849; --white-rule: rgba(232,222,201,.42);
+    --gold: #C99A4A; --gold-hi: #E2BC73; --gold-dim: #9C7A3C;
+    --sand: #CDB78D; --sand-deep: #A8916A;
+    --brick: #A24A31; --brick-deep: #6E3322; --brick-hi: #BC6044;
+    --steel: #4A453B; --steel-hi: #756E5E; --field: #7C8A5A;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background: var(--char); text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .pk-page { position: absolute; top: 0; height: 1088px; }
+  .pk-left  { left: 0; width: 1275px; background: #110E08; overflow: hidden; }
+  .pk-right { left: 1275px; width: 1275px; background: var(--char); overflow: hidden; }
+  .pk-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .05; mix-blend-mode: screen; }
+  .pk-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.5); z-index: 60; pointer-events: none; }
+
+  /* ============ LEFT / HERO (near full-bleed photo) ============ */
+  .pk-hero-slot { position: absolute; left: 0; top: 0; width: 1275px; height: 1088px; }
+  .pk-hero-slot image-slot { width: 100%; height: 100%; display: block; }
+  .pk-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(10,8,5,.92) 0px, rgba(10,8,5,.86) 150px, rgba(10,8,5,.12) 290px, rgba(10,8,5,0) 420px),
+      linear-gradient(180deg, rgba(10,8,5,.5) 0%, rgba(10,8,5,0) 20%); }
+
+  .pk-folio { position: absolute; right: 50px; top: 52px; z-index: 5; text-align: right;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .26em;
+    color: rgba(232,222,201,.6); text-transform: uppercase; line-height: 1.8; }
+  .pk-folio b { display: block; color: var(--gold-hi); font-weight: 700; }
+
+  /* ---- slim black-steel title rail (vertically mounted signage) ---- */
+  .pk-rail { position: absolute; left: 0; top: 0; width: 152px; height: 1088px; z-index: 6;
+    background:
+      linear-gradient(90deg, #0E0C07 0%, #1A1710 52%, #131009 100%);
+    border-right: 1px solid rgba(201,154,74,.42);
+    box-shadow: 14px 0 30px rgba(0,0,0,.55), inset -1px 0 0 rgba(232,222,201,.06);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 56px 12px 40px 40px; overflow: hidden; }
+  /* faint vertical steel sheen + rivet line */
+  .pk-rail::before { content: ""; position: absolute; top: 0; bottom: 0; right: 16px; width: 1px;
+    background: rgba(232,222,201,.07); }
+  .pk-rail::after { content: ""; position: absolute; right: 14px; top: 40px; bottom: 40px; width: 4px;
+    background-image: radial-gradient(circle, rgba(201,154,74,.5) 0 1.2px, transparent 1.6px);
+    background-size: 4px 64px; background-repeat: repeat-y; opacity: .6; }
+
+  .pk-rail-name { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; }
+  .pk-rail-name .vert { writing-mode: vertical-rl; transform: rotate(180deg); display: flex; gap: 13px; align-items: center; }
+  .pk-rail-name .nm { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 58px;
+    letter-spacing: .05em; text-transform: uppercase; color: #EFE6CE; line-height: 1;
+    text-shadow: 0 0 1px rgba(0,0,0,.6); }
+  .pk-rail-name .pl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 16.5px;
+    letter-spacing: .42em; text-transform: uppercase; color: var(--gold); line-height: 1; }
+
+  .pk-rail-foot { display: flex; flex-direction: column; align-items: center; gap: 13px; width: 100%; }
+  .pk-rail-mark { text-align: center; }
+  .pk-rail-mark .m1 { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: rgba(232,222,201,.82); line-height: 1.4; }
+  .pk-rail-mark .m2 { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--gold); margin-top: 5px; }
+  .pk-rail-rule { width: 56px; height: 1px; background: rgba(201,154,74,.55); }
+  .pk-rail-logos { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .pk-rail-logos img { box-sizing: content-box; height: 23px; width: auto; max-width: 50px; display: block; object-fit: contain;
+    background: linear-gradient(180deg, #EDE3CF, #D6C7A9); padding: 6px 8px; border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.3); box-shadow: 0 1px 4px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.5); }
+
+  /* ============ RIGHT PAGE / MONOGRAPH SHEET ============ */
+  .pk-underlay { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1; pointer-events: none; }
+  .pk-frame { position: absolute; left: 30px; top: 30px; right: 30px; bottom: 30px; z-index: 2;
+    border: 1px solid var(--rule-hi); pointer-events: none; }
+  .pk-frame::before { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(94,88,73,.45); }
+  /* blackened-steel corner brackets (drawing-board clips) */
+  .pk-corner { position: absolute; width: 22px; height: 22px; z-index: 3; border: 2px solid var(--gold-dim); pointer-events: none; }
+  .pk-corner.tl { left: 24px; top: 24px; border-right: 0; border-bottom: 0; }
+  .pk-corner.tr { right: 24px; top: 24px; border-left: 0; border-bottom: 0; }
+  .pk-corner.bl { left: 24px; bottom: 24px; border-right: 0; border-top: 0; }
+  .pk-corner.br { right: 24px; bottom: 24px; border-left: 0; border-top: 0; }
+
+  /* steel drafting separators between bays (dashed dimension lines + nodes) */
+  .pk-sep { position: absolute; width: 1px; z-index: 3;
+    background: repeating-linear-gradient(180deg, var(--rule-hi) 0 16px, transparent 16px 24px); opacity: .7; }
+  .pk-sep::before, .pk-sep::after { content: ""; position: absolute; left: -2.5px; width: 6px; height: 6px;
+    background: transparent; border: 1px solid var(--gold-dim); transform: rotate(45deg); }
+  .pk-sep::before { top: -3px; } .pk-sep::after { bottom: -3px; }
+
+  /* bay container */
+  .pk-bay { position: absolute; z-index: 4; display: flex; flex-direction: column; }
+  .pk-bayhead { display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+    padding: 0 1px 7px; border-top: 2px solid var(--gold); padding-top: 8px;
+    border-bottom: 1px solid var(--rule-hi); }
+  .pk-bayhead .nm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13.5px;
+    letter-spacing: .18em; text-transform: uppercase; line-height: 1; color: var(--ink-on); }
+  .pk-bayhead .nt { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .12em;
+    color: var(--gold); }
+
+  /* centered drafting subhead with hairline rules */
+  .pk-sub { display: flex; align-items: center; gap: 9px; margin: 13px 0 9px; }
+  .pk-sub::before, .pk-sub::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  .pk-sub .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+
+  /* ---- Bay A : logos row ---- */
+  .pk-idlogos { display: flex; align-items: center; justify-content: center; gap: 24px;
+    padding: 12px 0 14px; }
+  .pk-idlogos .lw { display: flex; align-items: center; justify-content: center; height: 54px; }
+  .pk-idlogos img { box-sizing: content-box; height: 36px; width: auto; max-width: 52px; display: block; object-fit: contain;
+    background: linear-gradient(180deg, #F2E9D6, #E1D4B9); padding: 8px 10px; border-radius: 7px;
+    border: 1px solid rgba(0,0,0,.22); box-shadow: 0 2px 6px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.55); }
+
+  /* ---- museum schedule table ---- */
+  .pk-sched { display: flex; flex-direction: column; }
+  .pk-srow { display: grid; grid-template-columns: 86px 1fr; gap: 9px; align-items: baseline;
+    padding: 3.5px 0; border-bottom: 1px solid var(--rule); }
+  .pk-srow:last-child { border-bottom: 0; }
+  .pk-srow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-on3); line-height: 1.2; }
+  .pk-srow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .pk-srow .v .vm { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink-on); line-height: 1.22; }
+  .pk-srow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 9.5px;
+    color: var(--ink-on2); line-height: 1.22; }
+
+  .pk-naming { text-align: center; font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px;
+    color: var(--ink-on); padding: 1px 0 2px; }
+  .pk-naming .yr { font-style: italic; font-weight: 400; font-size: 10.5px; color: var(--ink-on2); }
+
+  .pk-fig { display: block; width: 100%; height: auto; margin-top: 2px; transform: translateX(-8px); }
+
+  /* ---- Bay B : stadium context narrative sheet (wide; prose flows across in 2 cols) ---- */
+  .pk-ctxrow { flex: 0 0 auto; display: flex; gap: 14px; height: 132px; margin-top: 14px; }
+  .pk-ctxrow .pk-window { flex: 1 1 0; min-width: 0; }
+  .pk-wall { position: relative; flex: 1 1 auto; min-height: 0; padding: 18px 20px;
+    background: var(--char-hi);
+    border: 1px solid var(--rule);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.25);
+    border-left: 2px solid var(--sand-deep);
+  }
+  /* faint masonry coursing — the single quiet brick reference, very low key */
+  .pk-wall::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background: repeating-linear-gradient(0deg, rgba(162,74,49,.07) 0 26px, transparent 26px 28px); }
+  .pk-prose { position: relative; z-index: 1; }
+  .pk-prose p { margin: 0 0 10px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 1.68;
+    color: var(--ink-on); text-align: justify; hyphens: auto; }
+  .pk-ctxfig { column-span: all; -webkit-column-span: all; width: 100%; height: 196px;
+    margin: 7px 0 13px; break-inside: avoid; }
+  .pk-ctxfig:last-child { margin-bottom: 0; }
+  .pk-prose p:last-child { margin-bottom: 0; }
+  .pk-prose p:first-of-type::first-letter { font-family: "Saira Condensed", sans-serif; font-weight: 800; float: left;
+    font-size: 55px; line-height: .72; padding: 6px 10px 0 0; color: var(--brick-hi); }
+
+  /* ---- Bay C : blackened-steel photo frames (no pane overlay) ---- */
+  .pk-window { position: relative; margin: 0; background: var(--char-lo);
+    border: 3px solid var(--graphite); outline: 1px solid #0C0A06; outline-offset: 0;
+    box-shadow: 0 5px 16px rgba(0,0,0,.5), inset 0 0 0 1px rgba(232,222,201,.06); }
+  .pk-window image-slot { display: block; width: 100%; height: 100%; }
+
+  .pk-plate { margin-top: 14px; background: linear-gradient(180deg, var(--graphite-hi), var(--char-lo));
+    border: 1px solid #0C0A06; border-bottom: 3px solid var(--brick);
+    box-shadow: inset 0 1px 0 rgba(232,222,201,.08); padding: 13px 12px; text-align: center; }
+  .pk-plate .pl { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 15px;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--ink-on); line-height: 1.2; white-space: nowrap; }
+  .pk-plate .pl + .pl { color: var(--gold-hi); }
+  .pk-plate.bar { display: flex; align-items: center; justify-content: center; gap: 13px; padding: 11px 12px; }
+  .pk-plate.bar .pl { line-height: 1; }
+  .pk-plate.bar .pl + .pl::before { content: "\00b7"; margin-right: 13px; color: var(--steel-hi); }
+
+  /* ---- Bay D : game artifact / scoreboard ---- */
+  .pk-vhead { background: linear-gradient(180deg, var(--graphite-hi), var(--char-lo));
+    border: 1px solid #0C0A06; border-top: 2px solid var(--gold);
+    color: var(--ink-on); padding: 10px 12px 11px; }
+  .pk-vhead .vh-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .pk-vhead .vh-no { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: .12em;
+    color: var(--gold-hi); }
+  .pk-vhead .vh-tag { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .14em; color: var(--ink-on2); }
+  .pk-vhead .vh-sub { font-family: "Spectral", serif; font-style: italic; font-size: 11px;
+    color: var(--ink-on2); margin-top: 5px; }
+
+  .pk-match { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 11px 0 9px; }
+  .pk-match .team { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .pk-match .team img { box-sizing: content-box; height: 37px; width: auto; object-fit: contain;
+    background: linear-gradient(180deg, #F2E9D6, #E1D4B9); padding: 8px 11px; border-radius: 8px;
+    border: 1px solid rgba(0,0,0,.22); box-shadow: 0 3px 8px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.55); }
+  .pk-match .team .tn { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 17px;
+    letter-spacing: .02em; text-transform: uppercase; color: var(--ink-on); line-height: 1; }
+  .pk-match .at { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--gold); }
+  .pk-result { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 21px; letter-spacing: .02em;
+    text-transform: uppercase; color: var(--gold-hi); text-align: center; padding: 7px 0; margin-bottom: 11px;
+    border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); }
+
+  .pk-gi { margin-bottom: 12px; }
+  .pk-gi .girow { display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+    padding: 4px 0; border-bottom: 1px solid var(--rule); }
+  .pk-gi .girow:last-child { border-bottom: 0; }
+  .pk-gi .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-on3); }
+  .pk-gi .v { font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px; color: var(--ink-on); }
+
+  .pk-wx { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 8px; margin-bottom: 12px; }
+  .pk-wcell { display: flex; align-items: center; gap: 8px; }
+  .pk-wcell .tx { display: flex; flex-direction: column; }
+  .pk-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 15px; color: var(--ink-on); line-height: 1; }
+  .pk-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-on3); margin-top: 3px; }
+
+  .pk-matchup { display: flex; align-items: baseline; justify-content: center; flex-wrap: nowrap; gap: 7px;
+    padding: 6px 0 8px; margin-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  .pk-matchup .mt { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 9px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--gold); flex: none; }
+  .pk-matchup .mn { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink-on);
+    white-space: nowrap; }
+  .pk-matchup .vs { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-on3); flex: none; margin: 0 1px; }
+
+  .pk-pitch { margin-bottom: 12px; }
+  .pk-pitch .prow { display: grid; grid-template-columns: 30px 1fr 26px; gap: 8px; align-items: baseline;
+    padding: 4px 0; border-bottom: 1px solid var(--rule); }
+  .pk-pitch .prow:last-child { border-bottom: 0; }
+  .pk-pitch .pt { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: .04em; color: var(--ink-on3); }
+  .pk-pitch .prow.dec .pt.w { color: var(--field); } .pk-pitch .prow.dec .pt.l { color: var(--brick-hi); } .pk-pitch .prow.dec .pt.s { color: var(--gold); }
+  .pk-pitch .pn { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink-on); }
+  .pk-pitch .pd { font-family: "Space Mono", monospace; font-size: 8.5px; color: var(--ink-on3); text-align: right; }
+
+  /* line score — blackened-steel board (dominant) */
+  .pk-board { background: linear-gradient(180deg, #16130C, var(--board)); border: 1px solid #0A0805;
+    border-top: 2px solid var(--gold-dim);
+    box-shadow: inset 0 1px 0 rgba(201,154,74,.16), 0 4px 14px rgba(0,0,0,.5); padding: 11px 11px 12px; margin-bottom: 13px; }
+  .pk-board table { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; }
+  .pk-board th, .pk-board td { text-align: center; font-size: 11.5px; font-weight: 400; padding: 3.5px 0;
+    color: #D8CBAF; border-bottom: 1px solid rgba(201,154,74,.14); }
+  .pk-board thead th { color: rgba(201,154,74,.5); font-size: 9px; }
+  .pk-board td.tm, .pk-board th.tm { text-align: left; font-family: "Oswald", sans-serif; font-weight: 700;
+    font-size: 11.5px; letter-spacing: .05em; padding-right: 6px; white-space: nowrap; color: var(--ink-on); }
+  .pk-board td.sep, .pk-board th.sep { border-left: 1px solid rgba(201,154,74,.3); }
+  .pk-board td.rc { color: var(--gold-hi); font-weight: 700; }
+  .pk-board tbody tr:last-child td { border-bottom: 0; }
+  .pk-board tbody tr.win td.tm { color: var(--gold-hi); }
+
+  .pk-vlogos { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-top: auto; padding-top: 12px; border-top: 1px solid var(--rule-hi); }
+  .pk-vlogos .lw { flex: 1; display: flex; align-items: center; justify-content: center; height: 50px; }
+  .pk-vlogos img { box-sizing: content-box; height: 30px; width: auto; max-width: 52px; display: block; object-fit: contain;
+    background: linear-gradient(180deg, #F2E9D6, #E1D4B9); padding: 8px 10px; border-radius: 6px;
+    border: 1px solid rgba(0,0,0,.22); box-shadow: 0 2px 6px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.55); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#1B1810"/>
+      <rect x="16" y="14" width="13" height="72" fill="#0E0C07" stroke="#C99A4A" stroke-width="0.6"/>
+      <g fill="none" stroke="#5E5849" stroke-width="1">
+        <line x1="40" y1="20" x2="40" y2="84"/>
+        <line x1="58" y1="20" x2="58" y2="84"/>
+        <line x1="76" y1="20" x2="76" y2="84"/>
+      </g>
+      <g fill="#C99A4A">
+        <rect x="36" y="18" width="48" height="2"/>
+        <rect x="21" y="40" width="3" height="20"/>
+      </g>
+      <path d="M67 60 C63 60 62 64 61.6 68 L72.4 68 C72 64 71 60 67 60 Z" fill="#7C8A5A"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="petco-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="petco-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="petco-spread.jsx"></script>
+  <script type="text/babel" src="petco-app.jsx"></script>
+</body>
+</html>
