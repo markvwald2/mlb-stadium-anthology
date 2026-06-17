@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Citizens Bank Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Saira+Condensed:wght@500;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #23211c;
+    font-family: "Spectral", Georgia, serif;
+    color: #211A14;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================================================================
+     CITIZENS BANK PARK — "The Brick District Grid"
+     Blurb Large Landscape 13 x 11 in spread. 2550 x 1088 px @ 100ppi.
+     Export 3x = 7650 x 3264. Center split / fold at x = 1275.
+     LEFT  page = full-bleed aerial hero + mounted brick-and-stone title plaque.
+     RIGHT page = rowhouse-bay masonry grid over a faint site-plan underlay:
+       stone lintel · 3 rowhouse bays (Elevations / Facts / Context) ·
+       Lifecycle foundation band · Visit "tower" bay (Ashburn Alley signage).
+     ================================================================ */
+  .cbp-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --ink: #211A14; --ink2: #574B3D; --ink3: #8A7E6B;
+    --paper: #ECE5D6; --paper-hi: #F4ECDA; --paper-lo: #DED2B8;
+    --rule: #C3B69C; --rule-strong: #A89A7C;
+    --brick: #8E3B2F; --brick-deep: #6E2A22; --brick-hi: #A85040;
+    --stone: #D8CDB6; --stone-deep: #BEB199;
+    --granite: #6E6A63; --steel: #46433E; --steel-hi: #807A70;
+    --navy: #1E3A6E; --navy-deep: #15294E;
+    --red: #BA0C2F; --field: #5E7350;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.40' intercept='0.63'/%3E%3CfeFuncG type='linear' slope='0.40' intercept='0.63'/%3E%3CfeFuncB type='linear' slope='0.40' intercept='0.63'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper); text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .cbp-page { position: absolute; top: 0; height: 1088px; }
+  .cbp-left  { left: 0; width: 1275px; background: #15100A; overflow: hidden; }
+  .cbp-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; }
+  .cbp-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .26; mix-blend-mode: multiply; }
+  .cbp-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.18); z-index: 60; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .cbp-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .cbp-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .cbp-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(12,10,7,.5) 0%, rgba(12,10,7,0) 22%),
+      linear-gradient(0deg, rgba(10,8,6,.95) 0%, rgba(10,8,6,.78) 20%, rgba(10,8,6,.18) 42%, rgba(10,8,6,0) 56%); }
+
+  .cbp-folio { position: absolute; right: 56px; top: 58px; z-index: 5; text-align: right;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .26em;
+    color: rgba(232,224,206,.62); text-transform: uppercase; line-height: 1.8; }
+  .cbp-folio b { display: block; color: #E8DEC8; font-weight: 700; }
+  .cbp-spine { position: absolute; left: 42px; top: 50%; z-index: 5;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .34em;
+    color: rgba(232,224,206,.46); text-transform: uppercase; white-space: nowrap; }
+
+  /* ---- mounted brick-and-stone signage plaque ---- */
+  .cbp-titlewrap { position: absolute; left: 56px; right: 56px; bottom: 168px; z-index: 5; }
+  .cbp-plaque { position: relative; display: inline-block; padding: 22px 40px 26px;
+    background: linear-gradient(180deg, rgba(28,20,14,.5), rgba(20,14,9,.62));
+    border-top: 2px solid rgba(216,205,182,.85); border-bottom: 2px solid rgba(216,205,182,.85);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.35); }
+  /* steel bracket corner detailing — no drop shadow */
+  .cbp-plaque .brk { position: absolute; width: 16px; height: 16px; border: 2px solid var(--steel-hi); }
+  .cbp-plaque .brk.tl { left: 7px; top: 7px; border-right: 0; border-bottom: 0; }
+  .cbp-plaque .brk.tr { right: 7px; top: 7px; border-left: 0; border-bottom: 0; }
+  .cbp-plaque .brk.bl { left: 7px; bottom: 7px; border-right: 0; border-top: 0; }
+  .cbp-plaque .brk.br { right: 7px; bottom: 7px; border-left: 0; border-top: 0; }
+  .cbp-name { margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
+    font-size: 116px; line-height: .84; letter-spacing: .018em; text-transform: uppercase;
+    color: #ECE2CB; white-space: nowrap; }
+  .cbp-place { display: flex; align-items: center; gap: 16px; margin-top: 20px; padding-left: 2px; }
+  .cbp-place .bar { width: 46px; height: 2px; background: rgba(232,224,206,.55); }
+  .cbp-place .txt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 26px;
+    letter-spacing: .4em; text-transform: uppercase; color: #BA1F38; white-space: nowrap; }
+
+  /* ---- foundation marks band ---- */
+  .cbp-foot { position: absolute; left: 0; right: 0; bottom: 0; height: 124px; z-index: 5;
+    background: linear-gradient(180deg, rgba(10,8,6,0), rgba(8,6,4,.92) 34%);
+    display: flex; align-items: center; padding: 0 58px 44px; gap: 26px; }
+  .cbp-foot .fcol { display: flex; align-items: center; gap: 14px; flex: none; }
+  .cbp-foot img.phi { height: 56px; width: auto; }
+  .cbp-foot img.nl { height: 52px; width: auto; }
+  .cbp-foot img.mlb { height: 42px; width: auto; margin-left: auto; }
+  .cbp-foot .ftx { display: flex; flex-direction: column; line-height: 1.18; }
+  .cbp-foot .ftx .s { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 12px;
+    letter-spacing: .2em; text-transform: uppercase; color: rgba(232,224,206,.62); }
+  .cbp-foot .ftx .b { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 16px;
+    letter-spacing: .12em; text-transform: uppercase; color: #E8DEC8; }
+  .cbp-foot .fdiv { width: 1px; height: 44px; background: rgba(232,224,206,.26); flex: none; }
+
+  /* ============ RIGHT PAGE ============ */
+  .cbp-underlay { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1; pointer-events: none; }
+  .cbp-frame { position: absolute; left: 30px; top: 30px; right: 30px; bottom: 30px; z-index: 2;
+    border: 1.5px solid var(--rule-strong); pointer-events: none; }
+  .cbp-frame::before { content: ""; position: absolute; inset: 4px; border: 1px solid rgba(168,154,124,.4); }
+
+  /* ---- carved stone lintel ---- */
+  .cbp-lintel { position: absolute; z-index: 4; display: flex;
+    background: linear-gradient(180deg, var(--paper-hi), var(--stone));
+    border: 1.5px solid var(--stone-deep); box-shadow: inset 0 1px 0 rgba(255,255,255,.5); }
+  .cbp-lintel .lcell { flex: 1; display: flex; flex-direction: column; justify-content: center;
+    gap: 3px; padding: 6px 12px; border-right: 1px solid var(--stone-deep); }
+  .cbp-lintel .lcell:last-child { border-right: 0; }
+  .cbp-lintel .lk { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ink3); }
+  .cbp-lintel .lv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: .02em;
+    text-transform: uppercase; color: var(--ink); line-height: 1.05; }
+
+  /* ---- vertical brick pilasters ---- */
+  .cbp-pillar { position: absolute; width: 7px; z-index: 3;
+    background: var(--brick);
+    box-shadow: 0 0 0 1px rgba(110,42,34,.35); opacity: .82; }
+  .cbp-pillar::before, .cbp-pillar::after { content: ""; position: absolute; left: -2px; right: -2px; height: 7px;
+    background: var(--stone); border: 1px solid var(--stone-deep); }
+  .cbp-pillar::before { top: -4px; } .cbp-pillar::after { bottom: -4px; }
+
+  /* ---- bays ---- */
+  .cbp-bay { position: absolute; z-index: 4; display: flex; flex-direction: column; }
+  .cbp-bayhead { display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+    padding: 6px 9px 7px; margin-bottom: 11px; background: var(--navy); color: var(--paper-hi); }
+  .cbp-bayhead .nm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .1em; text-transform: uppercase; line-height: 1; }
+  .cbp-bayhead .nt { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .1em;
+    color: rgba(244,236,218,.62); }
+
+  /* section eyebrow on a brick-course rule */
+  .cbp-h { display: flex; align-items: baseline; gap: 8px; padding-bottom: 4px; margin-bottom: 8px;
+    border-bottom: 2px solid var(--brick); }
+  .cbp-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--brick-deep); white-space: nowrap; }
+  .cbp-h .n { font-family: "Space Mono", monospace; font-size: 8px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink3); margin-left: auto; }
+
+  /* ---- photo plates (no captions) ---- */
+  .cbp-photo { position: relative; margin: 0; background: var(--paper-hi);
+    border: 2px solid var(--paper-hi); outline: 1.5px solid var(--steel);
+    box-shadow: 0 4px 12px rgba(20,16,9,.24); }
+  .cbp-photo image-slot { display: block; width: 100%; height: 100%; }
+
+  /* ---- material / color keys ---- */
+  .cbp-keys { margin-top: 11px; display: flex; flex-direction: column; gap: 8px; }
+  .cbp-key .kt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--brick-deep); padding-bottom: 3px; margin-bottom: 4px;
+    border-bottom: 1px solid var(--rule); }
+  .cbp-key .ks { display: flex; flex-direction: column; gap: 2px; }
+  .cbp-key .krow { display: flex; align-items: center; gap: 7px; }
+  .cbp-key .sw { width: 15px; height: 10px; flex: none; border: 1px solid rgba(33,26,20,.35); }
+  .cbp-key .kl { font-family: "Spectral", serif; font-size: 10.5px; color: var(--ink); }
+
+  /* ---- facts table (brick-course dividers) ---- */
+  .cbp-facts { display: flex; flex-direction: column; }
+  .cbp-frow { display: grid; grid-template-columns: 74px 1fr; gap: 9px; align-items: baseline;
+    padding: 4px 0; border-bottom: 1px solid var(--rule); }
+  .cbp-frow:last-child { border-bottom: 0; }
+  .cbp-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink3); line-height: 1.2; }
+  .cbp-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .cbp-frow .v .vm { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink); line-height: 1.22; }
+  .cbp-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 9.5px;
+    color: var(--ink2); line-height: 1.2; }
+  .cbp-frow .v .vs.cont { font-style: normal; font-weight: 600; font-size: 12px; color: var(--ink); line-height: 1.22; }
+
+  .cbp-fieldblock { margin-top: 14px; }
+  .cbp-fig { display: block; width: 100%; height: auto; margin-top: 4px; transform: translateX(-7px); }
+
+  /* ---- stadium context masonry wall ---- */
+  .cbp-wall { position: relative; flex: 0 0 auto; min-height: 0; padding: 14px 16px;
+    border: 1.5px solid var(--rule-strong);
+    background:
+      repeating-linear-gradient(0deg, rgba(168,154,124,.16) 0 23px, transparent 23px 24px);
+  }
+  .cbp-wall::before { content: ""; position: absolute; left: 50%; top: 8px; bottom: 8px; width: 1px;
+    background: rgba(168,154,124,.18); }
+  .cbp-prose { position: relative; z-index: 1; }
+  .cbp-prose p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 11.5px; line-height: 1.34;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .cbp-prose p:last-child { margin-bottom: 0; }
+  .cbp-prose p:first-of-type::first-letter { font-family: "Saira Condensed", sans-serif; font-weight: 700; float: left;
+    font-size: 46px; line-height: .74; padding: 4px 8px 0 0; color: var(--brick); }
+  .cbp-context-photo { flex: none; width: 100%; height: 190px; margin: auto 0 0; }
+  .cbp-context-photo2 { flex: none; width: 100%; height: 190px; margin: 8px 0 0; }
+
+  /* ---- lifecycle band : stadium lineage + ongoing upgrades ---- */
+  .cbp-band { position: absolute; z-index: 4; }
+
+  /* lineage — vertical spine, fills the area below & left of the field diagram */
+  .cbp-lineage { position: absolute; left: 0; top: 0; bottom: 0; width: 250px;
+    display: flex; flex-direction: column; }
+  .cbp-lineage .cbp-h { width: 150px; }
+  .lin-list { position: relative; flex: 1; margin-top: 10px; padding-left: 20px;
+    display: flex; flex-direction: column; justify-content: space-between; }
+  .lin-list::before { content: ""; position: absolute; left: 5.75px; top: 5px; bottom: 22px;
+    width: 1.5px; background: var(--rule-strong); }
+  .lin-node { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 1px; }
+  .lin-node::before { content: ""; position: absolute; left: -18.5px; top: 2px; width: 7px; height: 7px;
+    background: var(--paper-hi); border: 1.5px solid var(--ink2); border-radius: 50%; }
+  .lin-name { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink);
+    white-space: nowrap; line-height: 1.1; }
+  .lin-yr { font-family: "Space Mono", monospace; font-size: 8.5px; color: var(--ink3);
+    letter-spacing: .02em; white-space: nowrap; }
+  .lin-node.term::before { background: var(--brick); border-color: var(--brick);
+    width: 9px; height: 9px; left: -19.5px; top: 1px; }
+  .lin-node.term .lin-name { font-weight: 600; color: var(--brick); font-size: 13px; }
+  .lin-node.term .lin-yr { color: var(--brick-deep); }
+
+  /* ongoing upgrades — compact renovations note, tucked below the field diagram */
+  .cbp-upgrades { position: absolute; left: 260px; right: 0; top: 70px; bottom: 2px;
+    display: flex; flex-direction: column; justify-content: flex-start; transform: translateX(-16px); }
+  .cbp-upgrades .cbp-h { margin-bottom: 7px; }
+  .cbp-upgrades .cbp-h .t { font-size: 8px; letter-spacing: .06em; }
+  .cbp-upgrades .cbp-h .n { font-size: 7.5px; }
+  .up-note { margin: 0; font-family: "Spectral", serif; font-style: italic; font-size: 12px;
+    line-height: 1.5; color: var(--ink2); }
+
+  /* ---- visit tower bay ---- */
+  .cbp-visit { gap: 0; }
+  .cbp-visithead { background: var(--brick-deep); color: var(--paper-hi); padding: 9px 11px 10px; margin-bottom: 12px; }
+  .cbp-visithead .vh-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .cbp-visithead .vh-no { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 17px; letter-spacing: .08em; }
+  .cbp-visithead .vh-tag { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .14em;
+    color: #E6C7A0; }
+  .cbp-visithead .vh-sub { font-family: "Spectral", serif; font-style: italic; font-size: 11px;
+    color: rgba(244,236,218,.82); margin-top: 4px; }
+
+  .cbp-match { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 8px; }
+  .cbp-match .team { display: flex; align-items: center; gap: 9px; }
+  .cbp-match .team img { height: 40px; width: auto; }
+  .cbp-match .team .tt { display: flex; flex-direction: column; line-height: 1; }
+  .cbp-match .team .tt.r { align-items: flex-end; }
+  .cbp-match .team .tt .ab { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 22px; color: var(--ink); }
+  .cbp-match .team .tt .nm { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink3); margin-top: 2px; }
+  .cbp-match .at { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .14em;
+    color: var(--ink3); }
+  .cbp-result { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 21px; letter-spacing: .01em;
+    text-transform: uppercase; color: var(--brick); text-align: center; padding: 7px 0; margin-bottom: 10px;
+    border-top: 2px solid var(--brick); border-bottom: 2px solid var(--brick); }
+
+  .cbp-gi { margin-bottom: 13px; }
+  .cbp-gi .girow { display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
+    padding: 4px 0; border-bottom: 1px solid var(--rule); }
+  .cbp-gi .girow:last-child { border-bottom: 0; }
+  .cbp-gi .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink3); }
+  .cbp-gi .v { font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px; color: var(--ink); }
+
+  .cbp-wx { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 8px; margin-bottom: 13px; }
+  .cbp-wcell { display: flex; align-items: center; gap: 8px; }
+  .cbp-wcell .tx { display: flex; flex-direction: column; }
+  .cbp-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1; }
+  .cbp-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink3); margin-top: 3px; }
+
+  .cbp-pitch { margin-bottom: 13px; }
+  .cbp-pitch .prow { display: grid; grid-template-columns: 32px 1fr 22px; gap: 8px; align-items: baseline;
+    padding: 4px 0; border-bottom: 1px solid var(--rule); }
+  .cbp-pitch .prow:last-child { border-bottom: 0; }
+  .cbp-pitch .pt { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: .04em; color: var(--ink3); }
+  .cbp-pitch .prow.dec .pt.w { color: var(--field); } .cbp-pitch .prow.dec .pt.l { color: var(--brick); } .cbp-pitch .prow.dec .pt.s { color: var(--navy); }
+  .cbp-pitch .pn { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink); }
+  .cbp-pitch .pd { font-family: "Space Mono", monospace; font-size: 8.5px; color: var(--ink3); text-align: right; }
+
+  /* line score — navy outfield-signal board */
+  .cbp-board { background: var(--navy); padding: 8px 9px 9px; margin-bottom: 12px; }
+  .cbp-board table { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; }
+  .cbp-board th, .cbp-board td { text-align: center; font-size: 10px; font-weight: 400; padding: 2.5px 0;
+    color: #DCE6EF; border-bottom: 1px solid rgba(220,230,239,.16); }
+  .cbp-board thead th { color: rgba(220,230,239,.5); font-size: 8.5px; }
+  .cbp-board td.tm, .cbp-board th.tm { text-align: left; font-family: "Oswald", sans-serif; font-weight: 700;
+    font-size: 10px; letter-spacing: .05em; padding-right: 6px; white-space: nowrap; color: #F4ECDA; }
+  .cbp-board td.sep, .cbp-board th.sep { border-left: 1px solid rgba(220,230,239,.3); }
+  .cbp-board td.rc { color: #F0B24A; font-weight: 700; }
+  .cbp-board tbody tr:last-child td { border-bottom: 0; }
+  .cbp-board tbody tr.win td.tm { color: #F0B24A; }
+
+  .cbp-visit-photo { flex: 1 1 auto; min-height: 96px; width: 100%; margin: 4px 0 0; }
+  .cbp-vlogos { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-top: 12px; padding-top: 10px; border-top: 2px solid var(--navy); }
+  .cbp-vlogos .lw { flex: 1; display: flex; align-items: center; justify-content: center; height: 40px; }
+  .cbp-vlogos img { max-height: 38px; max-width: 100%; width: auto; display: block; object-fit: contain; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#ECE5D6"/>
+      <g fill="#8E3B2F">
+        <rect x="20" y="30" width="18" height="40"/>
+        <rect x="41" y="30" width="18" height="40"/>
+        <rect x="62" y="30" width="18" height="40"/>
+      </g>
+      <g stroke="#15294E" stroke-width="2" fill="none">
+        <line x1="18" y1="30" x2="82" y2="30"/>
+        <line x1="18" y1="72" x2="82" y2="72"/>
+      </g>
+      <path d="M50 44 C46 44 45 48 44.6 52 L55.4 52 C55 48 54 44 50 44 Z" fill="#D8CDB6"/>
+      <rect x="44" y="52" width="12" height="2.4" fill="#D8CDB6"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="citizens-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="citizens-diagram.jsx"></script>
+  <script type="text/babel" src="citizens-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="citizens-spread.jsx"></script>
+  <script type="text/babel" src="citizens-app.jsx"></script>
+</body>
+</html>

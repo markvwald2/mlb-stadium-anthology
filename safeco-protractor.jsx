@@ -1,9 +1,9 @@
-/* tmobile-protractor.jsx — T-Mobile Park "field orientation" instrument.
+/* safeco-protractor.jsx — Safeco Field "field orientation" instrument.
    A compact surveying-instrument symbol (NOT a generic baseball diamond):
    a quarter/third protractor scale reads the field-axis bearing off true north,
    a small oriented field is rotated to match (NE, 49deg), and LF/CF/RF chips ride
    the foul lines / center. Mariners palette — navy needle, green field, silver
-   chips. Props: lf, cf, rf, orientation, degrees. Exposes window.TMobileProtractor. */
+   chips. Props: lf, cf, rf, orientation, degrees. Exposes window.SafecoProtractor. */
 (function () {
   const e = React.createElement;
 
@@ -33,7 +33,7 @@
     );
   }
 
-  function TMobileProtractor(props) {
+  function SafecoProtractor(props) {
     const deg = (props.degrees != null) ? props.degrees : 49;
     const orientation = props.orientation || "NE";
     const C = [180, 188], R = 84, PR = 120;
@@ -89,5 +89,5 @@
     );
   }
 
-  window.TMobileProtractor = TMobileProtractor;
+  window.SafecoProtractor = SafecoProtractor;
 })();

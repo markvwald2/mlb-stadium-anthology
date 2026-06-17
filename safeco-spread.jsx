@@ -1,5 +1,5 @@
-/* tmobile-spread.jsx — the single T-Mobile Park spread, "Shelter Without Walls".
-   Reads window.TMOBILE + window.TMobileProtractor.
+/* safeco-spread.jsx — the single Safeco Field spread, "Shelter Without Walls".
+   Reads window.SAFECO + window.SafecoProtractor.
    LEFT  page: full-bleed elevated hero of the retractable canopy over the field
    and the SoDo rail corridor; deep teal-charcoal ground, compact steel-signage
    title beneath a canopy rule, engineering-annotation metadata stack.
@@ -11,8 +11,8 @@
    dominant object. Every populated field renders exactly once. */
 (function () {
   const e = React.createElement;
-  const D = window.TMOBILE;
-  const Protractor = window.TMobileProtractor;
+  const D = window.SAFECO;
+  const Protractor = window.SafecoProtractor;
 
   function Slot(props) {
     return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect" },
@@ -86,12 +86,12 @@
   }
 
   function Spread() {
-    return e("div", { className: "tm-spread", "data-screen-label": "T-Mobile Park spread" },
+    return e("div", { className: "tm-spread", "data-screen-label": "Safeco Field spread" },
 
       /* ================= LEFT PAGE / HERO ================= */
-      e("div", { className: "tm-page tm-left", "data-screen-label": "T-Mobile Park — hero" },
+      e("div", { className: "tm-page tm-left", "data-screen-label": "Safeco Field — hero" },
         e("div", { className: "tm-hero-slot" },
-          e(Slot, { id: "tmobile-hero", placeholder: "Drop the T-Mobile Park hero \u2014 elevated / aerial view where the retractable steel canopy is unmistakable above the lit field, with the SoDo rail corridor, port cranes & downtown edge beyond" })),
+          e(Slot, { id: "safeco-hero", placeholder: "Drop the Safeco Field hero \u2014 elevated / aerial view where the retractable steel canopy is unmistakable above the lit field, with the SoDo rail corridor, port cranes & downtown edge beyond" })),
         e("div", { className: "tm-hero-scrim" }),
 
         e("img", { className: "tm-hero-logo", src: "assets/seattle-mariners-logo.svg", alt: "Seattle Mariners" }),
@@ -131,7 +131,7 @@
       ),
 
       /* ================= RIGHT PAGE / THE ROOF BAYS ================= */
-      e("div", { className: "tm-page tm-right", "data-screen-label": "T-Mobile Park — roof bays" },
+      e("div", { className: "tm-page tm-right", "data-screen-label": "Safeco Field — roof bays" },
         e(CanopyArmature, null),
 
         /* ---- top photo strip (structural observations) ---- */
@@ -165,7 +165,10 @@
             e("div", { className: "tm-facts" }, D.lifecycle.map(factRow)),
             e("div", { className: "tm-namehist" },
               e("div", { className: "lab" }, "Name History"),
-              e("div", { className: "val" }, D.name_history)),
+              e("div", { className: "val" },
+                D.name_history.split(/(\([^)]*\))/).map(function (s, i) {
+                  return /^\(/.test(s) ? e("span", { key: i, className: "yr" }, s) : s;
+                }))),
             e("div", { className: "tm-reno" }, D.renovations)),
 
           // bay 3 — field instrument + logos + tags
@@ -220,8 +223,8 @@
                   e("b", null, "W"), " ", e("i", null, D.pitching.win),
                   e("span", { className: "sp" }, "  \u00b7  "),
                   e("b", null, "L"), " ", e("i", null, D.pitching.loss),
-                  e("span", { className: "sp" }, "  \u00b7  "),
-                  e("b", null, "Sv"), " ", e("i", null, D.pitching.save))),
+                  e("br", null),
+                  e("b", null, "S"), " ", e("i", null, D.pitching.save))),
               e("div", { className: "tm-cond" }, D.conditions)),
 
             // line score — the dominant object
@@ -238,5 +241,5 @@
     );
   }
 
-  window.TMobileSpread = Spread;
+  window.SafecoSpread = Spread;
 })();

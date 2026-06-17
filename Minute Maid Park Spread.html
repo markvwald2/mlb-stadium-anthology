@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Minute Maid Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Saira+Condensed:wght@500;600;700;800&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #23232a;
+    font-family: "Spectral", Georgia, serif;
+    color: #211D17;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================================================================
+     MINUTE MAID PARK — "Platform 35: The Retractable Terminal"
+     Blurb Large Landscape 13 x 11 in spread. 2550 x 1088 px @ 100ppi.
+     Export 3x = 7650 x 3264. Center split / fold at x = 1275.
+     LEFT  page = full-bleed dusk hero + station-sign title block.
+     RIGHT page = warm paper organized as five station "track bays".
+     ================================================================ */
+  .mm-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --ink: #211D17; --ink-2: #524A3C; --ink-3: #8A816E;
+    --paper: #ECE3CF; --paper-hi: #F4ECDA; --paper-lo: #DCD0B6;
+    --rule: #C6B99E; --rule-strong: #A4967A;
+    --navy: #0E2A47; --navy-deep: #0A1E33;
+    --orange: #D9641C; --orange-hi: #E97F2C;
+    --brick: #9C3A2A; --brick-deep: #7C2C20;
+    --steel: #6F6E68; --steel-hi: #9A968C; --roofglass: #7C93A0;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.40' intercept='0.63'/%3E%3CfeFuncG type='linear' slope='0.40' intercept='0.63'/%3E%3CfeFuncB type='linear' slope='0.40' intercept='0.63'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper); text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .mm-page { position: absolute; top: 0; height: 1088px; }
+  .mm-left  { left: 0; width: 1275px; background: #0C1622; overflow: hidden; }
+  .mm-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; }
+  .mm-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .34; mix-blend-mode: multiply; }
+  .mm-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.16); z-index: 40; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .mm-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .mm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .mm-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(8,12,20,.55) 0%, rgba(8,12,20,0) 24%),
+      linear-gradient(0deg, rgba(7,11,17,.95) 0%, rgba(7,11,17,.74) 22%, rgba(7,11,17,.16) 44%, rgba(7,11,17,0) 58%); }
+
+  .mm-astros { position: absolute; left: 58px; top: 50px; height: 98px; width: auto; z-index: 5;
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,.55)); }
+  .mm-folio { position: absolute; right: 56px; top: 60px; z-index: 5; text-align: right;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .26em;
+    color: rgba(228,222,208,.66); text-transform: uppercase; line-height: 1.8; }
+  .mm-folio b { display: block; color: var(--orange-hi); font-weight: 700; }
+  .mm-spine { position: absolute; left: 36px; top: 50%; z-index: 5;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .34em;
+    color: rgba(228,222,208,.5); text-transform: uppercase; white-space: nowrap; }
+
+  /* faint roof-track datum across the hero — the moving-roof idea, stated quietly */
+  .mm-roofline { position: absolute; left: 70px; right: 70px; top: 188px; z-index: 4;
+    display: flex; align-items: center; gap: 12px; opacity: .55; pointer-events: none; }
+  .mm-roofline .ln { flex: 1; height: 1px; background: rgba(228,222,208,.4); }
+  .mm-roofline .tk { width: 1px; height: 10px; background: rgba(228,222,208,.55); flex: none; }
+  .mm-roofline .cap { font-family: "Space Mono", monospace; font-size: 10.5px; letter-spacing: .3em;
+    color: rgba(228,222,208,.72); text-transform: uppercase; flex: none; }
+
+  /* ---- station-sign title block ---- */
+  .mm-titlewrap { position: absolute; left: 58px; right: 58px; bottom: 150px; z-index: 5; }
+  .mm-plate { display: inline-block; position: relative; padding: 26px 40px 30px;
+    background: linear-gradient(180deg, #14263A 0%, #0E1C2C 100%);
+    border: 2px solid rgba(154,150,140,.6);
+    box-shadow: 0 10px 40px rgba(0,0,0,.5), inset 0 0 0 1px rgba(0,0,0,.4); }
+  .mm-plate::before, .mm-plate::after,
+  .mm-plate > .blt { content: ""; position: absolute; width: 8px; height: 8px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #C9C3B4, #6F6E68); }
+  .mm-plate::before { left: 11px; top: 11px; }
+  .mm-plate::after  { right: 11px; top: 11px; }
+  .mm-plate .blt.bl { left: 11px; bottom: 11px; }
+  .mm-plate .blt.br { right: 11px; bottom: 11px; }
+  .mm-name { margin: 0; font-family: "Saira Condensed", "Oswald", sans-serif; font-weight: 700;
+    font-size: 118px; line-height: .86; letter-spacing: .035em; text-transform: uppercase;
+    color: #F3EAD4;
+    text-shadow: 0 0 24px rgba(226,150,72,.26), 0 1px 0 rgba(0,0,0,.45); }
+  .mm-place { display: flex; align-items: center; gap: 16px; margin-top: 24px; padding-left: 4px; }
+  .mm-place .arw { color: var(--orange-hi); font-family: "Oswald", sans-serif; font-size: 22px; }
+  .mm-place .bar { width: 40px; height: 2px; background: rgba(228,222,208,.5); }
+  .mm-place .txt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 27px;
+    letter-spacing: .42em; text-transform: uppercase; color: #E6E0D2; white-space: nowrap; }
+
+  /* ---- bottom platform band ---- */
+  .mm-platband { position: absolute; left: 0; right: 0; bottom: 0; height: 110px; z-index: 5;
+    background: linear-gradient(180deg, rgba(8,13,20,.0), rgba(8,13,20,.92) 34%);
+    display: flex; align-items: center; padding: 0 58px 46px; gap: 26px; }
+  .mm-platform { flex: none; display: flex; flex-direction: column; align-items: flex-start;
+    border-left: 3px solid var(--orange); padding: 4px 0 4px 14px; }
+  .mm-platform .lab { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .3em;
+    text-transform: uppercase; color: rgba(228,222,208,.66); }
+  .mm-platform .no { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 44px; line-height: .82;
+    color: var(--orange-hi); letter-spacing: .01em; }
+  .mm-platnum { display: flex; align-items: flex-end; gap: 9px; }
+  .mm-platform .of { display: flex; flex-direction: column; line-height: 1.05; padding-bottom: 5px;
+    font-family: "Space Mono", monospace; }
+  .mm-platform .of .ofl { font-size: 10px; letter-spacing: .24em; color: rgba(228,222,208,.55); }
+  .mm-platform .of .ofn { font-size: 15px; font-weight: 700; letter-spacing: .02em; color: rgba(232,226,212,.85); }
+  .mm-pdiv { width: 1px; height: 46px; background: rgba(228,222,208,.26); flex: none; }
+  .mm-tag { font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
+    text-transform: uppercase; color: rgba(232,226,212,.82); white-space: nowrap; }
+  .mm-marks { margin-left: auto; display: flex; align-items: center; gap: 16px; flex: none; }
+  .mm-marks img.mlb { height: 40px; width: auto; display: block; }
+  .mm-marks img.al { height: 42px; width: auto; display: block; }
+  .mm-marks .divln { width: 1px; height: 30px; background: rgba(228,222,208,.28); }
+  .mm-marks .lg { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .22em; text-transform: uppercase; color: var(--orange-hi); }
+
+  /* ============ RIGHT PAGE — FIVE TRACK BAYS ============ */
+  /* steel frame just inside the trim safe margin */
+  .mm-frame { position: absolute; left: 30px; top: 30px; right: 30px; bottom: 30px; z-index: 1;
+    border: 1.5px solid var(--steel); pointer-events: none; }
+  .mm-frame::before { content: ""; position: absolute; inset: 4px; border: 1px solid rgba(111,110,104,.4); }
+  .mm-rivet { position: absolute; width: 7px; height: 7px; border-radius: 50%; z-index: 3;
+    background: radial-gradient(circle at 35% 30%, #C9C3B4, #6F6E68); }
+
+  /* vertical steel-track rules between bays */
+  .mm-track { position: absolute; top: 44px; bottom: 44px; width: 0; z-index: 3;
+    border-left: 1px solid var(--rule-strong); }
+  .mm-track::before { content: ""; position: absolute; left: -1px; top: 0; bottom: 0; width: 3px;
+    border-left: 1px solid rgba(166,150,122,.35); border-right: 1px solid rgba(166,150,122,.35); }
+  .mm-track i { position: absolute; left: -2.5px; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--rule-strong); opacity: .7; }
+
+  .mm-bay { position: absolute; top: 56px; z-index: 4; display: flex; flex-direction: column; }
+  .mm-bayhead { display: flex; flex-direction: column; align-items: center; gap: 3px;
+    padding: 9px 6px 10px; background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: var(--paper-hi); margin-bottom: 14px; }
+  .mm-bayhead .id { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .34em;
+    text-transform: uppercase; color: rgba(244,236,218,.62); }
+  .mm-bayhead .star { color: var(--orange-hi); font-size: 12px; line-height: .7; }
+  .mm-bayhead .nm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--paper-hi); text-align: center; line-height: 1.05; white-space: nowrap; }
+
+  /* section eyebrow on a hairline */
+  .mm-h { display: flex; align-items: baseline; gap: 8px; padding-bottom: 4px; margin-bottom: 8px;
+    border-bottom: 1.5px solid var(--navy); }
+  .mm-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .mm-h .n { font-family: "Space Mono", monospace; font-size: 8px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
+
+  /* ---- BAY A : identity ---- */
+  .mm-idblock { display: flex; align-items: center; gap: 10px; padding-bottom: 12px; margin-bottom: 4px;
+    border-bottom: 1.5px solid var(--navy); }
+  .mm-idblock img { height: 50px; width: auto; flex: none; }
+  .mm-idblock .tx { display: flex; flex-direction: column; line-height: 1; }
+  .mm-idblock .c { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .12em; color: var(--ink-2); text-transform: uppercase; }
+  .mm-idblock .n { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 27px; color: var(--brick);
+    letter-spacing: .02em; line-height: .9; margin-top: 3px; text-transform: uppercase; }
+  .mm-route { display: flex; flex-direction: column; }
+  .mm-rrow { padding: 7px 0; border-bottom: 1px solid var(--rule); }
+  .mm-rrow:last-child { border-bottom: 0; }
+  .mm-rrow .rl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .mm-rrow .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .01em;
+    text-transform: uppercase; color: var(--ink); line-height: 1.12; margin-top: 2px; }
+  .mm-asg { display: flex; align-items: center; gap: 9px; margin: 12px 0; padding: 8px 10px;
+    background: var(--navy); color: var(--paper-hi); }
+  .mm-asg .yr { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 28px; color: var(--orange-hi); line-height: .82; letter-spacing: .01em; }
+  .mm-asg .lb { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .12em;
+    text-transform: uppercase; color: rgba(244,236,218,.86); line-height: 1.18; }
+  .mm-names { margin-top: 4px; }
+  .mm-names .nrow { display: flex; justify-content: space-between; align-items: baseline; gap: 6px;
+    padding: 4px 0; border-bottom: 1px dotted var(--rule); }
+  .mm-names .nrow:last-child { border-bottom: 0; }
+  .mm-names .nn { font-family: "Spectral", serif; font-weight: 600; font-size: 11.5px; color: var(--ink); }
+  .mm-names .ny { font-family: "Space Mono", monospace; font-size: 9.5px; color: var(--ink-3); white-space: nowrap; }
+
+  /* ---- photo plates (framed station posters, NO captions) ---- */
+  .mm-plate-photo { position: relative; margin: 0; background: var(--paper-hi);
+    border: 2px solid var(--paper-hi); outline: 1.5px solid var(--navy-deep);
+    box-shadow: 0 5px 14px rgba(20,18,12,.28); }
+  .mm-plate-photo image-slot { display: block; width: 100%; height: 100%; }
+
+  /* ---- BAY B : facts + lifecycle ---- */
+  .mm-facts { display: flex; flex-direction: column; }
+  .mm-frow { display: grid; grid-template-columns: 78px 1fr; gap: 9px; align-items: baseline;
+    padding: 7px 0; border-bottom: 1px solid var(--rule); }
+  .mm-frow:last-child { border-bottom: 0; }
+  .mm-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); line-height: 1.2; }
+  .mm-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .mm-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 11.5px; color: var(--ink); line-height: 1.24; }
+  .mm-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 9.5px;
+    color: var(--ink-2); line-height: 1.22; }
+
+  .mm-route-stops { position: relative; margin-top: 4px; padding-left: 18px; }
+  .mm-route-stops::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px;
+    background: var(--navy); opacity: .8; }
+  .mm-stop { position: relative; padding: 6px 0; }
+  .mm-stop::before { content: ""; position: absolute; left: -16px; top: 8px; width: 11px; height: 11px;
+    border-radius: 50%; background: var(--paper); border: 2px solid var(--navy); }
+  .mm-stop.signal::before { background: var(--orange); border-color: var(--orange); }
+  .mm-stop .sn { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .03em;
+    text-transform: uppercase; color: var(--ink); line-height: 1.16; }
+  .mm-stop .sy { font-family: "Space Mono", monospace; font-size: 9px; color: var(--brick); margin-top: 1px; }
+
+  /* ---- BAY C : stadium context, station-window grid ---- */
+  .mm-ctx { flex: 1; display: flex; flex-direction: column; }
+  .mm-ctxnote { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3); padding-bottom: 6px; margin-bottom: 4px;
+    border-bottom: 1.5px solid var(--navy); }
+  .mm-window { position: relative; flex: 1; margin-top: 6px; padding: 22px 22px 20px;
+    border: 1.5px solid var(--rule-strong);
+    background:
+      linear-gradient(90deg, transparent calc(50% - .5px), rgba(166,150,122,.28) 50%, transparent calc(50% + .5px)),
+      linear-gradient(180deg, transparent 0, transparent 0); }
+  .mm-window::before { content: ""; position: absolute; left: 0; right: 0; top: 33%; height: 1px; background: rgba(166,150,122,.28); }
+  .mm-window::after  { content: ""; position: absolute; left: 0; right: 0; top: 66%; height: 1px; background: rgba(166,150,122,.28); }
+  .mm-prose { position: relative; z-index: 1; }
+  .mm-prose p { margin: 0 0 11px; font-family: "Spectral", serif; font-size: 14px; line-height: 1.56;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .mm-prose p:last-child { margin-bottom: 0; }
+  .mm-prose p:first-of-type::first-letter { font-family: "Saira Condensed", sans-serif; font-weight: 700; float: left;
+    font-size: 58px; line-height: .76; padding: 5px 10px 0 0; color: var(--brick); }
+
+  /* ---- diagrams ---- */
+  .mm-fig { display: block; width: 100%; height: auto; }
+  .mm-figblock { margin-bottom: 12px; }
+  .mm-bayd-photo { flex: 1 1 auto; min-height: 300px; margin-top: 6px; width: 100%; }
+  .mm-baya-photo, .mm-bayb-photo { flex: 1 1 auto; min-height: 150px; margin-top: 14px; width: 100%; }
+  .mm-ab-photo { position: absolute; z-index: 5; margin: 0; }
+  .mm-figblock .cap { font-family: "Space Mono", monospace; font-size: 8px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); text-align: center; margin-top: 2px; }
+
+  /* ---- BAY E : visit / game ---- */
+  .mm-vrow { display: grid; grid-template-columns: 82px 1fr; gap: 8px; align-items: baseline;
+    padding: 3.5px 0; border-bottom: 1px solid var(--rule); }
+  .mm-vrow:last-child { border-bottom: 0; }
+  .mm-vrow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .mm-vrow .v { font-family: "Spectral", serif; font-weight: 600; font-size: 11px; color: var(--ink); line-height: 1.2; }
+  .mm-vrow .v.hi { color: var(--brick); }
+
+  .mm-wx { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 6px; margin-top: 4px; }
+  .mm-wcell { display: flex; align-items: center; gap: 7px; }
+  .mm-wcell .tx { display: flex; flex-direction: column; }
+  .mm-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1; }
+  .mm-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 7.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
+
+  /* line score as a departure board */
+  .mm-board { background: var(--navy); padding: 8px 9px 9px; margin-top: 2px; }
+  .mm-board table { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; }
+  .mm-board th, .mm-board td { text-align: center; font-size: 9px; font-weight: 400; padding: 2.5px 0;
+    color: #DCE6EF; border-bottom: 1px solid rgba(220,230,239,.16); }
+  .mm-board thead th { color: rgba(220,230,239,.55); font-size: 8px; }
+  .mm-board td.tm, .mm-board th.tm { text-align: left; font-family: "Oswald", sans-serif; font-weight: 700;
+    font-size: 9.5px; letter-spacing: .06em; padding-right: 6px; white-space: nowrap; color: #F4ECDA; }
+  .mm-board td.sep, .mm-board th.sep { border-left: 1px solid rgba(220,230,239,.3); }
+  .mm-board td.rc { color: var(--orange-hi); font-weight: 700; }
+  .mm-board tbody tr:last-child td { border-bottom: 0; }
+  .mm-board tbody tr.win td.tm { color: var(--orange-hi); }
+  .mm-egg { display: flex; align-items: center; gap: 6px; margin-top: 6px;
+    font-family: "Space Mono", monospace; font-size: 8px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .mm-egg .ast { color: var(--orange); font-weight: 700; }
+
+  .mm-pitch .prow { display: grid; grid-template-columns: 40px 1fr 18px; gap: 6px; align-items: baseline;
+    padding: 3.5px 0; border-bottom: 1px solid var(--rule); }
+  .mm-pitch .prow:last-child { border-bottom: 0; }
+  .mm-pitch .pt { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 9px; letter-spacing: .04em;
+    color: var(--brick); }
+  .mm-pitch .pn { font-family: "Spectral", serif; font-weight: 600; font-size: 11px; color: var(--ink); }
+  .mm-pitch .pd { font-family: "Space Mono", monospace; font-size: 9px; color: var(--ink-3); text-align: right; }
+
+  .mm-logos { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-top: auto; padding-top: 10px; border-top: 1.5px solid var(--navy); }
+  .mm-logos img { height: 30px; width: auto; display: block; object-fit: contain; }
+  .mm-logos .lw { flex: 1; display: flex; align-items: center; justify-content: center; height: 36px; }
+
+  /* ---- merged FIELD & VISIT region (combined right two columns) ---- */
+  .mm-photo43 { width: 100%; aspect-ratio: 4 / 3; height: auto; }
+  .mm-photo-fill { width: 100%; flex: 1 1 0; min-height: 0; }
+  .mm-photo-fill image-slot { height: 100%; }
+  .mm-de-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 14px 0; align-items: start; }
+  .mm-de-col { display: flex; flex-direction: column; min-width: 0; }
+  .mm-de-col .mm-figblock { margin-bottom: 0; }
+  .mm-deblock { margin-top: 14px; }
+  .mm-logos-de { margin-top: 14px; }
+  .mm-bay-de .mm-vrow { padding: 3px 0; }
+  .mm-bay-de .mm-h { margin-bottom: 6px; padding-bottom: 3px; }
+  /* full-width pitching strip — three pitchers across */
+  .mm-pitch3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .mm-pitch3 .pcell { display: flex; flex-direction: column; gap: 3px; padding-left: 9px;
+    border-left: 2px solid var(--navy); }
+  .mm-pitch3 .pteam { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 9px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--brick); }
+  .mm-pitch3 .pname { font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px; color: var(--ink); line-height: 1.1; }
+  .mm-pitch3 .pdec { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); }
+  /* weather on a single line (4 across) */
+  .mm-wx-line { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#ECE3CF"/>
+      <g stroke="#6F6E68" fill="none" stroke-width="2.2">
+        <path d="M16 40 Q50 18 84 40"/>
+        <path d="M22 46 Q50 28 78 46"/>
+      </g>
+      <g stroke="#0E2A47" stroke-width="2.4">
+        <line x1="20" y1="58" x2="80" y2="58"/>
+        <line x1="20" y1="74" x2="80" y2="74"/>
+      </g>
+      <g fill="#0E2A47"><rect x="30" y="60" width="6" height="12"/><rect x="47" y="60" width="6" height="12"/><rect x="64" y="60" width="6" height="12"/></g>
+      <circle cx="50" cy="58" r="3" fill="#D9641C"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="minute-maid-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="minute-maid-diagram.jsx"></script>
+  <script type="text/babel" src="minute-maid-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="minute-maid-spread.jsx"></script>
+  <script type="text/babel" src="minute-maid-app.jsx"></script>
+</body>
+</html>
