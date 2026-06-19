@@ -8,5 +8,6 @@ The generated book spreads and print layouts remain in the repository root.
 CSV data, but root book files should not reference these visualization assets.
 
 Stadium thumbnail source files do not need to share a fixed crop size. When
-adding or replacing them, resize as needed for reasonable file size but preserve
-the original aspect ratio.
+adding or replacing them, resize as needed for reasonable file size, preserve
+the original aspect ratio, and do not crop or recrop the stadium image unless a
+specific design task explicitly calls for it.

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yankee Stadium (1923) — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #1E2229;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* =====================================================================
+     "BRONX CIVIC FRIEZE" — Yankee Stadium (1923) spread
+     .yk-  · white frieze rhythm · triple-deck registers · limestone civic
+     paper · night-navy hero · restrained pinstripe ruling · brass floodlight
+     ===================================================================== */
+  .yk-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --paper: #ECE6D6; --paper-2: #E3DCC9; --paper-hi: #F4F0E5; --ledger: #EEE9DB;
+    --ink: #1E2229; --ink-2: #4C4F55; --ink-3: #8A857B;
+    --rule: #CFC7B4; --rule-2: #ACA48E;
+    --navy: #0C2340; --navy-2: #16335A; --navy-soft: #46587A;
+    --steel: #5E6976; --steel-2: #8A9098;
+    --brass: #9C7A3C; --brass-2: #B89B5E;
+    --night: #0E1622;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.36' intercept='0.71'/%3E%3CfeFuncG type='linear' slope='0.36' intercept='0.71'/%3E%3CfeFuncB type='linear' slope='0.36' intercept='0.71'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper); font-family: "Spectral", Georgia, serif; color: var(--ink);
+    text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .yk-page { position: absolute; top: 0; height: 1088px; }
+  .yk-left  { left: 0;     width: 1275px; background: var(--night); overflow: hidden; }
+  .yk-right { left: 1275px; width: 1275px; background: var(--paper); }
+  /* center page split — flat hairline only, no fake book depth */
+  .yk-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.20); z-index: 8; pointer-events: none; }
+
+  /* =================== LEFT / NIGHT HERO PLATE =================== */
+  .yk-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .yk-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .yk-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(0deg, rgba(8,12,20,.95) 0%, rgba(8,12,20,.66) 19%, rgba(8,12,20,.08) 40%, rgba(8,12,20,0) 52%),
+      linear-gradient(180deg, rgba(8,12,20,.74) 0%, rgba(8,12,20,.30) 16%, rgba(8,12,20,0) 34%),
+      linear-gradient(90deg, rgba(8,12,20,.40) 0%, rgba(8,12,20,0) 30%); }
+  /* faint vertical pinstripe field over the hero — restrained structure, never wallpaper */
+  .yk-pinstripe { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .5;
+    background-image: repeating-linear-gradient(90deg, rgba(236,230,214,.07) 0 1px, transparent 1px 46px); }
+
+  /* frieze crown clinging to the very top of the hero */
+  .yk-hero-frieze { position: absolute; top: 12.5px; left: 0; right: 0; height: 25px; z-index: 3; pointer-events: none; opacity: 1; }
+  /* solid beam fill across the 12.5px top bleed so the cornice reads to the cut edge */
+  .yk-hero-frieze-bleed { position: absolute; top: 0; left: 0; right: 0; height: 13px; z-index: 3; pointer-events: none; background: #F4F0E5; }
+
+  /* Ruth-era origin marker — compact typographic datum plate (no photo) */
+  .yk-ruth { position: absolute; top: 54px; left: 56px; z-index: 6; width: 268px;
+    border: 1px solid rgba(184,155,94,.55); background: rgba(10,18,30,.46);
+    backdrop-filter: blur(1.5px); padding: 16px 18px 15px; }
+  .yk-ruth::before { content: ""; position: absolute; left: 10px; right: 10px; top: 7px; height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(184,155,94,.7) 0 8px, transparent 8px 13px); }
+  .yk-ruth .yr { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 30px; letter-spacing: .14em;
+    color: var(--brass-2); line-height: 1; }
+  .yk-ruth .stars { color: rgba(184,155,94,.8); font-size: 10px; letter-spacing: .5em; margin-top: 9px; }
+  .yk-ruth .tx { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 12.5px; letter-spacing: .12em;
+    line-height: 1.5; text-transform: uppercase; color: #E7E2D4; margin-top: 7px; }
+  .yk-ruth .tx b { font-weight: 600; color: #FFFFFF; }
+
+  /* masthead logo wells, top-right */
+  .yk-hero-mast { position: absolute; top: 54px; right: 56px; z-index: 6; display: flex; align-items: center; gap: 13px; }
+  .yk-logo-well { width: 60px; height: 60px; border: 1px solid rgba(236,230,214,.30);
+    display: flex; align-items: center; justify-content: center; position: relative;
+    background: rgba(244,240,229,.92); box-shadow: 0 2px 12px rgba(0,0,0,.45); }
+  .yk-logo-well::before, .yk-logo-well::after { content: ""; position: absolute; width: 7px; height: 7px;
+    border-color: var(--brass-2); border-style: solid; }
+  .yk-logo-well::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .yk-logo-well::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+  .yk-logo-well img { max-width: 44px; max-height: 44px; width: auto; height: auto; display: block; }
+
+  /* title block — civic signage, bottom-left */
+  .yk-hero-block { position: absolute; left: 56px; bottom: 70px; right: 150px; z-index: 6; }
+  .yk-hero-kicker { font-family: "Jost", sans-serif; font-weight: 500; font-size: 14px;
+    letter-spacing: .34em; text-transform: uppercase; color: #D9D3C3; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 13px; }
+  .yk-hero-kicker::before { content: ""; width: 34px; height: 2px; background: var(--brass-2); display: block; }
+  .yk-hero-name { margin: 0; font-family: "Cinzel", serif; font-weight: 600;
+    font-size: 122px; line-height: 1.04; letter-spacing: .055em; text-transform: uppercase; color: #F4F0E5;
+    text-shadow: 0 3px 26px rgba(0,0,0,.6); }
+  .yk-hero-name .l2 { display: block; }
+  /* frieze-derived banding under the title */
+  .yk-hero-rule { display: flex; align-items: center; gap: 0; margin-top: 16px; height: 7px; }
+  .yk-hero-rule .band { height: 3px; background: #E4DECF; flex: 1; }
+  .yk-hero-rule .band.thin { height: 1px; opacity: .55; margin-top: 2px; }
+  .yk-hero-loc { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+  .yk-hero-loc .txt { font-family: "Jost", sans-serif; font-weight: 300; font-size: 31px;
+    letter-spacing: .28em; text-transform: uppercase; color: #ECE6D6; text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+  .yk-hero-meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 9px 20px;
+    font-family: "Jost", sans-serif; font-weight: 400; font-size: 13.5px; letter-spacing: .15em;
+    text-transform: uppercase; color: #CFC9B9; }
+  .yk-hero-meta b { color: #FFFFFF; font-weight: 600; }
+  .yk-hero-meta .dem { color: var(--brass-2); font-weight: 600; }
+  .yk-hero-meta .dot { color: #767264; }
+
+  /* =================== RIGHT / LIMESTONE CIVIC SHEET =================== */
+  .yk-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
+  .yk-rp { position: absolute; top: 58px; left: 40px; right: 40px; bottom: 40px; z-index: 2; display: flex; flex-direction: column; }
+
+  /* ---- frieze crown bled flush to the top & sides of the right page ---- */
+  .yk-crown { position: absolute; top: -45.5px; left: -40px; width: 1275px !important; height: 25px;
+    z-index: 3; display: block; }
+  /* solid navy beam fill across the 12.5px top bleed of the right page */
+  .yk-crown-bleed { position: absolute; top: -58px; left: -40px; width: 1275px; height: 13px; z-index: 3; background: #0C2340; }
+
+  /* ---- sheet title-block ---- */
+  .yk-head { display: flex; align-items: flex-end; justify-content: space-between;
+    border-bottom: 2.5px solid var(--navy); padding: 10px 4px 7px; flex: none; }
+  .yk-head .hl .over { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: .26em; text-transform: uppercase; color: var(--brass); }
+  .yk-head .hl .nm { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 23px;
+    letter-spacing: .05em; text-transform: uppercase; color: var(--navy); line-height: 1.04; margin-top: 3px; white-space: nowrap; }
+  .yk-head .hr { display: flex; gap: 0; }
+  .yk-head .hr .cell { padding: 0 15px; border-left: 1px solid var(--rule-2); text-align: right; }
+  .yk-head .hr .cell:first-child { border-left: 0; }
+  .yk-head .hr .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
+  .yk-head .hr .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13.5px;
+    color: var(--navy); margin-top: 4px; white-space: nowrap; }
+  .yk-head .hr .v.dem { color: var(--brass); }
+
+  /* ---- TIER 1 : facade-bay photo strip ---- */
+  .yk-bays { flex: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 6px; }
+  .yk-bay { position: relative; display: flex; flex-direction: column; }
+  .yk-bay .arch { height: 13px; width: 100%; display: block; flex: none; }
+  .yk-bay .frame { position: relative; height: 116px; border: 1px solid var(--rule-2);
+    overflow: hidden; background: var(--paper-2); }
+  .yk-bay .frame image-slot { width: 100%; height: 100%; display: block; }
+
+  /* ---- metadata ribbon (civic datum) ---- */
+  .yk-ribbon { flex: none; display: grid; grid-template-columns: 1fr 1.05fr 1.55fr 0.82fr 0.73fr 1.12fr 1.18fr; margin-top: 11px;
+    border-top: 1px solid var(--navy); border-bottom: 1px solid var(--rule-2); }
+  .yk-rb { padding: 7px 13px; border-left: 1px solid var(--rule); }
+  .yk-rb:first-child { border-left: 0; padding-left: 2px; }
+  .yk-rb .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--ink-3); }
+  .yk-rb .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
+    color: var(--navy); margin-top: 4px; line-height: 1.2; }
+  .yk-rb .v.sm { font-size: 10.5px; }
+
+  /* ---- TIER 2 : the monument (facts | instruments) ---- */
+  .yk-monument { flex: none; margin-top: 11px; }
+  .yk-parcel { display: flex; align-items: center; gap: 12px; flex: none; }
+  .yk-parcel .badge { width: 28px; height: 28px; background: var(--navy); color: #F4F0E5; flex: none;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px; }
+  .yk-parcel .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .yk-parcel .ln { flex: 1; height: 1px; background: var(--rule-2); }
+  .yk-parcel .ribbon { display: flex; gap: 18px; justify-content: flex-end;
+    font-family: "Oswald", sans-serif; font-weight: 400; font-size: 10px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .yk-parcel .ribbon b { color: var(--navy); font-weight: 600; }
+
+  .yk-mgrid { display: grid; grid-template-columns: 1.9fr 0.6fr 1.0fr; gap: 0; margin-top: 9px; }
+  /* facts table */
+  .yk-facts { padding-right: 20px; border-right: 1px solid var(--rule); }
+  .yk-ftable { width: 100%; border-collapse: collapse; }
+  .yk-ftable tr { border-bottom: 1px solid var(--rule); }
+  .yk-ftable tr:last-child { border-bottom: 0; }
+  .yk-ftable th { text-align: left; vertical-align: baseline; width: 100px; padding: 2px 10px 2px 0;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .yk-ftable td { vertical-align: baseline; padding: 2px 0; font-family: "Spectral", serif;
+    font-size: 11px; line-height: 1.34; color: var(--ink); }
+  .yk-ftable td b { color: var(--navy); font-weight: 600; }
+  .yk-ftable td .sub { color: var(--ink-3); }
+
+  /* field-dimensions column (now sits between facts and lifecycle) */
+  .yk-fieldcol { padding: 0 18px; border-right: 1px solid var(--rule); display: flex;
+    flex-direction: column; align-items: center; gap: 9px; text-align: center; }
+  .yk-fieldcol .hd { align-self: flex-start; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
+  .yk-fieldcol svg.pro { width: 120px; height: auto; }
+  .yk-dimrow { display: flex; gap: 14px; }
+  .yk-dimrow .chip { display: flex; flex-direction: column; align-items: center; }
+  .yk-dimrow .chip .n { font-family: "Space Mono", monospace; font-weight: 700; font-size: 14px; color: var(--ink); }
+  .yk-dimrow .chip .l { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px;
+    letter-spacing: .14em; color: var(--ink-3); margin-top: 1px; }
+  .yk-fieldnote { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 8.5px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* lifecycle ladder (now its own column) */
+  .yk-life { padding-left: 18px; }
+  .yk-life .hd { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--navy); margin-bottom: 7px; }
+  .yk-liferow { display: grid; grid-template-columns: 64px 1fr; align-items: baseline; gap: 10px;
+    padding: 2.5px 0; border-bottom: 1px dotted var(--rule-2); }
+  .yk-liferow:last-child { border-bottom: 0; }
+  .yk-liferow .y { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: var(--brass); }
+  .yk-liferow .lab { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+  .yk-liferow .lab .n { color: var(--ink-3); font-weight: 400; letter-spacing: .04em; }
+
+  /* Honors — All-Star + World Series as one decorative year-rule */
+  .yk-honors { flex: none; margin-top: 9px; padding: 7px 0; border-top: 1px solid var(--navy);
+    border-bottom: 1px solid var(--rule-2); display: flex; align-items: baseline; gap: 16px; white-space: nowrap; }
+  .yk-honors .hgroup { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+  .yk-honors .hgroup:last-child { flex: 1 1 auto; }
+  .yk-honors .hlab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--navy); flex: none; }
+  .yk-honors .hsep { align-self: stretch; width: 1px; background: var(--rule-2); flex: none; }
+  .yk-ws-grid { display: flex; flex-wrap: nowrap; justify-content: space-between; gap: 0 6px; flex: 1 1 auto; }
+  .yk-ws-y { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10px;
+    color: var(--navy); line-height: 1.4; }
+
+  /* ---- TIER 3 : stadium context (single unified block) ---- */
+  .yk-context { flex: 1; margin-top: 7px; display: flex; flex-direction: column; min-height: 0;
+    position: relative; }
+  .yk-ctx-wm { position: absolute; right: -10px; bottom: -6px; width: 360px; z-index: 0; pointer-events: none; }
+  .yk-ctxh { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex: none; position: relative; z-index: 1; }
+  .yk-ctxh .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .yk-ctxh .ln { flex: 1; height: 1px; background: var(--rule); }
+  .yk-ctxh .ln.nav { background: var(--navy); height: 2px; flex: 0 0 30px; }
+  .yk-ctx { position: relative; z-index: 1; flex: 1 1 auto; min-height: 0;
+    column-count: 2; column-gap: 40px; column-fill: balance;
+    column-rule: 1px solid var(--rule); }
+  .yk-ctx p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 13.5px; line-height: 1.5;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .yk-ctx p:last-child { margin-bottom: 0; }
+  .yk-ctx p:first-child::first-letter { font-family: "Oswald", sans-serif; font-weight: 700;
+    font-size: 47px; float: left; line-height: .82; padding: 4px 8px 0 0; color: var(--navy); }
+
+  /* ---- VISIT SECTION : night / illuminated navy band ---- */
+  .yk-visit { flex: none; margin-top: 11px; background: var(--navy); color: #E7EAF0;
+    position: relative; overflow: hidden; }
+  /* fine pinstripe ruling inside the navy band — restrained */
+  .yk-visit::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.045) 0 1px, transparent 1px 40px); }
+  .yk-visit-inner { position: relative; z-index: 1; padding: 11px 18px 12px;
+    display: grid; grid-template-columns: 0.92fr 1.55fr 0.92fr; gap: 0; }
+  .yk-vcol { padding: 0 18px; border-left: 1px solid rgba(255,255,255,.13); display: flex; flex-direction: column; min-width: 0; }
+  .yk-vcol:first-child { border-left: 0; padding-left: 0; }
+  .yk-vcol:last-child { padding-right: 0; }
+  .yk-vh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .18em;
+    text-transform: uppercase; color: #9FB0CC; margin-bottom: 8px; }
+  .yk-vh b { color: var(--brass-2); font-weight: 600; }
+
+  /* result block */
+  .yk-result .date { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11.5px;
+    color: #C9D3E4; margin-bottom: 7px; }
+  .yk-scorerow { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .yk-scorerow:last-of-type { border-bottom: 0; }
+  .yk-scorerow .tmwrap { display: flex; align-items: center; gap: 11px; }
+  .yk-scorerow .logo { height: 30px; width: 30px; display: block; flex: none; }
+  .yk-scorerow .tm { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 28px; line-height: 1;
+    letter-spacing: .03em; color: #7C8AA6; }
+  .yk-scorerow.win .tm { color: #FFFFFF; }
+  .yk-scorerow .sc { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 30px; line-height: 1;
+    color: #7C8AA6; font-variant-numeric: tabular-nums; }
+  .yk-scorerow.win .sc { color: var(--brass-2); }
+  .yk-result .venue { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 9px;
+    letter-spacing: .13em; text-transform: uppercase; color: #8C9AB4; margin-top: 9px; line-height: 1.5; }
+
+  /* line score (hero of the visit section) */
+  .yk-line { width: 100%; border-collapse: collapse; table-layout: fixed; font-variant-numeric: tabular-nums; }
+  .yk-line th, .yk-line td { font-family: "Space Mono", monospace; font-size: 10.5px; text-align: center;
+    padding: 3px 0; color: #C4CEDE; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .yk-line thead th { color: #7E8DA8; font-weight: 400; border-bottom: 1px solid rgba(255,255,255,.22); }
+  .yk-line td.tm, .yk-line th.tm { width: 46px; text-align: left; font-weight: 700;
+    font-family: "Oswald", sans-serif; letter-spacing: .05em; }
+  .yk-line tr.away td.tm { color: #FFFFFF; }
+  .yk-line tr.home td.tm { color: #C4CEDE; }
+  .yk-line .sep { border-left: 1px solid rgba(255,255,255,.22); }
+  .yk-line .rhe { font-weight: 700; color: #FFFFFF; }
+  .yk-line tbody tr:last-child td { border-bottom: 0; }
+  .yk-pitch { margin-top: 11px; display: flex; flex-direction: column; gap: 6px; }
+  .yk-prow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px;
+    letter-spacing: .15em; text-transform: uppercase; color: #8C9AB4; }
+  .yk-prow .v { font-family: "Spectral", serif; font-size: 11.5px; color: #E7EAF0; line-height: 1.3; margin-top: 1px; }
+  .yk-prow .v b { color: var(--brass-2); font-weight: 600; }
+
+  /* visit info rows */
+  .yk-virow { display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+    padding: 3px 0; border-bottom: 1px dotted rgba(255,255,255,.16); }
+  .yk-virow:last-of-type { border-bottom: 0; }
+  .yk-virow:has(+ .divtop) { border-bottom: 0; }
+  .yk-virow.divtop { border-top: 1px dotted rgba(255,255,255,.7); margin-top: 5px; padding-top: 6px; }
+  .yk-virow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px;
+    letter-spacing: .1em; text-transform: uppercase; color: #8C9AB4; }
+  .yk-virow .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11.5px;
+    color: #FFFFFF; text-align: right; }
+  /* line score bottom row: pitching (left) + game conditions (right) */
+  .yk-botrow { display: flex; gap: 20px; align-items: flex-start; margin-top: 11px; }
+  .yk-botrow .yk-pitch { margin-top: 0; flex: 1 1 auto; min-width: 0; }
+  /* weather — compact 2×2 grid beside the pitching info */
+  .yk-wx { display: grid; grid-template-columns: auto auto; gap: 10px 18px; flex: none; align-self: stretch;
+    border-left: 1px solid rgba(255,255,255,.14); padding-left: 18px; }
+  .yk-wx .w { display: flex; flex-direction: column; gap: 1px; }
+  .yk-wx .w .val { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: #FFFFFF; line-height: 1; }
+  .yk-wx .w .lab { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 7.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: #8C9AB4; }
+
+  /* footer colophon */
+  .yk-foot { flex: none; display: flex; align-items: center; gap: 14px; margin-top: 9px;
+    font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .04em; color: var(--ink-3); }
+  .yk-foot .plate { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
+  .yk-foot .sep { color: var(--rule-2); }
+  .yk-foot .end { margin-left: auto; color: var(--brass); font-weight: 700;
+    font-family: "Oswald", sans-serif; letter-spacing: .14em; text-transform: uppercase; font-size: 10px; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#0C2340"/>
+      <g fill="#F4F0E5">
+        <path d="M14 40 q4 -9 8 0 q4 -9 8 0 q4 -9 8 0 q4 -9 8 0 q4 -9 8 0 q4 -9 8 0 q4 -9 8 0 l0 6 l-56 0 Z"/>
+      </g>
+      <rect x="30" y="52" width="40" height="30" fill="none" stroke="#B89B5E" stroke-width="2"/>
+      <text x="50" y="72" text-anchor="middle" font-family="Oswald, sans-serif" font-weight="700" font-size="15" fill="#F4F0E5">1923</text>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="yankee-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="yankee-field.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="yankee-spread.jsx"></script>
+  <script type="text/babel" src="yankee-app.jsx"></script>
+</body>
+</html>
