@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>San Diego Stadium — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Oswald:wght@300;400;500;600;700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #2A2722;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     SPREAD — Blurb Large Landscape 13 x 11 in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264 px = 300 DPI.
+     Center split x=1275. Bleed-only outer 12.5px; critical content >= 37.5px inside trim.
+     Gutter safe zone x=1237.5-1312.5. The fold is a flat hairline only — no book depth.
+     ---------------------------------------------------------------- */
+  .sd-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #2A2722;
+    --ink-2: #564F44;
+    --ink-3: #857D6C;
+    --concrete: #DEDACF;
+    --concrete-hi: #E9E5DB;
+    --concrete-lo: #CFC9BA;
+    --slate: #6E6A5E;            /* warm technical linework */
+    --rule: #C7C1B2;
+    --rule-strong: #A9A290;
+    --brown: #5A3A24;            /* Padres brown — accent only */
+    --brown-2: #6F4A2E;
+    --gold: #B98D3E;
+    --gold-deep: #8A6526;
+    --panel: #221E18;            /* dark concrete for the game record */
+    --panel-2: #14120D;
+    --panel-ink: #E6E0D2;
+    --panel-dim: #9A9384;
+    background: var(--concrete);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .sd-page { position: absolute; top: 0; height: 1088px; }
+  .sd-left  { left: 0; width: 1275px; background: #14130F; overflow: hidden; }
+  .sd-right { left: 1275px; width: 1275px; background: var(--concrete); }
+
+  /* ---------- LEFT / HERO ---------- */
+  .sd-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .sd-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .sd-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(14,13,10,.34) 0%, rgba(14,13,10,0) 22%),
+      linear-gradient(0deg, rgba(12,11,8,.90) 0%, rgba(12,11,8,.46) 26%, rgba(12,11,8,0) 50%);
+  }
+  .sd-hero-arcs { position: absolute; inset: 0; width: 1275px; height: 1088px; opacity: .55; pointer-events: none; }
+  .sd-hero-folio {
+    position: absolute; left: 80px; top: 64px; z-index: 5;
+    font-family: "Space Mono", monospace; font-size: 16px; letter-spacing: .30em;
+    color: rgba(231,222,203,.62); text-transform: uppercase;
+  }
+
+  /* municipal sign panel */
+  .sd-sign {
+    position: absolute; left: 80px; bottom: 84px; z-index: 5;
+    border-left: 4px solid var(--gold);
+    padding: 4px 0 4px 26px;
+  }
+  .sd-sign-top {
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .30em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+  }
+  .sd-hero-name { margin: 0; display: flex; flex-direction: column; }
+  .sd-hero-name .l1, .sd-hero-name .l2 {
+    font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase;
+    color: #ECE6D7; line-height: 1.0; font-size: 82px; letter-spacing: .05em;
+  }
+  .sd-hero-name .l2 { font-weight: 300; color: #D8D0BC; }
+  .sd-hero-loc { display: inline-flex; align-items: center; gap: 14px; margin-top: 24px; }
+  .sd-hero-loc .bar { width: 46px; height: 3px; background: var(--brown); }
+  .sd-hero-loc .txt {
+    font-family: "Archivo", sans-serif; font-weight: 600; font-size: 23px;
+    letter-spacing: .34em; text-transform: uppercase; color: #E7E0D1;
+  }
+  .sd-hero-meta {
+    margin-top: 18px; color: #B6AE9C; font-family: "Space Mono", monospace;
+    font-size: 15px; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .sd-hero-meta .dem { color: var(--gold); }
+
+  /* ---------- RIGHT PAGE ---------- */
+  .sd-rp { position: absolute; inset: 0; padding: 40px 44px 40px 46px; display: flex; flex-direction: column; }
+  .sd-watermark { position: absolute; inset: 0; width: 1275px; height: 1088px; opacity: .9; pointer-events: none; z-index: 0; }
+  .sd-rp > * { position: relative; z-index: 1; }
+
+  /* exhibit header */
+  .sd-head { display: flex; align-items: flex-end; justify-content: space-between; border-top: 2px solid var(--brown); padding-top: 10px; z-index: 2; }
+  .sd-head .hl { flex: 1; min-width: 0; padding-right: 24px; }
+  .sd-head .nm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 28px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); line-height: 1; }
+  .sd-head .sub { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); margin-top: 7px; }
+  .sd-head .hr { flex: none; text-align: right; }
+  .sd-head .hr .k { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .2em; color: var(--ink-3); text-transform: uppercase; }
+  .sd-head .hr .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 22px; color: var(--ink); letter-spacing: .04em; white-space: nowrap; }
+
+  /* section labels */
+  .sd-seclbl { display: flex; align-items: center; gap: 11px; margin-bottom: 10px; }
+  .sd-seclbl .dot { width: 7px; height: 7px; background: var(--brown); border-radius: 50%; flex: none; }
+  .sd-seclbl .t { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--ink); }
+  .sd-seclbl .ln { flex: 1; height: 1px; background: var(--rule); }
+  .sd-seclbl .edge { font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; flex: none; }
+
+  .colhdr { font-family: "Archivo", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; color: var(--brown); font-size: 10.5px; margin: 0 0 9px; padding-bottom: 7px; border-bottom: 1px solid var(--rule-strong); }
+
+  /* ---------- BODY GRID ---------- */
+  .sd-body { flex: 1; display: grid; grid-template-columns: 442px 1fr; gap: 26px; min-height: 0; margin-top: 14px; }
+
+  /* ===== THE DATA WELL (vertical concrete circulation tower) ===== */
+  .sd-well {
+    position: relative; overflow: hidden;
+    margin-top: -34px; margin-bottom: -30px;
+    border-radius: 50% / 74px;
+    border: 1px solid var(--rule-strong);
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,.018) 0, rgba(0,0,0,.018) 1px, transparent 1px, transparent 13px),
+      linear-gradient(90deg, var(--concrete-lo) 0%, var(--concrete-hi) 20%, var(--concrete-hi) 80%, var(--concrete-lo) 100%);
+    box-shadow: inset 0 0 0 6px rgba(255,255,255,.22), inset 0 0 50px rgba(90,58,36,.05);
+  }
+  .sd-well-cap { position: absolute; left: 50%; top: 16px; transform: translateX(-50%); width: 64%; height: 22px; border: 1px solid var(--rule-strong); border-radius: 50%; opacity: .5; }
+  .sd-well-inner { position: absolute; inset: 0; padding: 40px 34px 30px; display: flex; flex-direction: column; }
+
+  /* identity */
+  .sd-identity { margin-bottom: 12px; }
+  .sd-marks { display: flex; align-items: center; justify-content: center; gap: 30px; padding: 4px 0 8px; }
+  .sd-mark { height: 42px; width: auto; display: block; }
+  .sd-mark.team { height: 50px; margin: 0 -14.5px; }
+  .sd-idline { text-align: center; font-family: "Archivo", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+
+  /* facts museum table */
+  .sd-facts { display: flex; flex-direction: column; }
+  .sd-facts .row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 3px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+  .sd-facts .lbl { font-family: "Archivo", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-size: 9px; padding-top: 2px; }
+  .sd-facts .val { font-family: "Spectral", serif; font-weight: 500; color: var(--ink); font-size: 10.5px; line-height: 1.22; }
+
+  /* embedded field instrument */
+  .sd-instrument { margin-top: 14px; }
+  .sd-prot-wrap { width: 100%; max-width: 290px; margin: 35px auto 0; }
+  .sd-prot-svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .sd-prot-cap { display: flex; justify-content: space-between; margin-top: 36px; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; }
+
+  /* let the enlarged stadium watermark bleed past the instrument box and flow
+     under the well's text (it is clipped softly by the rounded .sd-well only) */
+  .sd-identity, .sd-facts, .colhdr, .sd-prot-cap { position: relative; z-index: 1; }
+
+  /* ===== MAIN COLUMN ===== */
+  .sd-main { display: flex; flex-direction: column; min-height: 0; }
+
+  /* documentary apertures (4:3) */
+  .sd-apertures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .sd-apertures .ap {
+    position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+    border: 1px solid var(--rule-strong);
+    box-shadow: inset 0 0 0 4px rgba(255,255,255,.30);
+  }
+  .sd-apertures image-slot { position: absolute; inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px); display: block; }
+
+  /* lifecycle stations */
+  .sd-lifecycle { margin-top: 16px; }
+  .sd-lifecycle .sd-seclbl.row { margin-bottom: 9px; }
+  .sd-stations { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .sd-stations .stn { position: relative; padding: 0 16px 0 0; border-left: 1px solid var(--rule); padding-left: 14px; }
+  .sd-stations .stn.first { border-left: 2px solid var(--brown); }
+  .sd-stations .stn .tick { position: absolute; left: -5px; top: 1px; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); border: 1px solid var(--gold-deep); }
+  .sd-stations .stn.first .tick { background: var(--brown); border-color: var(--brown); }
+  .sd-stations .stn .yr { display: block; font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--ink-3); margin-bottom: 3px; }
+  .sd-stations .stn .nmn { display: block; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 14px; line-height: 1.06; text-transform: uppercase; letter-spacing: .02em; color: var(--ink); }
+
+  /* stadium context */
+  .sd-context { margin-top: 16px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .sd-context .body { column-count: 2; column-gap: 26px; margin-top: 2px; }
+  .sd-context p { margin: 0 0 10px; font-family: "Spectral", serif; font-size: 13.5px; line-height: 1.5; letter-spacing: -0.1px; color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid; -webkit-column-break-inside: avoid; }
+  .sd-context p:first-child::first-letter { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 42px; line-height: .78; float: left; padding: 5px 9px 0 0; color: var(--brown); }
+
+  /* ===== GAME RECORD (dark concrete band) ===== */
+  .sd-visit { margin-top: 14px; }
+  .sd-vband {
+    background: linear-gradient(166deg, var(--panel) 0%, var(--panel-2) 100%);
+    color: var(--panel-ink); display: grid; grid-template-columns: 232px 1fr 220px;
+    border-top: 3px solid var(--brown);
+  }
+  .sd-vband > .vcol { padding: 9px 20px; border-left: 1px solid rgba(255,255,255,.12); display: flex; flex-direction: column; }
+  .sd-vband > .vcol:first-child { border-left: 0; }
+
+  .sd-vlbl { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+  .sd-vlbl .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .sd-vlbl .t { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: #fff; }
+
+  /* score */
+  .sd-vband .score { align-items: stretch; }
+  .sd-vband .score .date { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .14em; color: var(--panel-dim); text-transform: uppercase; }
+  .sd-score { margin: 8px 0 4px; }
+  .sd-score .tm { display: flex; align-items: center; gap: 16px; }
+  .sd-score .tm .tok { position: relative; width: 56px; height: 56px; border-radius: 50%; background: #ECE8DD; border: 1px solid var(--rule-strong); display: flex; align-items: center; justify-content: center; flex: none; overflow: hidden; }
+  .sd-score .tm .tok img { width: 42px; height: 42px; object-fit: contain; display: block; }
+  /* Padres swinging friar: disc centered in the token, bat breaks past the outer circle */
+  .sd-score .tm .tok:has(img[src*="friar"]) { overflow: visible; }
+  .sd-score .tm .tok img[src*="friar"] { position: absolute; left: 50%; top: 50%; width: 72px; height: 72px; transform: translate(-50%, -50%); }
+  .sd-score .tm .ab { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: .08em; color: var(--panel-dim); width: 42px; }
+  .sd-score .tm .sc { font-family: "Spectral", serif; font-weight: 700; font-size: 54px; line-height: .92; color: #fff; }
+  .sd-score .tm.win .sc { color: var(--gold); }
+  .sd-score .tm.win .ab { color: #fff; }
+  .sd-score .dv { width: 80px; height: 1px; background: rgba(255,255,255,.2); margin: 5px 0 5px 36px; }
+  .sd-est { font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .06em; color: var(--panel-dim); margin-top: 8px; }
+  .sd-vband .score .rslt { font-family: "Spectral", serif; font-style: italic; font-size: 13px; color: #ECE6D6; margin-top: auto; }
+  .sd-vband .score .att { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em; color: var(--panel-dim); margin-top: auto; }
+
+  .sd-vsub { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .14em; color: var(--panel-dim); text-transform: uppercase; margin: 0 0 6px; }
+  .sd-visitno { display: grid; grid-template-columns: 78px 1fr; align-items: start; gap: 8px; padding: 2px 0 8px; }
+  .sd-visitno .k { font-family: "Archivo", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .07em; color: var(--panel-dim); font-size: 9px; padding-top: 4px; }
+  .sd-visitno .fig { display: flex; align-items: center; gap: 11px; }
+  .sd-visitno .num { font-family: "Spectral", serif; font-weight: 700; font-size: 52px; line-height: .82; color: var(--gold); }
+  .sd-visitno .stack { display: flex; flex-direction: column; }
+  .sd-visitno .of { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--panel-dim); }
+  .sd-visitno .tot { font-family: "Spectral", serif; font-weight: 600; font-size: 22px; line-height: 1; color: #EFEADD; }
+
+  /* line score */
+  .sd-box { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; margin-bottom: 8px; }
+  .sd-box th, .sd-box td { text-align: center; font-size: 10px; padding: 2px 0; color: #DEDACF; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .sd-box thead th { color: var(--panel-dim); font-weight: 400; font-size: 9.5px; }
+  .sd-box td.tm, .sd-box th.tm { text-align: left; font-family: "Archivo", sans-serif; font-weight: 700; letter-spacing: .04em; color: #fff; font-size: 11px; padding-right: 8px; }
+  .sd-box .rhe { font-weight: 700; color: #fff; }
+  .sd-box .rcol { color: var(--gold); }
+  .sd-box .sep { border-left: 1px solid rgba(255,255,255,.24); }
+
+  /* pitchers */
+  .sd-pitch { margin-bottom: 7px; }
+  .sd-pitch .pl { font-family: "Spectral", serif; font-weight: 500; color: #EFEADD; font-size: 10px; line-height: 1.3; padding: 1.5px 0; }
+  .sd-pitch .pl:first-child { border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 4px; margin-bottom: 3px; }
+  .sd-pitch .pl .dec { color: var(--gold); font-weight: 700; }
+  .sd-vrow { display: grid; grid-template-columns: 86px 1fr; gap: 8px; padding: 2px 0; align-items: baseline; }
+  .sd-vrow .k { font-family: "Archivo", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .07em; color: var(--panel-dim); font-size: 9px; }
+  .sd-vrow .v { font-family: "Spectral", serif; font-weight: 500; color: #EFEADD; font-size: 11px; line-height: 1.2; }
+  .sd-vband .info .sd-vrow { grid-template-columns: 78px 1fr; }
+  .sd-vband .info { justify-content: space-between; padding-top: 11px; padding-bottom: 12px; }
+
+  /* weather strip */
+  .sd-wx { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,.2); margin-top: auto; }
+  .sd-wx .c { padding: 3px 3px; text-align: center; border-left: 1px solid rgba(255,255,255,.14); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+  .sd-wx .c:first-child { border-left: 0; }
+  .sd-wx .ico { display: block; margin: 0 auto 3px; }
+  .sd-wx .big { font-family: "Spectral", serif; font-weight: 700; font-size: 14px; color: #fff; line-height: 1; }
+  .sd-wx .small { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 9.5px; color: #ECE6D6; line-height: 1.1; }
+  .sd-wx .cap { font-family: "Space Mono", monospace; font-size: 7px; letter-spacing: .08em; color: var(--panel-dim); text-transform: uppercase; margin-top: 3px; }
+
+  /* footer colophon */
+  .sd-foot { margin-top: 12px; display: flex; align-items: center; gap: 22px; padding-top: 10px; border-top: 1px solid var(--rule); z-index: 2; }
+  .sd-foot .plate { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .10em; text-transform: uppercase; color: var(--ink); }
+  .sd-foot .mono { font-family: "Space Mono", monospace; font-size: 10.5px; letter-spacing: .03em; color: var(--ink-2); }
+  .sd-foot .colors { margin-left: auto; display: flex; gap: 14px; }
+  .sd-foot .sw { display: flex; align-items: center; gap: 7px; }
+  .sd-foot .chip { width: 13px; height: 13px; border: 1px solid var(--rule-strong); }
+  .sd-foot .nm { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#DEDACF"/>
+      <path d="M14 70 A 40 40 0 0 1 86 70" fill="none" stroke="#6E6A5E" stroke-width="2.4"/>
+      <path d="M22 70 A 30 30 0 0 1 78 70" fill="none" stroke="#6E6A5E" stroke-width="1.3"/>
+      <rect x="46" y="40" width="8" height="34" rx="4" fill="#5A3A24"/>
+      <rect x="47.5" y="30" width="5" height="5" fill="#B98D3E"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="san-diego-data.js"></script>
+  <script src="san-diego-stadium-plan.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="san-diego-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="san-diego-spread.jsx"></script>
+  <script type="text/babel" src="san-diego-app.jsx"></script>
+</body>
+</html>
