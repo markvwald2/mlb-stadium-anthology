@@ -388,6 +388,7 @@
       "Target Field": "assets/cover-ready/Target-cover-867x534.jpg",
       "Oracle Park": "assets/cover-ready/Oracle-cover-867x534.jpg",
       "Minute Maid Park": "assets/cover-ready/Minute-Maid-cover.jpg",
+      "Progressive Field": "assets/cover-ready/Progressive-cover.jpg",
       "Oriole Park at Camden Yards": "assets/cover-ready/Oriole-Park-Camden-Yards-cover.jpg",
       "Busch Stadium": "assets/cover-ready/Busch-cover-867x897.jpg",
       "Shea Stadium": "assets/cover-ready/Shea-cover.jpg",
@@ -453,7 +454,7 @@
         const page = pageFor(p.stadium_name);
         const exists = EXISTING_PAGES.has(page);
         const slot = SLOT_OVERRIDES[p.stadium_name] || slug(p.stadium_name);
-        const src = exists ? IMAGE_OVERRIDES[p.stadium_name] : null;
+        const src = IMAGE_OVERRIDES[p.stadium_name] || null;
         const caption = `${p.stadium_name}${p.city ? `,&nbsp;<span class="cv-cap-city">${p.city}</span>` : ""}`;
         const title = exists ? `Open ${p.stadium_name}` : `Future local target: ${page}`;
         return `
