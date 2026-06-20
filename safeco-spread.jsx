@@ -1,5 +1,5 @@
-/* safeco-spread.jsx — the single Safeco Field spread, "Shelter Without Walls".
-   Reads window.SAFECO + window.SafecoProtractor.
+/* tmobile-spread.jsx — the single T-Mobile Park spread, "Shelter Without Walls".
+   Reads window.TMOBILE + window.TMobileProtractor.
    LEFT  page: full-bleed elevated hero of the retractable canopy over the field
    and the SoDo rail corridor; deep teal-charcoal ground, compact steel-signage
    title beneath a canopy rule, engineering-annotation metadata stack.
@@ -11,8 +11,8 @@
    dominant object. Every populated field renders exactly once. */
 (function () {
   const e = React.createElement;
-  const D = window.SAFECO;
-  const Protractor = window.SafecoProtractor;
+  const D = window.TMOBILE;
+  const Protractor = window.TMobileProtractor;
 
   function Slot(props) {
     return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect" },
@@ -91,7 +91,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "tm-page tm-left", "data-screen-label": "Safeco Field — hero" },
         e("div", { className: "tm-hero-slot" },
-          e(Slot, { id: "safeco-hero", placeholder: "Drop the Safeco Field hero \u2014 elevated / aerial view where the retractable steel canopy is unmistakable above the lit field, with the SoDo rail corridor, port cranes & downtown edge beyond" })),
+          e(Slot, { id: "tmobile-hero", placeholder: "Drop the Safeco Field hero \u2014 elevated / aerial view where the retractable steel canopy is unmistakable above the lit field, with the SoDo rail corridor, port cranes & downtown edge beyond" })),
         e("div", { className: "tm-hero-scrim" }),
 
         e("img", { className: "tm-hero-logo", src: "assets/seattle-mariners-logo.svg", alt: "Seattle Mariners" }),
@@ -241,5 +241,5 @@
     );
   }
 
-  window.SafecoSpread = Spread;
+  window.TMobileSpread = Spread;
 })();

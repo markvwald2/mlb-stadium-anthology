@@ -52,7 +52,8 @@
   }
 
   function CoverLogo(props) {
-    const t = (window.COVER_DATA && window.COVER_DATA.title) ||
+    const t = props.title ||
+      (window.COVER_DATA && window.COVER_DATA.title) ||
       { l1: "Big League", l2a: "NL", l2b: "AL", l3: "Ballparks" };
     return React.createElement("div", { className: "cv-logo" },
       React.createElement("div", { className: "cv-logo-l1" }, t.l1),

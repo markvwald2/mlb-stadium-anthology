@@ -1,8 +1,8 @@
-/* safeco-app.jsx — mount the Safeco Field spread in the shared pan/zoom design
+/* tmobile-app.jsx — mount the T-Mobile Park spread in the shared pan/zoom design
    canvas, with the press-ready single-page print path. */
 (function () {
   const { DesignCanvas, DCSection, DCArtboard } = window;
-  const Spread = window.SafecoSpread;
+  const Spread = window.TMobileSpread;
 
   // ?print=1&page=left|right[&guides=1] → single press-ready page for vector PDF export.
   const params = new URLSearchParams(location.search);
@@ -29,12 +29,12 @@
   function App() {
     return React.createElement(DesignCanvas, null,
       React.createElement(DCSection, {
-        id: "safeco-field",
+        id: "t-mobile-park",
         title: "Safeco Field",
         subtitle: "Shelter Without Walls \u00b7 Blurb 13 \u00d7 11 in \u00b7 25.50 \u00d7 10.88 in spread \u00b7 7650 \u00d7 3264 px @ 300 DPI (shown at 100 ppi)"
       },
         React.createElement(DCArtboard, {
-          id: "safeco-field-spread",
+          id: "t-mobile-park-spread",
           label: "Safeco Field \u2014 canopy roof-bay spread",
           width: 2550, height: 1088,
           style: { boxShadow: "none" }

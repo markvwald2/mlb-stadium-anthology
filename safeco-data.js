@@ -1,4 +1,4 @@
-/* Safeco Field — Seattle, Washington.
+/* T-Mobile Park — Seattle, Washington.
    "Shelter Without Walls." The controlling idea is the retractable canopy as a
    civic roof: the page architecture reads as a sequence of roof bays beneath an
    exposed-steel truss framework. LEFT page = full-bleed elevated hero of the
@@ -8,7 +8,7 @@
    Factual authority: the supplied Codex brief ONLY. Empty / n-a fields omitted;
    nothing invented. Palette: warm off-white paper, charcoal type, restrained
    Northwest Green + Navy + Silver/steel accents. */
-window.SAFECO = {
+window.TMOBILE = {
   // ---- Identity (hero title block, left page) ----
   stadium_name: "Safeco Field",
   name_lines: ["SAFECO", "FIELD"],
@@ -128,10 +128,10 @@ window.SAFECO = {
   // ---- Supporting photography (roof bays — structural observations) ----
   // each: [slot id, drop guidance]
   panels: [
-    ["safeco-p1", "Exterior \u00b7 brick facade & exposed steel"],
-    ["safeco-p2", "Retractable canopy roof structure"],
-    ["safeco-p3", "Seating bowl & the field"],
-    ["safeco-p4", "Concourse steelwork"],
-    ["safeco-p5", "Safeco-era / construction archival image"]
+    ["tmobile-p1", "Exterior \u00b7 brick facade & exposed steel"],
+    ["tmobile-p2", "Retractable canopy roof structure"],
+    ["tmobile-p3", "Seating bowl & the field"],
+    ["tmobile-p4", "Concourse steelwork"],
+    ["tmobile-p5", "Safeco-era / construction archival image"]
   ]
 };

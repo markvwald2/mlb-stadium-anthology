@@ -5,12 +5,13 @@
 (function () {
   const D = window.COVER_DATA;
 
-  // grid-area placement for each of the 10 parks (row / col, 1-indexed).
-  // Row 2 cols 2–3 are the title block.
+  // grid-area placement for each of the 14 parks (row / col, 1-indexed) in a
+  // 4×4 grid. Row 3 cols 2–3 are the title block, flanked by one photo each side.
   const PLACE = [
     { r: 1, c: 1 }, { r: 1, c: 2 }, { r: 1, c: 3 }, { r: 1, c: 4 },
-    { r: 2, c: 1 },                                   { r: 2, c: 4 },
-    { r: 3, c: 1 }, { r: 3, c: 2 }, { r: 3, c: 3 }, { r: 3, c: 4 }
+    { r: 2, c: 1 }, { r: 2, c: 2 }, { r: 2, c: 3 }, { r: 2, c: 4 },
+    { r: 3, c: 1 },                                   { r: 3, c: 4 },
+    { r: 4, c: 1 }, { r: 4, c: 2 }, { r: 4, c: 3 }, { r: 4, c: 4 }
   ];
 
   function Cell(props) {
@@ -23,6 +24,7 @@
         React.createElement("image-slot", {
           id: p.slot,
           shape: "rect",
+          src: "images/cover/" + p.slot + ".jpg",
           placeholder: "Aerial \u2014 " + p.name
         })
       ),
@@ -40,9 +42,9 @@
         D.parks.map(function (p, i) {
           return React.createElement(Cell, { key: p.slot, park: p, place: PLACE[i] });
         }),
-        // open title block — center two cells of the middle row
-        React.createElement("div", { className: "cv-titleblock", style: { gridColumn: "2 / 4", gridRow: 2 } },
-          React.createElement(window.CoverLogo, { iconHeight: 84 })
+        // open title block — center two cells of row 3
+        React.createElement("div", { className: "cv-titleblock", style: { gridColumn: "2 / 4", gridRow: 3 } },
+          React.createElement(window.CoverLogo, { iconHeight: 60 })
         )
       )
     );
