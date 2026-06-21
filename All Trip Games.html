@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>All Trip Games — Appendix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #11100e;
+    font-family: "Spectral", Georgia, serif;
+    color: #23201B;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+  #root { min-height: 100vh; }
+
+  /* ----------------------------------------------------------------
+     ALL TRIP GAMES — appendix game index. Single Blurb book leaf.
+     1275 x 1088 px (12.75 x 10.88 in @ 100ppi, incl. 12.5px bleed).
+     Trim 1250 x 1063; keep critical content within 37.5px of canvas edge.
+     ---------------------------------------------------------------- */
+  .ag-page {
+    position: relative; width: 1275px; height: 1088px; overflow: hidden;
+    --paper: #EFE7D6; --paper-hi: #F4EEDF; --paper-lo: #E5DBC5;
+    --ink: #23201B; --ink-2: #5A5247; --ink-3: #8C8276;
+    --rule: #D8CDB4; --rule-strong: #B9AD90;
+    --navy: #21344A; --red: #9E2B26;
+    background: var(--paper);
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.36' intercept='0.66'/%3E%3CfeFuncG type='linear' slope='0.36' intercept='0.66'/%3E%3CfeFuncB type='linear' slope='0.36' intercept='0.66'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .ag-paper { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .34; mix-blend-mode: multiply; }
+
+  /* ---- masthead ---- */
+  .ag-masthead { position: absolute; z-index: 1; left: 50px; right: 50px; top: 44px; }
+  .ag-kicker { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .34em; text-transform: uppercase; color: var(--red); }
+  .ag-title { margin: 4px 0 0; font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 68px; line-height: .9; letter-spacing: .006em; color: var(--navy); text-transform: uppercase; }
+  .ag-subline { display: flex; align-items: baseline; flex-wrap: wrap; gap: 11px; margin-top: 12px;
+    font-family: "Oswald", sans-serif; }
+  .ag-sub { display: inline-flex; align-items: baseline; gap: 7px; white-space: nowrap; }
+  .ag-sub-n { font-weight: 700; font-size: 19px; color: var(--ink); letter-spacing: .02em; }
+  .ag-sub-l { font-weight: 500; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+  .ag-sub-sep { color: var(--rule-strong); font-size: 15px; }
+
+  /* ---- two-column index ---- */
+  .ag-index { position: absolute; z-index: 1; left: 50px; right: 50px; top: 172px; bottom: 116px;
+    display: grid; grid-template-columns: 1fr 1px 1fr; column-gap: 34px; }
+  .ag-divider { background: linear-gradient(var(--rule-strong), var(--rule-strong)) center / 1px 100% no-repeat; }
+  .ag-col { display: flex; flex-direction: column; }
+
+  .ag-colhead { display: grid; grid-template-columns: 58px 1fr 270px; align-items: end;
+    padding: 0 0 6px; border-bottom: 2px solid var(--ink); margin-bottom: 4px;
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .ag-ch-match { text-align: left; }
+
+  /* ---- trip chapter ---- */
+  .ag-chapter { margin-top: 9px; }
+  .ag-chapter:first-of-type { margin-top: 6px; }
+  .ag-chap-head { display: flex; align-items: baseline; gap: 9px; padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule-strong); }
+  .ag-chap-tab { width: 10px; height: 17px; background: var(--accent); flex: none;
+    align-self: center; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+  .ag-chap-year { font-family: "Anton", sans-serif; font-size: 20px; line-height: 1; color: var(--accent); }
+  .ag-chap-name { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+  .ag-chap-count { margin-left: auto; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+
+  /* ---- game rows ---- */
+  .ag-chap-rows { display: flex; flex-direction: column; }
+  .ag-row { display: grid; grid-template-columns: 58px 1fr 270px; align-items: center;
+    height: 25px; border-bottom: 1px solid var(--rule); }
+  .ag-row:last-child { border-bottom: 0; }
+  .ag-date { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .02em; color: var(--ink-2); }
+  .ag-stadium { display: flex; align-items: baseline; gap: 7px; min-width: 0; padding-right: 10px; }
+  .ag-stadium-name { font-family: "Spectral", serif; font-size: 13px; color: var(--ink);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ag-tag { flex: none; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 7.5px;
+    letter-spacing: .12em; text-transform: uppercase; padding: 1.5px 4px; border: 1px solid currentColor;
+    border-radius: 2px; }
+  .ag-tag-rain { color: var(--red); }
+  .ag-tag-dh { color: var(--navy); }
+
+  .ag-match { display: grid; grid-template-columns: 1fr 24px 1fr; align-items: center; }
+  .ag-team { display: flex; align-items: center; gap: 7px; min-width: 0; }
+  .ag-team-home { justify-content: flex-end; }
+  .ag-logo { height: 20px; width: 22px; object-fit: contain; flex: none; }
+  .ag-nick { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11.5px; letter-spacing: .01em;
+    color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ag-team-home .ag-nick { font-weight: 700; color: var(--ink); }
+  .ag-vs { text-align: center; font-family: "Spectral", serif; font-style: italic; font-size: 10px; color: var(--ink-3); }
+
+  /* ---- footer stats bar ---- */
+  .ag-footer { position: absolute; z-index: 1; left: 50px; right: 50px; bottom: 40px; height: 70px;
+    display: grid; grid-template-columns: repeat(5, 1fr); align-items: center;
+    border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule-strong); }
+  .ag-stat { display: flex; align-items: center; gap: 12px; padding: 0 22px; height: 100%;
+    border-right: 1px solid var(--rule); }
+  .ag-stat:first-child { padding-left: 0; }
+  .ag-stat:last-child { border-right: 0; }
+  .ag-stat-n { font-family: "Anton", sans-serif; font-size: 44px; line-height: .82; color: var(--navy); }
+  .ag-stat-l { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink); }
+  .ag-stat-l span { display: block; line-height: 1.16; }
+  .ag-stat-mark { gap: 14px; }
+  .ag-mlb { height: 34px; width: auto; opacity: .9; }
+  .ag-stat-mark .ag-stat-l { font-family: "Space Mono", monospace; font-weight: 400; font-size: 12px;
+    letter-spacing: .08em; color: var(--ink-3); text-transform: none; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#EFE7D6"/>
+      <rect x="22" y="20" width="56" height="7" rx="1" fill="#21344A"/>
+      <rect x="22" y="36" width="13" height="4" fill="#9B3A2E"/>
+      <rect x="40" y="36" width="38" height="4" rx="1" fill="#B9AD90"/>
+      <rect x="22" y="46" width="13" height="4" fill="#2C4A6E"/>
+      <rect x="40" y="46" width="38" height="4" rx="1" fill="#B9AD90"/>
+      <rect x="22" y="56" width="13" height="4" fill="#3E5E78"/>
+      <rect x="40" y="56" width="38" height="4" rx="1" fill="#B9AD90"/>
+      <rect x="22" y="70" width="56" height="6" rx="1" fill="#23201B"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="all-games-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="all-games-page.jsx"></script>
+  <script type="text/babel" src="all-games-app.jsx"></script>
+</body>
+</html>
