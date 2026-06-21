@@ -282,7 +282,7 @@
       <section class="qc-section" aria-label="Non-stadium pages">
         <div class="qc-head">
           <h2 class="qc-title">Book Extras</h2>
-          <div class="qc-count">5 pages</div>
+          <div class="qc-count">6 pages</div>
         </div>
         <div id="extra-grid" class="qc-grid"></div>
       </section>
@@ -410,6 +410,7 @@
       { title: "Big League Cover", page: "Big League Cover.html", thumb: "assets/page-thumbnails/big-league-cover.jpg" },
       { title: "Opening Spread", page: "Opening Spread.html", thumb: "assets/page-thumbnails/opening-spread.jpg" },
       { title: "Stadium Timeline", page: "MLB Stadium Timeline Spread.html", thumb: "assets/page-thumbnails/stadium-timeline.jpg" },
+      { title: "Road Trips Overview", page: "Road Trips Overview Spread.html", thumb: "assets/page-thumbnails/road-trips-overview.jpg" },
       { title: "Ballpark and the City 1", page: "The Ballpark and the City - Spread 1.html", thumb: "assets/page-thumbnails/ballpark-city-1.jpg" },
       { title: "Ballpark and the City 2", page: "The Ballpark and the City - Spread 2.html", thumb: "assets/page-thumbnails/ballpark-city-2.jpg" }
     ];
@@ -463,7 +464,7 @@
         const photo = exists
           ? `<a class="cv-photo-link" href="${ROOT + encodeURI(page)}" title="${title}">
               <div class="cv-photo">
-                <image-slot id="${slot}" shape="rect"${src ? ` src="${escAttr(src)}"` : ""} placeholder="Aerial - ${escAttr(p.stadium_name)}"></image-slot>
+                <image-slot id="${slot}" shape="rect" fit="cover"${src ? ` src="${escAttr(src)}"` : ""} placeholder="Aerial - ${escAttr(p.stadium_name)}"></image-slot>
               </div>
             </a>`
           : `<div class="cv-photo-link" title="${title}" aria-hidden="true">
