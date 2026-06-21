@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Road Trips — Overview Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #11100e;
+    font-family: "Spectral", Georgia, serif;
+    color: #23201B;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+  #root { min-height: 100vh; }
+  svg text { paint-order: stroke fill; }
+
+  /* ----------------------------------------------------------------
+     THE ROAD TRIPS — lifetime road-trip overview (data spread).
+     Blurb Large Landscape 13 x 11 in two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264.
+     Warm cream paper across BOTH pages. Center fold x=1275.
+     ---------------------------------------------------------------- */
+  .rt-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --paper: #EFE7D6; --paper-hi: #F4EEDF; --paper-lo: #E5DBC5;
+    --ink: #23201B; --ink-2: #5A5247; --ink-3: #8C8276;
+    --rule: #D6CBB2; --rule-strong: #B9AD90;
+    --navy: #21344A; --navy-deep: #16263A;
+    --red: #9E2B26;
+    --rt-accent-op: 1; --rt-keyline-op: 1;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.36' intercept='0.66'/%3E%3CfeFuncG type='linear' slope='0.36' intercept='0.66'/%3E%3CfeFuncB type='linear' slope='0.36' intercept='0.66'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper); font-kerning: normal;
+  }
+  .rt-page { position: absolute; top: 0; height: 1088px; overflow: hidden; }
+  .rt-left  { left: 0; width: 1275px; }
+  .rt-right { left: 1275px; width: 1275px; }
+  .rt-page::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .35; mix-blend-mode: multiply; }
+  /* flat hairline fold — NO fake book depth */
+  .rt-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.10); z-index: 40; pointer-events: none; }
+  .rt-spread > * { position: relative; z-index: 1; }
+
+  /* ============ HEADER — title block (left page) ============ */
+  .rt-titleblock { position: absolute; left: 44px; top: 36px; z-index: 6; }
+  .rt-title { margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 78px; line-height: .9; letter-spacing: .005em; color: var(--navy);
+    text-transform: uppercase; }
+  .rt-title span:not(:last-child) { margin-right: .24em; }
+  .rt-statline { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px;
+    margin-top: 10px; font-family: "Oswald", sans-serif; }
+  .rt-stat { display: inline-flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+  .rt-stat-n { font-weight: 700; font-size: 26px; color: var(--red); letter-spacing: .01em; }
+  .rt-stat-l { font-weight: 600; font-size: 17px; letter-spacing: .14em; color: var(--ink);
+    text-transform: uppercase; }
+  .rt-stat-sep { font-size: 20px; color: var(--rule-strong); }
+  .rt-note { margin-top: 6px; font-family: "Spectral", serif; font-style: italic;
+    font-size: 15px; color: var(--ink-2); }
+
+  .rt-intro { position: absolute; left: 672px; top: 52px; width: 556px; z-index: 6; margin: 0;
+    font-family: "Spectral", serif; font-size: 16.5px; line-height: 1.62; color: var(--ink);
+    text-align: left; }
+  .rt-intro::first-line { /* keep natural */ }
+
+  /* ============ HEADER — by the numbers (right page) ============ */
+  .rt-numbers { position: absolute; left: 1330px; top: 44px; width: 1182px; z-index: 6; }
+  .rt-numbers-head { display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 2px solid var(--ink); padding-bottom: 7px; }
+  .rt-numbers-title { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 17px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
+  .rt-numbers-span { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .04em;
+    color: var(--ink-3); }
+  .rt-numbers-row { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: 16px; }
+  .rt-numcell { padding: 2px 11px; border-right: 1px solid var(--rule); }
+  .rt-numcell:first-child { padding-left: 0; }
+  .rt-numcell:last-child { border-right: 0; }
+  .rt-numn { font-family: "Anton", sans-serif; font-size: 38px; line-height: .82; color: var(--navy);
+    letter-spacing: .01em; }
+  .rt-numl { margin-top: 8px; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+  .rt-numl span { display: block; line-height: 1.18; }
+  .rt-numsub { margin-top: 6px; font-family: "Spectral", serif; font-style: italic; font-size: 10px;
+    color: var(--ink-3); }
+
+  /* ============ CHRONOLOGY RAIL ============ */
+  .rt-rail { position: absolute; inset: 0; width: 2550px; height: 1088px; z-index: 3; pointer-events: none; }
+  .rt-rail line[stroke="#21344A"], .rt-rail path { stroke: var(--rt-rail, #21344A); }
+  .rt-rail line, .rt-rail circle, .rt-rail path { stroke: var(--rt-rail, #21344A); }
+
+  /* ============ TRIP PENNANTS (hanging badges) ============ */
+  .rt-pennant { position: absolute; top: 196px; width: 178px; height: 280px; z-index: 4;
+    filter: drop-shadow(0 3px 5px rgba(35,32,27,.20)); }
+  .rt-pen-fill, .rt-pen-stroke { position: absolute; inset: 0; width: 178px; height: 280px; display: block; }
+  .rt-pen-fill { z-index: 0; }
+  .rt-pen-fill path { fill: var(--paper-hi); }
+  .rt-pen-stroke { z-index: 5; pointer-events: none; }
+  .rt-pen-stroke path { fill: none; stroke: var(--rule-strong); stroke-width: 2; }
+  .rt-pen-head { position: absolute; top: 0; left: 0; width: 178px; height: 50px; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+    background: var(--accent); filter: saturate(var(--rt-accent-sat, 1));
+    box-shadow: inset 0 -2px 0 rgba(0,0,0,.16); }
+  .rt-year { font-family: "Anton", sans-serif; font-size: 26px; line-height: 1; color: #F4EEDF;
+    letter-spacing: .02em; }
+  .rt-pen-dates { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .12em;
+    color: rgba(244,238,223,.82); }
+  .rt-pen-content { position: absolute; top: 50px; left: 0; right: 0; bottom: 0; z-index: 3;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 12px 11px 26px; min-width: 0; }
+  .rt-name { height: 32px; display: flex; flex-direction: column; justify-content: center;
+    font-family: "Oswald", sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--navy); }
+  .rt-name span { display: block; line-height: 1.08; }
+  .rt-meta { margin-top: 8px; padding-top: 7px; border-top: 1px solid var(--rule); width: 100%;
+    display: flex; justify-content: center; gap: 6px;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .rt-meta-dot { color: var(--accent); opacity: var(--rt-accent-op, 1); font-weight: 700; }
+  .rt-route { margin-top: 9px; display: flex; flex-direction: column; align-items: center; gap: 1.5px;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12.5px; line-height: 1.22;
+    letter-spacing: .01em; color: var(--ink); }
+  .rt-route-line { white-space: nowrap; }
+  .rt-drive { margin-top: auto; padding-top: 10px; display: flex; flex-direction: column;
+    align-items: center; gap: 2px; }
+  .rt-drive-label { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); }
+  .rt-drive-fig { display: flex; align-items: baseline; gap: 6px;
+    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .01em; color: var(--ink-2); }
+  .rt-drive-mi { font-weight: 700; color: var(--ink); }
+  .rt-drive-dot { color: var(--accent); font-weight: 700; }
+  .rt-route-alt { font-weight: 300; font-style: italic; font-size: 11px; color: var(--ink-3);
+    letter-spacing: 0; }
+  .rt-route-cat { font-style: normal; font-weight: 600; font-size: 7.5px; letter-spacing: .1em;
+    color: var(--ink-3); margin-left: 4px; vertical-align: 1px; }
+  .rt-route-dh { font-style: normal; font-weight: 700; font-size: 7.5px; letter-spacing: .08em;
+    color: var(--navy); border: 1px solid var(--navy); border-radius: 2px; padding: 0 3px 0.5px;
+    margin-left: 5px; vertical-align: 1.5px; }
+  .rt-stamp { margin-top: 12px; padding: 3px 9px; border: 1.6px solid currentColor; border-radius: 2px;
+    font-family: "Oswald", sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: .16em;
+    text-transform: uppercase; opacity: .82; transform: rotate(-4deg); }
+  .rt-stamp-dh { color: var(--navy); }
+  .rt-stamp-rain { color: var(--red); }
+
+  /* ============ MEMORY FIELD (contact-sheet photo columns) ============ */
+  .rt-memcol { position: absolute; top: 514px; z-index: 2; display: flex; flex-direction: column; gap: 7px; }
+  .rt-plate { position: relative; width: 100%; overflow: hidden; background: var(--paper-lo);
+    box-shadow: inset 0 0 0 1px rgba(35,32,27,calc(.16 * var(--rt-keyline-op))); }
+  .rt-plate::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    box-shadow: 0 1px 3px rgba(35,32,27,.12); }
+  .rt-plate image-slot { width: 100%; height: 100%; display: block; }
+  .rt-plate-stamped { overflow: visible; }
+  .rt-plate-stamp { position: absolute; top: 50%; left: 50%; z-index: 6;
+    transform: translate(-50%, -50%) rotate(-10deg); padding: 8px 18px; white-space: nowrap;
+    border: 3px solid var(--red); border-radius: 3px;
+    font-family: "Oswald", sans-serif; font-weight: 700; font-size: 29px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--red); opacity: .9; pointer-events: none;
+    text-shadow: 0 1px 2px rgba(244,238,223,.55); }
+
+  /* ============ FOOTER — legend + colophon ============ */
+  .rt-legend { position: absolute; left: 44px; bottom: 46px; z-index: 6;
+    display: flex; align-items: center; gap: 22px;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .rt-legend-t { font-weight: 700; color: var(--ink); letter-spacing: .14em; }
+  .rt-legend-item { display: inline-flex; align-items: center; gap: 7px; }
+  .rt-legend-node { width: 13px; height: 13px; border-radius: 50%; border: 2.4px solid var(--navy);
+    background: var(--paper-hi); flex: none; }
+  .rt-legend-arr { color: var(--navy); font-weight: 700; font-size: 13px; }
+  .rt-legend-item svg { color: var(--navy); }
+
+  .rt-colophon { position: absolute; right: 40px; bottom: 46px; z-index: 6;
+    display: flex; align-items: center; gap: 12px; }
+  .rt-colo-mlb { height: 26px; width: auto; display: block; opacity: .9; }
+  .rt-colo-txt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#EFE7D6"/>
+      <line x1="14" y1="50" x2="86" y2="50" stroke="#21344A" stroke-width="3"/>
+      <circle cx="28" cy="50" r="4.5" fill="#F4EEDF" stroke="#21344A" stroke-width="2.2"/>
+      <circle cx="50" cy="50" r="4.5" fill="#F4EEDF" stroke="#21344A" stroke-width="2.2"/>
+      <circle cx="72" cy="50" r="4.5" fill="#F4EEDF" stroke="#21344A" stroke-width="2.2"/>
+      <rect x="22" y="28" width="12" height="10" fill="#9B2D2A"/>
+      <rect x="44" y="24" width="12" height="14" fill="#2C4A7A"/>
+      <rect x="66" y="30" width="12" height="8" fill="#1E5641"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="road-trips-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="road-trips-spread.jsx"></script>
+  <script type="text/babel" src="road-trips-app.jsx"></script>
+</body>
+</html>

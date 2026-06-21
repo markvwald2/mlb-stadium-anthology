@@ -350,6 +350,9 @@
           this._spill.removeEventListener('pointercancel', up);
           this.removeAttribute('data-panning');
           this._dragUp = null;
+          // Persist on every gesture end — not only on reframe exit — so
+          // closing the tab mid-reframe can't drop the last pan/resize.
+          this._commitView();
         };
         // Stashed so _exitReframe (Escape / outside-click mid-drag) can
         // tear the capture + listeners down synchronously.
@@ -375,6 +378,10 @@
         this._view.y = cy * (1 - k) + this._view.y * k;
         this._clampView();
         this._applyView();
+        // Debounced persist so a wheel-zoom that's never followed by a clean
+        // reframe exit still survives a tab close.
+        clearTimeout(this._wheelCommitT);
+        this._wheelCommitT = setTimeout(() => this._commitView(), 250);
       }, { passive: false });
     }
 

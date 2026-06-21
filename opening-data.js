@@ -16,7 +16,7 @@
   // the 28 "rest" parks, verbatim from the CSV, in CSV order
   const REST = [
     { name: "Coors Field",                  city: "Denver" },
-    { name: "Citi Field",                   city: "Queens" },
+    { name: "Citi Field",                   city: "New York City" },
     { name: "PNC Park",                     city: "Pittsburgh" },
     { name: "Safeco Field",                 city: "Seattle" },
     { name: "Comiskey Park",               city: "Chicago" },
@@ -25,10 +25,10 @@
     { name: "Camden Yards",                 city: "Baltimore" },
     { name: "Marlins Park",                 city: "Miami" },
     { name: "Target Field",                 city: "Minneapolis" },
-    { name: "Shea Stadium",                 city: "Queens" },
+    { name: "Shea Stadium",                 city: "New York City" },
     { name: "Chase Field",                  city: "Phoenix" },
     { name: "Great American Ball Park",     city: "Cincinnati" },
-    { name: "Yankee Stadium (2009)",        city: "Bronx" },
+    { name: "Yankee Stadium (2009)",        city: "New York City" },
     { name: "Mile High Stadium",            city: "Denver" },
     { name: "Petco Park",                   city: "San Diego" },
     { name: "SunTrust Park",                city: "Atlanta" },

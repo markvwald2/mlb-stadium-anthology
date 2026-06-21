@@ -25,7 +25,7 @@ window.COVER_DATA_5 = {
     { name: "Busch Stadium",             city: "St. Louis",    slot: "cv5-busch" },
     { name: "Mile High Stadium",         city: "Denver",       slot: "cv5-milehigh" },
     { name: "Memorial Stadium",          city: "Baltimore",    slot: "cv5-memorial" },
-    { name: "Yankee Stadium",            city: "New York",     slot: "cv5-yankee" },
+    { name: "Yankee Stadium",            city: "New York City", slot: "cv5-yankee" },
     { name: "Anaheim Stadium",           city: "Anaheim",      slot: "cv5-angels" },
     { name: "Tiger Stadium",             city: "Detroit",      slot: "cv5-tiger" }
   ]

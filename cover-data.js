@@ -20,7 +20,7 @@ window.COVER_DATA = {
     { name: "Dodger Stadium",            city: "Los Angeles",  slot: "cv-dodger" },
     { name: "Three Rivers Stadium",      city: "Pittsburgh",   slot: "cv-threerivers" },
     { name: "Memorial Stadium",          city: "Baltimore",    slot: "cv-memorial" },
-    { name: "Yankee Stadium",            city: "New York",     slot: "cv-yankee" },
+    { name: "Yankee Stadium",            city: "New York City", slot: "cv-yankee" },
     { name: "Anaheim Stadium",           city: "Anaheim",      slot: "cv-angels" },
     { name: "Tiger Stadium",             city: "Detroit",      slot: "cv-tiger" }
   ]
