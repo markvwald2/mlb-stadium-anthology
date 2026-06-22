@@ -38,6 +38,8 @@
 
   /* ---- masthead ---- */
   .ag-masthead { position: absolute; z-index: 1; left: 50px; right: 50px; top: 44px; }
+  .ag-years { position: absolute; top: 2px; right: 0; white-space: nowrap; font-family: "Oswald", sans-serif;
+    font-weight: 700; font-size: 19px; letter-spacing: .04em; color: var(--ink-2); }
   .ag-kicker { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
     letter-spacing: .34em; text-transform: uppercase; color: var(--red); }
   .ag-title { margin: 4px 0 0; font-family: "Anton", sans-serif; font-weight: 400;
@@ -50,7 +52,7 @@
   .ag-sub-sep { color: var(--rule-strong); font-size: 15px; }
 
   /* ---- two-column index ---- */
-  .ag-index { position: absolute; z-index: 1; left: 50px; right: 50px; top: 172px; bottom: 116px;
+  .ag-index { position: absolute; z-index: 1; left: 50px; right: 50px; top: 150px; bottom: 60px;
     display: grid; grid-template-columns: 1fr 1px 1fr; column-gap: 34px; }
   .ag-divider { background: linear-gradient(var(--rule-strong), var(--rule-strong)) center / 1px 100% no-repeat; }
   .ag-col { display: flex; flex-direction: column; }
@@ -59,7 +61,9 @@
     padding: 0 0 6px; border-bottom: 2px solid var(--ink); margin-bottom: 4px;
     font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--ink-3); }
-  .ag-ch-match { text-align: left; }
+  .ag-ch-match { text-align: center; }
+  .ag-baseline { position: absolute; z-index: 1; left: 50px; right: 50px; bottom: 44px;
+    border-top: 2px solid var(--ink); }
 
   /* ---- trip chapter ---- */
   .ag-chapter { margin-top: 9px; }
@@ -77,7 +81,7 @@
   /* ---- game rows ---- */
   .ag-chap-rows { display: flex; flex-direction: column; }
   .ag-row { display: grid; grid-template-columns: 58px 1fr 270px; align-items: center;
-    height: 25px; border-bottom: 1px solid var(--rule); }
+    height: 29px; border-bottom: 1px solid var(--rule); }
   .ag-row:last-child { border-bottom: 0; }
   .ag-date { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .02em; color: var(--ink-2); }
   .ag-stadium { display: flex; align-items: baseline; gap: 7px; min-width: 0; padding-right: 10px; }
@@ -91,11 +95,11 @@
 
   .ag-match { display: grid; grid-template-columns: 1fr 24px 1fr; align-items: center; }
   .ag-team { display: flex; align-items: center; gap: 7px; min-width: 0; }
-  .ag-team-home { justify-content: flex-end; }
-  .ag-logo { height: 20px; width: 22px; object-fit: contain; flex: none; }
+  .ag-team-right { justify-content: flex-end; }
+  .ag-logo { height: 26px; width: 28px; object-fit: contain; flex: none; }
   .ag-nick { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11.5px; letter-spacing: .01em;
     color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .ag-team-home .ag-nick { font-weight: 700; color: var(--ink); }
+  .ag-team-emph .ag-nick { font-weight: 700; color: var(--ink); }
   .ag-vs { text-align: center; font-family: "Spectral", serif; font-style: italic; font-size: 10px; color: var(--ink-3); }
 
   /* ---- footer stats bar ---- */

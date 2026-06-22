@@ -43,12 +43,12 @@
   }
 
   window.ALLGAMES = {
-    title: "ALL TRIP GAMES",
+    title: "ALL BASEBALL TRIP GAMES",
+    years: "1986\u20132025",
     sub: [
       { n: "39", l: "GAMES" },
       { n: "12", l: "ROAD TRIPS" },
       { n: "34", l: "STADIUMS" },
-      { n: "1986\u20132025", l: "" },
     ],
     teams: T,
     footer: [

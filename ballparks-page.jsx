@@ -57,31 +57,16 @@
       e("div", { className: "bp-paper" }),
 
       e("header", { className: "bp-masthead" },
+        D.years ? e("div", { className: "bp-years" }, D.years) : null,
         e("div", { className: "bp-kicker" }, D.kicker),
-        e("h1", { className: "bp-title" }, D.title),
-        e("div", { className: "bp-subline" },
-          D.sub.map(function (s, i) {
-            return e(React.Fragment, { key: i },
-              i > 0 ? e("span", { className: "bp-sub-sep" }, "\u00b7") : null,
-              e("span", { className: "bp-sub" },
-                e("span", { className: "bp-sub-n" }, s.n),
-                s.l ? e("span", { className: "bp-sub-l" }, " ", s.l) : null));
-          }))),
+        e("h1", { className: "bp-title" }, D.title)),
 
       e("div", { className: "bp-index" },
         e(Column, { rows: col1 }),
         e("div", { className: "bp-divider" }),
         e(Column, { rows: col2 })),
 
-      e("footer", { className: "bp-footer" },
-        D.footer.map(function (m, i) {
-          return e("div", { className: "bp-stat", key: i },
-            e("div", { className: "bp-stat-n" }, m.n),
-            e("div", { className: "bp-stat-l" }, m.l.map(function (ln, j) { return e("span", { key: j }, ln); })));
-        }),
-        e("div", { className: "bp-stat bp-stat-mark" },
-          e("img", { className: "bp-mlb", src: "assets/mlb-logo.svg", alt: "MLB" }),
-          e("div", { className: "bp-stat-l" }, e("span", null, "1953\u20132025")))));
+      e("div", { className: "bp-baseline" }));
   }
 
   function BallparksSpread() {

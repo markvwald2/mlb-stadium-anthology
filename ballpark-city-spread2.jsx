@@ -67,17 +67,17 @@
         <SectionHead label="CONCRETE CIRCLES AND CLIMATE CONTROL" num="III" width={857}
         style={{ position: "absolute", left: 380, top: 58, fontSize: 21 }} />
 
-        <Body paras={D.CONCRETE} x={380} y={104} w={857} h={404}
+        <Body paras={D.CONCRETE} x={380} y={104} w={857} h={420}
         cols={3} gap={30} size={13} lh={1.45} dropcap />
 
         <SectionHead label="THE RETRO-CLASSIC TURN" num="IV" width={857}
-        style={{ position: "absolute", left: 380, top: 532, fontSize: 21 }} />
+        style={{ position: "absolute", left: 380, top: 540, fontSize: 21 }} />
 
-        <Body paras={D.RETRO} x={380} y={578} w={857} h={320}
+        <Body paras={D.RETRO} x={380} y={586} w={857} h={326}
         cols={3} gap={30} size={13} lh={1.45} dropcap />
 
         {/* retro pull quote — spans under the left-page text */}
-        <div className="bc-region" style={{ left: 380, top: 920, width: 857 }}>
+        <div className="bc-region" style={{ left: 380, top: 928, width: 857 }}>
           <span style={{ display: "block", width: 60, height: 0, borderTop: "2px solid var(--brick)", opacity: 0.6, marginBottom: 16 }}></span>
           <div className="bc-pullquote" style={{ fontSize: 32 }}>
             <span className="mark" style={{ fontSize: 64, position: "absolute", left: -8, top: -34 }}>&#8220;</span>
@@ -89,27 +89,27 @@
         <SectionHead label="THE BALLPARK BECOMES A DISTRICT" num="V" width={800}
         style={{ position: "absolute", left: 1335, top: 56, fontSize: 21 }} />
 
-        <Body paras={D.DISTRICT} x={1335} y={102} w={800} h={400}
-        cols={3} gap={26} size={11.5} lh={1.42} dropcap />
+        <Body paras={D.DISTRICT} x={1335} y={102} w={800} h={472}
+        cols={3} gap={26} size={12} lh={1.42} dropcap />
 
         {/* secondary companion rail — supporting systems, clearly subordinate */}
         <SystemsSidebar data={D.SYSTEMS} x={2167} y={92} w={338} />
 
         {/* compact "evolution at a glance" comparison (left column, under the essay) */}
-        <div className="bc-region" style={{ left: 1335, top: 514, width: 800 }}>
-          <div className="bc-sidebar-kicker" style={{ marginBottom: 8 }}>BALLPARK EVOLUTION AT A GLANCE</div>
+        <div className="bc-region" style={{ left: 1335, top: 588, width: 800 }}>
+          <div className="bc-sidebar-kicker" style={{ marginBottom: 7 }}>BALLPARK EVOLUTION AT A GLANCE</div>
           <span style={{ display: "block", width: "100%", height: 0, borderTop: "2px solid var(--ink)" }}></span>
         </div>
-        <AtlasGrid atlas={D.ATLAS} x={1335} y={548} w={800} dense
-          template="120px 1fr 1fr 1fr 1.06fr" />
+        <AtlasGrid atlas={D.ATLAS} x={1335} y={620} w={800} dense
+          template="120px 1fr 1fr 1fr 1.06fr" pad="2px 12px 2px 0" minH={30} />
 
         {/* closing paragraphs — full width beneath both columns */}
-        <div className="bc-region" style={{ left: 1335, top: 800, width: 1170, height: 0, borderTop: "1px solid var(--rule)" }}></div>
-        <Body paras={D.CONCLUSION} x={1335} y={812} w={1170} h={166}
+        <div className="bc-region" style={{ left: 1335, top: 818, width: 1170, height: 0, borderTop: "1px solid var(--rule)" }}></div>
+        <Body paras={D.CONCLUSION} x={1335} y={830} w={1170} h={184}
           cols={4} gap={30} size={12} lh={1.46} />
 
         {/* end mark */}
-        <div className="bc-region" style={{ left: 1335, top: 988, width: 1170, textAlign: "center" }}>
+        <div className="bc-region" style={{ left: 1335, top: 1022, width: 1170, textAlign: "center" }}>
           <span style={{ display: "inline-block", width: 9, height: 9, background: "var(--brick)", transform: "rotate(45deg)" }}></span>
         </div>
 

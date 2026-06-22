@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fenway Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  @font-face { font-family: "MatrixTitle"; src: url("uploads/MatrixType-Bold.ttf") format("truetype"); font-display: swap; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #20211d;
+    font-family: "Spectral", Georgia, serif;
+    color: #15140F;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================================================================
+     FENWAY PARK — constrained urban scoreboard wall  (.fw-)
+     ================================================================ */
+  .fw-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    /* green-painted steel + Monster scoreboard materials */
+    --steel: #20402B; --steel-hi: #2C5236; --steel-lo: #16301F; --steel-deep: #112519;
+    --board: #0E1F14; --cell: #11281A; --cell-edge: #060F08;
+    --cream: #E7DEC6; --cream-2: #D6CBAE; --cream-dim: #B3AA90; --cream-faint: rgba(231,222,198,.5);
+    --rule: rgba(231,222,198,.16); --rule-2: rgba(231,222,198,.30);
+    --paper: #EBE4D2; --paper-2: #E2DAC4; --pink: #efe9d9;
+    --ink: #20271E; --ink-2: #4C5347; --ink-3: #7C8071;
+    --brick: #7A3A2C; --brick-hi: #8C4736; --brick-lo: #5F2C20;
+    --red: #BD3039; --navy: #0C2340;
+    --rivet: radial-gradient(circle at 38% 35%, #3a5641 0%, #1b3324 55%, #0d1c12 100%);
+    font-family: "Spectral", Georgia, serif; color: var(--ink);
+    text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .fw-page { position: absolute; top: 0; height: 1088px; }
+
+  /* hairline fold only — no fake book depth */
+  .fw-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px;
+    width: 1px; background: rgba(0,0,0,.28); z-index: 20; pointer-events: none; }
+
+  /* ---------------- LEFT PAGE (hero) ---------------- */
+  .fw-left { left: 0; width: 1275px; background: #11140F; overflow: hidden; }
+  .fw-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .fw-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .fw-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background:
+      linear-gradient(0deg, rgba(8,12,7,.94) 0%, rgba(8,12,7,.62) 16%, rgba(8,12,7,.05) 34%, rgba(8,12,7,0) 48%),
+      linear-gradient(180deg, rgba(8,12,7,.55) 0%, rgba(8,12,7,0) 16%); }
+
+  .fw-mast { position: absolute; top: 50px; left: 56px; z-index: 5; display: flex; align-items: center; gap: 14px; }
+  .fw-mast .mlb { height: 46px; width: auto; display: block; border-radius: 4px; box-shadow: 0 3px 14px rgba(0,0,0,.5); }
+  .fw-mast .mast-div { width: 1px; height: 34px; background: rgba(231,222,198,.32); display: block; }
+  .fw-mast .al { height: 50px; width: auto; display: block; filter: drop-shadow(0 2px 9px rgba(0,0,0,.6)); }
+
+  /* green Monster-signage plaque */
+  .fw-plaque { position: absolute; left: 56px; bottom: 64px; z-index: 5; width: 560px;
+    padding: 30px 40px 34px; background:
+      linear-gradient(180deg, #2A5236 0%, #214129 55%, #1A3522 100%);
+    border: 2px solid #14291A; border-radius: 3px;
+    box-shadow: 0 18px 44px rgba(0,0,0,.5), inset 0 1px 0 rgba(231,222,198,.14), inset 0 0 0 4px rgba(11,24,16,.55); }
+  .fw-plaque-rivets { position: absolute; inset: 11px; border: 1px solid rgba(231,222,198,.16); border-radius: 1px; pointer-events: none; }
+  .fw-plaque-rivets::before, .fw-plaque-rivets::after,
+  .fw-plaque::before, .fw-plaque::after {
+    content: ""; position: absolute; width: 13px; height: 13px; border-radius: 50%;
+    background: var(--rivet); box-shadow: inset 0 1px 1px rgba(0,0,0,.6), 0 1px 1px rgba(255,255,255,.06); }
+  .fw-plaque::before { top: 16px; left: 16px; } .fw-plaque::after { top: 16px; right: 16px; }
+  .fw-plaque-rivets::before { bottom: 5px; left: 5px; } .fw-plaque-rivets::after { bottom: 5px; right: 5px; }
+  .fw-plaque-name { font-family: "Jost", sans-serif; font-weight: 600; font-size: 92px; line-height: .9;
+    letter-spacing: .04em; text-transform: uppercase; color: #ECE4CC;
+    text-shadow: 0 2px 0 rgba(11,24,16,.6), 0 5px 16px rgba(0,0,0,.4); }
+  .fw-plaque-loc { font-family: "Spectral", serif; font-style: italic; font-weight: 500; font-size: 31px;
+    color: #E2DAC2; margin-top: 12px; letter-spacing: .01em; }
+  .fw-plaque-years { font-family: "Jost", sans-serif; font-weight: 500; font-size: 24px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--red); margin-top: 12px; }
+  .fw-plaque-sub { font-family: "Jost", sans-serif; font-weight: 400; font-size: 12.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(231,222,198,.62); margin-top: 14px; }
+
+  /* ---------------- RIGHT PAGE (scoreboard wall) ---------------- */
+  .fw-right { left: 1275px; width: 1275px;
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 248px, rgba(11,24,16,.55) 248px 251px, rgba(231,222,198,.05) 251px 254px, rgba(0,0,0,0) 254px 256px),
+      linear-gradient(180deg, #234630 0%, #1F3D29 50%, #1A3523 100%);
+    overflow: hidden; }
+  .fw-right::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(120% 80% at 60% 0%, rgba(231,222,198,.06), rgba(0,0,0,0) 60%); }
+  /* corner rivet clusters on the wall */
+  .fw-rivets-tl, .fw-rivets-tr, .fw-rivets-bl, .fw-rivets-br {
+    position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--rivet);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.6); z-index: 6; }
+  .fw-rivets-tl { top: 16px; left: 30px; } .fw-rivets-tr { top: 16px; right: 16px; }
+  .fw-rivets-bl { bottom: 16px; left: 30px; } .fw-rivets-br { bottom: 16px; right: 16px; }
+
+  .fw-rp { position: absolute; inset: 0; padding: 38px 38px 38px 44px; z-index: 2;
+    display: flex; flex-direction: column; }
+
+  .fw-wall-div { flex: none; height: 3px; margin: 14px 0 16px;
+    background: linear-gradient(90deg, transparent, rgba(11,24,16,.9) 6%, rgba(11,24,16,.9) 94%, transparent);
+    border-top: 1px solid rgba(231,222,198,.18); border-bottom: 1px solid rgba(0,0,0,.4);
+    position: relative; }
+  .fw-wall-div::before, .fw-wall-div::after { content: ""; position: absolute; top: -3px; width: 9px; height: 9px;
+    border-radius: 50%; background: var(--rivet); box-shadow: inset 0 1px 1px rgba(0,0,0,.6); }
+  .fw-wall-div::before { left: 2%; } .fw-wall-div::after { right: 2%; }
+
+  /* ===== STADIUM SECTION ===== */
+  .fw-stadium { flex: 1; min-height: 0; display: grid; grid-template-columns: 338px 232px 1fr;
+    grid-template-rows: minmax(0, 1fr); gap: 14px; min-height: 0; }
+
+  .fw-sec-head { display: flex; align-items: center; gap: 12px; font-family: "Jost", sans-serif; font-weight: 600;
+    font-size: 19px; letter-spacing: 0px; text-transform: uppercase; color: var(--cream);
+    margin-bottom: 6px; }
+  .fw-sec-rule { flex: none; width: 26px; height: 3px; background: var(--red); display: block; }
+
+  /* Col A — engraved metadata directory on green steel */
+  .fw-colA { display: flex; flex-direction: column; min-width: 0; }
+  .fw-meta-table { width: 100%; border-collapse: collapse; }
+  .fw-meta-table tr { border-bottom: 1px solid var(--rule); }
+  .fw-meta-table th { text-align: left; vertical-align: baseline; width: 116px; white-space: nowrap; padding: 0.7px 9px 0.7px 0;
+    font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0px;
+    text-transform: uppercase; color: var(--cream-dim); }
+  .fw-meta-table td { vertical-align: baseline; padding: 0.7px 0; font-family: "Spectral", serif;
+    font-size: 12px; line-height: 1.16; color: var(--cream); }
+  .fw-meta-table td i { font-style: normal; color: var(--cream-dim); padding: 0 1px; }
+  .fw-mr-note { display: inline; font-style: italic; font-size: 12px; color: var(--cream-dim); margin-left: 7px; }
+
+  .fw-field-bay { margin-top: 9px; padding: 6px 6px 6px; border: 1px solid var(--rule);
+    background: rgba(11,24,16,.4); border-radius: 2px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .fw-field-cap { font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0px;
+    text-transform: uppercase; color: var(--cream-dim); text-align: center; margin-bottom: 4px; flex: none; }
+  .ff-wrap { display: flex; justify-content: center; align-items: center; flex: 1; min-height: 0; }
+  .ff-svg { width: auto; height: 100%; max-width: 100%; max-height: 100%; display: block; }
+
+  .fw-colors { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 14px; }
+  .fw-colors-lab { font-family: "Jost", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--cream-dim); }
+  .fw-sw-row { display: flex; gap: 14px; }
+  .fw-sw { display: flex; align-items: center; gap: 6px; }
+  .fw-sw-chip { width: 13px; height: 13px; border-radius: 50%; display: block; border: 1px solid rgba(11,24,16,.7);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.18); }
+  .fw-sw-name { font-family: "Spectral", serif; font-size: 11px; color: var(--cream); }
+
+  /* Col B — documentation photo bays */
+  .fw-colB { display: flex; flex-direction: column; gap: 11px; min-width: 0; }
+  .fw-bay { flex: 1; min-height: 0; }
+  .fw-bay-frame { position: relative; width: 100%; height: 100%;
+    border: 2px solid #14291A; border-radius: 2px; overflow: hidden;
+    background: #1a3422; box-shadow: inset 0 0 0 1px rgba(231,222,198,.10), inset 0 2px 10px rgba(0,0,0,.45); }
+  .fw-bay-frame image-slot { width: 100%; height: 100%; display: block; }
+
+  /* Col C — cream documentation panels */
+  .fw-colC { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .fw-panel { position: relative; background:
+      linear-gradient(180deg, var(--pink), var(--paper) 40%, var(--paper-2));
+    border: 2px solid #14291A; border-radius: 2px; padding: 14px 18px 15px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 2px 9px rgba(0,0,0,.28); }
+  .fw-panel-head { font-family: "Jost", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--ink); padding-bottom: 7px; margin-bottom: 9px;
+    border-bottom: 2px solid var(--ink); }
+  .fw-ctx-panel { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .fw-ctx-cols { columns: 2; column-gap: 22px; column-rule: 1px solid #C9C0AC; }
+  .fw-ctx-cols p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.45;
+    color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
+  .fw-ctx-cols p:last-child { margin-bottom: 0; }
+  .fw-ctx-cols p:first-of-type::first-letter { float: left; font-family: "Spectral", serif; font-weight: 700;
+    font-size: 3.1em; line-height: .78; padding: 4px 7px 0 0; color: var(--brick); }
+
+  .fw-cWrap { flex: none; display: grid; grid-template-columns: 4fr 1fr; gap: 12px; }
+  .fw-life-panel { padding: 10px 15px 10px; display: flex; flex-direction: column; }
+  .fw-life { display: flex; flex-direction: column; gap: 9px; }
+  .fw-life-grp { display: flex; flex-direction: column; }
+  .fw-life-era { display: flex; align-items: baseline; gap: 5px; margin-bottom: 1px;
+    border-bottom: 0.75px solid var(--ink); padding-bottom: 0; }
+  .fw-life-era .yr { font-family: "Jost", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .04em;
+    color: var(--brick); }
+  .fw-life-era .ti { font-family: "Jost", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .09em;
+    text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+  .fw-life-row { display: grid; grid-template-columns: 30px 1fr; gap: 6px; align-items: baseline; padding: 0; }
+  .fw-life-yr { font-family: "Jost", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .02em;
+    color: var(--brick); }
+  .fw-life-note { font-family: "Spectral", serif; font-size: 9px; line-height: 1.13; color: var(--ink); }
+
+  /* brick marks plate */
+  .fw-brick-plate { position: relative; border-radius: 2px; overflow: hidden;
+    border: 2px solid #4A2419; padding: 13px 14px; display: flex; flex-direction: column; gap: 9px;
+    justify-content: center; background:
+      url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='56'%20height='30'%3E%3Cg%20fill='none'%20stroke='%23000'%20stroke-opacity='0.32'%20stroke-width='2'%3E%3Cpath%20d='M0%201H56M0%2015H56M0%200V15M28%2015V30'/%3E%3C/g%3E%3Cg%20fill='none'%20stroke='%23fff'%20stroke-opacity='0.07'%20stroke-width='1'%3E%3Cpath%20d='M0%203H56M0%2017H56'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 56px 30px,
+      linear-gradient(180deg, var(--brick-hi), var(--brick) 55%, var(--brick-lo));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 0 22px rgba(0,0,0,.3); }
+  .fw-brick-marks { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 11px; }
+  .fw-brick-marks img { height: 34px; width: auto; max-width: 100%; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,.4)); }
+  .fw-brick-marks img.mlb { height: 32px; }
+  .fw-brick-est { display: flex; flex-direction: column; align-items: center; gap: 4px;
+    border-top: 1px solid rgba(231,222,198,.28); padding-top: 9px; }
+  .fw-est-big { font-family: "Jost", sans-serif; font-weight: 600; font-size: 16px; letter-spacing: .14em;
+    line-height: 1; white-space: nowrap; color: #F0E8D2; }
+  .fw-est-sm { font-family: "Spectral", serif; font-style: italic; font-size: 10px; line-height: 1; color: rgba(240,232,210,.82); text-align: center; }
+
+  /* site / setting strip */
+  .fw-setting { flex: none; display: flex; align-items: baseline; gap: 12px; padding-top: 3px; }
+  .fw-setting-lab { flex: none; font-family: "Jost", sans-serif; font-weight: 600; font-size: 9px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--cream); }
+  .fw-setting-txt { font-family: "Spectral", serif; font-style: italic; font-size: 10px; line-height: 1.3;
+    color: var(--cream-dim); }
+
+  /* ===== VISIT SECTION ===== */
+  .fw-visit { height: 312px; flex: none; display: flex; flex-direction: column; min-height: 0; }
+  .fw-visit-head { flex: none; display: flex; align-items: flex-end; justify-content: space-between;
+    padding-bottom: 8px; margin-bottom: 9px; }
+  .fw-visit-title { display: flex; align-items: baseline; gap: 12px; }
+  .fw-visit-word { font-family: "Jost", sans-serif; font-weight: 600; font-size: 19px; line-height: 1;
+    letter-spacing: 0px; text-transform: uppercase; color: var(--cream); }
+  .fw-sec-rule + .fw-visit-word { margin-left: 0; }
+  .fw-visit-title > .fw-sec-rule { align-self: center; }
+  .fw-visit-meta { display: flex; flex-direction: row; align-items: baseline; gap: 10px; }
+  .fw-vm-1 { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--cream); }
+  .fw-vm-2 { font-family: "Spectral", serif; font-style: italic; font-size: 10px; color: var(--cream-dim); }
+  .fw-visit-badge { display: flex; align-items: flex-end; gap: 9px; }
+  .fw-vb-no { font-family: "Jost", sans-serif; font-weight: 600; font-size: 22px; line-height: .85; color: var(--cream); }
+  .fw-vb-of { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+  .fw-vb-of .lab { font-family: "Jost", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--cream-dim); }
+  .fw-vb-of .num { font-family: "Jost", sans-serif; font-weight: 600; font-size: 10px; color: var(--cream-2);
+    margin-top: 2px; }
+
+  .fw-visit-body { flex: 1; display: grid; grid-template-columns: 1.62fr 1fr; gap: 18px; min-height: 0; }
+
+  /* manual scoreboard */
+  .fw-visit-board { display: flex; flex-direction: column; min-width: 0; }
+  .fw-feat-line { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .fw-feat-date { font-family: "Jost", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--cream); }
+  .fw-feat-match { font-family: "Spectral", serif; font-size: 12px; color: var(--cream-2); flex: 1; }
+  .fw-feat-tag { font-family: "Jost", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--cream-dim); }
+
+  .fw-scoreboard { position: relative; background: transparent;
+    border: 0; border-radius: 0; padding: 9px 0; box-shadow: none; }
+  .fw-sb-head, .fw-sb-row { display: grid; grid-template-columns: 54px 9fr 3fr; column-gap: 4px; align-items: stretch; }
+  .fw-sb-plate { align-self: center; }
+  .fw-sb-head { margin-bottom: 4px; }
+  .fw-sb-row { margin-top: 4px; }
+  .fw-sb-plate { font-family: "Jost", sans-serif; font-weight: 600; font-size: 21px; letter-spacing: .11em;
+    color: var(--cream); text-align: left; }
+  .fw-sb-plate.away { color: #E7DEC6; } .fw-sb-plate.home { color: #E7DEC6; }
+  .fw-sb-plate.head { font-size: 0; }
+
+  /* recessed number slots framed by thick white lines (Green Monster manual board) */
+  .fw-sb-cells { display: grid; grid-template-columns: repeat(9, 1fr); gap: 4px; }
+  .fw-sb-rhe { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-left: 0; }
+  .fw-sb-head .fw-sb-cells, .fw-sb-head .fw-sb-rhe { padding: 0; }
+  .fw-sb-cell { aspect-ratio: 1 / 0.9; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(180deg, #20402B, #1A3624); border: 0; border-radius: 0;
+    font-family: "Jost", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .02em; color: #EDE5CD;
+    box-shadow: inset 0 0 0 1px rgba(231,222,198,.05), inset 0 1px 5px rgba(0,0,0,.6);
+    text-shadow: 0 1px 0 rgba(0,0,0,.4); }
+  .fw-sb-cell.num { aspect-ratio: auto; background: none; border: 0; box-shadow: none; text-shadow: none;
+    font-size: 10px; color: var(--cream-dim); height: 14px; }
+  .fw-sb-tot { display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(180deg, #20402B, #1A3624); border: 0; border-radius: 0;
+    font-family: "Jost", sans-serif; font-weight: 600; font-size: 19px; letter-spacing: .02em; color: #EDE5CD;
+    box-shadow: inset 0 0 0 1px rgba(231,222,198,.05), inset 0 1px 5px rgba(0,0,0,.6);
+    text-shadow: 0 1px 0 rgba(0,0,0,.4); min-height: 100%; }
+  .fw-sb-tot.r { color: #EDE5CD; }
+  .fw-sb-tot.lab { background: none; border: 0; box-shadow: none; text-shadow: none; color: var(--cream-dim);
+    font-family: "Jost", sans-serif; font-size: 10px; letter-spacing: .1em; }
+
+  /* ===== two equal game blocks ===== */
+  .fw-games { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; min-height: 0; }
+  .fw-game { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 10px 13px 10px;
+    border: 2px solid rgba(226,217,192,.72); border-radius: 0; background: #1E3A27;
+    box-shadow: inset 0 1px 0 rgba(231,222,198,.06); }
+  /* continuous vertical line: innings | R·H·E in the board, extended down through the ribbon */
+  .fw-game::before { content: ""; position: absolute; top: 64px; right: 138px; height: 150px;
+    width: 2px; background: rgba(226,217,192,.72); pointer-events: none; z-index: 1; }
+  .fw-game-bar { display: flex; align-items: baseline; gap: 10px; margin-bottom: 3px; }
+  .fw-game-tag { font-family: "Jost", sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: .14em;
+    color: #13281A; background: var(--cream); padding: 1.5px 8px; border-radius: 2px; }
+  .fw-game-date { font-family: "Jost", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--cream); }
+  .fw-game-dn { font-family: "Jost", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--cream-dim); margin-left: auto; }
+  .fw-game-match { font-family: "Spectral", serif; font-size: 11px; line-height: 1.3; margin-bottom: 7px; }
+  .fw-game-match .mt { color: var(--cream-2); }
+  .fw-game-match .pm { color: var(--cream-dim); }
+  .fw-game-match .pm::before { content: "  \2014  "; color: var(--cream-dim); }
+  .fw-game-foot { margin-top: 0; display: flex; flex-direction: column; gap: 5px; }
+  .fw-game-result { font-family: "Spectral", serif; font-style: italic; font-weight: 500; font-size: 14px;
+    color: var(--cream); }
+  .fw-game-recs { display: grid; grid-template-columns: 54px 9fr 3fr; column-gap: 4px;
+    border-top: 2px solid rgba(226,217,192,.72); }
+  .fw-game-recs-left { grid-column: 1 / 3; display: flex; }
+  .fw-game-rec { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 4px; }
+  .fw-game-rec:first-child { border-left: 0; }
+  .fw-game-rec.wide { grid-column: 3; }
+  .fw-game-rec.wide .v { white-space: nowrap; font-size: 11.5px; font-family: "Jost", sans-serif; margin-top: 5px; }
+  .fw-game-rec .k { font-family: "Jost", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--cream-dim); }
+  .fw-game-rec .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px; color: var(--cream); }
+  .fw-game-recs-left .fw-game-rec .v { font-family: "MatrixTitle", "Space Mono", monospace;
+    font-weight: 700; font-size: 14px; letter-spacing: .04em; line-height: 1; padding: 5px; text-align: center;
+    background: #0A0D0A; border: 1px solid rgba(0,0,0,.55);
+    color: rgb(246, 217, 147); text-shadow: 0 0 2px rgba(251,192,45,.45), 0 0 4px rgba(251,176,30,.22); }
+  .fw-game-pw { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+  .fw-game-pitch { display: flex; gap: 14px; flex-wrap: wrap; flex: 1; min-width: 0; }
+  .fw-game-pitch span { display: inline-flex; align-items: center; gap: 6px;
+    font-family: "Spectral", serif; font-size: 10.5px; color: var(--cream-2); }
+  .fw-game-pitch b.lt { flex: none; width: 15px; height: 15px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: "Jost", sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: 0; line-height: 1;
+    color: rgba(255,255,255,.92); text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    border: 1px solid rgba(0,0,0,.5);
+    box-shadow: inset 0 1.5px 2px rgba(255,255,255,.55), inset 0 -2px 3px rgba(0,0,0,.45),
+      0 0 0 1.5px rgba(0,0,0,.22), 0 0 6px var(--lt-glow); }
+  .fw-game-pitch b.w { background: radial-gradient(circle at 36% 30%, #7fe6c6 0%, #16a07c 55%, #0c7257 100%);
+    --lt-glow: rgba(22,160,124,.6); }
+  .fw-game-pitch b.l { background: radial-gradient(circle at 36% 30%, #ff9b7d 0%, #cf2a20 55%, #8f160f 100%);
+    --lt-glow: rgba(207,42,32,.6); }
+  .fw-game-pitch b.s { background: radial-gradient(circle at 36% 30%, #9ad3f5 0%, #2273bb 55%, #135287 100%);
+    --lt-glow: rgba(34,115,187,.6); }
+  .fw-game-wx { flex: none; display: flex; align-items: baseline; gap: 11px;
+    padding-left: 14px; }
+  .fw-game-wx .t { font-family: "Jost", sans-serif; font-weight: 700; font-size: 16px; color: var(--cream); }
+  .fw-game-wx span:not(.t) { font-family: "Spectral", serif; font-size: 10.5px; color: var(--cream-dim); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#1F3D29"/>
+      <g fill="#E7DEC6">
+        <rect x="20" y="30" width="12" height="14"/><rect x="34" y="30" width="12" height="14"/>
+        <rect x="48" y="30" width="12" height="14"/><rect x="62" y="30" width="12" height="14"/>
+      </g>
+      <rect x="20" y="52" width="54" height="4" fill="#BD3039"/>
+      <g fill="#0E1F14" stroke="#E7DEC6" stroke-width="1.5">
+        <rect x="20" y="62" width="9" height="10"/><rect x="31" y="62" width="9" height="10"/>
+        <rect x="42" y="62" width="9" height="10"/><rect x="53" y="62" width="9" height="10"/>
+        <rect x="64" y="62" width="9" height="10"/>
+      </g>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="fenway-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="fenway-field.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="fenway-spread.jsx"></script>
+  <script type="text/babel" src="fenway-app.jsx"></script>
+</body>
+</html>

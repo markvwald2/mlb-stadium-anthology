@@ -213,14 +213,14 @@
   }
 
   // ── comparative atlas grid ───────────────────────────────────────────────
-  function AtlasGrid({ atlas, x, y, w, title, dense, template }) {
+  function AtlasGrid({ atlas, x, y, w, title, dense, template, pad, minH }) {
     const tmpl = template || (dense
       ? "132px 268px 1fr 1fr 1.28fr"
       : "168px 1fr 1.05fr 0.92fr 1.18fr");
-    const cellPad = dense ? "5px 12px 5px 0" : "11px 14px 11px 0";
+    const cellPad = pad || (dense ? "5px 12px 5px 0" : "11px 14px 11px 0");
     const cellFont = dense ? 12 : 12;
     const eraFont = dense ? 12 : 13.5;
-    const cellStyle = { padding: cellPad, fontSize: cellFont, minHeight: dense ? 42 : undefined };
+    const cellStyle = { padding: cellPad, fontSize: cellFont, minHeight: (minH != null ? minH : (dense ? 42 : undefined)) };
     return (
       <div className="bc-region" style={{ left: x, top: y, width: w }}>
         {title ? <div className="bc-atlas-title" style={{ marginBottom: dense ? 9 : 12, fontSize: dense ? 16 : 17 }}>{title}</div> : null}

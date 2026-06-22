@@ -32,12 +32,12 @@
   }
 
   window.BALLPARKS = {
-    title: "BALLPARKS VISITED",
-    kicker: "APPENDIX \u00b7 BALLPARK LIFE-LIST",
+    title: "BALLPARK FIRST VISITS",
+    kicker: "APPENDIX \u00b7 BALLPARK VISIT BY DECADE",
+    years: "1953\u20132025",
     sub: [
       { n: "42", l: "BALLPARKS" },
       { n: "30", l: "TEAMS" },
-      { n: "1953\u20132025", l: "" },
     ],
     footer: [
       { n: "42", l: ["BALLPARKS"] },

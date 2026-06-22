@@ -10,7 +10,7 @@
 
   function Team(props) {
     var t = T[props.name] || { logo: "mlb-logo.svg", nick: props.name };
-    return e("span", { className: "ag-team" + (props.home ? " ag-team-home" : "") },
+    return e("span", { className: "ag-team" + (props.right ? " ag-team-right" : "") + (props.emph ? " ag-team-emph" : "") },
       e("img", { className: "ag-logo", src: "assets/" + t.logo, alt: "" }),
       e("span", { className: "ag-nick" }, t.nick));
   }
@@ -24,9 +24,9 @@
         gm.tag ? e("span", { className: "ag-tag ag-tag-" + (gm.tag === "RAINOUT" ? "rain" : "dh") },
           gm.tag === "RAINOUT" ? "Rainout" : "DH") : null),
       e("div", { className: "ag-match" },
-        e(Team, { name: gm.home, home: true }),
+        e(Team, { name: gm.away, right: true }),
         e("span", { className: "ag-vs" }, "vs"),
-        e(Team, { name: gm.away })));
+        e(Team, { name: gm.home, emph: true })));
   }
 
   function TripChapter(props) {
@@ -58,16 +58,9 @@
 
       // ---- masthead ----
       e("header", { className: "ag-masthead" },
+        D.years ? e("div", { className: "ag-years" }, D.years) : null,
         e("div", { className: "ag-kicker" }, "APPENDIX \u00b7 GAME INDEX"),
-        e("h1", { className: "ag-title" }, D.title),
-        e("div", { className: "ag-subline" },
-          D.sub.map(function (s, i) {
-            return e(React.Fragment, { key: i },
-              i > 0 ? e("span", { className: "ag-sub-sep" }, "\u00b7") : null,
-              e("span", { className: "ag-sub" },
-                e("span", { className: "ag-sub-n" }, s.n),
-                s.l ? e("span", { className: "ag-sub-l" }, " ", s.l) : null));
-          }))),
+        e("h1", { className: "ag-title" }, D.title)),
 
       // ---- two-column index ----
       e("div", { className: "ag-index" },
@@ -75,16 +68,7 @@
         e("div", { className: "ag-divider" }),
         e(Column, { trips: col2 })),
 
-      // ---- footer stats bar ----
-      e("footer", { className: "ag-footer" },
-        D.footer.map(function (m, i) {
-          return e("div", { className: "ag-stat", key: i },
-            e("div", { className: "ag-stat-n" }, m.n),
-            e("div", { className: "ag-stat-l" }, m.l.map(function (ln, j) { return e("span", { key: j }, ln); })));
-        }),
-        e("div", { className: "ag-stat ag-stat-mark" },
-          e("img", { className: "ag-mlb", src: "assets/mlb-logo.svg", alt: "MLB" }),
-          e("div", { className: "ag-stat-l" }, e("span", null, "1986\u20132025")))));
+      e("div", { className: "ag-baseline" }));
   }
 
   // 2550 shell for the standard left-page print harness: paper across the sheet,
