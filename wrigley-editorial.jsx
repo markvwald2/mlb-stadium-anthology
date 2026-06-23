@@ -7,7 +7,6 @@
    Exposes window.WrigleyEditorial. */
 (function () {
   const D = window.WRIGLEY;
-  const FieldDiagram = window.WrigleyProtractor;
 
   function Slot(props) {
     return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" });
@@ -34,7 +33,8 @@
   function Spread() {
     const specs = [
       ["Opened", D.opening_day],
-      ["Construction Start", D.construction_start],
+      ["First Cubs Game", "April 20, 1916"],
+      ["Groundbreaking", D.construction_start],
       ["Years Active", D.years_active],
       ["Renovations", D.renovations],
       ["Capacity", D.capacity_current + " (" + D.capacity_opening + " originally)"],
@@ -108,11 +108,13 @@
 
               React.createElement("div", { className: "we-field" },
                 React.createElement("div", { className: "we-modh center" }, "Field Dimensions"),
-                React.createElement("div", { className: "we-fd-wrap" },
-                  FieldDiagram ? React.createElement(FieldDiagram, {
-                    lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
-                    orientation: D.orientation, degrees: D.orientation_degrees, accent: "#1C3D72"
-                  }) : null)),
+                React.createElement("div", { className: "we-fd-group" },
+                  React.createElement("div", { className: "we-fd-wrap" },
+                    window.WrigleyProtractor ? React.createElement(window.WrigleyProtractor, {
+                      lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
+                      orientation: D.orientation, degrees: D.orientation_degrees, accent: "#1C3D72"
+                    }) : null),
+                  React.createElement("div", { className: "we-fd-nick" }, "\u201CThe Friendly Confines\u201D"))),
 
               React.createElement("div", { className: "we-context" },
                 React.createElement("div", { className: "we-watermark" }, "1914"),

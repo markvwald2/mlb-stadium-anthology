@@ -151,7 +151,7 @@
         e("div", { className: "dv2-hero-scrim" }),
         e("div", { className: "dv2-folio" },
           e("span", { className: "fk" }, "Visit"),
-          e("span", { className: "fv" }, "04 / 05")),
+          e("span", { className: "fv" }, "04 / 42")),
         e("div", { className: "dv2-title" },
           e("div", { className: "kick" }, "Chavez Ravine \u00b7 Est. 1962"),
           e("h1", null, "Dodger", e("br", null), "Stadium"),

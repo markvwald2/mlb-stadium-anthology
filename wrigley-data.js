@@ -26,7 +26,7 @@ window.WRIGLEY = {
   capacity_opening: "14,000",
   capacity_current: "41,649",
   name_history: "Weeghman Park (1914\u20131920); Cubs Park (1920\u20131926); Wrigley Field (1927\u2013present)",
-  preceded_by: "23rd Street Grounds\nLakefront Park\nWest Side Park\nSouth Side Park\nWest Side Grounds",
+  preceded_by: "23rd Street Grounds (1876-1877)\nLakefront Park (1878-1884)\nWest Side Park (1885-1891)\nSouth Side Park (1891-1893)\nWest Side Grounds (1893-1915)",
   elevation: "600 ft",
   coordinates: "41.9481\u00b0 N, 87.6556\u00b0 W",
   stadium_cost: "$250k",
