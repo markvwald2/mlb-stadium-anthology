@@ -98,16 +98,19 @@
   },
   {
     "type": "spread",
-    "title": "All Trip Games Appendix",
-    "page": "All Trip Games.html",
-    "thumb": "assets/page-thumbnails/all-trip-games.jpg",
-    "kind": "Appendix"
-  },
-  {
-    "type": "spread",
-    "title": "Ballpark First Visits Appendix",
-    "page": "Ballparks Visited.html",
-    "thumb": "assets/page-thumbnails/ballparks-visited.jpg",
-    "kind": "Appendix"
+    "title": "Appendix Single Pages",
+    "kind": "Appendix",
+    "left": {
+      "title": "All Trip Games Appendix",
+      "page": "All Trip Games.html",
+      "thumb": "assets/page-thumbnails/all-trip-games.jpg",
+      "kind": "Appendix leaf"
+    },
+    "right": {
+      "title": "Ballpark First Visits Appendix",
+      "page": "Ballparks Visited.html",
+      "thumb": "assets/page-thumbnails/ballparks-visited.jpg",
+      "kind": "Appendix leaf"
+    }
   }
 ]

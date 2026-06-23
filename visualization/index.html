@@ -482,12 +482,22 @@
         }
 
         if ("left" in entry || "right" in entry) {
+          const left = entry.left ? { ...entry.left } : null;
+          const right = entry.right ? { ...entry.right } : null;
+          if (left && !Number.isFinite(left.leftPage) && !Number.isFinite(left.rightPage)) {
+            left.leftPage = nextPage;
+            left.label = left.label || "Page " + nextPage;
+          }
+          if (right && !Number.isFinite(right.leftPage) && !Number.isFinite(right.rightPage)) {
+            right.rightPage = nextPage + (left ? 1 : 0);
+            right.label = right.label || "Page " + right.rightPage;
+          }
           rows.push({
             kind: "pair",
-            left: entry.left,
-            right: entry.right
+            left: left,
+            right: right
           });
-          nextPage = Math.max(nextPage, Math.max(maxPageValue(entry.left), maxPageValue(entry.right)) + 1);
+          nextPage = Math.max(nextPage, Math.max(maxPageValue(left), maxPageValue(right)) + 1);
           return;
         }
 

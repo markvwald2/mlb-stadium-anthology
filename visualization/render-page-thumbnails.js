@@ -139,10 +139,16 @@ async function main() {
   const seen = new Set();
   const items = [];
   const manifest = JSON.parse(fs.readFileSync(ORDER_FILE, "utf8"));
-  for (const entry of manifest) {
-    if (entry.include === false || !entry.page || seen.has(entry.page)) continue;
+  function addItem(entry) {
+    if (!entry || entry.include === false || !entry.page || seen.has(entry.page)) return;
     seen.add(entry.page);
     items.push({ ...entry, out: outputName(entry) });
+  }
+  for (const entry of manifest) {
+    if (entry.include === false) continue;
+    addItem(entry);
+    addItem(entry.left);
+    addItem(entry.right);
   }
 
   const existing = items.filter((item) => fs.existsSync(path.join(ROOT, item.page)));
