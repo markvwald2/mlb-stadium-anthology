@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Big League NL · AL Ballparks — Stadium Index</title>
+<title>Big League NL · AL Ballparks — Book Layout</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Ultra&display=swap" rel="stylesheet" />
@@ -27,20 +27,18 @@
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 34px 0 54px;
+    padding: 34px 18px 54px;
   }
   .cv-index {
-    width: 1275px;
-    min-height: 1088px;
+    width: min(1420px, 100%);
     background: #e9e7db;
-    position: relative;
-    overflow: hidden;
     --paper: #e9e7db;
     --paper-hi: #f1efe6;
     --ink: #16140f;
     --cap: #1b1916;
     --cap-city: #3f3a31;
     --rule: #d3c8af;
+    --muted: #655d4d;
     font-kerning: normal;
     text-rendering: geometricPrecision;
   }
@@ -49,13 +47,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 46px 28px;
+    padding: 36px 46px 24px;
   }
   .cv-index-head::before,
   .cv-index-head::after {
     content: "";
     position: absolute;
-    top: 138px;
+    top: 136px;
     height: 2px;
     background: var(--rule);
     box-shadow: 0 5px 0 rgba(22, 20, 15, .08);
@@ -77,7 +75,7 @@
   }
   .cv-logo-l1,
   .cv-logo-l3 {
-    font-size: 68px;
+    font-size: clamp(44px, 5.1vw, 68px);
     letter-spacing: .002em;
     white-space: nowrap;
   }
@@ -86,12 +84,12 @@
     align-items: center;
     justify-content: center;
     gap: 6px;
-    font-size: 44px;
+    font-size: clamp(30px, 3.3vw, 44px);
     margin: 3px 0;
   }
   .cv-fieldicon {
-    width: 42px;
-    height: 42px;
+    width: clamp(30px, 3.1vw, 42px);
+    height: clamp(30px, 3.1vw, 42px);
     position: relative;
     top: 3px;
   }
@@ -104,143 +102,171 @@
     font-size: 13px;
     margin-top: 12px;
   }
-  .cv-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 9px;
-    row-gap: 9px;
+  .layout-wrap {
     padding: 0 46px 46px;
   }
-  .qc-section {
+  .layout-head {
     border-top: 2px solid var(--rule);
-    margin: 0 46px 34px;
-    padding-top: 24px;
-  }
-  .qc-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 18px;
-    margin-bottom: 12px;
-  }
-  .qc-title {
-    margin: 0;
-    font-family: "Cooper Black", "Ultra", Georgia, serif;
-    font-size: 34px;
-    line-height: .95;
-    color: var(--ink);
-    font-weight: 400;
-  }
-  .qc-count {
+    padding-top: 18px;
+    margin-bottom: 10px;
+    color: var(--muted);
     font: 700 12px/1 "Spectral", Georgia, serif;
-    letter-spacing: .1em;
+    letter-spacing: .11em;
     text-transform: uppercase;
-    color: #5b5447;
-    white-space: nowrap;
   }
-  .qc-grid {
+  .layout-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 9px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
   }
-  .qc-card {
-    display: block;
+  .layout-spread {
+    min-width: 0;
+    position: relative;
+    padding-top: 27px;
+  }
+  .row-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: var(--muted);
+    font: 700 12px/1 "Spectral", Georgia, serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .spread-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+  }
+  .spread-pair .page-slot:first-child {
+    border-right: 0;
+  }
+  .page-slot {
+    min-width: 0;
+    border: 1px solid rgba(22, 20, 15, .18);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, .24), rgba(22, 20, 15, 0) 52%),
+      #ddd7c8;
     color: inherit;
     text-decoration: none;
-    background: var(--paper);
     outline: 0;
+    position: relative;
   }
-  .qc-card:focus-visible {
+  .page-slot:focus-visible {
     box-shadow: 0 0 0 3px #e9e7db, 0 0 0 6px #16140f;
     z-index: 3;
   }
-  .qc-thumb {
-    position: relative;
-    height: 178px;
-    overflow: hidden;
+  .page-slot.blank {
     background:
-      linear-gradient(135deg, rgba(22, 20, 15, .08), rgba(22, 20, 15, 0)),
-      #d6d0bf;
-    border: 1px solid rgba(22, 20, 15, .14);
+      repeating-linear-gradient(-45deg, rgba(22, 20, 15, .045) 0 1px, transparent 1px 9px),
+      rgba(241, 239, 230, .46);
+    border-style: dashed;
   }
-  .qc-thumb img {
+  .page-slot.blank .page-art {
+    opacity: .42;
+  }
+  .page-label {
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(22, 20, 15, .14);
+    color: var(--muted);
+    font: 700 10px/1 "Spectral", Georgia, serif;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .page-art {
+    aspect-ratio: 1275 / 1088;
+    position: relative;
+    overflow: hidden;
+    background: #eee9db;
+  }
+  .page-art.wide {
+    aspect-ratio: 2550 / 1088;
+  }
+  .page-art img {
     position: absolute;
-    left: 0;
-    top: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
-    background: #e9e7db;
   }
-  .qc-name {
-    min-height: 42px;
-    padding: 8px 8px 4px;
+  .page-art img.is-missing {
+    display: none;
+  }
+  .page-title {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    text-align: center;
+    font: 700 clamp(18px, 2.1vw, 30px)/1.02 "Cooper Black", "Ultra", Georgia, serif;
+    color: rgba(22, 20, 15, .82);
+  }
+  .page-meta {
+    min-height: 44px;
+    display: grid;
     align-content: center;
-    color: var(--cap);
-    font: 700 14px/1.05 "Spectral", Georgia, serif;
-    letter-spacing: .003em;
+    gap: 2px;
+    padding: 8px 10px 9px;
+    border-top: 1px solid rgba(22, 20, 15, .14);
     text-align: center;
   }
-  .cv-cell {
-    margin: 0;
-    min-width: 0;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    background: var(--paper);
+  .page-name {
+    font: 700 13px/1.05 "Spectral", Georgia, serif;
+    color: var(--cap);
   }
-  .cv-photo-link {
+  .page-kind {
+    font: 700 10px/1 "Spectral", Georgia, serif;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .spread-card {
+    min-width: 0;
     display: block;
-    flex: 0 0 178px;
-    min-height: 178px;
-    position: relative;
     color: inherit;
     text-decoration: none;
     outline: 0;
+    border: 1px solid rgba(22, 20, 15, .18);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, .24), rgba(22, 20, 15, 0) 52%),
+      #ddd7c8;
   }
-  .cv-photo-link:focus-visible {
+  .spread-card:focus-visible {
     box-shadow: 0 0 0 3px #e9e7db, 0 0 0 6px #16140f;
     z-index: 3;
   }
-  .cv-photo {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(135deg, rgba(22, 20, 15, .08), rgba(22, 20, 15, 0)),
-      #d6d0bf;
+  .spread-labels {
+    height: 26px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid rgba(22, 20, 15, .14);
+    color: var(--muted);
+    font: 700 10px/1 "Spectral", Georgia, serif;
+    letter-spacing: .09em;
+    text-transform: uppercase;
   }
-  .cv-photo image-slot {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    pointer-events: none;
+  .spread-labels span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    min-width: 0;
+    white-space: nowrap;
   }
-  .cv-cap {
-    flex: 0 0 auto;
-    padding: 8px 8px 4px;
-    font-family: "Spectral", Georgia, serif;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.05;
-    letter-spacing: .003em;
-    color: var(--cap);
-    text-align: center;
-    min-height: 42px;
-    align-content: center;
-  }
-  .cv-cap-city {
-    font-weight: 700;
-    color: var(--cap-city);
-  }
-  .cv-missing .cv-photo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(22, 20, 15, .14);
-    pointer-events: none;
+  .spread-labels span + span {
+    border-left: 1px solid rgba(22, 20, 15, .14);
   }
   .cv-foot {
     padding: 0 46px 38px;
@@ -250,11 +276,41 @@
     letter-spacing: .04em;
     text-transform: uppercase;
   }
+  @media (max-width: 760px) {
+    #root { padding: 0; }
+    .cv-index { width: 100%; }
+    .cv-index-head {
+      padding: 28px 18px 18px;
+    }
+    .cv-index-head::before,
+    .cv-index-head::after { display: none; }
+    .layout-wrap { padding: 0 14px 32px; }
+    .layout-head {
+      font-size: 10px;
+    }
+    .layout-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .layout-spread {
+      padding-top: 22px;
+    }
+    .page-label,
+    .spread-labels {
+      height: 26px;
+      font-size: 9px;
+      letter-spacing: .06em;
+    }
+    .page-meta { min-height: 44px; padding: 7px 6px; }
+    .page-name { font-size: 12px; }
+    .page-kind { font-size: 9px; }
+    .cv-foot { padding: 0 18px 28px; font-size: 10px; }
+  }
 </style>
 </head>
 <body>
   <div id="root">
-    <main class="cv-index" aria-label="Big League stadium index">
+    <main class="cv-index" aria-label="Big League book layout">
       <header class="cv-index-head">
         <div></div>
         <div>
@@ -274,241 +330,207 @@
             </div>
             <div class="cv-logo-l3">Ballparks</div>
           </div>
-          <div class="cv-sub">42 stadium index</div>
+          <div class="cv-sub">Book layout</div>
         </div>
         <div></div>
       </header>
-      <section id="stadium-grid" class="cv-grid" aria-label="All stadium pages"></section>
-      <section class="qc-section" aria-label="Non-stadium pages">
-        <div class="qc-head">
-          <h2 class="qc-title">Book Extras</h2>
-          <div class="qc-count">8 pages</div>
+
+      <section class="layout-wrap" aria-label="Book page sequence">
+        <div class="layout-head" aria-hidden="true">
+          Two-column spread board
         </div>
-        <div id="extra-grid" class="qc-grid"></div>
+        <div id="book-layout" class="layout-grid"></div>
       </section>
       <footer class="cv-foot">Click any thumbnail to open its local page</footer>
     </main>
   </div>
 
-  <script src="../image-slot.js"></script>
   <script>
     const ROOT = "../";
-
-    const PAGE_OVERRIDES = {
-      "Wrigley Field": "Wrigley Field Spread.html",
-      "Milwaukee County Stadium": "Milwaukee County Stadium Spread.html",
-      "Yankee Stadium (1923)": "Yankee Stadium Spread.html",
-      "Yankee Stadium (2009)": "Yankee Stadium 2009 Spread.html",
-      "Dodger Stadium": "Dodger Stadium Spread v2.html",
-      "Riverfront Stadium": "Riverfront Stadium Spread.html",
-      "Royals Stadium": "Royals Stadium Spread.html",
-      "Memorial Stadium": "Memorial Stadium Spread.html",
-      "American Family Field": "American Family Field Spread.html",
-      "Coors Field": "Coors Field Spread.html",
-      "Chase Field": "Chase Field Spread.html",
-      "Comiskey Park": "Comiskey Park Spread.html",
-      "PNC Park": "PNC Park Spread.html",
-      "Tiger Stadium": "Tiger Stadium Spread.html",
-      "Cleveland Municipal Stadium": "Cleveland Municipal Stadium Spread.html",
-      "Three Rivers Stadium": "Three Rivers Stadium Spread.html",
-      "Rogers Centre": "Rogers Centre Spread.html",
-      "Mile High Stadium": "Mile High Stadium Spread.html",
-      "Oriole Park at Camden Yards": "Oriole Park at Camden Yards Spread.html",
-      "Busch Stadium": "Busch Stadium Spread.html",
-      "San Diego Stadium": "San Diego Stadium Spread.html",
-      "Petco Park": "Petco Park Spread.html",
-      "Tropicana Field": "Tropicana Field Spread.html",
-      "Safeco Field": "Safeco Field Spread.html"
-    };
-
-    const EXISTING_PAGES = new Set([
-      "Wrigley Field Spread.html",
-      "Milwaukee County Stadium Spread.html",
-      "Yankee Stadium Spread.html",
-      "Yankee Stadium 2009 Spread.html",
-      "Dodger Stadium Spread v2.html",
-      "Riverfront Stadium Spread.html",
-      "Royals Stadium Spread.html",
-      "Memorial Stadium Spread.html",
-      "American Family Field Spread.html",
-      "Coors Field Spread.html",
-      "Chase Field Spread.html",
-      "PNC Park Spread.html",
-      "Tiger Stadium Spread.html",
-      "Cleveland Municipal Stadium Spread.html",
-      "Three Rivers Stadium Spread.html",
-      "Rogers Centre Spread.html",
-      "Mile High Stadium Spread.html",
-      "Target Field Spread.html",
-      "Oracle Park Spread.html",
-      "Comiskey Park Spread.html",
-      "Oriole Park at Camden Yards Spread.html",
-      "Busch Stadium Spread.html",
-      "San Diego Stadium Spread.html",
-      "Shea Stadium Spread.html",
-      "Great American Ball Park Spread.html",
-      "Marlins Park Spread.html",
-      "Citi Field Spread.html",
-      "SunTrust Park Spread.html",
-      "Safeco Field Spread.html",
-      "Citizens Bank Park Spread.html",
-      "Minute Maid Park Spread.html",
-      "Progressive Field Spread.html",
-      "Fenway Park Spread.html",
-      "Veterans Stadium Spread.html",
-      "Sutter Health Park Spread.html",
-      "Petco Park Spread.html",
-      "Tropicana Field Spread.html"
-    ]);
-
-    const SLOT_OVERRIDES = {
-      "Kauffman Stadium": "cv-kauffman",
-      "Riverfront Stadium": "rf-hero",
-      "Royals Stadium": "royals-hero",
-      "Tiger Stadium": "ts-hero",
-      "Memorial Stadium": "ms-hero",
-      "Coors Field": "coors-hero",
-      "PNC Park": "pnc-hero",
-      "Wrigley Field": "wrigley-aerial",
-      "Mile High Stadium": "milehigh-hero",
-      "San Diego Stadium": "sandiego-hero"
-    };
-
-    const IMAGE_OVERRIDES = {
-      "Wrigley Field": "assets/cover-ready/Wrigley-cover-867x897.jpg",
-      "Milwaukee County Stadium": "assets/cover-ready/Milwaukee-County-cover-867x897.jpg",
-      "Yankee Stadium (1923)": "assets/cover-ready/Yankee-cover-867x897.jpg",
-      "Yankee Stadium (2009)": "assets/cover-ready/yankee-2009.jpeg",
-      "Dodger Stadium": "assets/cover-ready/dodger-stadium.jpg",
-      "Riverfront Stadium": "assets/cover-ready/Riverfront-cover-867x897.jpg",
-      "Royals Stadium": "assets/cover-ready/Kauffman-cover-867x897.jpg",
-      "Tiger Stadium": "assets/cover-ready/Tiger-cover-867x897.jpg",
-      "Memorial Stadium": "assets/cover-ready/Memorial-cover-867x897.jpg",
-      "Cleveland Municipal Stadium": "assets/cover-ready/Cleveland_Municipal-cover-867x897.jpg",
-      "Three Rivers Stadium": "assets/cover-ready/Three-Rivers-cover-867x897.jpg",
-      "Rogers Centre": "assets/cover-ready/Rogers-Centre-cover.jpg",
-      "Coors Field": "assets/cover-ready/Coors-cover-867x897.jpg",
-      "PNC Park": "assets/cover-ready/PNC-cover-867x897.jpg",
-      "Mile High Stadium": "assets/cover-ready/Mile-High-cover-867x897.jpg",
-      "American Family Field": "assets/cover-ready/Miller-cover-867x897.jpg",
-      "Chase Field": "assets/cover-ready/Chase-cover-867x897.jpg",
-      "Comiskey Park": "assets/cover-ready/Comiskey-cover.jpg",
-      "Citizens Bank Park": "assets/cover-ready/Citizens-Bank-cover.jpg",
-      "Target Field": "assets/cover-ready/Target-cover-867x534.jpg",
-      "Oracle Park": "assets/cover-ready/Oracle-cover-867x534.jpg",
-      "Minute Maid Park": "assets/cover-ready/Minute-Maid-cover.jpg",
-      "Progressive Field": "assets/cover-ready/Progressive-cover.jpg",
-      "Fenway Park": "assets/cover-ready/fenway-park.jpg",
-      "Oriole Park at Camden Yards": "assets/cover-ready/Oriole-Park-Camden-Yards-cover.jpg",
-      "Busch Stadium": "assets/cover-ready/Busch-cover-867x897.jpg",
-      "San Diego Stadium": "assets/cover-ready/san-diego-stadium.jpg",
-      "Shea Stadium": "assets/cover-ready/Shea-cover.jpg",
-      "Great American Ball Park": "assets/cover-ready/GABP-cover.jpg",
-      "Marlins Park": "assets/cover-ready/loanDepot-cover.jpg?v=20260619-64b2d3e",
-      "SunTrust Park": "assets/cover-ready/SunTrust-cover.jpg",
-      "Citi Field": "assets/cover-ready/Citi-cover.png",
-      "Safeco Field": "assets/cover-ready/Safeco-cover.jpg",
-      "Veterans Stadium": "assets/cover-ready/Veterans-cover.jpg",
-      "Sutter Health Park": "assets/cover-ready/Sutter-cover.jpeg",
-      "Petco Park": "assets/cover-ready/Petco-cover.jpg",
-      "Tropicana Field": "assets/cover-ready/Tropicana-cover.jpg"
-    };
-
-    const EXTRA_PAGES = [
-      { title: "Big League Cover", page: "Big League Cover.html", thumb: "assets/page-thumbnails/big-league-cover.jpg" },
-      { title: "Opening Spread", page: "Opening Spread.html", thumb: "assets/page-thumbnails/opening-spread.jpg" },
-      { title: "Stadium Timeline", page: "MLB Stadium Timeline Spread.html", thumb: "assets/page-thumbnails/stadium-timeline.jpg" },
-      { title: "Road Trips Overview", page: "Road Trips Overview Spread.html", thumb: "assets/page-thumbnails/road-trips-overview.jpg" },
-      { title: "All Trip Games", page: "All Trip Games.html", thumb: "assets/page-thumbnails/all-trip-games.jpg" },
-      { title: "Ballparks Visited", page: "Ballparks Visited.html", thumb: "assets/page-thumbnails/ballparks-visited.jpg" },
-      { title: "Ballpark and the City 1", page: "The Ballpark and the City - Spread 1.html", thumb: "assets/page-thumbnails/ballpark-city-1.jpg" },
-      { title: "Ballpark and the City 2", page: "The Ballpark and the City - Spread 2.html", thumb: "assets/page-thumbnails/ballpark-city-2.jpg" }
-    ];
 
     function escAttr(value) {
       return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
     }
 
-    function parseCSV(text) {
-      const rows = [];
-      let row = [], cell = "", quote = false;
-      for (let i = 0; i < text.length; i++) {
-        const ch = text[i], next = text[i + 1];
-        if (quote) {
-          if (ch === '"' && next === '"') { cell += '"'; i++; }
-          else if (ch === '"') quote = false;
-          else cell += ch;
-        } else {
-          if (ch === '"') quote = true;
-          else if (ch === ",") { row.push(cell); cell = ""; }
-          else if (ch === "\n") { row.push(cell); rows.push(row); row = []; cell = ""; }
-          else if (ch !== "\r") cell += ch;
-        }
-      }
-      if (cell || row.length) { row.push(cell); rows.push(row); }
-      const headers = rows.shift();
-      return rows.filter(r => r.length && r.some(Boolean)).map(r => Object.fromEntries(headers.map((h, i) => [h, r[i] || ""])));
+    function escHTML(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
     }
 
-    function slug(name) {
-      return "idx-" + name.toLowerCase()
-        .replace(/\((1923|2009)\)/g, "$1")
+    function thumbSlug(page) {
+      return page.toLowerCase()
+        .replace(/\.html$/, "")
+        .replace(/&/g, "and")
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-|-$/g, "");
     }
 
-    function pageFor(stadium) {
-      return PAGE_OVERRIDES[stadium] || (stadium + " Spread.html");
+    function spreadThumb(page) {
+      return "assets/page-thumbnails/" + thumbSlug(page) + ".jpg";
     }
 
-    function render(rows) {
-      const grid = document.getElementById("stadium-grid");
-      rows.sort((a, b) => (+a.visit_order || 999) - (+b.visit_order || 999));
-      grid.innerHTML = rows.map((p) => {
-        const page = pageFor(p.stadium_name);
-        const exists = EXISTING_PAGES.has(page);
-        const slot = SLOT_OVERRIDES[p.stadium_name] || slug(p.stadium_name);
-        const src = exists ? (IMAGE_OVERRIDES[p.stadium_name] || null) : null;
-        const caption = `${p.stadium_name}${p.city ? `,&nbsp;<span class="cv-cap-city">${p.city}</span>` : ""}`;
-        const title = exists ? `Open ${p.stadium_name}` : `Future local target: ${page}`;
-        const photo = exists
-          ? `<a class="cv-photo-link" href="${ROOT + encodeURI(page)}" title="${title}">
-              <div class="cv-photo">
-                <image-slot id="${slot}" shape="rect" fit="cover"${src ? ` src="${escAttr(src)}"` : ""} placeholder="Aerial - ${escAttr(p.stadium_name)}"></image-slot>
-              </div>
-            </a>`
-          : `<div class="cv-photo-link" title="${title}" aria-hidden="true">
-              <div class="cv-photo"></div>
-            </div>`;
-        return `
-          <figure class="cv-cell ${exists ? "cv-linked" : "cv-missing"}">
-            ${photo}
-            <figcaption class="cv-cap">${caption}</figcaption>
-          </figure>`;
-      }).join("");
+    function itemThumb(item) {
+      return item.thumb || spreadThumb(item.page);
     }
 
-    function renderExtras() {
-      document.getElementById("extra-grid").innerHTML = EXTRA_PAGES.map((p) => {
-        const href = ROOT + encodeURI(p.page);
+    function pageHref(page) {
+      return ROOT + encodeURI(page);
+    }
+
+    function missingImageHandler() {
+      return "this.classList.add('is-missing');";
+    }
+
+    function singlePageSlot(item, side) {
+      if (!item) {
         return `
-          <a class="qc-card" href="${href}" title="Open ${escAttr(p.title)}">
-            <div class="qc-thumb">
-              <img src="${escAttr(p.thumb)}" alt="${escAttr(p.title)} thumbnail">
+          <div class="page-slot blank" aria-label="Blank ${side} page">
+            <div class="page-label">Blank</div>
+            <div class="page-art"><div class="page-title">Blank</div></div>
+            <div class="page-meta">
+              <div class="page-name">No page</div>
+              <div class="page-kind">${escHTML(side)} side</div>
             </div>
-            <div class="qc-name">${escAttr(p.title)}</div>
-          </a>`;
+          </div>`;
+      }
+      if (!item.page) {
+        return `
+          <div class="page-slot" aria-label="${escAttr(item.title)}">
+            <div class="page-label">${escHTML(item.label || side)}</div>
+            <div class="page-art">
+              <div class="page-title">${escHTML(item.title)}</div>
+            </div>
+            <div class="page-meta">
+              <div class="page-name">${escHTML(item.title)}</div>
+              <div class="page-kind">${escHTML(item.kind || "Page")}</div>
+            </div>
+          </div>`;
+      }
+      return `
+        <a class="page-slot" href="${pageHref(item.page)}" title="Open ${escAttr(item.title)}">
+          <div class="page-label">${escHTML(item.label)}</div>
+          <div class="page-art">
+            <div class="page-title">${escHTML(item.title)}</div>
+            <img src="${escAttr(item.thumb)}" alt="${escAttr(item.title)} thumbnail" onerror="${missingImageHandler()}">
+          </div>
+          <div class="page-meta">
+            <div class="page-name">${escHTML(item.title)}</div>
+            <div class="page-kind">${escHTML(item.kind || "Page")}</div>
+          </div>
+        </a>`;
+    }
+
+    function pagePairCard(left, right) {
+      return `
+        <div class="spread-pair">
+          ${singlePageSlot(left, "left")}
+          ${singlePageSlot(right, "right")}
+        </div>`;
+    }
+
+    function spreadCard(item) {
+      const labels = item.leftLabel && item.rightLabel
+        ? [item.leftLabel, item.rightLabel]
+        : ["Page " + item.leftPage, "Page " + item.rightPage];
+      return `
+        <a class="spread-card" href="${pageHref(item.page)}" title="Open ${escAttr(item.title)}">
+          <div class="spread-labels">
+            <span>${escHTML(labels[0])}</span>
+            <span>${escHTML(labels[1])}</span>
+          </div>
+          <div class="page-art wide">
+            <div class="page-title">${escHTML(item.title)}</div>
+            <img src="${escAttr(itemThumb(item))}" alt="${escAttr(item.title)} thumbnail" onerror="${missingImageHandler()}">
+          </div>
+          <div class="page-meta">
+            <div class="page-name">${escHTML(item.title)}</div>
+            <div class="page-kind">${escHTML(item.kind || "Two-page spread")}</div>
+          </div>
+        </a>`;
+    }
+
+    function maxPageValue(item) {
+      if (!item) return 0;
+      return Math.max(
+        Number.isFinite(item.leftPage) ? item.leftPage : 0,
+        Number.isFinite(item.rightPage) ? item.rightPage : 0
+      );
+    }
+
+    function buildLayout(items) {
+      const rows = [];
+      let nextPage = 1;
+
+      items.forEach((entry) => {
+        if (entry.include === false) return;
+
+        if (entry.type === "cover") {
+          rows.push({
+            kind: "cover",
+            left: null,
+            right: {
+              ...entry,
+              thumb: itemThumb(entry),
+              label: entry.label || "Cover",
+              kind: entry.kind || "Front cover"
+            }
+          });
+          return;
+        }
+
+        if ("left" in entry || "right" in entry) {
+          rows.push({
+            kind: "pair",
+            left: entry.left,
+            right: entry.right
+          });
+          nextPage = Math.max(nextPage, Math.max(maxPageValue(entry.left), maxPageValue(entry.right)) + 1);
+          return;
+        }
+
+        const item = { ...entry, thumb: itemThumb(entry) };
+        const autoAssignedPages = !Number.isFinite(item.leftPage) && !Number.isFinite(item.rightPage);
+        if (autoAssignedPages) {
+          item.leftPage = nextPage;
+          item.rightPage = nextPage + 1;
+        }
+        if (!item.leftLabel && Number.isFinite(item.leftPage)) item.leftLabel = "Page " + item.leftPage;
+        if (!item.rightLabel && Number.isFinite(item.rightPage)) item.rightLabel = "Page " + item.rightPage;
+
+        rows.push({
+          kind: "spread",
+          item: { ...item, kind: item.kind || "Two-page spread" }
+        });
+        nextPage = autoAssignedPages ? item.rightPage + 1 : Math.max(nextPage, maxPageValue(item) + 1);
+      });
+
+      return rows;
+    }
+
+    function renderLayout(rows) {
+      document.getElementById("book-layout").innerHTML = rows.map((row, index) => {
+        const rowNumber = String(index + 1).padStart(2, "0");
+        const content = row.kind === "cover" || row.kind === "pair"
+          ? pagePairCard(row.left, row.right)
+          : spreadCard(row.item);
+        return `
+          <div class="layout-spread">
+            <div class="row-number">Spread ${rowNumber}</div>
+            ${content}
+          </div>`;
       }).join("");
     }
 
-    fetch(ROOT + "uploads/all-stadium-pages.csv")
-      .then(r => r.text())
-      .then(text => render(parseCSV(text)))
+    fetch("book-order.json")
+      .then(r => r.json())
+      .then(items => renderLayout(buildLayout(items)))
       .catch(err => {
-        document.getElementById("stadium-grid").innerHTML =
-          `<p style="grid-column:1/-1;padding:20px;font-weight:700;">Could not load ${ROOT}uploads/all-stadium-pages.csv: ${err.message}</p>`;
+        document.getElementById("book-layout").innerHTML =
+          `<p style="padding:20px;font-weight:700;">Could not load visualization/book-order.json: ${escHTML(err.message)}</p>`;
       });
-    renderExtras();
   </script>
 </body>
 </html>
