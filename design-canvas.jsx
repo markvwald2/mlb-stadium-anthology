@@ -800,7 +800,7 @@ function DCArtboardFrame({ sectionId, artboard, label, order, onRename, onReorde
         </div>
       </div>
       <div ref={cardRef} className="dc-card"
-      style={{ boxShadow: '0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06)', overflow: 'hidden', width, height, background: '#fff', ...style, margin: "0px", padding: "6px 0px 2px", letterSpacing: "0px", fontWeight: "600", borderRadius: "0px" }}>
+      style={{ boxShadow: '0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06)', overflow: 'hidden', width, height, background: '#fff', ...style, margin: "0px", padding: "6px 0px 2px", fontWeight: "600", borderRadius: "0px", letterSpacing: "-0.1px" }}>
         {children || <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#bbb', fontSize: 13, fontFamily: DC.font }}>{id}</div>}
       </div>
     </div>);
@@ -920,8 +920,8 @@ function DCFocusOverlay({ entry, sectionMeta, sectionOrder }) {
       </div>
 
       {/* card centered, label + index below — only the card itself stops
-                                                                                                     propagation so any backdrop click (including the margins around
-                                                                                                     the card) exits focus */}
+                                                                                                              propagation so any backdrop click (including the margins around
+                                                                                                              the card) exits focus */}
       <div
         style={{ position: 'absolute', top: 64, bottom: 56, left: 100, right: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
         <div onClick={(e) => e.stopPropagation()} style={{ width: width * scale, height: height * scale, position: 'relative' }}>

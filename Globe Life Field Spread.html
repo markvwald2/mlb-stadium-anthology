@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Globe Life Field — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2e30;
+    font-family: "Spectral", Georgia, serif;
+    color: #1A2125;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     GLOBE LIFE FIELD — Blurb Large Landscape 13 x 11 in, two-page spread.
+     2550 x 1088 px (25.50 x 10.88 in @ 100ppi). Export 3x = 7650 x 3264.
+     Center split x=1275. "The Enormous Room."
+     ---------------------------------------------------------------- */
+  .glf-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --steel: #0E1417;          /* steel black */
+    --graphite: #2B343A;
+    --concrete: #6E7A80;       /* concrete gray */
+    --glass: #9DB0BB;          /* glass blue-gray */
+    --glass-deep: #5E7079;
+    --daylight: #E8ECEE;       /* pale daylight (right page) */
+    --daylight-hi: #F1F4F5;
+    --daylight-lo: #DBE1E4;
+    --rule: #C3CBD0;
+    --rule-strong: #9AA6AD;
+    --ink: #1A2125;
+    --ink-2: #41494E;
+    --ink-3: #76828A;
+    --turf: #3E7B4E;           /* turf green (restrained) */
+    --rblue: #003278;          /* Rangers royal — navigation accent */
+    --rblue-deep: #04204C;
+    --rred: #C0111F;           /* Rangers red — navigation accent */
+    --paper-on-steel: #DCE3E7;
+    background: var(--daylight);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .glf-page { position: absolute; top: 0; height: 1088px; }
+  .glf-left  { left: 0; width: 1275px; background: #0B0F12; overflow: hidden; }
+  .glf-right { left: 1275px; width: 1275px; background: var(--daylight); }
+  /* flat hairline fold — no fake book depth */
+  .glf-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(14,20,23,.18); z-index: 8; pointer-events: none; }
+
+  /* ============ LEFT / INTERIOR HERO ============ */
+  .glf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .glf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .glf-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background:
+      linear-gradient(180deg, rgba(8,12,14,.55) 0%, rgba(8,12,14,0) 26%),
+      linear-gradient(0deg, rgba(8,11,13,.94) 0%, rgba(8,11,13,.74) 16%, rgba(8,11,13,.18) 38%, rgba(8,11,13,0) 52%);
+  }
+  /* faint steel-mullion overlay — engineered, not a photo trope */
+  .glf-left::before {
+    content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: .10;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(220,230,235,.5) 0 1px, transparent 1px 96px);
+    mix-blend-mode: screen;
+  }
+
+  .glf-hero-logo { position: absolute; left: 60px; top: 52px; height: 78px; width: auto; z-index: 6;
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,.5)); }
+  .glf-spine { position: absolute; left: 40px; top: 50%; z-index: 6;
+    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .32em;
+    color: rgba(220,227,231,.46); text-transform: uppercase; white-space: nowrap; }
+
+  /* overhead roof-truss datum across the upper airspace */
+  .glf-trussdatum { position: absolute; left: 60px; right: 64px; top: 150px; z-index: 5;
+    display: flex; align-items: center; gap: 12px; pointer-events: none; opacity: .82; }
+  .glf-trussdatum .ln { flex: 1; height: 1px; background: rgba(220,230,235,.34); }
+  .glf-trussdatum .tk { width: 1px; height: 16px; background: rgba(220,230,235,.5); flex: none; }
+  .glf-trussdatum .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em;
+    color: rgba(220,230,235,.66); text-transform: uppercase; flex: none; }
+  .glf-trussdatum .cap.r { color: rgba(157,176,187,.8); }
+
+  .glf-hero-title { position: absolute; left: 58px; bottom: 150px; z-index: 6; }
+  .glf-signrule { width: 432px; height: 2px; background: rgba(220,230,235,.5); }
+  .glf-signrule.top { margin-bottom: 16px; }
+  .glf-signrule.bot { margin-top: 14px; width: 360px; }
+  .glf-name { margin: 0; display: flex; flex-direction: column; }
+  .glf-name .ln {
+    font-family: "Saira Condensed", sans-serif; font-weight: 700;
+    font-size: 116px; line-height: .86; letter-spacing: .005em; text-transform: uppercase;
+    color: #EEF3F5; text-shadow: 0 3px 26px rgba(0,0,0,.5);
+  }
+  .glf-sub { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+  .glf-sub .city { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 25px;
+    letter-spacing: .3em; text-transform: uppercase; color: #DCE3E7; white-space: nowrap; }
+  .glf-sub .dot { width: 6px; height: 6px; background: var(--rred); border-radius: 50%; flex: none; }
+  .glf-sub .cue { font-family: "Space Mono", monospace; font-weight: 700; font-size: 15px;
+    letter-spacing: .12em; color: var(--glass); white-space: nowrap; }
+
+  .glf-marks { position: absolute; left: 60px; bottom: 66px; z-index: 6;
+    display: flex; align-items: center; gap: 16px; white-space: nowrap; }
+  .glf-marks .mlb { height: 40px; width: auto; display: block; }
+  .glf-marks .al { height: 36px; width: auto; display: block; background: #fff;
+    padding: 3px 5px; border-radius: 2px; }
+  .glf-marks .div { width: 1px; height: 28px; background: rgba(220,227,231,.34); }
+  .glf-marks .lg { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 16px;
+    letter-spacing: .24em; text-transform: uppercase; color: #C7D0D5; }
+  .glf-marks .dv { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 16px;
+    letter-spacing: .24em; text-transform: uppercase; color: var(--glass); }
+
+  /* ============ RIGHT PAGE ============ */
+  .glf-rp { position: absolute; inset: 0; display: flex; flex-direction: column; z-index: 2; }
+
+  /* dark overhead roof datum — bleeds to top/side edges, a quiet structural field */
+  .glf-roof { flex: none; height: 52px; background:
+      linear-gradient(180deg, #11181C 0%, #0E1417 70%, #0B1013 100%);
+    display: flex; align-items: center; gap: 18px; padding: 0 40px;
+    border-bottom: 2px solid var(--steel); }
+  .glf-roof .wf { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .34em; text-transform: uppercase; color: rgba(220,230,235,.78); white-space: nowrap; }
+  .glf-roof .wf.r { color: rgba(157,176,187,.72); }
+  .glf-roof .tkrow { flex: 1; display: flex; align-items: center; justify-content: space-between; height: 16px; }
+  .glf-roof .tkrow .tk { width: 1px; height: 16px; background: rgba(157,176,187,.4); }
+
+  .glf-inner { flex: 1; min-height: 0; padding: 12px 40px 44px 40px;
+    display: flex; flex-direction: column; gap: 11px; }
+
+  /* ---- clerestory metadata ribbon ---- */
+  .glf-ribbon { flex: none; display: flex; align-items: stretch;
+    border-top: 2px solid var(--steel); border-bottom: 2px solid var(--steel); }
+  .glf-ribbon .cell { flex: 1; padding: 8px 14px; border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
+  .glf-ribbon .cell.marks { flex: 0 0 auto; border-left: 0; flex-direction: row; align-items: center;
+    gap: 12px; padding: 6px 18px 6px 4px; position: relative; }
+  .glf-ribbon .cell.marks::after { content: ""; position: absolute; right: 0; top: 10px; bottom: 10px;
+    width: 3px; background: var(--rblue); }
+  .glf-ribbon .cell.marks img { height: 42px; width: auto; display: block; }
+  .glf-ribbon .cell.marks img.al { height: 34px; }
+  .glf-ribbon .cell.coords { flex: 1.3; }
+  .glf-ribbon .rl { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--rblue); white-space: nowrap; }
+  .glf-ribbon .rv { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .02em; text-transform: uppercase; color: var(--ink); line-height: 1.08; }
+  .glf-ribbon .cell:nth-child(4) { flex: 1.45; }
+  .glf-ribbon .cell.coords { flex: 1.45; }
+  .glf-ribbon .cell.coords .rv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10.5px;
+    letter-spacing: -.02em; text-transform: none; white-space: nowrap; }
+
+  /* ---- section eyebrow signage ---- */
+  .glf-h { display: flex; align-items: baseline; gap: 12px; padding-bottom: 5px; margin-bottom: 8px;
+    border-bottom: 1.5px solid var(--rule-strong); }
+  .glf-h .idx { width: 9px; height: 9px; background: var(--rred); flex: none; align-self: center; }
+  .glf-h .s { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--rblue); }
+  .glf-h .t { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 21px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+  .glf-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); margin-left: auto; white-space: nowrap; }
+
+  /* ---- BODY: data spine + glass-wall rail ---- */
+  .glf-body { flex: 1; min-height: 0; display: flex; flex-direction: row; align-items: stretch; }
+  .glf-dataspine { flex: 1 1 0; min-width: 0; padding-right: 24px; display: flex; flex-direction: column; }
+  .glf-rail { flex: 0 0 320px; display: flex; flex-direction: column; gap: 10px; padding-left: 24px;
+    border-left: 1px solid var(--rule); min-height: 0; min-width: 0; }
+
+  /* glass-mullion fact bays */
+  .glf-bays { display: grid; grid-template-columns: repeat(12, 1fr); margin-bottom: 13px; }
+  .glf-bay { padding: 0 16px 11px; border-left: 1px solid var(--rule); min-width: 0; }
+  .glf-bay.rowstart { border-left: 0; padding-left: 0; }
+  .glf-bay.row2 { border-top: 1px solid var(--rule); padding-top: 11px; }
+  .glf-bay-cat { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 12.5px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--rblue);
+    padding-bottom: 5px; margin-bottom: 6px; border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 7px; }
+  .glf-bay-cat::before { content: ""; width: 5px; height: 5px; background: var(--glass-deep); flex: none; }
+  .glf-bay-rows { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; align-items: baseline; }
+  .glf-bay-row { display: contents; }
+  .glf-bay-row .bk { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9.5px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; padding-top: 2px; }
+  .glf-bay-row .bv { font-family: "Spectral", serif; font-weight: 500; font-size: 12px;
+    color: var(--ink); line-height: 1.26; white-space: pre-line; }
+
+  /* glass-wall photo plates (no captions) */
+  .glf-plate { position: relative; margin: 0; flex: 1; min-height: 0;
+    border: 1.5px solid var(--rule-strong); background: var(--daylight-lo); }
+  .glf-plate image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  /* field-geometry bay (rail foot) */
+  .glf-fieldbay { flex: none; }
+  .glf-fieldcap { display: flex; align-items: baseline; justify-content: space-between;
+    padding-bottom: 4px; margin-bottom: 2px; border-bottom: 1px solid var(--rule); }
+  .glf-fieldcap .fc { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 12px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--rblue); }
+  .glf-fieldcap .fo { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    letter-spacing: .04em; color: var(--ink-2); }
+  .glf-bay-cat .fo { margin-left: auto; font-family: "Space Mono", monospace; font-weight: 700;
+    font-size: 11px; letter-spacing: .04em; color: var(--ink-2); }
+  .glf-fieldwrap { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+  .glf-fieldwrap .fo { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    letter-spacing: .04em; color: var(--ink-2); white-space: nowrap; }
+  .glf-fieldfig { margin: 0; display: flex; justify-content: center; flex: none; }
+  .glf-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .glf-fieldfig .fd-svg { width: 100px; height: auto; max-width: 100%; display: block; }
+
+  /* unified Stadium Context */
+  .glf-context { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .glf-prose { columns: 2; column-gap: 28px; column-rule: 1px solid var(--rule); }
+  .glf-prose p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 13.5px; line-height: 1.5;
+    color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
+  .glf-prose p:last-child { margin-bottom: 0; }
+
+  /* truss-span rule */
+  .glf-truss { flex: none; height: 3px; background: var(--steel); position: relative; margin: 2px 0; }
+  .glf-truss::before, .glf-truss::after { content: ""; position: absolute; top: -3px; width: 9px; height: 9px;
+    background: var(--steel); }
+  .glf-truss::before { left: 0; }
+  .glf-truss::after { right: 0; }
+
+  /* ---- THE VISIT (scorekeeper insert) ---- */
+  .glf-visit { flex: none; }
+  .glf-visit-grid { display: grid; grid-template-columns: 1.18fr 1fr; gap: 26px; align-items: start; }
+
+  .glf-score { border-left: 3px solid var(--rblue); padding-left: 18px; }
+  .glf-result { display: flex; align-items: baseline; gap: 12px; margin-bottom: 9px; }
+  .glf-result .rt { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 16px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  .glf-result .rt.rtr { color: var(--ink-2); }
+  .glf-result .rn { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 28px;
+    line-height: 1; color: var(--ink); }
+  .glf-result .rn.win { color: var(--rred); }
+  .glf-result .vs { font-family: "Space Mono", monospace; font-size: 14px; color: var(--ink-3); }
+
+  .glf-box { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace;
+    border: 2px solid var(--steel); }
+  .glf-box th, .glf-box td { text-align: center; font-size: 14px; font-weight: 400; padding: 4px 0;
+    color: var(--ink); border-bottom: 1px solid var(--rule); }
+  .glf-box thead th { color: var(--ink-3); font-weight: 700; font-size: 12px;
+    border-bottom: 2px solid var(--steel); background: var(--daylight-lo); }
+  .glf-box td.tm, .glf-box th.tm { text-align: left; font-family: "Saira Condensed", sans-serif;
+    font-weight: 700; font-size: 15px; letter-spacing: .08em; padding-left: 12px; width: 1%; white-space: nowrap; }
+  .glf-box .rcol { font-weight: 700; font-size: 16px; }
+  .glf-box .hecol { color: var(--ink-2); }
+  .glf-box th.sep, .glf-box td.sep { border-left: 2px solid var(--steel); }
+  .glf-box thead th:last-child, .glf-box tbody td:last-child,
+  .glf-box thead th:nth-last-child(2), .glf-box tbody td:nth-last-child(2) { width: 30px; }
+  .glf-box th.sep, .glf-box td.sep { width: 32px; }
+  .glf-box tbody tr:last-child td { border-bottom: 0; }
+  .glf-box tbody tr.win td { background: rgba(192,17,31,.05); }
+  .glf-box tbody tr.win td.rcol { color: var(--rred); }
+
+  .glf-dec { margin-top: 7px; display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
+    font-family: "Spectral", serif; font-size: 12.5px; color: var(--ink-2); }
+  .glf-dec b { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 12px;
+    letter-spacing: .06em; color: var(--rblue); }
+  .glf-dec i { font-style: italic; color: var(--ink); }
+  .glf-dec .sp { color: var(--rule-strong); }
+
+  .glf-visit-side { display: flex; flex-direction: column; gap: 9px; }
+  .glf-weather { display: grid; grid-template-columns: repeat(4, 1fr);
+    padding-bottom: 9px; border-bottom: 1px solid var(--rule); }
+  .glf-wcell { display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: 4px; padding: 0 8px; border-left: 1px solid var(--rule); }
+  .glf-wcell:first-child { border-left: 0; }
+  .glf-wcell .glf-wico { flex: none; }
+  .glf-wcell .tx { display: flex; flex-direction: column; align-items: center; }
+  .glf-wcell .wv { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 17px;
+    color: var(--ink); line-height: 1.05; white-space: nowrap; }
+  .glf-wcell .wl { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9.5px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
+
+  .glf-vfacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px 16px; }
+  .glf-vf { display: flex; flex-direction: column; gap: 1px; padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule); }
+  .glf-vf .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9.5px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .glf-vf .v { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink);
+    line-height: 1.18; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#0E1417"/>
+      <rect x="22" y="26" width="56" height="30" fill="none" stroke="#9DB0BB" stroke-width="2.4"/>
+      <path d="M22 41 h56 M36 26 v30 M50 26 v30 M64 26 v30" stroke="#9DB0BB" stroke-width="1.3"/>
+      <rect x="34" y="60" width="32" height="6" fill="#3E7B4E"/>
+      <rect x="30" y="70" width="40" height="3" fill="#003278"/>
+      <rect x="30" y="76" width="26" height="3" fill="#C0111F"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="globe-life-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="globe-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="globe-life-spread.jsx"></script>
+  <script type="text/babel" src="globe-life-app.jsx"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dodger Stadium — Spread v2 (Pastel Terraces)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #14110D;
+    font-family: "Barlow Semi Condensed", "Helvetica Neue", sans-serif;
+    color: #2B2722;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================================================================
+     DODGER STADIUM v2 — "Pastel Terraces"
+     Blurb Large Landscape 13 × 11 in spread · 2550 × 1088 px @ 100ppi.
+     Export 3× = 7650 × 3264. Center split / fold at x = 1275.
+     The 1962 original-seating palette IS the page architecture. The four
+     pastel seat tiers descend the RIGHT page exactly as they descend the bowl —
+     Top Deck (sky), Club/Reserve (turquoise), Loge (orange), Field (yellow):
+       BAND 1  Sky      photo frieze + identity ribbon
+       BAND 2  Turquoise Stadium Section — facts, notes, field plan
+       BAND 3  Orange    Stadium Context — one unified monograph essay
+       BAND 4  Yellow    The Visit — two mirrored score panels
+     The colors are never explained or labelled — they organise. Dodger blue is a
+     micro accent only; red is a trace. No fake book depth, shadows, or gloss.
+     ================================================================ */
+  .dv2 {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --paper: #F2ECDE; --enamel: #F6F0E2;
+    --ink: #2B2722; --ink2: #5C564B; --ink3: #8C8472; --hair: #C8BFA9;
+    --blue: #005A9C; --red: #EF3E42; --silver: #A5ACAF; --mets: #E2611E;
+    /* Official LA Dodgers palette (kept as restrained accents per house rules):
+       Dodger Blue #005A9C · Red #EF3E42 · Silver #A5ACAF. */
+    --sky: #5E9BC2;    --sky-bg: #E8F0F3;
+    --turq: #3F9E89;   --turq-ax: #2E8E79; --turq-bg: #E5EFE9;
+    --orange: #CE7F3C; --orange-bg: #F4E8D8;
+    --yellow: #C9A331; --yellow-bg: #F6EFD0;
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+    background: var(--paper); text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .dv2-page { position: absolute; top: 0; height: 1088px; }
+  .dv2-left  { left: 0; width: 1275px; background: #14110D; overflow: hidden; }
+  .dv2-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; }
+  .dv2-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 40;
+    background-image: var(--grain); background-size: 300px 300px; opacity: .045; mix-blend-mode: multiply; }
+  .dv2::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.14); z-index: 60; pointer-events: none; }
+
+  /* ===================== LEFT / AERIAL ===================== */
+  .dv2-hero-slot { position: absolute; left: 0; top: 0; width: 1275px; height: 1088px; }
+  .dv2-hero-slot image-slot { width: 100%; height: 100%; display: block; }
+  .dv2-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(0deg, rgba(12,10,7,.82) 0%, rgba(12,10,7,.30) 26%, rgba(12,10,7,0) 48%),
+      linear-gradient(180deg, rgba(12,10,7,.46) 0%, rgba(12,10,7,0) 16%); }
+
+  .dv2-folio { position: absolute; left: 64px; top: 58px; z-index: 6; display: flex; align-items: stretch;
+    border: 1px solid rgba(246,240,226,.5); }
+  .dv2-folio .fk { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 600; font-size: 11px;
+    letter-spacing: .24em; text-transform: uppercase; color: #F0E9D8; padding: 6px 11px; display: flex; align-items: center; }
+  .dv2-folio .fv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; letter-spacing: .08em;
+    color: #14110D; background: #F0E9D8; padding: 6px 12px; display: flex; align-items: center; }
+
+  .dv2-title { position: absolute; left: 64px; bottom: 78px; z-index: 6; }
+  .dv2-title .kick { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .26em;
+    text-transform: uppercase; color: rgba(246,240,226,.62); margin-bottom: 16px;
+    padding-bottom: 13px; border-bottom: 1px solid rgba(246,240,226,.26); display: inline-block; }
+  .dv2-title h1 { margin: 0; font-family: "Barlow Condensed", sans-serif; font-weight: 600;
+    font-size: 92px; line-height: .84; letter-spacing: .012em; text-transform: uppercase; color: #F6F0E2; }
+  .dv2-title .sub { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 500; font-size: 17px;
+    letter-spacing: .3em; text-transform: uppercase; color: rgba(246,240,226,.82); margin-top: 18px; }
+  .dv2-tiers { display: flex; gap: 4px; margin-top: 18px; }
+  .dv2-tiers span { width: 52px; height: 5px; display: block; }
+  .dv2-meta { font-family: "Space Mono", monospace; font-size: 10.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: rgba(246,240,226,.55); margin-top: 16px; }
+
+  /* ===================== RIGHT / TERRACES (shared) ===================== */
+  .dv2-band { position: absolute; left: 0; width: 1275px; overflow: hidden; }
+  .dv2-pad { position: absolute; left: 50px; right: 50px; }
+  .dv2-edge { position: absolute; left: 50px; right: 50px; height: 3px; top: 0; }
+
+  .dv2-sec { display: flex; align-items: baseline; gap: 13px; }
+  .dv2-sec .tag { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 27px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .dv2-sec .no { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px; letter-spacing: .12em; }
+  .dv2-sec .sub { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--ink2); margin-left: auto; white-space: nowrap; }
+
+  /* ---- BAND 1 / photo frieze + identity ribbon ---- */
+  .dv2-frieze { position: absolute; left: 50px; right: 50px; display: flex; gap: 6px; }
+  .dv2-frieze figure { flex: 1 1 0; min-width: 0; margin: 0; height: 100%; background: #DfD6C2;
+    border-bottom: 3px solid var(--sky); }
+  .dv2-frieze image-slot { display: block; width: 100%; height: 100%; }
+
+  .dv2-ribbon { position: absolute; left: 50px; right: 50px; display: flex; height: 50px; align-items: stretch;
+    border-top: 1.5px solid var(--sky); }
+  .dv2-ribbon .rc { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center;
+    padding: 4px 12px 4px 14px; position: relative; }
+  .dv2-ribbon .rc:first-child { padding-left: 0; }
+  .dv2-ribbon .rc:not(:first-child)::before { content: ""; position: absolute; left: 0; top: 50%;
+    transform: translateY(-50%); width: 1px; height: 62%; background: var(--hair); }
+  .dv2-ribbon .rc.wide { flex: 1.5 1 0; }
+  .dv2-ribbon .rk { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink3); }
+  .dv2-ribbon .rv { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 600; font-size: 13.5px;
+    letter-spacing: .01em; color: var(--ink); margin-top: 4px; line-height: 1.12; }
+  .dv2-ribbon .rv.mono { font-family: "Space Mono", monospace; font-weight: 400; font-size: 11px; }
+  .dv2-ribbon .rv .accent { color: var(--blue); }
+  .dv2-ribbon .rc.logos { flex: 2 1 0; flex-direction: row; align-items: center; }
+  .dv2-ribbon .rc.script { flex: 3 1 0; display: flex; align-items: center; justify-content: center; padding-top: 0; padding-bottom: 0; overflow: visible; }
+  .dv2-script { font-family: "Barlow Condensed", sans-serif; font-weight: 600; font-size: 28px; line-height: 1;
+    letter-spacing: 10px; text-transform: uppercase; color: var(--blue); white-space: nowrap; }
+  .dv2-ribbon .rc.visit { flex: 1 1 0; align-items: flex-end; text-align: right; }
+  .dv2-ribbon .rc.visit .rv { white-space: nowrap; }
+  .dv2-lock { display: flex; align-items: center; gap: 16px; }
+  .dv2-lock .lk { display: flex; align-items: center; }
+  .dv2-lock .lk + .lk { padding-left: 0; }
+  .dv2-lock img { display: block; width: auto; object-fit: contain; }
+  .dv2-lock .team img { height: 40px; }
+  .dv2-lock .lg img { height: 38px; }
+  .dv2-lock .mlb img { height: 30px; }
+
+  /* ---- BAND 2 / stadium section ---- */
+  .dv2-spec { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1.5px solid var(--turq); border-left: 1px solid var(--turq); }
+  .dv2-spec .cell { border-right: 1px solid var(--turq); border-bottom: 1px solid var(--turq);
+    padding: 4px 11px 5px; min-width: 0; }
+  .dv2-spec .k { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--ink3); }
+  .dv2-spec .v { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 500; font-size: 12px;
+    color: var(--ink); margin-top: 1px; line-height: 1.05; }
+  .dv2-spec .cell.tier-primary { background: rgba(63,158,137,.08); }
+  .dv2-spec .cell.tier-primary .v { font-size: 13.5px; font-weight: 700; }
+  .dv2-spec .cell.tier-hist { background: rgba(0,0,0,.012); }
+  .dv2-spec .cell.wide { grid-column: span 2; }
+  .dv2-spec .cell.wide .k { color: var(--ink3); }
+  .dv2-spec .cell.wide .v { font-size: 12px; line-height: 1.18; font-weight: 500; }
+
+  .dv2-fieldcol .fc-h { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--turq-ax); border-top: 1px solid var(--turq); padding-top: 5px; margin-bottom: 2px; }
+  .dv2-fig { display: block; width: 100%; height: auto;
+    transform: translate(-14px, 26px) rotate(26deg) scale(0.96); transform-origin: center center; }
+
+  .dv2-records { display: grid; grid-template-columns: 1fr 1fr; column-gap: 42px;
+    border-top: 1px solid var(--hair); padding-top: 8px; }
+  .dv2-rec-col { display: flex; flex-direction: column; gap: 6px; }
+  .dv2-rec .rl { font-family: "Space Mono", monospace; font-size: 8px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--turq-ax); }
+  .dv2-rec .rt { font-family: "Spectral", serif; font-size: 9px; line-height: 1.22; color: var(--ink2); margin-top: 1px; }
+
+  /* ---- BAND 3 / context essay ---- */
+  .dv2-essay { columns: 4; column-gap: 24px; }
+  .dv2-essay p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 11px; line-height: 1.7;
+    color: var(--ink); text-align: justify; hyphens: auto;
+    -webkit-hyphens: auto; hyphenate-limit-chars: 6 3 3; letter-spacing: 0.1px; }
+  .dv2-essay p:last-child { margin-bottom: 0; }
+  .dv2-essay p:first-of-type::first-letter { font-family: "Barlow Condensed", sans-serif; font-weight: 700;
+    float: left; font-size: 46px; line-height: .72; padding: 5px 8px 0 0; color: var(--orange); }
+
+  /* ---- BAND 4 / The Visit — two horizontal four-zone game modules ---- */
+  .dv2-visit-other { display: flex; flex-direction: row; align-items: stretch; gap: 10px; }
+  .dv2-visit-other .ov-label { font-family: "Space Mono", monospace; font-size: 8px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); width: 42px;
+    text-align: right; align-self: center; line-height: 1.25; }
+  .dv2-visit-other .ov-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+    border: 1px solid var(--yellow); border-right: 0; }
+  .dv2-visit-other .ov-cell { border-right: 1px solid var(--yellow); padding: 3px 11px 4px;
+    text-align: left; min-width: 116px; background: #FBF6E6; }
+  .dv2-visit-other .ov-date { font-family: "Space Mono", monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: .01em; color: var(--ink); white-space: nowrap; line-height: 1.05; }
+  .dv2-visit-other .ov-opp { font-family: "Barlow Semi Condensed", sans-serif; font-size: 11px;
+    font-weight: 500; letter-spacing: .02em; color: var(--ink2); white-space: nowrap; margin-top: 0; line-height: 1.05; }
+  .dv2-panels { position: absolute; left: 50px; right: 50px;
+    display: flex; flex-direction: row; gap: 16px; align-items: stretch; }
+
+  .dv2-gm { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column;
+    background: #FBF6E6; border: 1px solid var(--yellow); }
+  .dv2-gm-head { display: flex; align-items: baseline; gap: 11px; padding: 9px 15px 8px;
+    border-bottom: 1px solid var(--hair); }
+  .dv2-gm-head .gm-mass { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 18px;
+    letter-spacing: .05em; text-transform: uppercase; color: var(--ink); line-height: 1; }
+  .dv2-gm-head .gm-date { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 600; font-size: 10px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--ink2); }
+  .dv2-gm-body { flex: 1 1 auto; min-height: 0; display: flex; align-items: stretch; }
+  .dv2-gm .z { padding: 11px 15px; display: flex; flex-direction: column;
+    justify-content: space-between; min-width: 0; }
+  .dv2-gm .z + .z { border-left: 1px solid var(--hair); }
+  .dv2-gm .z-meta   { flex: 0.82 1 0; }
+  .dv2-gm .z-result { flex: 2.25 1 0; }
+  .dv2-gm .z-pitch  { flex: 1.0 1 0; }
+  .dv2-gm .z-cond   { flex: 0.9 1 0; }
+
+  /* zone 1 — metadata */
+  .dv2-mc { display: flex; flex-direction: column; padding-top: 7px; border-top: 1px solid var(--hair); }
+  .dv2-gm .z-meta .dv2-mc:first-child { border-top: 0; padding-top: 0; }
+  .dv2-mc .ml { font-family: "Space Mono", monospace; font-size: 7.5px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink3); }
+  .dv2-mc .mv { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 600; font-size: 13px;
+    color: var(--ink); margin-top: 2px; }
+
+  /* zone 2 — result + linescore */
+  .dv2-result-top { display: flex; flex-direction: column; margin-top: -4px; }
+  .dv2-rrow { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
+  .dv2-rrow + .dv2-rrow { border-top: 1px solid var(--hair); }
+  .dv2-rrow img { height: 23px; width: auto; max-width: 26px; object-fit: contain; flex: none; }
+  .dv2-rrow .rn { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 24px;
+    letter-spacing: .03em; text-transform: uppercase; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .dv2-rrow .rs { margin-left: auto; padding-left: 8px; font-family: "Barlow Condensed", sans-serif; font-weight: 700;
+    font-size: 30px; line-height: .82; flex: none; font-variant-numeric: tabular-nums; }
+  .dv2-rrow.mets .rs { color: var(--mets); }
+  .dv2-rrow.dodgers .rs { color: var(--blue); }
+  .dv2-rline { border-top: 1.5px solid var(--ink); padding-top: 1px; }
+
+  /* linescore — full gridlines */
+  .dv2-line { width: 100%; border-collapse: collapse; font-family: "Barlow Semi Condensed", sans-serif; table-layout: fixed; }
+  .dv2-line th, .dv2-line td { text-align: center; font-size: 11px; font-weight: 500; padding: 4px 0;
+    color: var(--ink); font-variant-numeric: tabular-nums; border-right: 1px solid var(--hair); }
+  .dv2-line th:last-child, .dv2-line td:last-child { border-right: 0; }
+  .dv2-line thead th { color: var(--ink3); font-size: 9px; font-weight: 600; letter-spacing: .02em;
+    border-bottom: 1px solid var(--hair); padding: 3px 0 4px; }
+  .dv2-line tbody tr + tr td { border-top: 1px solid var(--hair); }
+  .dv2-line td.tm, .dv2-line th.tm { width: 38px; text-align: left; font-weight: 700; font-size: 12px;
+    letter-spacing: .03em; white-space: nowrap; padding-left: 1px; padding-right: 4px; }
+  .dv2-line thead th.tm { font-size: 9px; font-weight: 600; color: var(--ink3); }
+  .dv2-line tr.nym .tm, .dv2-line tr.nym .rc { color: var(--mets); }
+  .dv2-line tr.lad .tm, .dv2-line tr.lad .rc { color: var(--blue); }
+  .dv2-line td.sep, .dv2-line th.sep { border-left: 1.5px solid var(--ink3); }
+  .dv2-line td.rc { font-weight: 700; }
+
+  /* zone 3 — pitching */
+  .dv2-gm .z-pitch .prow { display: flex; align-items: baseline; gap: 10px; padding: 6px 0;
+    border-top: 1px solid var(--hair); }
+  .dv2-gm .z-pitch .prow:first-child { border-top: 0; }
+  .dv2-pit .pl, .z-pitch .pl { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 700; font-size: 11px;
+    letter-spacing: .05em; flex: none; width: 20px; }
+  .z-pitch .pl.w { color: var(--turq-ax); } .z-pitch .pl.l { color: var(--red); } .z-pitch .pl.s { color: var(--ink3); }
+  .z-pitch .pn { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 500; font-size: 13px;
+    color: var(--ink); line-height: 1.08; min-width: 0; }
+
+  /* zone 4 — conditions */
+  .dv2-cond-wx { display: flex; align-items: center; gap: 9px; }
+  .dv2-gm .wxicon { color: var(--blue); width: 30px; height: auto; flex: none; }
+  .dv2-gm .z-cond .ct { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 500; font-size: 30px;
+    line-height: .9; color: var(--ink); }
+  .dv2-gm .z-cond .cc { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 500; font-size: 13px;
+    color: var(--ink2); margin-top: 6px; }
+  .dv2-cond-row { padding-top: 8px; border-top: 1px solid var(--hair);
+    font-family: "Barlow Semi Condensed", sans-serif; font-weight: 500; font-size: 12px;
+    color: var(--ink2); font-variant-numeric: tabular-nums; }
+  .dv2-line tbody tr:last-child td { border-bottom: 0; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#F2ECDE"/>
+      <rect x="16" y="20" width="68" height="13" fill="#E8F0F3" stroke="#5E9BC2" stroke-width="0.8"/>
+      <rect x="16" y="36" width="68" height="13" fill="#E5EFE9" stroke="#3F9E89" stroke-width="0.8"/>
+      <rect x="16" y="52" width="68" height="13" fill="#F4E8D8" stroke="#CE7F3C" stroke-width="0.8"/>
+      <rect x="16" y="68" width="68" height="13" fill="#F6EFD0" stroke="#C9A331" stroke-width="0.8"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="dodger-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="dodger-v2-field.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="dodger-v2-spread.jsx"></script>
+  <script type="text/babel" src="dodger-v2-app.jsx"></script>
+</body>
+</html>
