@@ -36,7 +36,7 @@ window.SUTTER = {
     ["Capacity", "14,000 \u2192 14,014"],
     ["Surface", "Natural grass \u00b7 Bermuda / rye blend"],
     ["Architect", "HOK Sport"],
-    ["Era", "Retro-classic minor-league"],
+    ["Era", "Retro Classic"],
     ["Facade", "Concrete masonry units \u00b7 red brick block + trim"],
     ["Roof", "Open Air"],
     ["Type", "Open-air MiLB park adapted for temporary MLB"],

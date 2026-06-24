@@ -153,7 +153,10 @@
               e("div", { className: "as-foot" },
                 D.footnotes.map((ft, i) => e("div", { className: "ft", key: i },
                   e("span", { className: "fl" }, ft[0]),
-                  e("span", { className: "fv" }, ft[1]))))))),
+                  e("span", { className: "fv" }, ft[1]))),
+                D.footnote_note
+                  ? e("div", { className: "as-foot-note" }, D.footnote_note)
+                  : null)))),
 
         /* ---- strata: three architectural lives (crossbar) ---- */
         e("div", { className: "as-pad", style: { top: "414px" } },
@@ -167,7 +170,7 @@
                 e("span", { className: "le" }, l[1]),
                 e("span", { className: "ld" }, l[2]))))),
           e("div", { className: "as-life-note" },
-            e("span", null, e("b", null, "Classification"), D.classification.era),
+            e("span", null, e("b", null, "Era"), D.classification.era),
             e("span", null, e("b", null, "Stadium Type"), D.classification.type),
             e("span", null, e("b", null, "Style"), D.classification.style),
             e("span", null, e("b", null, "Fa\u00e7ade"), D.classification.facade),

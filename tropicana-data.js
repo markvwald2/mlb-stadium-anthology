@@ -34,7 +34,7 @@ window.TROPICANA = {
      [label, value, sub?] — sub is a small italic gloss. Combined compactly,
      none dropped; n/a fields omitted. ---- */
   specs: [
-    ["Classification", "Fixed-dome multipurpose stadium", "adapted for baseball"],
+    ["Stadium Type", "Fixed-dome multipurpose stadium", "adapted for baseball"],
     ["Era", "Multipurpose Shared Use"],
     ["Roof", "Fixed dome", "slanted PTFE / fiberglass tensile membrane"],
     ["Surface", "Artificial turf", "Shaw Sports Turf TruHop synthetic turf"],

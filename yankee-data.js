@@ -6,7 +6,7 @@ window.YANKEE = {
   // ---- Identity (left page title block) ----
   stadium_name: "Yankee Stadium",
   opened_year: "1923",
-  classification_era: "Jewel Box and Early Concrete",
+  classification_era: "Jewel Box & Early Concrete",
   years_active: "1923\u20132008",
   stadium_type: "Open-air monumental urban ballpark",
   status: "Demolished",

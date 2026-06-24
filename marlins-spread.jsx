@@ -95,8 +95,8 @@
     );
   }
 
-  function ribCell(label, value, mono) {
-    return e("div", { className: "cell" + (mono ? " coords" : "") },
+  function ribCell(label, value, mono, cls) {
+    return e("div", { className: "cell" + (mono ? " coords" : "") + (cls ? " " + cls : "") },
       e("div", { className: "rl" }, label),
       e("div", { className: "rv" }, value)
     );
@@ -172,9 +172,8 @@
               e("img", { className: "rib-logo", src: "assets/miami-marlins-logo.svg", alt: "Miami Marlins" })
             ),
             ribCell("Team", D.team_name),
-            ribCell("League", D.league_short),
             ribCell("Division", D.division_short),
-            ribCell("Classification", D.classification_ribbon),
+            ribCell("Classification", D.classification_ribbon, false, "wide"),
             ribCell("Years Active", D.years_active),
             ribCell("Visit Order", D.visit_order + " of " + D.visit_total),
             ribCell("Status", D.status)

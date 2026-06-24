@@ -25,7 +25,7 @@ window.BUSCH = {
     ["Team", "St. Louis Cardinals"],
     ["League", "National League"],
     ["Division", "NL Central"],
-    ["Classification", "Retro Classic\nDowntown Ballpark"],
+    ["Classification", "Ballpark District"],
     ["Years Active", "2006\u2013Present"],
     ["Visit Order", "40\nof 42"],
     ["Coordinates", "38.6225\u00b0 N\n90.1931\u00b0 W"],

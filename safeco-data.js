@@ -30,7 +30,7 @@ window.TMOBILE = {
     ["Team", "Seattle Mariners"],
     ["League", "American League"],
     ["Division", "AL West"],
-    ["Classification", "Retro-Classic Renaissance"],
+    ["Classification", "Retro Classic"],
     ["Years Active", "1999\u2013Present"],
     ["Visit Order", "22"],
     ["Coordinates", "47.591\u00b0N \u00b7 122.333\u00b0W"],

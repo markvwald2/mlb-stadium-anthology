@@ -32,7 +32,7 @@ window.NEWCOMISKEY = {
   team_abbr: "CWS",
   league: "American League",
   division: "AL Central",
-  era: "Transitional Modern",
+  era: "Modern Baseball-Specific",
   capacity_opening: "44,321",
   capacity_current: "40,615",
   allstar: "2003",

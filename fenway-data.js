@@ -21,7 +21,7 @@ window.FENWAY = {
   opened: "1912",
   status: "Active",
   architect: "James E. McLaughlin",
-  classification_era: "Jewel Box and Early Concrete",
+  classification_era: "Jewel Box & Early Concrete",
   architectural_style: "Jewel-box neighborhood ballpark",
   stadium_type: "Open-air neighborhood jewel-box ballpark",
   roof_type: "Open Air",

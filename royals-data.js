@@ -6,7 +6,7 @@
 window.ROYALS = {
   // ---- Identity (title block, left page) ----
   stadium_name: "Royals Stadium",
-  classification_era: "Modernist Baseball Specific",
+  classification_era: "Modern Baseball-Specific",
   years_active: "1973\u2013present",
 
   // ---- Stadium Section ----
@@ -14,7 +14,7 @@ window.ROYALS = {
   state: "Missouri",
   team_name: "Kansas City Royals",
   league: "American League",
-  division: "American League Central",
+  division: "AL Central",
   opened: "April 10, 1973",
   status: "Active",
   architect: "Kivett and Myers",

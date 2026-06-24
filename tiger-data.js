@@ -5,7 +5,7 @@
 window.TIGER = {
   // ---- Identity (left page title block) ----
   stadium_name: "Tiger Stadium",
-  classification_era: "Jewel Box and Early Concrete",
+  classification_era: "Jewel Box & Early Concrete",
   years_active: "1912\u20131999",
   stadium_type: "Jewel-box ballpark",
   status: "Demolished",

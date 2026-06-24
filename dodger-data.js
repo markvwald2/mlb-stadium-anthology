@@ -41,7 +41,7 @@ window.DODGER = {
     /* secondary */
     ["Architect", "Emil Praeger"],
     ["Style", "Mid-century modern, hillside"],
-    ["Era", "Modernist, baseball-specific"],
+    ["Era", "Modern Baseball-Specific"],
     ["Stadium Type", "Open-air, baseball-only"],
     /* tertiary */
     ["Roof", "Open air"],

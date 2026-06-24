@@ -21,7 +21,7 @@ window.GLOBE = {
   ribbon: [
     ["Team", "Texas Rangers"],
     ["League", "American League"],
-    ["Stadium Classification", "Contemporary Mixed-Use Era"],
+    ["Stadium Classification", "Ballpark District"],
     ["Years Active", "2020\u2013Present"],
     ["Visit Number", "36 of 42"],
     ["Status", "Active"],

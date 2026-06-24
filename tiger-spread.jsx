@@ -145,7 +145,7 @@
               e("div", { className: "ln" }),
               e("div", { className: "ribbon" },
                 e("span", null, "Architect ", e("b", null, D.architect)),
-                e("span", null, "Era ", e("b", null, "Jewel Box")),
+                e("span", null, "Era ", e("b", null, "Jewel Box & Early Concrete")),
                 e("span", null, "Cost ", e("b", null, D.stadium_cost + " (" + D.stadium_cost_adjusted + " adj.)")))
             ),
 

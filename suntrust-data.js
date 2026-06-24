@@ -58,7 +58,7 @@ window.SUNTRUST = {
 
   // ---- Development & Life Cycle parcel (the economics / lifecycle) ----
   lifecycle: [
-    ["Classification", "Contemporary Mixed-Use"],
+    ["Classification", "Ballpark District"],
     ["Status", "Active"],
     ["Setting", "Open-air ballpark integrated with", "mixed-use entertainment district"],
     ["Construction Start", "Sep 16, 2014"],

@@ -54,7 +54,7 @@ window.ANAHEIM = {
 
   /* ---- overall classification / descriptive era (caption beneath the strata) ---- */
   classification: {
-    era: "Transitional Modern",
+    era: "Modern Baseball-Specific",
     type: "Open-air baseball stadium; former multipurpose stadium",
     style: "Expansion-era modern stadium with Disney retro entertainment renovation",
     facade: "Concrete, stucco, and steel",
@@ -63,9 +63,12 @@ window.ANAHEIM = {
 
   /* ---- footnote rail beneath the survey ---- */
   footnotes: [
-    ["Preceded By", "Los Angeles Wrigley Field (1961)\nDodger Stadium (1962-1965)"],
+    ["Preceded By", "Los Angeles Wrigley Field (1961)\nDodger Stadium* (1962-1965)"],
     ["Name History", "Anaheim Stadium (1966-1997)\nEdison Intl. Field of Anaheim (1998-2003)\nAngel Stadium of Anaheim (2004-present)"]
   ],
+
+  /* ---- asterisk note rendered beneath the footnote rail ---- */
+  footnote_note: "* Referred to by Angels as \u201CChavez Ravine Stadium\u201D",
 
   /* ---- field instrument (protractor): Northeast, 43.61 deg ---- */
   field: { left_field: "347", center_field: "396", right_field: "350", orientation: "Northeast", abbr: "NE", degrees: 43.61 },
@@ -74,7 +77,7 @@ window.ANAHEIM = {
      Descriptors drawn only from the provided Renovations field + Stadium Context;
      nothing invented. */
   lifecycle: [
-    ["1966-78", "Expansion Era", "Open-outfield baseball park; broad seating bowl and the Big A scoreboard on a suburban parking field."],
+    ["1966-78", "Expansion Era", "Open-outfield baseball park; broad seating bowl geometry; the landmark Big A scoreboard on an expansive suburban parking field."],
     ["1979\u201395", "Multipurpose Era", "Outfield enclosed for the Los Angeles Rams; baseball capacity expanded beyond 64,000; Big A scoreboard moved to freeway-adjacent parking lot."],
     ["1996\u2013present", "Retro-Classic Renaissance", "Disney-era baseball-only renovation; outfield reopened; left-field rock formation added; adoption of green and sandstone aesthetic."]
   ],

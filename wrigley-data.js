@@ -5,7 +5,7 @@
 window.WRIGLEY = {
   // ---- Identity (title block, left page) ----
   stadium_name: "Wrigley Field",
-  classification_era: "Jewel Box and Early Concrete",
+  classification_era: "Jewel Box & Early Concrete",
   years_active: "1914\u2013present",
 
   // ---- Stadium Section ----

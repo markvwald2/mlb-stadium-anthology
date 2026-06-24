@@ -84,8 +84,8 @@
             /* --- metadata ribbon --- */
             React.createElement("div", { className: "we-ribbon" },
               ribCell("Team", D.team_name),
-              ribCell("League", D.league),
               ribCell("Division", D.division),
+              ribCell("Era", "Jewel Box & Early Concrete"),
               ribCell("Opened", D.opened),
               ribCell("Status", D.status),
               React.createElement("div", { className: "we-rc visitno" },

@@ -300,7 +300,7 @@
           e("div", { className: "yk-ribbon" },
             rb("Team", D.team_name, true),
             rb("League / Division", "American League East", true),
-            rb("Classification", "Jewel Box/Early Concrete", true),
+            rb("Classification", "Jewel Box & Early Concrete", true),
             rb("Years Active", D.years_active),
             rb("Visit No.", D.visit_order + " of 42"),
             rb("Coordinates", D.coordinates, true),
