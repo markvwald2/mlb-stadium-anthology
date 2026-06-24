@@ -32,7 +32,9 @@
   const LABEL_R = 292;            // right edge of franchise rail text
   const FOLD = 1275, GUT0 = 1238, GUT1 = 1312;
   const BARH = 13;
-  const xOf = (yr) => PLOT_X0 + (yr - YMIN) / (YMAX - YMIN) * (PLOT_X1 - PLOT_X0);
+  // span model: each season owns a full slot [xOf(yr), xOf(yr+1)]. There are
+  // (YMAX-YMIN+1) seasons, so the divisor is +1 and xOf(YMAX+1) == PLOT_X1.
+  const xOf = (yr) => PLOT_X0 + (yr - YMIN) / (YMAX - YMIN + 1) * (PLOT_X1 - PLOT_X0);
   const lanes = D.FRANCHISES;
   const N = lanes.length;
   const laneH = (CHART_BOT - CHART_TOP) / N;
@@ -60,17 +62,34 @@
 
       const bars = [];
       const obstacles = [];
-      const MINW = 7; // single-season tenures (start==end) render as a narrow sliver
+      const MINW = 7;       // safety floor; the span model already gives every tenure a full-season slot
+      const OFFGAP = 5;     // offseason stadium change: narrow gap between two otherwise-abutting tenures
       lanes.forEach((f, i) => {
         const cy = CHART_TOP + i * laneH + laneH / 2;
         const barY = cy - BARH / 2;
-        f.tenures.forEach((t) => {
+        const ten = f.tenures;
+        ten.forEach((t, ti) => {
+          const sEnd = Math.min(t.end, YMAX);
+          // a tenure covers xOf(start) -> xOf(lastSeason + 1): the full width of every season it held.
           let x0 = xOf(t.start);
-          let x1 = xOf(Math.min(t.end, YMAX));
+          let x1 = xOf(sEnd + 1);
+          let shift = 0; // uniform shifts only (nudge / right-margin); diamonds follow this, NOT the gap trims below
+          const prev = ti > 0 ? ten[ti - 1] : null;
+          const next = ti + 1 < ten.length ? ten[ti + 1] : null;
+          // left edge vs previous tenure
+          if (prev) {
+            if (t.start === prev.end) x0 = xOf(t.start + 0.5);                 // in-season change -> split the shared season, abut
+            else if (t.start === prev.end + 1) x0 = xOf(t.start) + OFFGAP / 2; // offseason change -> narrow gap
+          }
+          // right edge vs next tenure
+          if (next) {
+            if (next.start === t.end) x1 = xOf(t.end + 0.5);                   // in-season change -> split the shared season, abut
+            else if (next.start === t.end + 1) x1 = xOf(sEnd + 1) - OFFGAP / 2; // offseason change -> narrow gap
+          }
+          if (t.nudgeX) { x0 += t.nudgeX; x1 += t.nudgeX; shift += t.nudgeX; } // manual horizontal nudge
+          if (x1 > PLOT_X1) { const over = x1 - PLOT_X1; x0 -= over; x1 -= over; shift -= over; } // keep inside the right margin
           if (x1 - x0 < MINW) x1 = x0 + MINW;
-          if (x1 > PLOT_X1) { const over = x1 - PLOT_X1; x0 -= over; x1 -= over; } // keep a sliver inside the right margin
-          if (t.nudgeX) { x0 += t.nudgeX; x1 += t.nudgeX; } // manual horizontal nudge (e.g. center a sliver in a gap)
-          const rec = { t, x0, x1, w: x1 - x0, barY, cy, laneIdx: i };
+          const rec = { t, x0, x1, w: x1 - x0, barY, cy, laneIdx: i, shift };
           bars.push(rec);
           obstacles.push({ x: x0, y: barY, w: x1 - x0, h: BARH });
         });
@@ -176,8 +195,14 @@
           if (inGutter(startX - 2, startX + tw + 2)) return;      // gutter
           renameLabels.push({ x: startX, y: b.cy, txt: r.name });
         });
+        // a visit's marker centers on the MIDDLE of its season slot (xOf(yr+0.5)),
+        // carrying only the uniform bar shift (nudge / right-margin) -- never the
+        // offseason gap trim -- so every diamond sits half-a-season inside the bar
+        // edges with no overhang. A light clamp (diamond half-width) keeps the rare
+        // shared-season visit on an in-season-split bar off the very edge.
+        const DR = 7.1;
         b.t.visitYears.forEach((yr) => {
-          let x = clamp(xOf(yr), b.x0 + 5, b.x1 - 5);
+          let x = clamp(xOf(yr + 0.5) + b.shift, b.x0 + DR, b.x1 - DR);
           if (x > GUT0 && x < GUT1) x = GUT0 - 6;
           diamonds.push({ x, y: b.cy });
         });

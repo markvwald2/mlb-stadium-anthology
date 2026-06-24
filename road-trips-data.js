@@ -14,7 +14,7 @@
    `plateAr` keeps even the five-stadium stacks inside the bottom safe line. */
 (function () {
   window.ROADTRIPS = {
-    title: ["THE", "ROAD", "TRIPS"],
+    title: ["THE", "BASEBALL", "TRIPS"],
     statline: [
       { n: "12", l: "TRIPS" },
       { n: "39", l: "GAMES" },

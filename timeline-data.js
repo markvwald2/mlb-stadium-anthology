@@ -169,14 +169,14 @@
     ]},
     { lines: ["Colorado Rockies"], tenures: [
       { stadium: "Mile High Stadium", start: 1993, end: 1994, visited: true, visitYears: [1993, 1994], visitCount: 2, renames: [] },
-      { stadium: "Coors Field", start: 1995, end: 2026, visited: true, visitYears: Array.from({ length: 2026 - 1995 + 1 }, function (_, i) { return 1995 + i; }), visitCount: 2026 - 1995 + 1, renames: [] },
+      { stadium: "Coors Field", start: 1995, end: 2026, visited: true, visitYears: Array.from({ length: 2026 - 1995 + 1 }, function (_, i) { return 1995 + i; }).filter(function (y) { return y !== 2020; }), visitCount: 2026 - 1995 + 1 - 1, renames: [] }, // 2020 omitted: COVID season, no fans admitted
     ]},
     { lines: ["Arizona Diamondbacks"], tenures: [
       { stadium: "Bank One Ballpark", start: 1998, end: 2026, visited: true, visitYears: [2024], visitCount: 1, renames: [{ year: 2005, name: "Chase Field" }] },
     ]},
     { lines: ["Tampa Bay Devil Rays / Rays"], tenures: [
       { stadium: "Tropicana Field", start: 1998, end: 2024, visited: true, visitYears: [2018], visitCount: 1, renames: [], spanText: "1998\u201324, now" },
-      { stadium: "Steinbrenner Field", start: 2025, end: 2025, visited: false, visitYears: [], visitCount: 0, renames: [], nudgeX: -7 },
+      { stadium: "Steinbrenner Field", start: 2025, end: 2025, visited: false, visitYears: [], visitCount: 0, renames: [] },
       { stadium: "Tropicana Field", start: 2026, end: 2026, visited: true, visitYears: [], visitCount: 0, renames: [], noLabel: true },
     ]},
   ];

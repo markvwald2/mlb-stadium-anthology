@@ -52,7 +52,7 @@ window.DODGER = {
     ["Preceded By", "L.A. Memorial Coliseum"],
     ["Construction", "Begun Sep 17, 1959"],
     ["Cost", "$23M (1962) \u00b7 $245M adj."],
-    ["Address", "1000 Vin Scully Avenue, Los Angeles, CA 90012"]
+    ["Address", "1000 Vin Scully Ave, Los Angeles, CA 90012"]
   ],
 
   /* ---- extended museum labels (full faithful long-form values) ----

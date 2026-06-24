@@ -137,8 +137,7 @@
             i > 0 ? e("span", { className: "rt-stat-sep" }, "\u00b7") : null,
             e("span", { className: "rt-stat" },
               e("span", { className: "rt-stat-n" }, s.n), " ",
-              e("span", { className: "rt-stat-l" }, s.l))))),
-        e("div", { className: "rt-note" }, D.note)),
+              e("span", { className: "rt-stat-l" }, s.l)))))),
       e("p", { className: "rt-intro" }, D.intro),
 
       // ============ HEADER — RIGHT: by the numbers ============
