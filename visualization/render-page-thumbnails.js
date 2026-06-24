@@ -136,6 +136,7 @@ async function main() {
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.mkdirSync(TMP_DIR, { recursive: true });
 
+  const filters = process.argv.slice(2).map((arg) => arg.toLowerCase());
   const seen = new Set();
   const items = [];
   const manifest = JSON.parse(fs.readFileSync(ORDER_FILE, "utf8"));
@@ -151,8 +152,18 @@ async function main() {
     addItem(entry.right);
   }
 
-  const existing = items.filter((item) => fs.existsSync(path.join(ROOT, item.page)));
-  const skipped = items.filter((item) => !fs.existsSync(path.join(ROOT, item.page)));
+  const selected = filters.length
+    ? items.filter((item) => filters.some((filter) =>
+        item.page.toLowerCase().includes(filter) ||
+        item.title.toLowerCase().includes(filter) ||
+        outputName(item).toLowerCase().includes(filter)))
+    : items;
+  const existing = selected.filter((item) => fs.existsSync(path.join(ROOT, item.page)));
+  const skipped = selected.filter((item) => !fs.existsSync(path.join(ROOT, item.page)));
+  if (filters.length && !selected.length) {
+    console.error(`No thumbnail entries matched: ${filters.join(", ")}`);
+    process.exit(1);
+  }
   const server = await startServer();
   const browser = await chromium.launch({ headless: true, executablePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" });
 
