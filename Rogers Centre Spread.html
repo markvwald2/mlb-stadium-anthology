@@ -57,8 +57,10 @@
   .rc-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(180deg, rgba(8,12,18,.42) 0%, rgba(8,12,18,0) 18%),
-      linear-gradient(0deg, rgba(8,11,16,.94) 0%, rgba(8,11,16,.7) 20%, rgba(8,11,16,.14) 40%, rgba(8,11,16,0) 52%);
+      linear-gradient(180deg, rgba(8,12,18,.42) 0%, rgba(8,12,18,0) 16%),
+      radial-gradient(96% 80% at 4% 100%,
+        rgba(8,11,16,.95) 0%, rgba(8,11,16,.78) 24%, rgba(8,11,16,.4) 46%,
+        rgba(8,11,16,.12) 60%, rgba(8,11,16,0) 70%);
   }
   .rc-hero-compass { position: absolute; right: -120px; bottom: -110px; z-index: 3; pointer-events: none; }
 
@@ -77,21 +79,21 @@
   .rc-roofline .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .26em;
     color: rgba(206,222,242,.74); text-transform: uppercase; flex: none; }
 
-  .rc-hero-title { position: absolute; left: 60px; right: 60px; bottom: 70px; z-index: 5; }
+  .rc-hero-title { position: absolute; left: 60px; right: auto; max-width: 800px; bottom: 64px; z-index: 5; }
   .rc-name {
     margin: 0; font-family: "Saira", sans-serif; font-weight: 500;
-    font-size: 132px; line-height: .9; letter-spacing: .04em; text-transform: uppercase;
+    font-size: 108px; line-height: .9; letter-spacing: .04em; text-transform: uppercase;
     color: #EEF2F7; text-shadow: 0 4px 30px rgba(0,0,0,.5);
     font-stretch: expanded;
   }
   .rc-name .ln2 { display: block; font-weight: 300; color: #C9D6E6; letter-spacing: .055em; }
-  .rc-sub { display: flex; align-items: center; gap: 18px; margin-top: 22px; }
-  .rc-sub .bar { width: 58px; height: 3px; background: var(--royal); flex: none; }
-  .rc-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 27px;
+  .rc-sub { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
+  .rc-sub .bar { width: 52px; height: 3px; background: var(--royal); flex: none; }
+  .rc-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 24px;
     letter-spacing: .3em; text-transform: uppercase; color: #9CC0EC; white-space: nowrap; }
 
-  .rc-identity { display: flex; align-items: center; gap: 18px; margin-top: 30px; }
-  .rc-team-logo { height: 70px; width: auto; display: block;
+  .rc-identity { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
+  .rc-team-logo { height: 62px; width: auto; display: block;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,.45)); }
   .rc-id-txt { display: flex; flex-direction: column; gap: 5px; }
   .rc-id-txt .rc-team { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 25px;

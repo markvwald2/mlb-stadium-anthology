@@ -89,24 +89,26 @@
     color: rgba(220,230,235,.66); text-transform: uppercase; flex: none; }
   .glf-trussdatum .cap.r { color: rgba(157,176,187,.8); }
 
-  .glf-hero-title { position: absolute; left: 58px; bottom: 150px; z-index: 6; }
-  .glf-signrule { width: 432px; height: 2px; background: rgba(220,230,235,.5); }
-  .glf-signrule.top { margin-bottom: 16px; }
-  .glf-signrule.bot { margin-top: 14px; width: 360px; }
-  .glf-name { margin: 0; display: flex; flex-direction: column; }
+  .glf-hero-title { position: absolute; left: 58px; right: 75px; bottom: 60px; z-index: 6; }
+  .glf-signrule { height: 2px; background: rgba(220,230,235,.5); }
+  .glf-signrule.top { width: 100%; margin-bottom: 18px; }
+  .glf-signrule.bot { display: none; }
+  .glf-titlerow { display: flex; align-items: flex-end; gap: 30px; }
+  .glf-name { margin: 0; display: flex; flex-direction: row; align-items: baseline; gap: 0.30em; white-space: nowrap; }
   .glf-name .ln {
     font-family: "Saira Condensed", sans-serif; font-weight: 700;
-    font-size: 116px; line-height: .86; letter-spacing: .005em; text-transform: uppercase;
+    font-size: 100px; line-height: .86; letter-spacing: .005em; text-transform: uppercase;
     color: #EEF3F5; text-shadow: 0 3px 26px rgba(0,0,0,.5);
   }
-  .glf-sub { display: flex; align-items: center; gap: 16px; margin-top: 18px; }
-  .glf-sub .city { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 25px;
-    letter-spacing: .3em; text-transform: uppercase; color: #DCE3E7; white-space: nowrap; }
+  .glf-loc { display: flex; flex-direction: column; line-height: 1.04; padding-bottom: 0;
+    transform: translateY(0px); }
+  .glf-loc span { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 24px;
+    letter-spacing: .26em; text-transform: uppercase; color: #DCE3E7; white-space: nowrap; }
   .glf-sub .dot { width: 6px; height: 6px; background: var(--rred); border-radius: 50%; flex: none; }
   .glf-sub .cue { font-family: "Space Mono", monospace; font-weight: 700; font-size: 15px;
     letter-spacing: .12em; color: var(--glass); white-space: nowrap; }
 
-  .glf-marks { position: absolute; left: 60px; bottom: 66px; z-index: 6;
+  .glf-marks { position: absolute; right: 75px; bottom: 60px; left: auto; top: auto; z-index: 6;
     display: flex; align-items: center; gap: 16px; white-space: nowrap; }
   .glf-marks .mlb { height: 40px; width: auto; display: block; }
   .glf-marks .al { height: 36px; width: auto; display: block; background: #fff;
@@ -213,10 +215,12 @@
 
   /* unified Stadium Context */
   .glf-context { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-  .glf-prose { columns: 2; column-gap: 28px; column-rule: 1px solid var(--rule); }
-  .glf-prose p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 13.5px; line-height: 1.5;
-    color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
-  .glf-prose p:last-child { margin-bottom: 0; }
+  .glf-prose { display: flex; align-items: flex-start; }
+  .glf-prose .glf-col { flex: 1 1 0; min-width: 0; padding-right: 14px; }
+  .glf-prose .glf-col + .glf-col { padding-right: 0; padding-left: 14px; border-left: 1px solid var(--rule); }
+  .glf-prose p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 1.46;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .glf-prose .glf-col p:last-child { margin-bottom: 0; }
 
   /* truss-span rule */
   .glf-truss { flex: none; height: 3px; background: var(--steel); position: relative; margin: 2px 0; }

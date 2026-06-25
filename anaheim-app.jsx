@@ -30,7 +30,7 @@
     return React.createElement(DesignCanvas, null,
       React.createElement(DCSection, {
         id: "angel-stadium",
-        title: "Angel Stadium of Anaheim",
+        title: "Anaheim Stadium",
         subtitle: "\u201cFreeway Landmark\u201d \u2014 the Big A as civic wayfinding mast \u00b7 Blurb 13 \u00d7 11 in \u00b7 25.50 \u00d7 10.88 in spread \u00b7 7650 \u00d7 3264 px @ 300 DPI (shown at 100 ppi)"
       },
         React.createElement(DCArtboard, {

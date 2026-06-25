@@ -73,7 +73,7 @@
     const ntip = polar(C, PR + 8, bearing);
     const back = polar(ntip, 11, bearing + 180), hl = polar(back, 5, bearing - 90), hr = polar(back, 5, bearing + 90);
     const head = [ntip, hl, hr].map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
-    const needleBase = polar(C, R + 4, bearing);
+    const needleBase = C;
 
     // distance chips, rotated with the field
     const chips = [

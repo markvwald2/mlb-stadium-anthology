@@ -236,7 +236,7 @@
               e("div", { className: "rc-mod context band" },
                 e(ModHead, { title: "Stadium Context" }),
                 e("div", { className: "rc-prose" },
-                  D.stadium_context.map((p, i) => e("p", { key: i }, p))
+                  D.stadium_context.map((p, i) => e("p", i === 3 ? { key: i, style: { letterSpacing: "0.3px" } } : { key: i }, p))
                 )
               )
             )

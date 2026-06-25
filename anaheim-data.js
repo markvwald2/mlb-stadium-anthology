@@ -68,7 +68,7 @@ window.ANAHEIM = {
   ],
 
   /* ---- asterisk note rendered beneath the footnote rail ---- */
-  footnote_note: "* Referred to by Angels as \u201CChavez Ravine Stadium\u201D",
+  footnote_note: "*Called \u201CChavez Ravine Stadium\u201D by Angels",
 
   /* ---- field instrument (protractor): Northeast, 43.61 deg ---- */
   field: { left_field: "347", center_field: "396", right_field: "350", orientation: "Northeast", abbr: "NE", degrees: 43.61 },
@@ -93,8 +93,8 @@ window.ANAHEIM = {
 
   /* ---- unified Stadium Context (verbatim, 4 paragraphs) ---- */
   stadium_context: [
-    "Anaheim Stadium was built so the Angels could stop being guests in someone else\u2019s baseball story. After beginning at Los Angeles Wrigley Field and then Dodger Stadium, the franchise needed a permanent home separate from the Dodgers\u2019 civic and architectural shadow. Anaheim offered land, room, and a different Southern California identity: suburban, automobile-oriented, and tied to Orange County\u2019s rapid postwar growth rather than to downtown Los Angeles.",
-    "The original stadium made sense as an expansion-era building. It was open-air, modern, and regional in its assumptions, with a large site that could welcome fans by car and give Anaheim a major-league address of its own. It did not try to reproduce an older neighborhood ballpark. It treated baseball as part of a new suburban civic landscape, where access and identity came through highways, parking, and the emerging entertainment geography around Anaheim.",
+    "Anaheim Stadium was built so the Angels could stop being guests in someone else\u2019s baseball story. After beginning at Los Angeles' Wrigley Field and then Dodger Stadium, the franchise needed a permanent home separate from the Dodgers\u2019 civic and architectural shadow. Anaheim offered land, room, and a different Southern California identity: suburban, automobile-oriented, and tied to Orange County\u2019s rapid postwar growth rather than to downtown Los Angeles.",
+    "The original stadium made sense as an expansion-era building. It was open-air, modern, and regional in its assumptions, with a large site that could welcome fans by car and give Anaheim a major-league address of its own. It did not try to reproduce an older neighborhood ballpark or adopt an urban intimacy. It treated baseball as part of a new suburban civic landscape, where access and identity came through highways, parking, and the emerging entertainment geography around Anaheim.",
     "The building\u2019s later history is what makes it especially revealing. The 1979-1981 Rams conversion enclosed and enlarged the stadium, bending it toward the multipurpose logic of football capacity and shared use. That change made the venue more efficient as an event container but less distinct as a baseball setting. Then the 1996-1998 Disney-era renovation reversed much of that enclosure, restoring a baseball-only feel while adding themed entertainment elements and premium infrastructure.",
     "Few active MLB parks show so clearly how one structure can pass through several stadium eras. Anaheim Stadium began as a suburban expansion park, became a football-influenced multipurpose bowl, then was renovated into a retro-era entertainment venue without losing its original site. Its importance comes from that layering. The Angels\u2019 home is not pure, and that is exactly why it is useful: it records how baseball\u2019s expectations kept changing around the same concrete frame."
   ],

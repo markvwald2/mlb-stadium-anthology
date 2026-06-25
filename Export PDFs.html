@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export PDFs — MLB Book v3</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    background: #f4f1ea;
+    color: #1c1a17;
+    line-height: 1.45;
+    padding: 56px 48px 80px;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+
+  header.head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  h1 { font-size: 30px; letter-spacing: 0.01em; margin: 0 0 6px; font-weight: 600; }
+  .lede { margin: 0; font-size: 16px; color: #4a463f; max-width: 56ch; }
+  .progress {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 13px; color: #4a463f; white-space: nowrap;
+    border: 1px solid #d8d2c4; background: #fffdf8; border-radius: 4px; padding: 9px 14px;
+  }
+  .progress b { color: #1c1a17; font-size: 15px; }
+
+  .steps {
+    margin: 22px 0 30px; padding: 16px 22px;
+    background: #fffdf8; border: 1px solid #d8d2c4; border-radius: 4px;
+    font-size: 14.5px; color: #322f2a;
+  }
+  .steps ol { margin: 0; padding-left: 20px; }
+  .steps li { margin: 3px 0; }
+  .steps code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px;
+    background: #efeadd; padding: 1px 5px; border-radius: 3px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .cell {
+    border: 1px solid #d3ccbd; border-radius: 5px;
+    background: #fffdf8; padding: 18px 18px 16px;
+    display: flex; flex-direction: column; gap: 14px;
+    position: relative; overflow: hidden;
+  }
+  .cell::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: #c9bfa6;
+  }
+  .cell.done { background: #f2f6ee; border-color: #c2d3b4; }
+  .cell.done::before { background: #6f9457; }
+
+  .cell-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .name { font-size: 20px; font-weight: 600; letter-spacing: 0.01em; line-height: 1.15; }
+  .badge {
+    flex: none; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 9px; border-radius: 999px; white-space: nowrap;
+    border: 1px solid #c9a96a; color: #8a6d2e; background: #fbf3df;
+  }
+  .cell.done .badge { border-color: #6f9457; color: #436b2c; background: #e4efda; }
+
+  .pages { display: flex; gap: 9px; }
+  a.btn {
+    flex: 1 1 0;
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    text-decoration: none;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px;
+    letter-spacing: 0.02em; color: #1c1a17;
+    background: #f4f1ea; border: 1px solid #b9b1a0; border-radius: 4px;
+    padding: 9px 12px; transition: background 0.12s, border-color 0.12s, color 0.12s;
+  }
+  a.btn:hover { background: #1c1a17; color: #f4f1ea; border-color: #1c1a17; }
+  a.btn .dot { width: 8px; height: 8px; border-radius: 50%; }
+  a.btn.left .dot { background: #2f4a6b; }
+  a.btn.right .dot { background: #9c7b3f; }
+
+  .cell-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: -2px; }
+  a.guides {
+    text-decoration: none; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11.5px; color: #6a655b; border-bottom: 1px dotted #9a9486; padding-bottom: 1px;
+  }
+  a.guides:hover { color: #1c1a17; }
+  .filename {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; color: #9a9486;
+  }
+
+  .foot { margin-top: 30px; font-size: 13px; color: #6a655b; max-width: 70ch; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <div>
+      <h1>Export PDFs — MLB Book v3</h1>
+      <p class="lede">Each spread → two single-page vector PDFs (left + right). Export in Chrome; I'll mark cells done as you finish them.</p>
+    </div>
+    <div class="progress" id="progress">— / — pages done</div>
+  </header>
+
+  <div class="steps">
+    <ol>
+      <li>Open the spread's <strong>Left</strong> and <strong>Right</strong> tabs (I pop these for you in Chrome).</li>
+      <li>In each Chrome tab: <code>Cmd/Ctrl+P</code> → <strong>Save as PDF</strong> → <strong>Margins: None</strong> → Save. Backgrounds print automatically.</li>
+      <li>Save each as <code>&lt;Stadium&gt; - Left.pdf</code> / <code>- Right.pdf</code> so the book assembles in order.</li>
+    </ol>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <p class="foot">Each cell's <em>guides</em> link previews trim / bleed / safe overlays on screen (they auto-hide when printing). Type, rules, and diagrams export as true vector; only the dropped-in photos rasterize. Don't use the artboard ⋯ → "Download PNG" — that's raster, not press-ready.</p>
+</div>
+
+<script>
+  // status: "pending" | "done" — tell me when a spread is finished and I'll flip it.
+  const spreads = [
+    { name: "Rogers Centre",       file: "Rogers Centre Spread.html",       status: "pending" },
+    { name: "Globe Life Field",    file: "Globe Life Field Spread.html",    status: "pending" },
+    { name: "Yankee Stadium 2009", file: "Yankee Stadium 2009 Spread.html", status: "pending" },
+    { name: "Fenway Park",         file: "Fenway Park Spread.html",          status: "pending" },
+    { name: "Target Field",        file: "Target Field Spread.html",         status: "pending" },
+    { name: "Anaheim Stadium",     file: "Anaheim Stadium Spread.html",      status: "pending" },
+  ];
+
+  const grid = document.getElementById("grid");
+  for (const s of spreads) {
+    const enc = encodeURI(s.file);
+    const done = s.status === "done";
+    const cell = document.createElement("div");
+    cell.className = "cell" + (done ? " done" : "");
+    cell.innerHTML = `
+      <div class="cell-top">
+        <div class="name">${s.name}</div>
+        <div class="badge">${done ? "Done" : "Pending"}</div>
+      </div>
+      <div class="pages">
+        <a class="btn left"  href="print/${encodeURI(s.name)} - Left.html"  target="_blank" rel="noopener"><span class="dot"></span>Left page</a>
+        <a class="btn right" href="print/${encodeURI(s.name)} - Right.html" target="_blank" rel="noopener"><span class="dot"></span>Right page</a>
+      </div>
+      <div class="cell-foot">
+        <a class="guides" href="${enc}?print=1&page=left&guides=1" target="_blank" rel="noopener">preview guides ↗</a>
+        <span class="filename">2 PDFs</span>
+      </div>`;
+    grid.appendChild(cell);
+  }
+
+  const total = spreads.length * 2;
+  const doneCount = spreads.filter(s => s.status === "done").length * 2;
+  document.getElementById("progress").innerHTML =
+    `<b>${doneCount}</b> / ${total} pages done`;
+</script>
+</body>
+</html>

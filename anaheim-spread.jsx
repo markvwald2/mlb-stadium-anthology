@@ -17,6 +17,33 @@
   const RED = "#B0122B", NAVY = "#0E2A4A";
 
   function Slot(props) {
+    // Locked-in press photos: direct full-res <img> from uploads/.
+    // Hero uses object-position (cover). Editorial panels carry the exact
+    // pan/zoom the user set in the slot, as an absolutely-positioned img
+    // inside an overflow-clipped frame (percentages of the slot box).
+    var HERO = {
+      "anaheim-hero": { src: "uploads/anaheim-stadium-00-main.jpg", pos: "67% 50%" }
+    };
+    var PANELS = {
+      "anaheim-p1": { src: "uploads/anaheim-stadium-01.jpg", w: 134.32, h: 122.62, l: -24.10, t: -11.03 },
+      "anaheim-p2": { src: "uploads/anaheim-stadium-02.jpg", w: 105.41, h: 142.81, l: -0.05,  t: -10.84 },
+      "anaheim-p3": { src: "uploads/anaheim-stadium-03-42e20a0e.jpg", w: 97.48, h: 105.33, l: -3.85, t: -8.7 },
+      "anaheim-p4": { src: "uploads/anaheim-stadium-04.jpg", w: 109.54, h: 100.0,  l: -1.24,  t: 0 }
+    };
+    var hero = HERO[props.id];
+    if (hero) {
+      return e("img", { className: "as-img", src: hero.src, alt: "",
+        style: { width: "100%", height: "100%", objectFit: "cover",
+          objectPosition: hero.pos, display: "block" } });
+    }
+    var p = PANELS[props.id];
+    if (p) {
+      return e("div", { className: "as-photoframe",
+        style: { position: "relative", width: "100%", height: "100%", overflow: "hidden" } },
+        e("img", { className: "as-img", src: p.src, alt: "",
+          style: { position: "absolute", left: p.l + "%", top: p.t + "%",
+            width: p.w + "%", height: p.h + "%", display: "block" } }));
+    }
     return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
       style: { width: "100%", height: "100%" } });
   }
@@ -113,8 +140,7 @@
           e("div", { className: "as-signbody" },
             e("div", { className: "as-signpanel" },
               e("h1", { className: "as-wordmark" },
-                e("span", { className: "halo-a" }, "A"), "ngel Stadium"),
-              e("div", { className: "as-sub" }, "of Anaheim")),
+                e("span", { className: "halo-a" }, "A"), "naheim Stadium")),
             e("div", { className: "as-cityline" }, "Anaheim, California"))),
 
         e("div", { className: "as-coords" }, D.coords_line + "   \u00b7   Elev. 148 ft   \u00b7   Open air"),

@@ -12,15 +12,20 @@
   const Field = window.FenwayField;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
-      style: props.style || null });
+    // Photos referenced as real downscaled files via `src` (not data-URLs in the
+    // sidecar) so .image-slots.state.json stays under the host writeFile cap and
+    // recrops persist as tiny framing-only {s,x,y} entries.
+    const attrs = { id: props.id, placeholder: props.placeholder, shape: "rect",
+      style: props.style || null };
+    if (props.src) attrs.src = props.src;
+    return e("image-slot", attrs);
   }
 
   // ---------- LEFT PAGE ----------
   function LeftPage() {
     return e("div", { className: "fw-page fw-left", "data-screen-label": "Fenway Park \u2014 left (hero)" },
       e("div", { className: "fw-hero-slot" },
-        e(Slot, { id: "fenway-hero", placeholder: "Fenway Park \u2014 aerial / Green Monster & city edge" })),
+        e(Slot, { id: "fenway-hero", src: "images/fenway/hero.jpg", placeholder: "Fenway Park \u2014 aerial / Green Monster & city edge" })),
       e("div", { className: "fw-hero-scrim" }),
       // top-left league mast
       e("div", { className: "fw-mast" },
@@ -33,7 +38,7 @@
         e("div", { className: "fw-plaque-name" }, "FENWAY PARK"),
         e("div", { className: "fw-plaque-loc" }, D.city + ", " + D.state),
         e("div", { className: "fw-plaque-years" }, D.years_active),
-        e("div", { className: "fw-plaque-sub" }, D.league + " \u00b7 " + D.division + " \u00b7 " + D.team_name)
+        e("div", { className: "fw-plaque-sub" }, D.league + " EAST \u00b7 " + D.team_name)
       )
     );
   }
@@ -86,10 +91,10 @@
   // ---------- STADIUM SECTION ----------
   function StadiumSection() {
     const photos = [
-      ["fenway-doc-1", "Exterior Brick Facade"],
-      ["fenway-doc-2", "Green Monster Detail"],
-      ["fenway-doc-3", "Grandstand Structure"],
-      ["fenway-doc-4", "Neighborhood Edge"]
+      ["fenway-doc-1", "Exterior Brick Facade", "images/fenway/doc-1.jpg"],
+      ["fenway-doc-2", "Green Monster Detail", "images/fenway/doc-2.jpg"],
+      ["fenway-doc-3", "Grandstand Structure", "images/fenway/doc-3.jpg"],
+      ["fenway-doc-4", "Neighborhood Edge", "images/fenway/doc-4.jpg"]
     ];
     return e("div", { className: "fw-stadium" },
       // Col A — metadata directory on green steel
@@ -104,7 +109,7 @@
       // only; no caption survives once a photo is dropped — house rule: never caption photos)
       e("div", { className: "fw-colB" },
         photos.map((p, i) => e("div", { key: i, className: "fw-bay" },
-          e("div", { className: "fw-bay-frame" }, e(Slot, { id: p[0], placeholder: p[1] }))))
+          e("div", { className: "fw-bay-frame" }, e(Slot, { id: p[0], placeholder: p[1], src: p[2] }))))
       ),
       // Col C — cream panels: context, lifecycle, marks plate
       e("div", { className: "fw-colC" },

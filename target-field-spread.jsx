@@ -14,9 +14,32 @@
   const Protractor = window.TargetProtractor;
 
   function Slot(props) {
-    return e("image-slot", Object.assign({
-      id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
-    }, props.style ? { style: props.style } : {}));
+    // Locked-in page-2 press photos: direct full-res <img> from uploads/, each
+    // carrying the exact pan/zoom the user set in the slot (percent of slot box,
+    // absolutely positioned inside an overflow-clipped frame). Slots not in the
+    // map fall back to a fillable <image-slot>.
+    var LOCKED = {
+      "tf-stadium-ph-1": { src: "uploads/target-field-01.jpg",  w: 93.49, h: 97.73,  l: 0.32,   t: -1.85 },
+      "tf-stadium-ph-2": { src: "uploads/target-field-02.png",  w: 93.49, h: 97.73,  l: 0.32,   t: -1.85 },
+      "tf-stadium-ph-3": { src: "uploads/target-field-03.jpg",  w: 93.49, h: 183.6,  l: 0.32,   t: -73.09 },
+      "tf-stadium-ph-4": { src: "uploads/target-field-04.jpg",  w: 93.49, h: 109.52, l: 0.32,   t: -13.18 },
+      "tf-visit-ph-1":   { src: "uploads/target-field-05.jpeg", w: 93.49, h: 110.05, l: 0.32,   t: -8.39 },
+      "tf-visit-ph-2":   { src: "uploads/target-field-06.jpeg", w: 93.49, h: 110.05, l: 0.32,   t: -8.39 },
+      "tf-visit-ph-3":   { src: "uploads/target-field-07.jpeg", w: 93.49, h: 195.66, l: 0.32,   t: -31.26 },
+      "tf-visit-ph-4":   { src: "uploads/target-field-08.jpg",  w: 120.5, h: 93.19,  l: -12.15, t: 0.57 }
+    };
+    var p = LOCKED[props.id];
+    if (p) {
+      return e("div", { className: "tf-lockphoto",
+        style: { position: "relative", width: "100%", height: "100%", overflow: "hidden" } },
+        e("img", { src: p.src, alt: "",
+          style: { position: "absolute", left: p.l + "%", top: p.t + "%",
+            width: p.w + "%", height: p.h + "%", display: "block" } }));
+    }
+    const attrs = { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" };
+    if (props.src) attrs.src = props.src;
+    if (props.style) attrs.style = props.style;
+    return e("image-slot", attrs);
   }
 
   function SecHead(props) {
@@ -47,7 +70,7 @@
     return e("div", { className: "tf-pgrid" },
       slots.map(function (s, i) {
         return e("div", { className: "tf-pcell", key: i },
-          e(Slot, { id: prefix + "-" + (i + 1), placeholder: s }));
+          e(Slot, { id: prefix + "-" + (i + 1), placeholder: s.ph, src: s.src }));
       }));
   }
 
@@ -92,32 +115,28 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "tf-page tf-left", "data-screen-label": "Target Field \u2014 hero" },
         e("div", { className: "tf-hero-slot" },
-          e(Slot, { id: "target-hero", placeholder: "Drop the Target Field hero \u2014 high aerial of the open-air bowl fitted into the North Loop: freight-rail corridors, warehouse blocks, the downtown Minneapolis grid, limestone-and-glass facade" })),
+          e(Slot, { id: "target-hero", src: "uploads/target-field-00-main.jpeg", placeholder: "Drop the Target Field hero \u2014 high aerial of the open-air bowl fitted into the North Loop: freight-rail corridors, warehouse blocks, the downtown Minneapolis grid, limestone-and-glass facade" })),
         e("div", { className: "tf-hero-scrim" }),
 
-        e("img", { className: "tf-hero-logo", src: "assets/minnesota-twins-logo.svg", alt: "Minnesota Twins" }),
+        e("img", { className: "tf-hero-logo", src: "assets/twins-insignia.svg", alt: "Minnesota Twins" }),
         e("div", { className: "tf-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
-        e("div", { className: "tf-spine" }, "EST. " + D.est + "  \u00b7  MINNEAPOLIS, MINNESOTA  \u00b7  VISIT " + D.visit_order),
-
-        // a single quiet datum line — the urban seam, stated softly
-        e("div", { className: "tf-roofline" },
-          e("span", { className: "tk" }), e("span", { className: "ln" }),
-          e("span", { className: "cap" }, "OPEN-AIR \u00b7 NORTH LOOP, MINNEAPOLIS"),
-          e("span", { className: "ln" }), e("span", { className: "tk" })),
 
         e("div", { className: "tf-hero-title" },
           D.name_lines.map((ln, i) => e("h1", { className: "tf-name", "data-t": ln, key: i }, ln)),
           e("div", { className: "tf-sub" },
             e("span", { className: "txt" }, D.city + ", " + D.state)),
+          e("div", { className: "tf-openair" }, "OPEN-AIR \u00b7 NORTH LOOP, MINNEAPOLIS"),
           e("div", { className: "tf-coords" },
-            e("span", null, D.coordinates_n), e("span", { className: "dot" }, "\u00b7"),
-            e("span", null, D.coordinates_w), e("span", { className: "dot" }, "\u00b7"),
+            e("span", null, D.coordinates_n + ", " + D.coordinates_w),
+            e("span", { className: "dot" }, "\u00b7"),
             e("span", null, "ELEV. " + D.elevation))),
 
         e("div", { className: "tf-marks" },
           e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
           e("span", { className: "divln" }),
-          e("span", { className: "dv" }, D.league + " \u00b7 " + D.division))
+          e("span", { className: "dv" }, D.league + " \u00b7 " + D.division),
+          e("span", { className: "divln" }),
+          e("span", { className: "dv" }, "EST. " + D.est))
       ),
 
       /* ================= RIGHT PAGE / THE TWIN LEDGERS ================= */
@@ -147,7 +166,11 @@
               e("div", { className: "tf-ledger-h" },
                 e("span", { className: "lbl" }, "Stadium"),
                 e("span", { className: "idx" }, "I \u00b7 The Building")),
-              PhotoGrid("tf-stadium-ph", ["Kasota limestone facade", "Limestone & glass detail", "Warehouse-district edge", "Field & North Loop beyond"]),
+              PhotoGrid("tf-stadium-ph", [
+                { ph: "Kasota limestone facade", src: null },
+                { ph: "Limestone & glass detail", src: null },
+                { ph: "Warehouse-district edge", src: null },
+                { ph: "Field & North Loop beyond", src: null }]),
               e("div", { className: "tf-sd" },
                 e("div", { className: "tf-sd-facts" },
                   e(SecHead, { title: "Stadium Facts", note: "MUSEUM RECORD" }),
@@ -162,7 +185,11 @@
               e("div", { className: "tf-ledger-h" },
                 e("span", { className: "lbl" }, "Visit"),
                 e("span", { className: "idx" }, "II \u00b7 The Game")),
-              PhotoGrid("tf-visit-ph", ["Open-air bowl", "Game-day crowd", "Summer light / stands", "Downtown skyline"]),
+              PhotoGrid("tf-visit-ph", [
+                { ph: "Open-air bowl", src: null },
+                { ph: "Game-day crowd", src: null },
+                { ph: "Summer light / stands", src: null },
+                { ph: "Downtown skyline", src: null }]),
               e("div", { className: "tf-block visitinfo" },
                 e(SecHead, { title: "Visit Information", note: "FEATURED VISIT" }),
                 e("div", { className: "tf-facts" }, D.visit.map(factRow))),
@@ -188,7 +215,8 @@
           e("div", { className: "tf-context" },
             e(SecHead, { title: "Stadium Context", note: "METRODOME \u2192 TARGET FIELD" }),
             e("div", { className: "tf-prose4" },
-              D.stadium_context.map((p, i) => e("p", { key: i }, p))))
+              D.stadium_context.map((p, i) => e("p", { key: i,
+                style: i === 2 ? { letterSpacing: "-0.2px" } : undefined }, p))))
         )
       )
     );

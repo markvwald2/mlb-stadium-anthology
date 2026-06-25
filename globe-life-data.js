@@ -75,9 +75,9 @@ window.GLOBE = {
   // ---- Supporting photography (enclosure / transparency / structure / scale).
   //      NO captions per house rule — placeholder is drop guidance only. ----
   glasswall: [
-    ["globe-encl-1", "Interior bowl & roof volume \u2014 high vantage, truss spans overhead"],
-    ["globe-encl-2", "Glass outfield / curtain-wall transparency"],
-    ["globe-encl-3", "Retractable roof machinery / overhead steel structure"],
+    ["globe-encl-1", "Interior bowl & roof volume \u2014 high vantage, truss spans overhead", "images/globe/encl-1.jpg"],
+    ["globe-encl-2", "Glass outfield / curtain-wall transparency", "images/globe/encl-2.jpg"],
+    ["globe-encl-3", "Retractable roof machinery / overhead steel structure", "images/globe/encl-3.jpg"],
     ["globe-encl-4", "Concourse transparency / interior scale"]
   ],
 
@@ -122,7 +122,7 @@ window.GLOBE = {
   stadium_context: [
     "Globe Life Field replaced a relatively young ballpark because comfort and event control had become more valuable than open-air tradition in North Texas. The Ballpark in Arlington had given the Rangers a retro-classic outdoor home, but heat, revenue demands, and the growth of the surrounding entertainment district pushed the franchise toward a new retractable-roof building. This was not the usual story of an obsolete old stadium. It was replacement driven by climate, business model, and district strategy.",
     "The Arlington site remained central. The Rangers did not abandon their suburban sports-and-entertainment geography; they intensified it. Globe Life Field joined a mixed-use district where baseball, football, parking, hospitality, and year-round events could reinforce one another. The stadium\u2019s transparency and contemporary roofed form fit that newer model of controlled regional entertainment.",
-    "The design bargain is direct. Globe Life Field gains climate reliability, premium inventory, event-hosting flexibility, and comfort in a market where summer weather can shape attendance and experience. It sacrifices the open-air romance and architectural distinctiveness of its predecessor. The building is less about recreating old ballpark texture than about making baseball viable inside a larger commercial and climatic system.",
-    "Because it only opened in 2020, its meaning is still forming, but ongoing technology, premium, and event-hosting updates already point to its role. Globe Life Field matters because it shows that the retro-classic wave was not the end of stadium evolution. In some markets, the next correction was not more nostalgia or more urbanism, but more control: roof, climate, district, and revenue all under one contemporary shell."
+    "The design bargain is direct. Globe Life Field gains climate reliability, premium inventory, event-hosting flexibility, and comfort in a market where summer weather can directly shape attendance and experience. It sacrifices the open-air romance and architectural distinctiveness of its predecessor. The building is less about recreating old ballpark texture than about making baseball viable long-term inside a larger commercial and climatic system.",
+    "Because it only opened in 2020, its meaning is still forming, but ongoing technology, premium seating, hospitality, and event-hosting updates already point to its role. Globe Life Field matters because it shows that the retro-classic wave was not the end of stadium evolution. In some markets, the next correction was not more nostalgia or more urbanism, but more control: roof, climate, district, and revenue all under one contemporary shell."
   ]
 };

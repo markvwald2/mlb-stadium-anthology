@@ -187,12 +187,12 @@
   .op-ctx p:last-child { margin-bottom: 0; }
   /* per-paragraph leading: col-1 paras stay tight (diagram stays pinned); the
      post-figure paras open up to fill column 3 (direct-edit values) */
-  .op-ctx p:nth-child(4) { line-height: 1.7; }
-  .op-ctx p:nth-child(5) { line-height: 1.75; }
-  .op-ctx-fig { margin: 2px 0 30px; break-inside: avoid; -webkit-column-break-inside: avoid;
+  .op-ctx p:nth-child(4) { line-height: 1.58; letter-spacing: 0.2px; }
+  .op-ctx p:nth-child(5) { line-height: 1.58; letter-spacing: 0.2px; }
+  .op-ctx-fig { margin: -13px 0 45px; break-inside: avoid; -webkit-column-break-inside: avoid;
     display: flex; justify-content: center; }
   .op-ctx-fig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .op-ctx-fig .fd-svg { width: 100%; max-width: 178px; height: auto; display: block; }
+  .op-ctx-fig .fd-svg { width: 100%; max-width: 142px; height: auto; display: block; }
 
   /* ---- visit section ---- */
   .op-visit { flex: none; display: flex; flex-direction: column; gap: 9px; height: 248px; overflow: hidden; }

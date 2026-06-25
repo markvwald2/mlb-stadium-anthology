@@ -14,9 +14,13 @@
   const BLUE = "#003278";
 
   function Slot(props) {
-    return e("image-slot", Object.assign({
-      id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
-    }, props.style ? { style: props.style } : {}));
+    // Photos referenced as real downscaled files via `src` (not data-URLs in the
+    // sidecar) so .image-slots.state.json stays under the host writeFile cap and
+    // recrops persist as tiny framing-only {s,x,y} entries.
+    const a = { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" };
+    if (props.src) a.src = props.src;
+    if (props.style) a.style = props.style;
+    return e("image-slot", a);
   }
 
   // section eyebrow signage: structural label on a hairline
@@ -109,7 +113,7 @@
       /* ============ LEFT PAGE / INTERIOR HERO ============ */
       e("div", { className: "glf-page glf-left", "data-screen-label": "Globe Life Field hero (left)" },
         e("div", { className: "glf-hero-slot" },
-          e(Slot, { id: "globe-hero", placeholder: "Drop the Globe Life Field INTERIOR hero \u2014 high vantage looking down: roof trusses & retractable panels dominate, glass outfield wall, hanging scoreboards, the green field small & far below. Upper half = architectural airspace." })
+          e(Slot, { id: "globe-hero", src: "images/globe/hero.jpg", placeholder: "Drop the Globe Life Field INTERIOR hero \u2014 high vantage looking down: roof trusses & retractable panels dominate, glass outfield wall, hanging scoreboards, the green field small & far below. Upper half = architectural airspace." })
         ),
         e("div", { className: "glf-hero-scrim" }),
 
@@ -129,26 +133,21 @@
 
         // compact engineered signage title, lower-left
         e("div", { className: "glf-hero-title" },
-          e("div", { className: "glf-signrule top" }),
-          e("h1", { className: "glf-name" },
-            D.name_lines.map((ln, i) => e("span", { className: "ln", key: i }, ln))
-          ),
-          e("div", { className: "glf-signrule bot" }),
-          e("div", { className: "glf-sub" },
-            e("span", { className: "city" }, D.city + ", " + D.state),
-            e("span", { className: "dot" }),
-            e("span", { className: "cue" }, D.bearing_cue)
+          e("div", { className: "glf-titlerow" },
+            e("h1", { className: "glf-name" },
+              D.name_lines.map((ln, i) => e("span", { className: "ln", key: i }, ln))
+            ),
+            e("div", { className: "glf-loc" },
+              e("span", { className: "l1" }, D.city),
+              e("span", { className: "l2" }, D.state)
+            )
           )
         ),
 
-        // colophon, bottom-left
+        // colophon — league marks, bottom-right
         e("div", { className: "glf-marks" },
           e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-          e("span", { className: "div" }),
-          e("img", { className: "al", src: "assets/american-league-logo.png", alt: "American League" }),
-          e("span", { className: "div" }),
-          e("span", { className: "lg" }, "American League"),
-          e("span", { className: "dv" }, "AL West")
+          e("img", { className: "al", src: "assets/american-league-logo.png", alt: "American League" })
         )
       ),
 
@@ -186,7 +185,7 @@
 
               // data spine: enclosure fact bays, then unified Stadium Context
               e("div", { className: "glf-dataspine" },
-                e(SecHead, { title: "The Enclosure", sub: "Stadium", note: "Architecture \u00b7 Cost \u00b7 Structure \u00b7 Site \u00b7 Lifecycle" }),
+                e(SecHead, { title: "The Enclosure", sub: "Stadium", note: "Architecture \u00b7 Cost \u00b7 Structure \u00b7 Site \u00b7 Lifecycle \u00b7 Field Geometry" }),
                 e("div", { className: "glf-bays" },
                   D.bays.map(Bay),
                   e("div", { className: "glf-bay row2", style: { gridColumn: "span 3" }, key: "fg" },
@@ -208,7 +207,8 @@
                 e("div", { className: "glf-context" },
                   e(SecHead, { title: "Stadium Context" }),
                   e("div", { className: "glf-prose" },
-                    D.stadium_context.map((p, i) => e("p", { key: i }, p))
+                    e("div", { className: "glf-col" }, D.stadium_context.slice(0, 2).map((p, i) => e("p", { key: "a" + i }, p))),
+                    e("div", { className: "glf-col" }, D.stadium_context.slice(2).map((p, i) => e("p", { key: "b" + i }, p)))
                   )
                 )
               ),
@@ -217,7 +217,7 @@
               e("div", { className: "glf-rail" },
                 D.glasswall.map((s, i) =>
                   e("figure", { className: "glf-plate", key: i },
-                    e(Slot, { id: s[0], placeholder: s[1] })
+                    e(Slot, { id: s[0], placeholder: s[1], src: s[2] })
                   )
                 )
               )

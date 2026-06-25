@@ -11,7 +11,7 @@
 window.TARGET = {
   // ---- Identity (hero title block, left page) ----
   stadium_name: "Target Field",
-  name_lines: ["TARGET", "FIELD"],
+  name_lines: ["TARGET FIELD"],
   city: "Minneapolis",
   state: "Minnesota",
   est: "2010",
