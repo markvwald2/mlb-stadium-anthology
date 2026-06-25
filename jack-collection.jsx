@@ -33,17 +33,12 @@
       e("div", { className: "jc-gen-cols" },
         D.generations.map(function (g, i) {
           return e("div", { className: "jc-gen-col", key: i },
-            e("div", { className: "jc-gen-era-name", style: { color: g.accent } }, g.title),
-            e("div", { className: "jc-gen-era-desc" }, g.desc),
+            e("div", { className: "jc-gen-era-top" },
+              e("div", { className: "jc-gen-era-name", style: { color: g.accent } }, g.title),
+              e("div", { className: "jc-gen-era-desc" }, g.desc)),
             e("div", { className: "jc-gen-draw" },
               e("image-slot", { id: g.slot, shape: "rect", placeholder: "elevation drawing" })),
-            e("div", { className: "jc-gen-parks" },
-              g.parks.map(function (p, j) {
-                return e(React.Fragment, { key: j },
-                  j ? e("span", { className: "jc-gen-sep" }, " \u00b7 ") : null,
-                  e("span", { className: "jc-gen-park" }, p));
-              }),
-              g.more ? e("span", { className: "jc-gen-more" }, " \u0026 " + g.more + " others") : null));
+            e("p", { className: "jc-gen-parks", style: g.parksStyle || null }, g.parks.join(", ")));
         })));
   }
 

@@ -10,21 +10,16 @@
   {
     "type": "spread",
     "title": "Book Introduction",
-    "kind": "To be created",
+    "kind": "Front matter",
     "left": null,
     "right": {
       "title": "Book Introduction",
+      "page": "Book Intro.html",
+      "thumb": "assets/page-thumbnails/book-intro.jpg",
       "label": "Page 1",
       "rightPage": 1,
-      "kind": "Tentative page"
+      "kind": "Front matter leaf"
     }
-  },
-  {
-    "type": "spread",
-    "title": "Two-page Poster Spread",
-    "page": "Opening Spread.html",
-    "thumb": "assets/page-thumbnails/opening-spread.jpg",
-    "kind": "Poster spread"
   },
   {
     "type": "spread",
@@ -112,5 +107,12 @@
       "thumb": "assets/page-thumbnails/ballparks-visited.jpg",
       "kind": "Appendix leaf"
     }
+  },
+  {
+    "type": "spread",
+    "title": "Two-page Poster Spread",
+    "page": "Opening Spread.html",
+    "thumb": "assets/page-thumbnails/opening-spread.jpg",
+    "kind": "Poster spread"
   }
 ]

@@ -8,7 +8,7 @@
 
   window.JACK_COLLECTION = {
     headline: { a: "All 30 Current Ballparks", b: "42 Stadiums Total" },
-    deck: "Visits spanning every active Major League Baseball ballpark, plus twelve predecessor stadiums visited across four decades of baseball travel.",
+    deck: "Visits spanning every active Major League Baseball ballpark, plus twelve predecessor stadiums visited across eight decades.",
 
     // dense documentary mosaic — 12-col × 5-row grid, varied spans, even gutters.
     mosaic: [
@@ -32,21 +32,22 @@
     ],
 
     // "Stadium Eras" — six-part classification key. Each: one elevation drawing
-    // (image-slot) + a short description + a park list. Long categories show a
-    // few examples + "& N others" (per user). Counts reflect the full lists.
+    // (image-slot) + a short description + the COMPLETE park roster (user list,
+    // verbatim names & order; sum = 42). `wide:true` gives a double-width column
+    // whose roster runs in two sub-columns (Retro Classic, 16 parks).
     generations: [
-      { title: "Jewel Box & Early Concrete", desc: "Early concrete, neighborhood/urban, intimate asymmetry.", accent: RUST, slot: "jc-g1",
-        parks: ["Comiskey Park", "Fenway Park", "Tiger Stadium", "Wrigley Field", "Yankee Stadium"], more: 0 },
-      { title: "Postwar Municipal", desc: "Civic scale, public ownership, municipal identity.", accent: OLIVE, slot: "jc-g2",
-        parks: ["Cleveland Municipal Stadium", "Milwaukee County Stadium", "Memorial Stadium"], more: 0 },
-      { title: "Modern Baseball-Specific", desc: "Baseball-only, modernist, outside the retro-classic line.", accent: STEEL, slot: "jc-g3",
-        parks: ["Dodger Stadium", "Anaheim Stadium", "Kauffman Stadium", "New Comiskey", "loanDepot Park"], more: 0 },
-      { title: "Multipurpose Shared Use", desc: "Shared-use, concrete bowls, flexibility over intimacy.", accent: CHAR, slot: "jc-g4",
-        parks: ["Shea Stadium", "Riverfront Stadium", "Three Rivers", "Veterans Stadium"], more: 4 },
-      { title: "Retro Classic", desc: "Baseball-only, urban nostalgia, local texture.", accent: BRICK, slot: "jc-g5",
-        parks: ["Camden Yards", "Coors Field", "PNC Park", "Petco Park"], more: 12 },
-      { title: "Ballpark District", desc: "Mixed-use anchor, entertainment district, planned destination.", accent: NAVY, slot: "jc-g6",
-        parks: ["Nationals Park", "Target Field", "Truist Park", "Globe Life Field", "Busch Stadium"], more: 0 }
+      { title: "Jewel Box & Early Concrete", desc: "Concrete ballparks woven into local streets, where intimate asymmetry emerged from constrained urban sites.", accent: RUST, slot: "jc-g1",
+        parks: ["Wrigley Field", "Comiskey Park", "Yankee Stadium", "Tiger Stadium", "Fenway Park"] },
+      { title: "Postwar Municipal", desc: "Civic-scale stadiums, expressing public ambition through monumental form and automobile access.", accent: OLIVE, slot: "jc-g2",
+        parks: ["Milwaukee County Stadium", "Cleveland Municipal Stadium", "Memorial Stadium"] },
+      { title: "Modernist Baseball-Specific", desc: "Baseball-only modernism emphasizing geometry, sightlines, and architectural expression over historical reference.", accent: STEEL, slot: "jc-g3",
+        parks: ["Dodger Stadium", "Anaheim Stadium", "Royals Stadium", "New Comiskey Park", "Marlins Park"] },
+      { title: "Multipurpose Shared Use", desc: "Concrete bowls focused on flexibility, where adaptability and efficiency outweighed baseball intimacy.", accent: CHAR, slot: "jc-g4", parksStyle: { letterSpacing: "-0.1px" },
+        parks: ["Jack Murphy", "Shea", "Riverfront", "Three Rivers", "The Vet", "Mile High", "Tropicana Field", "Rogers Centre"] },
+      { title: "Retro Classic", desc: "Baseball-only parks reintroducing asymmetry, local materials, urban context, and renewed sense of place.", accent: BRICK, slot: "jc-g5", wide: true, parksStyle: { fontSize: "10px", letterSpacing: "-0.1px" },
+        parks: ["Coors", "Progressive", "Comerica", "Miller", "Safeco", "Petco", "GABP", "PNC", "Citi", "Yankee", "Citizens Bank", "Camden", "Minute Maid", "Chase Field", "Sutter Health", "Oracle"] },
+      { title: "Contemporary Mixed Use", desc: "Ballparks anchoring mixed-use districts, where baseball became one element of a year-round entertainment destination.", accent: NAVY, slot: "jc-g6",
+        parks: ["Busch Stadium", "SunTrust Park", "Nationals Park", "Globe Life Field", "Target Field"] }
     ]
   };
 })();
