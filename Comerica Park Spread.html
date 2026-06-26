@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Comerica Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #221F1B;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* =====================================================================
+     "THE CIVIC GATEWAY" — Comerica Park façade spread
+     .cp-  ·  brick piers as the editorial grid  ·  steel lintels  ·
+     limestone caps  ·  warm ivory museum paper  ·  restrained Detroit orange
+     ===================================================================== */
+  .cp-spread {
+    position: relative; width: 2550px; height: 1088px; overflow: hidden;
+    --paper: #EAE2D0; --paper-2: #E3DAC4; --panel: #EFE8D8; --paper-hi: #F4EEDF;
+    --ink: #221F1B; --ink-2: #544C40; --ink-3: #8C8270;
+    --rule: #CFC4AC; --rule-2: #B4A88C;
+    --navy: #0C2340; --navy-2: #20436B; --orange: #C8501C; --orange-2: #D9692E;
+    --brick: #884A38; --brick-d: #6F3B2C; --mortar: #C7B891;
+    --stone: #E9E0C9; --stone-2: #DCD1B4; --stone-line: #C2B596;
+    --steel: #28282D; --steel-2: #3B3B41; --steel-hi: #54545C; --rivet: #6E6E76;
+    --brick-tex: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40'%3E%3Crect width='60' height='40' fill='%23884a38'/%3E%3Cg fill='%23bda984' opacity='0.85'%3E%3Crect width='60' height='2.4'/%3E%3Crect y='20' width='60' height='2.4'/%3E%3Crect x='28' width='2.4' height='20'/%3E%3Crect x='58' width='2.4' height='20'/%3E%3Crect x='13' y='20' width='2.4' height='20'/%3E%3Crect x='43' y='20' width='2.4' height='20'/%3E%3C/g%3E%3Cg fill='%23000' opacity='0.10'%3E%3Crect y='2.4' width='60' height='2' /%3E%3Crect y='22.4' width='60' height='2'/%3E%3C/g%3E%3C/svg%3E");
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.36' intercept='0.70'/%3E%3CfeFuncG type='linear' slope='0.36' intercept='0.70'/%3E%3CfeFuncB type='linear' slope='0.36' intercept='0.70'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper); font-family: "Spectral", Georgia, serif; color: var(--ink);
+    text-rendering: geometricPrecision; font-kerning: normal;
+  }
+  .cp-page { position: absolute; top: 0; height: 1088px; }
+  .cp-left  { left: 0;     width: 1275px; background: #121319; overflow: hidden; }
+  .cp-right { left: 1275px; width: 1275px; background: var(--paper); }
+  /* center page split — flat hairline only, no fake fold/binding */
+  .cp-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
+    background: rgba(0,0,0,.22); z-index: 9; pointer-events: none; }
+
+  /* =================== LEFT / ARRIVAL HERO =================== */
+  .cp-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .cp-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .cp-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(0deg, rgba(8,8,11,.95) 0%, rgba(8,8,11,.70) 20%, rgba(8,8,11,.12) 40%, rgba(8,8,11,0) 54%),
+      linear-gradient(90deg, rgba(8,8,11,.55) 0%, rgba(8,8,11,.14) 28%, rgba(8,8,11,0) 48%); }
+
+  /* masthead — quiet publisher marks top-right */
+  .cp-mast { position: absolute; top: 52px; right: 60px; z-index: 5; display: flex; align-items: center; gap: 13px; }
+  .cp-logo-well { width: 54px; height: 54px; border: 1px solid rgba(0,0,0,.25); position: relative;
+    display: flex; align-items: center; justify-content: center;
+    background: #F2ECDB; box-shadow: 0 2px 10px rgba(0,0,0,.4); }
+  .cp-logo-well::before, .cp-logo-well::after { content: ""; position: absolute; width: 6px; height: 6px;
+    border-color: var(--orange); border-style: solid; }
+  .cp-logo-well::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .cp-logo-well::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+  .cp-logo-well img { max-width: 38px; max-height: 38px; width: auto; height: auto; display: block; }
+  .cp-mast-folio { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    letter-spacing: .26em; text-transform: uppercase; color: #C9C2B2; text-align: right; line-height: 1.7; }
+  .cp-mast-folio .sub { display: block; color: #8E887C; font-size: 10px; letter-spacing: .2em; }
+
+  /* engraved title block bottom-left */
+  .cp-hero-block { position: absolute; left: 62px; bottom: 70px; right: 150px; z-index: 5; }
+  .cp-kicker { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px;
+    letter-spacing: .26em; text-transform: uppercase; color: var(--orange-2); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 13px; }
+  .cp-kicker::before { content: ""; width: 32px; height: 1.5px; background: var(--orange-2); display: block; }
+  .cp-name { margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
+    font-size: 150px; line-height: .84; letter-spacing: .012em; text-transform: uppercase; color: #F1EAD6;
+    text-shadow: 0 2px 26px rgba(0,0,0,.55); white-space: nowrap; }
+  .cp-loc { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+  .cp-loc .bar { width: 58px; height: 3px; background: var(--orange); display: block; flex: none; }
+  .cp-loc .txt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 27px; letter-spacing: .26em;
+    text-transform: uppercase; color: #ECE4D0; text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+  .cp-loc .txt .dot { color: var(--orange-2); margin: 0 4px; }
+  .cp-submeta { margin-top: 16px; font-family: "Oswald", sans-serif; font-weight: 400; font-size: 14.5px;
+    letter-spacing: .2em; text-transform: uppercase; color: #B8B1A1; }
+  .cp-submeta .s { color: #6E685E; margin: 0 12px; }
+
+  /* metadata badge rail */
+  .cp-badges { margin-top: 28px; display: flex; align-items: center; gap: 0; }
+  .cp-dmed { width: 58px; height: 58px; flex: none; display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(0,0,0,.25); margin-right: 22px; background: #F1EAD6;
+    box-shadow: 0 2px 10px rgba(0,0,0,.4); position: relative; }
+  .cp-dmed::before, .cp-dmed::after { content: ""; position: absolute; width: 6px; height: 6px;
+    border-color: var(--orange); border-style: solid; }
+  .cp-dmed::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .cp-dmed::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+  .cp-dmed img { height: 40px; width: auto; display: block; }
+  .cp-badge { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .14em;
+    text-transform: uppercase; color: #E7DFCB; padding: 0 20px; border-left: 1px solid rgba(236,228,208,.22);
+    line-height: 1.35; }
+  .cp-badge:first-of-type { border-left: 0; padding-left: 0; }
+  .cp-badge .k { display: block; font-weight: 400; font-size: 10px; letter-spacing: .2em; color: #8E887C; }
+  .cp-badge.v .n { color: var(--orange-2); }
+
+  /* =================== RIGHT / FAÇADE PAGE =================== */
+  .cp-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
+  .cp-facade { position: absolute; top: 36px; right: 37px; bottom: 36px; left: 38px; z-index: 2;
+    display: flex; flex-direction: column; }
+
+  /* top steel girder / lintel */
+  .cp-girder { height: 30px; flex: none; position: relative;
+    background: linear-gradient(180deg, var(--steel-2) 0%, var(--steel) 52%, #1f1f23 100%);
+    border-top: 1px solid var(--steel-hi); border-bottom: 1px solid #141417; }
+  .cp-girder::before { content: ""; position: absolute; left: 14px; right: 14px; top: 50%; transform: translateY(-50%);
+    height: 7px; background-image: radial-gradient(circle, var(--rivet) 1.6px, transparent 2.1px);
+    background-size: 28px 7px; background-position: 0 center; opacity: .9; }
+
+  /* façade grid: brick piers + three bays (photos row over content row) */
+  .cp-grid { flex: 1; display: grid;
+    grid-template-columns: 36px 1fr 28px 1.12fr 28px 1fr 36px;
+    grid-template-rows: 206px 1fr; min-height: 0; }
+  .cp-pier { grid-row: 1 / 3; position: relative;
+    background-color: var(--brick); background-image: var(--brick-tex); background-size: 60px 40px;
+    border-left: 1px solid rgba(255,255,255,.06); border-right: 1px solid var(--brick-d); }
+  /* limestone cap atop each pier + engraved keystone medallion at the photo sill */
+  .cp-pier .cap-top { position: absolute; left: -1px; right: -1px; top: 0; height: 14px;
+    background: linear-gradient(180deg, var(--stone) 0%, var(--stone-2) 100%);
+    border-bottom: 1px solid var(--stone-line); }
+  .cp-pier .keystone { position: absolute; left: 50%; top: 206px; transform: translate(-50%, -50%);
+    width: 40px; height: 40px; background: linear-gradient(180deg, var(--stone) 0%, var(--stone-2) 100%);
+    border: 1px solid var(--stone-line); display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 1px 0 rgba(255,255,255,.4) inset; z-index: 3; }
+  .cp-pier .keystone img { height: 30px; width: auto; display: block; }
+  .cp-pier .cap-sill { position: absolute; left: -1px; right: -1px; top: 192px; height: 10px;
+    background: linear-gradient(180deg, var(--stone-2) 0%, var(--stone-line) 100%); }
+
+  /* photo bays — thin black steel framing, no captions */
+  .cp-photobay { grid-row: 1; position: relative; padding: 8px 6px; }
+  .cp-photo { position: absolute; inset: 8px 6px; border: 2px solid #16161A; background: #cfc6b0;
+    box-shadow: inset 0 0 0 1px rgba(244,238,223,.18), 0 1px 6px rgba(0,0,0,.25); overflow: hidden; }
+  .cp-photo image-slot { width: 100%; height: 100%; display: block; }
+
+  /* content bays — clean museum paper, engraved labels, no cards */
+  .cp-contentbay { grid-row: 2; position: relative; padding: 8px 16px 12px;
+    background: var(--panel); min-width: 0; display: flex; flex-direction: column; overflow: hidden; }
+  .cp-contentbay.mid { background: var(--paper-hi); }
+  .cp-contentbay.vis { justify-content: flex-start; }
+  .cp-vtop { flex: none; }
+
+  .cp-secthead { display: flex; align-items: center; gap: 9px; flex: none; margin-bottom: 12px; }
+  .cp-secthead .tk { width: 8px; height: 8px; background: var(--orange); flex: none; transform: rotate(45deg); }
+  .cp-secthead .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--navy); white-space: nowrap; }
+  .cp-secthead .ln { flex: 1; height: 1px; background: var(--rule-2); }
+  .cp-secthead .ix { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10px;
+    letter-spacing: .1em; color: var(--ink-3); flex: none; }
+
+  /* engraved fact table */
+  .cp-facts { width: 100%; border-collapse: collapse; flex: none; }
+  .cp-facts tr { border-bottom: 1px solid var(--rule); }
+  .cp-facts tr:last-child { border-bottom: 0; }
+  .cp-facts th { text-align: left; vertical-align: baseline; width: 92px; padding: 3.6px 10px 3.6px 0;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .cp-facts td { vertical-align: baseline; padding: 3.6px 0; font-family: "Spectral", serif;
+    font-size: 11.5px; line-height: 1.34; color: var(--ink); }
+  .cp-facts td b { color: var(--navy); font-weight: 600; }
+
+  /* sub-block header (engraved) */
+  .cp-subhd { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-2); margin: 14px 0 8px; display: flex; align-items: center; gap: 8px; }
+  .cp-subhd::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+  /* construction / lifecycle mini-grid */
+  .cp-lifecycle { display: grid; grid-template-columns: 1fr 1fr; gap: 0; flex: none;
+    border-top: 1px solid var(--rule-2); border-bottom: 1px solid var(--rule-2); }
+  .cp-lc { padding: 6px 12px 6px 0; border-left: 1px solid var(--rule); padding-left: 12px; }
+  .cp-lc:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .cp-lc:nth-child(1), .cp-lc:nth-child(2) { border-bottom: 1px solid var(--rule); }
+  .cp-lc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .cp-lc .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px; color: var(--ink); margin-top: 3px; }
+
+  /* engraved note line */
+  .cp-note { font-family: "Spectral", serif; font-size: 12px; line-height: 1.4; color: var(--ink-2);
+    margin-top: 8px; }
+  .cp-note .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 2px; }
+
+  /* classification chips */
+  .cp-class { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 1px solid var(--ink); padding-top: 10px; }
+  .cp-chip { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;
+    padding: 0 4px; border-left: 1px solid var(--rule); }
+  .cp-chip:first-child { border-left: 0; }
+  .cp-chip .ico { width: 24px; height: 24px; stroke: var(--navy); fill: none; }
+  .cp-chip .cl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .02em;
+    text-transform: uppercase; color: var(--ink-2); line-height: 1.3; }
+
+  /* center bay — stadium context essay (museum wall panel) */
+  .cp-ctx { flex: 1; min-height: 0; }
+  .cp-ctx p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 11.5px; line-height: 1.42;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .cp-ctx p:last-child { margin-bottom: 0; }
+  .cp-dropcap { font-family: "Anton", sans-serif; font-weight: 400; font-size: 40px; float: left;
+    line-height: .7; padding: 4px 8px 0 0; color: var(--orange); }
+  .cp-ctxfig { margin: 3px 0 10px; height: 168px; position: relative; border: 2px solid #16161A;
+    background: #cfc6b0; box-shadow: inset 0 0 0 1px rgba(244,238,223,.18), 0 1px 6px rgba(0,0,0,.2);
+    overflow: hidden; }
+  .cp-ctxfig image-slot { width: 100%; height: 100%; display: block; }
+  .cp-ctx-foot { margin-top: 9px; padding-top: 9px; border-top: 1px solid var(--rule);
+    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-3); display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    white-space: nowrap; }
+  .cp-ctx-foot .o { color: var(--orange); }
+
+  /* right bay — visit section */
+  .cp-result { flex: none; }
+  .cp-result .when { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    letter-spacing: .02em; color: var(--navy); margin-bottom: 2px; }
+  .cp-result .gt { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 10px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
+  .cp-scorerow { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 5px 0; border-bottom: 1px solid var(--rule); }
+  .cp-scorerow:first-of-type { border-top: 1px solid var(--rule); }
+  .cp-scorerow .tm { font-family: "Anton", sans-serif; font-weight: 400; font-size: 27px; line-height: 1;
+    letter-spacing: .01em; color: var(--ink-2); }
+  .cp-scorerow .tm small { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 10px;
+    letter-spacing: .12em; color: var(--ink-3); display: block; line-height: 1; margin-top: 3px; }
+  .cp-scorerow .sc { font-family: "Anton", sans-serif; font-size: 28px; line-height: 1; color: var(--ink-2);
+    font-variant-numeric: tabular-nums; }
+  .cp-scorerow.win .tm { color: var(--navy); }
+  .cp-scorerow.win .sc { color: var(--orange); }
+  .cp-matchup { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 10px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--ink-3); margin-top: 8px; }
+
+  /* line score */
+  .cp-line { width: 100%; border-collapse: collapse; table-layout: fixed; font-variant-numeric: tabular-nums;
+    flex: none; margin-top: 4px; }
+  .cp-line th, .cp-line td { font-family: "Space Mono", monospace; font-size: 10px; text-align: center;
+    padding: 2px 0; color: var(--ink-2); border-bottom: 1px solid var(--rule); }
+  .cp-line thead th { color: var(--ink-3); font-weight: 400; border-bottom: 1px solid var(--rule-2); }
+  .cp-line td.tm, .cp-line th.tm { width: 34px; text-align: left; font-weight: 700; color: var(--ink);
+    font-family: "Oswald", sans-serif; letter-spacing: .04em; }
+  .cp-line tr.home td.tm { color: var(--navy); }
+  .cp-line .sep { border-left: 2px solid var(--orange); }
+  .cp-line .rhe { font-weight: 700; color: var(--ink); }
+  .cp-line tbody tr:last-child td { border-bottom: 0; }
+
+  .cp-decis { display: flex; flex-wrap: wrap; gap: 3px 14px; margin-top: 8px; flex: none; }
+  .cp-decis .d { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 10px; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--ink-2); }
+  .cp-decis .d b { color: var(--navy); font-weight: 600; }
+  .cp-decis .d .w { color: var(--orange); }
+
+  /* visit detail rows */
+  .cp-vrows { margin-top: 13px; flex: none; }
+  .cp-vrow { display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+    padding: 5.5px 0; border-bottom: 1px dotted var(--rule-2); }
+  .cp-vrow:last-child { border-bottom: 0; }
+  .cp-vrow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .07em;
+    text-transform: uppercase; color: var(--ink-3); }
+  .cp-vrow .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px; color: var(--ink); text-align: right; }
+  .cp-vrow .v.navy { color: var(--navy); }
+
+  /* weather + field diagram footer of the visit bay */
+  .cp-vbottom { margin-top: auto; display: flex; flex-direction: column; }
+  .cp-vfoot { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center;
+    border-top: 1px solid var(--ink); padding-top: 11px; flex: none; }
+  .cp-weather { display: flex; flex-direction: column; gap: 10px; }
+  .cp-wx { display: flex; flex-direction: row; align-items: center; gap: 9px; text-align: left; }
+  .cp-wx .ico { width: 20px; height: 20px; flex: none; stroke: var(--navy); fill: none; }
+  .cp-wx .val { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: var(--ink); line-height: 1; }
+  .cp-wx .lab { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 10px; letter-spacing: .02em;
+    text-transform: uppercase; color: var(--ink-3); margin-top: 2px; }
+  .cp-diagram { display: flex; flex-direction: column; align-items: center; }
+  .cp-diagram svg { max-height: 152px; }
+  .cp-dims { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10px; color: var(--navy);
+    margin-top: 4px; letter-spacing: .01em; text-align: center; }
+  .cp-diagram .dh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--ink-3); align-self: stretch; text-align: center; margin-bottom: 2px; }
+
+  /* limestone base footer band */
+  .cp-base { flex: none; position: relative; margin-top: 0;
+    background: linear-gradient(180deg, var(--stone) 0%, var(--stone-2) 100%);
+    border-top: 3px solid var(--steel); display: flex; flex-direction: column; }
+  .cp-base-grid { display: grid; grid-template-columns: 1.15fr 1.25fr 1fr; }
+  .cp-base-rail { height: 6px; flex: none;
+    background: linear-gradient(180deg, var(--steel-2), var(--steel)); border-top: 1px solid var(--steel-hi); }
+  .cp-bcell { padding: 17px 24px; border-left: 1px solid var(--stone-line); display: flex; flex-direction: column;
+    justify-content: center; min-width: 0; }
+  .cp-bcell:first-child { border-left: 0; }
+  .cp-bcell .bk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 7px; }
+  .cp-bcell .bv { font-family: "Spectral", serif; font-size: 13px; line-height: 1.45; color: var(--ink); }
+  .cp-bcell .bv b { color: var(--navy); font-weight: 600; }
+  .cp-bcell.coords .row { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px; color: var(--ink);
+    display: flex; align-items: center; gap: 10px; }
+  .cp-bcell.coords .row .d { color: var(--orange); }
+  .cp-bcell.coords .el { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 11px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-2); margin-top: 6px; }
+  .cp-bcell.cap { align-items: flex-start; }
+  .cp-bcell.cap .big { font-family: "Anton", sans-serif; font-weight: 400; font-size: 44px; line-height: .9;
+    color: var(--navy); letter-spacing: .01em; }
+  .cp-bcell.cap .open { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 10px; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--ink-2); margin-top: 5px; }
+  .cp-bcell.cap .open b { color: var(--orange); font-weight: 600; }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#EAE2D0"/>
+      <g fill="#884a38">
+        <rect x="16" y="20" width="11" height="60"/>
+        <rect x="44" y="20" width="11" height="60"/>
+        <rect x="73" y="20" width="11" height="60"/>
+      </g>
+      <rect x="14" y="16" width="72" height="6" fill="#28282d"/>
+      <rect x="38" y="42" width="24" height="16" fill="#0C2340"/>
+      <rect x="40" y="78" width="20" height="4" fill="#C8501C"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="comerica-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="comerica-field.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="comerica-spread.jsx"></script>
+  <script type="text/babel" src="comerica-app.jsx"></script>
+</body>
+</html>

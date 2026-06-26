@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nationals Park — Spread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #2b2b2e;
+    font-family: "Spectral", Georgia, serif;
+    color: #20201E;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ----------------------------------------------------------------
+     NATIONALS PARK — "Civic Grid / River Edge"
+     Blurb Large Landscape, two-page spread. 2550 x 1088 px @ 100ppi.
+     Center split x=1275. Left = full-bleed hero. Right = limestone civic grid.
+     ---------------------------------------------------------------- */
+  .np-spread {
+    position: relative;
+    width: 2550px; height: 1088px;
+    overflow: hidden;
+    --ink: #20201E;           /* charcoal */
+    --ink-2: #56544E;         /* steel gray */
+    --ink-3: #8C887C;         /* light label gray */
+    --paper: #ECE6D9;         /* warm limestone white */
+    --paper-hi: #F3EEE2;
+    --paper-lo: #E2DBCB;
+    --limestone: #E4DECF;     /* pale limestone field (context panel) */
+    --rule: #CFC9BA;
+    --rule-strong: #ABA593;
+    --navy: #14264B;          /* Nationals navy — title + structure accent */
+    --navy-2: #25395F;
+    --red: #AB0003;           /* Nationals red — restrained accent only */
+    --river: #5E7C8C;         /* muted Anacostia river blue */
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.35' intercept='0.68'/%3E%3CfeFuncG type='linear' slope='0.35' intercept='0.67'/%3E%3CfeFuncB type='linear' slope='0.35' intercept='0.63'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background: var(--paper);
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+  }
+
+  .np-page { position: absolute; top: 0; height: 1088px; }
+  .np-left  { left: 0; width: 1275px; background: #14171b; overflow: hidden; }
+  .np-right { left: 1275px; width: 1275px; background: var(--paper); }
+  .np-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 320px 224px; opacity: .42; mix-blend-mode: multiply; }
+  .np-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px; background: rgba(0,0,0,.16); z-index: 6; pointer-events: none; }
+
+  /* ============ LEFT / HERO ============ */
+  .np-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .np-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
+  .np-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(243,240,232,.52) 0%, rgba(243,240,232,.12) 16%, rgba(243,240,232,0) 30%),
+      linear-gradient(0deg, rgba(10,12,16,.90) 0%, rgba(10,12,16,.58) 13%, rgba(10,12,16,.08) 28%, rgba(10,12,16,0) 40%);
+  }
+
+  /* hero title — civic signage, top-left, anchored to architecture */
+  .np-hero-head { position: absolute; left: 60px; top: 58px; right: 60px; z-index: 5; }
+  .np-hero-rule { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .np-hero-rule .bar { width: 132px; height: 4px; background: var(--red); flex: none; }
+  .np-hero-rule .star { color: var(--red); font-size: 18px; line-height: 1; }
+  .np-hero-name {
+    margin: 0; font-family: "Oswald", sans-serif; font-weight: 600;
+    font-size: 134px; line-height: .9; letter-spacing: .005em; text-transform: uppercase;
+    color: var(--navy);
+  }
+  .np-hero-sub { display: flex; align-items: center; gap: 28px; margin-top: 16px; }
+  .np-hero-sub .city {
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 30px;
+    letter-spacing: .42em; text-transform: uppercase; color: var(--navy-2);
+  }
+  .np-hero-sub .coords {
+    font-family: "Space Mono", monospace; font-weight: 400; font-size: 16px;
+    letter-spacing: .04em; color: var(--ink-2); padding-left: 26px; border-left: 1px solid rgba(20,38,75,.3);
+  }
+
+  /* hero bottom metadata strip — engraved labels on dark scrim */
+  .np-meta {
+    position: absolute; left: 60px; right: 60px; bottom: 56px; z-index: 5;
+    display: flex; align-items: stretch;
+    border-top: 1px solid rgba(236,230,217,.34);
+    padding-top: 16px;
+  }
+  .np-meta .cell { padding: 0 34px; border-left: 1px solid rgba(236,230,217,.18);
+    display: flex; flex-direction: column; justify-content: center; gap: 6px; }
+  .np-meta .cell:first-child { border-left: 0; padding-left: 0; }
+  .np-meta .cell.addr { margin-left: auto; border-left: 1px solid rgba(236,230,217,.18); align-items: flex-end; text-align: right; }
+  .np-meta .k { font-family: "Oswald", sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .26em; text-transform: uppercase; color: rgba(214,208,193,.72); }
+  .np-meta .v { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; color: #ECE6D9; }
+  .np-meta .v.mono { font-family: "Space Mono", monospace; font-weight: 400; font-size: 14px; letter-spacing: .02em; text-transform: none; }
+
+  /* ============ RIGHT PAGE ============ */
+  .np-rp { position: absolute; inset: 0; padding: 38px 40px 42px 42px; display: flex; flex-direction: column; gap: 11px; z-index: 2; }
+
+  /* top civic ribbon — district plan datum line */
+  .np-ribbon { display: flex; align-items: stretch; border-top: 2px solid var(--navy); border-bottom: 1px solid var(--rule);
+    flex: none; }
+  .np-ribbon .rc { padding: 9px 16px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 0; }
+  .np-ribbon .rc:first-child { border-left: 0; padding-left: 2px; }
+  .np-ribbon .rc.team { flex: 1.5 1 0; }
+  .np-ribbon .rc.tight { flex: 0.7 1 0; }
+  .np-ribbon .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+  .np-ribbon .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; color: var(--navy); line-height: 1.05; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* main region — tall context panel | stacked right column */
+  .np-main { flex: 1; display: grid; grid-template-columns: 432px minmax(0, 1fr); gap: 0; min-height: 0; }
+
+  /* context limestone panel — spans full page height */
+  .np-context { background: var(--limestone); padding: 24px 30px 24px 26px; display: flex; flex-direction: column; position: relative;
+    border-right: 1px solid var(--rule); }
+  .np-context::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--grain); background-size: 260px 182px; opacity: .5; mix-blend-mode: multiply; }
+  .np-ctx-body { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+  .np-ctx-paras { display: flex; flex-direction: column; gap: 13px; flex: none; }
+  .np-ctx-body p { margin: 0; font-family: "Spectral", serif; font-size: 14px; line-height: 1.48;
+    color: var(--ink); text-align: justify; hyphens: auto; }
+  .np-ctx-photo { position: relative; margin-top: 20px; width: 100%; flex: 1; min-height: 150px; }
+  .np-ctx-photo image-slot { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 1px solid var(--rule-strong); }
+
+  /* section heading — civic small caps */
+  .np-modh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--navy); padding-bottom: 6px; margin-bottom: 11px;
+    border-bottom: 1.5px solid var(--navy); display: flex; align-items: center; justify-content: space-between; }
+  .np-modh .ix { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .06em; color: var(--red); }
+
+  /* right column of main region — full vertical stack */
+  .np-rmain { padding-left: 30px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; min-height: 0; min-width: 0; }
+
+  /* facts + diagram + identity row */
+  .np-specs { display: grid; grid-template-columns: 1fr 224px 82px; gap: 0; flex: none; }
+  .np-facts { padding-right: 24px; }
+  .np-catalog { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 20px; }
+  .np-cat { display: flex; flex-direction: column; gap: 3px; }
+  .np-cat.wide { grid-column: 1 / -1; }
+  .np-cat .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); }
+  .np-cat .v { font-family: "Spectral", serif; font-weight: 600; font-size: 17px; line-height: 1.12; color: var(--ink); }
+  .np-cat .vn { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12.5px; color: var(--ink-2); margin-top: 1px; }
+  .np-cat .dim { display: flex; gap: 22px; }
+  .np-cat .dim .di { display: flex; align-items: baseline; gap: 7px; }
+  .np-cat .dim .di .dk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .08em; color: var(--ink-3); }
+  .np-cat .dim .di .dv { font-family: "Spectral", serif; font-weight: 600; font-size: 17px; color: var(--ink); }
+
+  /* diagram cell */
+  .np-diagram { border-left: 1px solid var(--rule); padding: 0 10px; display: flex; flex-direction: column; }
+  .np-fp { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; justify-content: flex-end; }
+  .np-fp .fd-wrap { width: 100%; display: flex; justify-content: center; }
+  .np-fp .fd-svg { width: 182px; height: 182px; max-width: 100%; display: block; }
+  .np-fp figcaption { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--ink-2); }
+
+  /* identity logos */
+  .np-identity { border-left: 1px solid var(--rule); padding-left: 16px; display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .np-identity .ih { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); align-self: stretch; text-align: center; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .np-identity .logo-w { width: 64px; height: auto; display: block; }
+  .np-identity .logo-mlb { width: 40px; height: auto; display: block; }
+  .np-identity .logo-nl { width: 52px; height: auto; display: block; }
+  .np-identity .iwrap { display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 1; justify-content: flex-end; }
+
+  /* photos row — civic blocks */
+  .np-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; flex: none; }
+  .np-pcard { position: relative; aspect-ratio: 1 / 1; }
+  .np-pcard image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .np-pcard .frame {
+    position: absolute; inset: 0; border: 1px solid var(--rule-strong);
+    background: linear-gradient(155deg, var(--paper-hi) 0%, var(--paper-lo) 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px;
+    color: var(--ink-3); overflow: hidden;
+  }
+  .np-pcard .frame::before { content: ""; position: absolute; inset: 0; background-image: var(--grain);
+    background-size: 150px 105px; opacity: .5; mix-blend-mode: multiply; }
+  .np-pcard .ph-ico { position: relative; opacity: .42; }
+  .np-pcard .cap { position: relative; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); }
+  .np-pcard .tag { position: absolute; left: 0; bottom: -22px; font-family: "Oswald", sans-serif; font-weight: 600;
+    font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* ============ VISIT BAND ============ */
+  .np-visit { flex: none; display: flex; flex-direction: column; }
+  .np-visit-grid { display: grid; grid-template-columns: 224px minmax(0,1fr) 150px; gap: 0; margin-top: 10px; }
+  .np-vg-col { padding: 0 20px; }
+  .np-vg-col:first-child { padding-left: 0; }
+  .np-vg-col:last-child { padding-right: 0; border-left: 1px solid var(--rule); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .np-vscore { border-left: 1px solid var(--rule); }
+
+  .np-veyebrow { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10.5px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--ink-3); line-height: 1.5; }
+  .np-vresult { font-family: "Spectral", serif; font-weight: 700; font-size: 20px; color: var(--ink); margin-top: 7px; line-height: 1; white-space: nowrap; }
+  .np-vrows { margin-top: 9px; display: flex; flex-direction: column; }
+  .np-vrow { display: grid; grid-template-columns: 72px 1fr; gap: 8px; padding: 3px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+  .np-vrow:first-child { border-top: 0; }
+  .np-vrow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  .np-vrow .v { font-family: "Spectral", serif; font-weight: 600; font-size: 13.5px; color: var(--ink); line-height: 1.25; }
+
+  /* line score — civic information panel */
+  .np-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
+  .np-box th, .np-box td { text-align: center; font-size: 13px; font-weight: 400; padding: 6px 0; color: var(--ink);
+    border-bottom: 1px solid var(--rule); }
+  .np-box thead th { color: var(--ink-3); font-weight: 500; font-size: 11px; border-bottom: 1.5px solid var(--navy); }
+  .np-box td.tm, .np-box th.tm { text-align: left; font-weight: 600; font-size: 13px; letter-spacing: .06em;
+    color: var(--ink); padding-right: 16px; width: 1%; white-space: nowrap; }
+  .np-box .rhe { font-weight: 700; }
+  .np-box th.sep, .np-box td.sep { border-left: 1.5px solid var(--navy); padding-left: 9px; }
+  .np-box th.spc, .np-box td.spc { width: 16px; padding: 0; }
+  .np-box thead th:last-child, .np-box tbody td:last-child,
+  .np-box thead th:nth-last-child(2), .np-box tbody td:nth-last-child(2),
+  .np-box thead th.sep, .np-box tbody td.sep { width: 34px; }
+  .np-box thead th:last-child, .np-box tbody td:last-child { padding-right: 8px; }
+  .np-box tbody tr:last-child td { border-bottom: 1.5px solid var(--navy); }
+  .np-box .away-r { color: var(--red); }
+  .np-box tbody td.tm { position: relative; }
+  .np-pitchers { display: flex; flex-wrap: wrap; gap: 6px 28px; margin-top: 12px; }
+  .np-pitchers .pi { display: flex; align-items: baseline; gap: 8px; }
+  .np-pitchers .pi .k { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .1em; color: var(--red); }
+  .np-pitchers .pi .v { font-family: "Spectral", serif; font-size: 13px; color: var(--ink); }
+  .np-pitchers .pi.matchup .v em { font-style: italic; color: var(--ink-2); }
+
+  /* team logos beneath the box score */
+  .np-logos-vs { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 16px; }
+  .np-logos-vs .tlogo { height: 46px; width: auto; display: block; flex: none; }
+  .np-logos-vs .vs { font-family: "Spectral", serif; font-style: italic; font-size: 15px; color: var(--ink-2); flex: none; }
+  .np-logos-vs .tn { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); line-height: 1.3; flex: none; }
+  .np-logos-vs .tn-l { text-align: right; }
+  .np-logos-vs .tn-r { text-align: left; }
+
+  /* pitching matchup / results column */
+  .np-vg-col.np-pitch { align-items: flex-start; justify-content: flex-start; gap: 0; padding-right: 0; }
+  .np-pitch .ph { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 11px; }
+  .np-pitch .np-pi-rows { display: flex; flex-direction: column; gap: 7px; width: 100%; }
+  .np-pitch .pr { display: flex; align-items: baseline; gap: 9px; }
+  .np-pitch .pr .ab { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: .08em; color: var(--ink-3); width: 28px; flex: none; }
+  .np-pitch .pr .nm { font-family: "Spectral", serif; font-weight: 600; font-size: 13px; color: var(--ink); }
+  .np-pitch .np-pi-dec { display: flex; flex-direction: column; gap: 6px; margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); width: 100%; }
+  .np-pitch .pd { display: flex; align-items: baseline; gap: 9px; }
+  .np-pitch .pd .k { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .1em; color: var(--red); width: 28px; flex: none; }
+  .np-pitch .pd .v { font-family: "Spectral", serif; font-size: 13px; color: var(--ink); }
+  .np-pitch .pd .v.dash { color: var(--ink-3); }
+
+  /* ============ CIVIC RECORD LEDGER ============ */
+  .np-ledger { flex: none; }
+  .np-lgrid { display: grid; grid-template-columns: 1fr 1.78fr 1.02fr 1.7fr; gap: 0; margin-top: 12px; }
+  .np-lgrid .lc { padding: 0 24px; border-left: 1px solid var(--rule); min-width: 0; }
+  .np-lgrid .lc:first-child { padding-left: 0; border-left: 0; }
+  .np-lgrid .lc:last-child { padding-right: 0; }
+  .np-lgrid .lc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+  .np-lgrid .lc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 11.5px; line-height: 1.32; color: var(--ink); }
+  .np-lgrid .lc.cost .v.big { font-family: "Spectral", serif; font-weight: 700; font-size: 21px; line-height: 1; }
+  .np-lgrid .lc.cost .v.adj { font-family: "Space Mono", monospace; font-weight: 400; font-size: 10.5px; letter-spacing: .01em; color: var(--ink-2); margin-top: 5px; }
+
+  /* civic colophon — single-line footer beside the context column */
+  .np-colophon { flex: none; margin-top: 0; padding-top: 11px; border-top: 1px solid var(--rule);
+    display: flex; align-items: baseline; gap: 10px; white-space: nowrap;
+    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  .np-colophon .lead { color: var(--navy); font-weight: 700; }
+  .np-colophon .sep { color: var(--red); }
+
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#ECE6D9"/>
+      <rect x="14" y="20" width="72" height="4" fill="#AB0003"/>
+      <g stroke="#14264B" stroke-width="3" fill="none">
+        <path d="M14 70 Q34 60 50 66 T86 62"/>
+      </g>
+      <rect x="14" y="34" width="40" height="6" fill="#14264B"/>
+      <rect x="14" y="46" width="28" height="6" fill="#14264B"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="nationals-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="nationals-protractor.jsx"></script>
+  <script type="text/babel" src="print-page.jsx"></script>
+  <script type="text/babel" src="nationals-spread.jsx"></script>
+  <script type="text/babel" src="nationals-app.jsx"></script>
+</body>
+</html>
