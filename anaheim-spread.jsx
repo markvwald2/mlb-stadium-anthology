@@ -17,35 +17,22 @@
   const RED = "#B0122B", NAVY = "#0E2A4A";
 
   function Slot(props) {
-    // Locked-in press photos: direct full-res <img> from uploads/.
-    // Hero uses object-position (cover). Editorial panels carry the exact
-    // pan/zoom the user set in the slot, as an absolutely-positioned img
-    // inside an overflow-clipped frame (percentages of the slot box).
-    var HERO = {
-      "anaheim-hero": { src: "uploads/anaheim-stadium-00-main.jpg", pos: "67% 50%" }
+    // Pattern B: full-res press photos referenced via <image-slot src=> — no
+    // canvas downsample, no base64 in the sidecar. The slot stays re-framable;
+    // pan/zoom persists as a tiny framing-only {s,x,y} entry in
+    // .image-slots.state.json, and clearing a drop falls back to src. Files
+    // live full-resolution in uploads/.
+    var SRC = {
+      "anaheim-hero": "uploads/anaheim-stadium-00-main.jpg",
+      "anaheim-p1": "uploads/anaheim-stadium-01.jpg",
+      "anaheim-p2": "uploads/anaheim-stadium-02.jpg",
+      "anaheim-p3": "uploads/anaheim-stadium-03-42e20a0e.jpg",
+      "anaheim-p4": "uploads/anaheim-stadium-04.jpg"
     };
-    var PANELS = {
-      "anaheim-p1": { src: "uploads/anaheim-stadium-01.jpg", w: 134.32, h: 122.62, l: -24.10, t: -11.03 },
-      "anaheim-p2": { src: "uploads/anaheim-stadium-02.jpg", w: 105.41, h: 142.81, l: -0.05,  t: -10.84 },
-      "anaheim-p3": { src: "uploads/anaheim-stadium-03-42e20a0e.jpg", w: 97.48, h: 105.33, l: -3.85, t: -8.7 },
-      "anaheim-p4": { src: "uploads/anaheim-stadium-04.jpg", w: 109.54, h: 100.0,  l: -1.24,  t: 0 }
-    };
-    var hero = HERO[props.id];
-    if (hero) {
-      return e("img", { className: "as-img", src: hero.src, alt: "",
-        style: { width: "100%", height: "100%", objectFit: "cover",
-          objectPosition: hero.pos, display: "block" } });
-    }
-    var p = PANELS[props.id];
-    if (p) {
-      return e("div", { className: "as-photoframe",
-        style: { position: "relative", width: "100%", height: "100%", overflow: "hidden" } },
-        e("img", { className: "as-img", src: p.src, alt: "",
-          style: { position: "absolute", left: p.l + "%", top: p.t + "%",
-            width: p.w + "%", height: p.h + "%", display: "block" } }));
-    }
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
-      style: { width: "100%", height: "100%" } });
+    var attrs = { id: props.id, placeholder: props.placeholder, shape: "rect" };
+    if (SRC[props.id]) attrs.src = SRC[props.id];
+    else if (props.src) attrs.src = props.src;
+    return e("image-slot", attrs);
   }
 
   /* The Big A — structural device: A-frame mast, crossbar, halo ring. */

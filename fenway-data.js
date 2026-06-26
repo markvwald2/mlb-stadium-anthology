@@ -27,7 +27,7 @@ window.FENWAY = {
   roof_type: "Open Air",
   surface_type: "Natural grass",
   surface: "Kentucky bluegrass",
-  facade: "Red tapestry brick facade with concrete/stucco trim, green-painted steel, and concrete grandstand",
+  facade: "Red tapestry brick facade with concrete/ stucco trim, green-painted steel, and concrete grandstand",
   capacity_opening: "27,000",
   capacity_current: "37,755",
   elevation: "20 ft",
@@ -35,7 +35,7 @@ window.FENWAY = {
   cost_original: "$650k",
   cost_adjusted: "$21.7 million",
   financing: "Privately financed by owner John I. Taylor and the Fenway Realty Company",
-  preceded_by: "Huntington Avenue Grounds",
+  preceded_by: "Huntington Avenue Grounds (1901\u20131911)",
   location: "Urban",
   construction_start: "Sep 25, 1911",
   opening_day: "Apr 20, 1912",
@@ -136,6 +136,6 @@ window.FENWAY = {
     "Fenway Park survives as more than an old ballpark because it has never stopped being altered. Opened in 1912 after the Huntington Avenue Grounds, it gave the Red Sox a permanent home in Boston's urban fabric, but its long life has depended on constant adjustment. The park's identity comes from that tension: a jewel-box building whose constraints became treasured only because generations kept finding ways to work within them.",
     "The site shaped everything. Fenway was fitted into a dense city setting, where block dimensions, street edges, and limited land produced asymmetry rather than polish. The Green Monster, compact grandstand, and neighborhood enclosure were not originally museum pieces. They were practical responses to urban limits. Later stadium eras would try to reproduce that kind of character, but Fenway's character came from actual pressure.",
     "The 1934 rebuild and the long sequence of later changes to seats, the Monster, clubs, concourses, scoreboards, structure, accessibility, and preservation show how difficult survival has been. The park could not remain untouched and still function as an MLB venue. Every improvement has had to negotiate between old geometry and modern demands for revenue, comfort, safety, broadcast infrastructure, and player facilities.",
-    "Fenway matters because it rewrites the usual replacement story. Most parks this old were demolished when they became inconvenient. Fenway became more valuable because of its inconvenience, then had to be carefully modernized so that value could be used. It is not important merely because it is old. It is important because it shows how an old ballpark can become a living constraint around which modern baseball continues to organize itself."
+    "Fenway matters because it rewrites the usual replacement story. Most MLB parks this old were demolished when they became inconvenient. Fenway became more valuable because of its inconvenience, then had to be carefully modernized so that value could be used. It is not important merely because it is old. It is important because it shows how an old ballpark can become a living constraint around which modern baseball continues to organize itself."
   ]
 };

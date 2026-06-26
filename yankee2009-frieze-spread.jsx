@@ -134,7 +134,7 @@
       /* ===================== LEFT / DUSK FACADE HERO ===================== */
       e("div", { className: "yf-page yf-left", "data-screen-label": "Hero — Yankee Stadium 2009 facade at dusk" },
         e("div", { className: "yf-hero-slot" },
-          e(Slot, { id: "yf-hero", src: "assets/yankee2009/bowl-interior.jpg", placeholder: "Drop the 2009 Yankee Stadium exterior \u2014 Indiana-limestone facade, replicated frieze, and monumental Gate entrance at dusk / overcast. The building is the subject; avoid field-level glamour and skyline shots." })),
+          e(Slot, { id: "yf-hero", src: "images/yankee2009/hero-stadium.jpg", placeholder: "Drop the 2009 Yankee Stadium exterior \u2014 Indiana-limestone facade, replicated frieze, and monumental Gate entrance at dusk / overcast. The building is the subject; avoid field-level glamour and skyline shots." })),
         e("div", { className: "yf-hero-scrim" }),
 
         /* logo mast — restrained stone wells, top-left over sky */
@@ -190,7 +190,7 @@
               ident("Setting", D.location_classification),
               /* identity photo — fills the column above the field diagram */
               e("div", { className: "yf-id-photo" },
-                e(Slot, { id: "yf-id-photo", src: "assets/yankee2009/ctx-judge.jpg", placeholder: "Gate / entry portal detail \u2014 the limestone Great Hall frontage or a monumental entrance arch (current stadium)" })),
+                e(Slot, { id: "yf-id-photo", src: "images/yankee2009/ctx-judge.jpg", placeholder: "Gate / entry portal detail \u2014 the limestone Great Hall frontage or a monumental entrance arch (current stadium)" })),
               /* field-orientation datum — small, subordinate */
               e("div", { className: "yf-fielddatum" },
                 e("div", { className: "hd" }, "Field \u00b7 Orientation"),
@@ -246,7 +246,7 @@
               /* interior bowl photo — fills the bay beneath the chain */
               e("div", { className: "yf-photostack" },
                 e("div", { className: "yf-photo" },
-                  e(Slot, { id: "yf-bowl", src: "assets/yankee2009/visit-monument-park.jpeg", placeholder: "Open-air bowl interior \u2014 the replicated white frieze along the roofline above the seating tiers" })))
+                  e(Slot, { id: "yf-bowl", src: "images/yankee2009/visit-monument-park.jpeg", placeholder: "Open-air bowl interior \u2014 the replicated white frieze along the roofline above the seating tiers" })))
             )
           ),
 
@@ -260,7 +260,7 @@
                 e("p", null, D.stadium_context[0]),
                 e("p", null, D.stadium_context[1]),
                 e("div", { className: "yf-ctx-photo" },
-                  e(Slot, { id: "yf-ctx-photo", src: "assets/yankee2009/hero-facade.jpg", placeholder: "The monumental limestone street wall along River Avenue / 161st Street \u2014 facade and replicated frieze in its Bronx setting" })),
+                  e(Slot, { id: "yf-ctx-photo", src: "images/yankee2009/hero-facade.jpg", placeholder: "The monumental limestone street wall along River Avenue / 161st Street \u2014 facade and replicated frieze in its Bronx setting" })),
                 e("p", null, D.stadium_context[2]),
                 e("p", null, D.stadium_context[3])))
           ),
@@ -313,12 +313,12 @@
                 e("div", { className: "lr" }, e("div", { className: "k" }, "Visit"), e("div", { className: "v" }, "No. " + D.visit_order + " of 42"))),
               /* visit photo — fills the foot of the column */
               e("div", { className: "yf-visit-photo" },
-                e(Slot, { id: "yf-visit-photo", src: "assets/yankee2009/id-group-field.jpeg", placeholder: "May 3, 2019 \u2014 the group at Yankee Stadium, or a night-game view under the lights (light drizzle)" }))
+                e(Slot, { id: "yf-visit-photo", src: "images/yankee2009/id-group-field.jpeg", placeholder: "May 3, 2019 \u2014 the group at Yankee Stadium, or a night-game view under the lights (light drizzle)" }))
             )
           ),
           /* combined photo spanning Bays 2–3 (facade + Monument Park) */
           e("div", { className: "yf-span-photo" },
-            e(Slot, { id: "yf-facade-monument", src: "assets/yankee2009/span-worldseries.jpg", placeholder: "Indiana-limestone facade & replicated frieze with Monument Park / museum memory \u2014 the building's civic exterior and its memorial heart (wide landscape)" }))
+            e(Slot, { id: "yf-facade-monument", src: "images/yankee2009/span-worldseries.jpg", placeholder: "Indiana-limestone facade & replicated frieze with Monument Park / museum memory \u2014 the building's civic exterior and its memorial heart (wide landscape)" }))
         )
       )
     );

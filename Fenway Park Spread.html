@@ -48,8 +48,8 @@
   .fw-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .fw-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(0deg, rgba(8,12,7,.94) 0%, rgba(8,12,7,.62) 16%, rgba(8,12,7,.05) 34%, rgba(8,12,7,0) 48%),
-      linear-gradient(180deg, rgba(8,12,7,.55) 0%, rgba(8,12,7,0) 16%); }
+      linear-gradient(0deg, rgba(12,35,64,.74) 0%, rgba(12,35,64,.42) 12%, rgba(12,35,64,.04) 26%, rgba(12,35,64,0) 36%),
+      linear-gradient(180deg, rgba(12,35,64,.36) 0%, rgba(12,35,64,0) 16%); }
 
   .fw-mast { position: absolute; top: 50px; left: 56px; z-index: 5; display: flex; align-items: center; gap: 14px; }
   .fw-mast .mlb { height: 46px; width: auto; display: block; border-radius: 4px; box-shadow: 0 3px 14px rgba(0,0,0,.5); }
@@ -126,12 +126,18 @@
   .fw-meta-table td i { font-style: normal; color: var(--cream-dim); padding: 0 1px; }
   .fw-mr-note { display: inline; font-style: italic; font-size: 12px; color: var(--cream-dim); margin-left: 7px; }
 
-  .fw-field-bay { margin-top: 9px; padding: 6px 6px 6px; border: 1px solid var(--rule);
-    background: rgba(11,24,16,.4); border-radius: 2px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
-  .fw-field-cap { font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0px;
-    text-transform: uppercase; color: var(--cream-dim); text-align: center; margin-bottom: 4px; flex: none; }
-  .ff-wrap { display: flex; justify-content: center; align-items: center; flex: 1; min-height: 0; }
-  .ff-svg { width: auto; height: 100%; max-width: 100%; max-height: 100%; display: block; }
+  .fw-field-row { flex: 1; min-height: 0; margin-top: 9px; display: flex; flex-direction: row; align-items: center; gap: 12px; }
+  .fw-field-logo-wrap { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; }
+  .fw-field-logo { width: 109px; max-width: 92%; height: auto; display: block; }
+  .fw-field-bay { padding: 8px 8px; border: 1px solid var(--rule);
+    background: rgba(11,24,16,.4); border-radius: 2px; min-height: 0; display: flex; flex-direction: row; align-items: center; gap: 8px;
+    flex: 0 0 auto; width: 190px; max-width: 62%; height: 159px; overflow: visible; }
+  .fw-field-cap { flex: none; width: 60px; display: flex; flex-direction: column; justify-content: center; gap: 6px;
+    font-family: "Jost", sans-serif; text-transform: uppercase; text-align: left; }
+  .fw-field-cap .fc-1 { font-weight: 500; font-size: 12px; letter-spacing: .04em; line-height: 1.12; color: var(--cream-dim); }
+  .fw-field-cap .fc-2 { font-weight: 600; font-size: 14px; letter-spacing: .02em; line-height: 1; color: var(--cream); }
+  .ff-wrap { display: flex; justify-content: center; align-items: center; flex: 1; min-width: 0; min-height: 0; }
+  .ff-svg { width: auto; height: 144px; max-width: 100%; max-height: none; display: block; }
 
   .fw-colors { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--rule);
     display: flex; align-items: center; gap: 14px; }
@@ -146,8 +152,11 @@
   /* Col B — documentation photo bays */
   .fw-colB { display: flex; flex-direction: column; gap: 11px; min-width: 0; }
   .fw-bay { flex: 1; min-height: 0; }
+  /* No overflow:hidden — the <image-slot> clips its own crop; clipping here
+     would also clip the double-click reframe ghost + handles that spill
+     outside the crop. */
   .fw-bay-frame { position: relative; width: 100%; height: 100%;
-    border: 2px solid #14291A; border-radius: 2px; overflow: hidden;
+    border: 2px solid #14291A; border-radius: 2px;
     background: #1a3422; box-shadow: inset 0 0 0 1px rgba(231,222,198,.10), inset 0 2px 10px rgba(0,0,0,.45); }
   .fw-bay-frame image-slot { width: 100%; height: 100%; display: block; }
 
@@ -160,37 +169,37 @@
   .fw-panel-head { font-family: "Jost", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--ink); padding-bottom: 7px; margin-bottom: 9px;
     border-bottom: 2px solid var(--ink); }
-  .fw-ctx-panel { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .fw-ctx-panel { flex: none; min-height: 0; display: flex; flex-direction: column; }
   .fw-ctx-cols { columns: 2; column-gap: 22px; column-rule: 1px solid #C9C0AC; }
   .fw-ctx-cols p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.45;
-    color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
+    letter-spacing: -0.2px; color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
   .fw-ctx-cols p:last-child { margin-bottom: 0; }
   .fw-ctx-cols p:first-of-type::first-letter { float: left; font-family: "Spectral", serif; font-weight: 700;
     font-size: 3.1em; line-height: .78; padding: 4px 7px 0 0; color: var(--brick); }
 
-  .fw-cWrap { flex: none; display: grid; grid-template-columns: 4fr 1fr; gap: 12px; }
+  .fw-cWrap { flex: 1; min-height: 0; display: grid; grid-template-columns: 4fr 1fr; gap: 12px; align-items: stretch; }
   .fw-life-panel { padding: 10px 15px 10px; display: flex; flex-direction: column; }
-  .fw-life { display: flex; flex-direction: column; gap: 9px; }
-  .fw-life-grp { display: flex; flex-direction: column; }
+  .fw-life { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 9px; }
+  .fw-life-grp { display: flex; flex-direction: column; justify-content: space-between; gap: 7px; }
   .fw-life-era { display: flex; align-items: baseline; gap: 5px; margin-bottom: 1px;
     border-bottom: 0.75px solid var(--ink); padding-bottom: 0; }
   .fw-life-era .yr { font-family: "Jost", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .04em;
     color: var(--brick); }
-  .fw-life-era .ti { font-family: "Jost", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .09em;
+  .fw-life-era .ti { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .09em;
     text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
   .fw-life-row { display: grid; grid-template-columns: 30px 1fr; gap: 6px; align-items: baseline; padding: 0; }
   .fw-life-yr { font-family: "Jost", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .02em;
     color: var(--brick); }
-  .fw-life-note { font-family: "Spectral", serif; font-size: 9px; line-height: 1.13; color: var(--ink); }
+  .fw-life-note { font-family: "Spectral", serif; font-size: 10px; line-height: 1.13; color: var(--ink); }
 
   /* brick marks plate */
   .fw-brick-plate { position: relative; border-radius: 2px; overflow: hidden;
     border: 2px solid #4A2419; padding: 13px 14px; display: flex; flex-direction: column; gap: 9px;
-    justify-content: center; background:
+    justify-content: space-between; background:
       url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='56'%20height='30'%3E%3Cg%20fill='none'%20stroke='%23000'%20stroke-opacity='0.32'%20stroke-width='2'%3E%3Cpath%20d='M0%201H56M0%2015H56M0%200V15M28%2015V30'/%3E%3C/g%3E%3Cg%20fill='none'%20stroke='%23fff'%20stroke-opacity='0.07'%20stroke-width='1'%3E%3Cpath%20d='M0%203H56M0%2017H56'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 56px 30px,
       linear-gradient(180deg, var(--brick-hi), var(--brick) 55%, var(--brick-lo));
     box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 0 22px rgba(0,0,0,.3); }
-  .fw-brick-marks { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 11px; }
+  .fw-brick-marks { display: flex; flex-direction: column; align-items: center; justify-content: space-around; gap: 11px; flex: 1; min-height: 0; }
   .fw-brick-marks img { height: 34px; width: auto; max-width: 100%; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,.4)); }
   .fw-brick-marks img.mlb { height: 32px; }
   .fw-brick-est { display: flex; flex-direction: column; align-items: center; gap: 4px;
@@ -219,13 +228,13 @@
   .fw-vm-1 { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--cream); }
   .fw-vm-2 { font-family: "Spectral", serif; font-style: italic; font-size: 10px; color: var(--cream-dim); }
-  .fw-visit-badge { display: flex; align-items: flex-end; gap: 9px; }
+  .fw-visit-badge { display: flex; align-items: flex-end; gap: 4px; }
   .fw-vb-no { font-family: "Jost", sans-serif; font-weight: 600; font-size: 22px; line-height: .85; color: var(--cream); }
-  .fw-vb-of { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+  .fw-vb-of { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; transform: translateY(1px); }
   .fw-vb-of .lab { font-family: "Jost", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--cream-dim); }
   .fw-vb-of .num { font-family: "Jost", sans-serif; font-weight: 600; font-size: 10px; color: var(--cream-2);
-    margin-top: 2px; }
+    margin-top: 0px; }
 
   .fw-visit-body { flex: 1; display: grid; grid-template-columns: 1.62fr 1fr; gap: 18px; min-height: 0; }
 

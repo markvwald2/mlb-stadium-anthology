@@ -14,7 +14,7 @@
   function Slot(props) {
     return e("image-slot", Object.assign({
       id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
-    }, props.style ? { style: props.style } : {}));
+    }, props.src ? { src: props.src } : {}, props.style ? { style: props.style } : {}));
   }
 
   // crosshair target mark for the two major section heads
@@ -134,7 +134,7 @@
       /* ============ LEFT PAGE / HERO ============ */
       e("div", { className: "rc-page rc-left", "data-screen-label": "Rogers Centre hero (left page)" },
         e("div", { className: "rc-hero-slot" },
-          e(Slot, { id: "rc-hero", placeholder: "Drop the Rogers Centre hero \u2014 elevated/aerial of the retractable-roof shell, open roof, downtown Toronto skyline & CN Tower" })
+          e(Slot, { id: "rc-hero", src: "images/rogers/hero-stadium.jpg", placeholder: "Drop the Rogers Centre hero \u2014 elevated/aerial of the retractable-roof shell, open roof, downtown Toronto skyline & CN Tower" })
         ),
         e("div", { className: "rc-hero-scrim" }),
 
@@ -194,7 +194,7 @@
             e("div", { className: "rc-strip" },
               D.strip.map((s) =>
                 e("figure", { className: "rc-frame", key: s[0] },
-                  e(Slot, { id: s[0], placeholder: s[1] })
+                  e(Slot, { id: s[0], placeholder: s[1], src: s[2] })
                 )
               )
             ),
@@ -324,7 +324,7 @@
 
             // visit photo
             e("figure", { className: "rc-vphoto" },
-              e(Slot, { id: D.visit_photo[0], placeholder: D.visit_photo[1] })
+              e(Slot, { id: D.visit_photo[0], placeholder: D.visit_photo[1], src: D.visit_photo[2] })
             ),
 
             // design & construction notes

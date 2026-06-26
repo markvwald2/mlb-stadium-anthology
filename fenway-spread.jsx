@@ -46,7 +46,7 @@
   // ---------- METADATA TABLE ----------
   function MetaTable() {
     const rows = [
-      ["Capacity", e("span", null, "27,000 ", e("i", null, "\u2192"), " 37,755", e("em", { className: "fw-mr-note" }, "opening / current"))],
+      ["Capacity", e("span", null, "37,755", e("em", { className: "fw-mr-note" }, "originally 27,000"))],
       ["Opened", D.opened],
       ["Opening Day", D.opening_day],
       ["Groundbreaking", D.construction_start],
@@ -101,9 +101,11 @@
       e("div", { className: "fw-colA" },
         e("div", { className: "fw-sec-head" }, e("span", { className: "fw-sec-rule" }), "STADIUM"),
         e(MetaTable),
-        e("div", { className: "fw-field-bay" },
-          e("div", { className: "fw-field-cap" }, "FIELD PLAN \u00b7 " + D.orientation + " " + D.bearing + "\u00b0"),
-          e(Field, { lf: D.lf, cf: D.cf, rf: D.rf, orientation: D.orientation, bearing: D.bearing }))
+        e("div", { className: "fw-field-row" },
+          e("div", { className: "fw-field-logo-wrap" },
+            e("img", { className: "fw-field-logo", src: "assets/red-sox-roundel.svg", alt: "Boston Red Sox" })),
+          e("div", { className: "fw-field-bay" },
+            e(Field, { lf: D.lf, cf: D.cf, rf: D.rf, orientation: D.orientation, bearing: D.bearing })))
       ),
       // Col B — four documentation photo bays (labels live in the drop placeholder
       // only; no caption survives once a photo is dropped — house rule: never caption photos)
@@ -114,7 +116,6 @@
       // Col C — cream panels: context, lifecycle, marks plate
       e("div", { className: "fw-colC" },
         e("div", { className: "fw-panel fw-ctx-panel" },
-          e("div", { className: "fw-panel-head" }, "STADIUM CONTEXT"),
           e("div", { className: "fw-ctx-cols" },
             D.stadium_context.map((p, i) => e("p", { key: i }, p)))
         ),
@@ -226,7 +227,7 @@
           e("span", { className: "fw-vb-no" }, D.visit_no),
           e("div", { className: "fw-vb-of" },
             e("span", { className: "lab" }, "OF"),
-            e("span", { className: "num" }, "42")))
+            e("span", { className: "num", style: { letterSpacing: "0.4px" } }, "42")))
       ),
       e("div", { className: "fw-games" }, D.games.map(g => GameBlock(g)))
     );

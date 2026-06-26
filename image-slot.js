@@ -544,6 +544,7 @@
     _applyView() {
       const g = this._geom();
       const fit = this.getAttribute('fit') || 'cover';
+      const pp = this._printActive();
       if (fit !== 'cover' || !g) {
         // Non-cover, or dimensions not known yet (before img load).
         this._img.style.width = '100%';
@@ -552,6 +553,15 @@
         this._img.style.top = '50%';
         this._img.style.objectFit = fit;
         this._img.style.objectPosition = this.getAttribute('position') || '50% 50%';
+        // Print flatten (see _printActive): mirror object-fit onto the frame bg.
+        if (pp && g && this.hasAttribute('data-filled')) {
+          this._paintFrameBg(
+            fit === 'fill' ? '100% 100%' : fit,
+            this.getAttribute('position') || '50% 50%'
+          );
+        } else if (!pp) {
+          this._clearFrameBg();
+        }
         return;
       }
       // Cover baseline: img fills the frame on its tighter axis at s=1, so
@@ -569,6 +579,44 @@
       this._img.style.objectFit = '';
       this._spill.style.width = w; this._spill.style.height = h;
       this._spill.style.left = l; this._spill.style.top = t;
+      // Print flatten: paint the exact cover-crop as a frame background-image,
+      // sized/positioned in px so it matches the on-screen img precisely.
+      if (pp) {
+        const Wpx = g.iw * k, Hpx = g.ih * k;
+        const lx = g.fw * (50 + this._view.x) / 100 - Wpx / 2;
+        const ty = g.fh * (50 + this._view.y) / 100 - Hpx / 2;
+        this._paintFrameBg(Wpx + 'px ' + Hpx + 'px', lx + 'px ' + ty + 'px');
+      } else {
+        this._clearFrameBg();
+      }
+    }
+
+    // ── Print flatten ───────────────────────────────────────────────────────
+    // Chrome's print engine mis-renders the transformed, oversized shadow-DOM
+    // <img> when an ancestor combines transform:scale() with clip-path (the
+    // press harness sets body.pp-mode and does exactly that). Hero plates drop
+    // out; small frames stretch to the box. So in pp-mode we flatten the
+    // current crop onto the frame as a plain background-image — which prints
+    // reliably and rasterizes like any photo — and hide the fragile <img>.
+    _printActive() {
+      return !!(document.body && document.body.classList.contains('pp-mode'));
+    }
+    _paintFrameBg(size, pos) {
+      const url = this._img.currentSrc || this._img.getAttribute('src') || '';
+      if (!url) return;
+      this._frame.style.backgroundImage = 'url("' + url + '")';
+      this._frame.style.backgroundRepeat = 'no-repeat';
+      this._frame.style.backgroundSize = size;
+      this._frame.style.backgroundPosition = pos;
+      this._img.style.display = 'none';
+    }
+    _clearFrameBg() {
+      if (this._frame.style.backgroundImage) {
+        this._frame.style.backgroundImage = '';
+        this._frame.style.backgroundRepeat = '';
+        this._frame.style.backgroundSize = '';
+        this._frame.style.backgroundPosition = '';
+      }
     }
 
     _commitView() {
@@ -640,6 +688,7 @@
         this._ghost.removeAttribute('src');
         this._empty.style.display = 'flex';
         this.removeAttribute('data-filled');
+        this._clearFrameBg();
       }
     }
   }

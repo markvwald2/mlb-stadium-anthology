@@ -410,7 +410,7 @@
           </div>`;
       }
       return `
-        <a class="page-slot" href="${pageHref(item.page)}" title="Open ${escAttr(item.title)}">
+        <a class="page-slot" href="${pageHref(item.page)}" target="_blank" rel="noopener noreferrer" title="Open ${escAttr(item.title)}">
           <div class="page-label">${escHTML(item.label)}</div>
           <div class="page-art">
             <div class="page-title">${escHTML(item.title)}</div>
@@ -436,7 +436,7 @@
         ? [item.leftLabel, item.rightLabel]
         : ["Page " + item.leftPage, "Page " + item.rightPage];
       return `
-        <a class="spread-card" href="${pageHref(item.page)}" title="Open ${escAttr(item.title)}">
+        <a class="spread-card" href="${pageHref(item.page)}" target="_blank" rel="noopener noreferrer" title="Open ${escAttr(item.title)}">
           <div class="spread-labels">
             <span>${escHTML(labels[0])}</span>
             <span>${escHTML(labels[1])}</span>

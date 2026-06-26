@@ -88,11 +88,20 @@
     font-size: 11.5px; color: #6a655b; border-bottom: 1px dotted #9a9486; padding-bottom: 1px;
   }
   a.guides:hover { color: #1c1a17; }
+  .guides-wrap { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11.5px; color: #6a655b; display: inline-flex; align-items: center; gap: 9px; }
   .filename {
     font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; color: #9a9486;
   }
 
   .foot { margin-top: 30px; font-size: 13px; color: #6a655b; max-width: 70ch; }
+
+  .notice {
+    margin: 0 0 22px; padding: 13px 18px;
+    background: #fbf0e0; border: 1px solid #e0c089; border-left-width: 4px;
+    border-radius: 4px; font-size: 14px; color: #5b4a28; max-width: 78ch;
+  }
+  .notice code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px;
+    background: #f3e6cd; padding: 1px 5px; border-radius: 3px; }
 </style>
 </head>
 <body>
@@ -107,10 +116,19 @@
 
   <div class="steps">
     <ol>
-      <li>Open the spread's <strong>Left</strong> and <strong>Right</strong> tabs (I pop these for you in Chrome).</li>
-      <li>In each Chrome tab: <code>Cmd/Ctrl+P</code> → <strong>Save as PDF</strong> → <strong>Margins: None</strong> → Save. Backgrounds print automatically.</li>
+      <li>Click a spread’s <strong>Left</strong> / <strong>Right</strong> button to open its print tab (works on click in Safari; in Chrome, pop this sheet out first or ask me to open it).</li>
+      <li>In the print tab: <code>Cmd/Ctrl+P</code> → <strong>Save as PDF</strong> → <strong>Margins: None</strong> → Save. Backgrounds print automatically.</li>
       <li>Save each as <code>&lt;Stadium&gt; - Left.pdf</code> / <code>- Right.pdf</code> so the book assembles in order.</li>
     </ol>
+  </div>
+
+  <div class="notice" id="notice" hidden>
+    <strong>Safari:</strong> the Left / Right buttons open and print cleanly —
+    just click them. <strong>Chrome</strong> withholds the preview session
+    cookie on a tab opened from this embedded view, so it shows a “preview token
+    required” error instead. In Chrome, either pop this sheet out first (the
+    preview’s <em>open-in-new-tab</em> control — the buttons then carry the token
+    through), or ask me to open any page for you.
   </div>
 
   <div class="grid" id="grid"></div>
@@ -121,17 +139,29 @@
 <script>
   // status: "pending" | "done" — tell me when a spread is finished and I'll flip it.
   const spreads = [
-    { name: "Rogers Centre",       file: "Rogers Centre Spread.html",       status: "pending" },
-    { name: "Globe Life Field",    file: "Globe Life Field Spread.html",    status: "pending" },
-    { name: "Yankee Stadium 2009", file: "Yankee Stadium 2009 Spread.html", status: "pending" },
-    { name: "Fenway Park",         file: "Fenway Park Spread.html",          status: "pending" },
-    { name: "Target Field",        file: "Target Field Spread.html",         status: "pending" },
-    { name: "Anaheim Stadium",     file: "Anaheim Stadium Spread.html",      status: "pending" },
+    { name: "Rogers Centre",       file: "Rogers Centre Spread.html",       status: "done" },
+    { name: "Globe Life Field",    file: "Globe Life Field Spread.html",    status: "done" },
+    { name: "Yankee Stadium 2009", file: "Yankee Stadium 2009 Spread.html", status: "done" },
+    { name: "Fenway Park",         file: "Fenway Park Spread.html",          status: "done" },
+    { name: "Target Field",        file: "Target Field Spread.html",         status: "done" },
+    { name: "Anaheim Stadium",     file: "Anaheim Stadium Spread.html",      status: "done" },
   ];
+
+  // The preview host authorizes a tab via the query params on THIS page
+  // (e.g. _omeo). A target=_blank link to a bare relative URL drops them and
+  // the new tab fails with "preview token required". So carry the current
+  // page's params forward onto every link we generate.
+  function printHref(file, page, guides) {
+    // start from the host/auth params already on this page
+    const p = new URLSearchParams(location.search);
+    p.set("print", "1");
+    p.set("page", page);
+    if (guides) p.set("guides", "1");
+    return encodeURI(file) + "?" + p.toString();
+  }
 
   const grid = document.getElementById("grid");
   for (const s of spreads) {
-    const enc = encodeURI(s.file);
     const done = s.status === "done";
     const cell = document.createElement("div");
     cell.className = "cell" + (done ? " done" : "");
@@ -141,14 +171,24 @@
         <div class="badge">${done ? "Done" : "Pending"}</div>
       </div>
       <div class="pages">
-        <a class="btn left"  href="print/${encodeURI(s.name)} - Left.html"  target="_blank" rel="noopener"><span class="dot"></span>Left page</a>
-        <a class="btn right" href="print/${encodeURI(s.name)} - Right.html" target="_blank" rel="noopener"><span class="dot"></span>Right page</a>
+        <a class="btn left"  href="${printHref(s.file, 'left')}"  target="_blank" rel="noopener"><span class="dot"></span>Left page</a>
+        <a class="btn right" href="${printHref(s.file, 'right')}" target="_blank" rel="noopener"><span class="dot"></span>Right page</a>
       </div>
       <div class="cell-foot">
-        <a class="guides" href="${enc}?print=1&page=left&guides=1" target="_blank" rel="noopener">preview guides ↗</a>
+        <span class="guides-wrap">preview guides:
+          <a class="guides" href="${printHref(s.file, 'left', true)}" target="_blank" rel="noopener">left ↗</a>
+          <a class="guides" href="${printHref(s.file, 'right', true)}" target="_blank" rel="noopener">right ↗</a>
+        </span>
         <span class="filename">2 PDFs</span>
       </div>`;
     grid.appendChild(cell);
+  }
+
+  // The standalone print tab needs the host-minted token (param `t`, added by
+  // the pop-out / print control). The embedded preview only carries srcmap/_omeo,
+  // so warn that the buttons won't open until the sheet is popped out.
+  if (!new URLSearchParams(location.search).has("t")) {
+    document.getElementById("notice").hidden = false;
   }
 
   const total = spreads.length * 2;

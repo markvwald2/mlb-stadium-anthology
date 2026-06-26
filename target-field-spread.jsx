@@ -14,30 +14,22 @@
   const Protractor = window.TargetProtractor;
 
   function Slot(props) {
-    // Locked-in page-2 press photos: direct full-res <img> from uploads/, each
-    // carrying the exact pan/zoom the user set in the slot (percent of slot box,
-    // absolutely positioned inside an overflow-clipped frame). Slots not in the
-    // map fall back to a fillable <image-slot>.
-    var LOCKED = {
-      "tf-stadium-ph-1": { src: "uploads/target-field-01.jpg",  w: 93.49, h: 97.73,  l: 0.32,   t: -1.85 },
-      "tf-stadium-ph-2": { src: "uploads/target-field-02.png",  w: 93.49, h: 97.73,  l: 0.32,   t: -1.85 },
-      "tf-stadium-ph-3": { src: "uploads/target-field-03.jpg",  w: 93.49, h: 183.6,  l: 0.32,   t: -73.09 },
-      "tf-stadium-ph-4": { src: "uploads/target-field-04.jpg",  w: 93.49, h: 109.52, l: 0.32,   t: -13.18 },
-      "tf-visit-ph-1":   { src: "uploads/target-field-05.jpeg", w: 93.49, h: 110.05, l: 0.32,   t: -8.39 },
-      "tf-visit-ph-2":   { src: "uploads/target-field-06.jpeg", w: 93.49, h: 110.05, l: 0.32,   t: -8.39 },
-      "tf-visit-ph-3":   { src: "uploads/target-field-07.jpeg", w: 93.49, h: 195.66, l: 0.32,   t: -31.26 },
-      "tf-visit-ph-4":   { src: "uploads/target-field-08.jpg",  w: 120.5, h: 93.19,  l: -12.15, t: 0.57 }
+    // Pattern B: full-res press photos referenced via <image-slot src=> — no
+    // canvas downsample, no base64 in the sidecar. The slot stays re-framable;
+    // pan/zoom persists as a tiny framing-only {s,x,y} entry in
+    // .image-slots.state.json. Files live full-resolution in uploads/.
+    var SRC = {
+      "tf-stadium-ph-1": "uploads/target-field-01.jpg",
+      "tf-stadium-ph-2": "uploads/target-field-02.png",
+      "tf-stadium-ph-3": "uploads/target-field-03.jpg",
+      "tf-stadium-ph-4": "uploads/target-field-04.jpg",
+      "tf-visit-ph-1":   "uploads/target-field-05.jpeg",
+      "tf-visit-ph-2":   "uploads/target-field-06.jpeg",
+      "tf-visit-ph-3":   "uploads/target-field-07.jpeg",
+      "tf-visit-ph-4":   "uploads/target-field-08-306c9b2f.jpg"
     };
-    var p = LOCKED[props.id];
-    if (p) {
-      return e("div", { className: "tf-lockphoto",
-        style: { position: "relative", width: "100%", height: "100%", overflow: "hidden" } },
-        e("img", { src: p.src, alt: "",
-          style: { position: "absolute", left: p.l + "%", top: p.t + "%",
-            width: p.w + "%", height: p.h + "%", display: "block" } }));
-    }
     const attrs = { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" };
-    if (props.src) attrs.src = props.src;
+    attrs.src = SRC[props.id] || props.src;
     if (props.style) attrs.style = props.style;
     return e("image-slot", attrs);
   }
@@ -216,7 +208,7 @@
             e(SecHead, { title: "Stadium Context", note: "METRODOME \u2192 TARGET FIELD" }),
             e("div", { className: "tf-prose4" },
               D.stadium_context.map((p, i) => e("p", { key: i,
-                style: i === 2 ? { letterSpacing: "-0.2px" } : undefined }, p))))
+                style: { letterSpacing: ["-0.3px", "-0.2px", "-0.3px", "-0.3px"][i] || undefined } }, p))))
         )
       )
     );

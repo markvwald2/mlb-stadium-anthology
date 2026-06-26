@@ -113,7 +113,7 @@
       /* ============ LEFT PAGE / INTERIOR HERO ============ */
       e("div", { className: "glf-page glf-left", "data-screen-label": "Globe Life Field hero (left)" },
         e("div", { className: "glf-hero-slot" },
-          e(Slot, { id: "globe-hero", src: "images/globe/hero.jpg", placeholder: "Drop the Globe Life Field INTERIOR hero \u2014 high vantage looking down: roof trusses & retractable panels dominate, glass outfield wall, hanging scoreboards, the green field small & far below. Upper half = architectural airspace." })
+          e(Slot, { id: "globe-hero", src: "images/globe/hero-main-print.jpg", placeholder: "Drop the Globe Life Field INTERIOR hero \u2014 high vantage looking down: roof trusses & retractable panels dominate, glass outfield wall, hanging scoreboards, the green field small & far below. Upper half = architectural airspace." })
         ),
         e("div", { className: "glf-hero-scrim" }),
 

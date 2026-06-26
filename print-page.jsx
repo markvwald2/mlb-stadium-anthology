@@ -122,6 +122,14 @@
         body.pp-mode .pp-page { box-shadow: none !important; margin: 0 !important; }
         .pp-guides { display: none !important; }
         * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+        /* Chrome's print rasterizer tiles large blurred shadows/filters, leaving
+           rectangular seams behind hero titles & logos. Only the hero titles
+           carry text-shadow (body text has none), and the logo filters are
+           purely cosmetic drop-shadows over dark hero art — so neutralizing
+           both blurs in print kills the banding with no legibility loss. */
+        * { text-shadow: none !important; }
+        img { filter: none !important; }
       }
     `;
     const el = document.createElement("style");

@@ -24,45 +24,26 @@
 
   function Chip(props) {
     const fs = props.size || 13;
-    const w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + 12), h = 19;
-    return e("g", null,
-      e("rect", { x: props.x - w / 2, y: props.y - h / 2, width: w, height: h, rx: 2, fill: cream, stroke: wallInk, strokeWidth: 0.8 }),
-      e("text", { x: props.x, y: props.y + fs * 0.35, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono', monospace", fontWeight: 700, fontSize: fs + "px", fill: inkChip, letterSpacing: ".02em" } }, props.text)
-    );
+    // no box: plain white Jost numerals, with a subtle dark halo (paint-order stroke)
+    // so they stay legible over both the green grass and the light dirt.
+    return e("text", { x: props.x, y: props.y + fs * 0.35, textAnchor: "middle",
+      style: { fontFamily: "'Jost', sans-serif", fontWeight: 600, fontSize: fs + "px", fill: "#FFFFFF",
+        letterSpacing: ".01em", paintOrder: "stroke", stroke: "rgba(9,20,13,.6)", strokeWidth: "2.6px", strokeLinejoin: "round" } }, props.text);
   }
 
   function FenwayField(props) {
     const bearing = (props.bearing != null) ? props.bearing : 45;
     const orientation = props.orientation || "NE";
-    const C = [150, 190];          // home plate
-    const Rcf = 92;
-    const Rlf = Rcf * (parseFloat(props.lf) / parseFloat(props.cf));
-    const Rrf = Rcf * (parseFloat(props.rf) / parseFloat(props.cf));
-    const PR = 122;
-
-    // field fan, CF straight up, foul lines at +/-45 deg (90-degree fair territory)
-    const lf = [C[0] - Math.SQRT1_2 * Rlf, C[1] - Math.SQRT1_2 * Rlf];
-    const rf = [C[0] + Math.SQRT1_2 * Rrf, C[1] - Math.SQRT1_2 * Rrf];
-    const cf = [C[0], C[1] - Rcf];
-    // infield diamond
-    const d = 26;
-    const b2 = [C[0], C[1] - d * 1.9];
-    const b1 = [C[0] + d, C[1] - d];
-    const b3 = [C[0] - d, C[1] - d];
-
-    // rounded outfield: circle through the three wall points keeps the asymmetric
-    // radii (deep CF / short RF) but draws a smooth arc like the other field plans.
-    function circum(a, b, c) {
-      const D = 2 * (a[0] * (b[1] - c[1]) + b[0] * (c[1] - a[1]) + c[0] * (a[1] - b[1]));
-      const ax2 = a[0] * a[0] + a[1] * a[1], bx2 = b[0] * b[0] + b[1] * b[1], cx2 = c[0] * c[0] + c[1] * c[1];
-      const ux = (ax2 * (b[1] - c[1]) + bx2 * (c[1] - a[1]) + cx2 * (a[1] - b[1])) / D;
-      const uy = (ax2 * (c[0] - b[0]) + bx2 * (a[0] - c[0]) + cx2 * (b[0] - a[0])) / D;
-      return Math.hypot(a[0] - ux, a[1] - uy);
-    }
-    const Rout = circum(lf, cf, rf);
-    const grassPath = "M " + C[0] + " " + C[1] + " L " + lf[0] + " " + lf[1] + " A " + Rout.toFixed(2) + " " + Rout.toFixed(2) + " 0 0 1 " + rf[0].toFixed(2) + " " + rf[1].toFixed(2) + " Z";
-    const dia = "M " + C[0] + " " + C[1] + " L " + b1[0] + " " + b1[1] + " L " + b2[0] + " " + b2[1] + " L " + b3[0] + " " + b3[1] + " Z";
+    // Big-field layout: the uploaded artwork fills the frame and the protractor is
+    // tucked INSIDE the outfield grass (small radius) rather than ringing the field,
+    // so the diagram can run roughly twice as large as the boxed-in version.
+    const C = [132, 196];          // home plate
+    const PR = 96;                 // protractor radius — sits in the outfield grass
+    const FK = 0.5;                // field artwork scale (its home plate 217,390 -> C)
+    const FOX = C[0] - FK * 217, FOY = C[1] - FK * 390;
+    const fieldTf = "rotate(" + bearing + " " + C[0] + " " + C[1] + ") translate(" + FOX + " " + FOY + ") scale(" + FK + ")";
+    // map an artwork-space point to panel space (scale -> translate -> rotate to bearing)
+    function mapPt(p) { return rot([FK * p[0] + FOX, FK * p[1] + FOY], C, bearing); }
 
     // protractor scale (0..90, N up)
     const ticks = [];
@@ -72,9 +53,13 @@
       ticks.push(e("line", { key: "t" + a, x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1],
         stroke: big ? creamDim : creamFaint, strokeWidth: big ? 1.2 : 0.8 }));
     }
+    // 0 is pulled up into the top margin and 90 next to 45 (hand-placed); 45 stays on the arc.
+    const numOverride = { 0: [123, 99], 90: [231, 206] };
     const nums = [0, 45, 90].map((a, i) => {
-      const p = polar(C, PR + 13, a);
-      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle",
+      const d = polar(C, PR + 13, a);
+      const o = numOverride[a];
+      const x = o ? o[0] : d[0], y = (o ? o[1] : d[1]) + 4;
+      return e("text", { key: "n" + i, x: x, y: y, textAnchor: "middle",
         style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "11px", fill: creamDim } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 90);
@@ -87,35 +72,51 @@
     const degPos = polar(C, PR + 30, bearing);
     const nlab = polar(C, PR + 13, 0);
 
-    // chips rotate WITH the field group (positioned in field space, then rotated)
+    // distance labels, placed OFF the field in the surrounding margin (explicit panel
+    // coords so they're easy to hand-place). Order: LF / LCF / CF / deep / RCF / RF.
     const chips = [
-      { p: rot([lf[0] - 14, lf[1] - 6], C, bearing), t: props.lf },
-      { p: rot([cf[0], cf[1] - 14], C, bearing), t: props.cf },
-      { p: rot([rf[0] + 14, rf[1] - 6], C, bearing), t: props.rf }
+      { p: [131, 38], t: props.lf },
+      { p: [226, 40], t: "379" },
+      { p: [275, 53], t: props.cf },
+      { p: [307, 79], t: "420" },
+      { p: [317, 142], t: "380" },
+      { p: [291, 201], t: props.rf }
     ];
 
     return e("div", { className: "ff-wrap" },
-      e("svg", { viewBox: "96 26 206 208", className: "ff-svg", role: "img",
+      e("svg", { viewBox: "107 25 226 195", className: "ff-svg", role: "img", style: { transform: "translateY(-3px)" },
         "aria-label": "Field plan, oriented " + orientation + " " + bearing + " degrees; LF " + props.lf + ", CF " + props.cf + ", RF " + props.rf },
-        e("defs", null,
-          e("linearGradient", { id: "ffGrass", x1: "0", y1: "0", x2: "0", y2: "1" },
-            e("stop", { offset: "0", stopColor: grassHi }), e("stop", { offset: "1", stopColor: grass }))),
-        // protractor arc + ticks + numerals + N
+        // field artwork is the BOTTOM layer now (the protractor draws on top, inside
+        // the grass). fieldTf scales the artwork up ~2x and rotates it to the bearing,
+        // mapping its home plate (217,390 in its own 0..450 space) onto C. Strokes are
+        // non-scaling so the chalk lines stay crisp.
+        e("g", { transform: fieldTf },
+          // outfield grass base (rounded outer)
+          e("path", { d: "m227.8 442.4c-7.6 2.6-15.1 2.2-23.7-0.7-10.5-3.6-17.9-9.4-20.4-12.5-2.2-2.7-86.2-105.1-86.2-105.1l-7.7-54.8-80-80.5 1.4-1.4 408.9 2.6-1.7 4.3-73.8 75.8-8.4 56-62 73.6c0 0-22.7 27.7-26.8 32.7-3.3 4.2-11.9 7.4-19.6 10z",
+            fillRule: "evenodd", fill: "#4a7f4b" }),
+          // fair-territory wedge
+          e("path", { d: "m217 393.2l-205.8-205.8 153.5-152.1h13.1l114.8-32.2 11.5 35.7 119.5 55.5c23.3 12 23.7 30.5 18.6 41.2l-22.1 54.5z",
+            fillRule: "evenodd", fill: "#4a7f4b" }),
+          // infield dirt diamond
+          e("path", { d: "m217.1 272.1l-60.5 60.6 60.5 60.5 60.6-60.5z",
+            fillRule: "evenodd", fill: "#efce8b" }),
+          // home-plate dirt circle
+          e("path", { d: "m208.6 384.8c4.6-4.6 12.1-4.6 16.7 0 4.7 4.6 4.7 12.1 0 16.8-4.6 4.6-12.1 4.6-16.7 0-4.6-4.7-4.6-12.2 0-16.8z",
+            fillRule: "evenodd", fill: "#efce8b" }),
+          // foul lines
+          e("path", { d: "m11.2 187.4l202.7 202.7 3 3",
+            fill: "none", stroke: "#fff", strokeWidth: 1.3, vectorEffect: "non-scaling-stroke", strokeLinecap: "round", strokeLinejoin: "round" }),
+          e("path", { d: "m420.8 189.4l-200.7 200.7-3.5 3.5",
+            fill: "none", stroke: "#fff", strokeWidth: 1.3, vectorEffect: "non-scaling-stroke", strokeLinecap: "round", strokeLinejoin: "round" })
+        ),
+        // protractor scale + N, drawn ON the grass (inside the field)
         e("path", { d: protArc, fill: "none", stroke: creamFaint, strokeWidth: 1 }),
         ticks, nums,
-        e("text", { x: nlab[0], y: nlab[1] - 8, textAnchor: "middle",
-          style: { fontFamily: "'Jost',sans-serif", fontWeight: 700, fontSize: "12px", fill: cream, letterSpacing: ".06em" } }, "N"),
-        // field group (rotated to bearing)
-        e("g", { transform: "rotate(" + bearing + " " + C[0] + " " + C[1] + ")" },
-          e("path", { d: grassPath, fill: "url(#ffGrass)", stroke: wallInk, strokeWidth: 1.6, strokeLinejoin: "round" }),
-          e("path", { d: dia, fill: clay, stroke: clayEdge, strokeWidth: 0.9, strokeLinejoin: "round", opacity: 0.92 })
-        ),
         // north baseline + bearing needle
         e("line", { x1: C[0], y1: C[1], x2: polar(C, PR - 4, 0)[0], y2: polar(C, PR - 4, 0)[1], stroke: creamFaint, strokeWidth: 1, strokeDasharray: "3 3" }),
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: red, strokeWidth: 2.2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: red }),
         e("circle", { cx: C[0], cy: C[1], r: 2.6, fill: cream }),
-        e(Chip, { x: degPos[0], y: degPos[1], text: bearing + "\u00b0 " + orientation, size: 11 }),
         chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 13 }))
       )
     );

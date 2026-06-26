@@ -107,7 +107,7 @@ window.ROGERS = {
   build: [
     ["Facade", "Concrete-and-steel multipurpose shell with steel/PVC retractable-roof panels and selective glazed edges"],
     ["Original Cost", "$470 million", "$1.26 billion adjusted"],
-    ["Financing", "Public-private partnership led by Ontario, Canada, and Toronto public entities with private corporate participation; later privately acquired by Rogers"],
+    ["Financing", "Public-private partnership led by Ontario, Canada, and Toronto public entities with private corporate participation; later privately acquired by Rogers Communications Inc"],
     ["Coordinates", "43.6414\u00b0 N, 79.3892\u00b0 W"],
     ["Address", "1 Blue Jays Way, Toronto, ON M5V 1J1, Canada"]
   ],
@@ -129,10 +129,10 @@ window.ROGERS = {
 
   // ---- Photo strip (Stadium Section) ----
   strip: [
-    ["rc-s1", "Exterior \u00b7 retractable-roof shell & downtown Toronto"],
-    ["rc-s2", "Interior \u00b7 bowl, field & open roof"],
-    ["rc-s3", "Street level \u00b7 Rogers Centre signage"]
+    ["rc-s1", "Exterior \u00b7 retractable-roof shell & downtown Toronto", "images/rogers/strip-left.jpg"],
+    ["rc-s2", "Interior \u00b7 bowl, field & open roof", "images/rogers/strip-middle.jpg"],
+    ["rc-s3", "Street level \u00b7 Rogers Centre signage", "images/rogers/strip-right.jpg"]
   ],
   // visit-section photo
-  visit_photo: ["rc-v1", "Interior under the open roof, day game"]
+  visit_photo: ["rc-v1", "Interior under the open roof, day game", "images/rogers/visit.jpg"]
 };

@@ -78,7 +78,7 @@ window.GLOBE = {
     ["globe-encl-1", "Interior bowl & roof volume \u2014 high vantage, truss spans overhead", "images/globe/encl-1.jpg"],
     ["globe-encl-2", "Glass outfield / curtain-wall transparency", "images/globe/encl-2.jpg"],
     ["globe-encl-3", "Retractable roof machinery / overhead steel structure", "images/globe/encl-3.jpg"],
-    ["globe-encl-4", "Concourse transparency / interior scale"]
+    ["globe-encl-4", "Concourse transparency / interior scale", "images/globe/hero.jpg"]
   ],
 
   // ---- The Visit (scorekeeper insert) ----
