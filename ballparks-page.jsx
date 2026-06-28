@@ -8,7 +8,7 @@
   var L = D.teams;
   var e = React.createElement;
 
-  function visited(row) { return row.fv === row.lv ? row.fv : row.fv + "\u2013" + row.lv; }
+  function visited(row) { return row.fv; }
   function tenure(row) { return row.current ? "Since " + row.from : row.from + "\u2013" + row.to; }
 
   function Row(props) {
@@ -16,7 +16,13 @@
     return e("div", { className: "bp-row" + (row.current ? "" : " bp-row-former") },
       e("div", { className: "bp-num" }, row.n),
       e("div", { className: "bp-logo-wrap" },
-        e("img", { className: "bp-logo", src: "assets/" + (L[row.team] || "mlb-logo.svg"), alt: "" })),
+        e("img", { className: "bp-logo", src: "assets/" + (row.logo || L[row.team] || "mlb-logo.svg"), alt: "",
+          style: Object.assign(
+            {},
+            (row.logoScale || row.logoDy)
+              ? { transform: "translateY(" + (row.logoDy || 0) + "px) scale(" + (row.logoScale || 1) + ")" }
+              : null,
+            row.logoFilter ? { filter: row.logoFilter, opacity: 1 } : null) })),
       e("div", { className: "bp-main" },
         e("div", { className: "bp-line1" },
           e("span", { className: "bp-stadium" }, row.stadium),

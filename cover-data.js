@@ -11,7 +11,7 @@ window.COVER_DATA = {
   parks: [
     { name: "County Stadium",            city: "Milwaukee",    slot: "cv-county" },
     { name: "Fenway Park",               city: "Boston",       slot: "cv-fenway" },
-    { name: "San Diego Stadium",         city: "San Diego",    slot: "cv-sandiego" },
+    { name: "San Diego Stadium",         city: "",             slot: "cv-sandiego" },
     { name: "Veterans Stadium",          city: "Philadelphia", slot: "cv-veterans" },
     { name: "Royals Stadium",            city: "Kansas City",  slot: "cv-kauffman" },
     { name: "Riverfront Stadium",        city: "Cincinnati",   slot: "cv-riverfront" },
@@ -21,7 +21,7 @@ window.COVER_DATA = {
     { name: "Three Rivers Stadium",      city: "Pittsburgh",   slot: "cv-threerivers" },
     { name: "Memorial Stadium",          city: "Baltimore",    slot: "cv-memorial" },
     { name: "Yankee Stadium",            city: "New York City", slot: "cv-yankee" },
-    { name: "Anaheim Stadium",           city: "Anaheim",      slot: "cv-angels" },
+    { name: "Anaheim Stadium",           city: "",             slot: "cv-angels" },
     { name: "Tiger Stadium",             city: "Detroit",      slot: "cv-tiger" }
   ]
 };

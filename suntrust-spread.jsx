@@ -174,7 +174,7 @@
 
             /* PARCEL C — FIELD & ORIENTATION */
             e("div", { className: "st-parcel field" },
-              e(SecHead, { title: "Field & Orientation", note: "SE 145\u00b0 \u00b7 OPEN-AIR BOWL" }),
+              e(SecHead, { title: "Field & Orientation", note: D.field.orientation + " " + D.field.degrees + "\u00b0 \u00b7 OPEN-AIR BOWL" }),
               e("figure", { className: "st-fieldfig" },
                 Protractor ? e(Protractor, { lf: D.field.left_field, cf: D.field.center_field,
                   rf: D.field.right_field, orientation: D.field.orientation, degrees: D.field.degrees }) : null,

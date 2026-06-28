@@ -117,7 +117,9 @@
       e("div", { className: "fw-colC" },
         e("div", { className: "fw-panel fw-ctx-panel" },
           e("div", { className: "fw-ctx-cols" },
-            D.stadium_context.map((p, i) => e("p", { key: i }, p)))
+            D.stadium_context.map((p, i) => i === 0
+              ? e("p", { key: i }, e("span", { className: "fw-dropcap" }, p.charAt(0)), p.slice(1))
+              : e("p", { key: i }, p)))
         ),
         e("div", { className: "fw-cWrap" },
           e("div", { className: "fw-panel fw-life-panel" },
@@ -210,7 +212,7 @@
             e("span", { className: "t" }, g.temp),
             e("span", null, g.conditions),
             e("span", null, g.wind),
-            e("span", null, "RH " + g.humidity))))
+            e("span", null, "H " + g.humidity))))
     );
   }
 

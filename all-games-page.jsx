@@ -10,9 +10,19 @@
 
   function Team(props) {
     var t = T[props.name] || { logo: "mlb-logo.svg", nick: props.name };
+    var logo = props.logo || t.logo;
+    var st = (props.scale || props.dy || props.dx)
+      ? { transform: "translate(" + (props.dx || 0) + "px," + (props.dy || 0) + "px) scale(" + (props.scale || 1) + ")" }
+      : undefined;
     return e("span", { className: "ag-team" + (props.right ? " ag-team-right" : "") + (props.emph ? " ag-team-emph" : "") },
-      e("img", { className: "ag-logo", src: "assets/" + t.logo, alt: "" }),
+      e("img", { className: "ag-logo", src: "assets/" + logo, alt: "", style: st }),
       e("span", { className: "ag-nick" }, t.nick));
+  }
+
+  function ovFor(gm, name) {
+    if (!gm.ov || !gm.ov[name]) return {};
+    var o = gm.ov[name];
+    return (typeof o === "string") ? { logo: o } : o;
   }
 
   function GameRow(props) {
@@ -21,16 +31,25 @@
       e("div", { className: "ag-date" }, gm.date),
       e("div", { className: "ag-stadium" },
         e("span", { className: "ag-stadium-name" }, gm.stadium),
-        gm.tag ? e("span", { className: "ag-tag ag-tag-" + (gm.tag === "RAINOUT" ? "rain" : "dh") },
-          gm.tag === "RAINOUT" ? "Rainout" : "DH") : null),
+        gm.tag === "RAINOUT" ? e("span", { className: "ag-tag ag-tag-rain" }, "Rainout") : null),
       e("div", { className: "ag-match" },
-        e(Team, { name: gm.away, right: true }),
+        e(Team, Object.assign({ name: gm.away, right: true }, ovFor(gm, gm.away))),
         e("span", { className: "ag-vs" }, "vs"),
-        e(Team, { name: gm.home, emph: true })));
+        e(Team, Object.assign({ name: gm.home, emph: true }, ovFor(gm, gm.home)))));
   }
 
   function TripChapter(props) {
     var tr = props.trip;
+    // ROWH must match .ag-row height in the host CSS.
+    var ROWH = 31;
+    // one DH chip centered on the hairline between a consecutive same-stadium DH pair
+    var dhBoundaries = [];
+    for (var i = 0; i < tr.games.length - 1; i++) {
+      if (tr.games[i].tag === "DH" && tr.games[i + 1].tag === "DH" &&
+          tr.games[i].stadium === tr.games[i + 1].stadium) {
+        dhBoundaries.push(i + 1);
+      }
+    }
     return e("div", { className: "ag-chapter", style: { "--accent": tr.accent } },
       e("div", { className: "ag-chap-head" },
         e("span", { className: "ag-chap-tab" }),
@@ -38,7 +57,10 @@
         e("span", { className: "ag-chap-name" }, tr.name),
         e("span", { className: "ag-chap-count" }, tr.games.length, " ", tr.games.length === 1 ? "GAME" : "GAMES")),
       e("div", { className: "ag-chap-rows" },
-        tr.games.map(function (gm, i) { return e(GameRow, { key: i, g: gm }); })));
+        tr.games.map(function (gm, i) { return e(GameRow, { key: i, g: gm }); }),
+        dhBoundaries.map(function (b) {
+          return e("span", { key: "dh" + b, className: "ag-dh-link", style: { top: (b * ROWH) + "px" } }, "DH");
+        })));
   }
 
   function Column(props) {

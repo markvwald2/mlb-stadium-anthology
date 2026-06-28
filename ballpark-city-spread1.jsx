@@ -8,19 +8,23 @@
   const { CityGrid, Skyline, SectionHead, Figure, PullQuote, TimelineRail } = M;
 
   // body block: paragraphs in N balanced columns; first para gets a drop cap
-  function Body({ paras, x, y, w, h, cols, gap, size, lh, dropcap }) {
+  function Body({ paras, x, y, w, h, cols, gap, size, lh, dropcap, fill }) {
     return (
       <div className="bc-body bc-cols" data-fit
-        style={{
-          position: "absolute", left: x, top: y, width: w, height: h,
-          columnCount: cols, columnGap: gap, columnFill: "balance",
-          fontSize: size + "px", lineHeight: lh,
-        }}>
-        {paras.map((p, i) => (
-          <p key={i} className={dropcap && i === 0 ? "bc-dropcap" : ""}>{p}</p>
-        ))}
-      </div>
-    );
+      style={{
+        position: "absolute", left: x, top: y, width: w, height: h,
+        columnCount: cols, columnGap: gap, columnFill: fill || "balance",
+        fontSize: size + "px", lineHeight: lh
+      }}>
+        {paras.map((p, i) => {
+          const isCap = dropcap && i === 0;
+          const narrow = isCap && /^["'\u201c\u2018(]*[IJ]/.test(p);
+          return (
+            <p key={i} className={isCap ? "bc-dropcap" + (narrow ? " bc-dropcap-narrow" : "") : ""} style={{ letterSpacing: "0px" }}>{p}</p>);
+
+        })}
+      </div>);
+
   }
 
   function Spread1() {
@@ -36,7 +40,7 @@
 
         {/* ============================ LEFT PAGE ============================ */}
         <TimelineRail items={D.TIMELINE} x={45} y={54} h={720}
-          headLabel={["THE LONG ARC", "OF BALLPARK", "EVOLUTION"]} />
+        headLabel={["THE LONG ARC", "OF BALLPARK", "EVOLUTION"]} />
 
         <div className="bc-region bc-chapter-kicker" style={{ left: 230, top: 70, width: 1000 }}>
           {D.META.chapter}
@@ -55,23 +59,23 @@
         </div>
 
         <SectionHead label={"BASEBALL\u2019S BUILT ENVIRONMENT"} num={"\u00a7"} width={1006}
-          style={{ position: "absolute", left: 230, top: 418, fontSize: 21 }} />
+        style={{ position: "absolute", left: 230, top: 418, fontSize: 21 }} />
 
-        <Body paras={D.EXEC} x={230} y={462} w={1006} h={548}
-          cols={3} gap={34} size={14.5} lh={1.5} dropcap />
+        <Body paras={D.EXEC} x={230} y={462} w={1006} h={486}
+        cols={3} gap={34} size={14.5} lh={1.5} dropcap fill="auto" />
 
         {/* ============================ RIGHT PAGE =========================== */}
         <SectionHead label="WOODEN PARKS AND THE SEARCH FOR PERMANENCE" num="I" width={840}
-          style={{ position: "absolute", left: 1335, top: 58, fontSize: 21 }} />
+        style={{ position: "absolute", left: 1335, top: 58, fontSize: 21 }} />
 
         <Body paras={D.WOODEN} x={1335} y={104} w={840} h={362}
-          cols={3} gap={28} size={12.5} lh={1.44} dropcap />
+        cols={3} gap={28} size={13} lh={1.45} dropcap />
 
         <SectionHead label="THE JEWEL BOX IDEAL" num="II" width={840}
-          style={{ position: "absolute", left: 1335, top: 486, fontSize: 21 }} />
+        style={{ position: "absolute", left: 1335, top: 486, fontSize: 21 }} />
 
         <Body paras={D.JEWEL} x={1335} y={532} w={840} h={296}
-          cols={3} gap={28} size={12.5} lh={1.44} dropcap />
+        cols={3} gap={28} size={13} lh={1.45} dropcap />
 
         {/* ---- right-hand figure strip ---- */}
         <Figure fig={D.FIGS.bakerBowl} x={2205} y={104} w={300} imgH={152} />
@@ -93,8 +97,8 @@
         <Figure fig={D.FIGS.yankee} x={2187} y={834} w={264} imgH={132} />
 
         {/* (running heads removed — bottom band now carries the figure row) */}
-      </div>
-    );
+      </div>);
+
   }
 
   window.BallparkSpread1 = Spread1;

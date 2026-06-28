@@ -59,101 +59,149 @@
   // go still — better to reject than surprise.
   const ACCEPT = ['image/png', 'image/jpeg', 'image/webp', 'image/avif'];
 
-  // ── Shared sidecar store ────────────────────────────────────────────────
-  // One fetch + immediate write-on-change for every <image-slot> on the
-  // page. Reads via fetch() so viewing works anywhere the HTML and sidecar
-  // are served together; writes go through window.omelette.writeFile, which
-  // the host allowlists to *.state.json basenames only.
-  const subs = new Set();
-  let slots = {};
-  // ids explicitly cleared before the sidecar fetch resolved — otherwise
-  // the merge below can't tell "never set" from "just deleted" and would
-  // resurrect the sidecar's stale value.
-  const tombstones = new Set();
-  let loaded = false;
-  let loadP = null;
-
-  function load() {
-    if (loadP) return loadP;
-    loadP = fetch(STATE_FILE)
-      .then((r) => (r.ok ? r.json() : null))
-      .then((j) => {
-        // Merge: sidecar loses to any in-memory change that raced ahead of
-        // the fetch (drop or clear) so neither is clobbered by hydration.
-        if (j && typeof j === 'object') {
-          const merged = Object.assign({}, j, slots);
-          // A framing-only write that raced ahead of hydration must not
-          // drop a user image that's only on disk — inherit u from the
-          // sidecar for any in-memory entry that lacks one.
-          for (const k in slots) {
-            if (merged[k] && !merged[k].u && j[k]) {
-              merged[k].u = typeof j[k] === 'string' ? j[k] : j[k].u;
-            }
-          }
-          for (const id of tombstones) delete merged[id];
-          slots = merged;
-        }
-        tombstones.clear();
-      })
-      .catch(() => {})
-      .then(() => { loaded = true; subs.forEach((fn) => fn()); });
-    return loadP;
-  }
-
-  // Serialize writes so two near-simultaneous drops on different slots
-  // can't reorder at the backend and leave the sidecar with only the
-  // first. A save requested mid-flight just marks dirty and re-fires on
-  // completion with the then-current slots.
-  let saving = false;
-  let saveDirty = false;
-  function save() {
-    if (saving) { saveDirty = true; return; }
-    const w = window.omelette && window.omelette.writeFile;
-    if (!w) return;
-    saving = true;
-    Promise.resolve(w(STATE_FILE, JSON.stringify(slots)))
-      .catch(() => {})
-      .then(() => { saving = false; if (saveDirty) { saveDirty = false; save(); } });
-  }
-
   const S_MAX = 5;
   const clampS = (s) => Math.max(1, Math.min(S_MAX, s));
 
-  // Normalize a stored slot value. Pre-reframe sidecars stored a bare
-  // data-URL string; newer ones store {u, s, x, y}. Either shape is valid.
-  function getSlot(id) {
-    const v = slots[id];
-    if (!v) return null;
-    return typeof v === 'string' ? { u: v, s: 1, x: 0, y: 0 } : v;
-  }
+  // ── Per-file sidecar store ──────────────────────────────────────────────
+  // One fetch + immediate write-on-change, keyed by state file. Reads via
+  // fetch() so viewing works anywhere the HTML and sidecar are served
+  // together; writes go through window.omelette.writeFile. The host only
+  // permits writes to basenames matching .image-slots<no-dots>.state.json and
+  // caps each write at ~2MB — so a heavy page can hand each slot its OWN
+  // lightweight file via the `statefile` attribute instead of forcing every
+  // image into one shared sidecar that overruns the cap (a too-big write
+  // fails silently and the drop is lost on reload). Slots default to the
+  // shared STATE_FILE; getStore() memoizes one store per distinct file.
+  const STORES = new Map();
+  function getStore(file) {
+    file = file || STATE_FILE;
+    const cached = STORES.get(file);
+    if (cached) return cached;
 
-  function setSlot(id, val) {
-    if (!id) return;
-    if (val) { slots[id] = val; tombstones.delete(id); }
-    else { delete slots[id]; if (!loaded) tombstones.add(id); }
-    subs.forEach((fn) => fn());
-    // A drop is rare + high-value — write immediately so nav-away can't lose
-    // it. Gate on the initial read so we don't overwrite a sidecar we haven't
-    // merged yet; the merge in load() keeps this change once the read lands.
-    if (loaded) save(); else load().then(save);
+    const subs = new Set();
+    let slots = {};
+    // ids explicitly cleared before the sidecar fetch resolved — otherwise
+    // the merge below can't tell "never set" from "just deleted" and would
+    // resurrect the sidecar's stale value.
+    const tombstones = new Set();
+    let loaded = false;
+    let loadP = null;
+    let saving = false;
+    let saveDirty = false;
+
+    function load() {
+      if (loadP) return loadP;
+      loadP = fetch(file)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((j) => {
+          // Merge: sidecar loses to any in-memory change that raced ahead of
+          // the fetch (drop or clear) so neither is clobbered by hydration.
+          if (j && typeof j === 'object') {
+            const merged = Object.assign({}, j, slots);
+            // A framing-only write that raced ahead of hydration must not
+            // drop a user image that's only on disk — inherit u from the
+            // sidecar for any in-memory entry that lacks one.
+            for (const k in slots) {
+              if (merged[k] && !merged[k].u && j[k]) {
+                merged[k].u = typeof j[k] === 'string' ? j[k] : j[k].u;
+              }
+            }
+            for (const id of tombstones) delete merged[id];
+            slots = merged;
+          }
+          tombstones.clear();
+        })
+        .catch(() => {})
+        .then(() => { loaded = true; subs.forEach((fn) => fn()); });
+      return loadP;
+    }
+
+    // Serialize writes so two near-simultaneous drops on different slots
+    // can't reorder at the backend and leave the sidecar with only the
+    // first. A save requested mid-flight just marks dirty and re-fires on
+    // completion with the then-current slots.
+    function save() {
+      if (saving) { saveDirty = true; return; }
+      const w = window.omelette && window.omelette.writeFile;
+      if (!w) return;
+      saving = true;
+      Promise.resolve(w(file, JSON.stringify(slots)))
+        .catch(() => {})
+        .then(() => { saving = false; if (saveDirty) { saveDirty = false; save(); } });
+    }
+
+    // Normalize a stored slot value. Pre-reframe sidecars stored a bare
+    // data-URL string; newer ones store {u, s, x, y}. Either shape is valid.
+    function getSlot(id) {
+      const v = slots[id];
+      if (!v) return null;
+      return typeof v === 'string' ? { u: v, s: 1, x: 0, y: 0 } : v;
+    }
+
+    function setSlot(id, val) {
+      if (!id) return;
+      if (val) { slots[id] = val; tombstones.delete(id); }
+      else { delete slots[id]; if (!loaded) tombstones.add(id); }
+      subs.forEach((fn) => fn());
+      // A drop is rare + high-value — write immediately so nav-away can't lose
+      // it. Gate on the initial read so we don't overwrite a sidecar we haven't
+      // merged yet; the merge in load() keeps this change once the read lands.
+      if (loaded) save(); else load().then(save);
+    }
+
+    const store = {
+      subs, load, getSlot, setSlot,
+      get loaded() { return loaded; },
+    };
+    STORES.set(file, store);
+    return store;
   }
 
   // ── Image downscale ─────────────────────────────────────────────────────
   // Encode through a canvas so the sidecar carries resized bytes, not the
   // raw upload. Longest side is capped at 2× the slot's rendered width
-  // (retina) and at MAX_DIM. WebP keeps alpha and is ~10× smaller than PNG
-  // for photos, so there's no need for per-image format picking.
-  async function toDataUrl(file, targetW) {
+  // (retina) and at MAX_DIM. Prefer WebP (keeps alpha, ~10× smaller than PNG
+  // for photos); but Safari/WebKit silently ignores image/webp in toDataURL
+  // and returns PNG instead — which for a photo is multiples larger and can
+  // overrun the host's sidecar write cap, so the drop never persists. So we
+  // feature-detect real WebP-encode support and fall back to JPEG where it's
+  // missing (excellent for photos; the only loss is the alpha channel).
+  let _webpEncodeOK = null;
+  function canEncodeWebp() {
+    if (_webpEncodeOK === null) {
+      try {
+        const t = document.createElement('canvas');
+        t.width = t.height = 1;
+        _webpEncodeOK = t.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+      } catch (e) { _webpEncodeOK = false; }
+    }
+    return _webpEncodeOK;
+  }
+
+  async function toDataUrl(file, targetW, hardCap) {
     const bitmap = await createImageBitmap(file);
     try {
-      const cap = Math.min(MAX_DIM, Math.max(1, Math.round(targetW * 2)) || MAX_DIM);
+      // Default: longest side = min(MAX_DIM, 2× rendered width) for retina
+      // screen use. A slot with the `maxdim` attribute opts into press-grade
+      // resolution: cap straight at that value (ignoring the on-screen 2×
+      // heuristic, which is unreliable when the spread is scaled to fit).
+      const cap = hardCap
+        ? Math.max(1, hardCap)
+        : Math.min(MAX_DIM, Math.max(1, Math.round(targetW * 2)) || MAX_DIM);
       const scale = Math.min(1, cap / Math.max(bitmap.width, bitmap.height));
       const w = Math.max(1, Math.round(bitmap.width * scale));
       const h = Math.max(1, Math.round(bitmap.height * scale));
       const canvas = document.createElement('canvas');
       canvas.width = w; canvas.height = h;
-      canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
-      return canvas.toDataURL('image/webp', 0.85);
+      const ctx = canvas.getContext('2d');
+      const webp = canEncodeWebp();
+      // JPEG has no alpha channel — flatten onto white so a transparent PNG
+      // upload doesn't composite to black on the fallback path.
+      if (!webp) { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h); }
+      ctx.drawImage(bitmap, 0, 0, w, h);
+      return webp
+        ? canvas.toDataURL('image/webp', 0.85)
+        : canvas.toDataURL('image/jpeg', 0.9);
     } finally {
       bitmap.close && bitmap.close();
     }
@@ -226,7 +274,7 @@
 
   class ImageSlot extends HTMLElement {
     static get observedAttributes() {
-      return ['shape', 'radius', 'mask', 'fit', 'position', 'placeholder', 'src', 'id'];
+      return ['shape', 'radius', 'mask', 'fit', 'position', 'placeholder', 'src', 'id', 'statefile'];
     }
 
     constructor() {
@@ -275,7 +323,7 @@
           this._exitReframe(false);
           this._gen++;
           this._local = null;
-          if (this.id) setSlot(this.id, null); else this._render();
+          if (this.id) this._store.setSlot(this.id, null); else this._render();
         }
       });
       this._input.addEventListener('change', () => {
@@ -385,6 +433,29 @@
       }, { passive: false });
     }
 
+    // The sidecar file this slot reads/writes. Resolution order:
+    //   1. an explicit `statefile` attribute (full control), else
+    //   2. a per-id file derived from the slot id, else
+    //   3. (id-less) the shared STATE_FILE.
+    // Per-id is the default so each image lands in its OWN small file: the
+    // host caps each write at ~2MB and saves the WHOLE file on any change, so
+    // one shared sidecar across a whole project eventually overruns the cap
+    // and silently drops new edits. Basename must match
+    // .image-slots<no-dots>.state.json for the host to permit the write, which
+    // the slug (strip non-alphanumerics) guarantees.
+    _storeFile() {
+      const explicit = this.getAttribute('statefile');
+      if (explicit) return explicit;
+      if (this.id) return '.image-slots-' + this.id.replace(/[^a-z0-9]/gi, '') + '.state.json';
+      return null; // id-less → shared default (cannot persist anyway)
+    }
+
+    // Memoized so the subs subscription and store stay identity-stable.
+    get _store() {
+      if (!this.__store) this.__store = getStore(this._storeFile());
+      return this.__store;
+    }
+
     connectedCallback() {
       // Warn once per page — an id-less slot works for the session but
       // cannot persist, and two id-less slots would share nothing.
@@ -396,7 +467,7 @@
       this.addEventListener('dragover', this);
       this.addEventListener('dragleave', this);
       this.addEventListener('drop', this);
-      subs.add(this._subFn);
+      this._store.subs.add(this._subFn);
       // width%/height% in _applyView encode the frame aspect at call time —
       // a host resize (responsive grid, pane divider) would stretch the
       // image until the next _render. Re-render on size change: _render()
@@ -405,12 +476,12 @@
       // frame's clamp range.
       this._ro = new ResizeObserver(() => this._render());
       this._ro.observe(this);
-      load();
+      this._store.load();
       this._render();
     }
 
     disconnectedCallback() {
-      subs.delete(this._subFn);
+      this._store.subs.delete(this._subFn);
       this.removeEventListener('dragenter', this);
       this.removeEventListener('dragover', this);
       this.removeEventListener('dragleave', this);
@@ -447,7 +518,25 @@
       if (commit) this._commitView();
     }
 
-    attributeChangedCallback() { if (this.shadowRoot) this._render(); }
+    attributeChangedCallback(name) {
+      // Both `statefile` and `id` decide which sidecar store this slot belongs
+      // to (id, via _storeFile, is the default file source). React often sets
+      // attributes AFTER the element is inserted — connectedCallback already
+      // ran and subscribed to whatever store the not-yet-set attributes implied
+      // — so re-bind here when either arrives or changes: drop the old
+      // subscription, re-resolve the store, and re-subscribe + reload if
+      // connected.
+      if (name === 'statefile' || name === 'id') {
+        const oldStore = this.__store;
+        const want = getStore(this._storeFile());
+        if (oldStore !== want) {
+          if (oldStore) oldStore.subs.delete(this._subFn);
+          this.__store = want;
+          if (this.isConnected) { want.subs.add(this._subFn); want.load(); }
+        }
+      }
+      if (this.shadowRoot) this._render();
+    }
 
     // handleEvent — one listener object for all four drag events keeps the
     // add/remove symmetric and the depth counter correct.
@@ -485,13 +574,14 @@
       const gen = ++this._gen;
       try {
         const w = this.clientWidth || this.offsetWidth || MAX_DIM;
-        const url = await toDataUrl(file, w);
+        const hardCap = parseInt(this.getAttribute('maxdim'), 10) || 0;
+        const url = await toDataUrl(file, w, hardCap);
         if (gen !== this._gen) return;
         // Only exit reframe once the new image is in hand — a rejected type
         // or decode failure leaves the in-progress crop untouched.
         this._exitReframe(false);
         const val = { u: url, s: 1, x: 0, y: 0 };
-        setSlot(this.id || '', val);
+        this._store.setSlot(this.id || '', val);
         // Keep a session-local copy for id-less slots so the drop still
         // shows, even though it cannot persist.
         if (!this.id) { this._local = val; this._render(); }
@@ -624,7 +714,7 @@
       if (this._userUrl) v.u = this._userUrl;
       // Framing-only (no u) persists too so an author-src slot remembers its
       // crop; clearing the sidecar still falls through to src=.
-      if (this.id) setSlot(this.id, v);
+      if (this.id) this._store.setSlot(this.id, v);
       else { this._local = v; }
     }
 
@@ -656,7 +746,7 @@
       // tool, so its value isn't guaranteed canvas-originated — only accept
       // data:image/ URLs from it. The `src` attribute is author-controlled
       // (Claude wrote it into the HTML) so it passes through unchanged.
-      let stored = this.id ? getSlot(this.id) : this._local;
+      let stored = this.id ? this._store.getSlot(this.id) : this._local;
       if (stored && stored.u && !/^data:image\//i.test(stored.u)) stored = null;
       const srcAttr = this.getAttribute('src') || '';
       this._userUrl = (stored && stored.u) || null;

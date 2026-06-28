@@ -191,6 +191,9 @@
   .page-art.wide {
     aspect-ratio: 2550 / 1088;
   }
+  .page-art.jacket {
+    aspect-ratio: 2668.1 / 1162.5;
+  }
   .page-art img {
     position: absolute;
     inset: 0;
@@ -435,13 +438,14 @@
       const labels = item.leftLabel && item.rightLabel
         ? [item.leftLabel, item.rightLabel]
         : ["Page " + item.leftPage, "Page " + item.rightPage];
+      const artClass = item.artClass || "wide";
       return `
         <a class="spread-card" href="${pageHref(item.page)}" target="_blank" rel="noopener noreferrer" title="Open ${escAttr(item.title)}">
           <div class="spread-labels">
             <span>${escHTML(labels[0])}</span>
             <span>${escHTML(labels[1])}</span>
           </div>
-          <div class="page-art wide">
+          <div class="page-art ${escAttr(artClass)}">
             <div class="page-title">${escHTML(item.title)}</div>
             <img src="${escAttr(itemThumb(item))}" alt="${escAttr(item.title)} thumbnail" onerror="${missingImageHandler()}">
           </div>
@@ -470,12 +474,13 @@
         if (entry.type === "cover") {
           rows.push({
             kind: "cover",
-            left: null,
-            right: {
+            item: {
               ...entry,
               thumb: itemThumb(entry),
-              label: entry.label || "Cover",
-              kind: entry.kind || "Front cover"
+              artClass: "jacket",
+              leftLabel: entry.leftLabel || "Back cover",
+              rightLabel: entry.rightLabel || "Spine + front cover",
+              kind: entry.kind || "Cover wrap"
             }
           });
           return;
@@ -523,7 +528,9 @@
     function renderLayout(rows) {
       document.getElementById("book-layout").innerHTML = rows.map((row, index) => {
         const rowNumber = String(index + 1).padStart(2, "0");
-        const content = row.kind === "cover" || row.kind === "pair"
+        const content = row.kind === "cover"
+          ? spreadCard(row.item)
+          : row.kind === "pair"
           ? pagePairCard(row.left, row.right)
           : spreadCard(row.item);
         return `

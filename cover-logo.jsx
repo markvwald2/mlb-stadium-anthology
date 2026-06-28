@@ -67,4 +67,5 @@
   }
 
   window.CoverLogo = CoverLogo;
+  window.FieldIcon = FieldIcon;
 })();

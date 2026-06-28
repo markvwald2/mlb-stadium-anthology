@@ -25,9 +25,10 @@
   };
 
   // r(order, team, stadium, current, division, from, to, firstVisit, lastVisit)
-  function r(n, team, stadium, current, division, from, to, fv, lv) {
+  function r(n, team, stadium, current, division, from, to, fv, lv, logo, logoScale, logoDy, logoFilter) {
     return { n: n, team: team, stadium: stadium, current: current, division: division || "",
-      from: from, to: to, fv: fv, lv: lv,
+      from: from, to: to, fv: fv, lv: lv, logo: logo || "",
+      logoScale: logoScale || 0, logoDy: logoDy || 0, logoFilter: logoFilter || "",
       decade: (Math.floor(parseInt(fv, 10) / 10) * 10) + "s" };
   }
 
@@ -49,25 +50,25 @@
     split: 20, // orders 1..20 → left column, 21..42 → right column
 
     rows: [
-      r(1,  "Cubs",      "Wrigley Field",                true,  "NL Central", "1914", "", "1953", "1988"),
-      r(2,  "Brewers",   "Milwaukee County Stadium",     false, "",           "1953", "2000", "1955", "1988"),
-      r(3,  "White Sox", "Comiskey Park",                false, "",           "1910", "1990", "1969", "1988"),
+      r(1,  "Cubs",      "Wrigley Field",                true,  "National League", "1914", "", "1953", "1988"),
+      r(2,  "Braves",    "Milwaukee County Stadium",     false, "National League", "1953", "2000", "1955", "1988", "milwaukee-braves-cap.svg", 0.82),
+      r(3,  "White Sox", "Comiskey Park",                false, "AL West",     "1910", "1990", "1969", "1988", "white-sox-1969.png"),
       r(4,  "Dodgers",   "Dodger Stadium",               true,  "NL West",    "1962", "", "1970", "2010"),
-      r(5,  "Padres",    "San Diego Stadium",            false, "",           "1969", "2003", "1972", "1972"),
-      r(6,  "Angels",    "Angel Stadium",                true,  "AL West",    "1966", "", "1986", "2006"),
-      r(7,  "Yankees",   "Yankee Stadium",               false, "",           "1923", "2008", "1987", "2001"),
-      r(8,  "Mets",      "Shea Stadium",                 false, "",           "1964", "2008", "1987", "1990"),
-      r(9,  "Reds",      "Riverfront Stadium",           false, "",           "1970", "2002", "1988", "1988"),
-      r(10, "Tigers",    "Tiger Stadium",                false, "",           "1912", "1999", "1988", "1988"),
-      r(11, "Royals",    "Kauffman Stadium",             true,  "AL Central", "1973", "", "1989", "1989"),
-      r(12, "Guardians", "Cleveland Municipal Stadium",  false, "",           "1931", "1993", "1990", "1990"),
-      r(13, "Pirates",   "Three Rivers Stadium",         false, "",           "1970", "2000", "1990", "1990"),
-      r(14, "Phillies",  "Veterans Stadium",             false, "",           "1971", "2003", "1990", "1990"),
-      r(15, "Orioles",   "Memorial Stadium",             false, "",           "1954", "1991", "1990", "1990"),
-      r(16, "Rockies",   "Mile High Stadium",            false, "",           "1993", "1994", "1993", "1994"),
+      r(5,  "Padres",    "San Diego Stadium",            false, "NL West",     "1969", "2003", "1972", "1972", "padres-friar.svg"),
+      r(6,  "Angels",    "Angel Stadium",                true,  "AL West",    "1966", "", "1986", "2006", "angels-logo-1986.png"),
+      r(7,  "Yankees",   "Yankee Stadium",               false, "AL East",     "1923", "2008", "1987", "2001"),
+      r(8,  "Mets",      "Shea Stadium",                 false, "NL East",     "1964", "2008", "1987", "1990"),
+      r(9,  "Reds",      "Riverfront Stadium",           false, "NL West",     "1970", "2002", "1988", "1988"),
+      r(10, "Tigers",    "Tiger Stadium",                false, "AL East",     "1912", "1999", "1988", "1988"),
+      r(11, "Royals",    "Kauffman Stadium",             true,  "AL West",    "1973", "", "1989", "1989"),
+      r(12, "Indians",   "Cleveland Municipal Stadium",  false, "AL East",     "1931", "1993", "1990", "1990", "cleveland-wahoo-logo.svg"),
+      r(13, "Pirates",   "Three Rivers Stadium",         false, "NL East",     "1970", "2000", "1990", "1990", "", 0, 0, "grayscale(1) brightness(0.55)"),
+      r(14, "Phillies",  "Veterans Stadium",             false, "NL East",     "1971", "2003", "1990", "1990", "phillies-script-p-v2.svg", 1.0, 1),
+      r(15, "Orioles",   "Memorial Stadium",             false, "AL East",     "1954", "1991", "1990", "1990", "orioles-cartoon-logo.svg"),
+      r(16, "Rockies",   "Mile High Stadium",            false, "NL West",     "1993", "1994", "1993", "1994"),
       r(17, "Rockies",   "Coors Field",                  true,  "NL West",    "1995", "", "1995", "2019"),
-      r(18, "Guardians", "Progressive Field",            true,  "AL Central", "1994", "", "2001", "2011"),
-      r(19, "Tigers",    "Comerica Park",                true,  "AL Central", "2000", "", "2001", "2023"),
+      r(18, "Indians",   "Progressive Field",            true,  "AL Central", "1994", "", "2001", "2011", "cleveland-wahoo-logo.svg"),
+      r(19, "Tigers",    "Comerica Park",                true,  "AL Central", "2000", "", "2001", "2023", "tigers-script-inline.svg"),
       r(20, "White Sox", "Rate Field",                   true,  "AL Central", "1991", "", "2001", "2001"),
 
       r(21, "Brewers",   "American Family Field",        true,  "NL Central", "2001", "", "2001", "2023"),
@@ -87,10 +88,10 @@
       r(35, "Astros",    "Daikin Park",                  true,  "AL West",    "2000", "", "2021", "2021"),
       r(36, "Rangers",   "Globe Life Field",             true,  "AL West",    "2020", "", "2021", "2021"),
       r(37, "Blue Jays", "Rogers Centre",                true,  "AL East",    "1989", "", "2023", "2023"),
-      r(38, "Twins",     "Target Field",                 true,  "AL Central", "2010", "", "2023", "2023"),
+      r(38, "Twins",     "Target Field",                 true,  "AL Central", "2010", "", "2023", "2023", "twins-insignia.svg"),
       r(39, "Diamondbacks","Chase Field",                true,  "NL West",    "1998", "", "2024", "2024"),
       r(40, "Cardinals", "Busch Stadium",                true,  "NL Central", "2006", "", "2024", "2024"),
-      r(41, "A's",       "Sutter Health Park",           true,  "AL West",    "2025", "", "2025", "2025"),
+      r(41, "A's",       "Sutter Health Park",           true,  "AL West",    "2025", "", "2025", "2025", "athletics-cap-logo.svg", 0.9),
       r(42, "Giants",    "Oracle Park",                  true,  "NL West",    "2000", "", "2025", "2025"),
     ],
   };

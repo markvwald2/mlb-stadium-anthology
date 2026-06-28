@@ -75,7 +75,7 @@ window.SUNTRUST = {
     center_field: "400",
     right_field: "325",
     orientation: "SE",
-    degrees: 145
+    degrees: 158
   },
 
   // ---- Featured visit (29 of 42). First Visit = Featured Visit, so the date is

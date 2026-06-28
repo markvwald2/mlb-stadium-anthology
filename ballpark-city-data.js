@@ -107,10 +107,10 @@
     cols: ["ERA", "REPRESENTATIVE PARKS", "PLANNING LOGIC", "PRIMARY ACCESS", "DEFINING TRAIT"],
     rows: [
       { color: ERA.wooden, era: "Wooden Parks", years: "1880s\u201390s", parks: "Baker Bowl \u00b7 Polo Grounds", logic: "Fit the irregular city block", access: "Streetcar & excursion train", trait: "Timber grandstands; fire-prone" },
-      { color: ERA.jewel, era: "Jewel Boxes", years: "1910s\u201320s", parks: "Fenway \u00b7 Wrigley \u00b7 Yankee Stadium", logic: "Durable civic permanence", access: "Streetcar & subway", trait: "Steel & masonry; site-driven asymmetry" },
+      { color: ERA.jewel, era: "Jewel Boxes", years: "1910s\u201320s", parks: "Fenway \u00b7 Wrigley \u00b7 Tiger", logic: "Durable civic permanence", access: "Streetcar & subway", trait: "Steel/masonry; site asymmetry" },
       { color: ERA.multi, era: "Multi-Purpose", years: "1960s\u201370s", parks: "Dodger \u00b7 Astrodome \u00b7 Riverfront", logic: "Dual-use efficiency", access: "Automobile & freeway", trait: "Circular bowl; turf and parking" },
       { color: ERA.retro, era: "Retro-Classic", years: "1990s\u20132000s", parks: "Camden Yards \u00b7 Oracle \u00b7 PNC", logic: "Urban specificity restored", access: "Transit + revived downtown", trait: "Brick, skyline views, real grass" },
-      { color: ERA.district, era: "District", years: "2000s\u2013now", parks: "Petco \u00b7 Nationals \u00b7 Truist \u00b7 Globe Life", logic: "Real-estate revenue platform", access: "Multimodal + mixed-use", trait: "Year-round mixed-use anchor" },
+      { color: ERA.district, era: "District", years: "2000s\u2013now", parks: "Nationals \u00b7 Truist \u00b7 Globe Life", logic: "Real-estate revenue platform", access: "Multimodal + mixed-use", trait: "Year-round mixed-use anchor" },
     ],
   };
 
@@ -129,8 +129,8 @@
     standfirst: "Beyond the visible shift from neighborhood park to stadium district, the ballpark was also remade by quieter systems: materials, finance, access, safety, and software.",
     items: [
       { icon: "materials", label: "FIRE, STEEL & SPANS", body: "Wooden parks burned; steel, brick, and concrete made larger decks, safer structures, and column-free sightlines possible. Later roofs, domes, artificial turf, and sustainability standards extended the material brief from durability to environmental control." },
-      { icon: "money", label: "BONDS, RIGHTS & REAL ESTATE", body: "The ballpark moved from owner-built structure to public-finance project and revenue platform. Tax-supported bonds, naming rights, premium clubs, sponsorships, and adjacent real estate reshaped what a stadium had to earn." },
-      { icon: "access", label: "ROUTES, SEATS & SIGHTLINES", body: "Accessibility became part of the building form. ADA seating, companion seats, accessible routes, wider concourses, and sightlines over standing spectators changed the way bowls and circulation systems were planned." },
+      { icon: "money", label: "BONDS, RIGHTS & REAL ESTATE", body: "The ballpark moved from owner-built structure to public-finance project and revenue platform. Tax-supported bonds, naming rights, premium clubs, sponsorships, and adjacent real estate reshaped what a stadium had the potential to earn." },
+      { icon: "access", label: "ROUTES, SEATS & SIGHTLINES", body: "Accessibility became part of the building form. Wheelchair access seating, companion seats, accessible routes, wider concourses, and sightlines over standing spectators changed the way bowls and circulation systems were planned." },
       { icon: "risk", label: "NETTING, APPS & LIABILITY", body: "The modern visit is shaped by safety and software as much as concrete. Extended foul-ball netting, digital ticketing, app-based entry, mobile ordering, and risk management made code, policy, and liability part of stadium design." },
     ],
   };

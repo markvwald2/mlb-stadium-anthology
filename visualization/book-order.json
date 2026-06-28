@@ -1,15 +1,16 @@
 [
   {
     "type": "cover",
-    "title": "Big League Cover",
-    "page": "Big League Cover.html",
-    "thumb": "assets/page-thumbnails/big-league-cover.jpg",
-    "label": "Cover",
-    "kind": "Front cover"
+    "title": "Cover Wrap",
+    "page": "Front Cover.html",
+    "thumb": "assets/page-thumbnails/front-cover.jpg",
+    "leftLabel": "Back cover",
+    "rightLabel": "Spine + front cover",
+    "kind": "Back cover + spine + front cover"
   },
   {
     "type": "spread",
-    "title": "Book Introduction",
+    "title": "Blank + Book Introduction",
     "kind": "Front matter",
     "left": null,
     "right": {
@@ -110,9 +111,14 @@
   },
   {
     "type": "spread",
-    "title": "Two-page Poster Spread",
-    "page": "Opening Spread.html",
-    "thumb": "assets/page-thumbnails/opening-spread.jpg",
-    "kind": "Poster spread"
+    "title": "Closing Stadium Grid",
+    "kind": "Back matter",
+    "left": {
+      "title": "Closing Stadium Grid",
+      "page": "Closing Spread.html",
+      "thumb": "assets/page-thumbnails/closing-spread.jpg",
+      "kind": "Back matter leaf"
+    },
+    "right": null
   }
 ]

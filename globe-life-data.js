@@ -76,7 +76,7 @@ window.GLOBE = {
   //      NO captions per house rule — placeholder is drop guidance only. ----
   glasswall: [
     ["globe-encl-1", "Interior bowl & roof volume \u2014 high vantage, truss spans overhead", "images/globe/encl-1.jpg"],
-    ["globe-encl-2", "Glass outfield / curtain-wall transparency", "images/globe/encl-2.jpg"],
+    ["globe-encl-2", "On-field celebration / event scale \u2014 horizontal group shot", "images/globe/encl-2.jpg"],
     ["globe-encl-3", "Retractable roof machinery / overhead steel structure", "images/globe/encl-3.jpg"],
     ["globe-encl-4", "Concourse transparency / interior scale", "images/globe/hero.jpg"]
   ],

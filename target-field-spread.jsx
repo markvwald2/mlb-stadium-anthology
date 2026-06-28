@@ -14,19 +14,21 @@
   const Protractor = window.TargetProtractor;
 
   function Slot(props) {
-    // Pattern B: full-res press photos referenced via <image-slot src=> — no
-    // canvas downsample, no base64 in the sidecar. The slot stays re-framable;
-    // pan/zoom persists as a tiny framing-only {s,x,y} entry in
-    // .image-slots.state.json. Files live full-resolution in uploads/.
+    // Pattern B: press photos referenced via <image-slot src=> — no base64 in
+    // the sidecar. The slot stays re-framable; pan/zoom persists as a tiny
+    // framing-only {s,x,y} entry in .image-slots.state.json. Files live in
+    // images/target/ as layout-optimized JPEGs (long edge 1200px grid /
+    // 4000px hero, q0.85–0.88) downsampled from the full-res uploads/ originals
+    // for print-safe ~300 DPI without embedding 12 MP phone photos.
     var SRC = {
-      "tf-stadium-ph-1": "uploads/target-field-01.jpg",
-      "tf-stadium-ph-2": "uploads/target-field-02.png",
-      "tf-stadium-ph-3": "uploads/target-field-03.jpg",
-      "tf-stadium-ph-4": "uploads/target-field-04.jpg",
-      "tf-visit-ph-1":   "uploads/target-field-05.jpeg",
-      "tf-visit-ph-2":   "uploads/target-field-06.jpeg",
-      "tf-visit-ph-3":   "uploads/target-field-07.jpeg",
-      "tf-visit-ph-4":   "uploads/target-field-08-306c9b2f.jpg"
+      "tf-stadium-ph-1": "images/target/stadium-1.jpg",
+      "tf-stadium-ph-2": "images/target/stadium-2.jpg",
+      "tf-stadium-ph-3": "images/target/stadium-3.jpg",
+      "tf-stadium-ph-4": "images/target/stadium-4.jpg",
+      "tf-visit-ph-1":   "images/target/visit-1.jpg",
+      "tf-visit-ph-2":   "images/target/visit-2.jpg",
+      "tf-visit-ph-3":   "images/target/visit-3.jpg",
+      "tf-visit-ph-4":   "images/target/visit-4.jpg"
     };
     const attrs = { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" };
     attrs.src = SRC[props.id] || props.src;
@@ -107,7 +109,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "tf-page tf-left", "data-screen-label": "Target Field \u2014 hero" },
         e("div", { className: "tf-hero-slot" },
-          e(Slot, { id: "target-hero", src: "uploads/target-field-00-main.jpeg", placeholder: "Drop the Target Field hero \u2014 high aerial of the open-air bowl fitted into the North Loop: freight-rail corridors, warehouse blocks, the downtown Minneapolis grid, limestone-and-glass facade" })),
+          e(Slot, { id: "target-hero", src: "images/target/hero.jpg", placeholder: "Drop the Target Field hero \u2014 high aerial of the open-air bowl fitted into the North Loop: freight-rail corridors, warehouse blocks, the downtown Minneapolis grid, limestone-and-glass facade" })),
         e("div", { className: "tf-hero-scrim" }),
 
         e("img", { className: "tf-hero-logo", src: "assets/twins-insignia.svg", alt: "Minnesota Twins" }),
@@ -208,7 +210,7 @@
             e(SecHead, { title: "Stadium Context", note: "METRODOME \u2192 TARGET FIELD" }),
             e("div", { className: "tf-prose4" },
               D.stadium_context.map((p, i) => e("p", { key: i,
-                style: { letterSpacing: ["-0.3px", "-0.2px", "-0.3px", "-0.3px"][i] || undefined } }, p))))
+                style: { letterSpacing: "-0.3px" } }, p))))
         )
       )
     );

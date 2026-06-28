@@ -92,13 +92,20 @@ async function findArtboard(page) {
       .pop();
     if (exactSpread) return exactSpread.el;
 
+    const exactJacket = candidates
+      .filter((item) => near(item.width, 2668.1) && near(item.height, 1162.5) && !item.className.includes("dc-card"))
+      .pop();
+    if (exactJacket) return exactJacket.el;
+
     const exactPage = candidates
       .filter((item) => near(item.width, 1275) && near(item.height, 1088) && !item.className.includes("dc-card"))
       .pop();
     if (exactPage) return exactPage.el;
 
     return candidates
-      .filter((item) => (near(item.width, 2550) || near(item.width, 1275)) && near(item.height, 1088))
+      .filter((item) =>
+        ((near(item.width, 2550) || near(item.width, 1275)) && near(item.height, 1088)) ||
+        (near(item.width, 2668.1) && near(item.height, 1162.5)))
       .pop()?.el || null;
   });
 
@@ -120,7 +127,7 @@ async function renderOne(browser, item) {
     await page.evaluate(async () => { if (document.fonts) await document.fonts.ready; });
     await page.waitForTimeout(500);
     const artboard = await findArtboard(page);
-    if (!artboard) throw new Error("No 2550x1088 or 1275x1088 artboard found");
+    if (!artboard) throw new Error("No 2550x1088, 1275x1088, or jacket artboard found");
     await artboard.screenshot({ path: tmp, type: "jpeg", quality: 88 });
     await artboard.dispose();
     const result = spawnSync("sips", ["-Z", "640", tmp, "--out", out], { encoding: "utf8" });

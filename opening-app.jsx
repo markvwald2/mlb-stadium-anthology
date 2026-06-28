@@ -1,28 +1,30 @@
-/* opening-app.jsx — mount the opening two-page spread in a pan/zoom design
-   canvas, and provide the required single-page press-ready PDF path.
+/* opening-app.jsx — mount the opening page (single interior leaf) in a pan/zoom
+   design canvas, and provide the required single-page press-ready PDF path.
 
-   Built on a 2550 × 1088 design canvas (two 12.75 × 10.88 in pages, fold at
-   x = 1275). Both pages are warm cream paper (a data-style spread), so the
-   print harness fills the spine bleed with cream on both sides.
+   Built on a 1275 × 1088 design page (12.75 in wide incl. binding bleed).
+   The shared print harness intentionally remains on the project's legacy
+   single-page export sheet for consistency with already-exported pages.
+   Warm cream paper throughout.
 
-   ?print=1&page=left|right[&guides=1] → one press-ready page for vector PDF. */
+   ?print=1[&page=left|right][&guides=1] → one press-ready page for vector PDF. */
 (function () {
   const { DesignCanvas, DCSection, DCArtboard } = window;
   const Spread = window.OpeningSpread;
-  const CREAM = "#e9e7db"; // both pages are cream paper
+  const CREAM = "#e9e7db"; // cream paper
 
   const params = new URLSearchParams(location.search);
   if (params.get("print")) {
     document.body.classList.add("pp-mode");
     window.PrintPageInit();
-    const side = params.get("page") === "left" ? "left" : "right";
+    // single page lives on the LEFT half of the harness canvas; default left.
+    const side = params.get("page") === "right" ? "right" : "left";
     ReactDOM.createRoot(document.getElementById("root")).render(
       window.PrintPage({ Spread: Spread, side: side, bg: CREAM, guides: params.get("guides") === "1" })
     );
     return;
   }
 
-  // on-canvas trim / safe / gutter / fold guides for the normal view (?guides=1)
+  // on-canvas trim / safe guides for the normal view (?guides=1), single page.
   function CanvasGuides() {
     const base = { position: "absolute", pointerEvents: "none" };
     const box = (color, dash, x, y, w, h) => Object.assign({}, base, {
@@ -38,20 +40,12 @@
       })
     }, text);
     return React.createElement("div", { style: { position: "absolute", inset: 0, zIndex: 50 } },
-      // per-page trim (12.5 inside each page edge)
-      React.createElement("div", { style: box("rgba(198,1,31,.9)",  "solid",  12.5,   12.5, 1250, 1063) }),
-      React.createElement("div", { style: box("rgba(198,1,31,.9)",  "solid",  1287.5, 12.5, 1250, 1063) }),
-      // per-page safe (37.5 inside each page edge)
-      React.createElement("div", { style: box("rgba(46,110,160,.85)", "dashed", 37.5,   37.5, 1200, 1013) }),
-      React.createElement("div", { style: box("rgba(46,110,160,.85)", "dashed", 1312.5, 37.5, 1200, 1013) }),
-      // gutter no-go zone (x 1237.5–1312.5)
-      React.createElement("div", { style: Object.assign({}, base, {
-        left: "1237.5px", top: 0, width: "75px", height: "1088px",
-        background: "rgba(189,155,96,.16)", outline: "1px dashed rgba(154,124,68,.7)"
-      }) }),
-      lbl(16, 16, "rgba(198,1,31,.95)", "trim 12.50 \u00d7 10.63 in \u00b7 per page"),
-      lbl(16, 40, "rgba(46,110,160,.95)", "safe 0.25 in inside trim"),
-      lbl(1150, 16, "rgba(154,124,68,.95)", "gutter \u2014 no content")
+      // trim 12.5 inside the page edge (binding bleed dropped at export)
+      React.createElement("div", { style: box("rgba(198,1,31,.9)", "solid", 12.5, 12.5, 1250, 1063) }),
+      // safe: 0.25 in outer/top/bottom, 0.5 in binding (right) edge
+      React.createElement("div", { style: box("rgba(46,110,160,.85)", "dashed", 37.5, 37.5, 1175, 1013) }),
+      lbl(16, 16, "rgba(198,1,31,.95)", "trim 12.50 \u00d7 10.63 in"),
+      lbl(16, 40, "rgba(46,110,160,.95)", "safe 0.25 in \u00b7 0.5 in binding")
     );
   }
 
@@ -60,13 +54,13 @@
     return React.createElement(DesignCanvas, null,
       React.createElement(DCSection, {
         id: "opening",
-        title: "Opening Spread",
-        subtitle: "Inside cover + page one \u00b7 28 ballparks \u00b7 Blurb 13 \u00d7 11 in \u00b7 2550 \u00d7 1088 px @ 100 ppi \u00b7 fold x=1275"
+        title: "Closing Page",
+        subtitle: "Inside back cover \u00b7 14 ballparks \u00b7 single interior page \u00b7 legacy vector PDF harness \u00b7 1275 \u00d7 1088 px @ 100 ppi"
       },
         React.createElement(DCArtboard, {
-          id: "opening-spread",
-          label: "Opening two-page spread \u2014 cover-grid continued (28 parks)",
-          width: 2550, height: 1088,
+          id: "opening-page",
+          label: "Opening page \u2014 cover-grid (14 parks)",
+          width: 1275, height: 1088,
           style: { boxShadow: "none", position: "relative", padding: 0, background: "#e9e7db" }
         },
           React.createElement(Spread, null),

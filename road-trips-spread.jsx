@@ -171,8 +171,8 @@
       placed.map((p, i) => e(MemoryColumn, { key: "c" + i, trip: p.t, cx: p.cx })),
 
       e("div", { className: "rt-colophon" },
-        e("img", { className: "rt-colo-mlb", src: "assets/mlb-logo.svg", alt: "MLB" }),
-        e("span", { className: "rt-colo-txt" }, "A baseball-travel chronicle")));
+        e("span", { className: "rt-colo-txt" }, "1986 - present"),
+        e("img", { className: "rt-colo-mlb", src: "assets/mlb-logo.svg", alt: "MLB" })));
   }
 
   window.RoadTripsSpread = Spread;

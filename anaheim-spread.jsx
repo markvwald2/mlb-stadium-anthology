@@ -23,7 +23,7 @@
     // .image-slots.state.json, and clearing a drop falls back to src. Files
     // live full-resolution in uploads/.
     var SRC = {
-      "anaheim-hero": "uploads/anaheim-stadium-00-main.jpg",
+      "anaheim-hero": "uploads/anaheim-stadium-00-main-alt.jpg",
       "anaheim-p1": "uploads/anaheim-stadium-01.jpg",
       "anaheim-p2": "uploads/anaheim-stadium-02.jpg",
       "anaheim-p3": "uploads/anaheim-stadium-03-42e20a0e.jpg",
@@ -140,7 +140,7 @@
       e("div", { className: "as-page as-right", "data-screen-label": "Angel Stadium \u2014 survey page" },
 
         /* ---- header ---- */
-        e("div", { className: "as-pad", style: { top: "30px" } },
+        e("div", { className: "as-pad", style: { top: "41px" } },
           e(SectionHead, { tag: "Stadium Section", no: "01", tab: D.team + " \u00b7 " + D.league + " \u00b7 " + D.division })),
 
         /* ---- survey band: photos | mast + metadata | field ---- */
@@ -162,7 +162,6 @@
               window.AnaheimField
                 ? e(window.AnaheimField, { lf: F.left_field, cf: F.center_field, rf: F.right_field, abbr: F.abbr, degrees: F.degrees })
                 : null,
-              e("div", { className: "fc-orient" }, F.orientation + " \u00b7 " + F.degrees + "\u00b0"),
               e("div", { className: "as-foot" },
                 D.footnotes.map((ft, i) => e("div", { className: "ft", key: i },
                   e("span", { className: "fl" }, ft[0]),
@@ -176,7 +175,7 @@
           e("div", { className: "as-life" },
             e("div", { className: "as-life-label" },
               e("span", { className: "ll1" }, "Three Lives"),
-              e("span", { className: "ll2" }, "One concrete frame")),
+              e("span", { className: "ll2", style: { width: "126px" } }, "One concrete frame")),
             e("div", { className: "as-life-cols" },
               D.lifecycle.map((l, i) => e("div", { className: "as-lcol", key: i },
                 e("span", { className: "ly" }, l[0]),
@@ -190,9 +189,11 @@
             e("span", null, e("b", null, "Improvements"), D.classification.later))),
 
         /* ---- stadium context ---- */
-        e("div", { className: "as-pad", style: { top: "530px" } },
+        e("div", { className: "as-pad", style: { top: "549px" } },
           e("div", { className: "as-essay" },
-            D.stadium_context.map((p, i) => e("p", { key: i }, p)))),
+            D.stadium_context.map((p, i) => i === 0
+              ? e("p", { key: i }, e("span", { className: "fw-dropcap" }, p.charAt(0)), p.slice(1))
+              : e("p", { key: i }, p)))),
 
         /* ---- visit section ---- */
         e("div", { className: "as-pad", style: { top: "844px" } },

@@ -12,6 +12,9 @@
     }
     let size = parseFloat(el.dataset.fitBase);
     el.style.fontSize = size + "px";
+    // Force a synchronous layout flush after the re-anchor so the first
+    // scrollWidth read below reflects this size, not a stale one.
+    void el.offsetHeight;
     const MIN = 7;
     let guard = 0;
     while (
@@ -20,6 +23,11 @@
     ) {
       size -= 0.2;
       el.style.fontSize = size + "px";
+      // WebKit batches style writes + geometry reads inside a tight loop, so
+      // the next scrollWidth check can read a stale (pre-shrink) value and the
+      // loop exits while the block still overflows (spilling a column behind
+      // adjacent art). Force a reflow each step so every measurement is fresh.
+      void el.offsetHeight;
       guard++;
     }
   }

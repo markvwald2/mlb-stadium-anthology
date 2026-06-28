@@ -89,7 +89,7 @@
     color: rgba(220,230,235,.66); text-transform: uppercase; flex: none; }
   .glf-trussdatum .cap.r { color: rgba(157,176,187,.8); }
 
-  .glf-hero-title { position: absolute; left: 58px; right: 75px; bottom: 60px; z-index: 6; }
+  .glf-hero-title { position: absolute; left: 58px; right: 75px; bottom: 78px; z-index: 6; }
   .glf-signrule { height: 2px; background: rgba(220,230,235,.5); }
   .glf-signrule.top { width: 100%; margin-bottom: 18px; }
   .glf-signrule.bot { display: none; }
@@ -123,9 +123,9 @@
   .glf-rp { position: absolute; inset: 0; display: flex; flex-direction: column; z-index: 2; }
 
   /* dark overhead roof datum — bleeds to top/side edges, a quiet structural field */
-  .glf-roof { flex: none; height: 52px; background:
+  .glf-roof { flex: none; height: 78px; background:
       linear-gradient(180deg, #11181C 0%, #0E1417 70%, #0B1013 100%);
-    display: flex; align-items: center; gap: 18px; padding: 0 40px;
+    display: flex; align-items: flex-end; gap: 18px; padding: 0 40px 15px;
     border-bottom: 2px solid var(--steel); }
   .glf-roof .wf { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 14px;
     letter-spacing: .34em; text-transform: uppercase; color: rgba(220,230,235,.78); white-space: nowrap; }
@@ -186,8 +186,8 @@
   .glf-bay-cat::before { content: ""; width: 5px; height: 5px; background: var(--glass-deep); flex: none; }
   .glf-bay-rows { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; align-items: baseline; }
   .glf-bay-row { display: contents; }
-  .glf-bay-row .bk { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9.5px;
-    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; padding-top: 2px; }
+  .glf-bay-row .bk { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px;
+    letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; padding-top: 2px; }
   .glf-bay-row .bv { font-family: "Spectral", serif; font-weight: 500; font-size: 12px;
     color: var(--ink); line-height: 1.26; white-space: pre-line; }
 
@@ -218,7 +218,7 @@
   .glf-prose { display: flex; align-items: flex-start; }
   .glf-prose .glf-col { flex: 1 1 0; min-width: 0; padding-right: 14px; }
   .glf-prose .glf-col + .glf-col { padding-right: 0; padding-left: 14px; border-left: 1px solid var(--rule); }
-  .glf-prose p { margin: 0 0 8px; font-family: "Spectral", serif; font-size: 13.0px; line-height: 1.54;
+  .glf-prose p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 13.0px; line-height: 1.38;
     letter-spacing: 0.2px;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .glf-prose .glf-col p:last-child { margin-bottom: 0; }
@@ -279,14 +279,14 @@
   .glf-wcell .tx { display: flex; flex-direction: column; align-items: center; }
   .glf-wcell .wv { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 17px;
     color: var(--ink); line-height: 1.05; white-space: nowrap; }
-  .glf-wcell .wl { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9.5px;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
+  .glf-wcell .wl { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
 
   .glf-vfacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px 16px; }
   .glf-vf { display: flex; flex-direction: column; gap: 1px; padding-bottom: 4px;
     border-bottom: 1px solid var(--rule); }
-  .glf-vf .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9.5px;
-    letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  .glf-vf .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px;
+    letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
   .glf-vf .v { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink);
     line-height: 1.18; }
 

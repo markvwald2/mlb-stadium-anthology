@@ -5,7 +5,7 @@
   const FieldDiagram = window.PNCProtractor;
 
   function Slot(props) {
-    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" });
+    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect", maxdim: props.maxdim });
   }
 
   /* Pirates wordmark — gold "P" mark. */
@@ -68,14 +68,17 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         React.createElement("div", { className: "pnc-page pnc-left", "data-screen-label": "PNC Park hero" },
           React.createElement("div", { className: "pnc-hero-slot" },
-            React.createElement(Slot, { id: "pnc-hero", placeholder: "Drop the PNC Park aerial \u2014 skyline + Clemente Bridge + river + bowl" })),
+            React.createElement(Slot, { id: "pnc-hero", maxdim: 4000, placeholder: "Drop the PNC Park aerial \u2014 skyline + Clemente Bridge + river + bowl" })),
           React.createElement("div", { className: "pnc-hero-scrim" }),
           React.createElement("div", { className: "pnc-hero-folio" }, "Retro Classic ballpark"),
 
           React.createElement("div", { className: "pnc-hero-title" },
-            React.createElement("h1", { className: "pnc-hero-name" }, "PNC PARK"),
+            React.createElement("div", { className: "pnc-hero-frame" },
+              React.createElement("h1", { className: "pnc-hero-name" },
+                React.createElement("span", null, "PNC"),
+                React.createElement("span", { className: "two" }, "PARK"))),
             React.createElement("div", { className: "pnc-hero-loc" },
-              React.createElement("span", { className: "bar" }),
+              React.createElement("span", { className: "dot" }),
               React.createElement("span", { className: "txt" }, "Pittsburgh, Pennsylvania"))
           ),
 
@@ -227,13 +230,7 @@
   }
   function photoCard(id, l1, l2) {
     return React.createElement("div", { className: "pnc-pcard", "data-slot": id },
-      React.createElement("div", { className: "frame" },
-        React.createElement("svg", { className: "ph-ico", width: "26", height: "26", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round", strokeLinejoin: "round" },
-          React.createElement("rect", { x: "3", y: "3", width: "18", height: "18", rx: "1.5" }),
-          React.createElement("circle", { cx: "8.5", cy: "8.5", r: "1.5" }),
-          React.createElement("path", { d: "m21 15-5-5L5 21" })),
-        React.createElement("div", { className: "cap" },
-          React.createElement("span", null, l1), React.createElement("span", null, l2))));
+      React.createElement("image-slot", { id: id, class: "pnc-pslot", shape: "rect", placeholder: l1 + " " + l2 }));
   }
   function ribCell(k, v) {
     return React.createElement("div", { className: "rc" },

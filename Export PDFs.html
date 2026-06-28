@@ -27,6 +27,16 @@
   }
   .progress b { color: #1c1a17; font-size: 15px; }
 
+  .head-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  button.popall {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px;
+    letter-spacing: 0.02em; color: #f4f1ea; background: #1c1a17;
+    border: 1px solid #1c1a17; border-radius: 4px; padding: 9px 16px; cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+  button.popall:hover { background: #34302a; }
+  button.popall:disabled { opacity: 0.55; cursor: default; }
+
   .steps {
     margin: 22px 0 30px; padding: 16px 22px;
     background: #fffdf8; border: 1px solid #d8d2c4; border-radius: 4px;
@@ -111,10 +121,18 @@
       <h1>Export PDFs — MLB Book v3</h1>
       <p class="lede">Each spread → two single-page vector PDFs (left + right). Export in Chrome; I'll mark cells done as you finish them.</p>
     </div>
-    <div class="progress" id="progress">— / — pages done</div>
+    <div class="head-right">
+      <button type="button" class="popall" id="popAll">Open all pages ↗</button>
+      <div class="progress" id="progress">— / — pages done</div>
+    </div>
   </header>
 
   <div class="steps">
+    <p style="margin:0 0 10px;font-size:13.5px;color:#5b4a28;"><strong>Interior export note:</strong>
+    the source spreads still use the official on-canvas Blurb-safe geometry, while
+    the vector PDF harness intentionally remains on the legacy <code>13.25 × 11.25 in</code>
+    single-page sheet for consistency with already-exported pages. The <em>guides</em>
+    links draw the current trim / bleed / safe overlays on screen.</p>
     <ol>
       <li>Click a spread’s <strong>Left</strong> / <strong>Right</strong> button to open its print tab (works on click in Safari; in Chrome, pop this sheet out first or ask me to open it).</li>
       <li>In the print tab: <code>Cmd/Ctrl+P</code> → <strong>Save as PDF</strong> → <strong>Margins: None</strong> → Save. Backgrounds print automatically.</li>
@@ -123,12 +141,13 @@
   </div>
 
   <div class="notice" id="notice" hidden>
-    <strong>Safari:</strong> the Left / Right buttons open and print cleanly —
-    just click them. <strong>Chrome</strong> withholds the preview session
-    cookie on a tab opened from this embedded view, so it shows a “preview token
-    required” error instead. In Chrome, either pop this sheet out first (the
-    preview’s <em>open-in-new-tab</em> control — the buttons then carry the token
-    through), or ask me to open any page for you.
+    <strong>Pop this sheet out first.</strong> The print buttons need a host
+    auth token that only exists when <em>this page</em> is opened in its own tab.
+    Use the preview’s <strong>open-in-new-tab</strong> control (top-right of the
+    preview toolbar) to pop out <code>Export PDFs.html</code> — then the Left /
+    Right / Open-all buttons carry the token through and open cleanly. From the
+    embedded preview they’ll always show “preview token required.” You can also
+    just ask me to open any page for you.
   </div>
 
   <div class="grid" id="grid"></div>
@@ -139,12 +158,20 @@
 <script>
   // status: "pending" | "done" — tell me when a spread is finished and I'll flip it.
   const spreads = [
-    { name: "Rogers Centre",       file: "Rogers Centre Spread.html",       status: "done" },
-    { name: "Globe Life Field",    file: "Globe Life Field Spread.html",    status: "done" },
-    { name: "Yankee Stadium 2009", file: "Yankee Stadium 2009 Spread.html", status: "done" },
-    { name: "Fenway Park",         file: "Fenway Park Spread.html",          status: "done" },
-    { name: "Target Field",        file: "Target Field Spread.html",         status: "done" },
-    { name: "Anaheim Stadium",     file: "Anaheim Stadium Spread.html",      status: "done" },
+    { name: "Cover wrap (flapless)", file: "Front Cover.html",           status: "done", single: true },
+    { name: "Rogers Centre",       file: "Rogers Centre Spread.html",       status: "pending" },
+    { name: "Globe Life Field",    file: "Globe Life Field Spread.html",    status: "pending" },
+    { name: "Yankee Stadium 2009", file: "Yankee Stadium 2009 Spread.html", status: "pending" },
+    { name: "Fenway Park",         file: "Fenway Park Spread.html",          status: "pending" },
+    { name: "Target Field",        file: "Target Field Spread.html",         status: "pending" },
+    { name: "Anaheim Stadium",     file: "Anaheim Stadium Spread.html",      status: "pending" },
+    { name: "PNC Park",            file: "PNC Park Spread.html",             status: "pending" },
+    { name: "The Ballpark & the City \u2014 Spread 1", file: "The Ballpark and the City - Spread 1.html", status: "done" },
+    { name: "The Ballpark & the City \u2014 Spread 2", file: "The Ballpark and the City - Spread 2.html", status: "done" },
+    { name: "MLB Stadium Timeline", file: "MLB Stadium Timeline Spread.html", status: "done" },
+    { name: "All Trip Games",      file: "All Trip Games.html",     status: "done", single: true },
+    { name: "Ballparks Visited",   file: "Ballparks Visited.html",  status: "done", single: true },
+    { name: "Closing Page",        file: "Closing Spread.html",     status: "done", single: true },
   ];
 
   // The preview host authorizes a tab via the query params on THIS page
@@ -170,6 +197,16 @@
         <div class="name">${s.name}</div>
         <div class="badge">${done ? "Done" : "Pending"}</div>
       </div>
+      ${s.single ? `
+      <div class="pages">
+        <a class="btn left"  href="${printHref(s.file, 'page')}"  target="_blank" rel="noopener"><span class="dot"></span>${s.single && /jacket|cover/i.test(s.name) ? 'Full sheet' : 'Print page'}</a>
+      </div>
+      <div class="cell-foot">
+        <span class="guides-wrap">preview guides:
+          <a class="guides" href="${printHref(s.file, 'page', true)}" target="_blank" rel="noopener">page ↗</a>
+        </span>
+        <span class="filename">1 PDF</span>
+      </div>` : `
       <div class="pages">
         <a class="btn left"  href="${printHref(s.file, 'left')}"  target="_blank" rel="noopener"><span class="dot"></span>Left page</a>
         <a class="btn right" href="${printHref(s.file, 'right')}" target="_blank" rel="noopener"><span class="dot"></span>Right page</a>
@@ -180,7 +217,7 @@
           <a class="guides" href="${printHref(s.file, 'right', true)}" target="_blank" rel="noopener">right ↗</a>
         </span>
         <span class="filename">2 PDFs</span>
-      </div>`;
+      </div>`}`;
     grid.appendChild(cell);
   }
 
@@ -191,8 +228,34 @@
     document.getElementById("notice").hidden = false;
   }
 
-  const total = spreads.length * 2;
-  const doneCount = spreads.filter(s => s.status === "done").length * 2;
+  // Pop out every print page in order. Collect each cell's page links and open
+  // them on a short stagger so the browser doesn't swallow them as a popup burst.
+  document.getElementById("popAll").addEventListener("click", (e) => {
+    const btn = e.currentTarget;
+    // No host token on this sheet → every print tab fails with "preview token
+    // required". Don't fire 25 broken tabs; surface the fix instead.
+    if (!new URLSearchParams(location.search).has("t")) {
+      const note = document.getElementById("notice");
+      note.hidden = false;
+      note.style.outline = "2px solid #c9892f";
+      note.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    const links = [...grid.querySelectorAll('a.btn')].map(a => a.href);
+    btn.disabled = true;
+    let i = 0;
+    const label = btn.textContent;
+    (function next() {
+      if (i >= links.length) { btn.disabled = false; btn.textContent = label; return; }
+      btn.textContent = `Opening ${i + 1} / ${links.length}…`;
+      window.open(links[i], "_blank", "noopener");
+      i++;
+      setTimeout(next, 350);
+    })();
+  });
+
+  const total = spreads.reduce((n, s) => n + (s.single ? 1 : 2), 0);
+  const doneCount = spreads.filter(s => s.status === "done").reduce((n, s) => n + (s.single ? 1 : 2), 0);
   document.getElementById("progress").innerHTML =
     `<b>${doneCount}</b> / ${total} pages done`;
 </script>

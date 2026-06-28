@@ -61,7 +61,7 @@
       },
       {
         key: "2011", year: "2011", name: ["OHIO /", "PENNSYLVANIA"], games: 3, stadiums: 3, dates: "SEP 21\u201323",
-        route: ["Great American Ballpark", "Progressive Field", { n: "NFL Hall of Fame", alt: true }, "PNC Park", { n: "Ohio Stadium", alt: true, cat: "CFB" }, { n: "Paul Brown Stadium", alt: true, cat: "NFL" }],
+        route: ["Great American Ball Park", { n: "Rock & Roll Hall of Fame", alt: true }, "Progressive Field", { n: "NFL Hall of Fame", alt: true }, "PNC Park", { n: "Ohio Stadium", alt: true, cat: "CFB" }, { n: "Paul Brown Stadium", alt: true, cat: "NFL" }],
         accent: "#6B672C", page: "left", plateAr: "4 / 3", drive: { mi: "707", time: "11h 22m" },
       },
       {

@@ -38,8 +38,8 @@
     "Red Sox":    { logo: "boston-red-sox-logo.svg",          nick: "Red Sox" },
   };
 
-  function g(date, stadium, home, away, tag) {
-    return { date: date, stadium: stadium, home: home, away: away, tag: tag || null };
+  function g(date, stadium, home, away, tag, ov) {
+    return { date: date, stadium: stadium, home: home, away: away, tag: tag || null, ov: ov || null };
   }
 
   window.ALLGAMES = {
@@ -61,29 +61,29 @@
     // column assignment balances the two columns (col 1 = first five trips).
     trips: [
       { year: "1986", name: "Southern California", accent: "#9B3A2E", col: 1, games: [
-        g("Aug 17", "Anaheim Stadium",          "Angels", "A's"),
+        g("Aug 17", "Anaheim Stadium",          "Angels", "A's", null, { Angels: "angels-logo-1986.png" }),
         g("Aug 18", "Dodger Stadium",           "Dodgers", "Mets"),
         g("Aug 19", "Dodger Stadium",           "Dodgers", "Mets"),
       ] },
       { year: "1988", name: "Midwest", accent: "#B0792A", col: 1, games: [
         g("Aug 12", "Wrigley Field",             "Cubs", "Cardinals"),
-        g("Aug 12", "Milwaukee County Stadium",  "Brewers", "Orioles"),
+        g("Aug 12", "Milwaukee County Stadium",  "Brewers", "Orioles", null, { Brewers: "brewers-ball-in-glove.png" }),
         g("Aug 13", "Wrigley Field",             "Cubs", "Cardinals"),
         g("Aug 14", "Riverfront Stadium",        "Reds", "Braves"),
         g("Aug 15", "Tiger Stadium",             "Tigers", "Twins"),
-        g("Aug 16", "Comiskey Park",             "White Sox", "Blue Jays"),
+        g("Aug 16", "Comiskey Park",             "White Sox", "Blue Jays", null, { "White Sox": "white-sox-1988.svg" }),
       ] },
       { year: "1990", name: "Northeast", accent: "#97781E", col: 1, games: [
-        g("Aug 13", "Cleveland Stadium",         "Indians", "Tigers"),
+        g("Aug 13", "Cleveland Stadium",         "Indians", "Tigers", null, { Indians: "cleveland-wahoo-logo.svg" }),
         g("Aug 14", "Three Rivers Stadium",      "Pirates", "Braves", "DH"),
         g("Aug 14", "Three Rivers Stadium",      "Pirates", "Braves", "DH"),
-        g("Aug 15", "Veterans Stadium",          "Phillies", "Giants"),
+        g("Aug 15", "Veterans Stadium",          "Phillies", "Giants", null, { Phillies: "phillies-script-p-v2.svg" }),
         g("Aug 16", "Shea Stadium",              "Mets", "Dodgers"),
-        g("Aug 17", "Memorial Stadium",          "Orioles", "A's"),
+        g("Aug 17", "Memorial Stadium",          "Orioles", "A's", null, { Orioles: "orioles-cartoon-logo.svg" }),
       ] },
       { year: "2011", name: "Ohio / Pennsylvania", accent: "#6B672C", col: 1, games: [
         g("Sep 21", "Great American Ball Park",  "Reds", "Astros"),
-        g("Sep 22", "Progressive Field",         "Indians", "White Sox"),
+        g("Sep 22", "Progressive Field",         "Indians", "White Sox", null, { "White Sox": { dx: 5 } }),
         g("Sep 23", "PNC Park",                  "Pirates", "Reds"),
       ] },
       { year: "2016", name: "Boston", accent: "#2E6E6A", col: 1, games: [
@@ -109,9 +109,9 @@
       ] },
       { year: "2023", name: "Northern Midwest", accent: "#3E5E78", col: 2, games: [
         g("Jul 20", "Rogers Centre",             "Blue Jays", "Padres"),
-        g("Jul 21", "Comerica Park",             "Tigers", "Padres"),
+        g("Jul 21", "Comerica Park",             "Tigers", "Padres", null, { Tigers: "detroit-tigers-d.svg" }),
         g("Jul 22", "American Family Field",      "Brewers", "Braves"),
-        g("Jul 23", "Target Field",              "Twins", "White Sox"),
+        g("Jul 23", "Target Field",              "Twins", "White Sox", null, { Twins: "twins-insignia.svg", "White Sox": { dx: 5 } }),
       ] },
       { year: "2024", name: "Phoenix", accent: "#AE5C24", col: 2, games: [
         g("Apr 29", "Chase Field",               "Diamondbacks", "Dodgers"),
@@ -121,7 +121,7 @@
         g("Aug 18", "Busch Stadium",             "Cardinals", "Dodgers"),
       ] },
       { year: "2025", name: "Northern California", accent: "#8A6A2A", col: 2, games: [
-        g("Jul 11", "Sutter Health Park",        "A's", "Blue Jays"),
+        g("Jul 11", "Sutter Health Park",        "A's", "Blue Jays", null, { "A's": { logo: "athletics-cap-logo.svg", scale: 0.9 } }),
         g("Jul 12", "Oracle Park",               "Giants", "Dodgers"),
       ] },
     ],

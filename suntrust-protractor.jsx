@@ -70,7 +70,7 @@
     ];
 
     return e("div", { className: "fd-wrap" },
-      e("svg", { viewBox: "26 36 308 286", className: "fd-svg", role: "img", "aria-label": "Field dimensions plan, oriented " + orientation + " " + deg + " degrees" },
+      e("svg", { viewBox: "26 36 308 298", className: "fd-svg", role: "img", "aria-label": "Field dimensions plan, oriented " + orientation + " " + deg + " degrees" },
         e("defs", null,
           e("linearGradient", { id: "stProtGrass", x1: "0", y1: "0", x2: "0", y2: "1" },
             e("stop", { offset: "0", stopColor: grassHi }), e("stop", { offset: "1", stopColor: grass }))

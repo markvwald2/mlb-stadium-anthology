@@ -21,6 +21,14 @@
   // images/opening/<slot>.jpg is in place.
   const NO_PHOTO = {};
 
+  // slots whose photo file was replaced post-publish: point at a fresh filename
+  // so the serve layer can't hand back a stale-cached copy of the old path.
+  const SRC_OVERRIDE = {
+    "op-l02": "images/opening/op-l02-v2.jpg",
+    "op-l04": "images/opening/op-l04-v2.jpg",
+    "op-l14": "images/opening/op-l14-v2.jpg",
+  };
+
   function Cell(props) {
     const p = props.park, pl = props.place;
     const slotProps = {
@@ -28,7 +36,7 @@
       shape: "rect",
       placeholder: "Aerial \u2014 " + p.name
     };
-    if (!NO_PHOTO[p.slot]) slotProps.src = "images/opening/" + p.slot + ".jpg";
+    if (!NO_PHOTO[p.slot]) slotProps.src = SRC_OVERRIDE[p.slot] || ("images/opening/" + p.slot + ".jpg");
     return React.createElement("figure", {
       className: "op-cell",
       style: { gridColumn: pl.c, gridRow: pl.r }
@@ -65,11 +73,8 @@
   }
 
   function OpeningSpread() {
-    return React.createElement("div", { className: "op-spread", "data-screen-label": "Opening spread" },
-      React.createElement(Page, { side: "left",  parks: D.left,  label: "Inside cover", title: D.titleLeft }),
-      React.createElement(Page, { side: "right", parks: D.right, label: "Page one", title: D.titleRight }),
-      // flat hairline fold — no shadow, no fake book depth
-      React.createElement("div", { className: "op-fold" })
+    return React.createElement("div", { className: "op-spread", "data-screen-label": "Opening page" },
+      React.createElement(Page, { side: "left", parks: D.left, label: "Inside cover", title: D.titleLeft })
     );
   }
 

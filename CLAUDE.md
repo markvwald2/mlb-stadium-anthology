@@ -100,6 +100,48 @@ get re-corrected most often, so treat them as hard constraints, not preferences.
    spread should still be readable, print-safe, and data-complete, but the
    composition should not feel reusable by swapping only photos, colors, and names.
 
+## Preflight checklist — RUN BEFORE EVERY DELIVERY (AUTHORITATIVE)
+A spread is not done until all of these pass. Run them with `eval_js`/screenshots
+on the live render and report each one explicitly (pass/fail + measured numbers).
+Do not call a spread "preflighted" unless every item below was actually checked —
+geometry alone is not a preflight.
+
+1. **≥300 DPI on every photo.** For each `<image-slot>`, compute the source
+   image's effective resolution at its *placed, cropped* size: the design canvas
+   is 100 px/in and exports at 3×, so a slot W×H design-px needs a source of
+   ≥3W × 3H native px (cover-crop math: divide native px by the slot's
+   inches actually shown after the crop scale). Any photo under 300 DPI fails —
+   list it with its native size, placed size, and computed DPI, and request a
+   higher-res asset. Full-bleed heroes are the usual offenders (a 12.75×10.88 in
+   bleed needs ~3825×3264).
+2. **No text smaller than 10px.** Sweep every text-bearing element's *computed*
+   `font-size` (design px = CSS px at 1:1). Anything `< 10px` fails — bump it to
+   ≥10px and reflow. Watch the dense game/scoreboard labels and badge glyphs;
+   widen badges or trim tracking rather than leaving sub-10px type.
+3. **Nothing in the non-printable / bleed area** except intentional bleed
+   photos/graphics. Run the `getBBox()`/`getBoundingClientRect()` sweep of every
+   `<text>` and key mark against the per-page safe boxes AND the gutter zone;
+   zero violations. The only allowed flags are quiet full-bleed art/color fields
+   that are *meant* to run to the canvas edge / through the gutter.
+4. **Drop cap formatting is correct & actually rendering.** Confirm the drop cap
+   paints at the intended size, color, and line-span — `::first-letter { float }`
+   is silently dropped inside `columns:*` containers, so use a real floated
+   `.fw-dropcap` span and screenshot to verify it wraps as desired (not a plain
+   first letter).
+5. **Body prose is typographically uniform.** Stadium-context (and any
+   multi-paragraph prose) must share one font-size, letter-spacing, and
+   line-height across all paragraphs — sweep computed styles and confirm a single
+   unique triple. (Justification is fine; uneven per-paragraph metrics are not.)
+
+## Marking a spread "done" — ALWAYS update the Export PDFs page (AUTHORITATIVE)
+A spread is not "done" until it has passed the full preflight checklist above AND
+its cell on `Export PDFs.html` reflects it. Whenever we agree a spread is finished,
+in the SAME turn flip its entry in the `spreads` array in `Export PDFs.html` from
+`status: "pending"` to `status: "done"` (the progress counter and the green
+done-styling derive from that field automatically). Never call a spread done
+without making this edit. If a spread regresses (re-opened for fixes), flip it
+back to `"pending"`.
+
 ## Per-spread file pattern
 Each ballpark is a cluster of files: `<name>-data.js`, `<name>-spread.jsx` (or
 `-editorial.jsx`), usually a diagram component (`-protractor.jsx` / `-field.jsx` /
@@ -162,6 +204,3 @@ Two single-page PDFs per spread (correct for perfect-bound book). The artboard
 > press ever needs the exact 12.75 × 10.88 in page-with-bleed sheet, do it as a
 > separate export-normalization pass that re-exports every spread together
 > (retune `TRIMW_IN`, `TRIMH_IN`, `@page size`).
-
-`Field Plan Studies.html` is an exploration page (ten study cards), NOT a bound
-spread, so it intentionally has no print path.

@@ -63,24 +63,24 @@
     font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--ink-3); }
   .bp-ch-num { grid-column: 1 / 2; }
-  .bp-ch-park { grid-column: 3 / 4; }
+  .bp-ch-park { grid-column: 3 / 4; padding-left: 10px; }
   .bp-ch-visited { grid-column: 4 / 5; text-align: right; }
 
   /* ---- decade divider ---- */
-  .bp-decade { display: flex; align-items: center; gap: 10px; height: 22px; margin-top: 2px; }
+  .bp-decade { display: flex; align-items: center; gap: 10px; height: 20px; margin-top: 2px; }
   .bp-decade-label { font-family: "Anton", sans-serif; font-size: 14px; letter-spacing: .03em;
     color: var(--navy); flex: none; }
   .bp-decade-rule { flex: 1; height: 0; border-top: 1px solid var(--rule-strong); }
 
   /* ---- ballpark row ---- */
   .bp-row { display: grid; grid-template-columns: 30px 34px 1fr 92px; align-items: center;
-    height: 34px; border-bottom: 1px solid var(--rule); }
+    height: 36px; border-bottom: 1px solid var(--rule); }
   .bp-row:last-child { border-bottom: 0; }
   .bp-num { font-family: "Space Mono", monospace; font-size: 11px; color: var(--ink-3); }
   .bp-logo-wrap { display: flex; align-items: center; justify-content: center; }
   .bp-logo { height: 26px; width: 29px; object-fit: contain; }
   .bp-row-former .bp-logo { filter: grayscale(1); opacity: .62; }
-  .bp-main { min-width: 0; padding-right: 12px; }
+  .bp-main { min-width: 0; padding-right: 12px; padding-left: 10px; }
   .bp-line1 { display: flex; align-items: baseline; gap: 7px; }
   .bp-stadium { font-family: "Spectral", serif; font-size: 14px; line-height: 1.05; color: var(--ink);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

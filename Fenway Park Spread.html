@@ -126,8 +126,8 @@
   .fw-meta-table td i { font-style: normal; color: var(--cream-dim); padding: 0 1px; }
   .fw-mr-note { display: inline; font-style: italic; font-size: 12px; color: var(--cream-dim); margin-left: 7px; }
 
-  .fw-field-row { flex: 1; min-height: 0; margin-top: 9px; display: flex; flex-direction: row; align-items: center; gap: 12px; }
-  .fw-field-logo-wrap { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; }
+  .fw-field-row { flex: 1; min-height: 0; margin-top: 9px; display: flex; flex-direction: row; align-items: flex-end; gap: 12px; }
+  .fw-field-logo-wrap { flex: 1; min-width: 0; height: 159px; align-self: flex-end; display: flex; align-items: center; justify-content: center; }
   .fw-field-logo { width: 109px; max-width: 92%; height: auto; display: block; }
   .fw-field-bay { padding: 8px 8px; border: 1px solid var(--rule);
     background: rgba(11,24,16,.4); border-radius: 2px; min-height: 0; display: flex; flex-direction: row; align-items: center; gap: 8px;
@@ -174,13 +174,14 @@
   .fw-ctx-cols p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.45;
     letter-spacing: -0.2px; color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
   .fw-ctx-cols p:last-child { margin-bottom: 0; }
-  .fw-ctx-cols p:first-of-type::first-letter { float: left; font-family: "Spectral", serif; font-weight: 700;
-    font-size: 3.1em; line-height: .78; padding: 4px 7px 0 0; color: var(--brick); }
+  .fw-ctx-cols p:first-of-type::first-letter { /* drop cap rendered as real .fw-dropcap span — ::first-letter float is dropped inside multicol */ }
+  .fw-dropcap { float: left; font-family: "Spectral", serif; font-weight: 700;
+    font-size: 3.1em; line-height: .66; padding: 4px 7px 0 0; color: var(--brick); }
 
-  .fw-cWrap { flex: 1; min-height: 0; display: grid; grid-template-columns: 4fr 1fr; gap: 12px; align-items: stretch; }
-  .fw-life-panel { padding: 10px 15px 10px; display: flex; flex-direction: column; }
-  .fw-life { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 9px; }
-  .fw-life-grp { display: flex; flex-direction: column; justify-content: space-between; gap: 7px; }
+  .fw-cWrap { flex: 1; min-height: 0; display: grid; grid-template-columns: 4fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 12px; align-items: stretch; }
+  .fw-life-panel { padding: 9px 15px 9px; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+  .fw-life { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 6px; min-height: 0; }
+  .fw-life-grp { display: flex; flex-direction: column; justify-content: space-between; gap: 5px; }
   .fw-life-era { display: flex; align-items: baseline; gap: 5px; margin-bottom: 1px;
     border-bottom: 0.75px solid var(--ink); padding-bottom: 0; }
   .fw-life-era .yr { font-family: "Jost", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .04em;
@@ -188,12 +189,12 @@
   .fw-life-era .ti { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .09em;
     text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
   .fw-life-row { display: grid; grid-template-columns: 30px 1fr; gap: 6px; align-items: baseline; padding: 0; }
-  .fw-life-yr { font-family: "Jost", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .02em;
+  .fw-life-yr { font-family: "Jost", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .02em;
     color: var(--brick); }
   .fw-life-note { font-family: "Spectral", serif; font-size: 10px; line-height: 1.13; color: var(--ink); }
 
   /* brick marks plate */
-  .fw-brick-plate { position: relative; border-radius: 2px; overflow: hidden;
+  .fw-brick-plate { position: relative; border-radius: 2px; overflow: hidden; min-height: 0;
     border: 2px solid #4A2419; padding: 13px 14px; display: flex; flex-direction: column; gap: 9px;
     justify-content: space-between; background:
       url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='56'%20height='30'%3E%3Cg%20fill='none'%20stroke='%23000'%20stroke-opacity='0.32'%20stroke-width='2'%3E%3Cpath%20d='M0%201H56M0%2015H56M0%200V15M28%2015V30'/%3E%3C/g%3E%3Cg%20fill='none'%20stroke='%23fff'%20stroke-opacity='0.07'%20stroke-width='1'%3E%3Cpath%20d='M0%203H56M0%2017H56'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 56px 30px,
@@ -225,13 +226,13 @@
   .fw-sec-rule + .fw-visit-word { margin-left: 0; }
   .fw-visit-title > .fw-sec-rule { align-self: center; }
   .fw-visit-meta { display: flex; flex-direction: row; align-items: baseline; gap: 10px; }
-  .fw-vm-1 { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em;
+  .fw-vm-1 { font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--cream); }
-  .fw-vm-2 { font-family: "Spectral", serif; font-style: italic; font-size: 10px; color: var(--cream-dim); }
+  .fw-vm-2 { font-family: "Spectral", serif; font-style: italic; font-size: 12px; color: var(--cream-dim); }
   .fw-visit-badge { display: flex; align-items: flex-end; gap: 4px; }
   .fw-vb-no { font-family: "Jost", sans-serif; font-weight: 600; font-size: 22px; line-height: .85; color: var(--cream); }
-  .fw-vb-of { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; transform: translateY(1px); }
-  .fw-vb-of .lab { font-family: "Jost", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .14em;
+  .fw-vb-of { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+  .fw-vb-of .lab { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--cream-dim); }
   .fw-vb-of .num { font-family: "Jost", sans-serif; font-weight: 600; font-size: 10px; color: var(--cream-2);
     margin-top: 0px; }
@@ -291,7 +292,7 @@
     color: #13281A; background: var(--cream); padding: 1.5px 8px; border-radius: 2px; }
   .fw-game-date { font-family: "Jost", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--cream); }
-  .fw-game-dn { font-family: "Jost", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .14em;
+  .fw-game-dn { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--cream-dim); margin-left: auto; }
   .fw-game-match { font-family: "Spectral", serif; font-size: 11px; line-height: 1.3; margin-bottom: 7px; }
   .fw-game-match .mt { color: var(--cream-2); }
@@ -307,7 +308,7 @@
   .fw-game-rec:first-child { border-left: 0; }
   .fw-game-rec.wide { grid-column: 3; }
   .fw-game-rec.wide .v { white-space: nowrap; font-size: 11.5px; font-family: "Jost", sans-serif; margin-top: 5px; }
-  .fw-game-rec .k { font-family: "Jost", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .12em;
+  .fw-game-rec .k { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--cream-dim); }
   .fw-game-rec .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px; color: var(--cream); }
   .fw-game-recs-left .fw-game-rec .v { font-family: "MatrixTitle", "Space Mono", monospace;
@@ -318,9 +319,9 @@
   .fw-game-pitch { display: flex; gap: 14px; flex-wrap: wrap; flex: 1; min-width: 0; }
   .fw-game-pitch span { display: inline-flex; align-items: center; gap: 6px;
     font-family: "Spectral", serif; font-size: 10.5px; color: var(--cream-2); }
-  .fw-game-pitch b.lt { flex: none; width: 15px; height: 15px; border-radius: 50%;
+  .fw-game-pitch b.lt { flex: none; width: 16px; height: 16px; border-radius: 50%;
     display: inline-flex; align-items: center; justify-content: center;
-    font-family: "Jost", sans-serif; font-weight: 700; font-size: 7.5px; letter-spacing: 0; line-height: 1;
+    font-family: "Jost", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0; line-height: 1;
     color: rgba(255,255,255,.92); text-shadow: 0 1px 1px rgba(0,0,0,.5);
     border: 1px solid rgba(0,0,0,.5);
     box-shadow: inset 0 1.5px 2px rgba(255,255,255,.55), inset 0 -2px 3px rgba(0,0,0,.45),

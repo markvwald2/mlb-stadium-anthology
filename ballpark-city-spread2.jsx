@@ -16,9 +16,13 @@
         columnCount: cols, columnGap: gap, columnFill: "balance",
         fontSize: size + "px", lineHeight: lh
       }}>
-        {paras.map((p, i) =>
-        <p key={i} className={dropcap && i === 0 ? "bc-dropcap" : ""}>{p}</p>
-        )}
+        {paras.map((p, i) => {
+          const isCap = dropcap && i === 0;
+          const narrow = isCap && /^["'\u201c\u2018(]*[IJ]/.test(p);
+          return (
+            <p key={i} className={isCap ? ("bc-dropcap" + (narrow ? " bc-dropcap-narrow" : "")) : ""}>{p}</p>
+          );
+        })}
       </div>);
 
   }
@@ -38,7 +42,7 @@
               <span className="bc-sysrow-icon"><NoteIcon kind={it.icon} size={26} color="#9C3A28" /></span>
               <span className="bc-sysrow-label">{it.label}</span>
             </div>
-            <div className="bc-sysrow-body">{it.body}</div>
+            <div className="bc-sysrow-body" style={{ letterSpacing: "0px" }}>{it.body}</div>
           </div>
         )}
       </div>);
@@ -60,7 +64,7 @@
 
         {/* ============================ LEFT PAGE ============================ */}
         {/* outer figure strip */}
-        <Figure fig={D.FIGS.dodger} x={45} y={104} w={300} imgH={172} />
+        <Figure fig={D.FIGS.dodger} x={45} y={104} w={277} imgH={159} />
         <Figure fig={D.FIGS.astrodome} x={45} y={392} w={300} imgH={172} />
         <Figure fig={D.FIGS.camden} x={45} y={680} w={300} imgH={172} />
 
@@ -71,13 +75,13 @@
         cols={3} gap={30} size={13} lh={1.45} dropcap />
 
         <SectionHead label="THE RETRO-CLASSIC TURN" num="IV" width={857}
-        style={{ position: "absolute", left: 380, top: 540, fontSize: 21 }} />
+        style={{ position: "absolute", left: 380, top: 510, fontSize: 21 }} />
 
-        <Body paras={D.RETRO} x={380} y={586} w={857} h={326}
+        <Body paras={D.RETRO} x={380} y={556} w={857} h={326}
         cols={3} gap={30} size={13} lh={1.45} dropcap />
 
         {/* retro pull quote — spans under the left-page text */}
-        <div className="bc-region" style={{ left: 380, top: 928, width: 857 }}>
+        <div className="bc-region" style={{ left: 380, top: 898, width: 857 }}>
           <span style={{ display: "block", width: 60, height: 0, borderTop: "2px solid var(--brick)", opacity: 0.6, marginBottom: 16 }}></span>
           <div className="bc-pullquote" style={{ fontSize: 32 }}>
             <span className="mark" style={{ fontSize: 64, position: "absolute", left: -8, top: -34 }}>&#8220;</span>
@@ -90,7 +94,7 @@
         style={{ position: "absolute", left: 1335, top: 56, fontSize: 21 }} />
 
         <Body paras={D.DISTRICT} x={1335} y={102} w={800} h={472}
-        cols={3} gap={26} size={12} lh={1.42} dropcap />
+        cols={3} gap={26} size={13} lh={1.45} dropcap />
 
         {/* secondary companion rail — supporting systems, clearly subordinate */}
         <SystemsSidebar data={D.SYSTEMS} x={2167} y={92} w={338} />
@@ -101,12 +105,12 @@
           <span style={{ display: "block", width: "100%", height: 0, borderTop: "2px solid var(--ink)" }}></span>
         </div>
         <AtlasGrid atlas={D.ATLAS} x={1335} y={620} w={800} dense
-          template="120px 1fr 1fr 1fr 1.06fr" pad="2px 12px 2px 0" minH={30} />
+        template="120px 1fr 1fr 1fr 1.06fr" pad="2px 12px 2px 0" minH={30} />
 
         {/* closing paragraphs — full width beneath both columns */}
         <div className="bc-region" style={{ left: 1335, top: 818, width: 1170, height: 0, borderTop: "1px solid var(--rule)" }}></div>
         <Body paras={D.CONCLUSION} x={1335} y={830} w={1170} h={184}
-          cols={4} gap={30} size={12} lh={1.46} />
+        cols={4} gap={30} size={13} lh={1.45} />
 
         {/* end mark */}
         <div className="bc-region" style={{ left: 1335, top: 1022, width: 1170, textAlign: "center" }}>

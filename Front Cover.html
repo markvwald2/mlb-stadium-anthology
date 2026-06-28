@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Big League NL · AL Ballparks — Dust Jacket (full wrap)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Space+Mono:wght@400;700&family=Ultra&display=swap" rel="stylesheet" />
+<script>
+  // Force the webfont fetch — some sandboxed previews don't trigger it from
+  // the <link> alone, which leaves the display face on a generic-serif fallback.
+  (function () {
+    function load() {
+      if (!document.fonts || !document.fonts.load) return;
+      ["400 1em \"Cooper Black\"", "400 1em \"Cooper Numerals\"",
+       "700 1em \"Spectral\"", "600 1em \"Spectral\"", "500 1em \"Spectral\""]
+        .forEach(function (f) { try { document.fonts.load(f); } catch (e) {} });
+    }
+    load();
+    document.addEventListener("DOMContentLoaded", load);
+  })();
+</script>
+<style>
+  /* the real Cooper Black, self-hosted (user-provided, licensed) */
+  @font-face {
+    font-family: "Cooper Black";
+    src: url("Cooper-Black.woff2") format("woff2");
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  /* full-glyph Cooper variant — used ONLY for numerals ("2026"), since the
+     subset "Cooper Black" above is missing most digits (only 3/4/8). */
+  @font-face {
+    font-family: "Cooper Numerals";
+    src: url("CooperFiveOpti-Black.otf") format("opentype");
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #11100e;
+    font-family: "Spectral", Georgia, serif;
+    color: #1b1916;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ================================================================
+     COVER WRAP — full wraparound, ONE wide sheet, FLAPLESS.
+     Blurb Large Landscape · Hardcover cover spec.
+       final PDF (w/ bleed)  26.681 × 11.625 in  = 2668.1 × 1162.5 px @ 100ppi
+       trim                  26.069 × 11.013 in  = 2606.9 × 1101.3 px
+       bleed 0.306 (all edges) · spine 0.569 · safe 0.25 in · no flaps
+     Layout L→R: [BACK COVER = Father's Day][spine][FRONT COVER = Big League]
+     ================================================================ */
+  .jk-jacket {
+    position: relative;
+    overflow: hidden;
+    --paper:    #e9e7db;   /* neutral ivory paper, sampled from the poster */
+    --ink:      #16140f;   /* near-black display ink */
+    --cap:      #1b1916;   /* caption ink */
+    --cap-city: #3f3a31;
+    --rule:     #d3c8af;
+    background: var(--paper);
+    font-kerning: normal;
+    text-rendering: geometricPrecision;
+  }
+
+  /* a cover panel spans the trim height (30.6 → 1131.9); cream canvas behind it
+     supplies the top/bottom bleed. left/width are set inline per panel. */
+  .jk-cover { position: absolute; top: 30.6px; height: 1101.3px; background: var(--paper); }
+
+  /* 4×4 photo grid inside a uniform cream margin — photos do not bleed,
+     matching the bordered look of the front-cover poster. */
+  .jk-grid {
+    position: absolute; inset: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    column-gap: 9px; row-gap: 9px;
+    padding: 42px;
+  }
+
+  .jk-cell { margin: 0; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+  .jk-photo { flex: 1 1 auto; min-height: 0; position: relative; }
+  .jk-photo image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  .jk-cap {
+    flex: 0 0 auto;
+    padding: 7px 6px 3px;
+    font-family: "Spectral", Georgia, serif;
+    font-weight: 700; font-size: 15px; line-height: 1.08;
+    letter-spacing: .003em; color: var(--cap);
+    text-align: center; text-wrap: balance;
+  }
+  .jk-cap .jk-cap-city { font-weight: 700; color: var(--cap-city); }
+
+  /* center two cells of row 3 hold the wordmark */
+  .jk-titleblock {
+    background: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 4; padding: 0 14px;
+  }
+
+  /* ---------- SPINE ---------- */
+  .jk-spine {
+    position: absolute; top: 30.6px; height: 1101.3px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--paper); overflow: hidden;
+  }
+  .jk-spine-text {
+    transform: rotate(90deg); transform-origin: center; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: "Cooper Black", "Ultra", Georgia, serif;
+    font-size: 21px; letter-spacing: .005em; color: var(--ink); line-height: 1;
+  }
+  .jk-spine-text .cv-fieldicon { margin: 0; top: 0; }
+  .jk-spine-dot { font-size: 15px; opacity: .85; margin: 0 130px; }
+  .jk-spine-num { font-family: "Cooper Numerals", "Cooper Black", Georgia, serif; }
+
+  /* ---------- WORDMARK — Cooper Black (shared CoverLogo component) ---------- */
+  .cv-logo { font-family: "Cooper Black", "Ultra", Georgia, serif; color: var(--ink); text-align: center; line-height: .92; user-select: none; }
+  .cv-logo-l1, .cv-logo-l3 { font-size: 66px; letter-spacing: .002em; white-space: nowrap; }
+  .cv-logo-l1 { margin-bottom: 2px; transform: translateY(-5px); }
+  .cv-logo-l3 { margin-top: 2px; transform: translateY(-5px); }
+  .cv-logo-l2 { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 48px; margin: 4px 0; }
+  /* the back-cover poster's numeral line ("20 ◇ 26") needs the full-glyph
+     Cooper variant; letters elsewhere stay Cooper Black on both covers. */
+  .jk-back .cv-logo-l2 { font-family: "Cooper Numerals", "Cooper Black", Georgia, serif; }
+  .cv-logo-l2 .cv-nl { letter-spacing: -.01em; }
+  .cv-logo-l2 .cv-al { letter-spacing: -.01em; }
+  .cv-fieldicon { margin: 0 2px; position: relative; top: 4px; }
+
+  #root { min-height: 100vh; }
+
+  /* flatten the design-canvas artboard card so no white stripe peeks above the
+     cream sheet. (Preview-only; the print path renders the jacket directly.) */
+  .dc-card { padding: 0 !important; background: #e9e7db !important; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#e9e7db"/>
+      <g stroke="#16140f" stroke-width="2.2" fill="none">
+        <path d="M50 70 L26 40 M50 70 L74 40"/>
+        <path d="M26 40 A34 34 0 0 1 74 40"/>
+      </g>
+      <path d="M50 46 L62 58 L50 70 L38 58 Z" fill="#4a5a69" stroke="#16140f" stroke-width="2.2" stroke-linejoin="round"/>
+      <circle cx="50" cy="58" r="2.4" fill="#e9e7db"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script src="cover-data.js"></script>
+  <script src="opening-data.js"></script>
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="cover-logo.jsx"></script>
+  <script type="text/babel" src="jacket-spread.jsx"></script>
+  <script type="text/babel" src="jacket-app.jsx"></script>
+</body>
+</html>

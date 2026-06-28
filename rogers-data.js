@@ -26,7 +26,7 @@ window.ROGERS = {
   facts: [
     ["Opened", "1989"],
     ["Years Active", "1989\u2013Present"],
-    ["Construction Start", "Oct 3, 1986"],
+    ["Groundbreaking", "Oct 3, 1986"],
     ["Opening Day", "Jun 3, 1989"],
     ["Capacity", "41,500 (originally 50,516)"],
     ["Surface", "Artificial - AstroTurf 3D Xtreme with dirt infield"],

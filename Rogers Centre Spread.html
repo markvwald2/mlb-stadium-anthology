@@ -144,7 +144,9 @@
   /* ---- facts (full-width, two columns) ---- */
   .rc-mod.facts-mod { flex: none; margin-bottom: 12px; }
   .rc-facts.twocol { display: block; column-count: 2; column-gap: 32px; }
-  .rc-facts.twocol .rc-frow { break-inside: avoid; }
+  .rc-facts.twocol .rc-frow { break-inside: avoid; padding: 3px 0; }
+  /* drop the dangling hairline at the foot of the left column */
+  .rc-facts.twocol .rc-frow:nth-child(7) { border-bottom: 0; }
   /* ---- protractor | meta row ---- */
   .rc-drow { display: grid; grid-template-columns: 1fr 0.92fr; gap: 26px; flex: none;
     margin-bottom: 12px; align-items: stretch; }
@@ -156,11 +158,11 @@
   .rc-frow { display: grid; grid-template-columns: 84px 1fr; gap: 10px; align-items: baseline;
     padding: 1.5px 0; border-bottom: 1px solid var(--rule); }
   .rc-frow:last-child { border-bottom: 0; }
-  .rc-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .06em;
+  .rc-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--ink-3); }
   .rc-frow .v { display: flex; flex-direction: column; gap: 1px; }
   .rc-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 10.5px; color: var(--ink); line-height: 1.18; white-space: pre-line; }
-  .rc-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 9.5px;
+  .rc-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10px;
     color: var(--ink-2); line-height: 1.18; }
   .rc-facts.tight .rc-frow { padding: 2px 0; }
 
@@ -170,6 +172,8 @@
   .rc-prose p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 11px; line-height: 1.5;
     color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
   .rc-prose p:last-child { margin-bottom: 0; }
+  .rc-prose p:first-child::first-letter { float: left; font-family: "Spectral", serif;
+    font-weight: 600; font-size: 32px; line-height: 0.82; padding: 2px 7px 0 0; color: var(--navy); }
 
   /* protractor (column 2, pinned to bottom) */
   .rc-fieldfig { margin: 10px 0 0; display: flex; justify-content: center; align-items: flex-start; }
@@ -184,7 +188,7 @@
   .rc-meta .rc-mcell:last-child { border-bottom: 0; }
   .rc-meta .micon { flex: none; width: 19px; height: 19px; display: flex; align-items: center; justify-content: center; }
   .rc-meta .micon svg { width: 19px; height: 19px; }
-  .rc-meta .ml { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .1em;
+  .rc-meta .ml { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--royal); }
   .rc-meta .mv { margin-left: auto; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .02em; text-transform: uppercase; color: var(--ink); text-align: right; line-height: 1.1; }
@@ -212,7 +216,7 @@
   .rc-stat .rc-ico { width: 21px; height: 21px; margin-bottom: 1px; }
   .rc-stat .sv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0;
     color: var(--ink); line-height: 1.05; white-space: nowrap; }
-  .rc-stat .sl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .06em;
+  .rc-stat .sl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .02em;
     text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
 
   /* weather */
@@ -222,7 +226,7 @@
   .rc-wcell .tx { display: flex; flex-direction: column; }
   .rc-wcell .wv { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 26px; color: var(--ink); line-height: 1; }
   .rc-wcell .wv.sm { font-size: 15px; font-weight: 600; }
-  .rc-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .1em;
+  .rc-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
 
   /* matchup */

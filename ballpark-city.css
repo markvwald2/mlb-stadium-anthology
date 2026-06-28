@@ -121,7 +121,11 @@ html, body { margin: 0; padding: 0; }
 .bc-cols-3 { column-count: 3; }
 .bc-cols-4 { column-count: 4; }
 
-/* first-paragraph drop cap for the opening of a section */
+/* first-paragraph drop cap for the opening of a section.
+   Base rule = float fallback (any browser). Where `initial-letter` is
+   supported (Safari/WebKit + Chrome 110+, incl. the PDF-export path), it takes
+   over so EVERY cap spans exactly 3 lines regardless of the block's font-size
+   or line-height — which the float method can't guarantee across sizes. */
 .bc-dropcap::first-letter {
   font-family: "Anton", sans-serif;
   font-weight: 400;
@@ -131,6 +135,27 @@ html, body { margin: 0; padding: 0; }
   line-height: 0.74;
   padding: 6px 8px 0 0;
   margin-top: 2px;
+}
+/* Narrow initials (I, J) are thin vertical slabs in Anton — with normal
+   padding the wrapped text crowds the bar and the cap looks stranded. Add a
+   wider right gutter so a narrow cap reads as a deliberate initial. */
+.bc-dropcap-narrow::first-letter {
+  padding-right: 22px;
+}
+@supports (-webkit-initial-letter: 3) or (initial-letter: 3) {
+  .bc-dropcap::first-letter {
+    -webkit-initial-letter: 3;
+    initial-letter: 3;
+    float: none;
+    font-size: 100%;
+    line-height: normal;
+    padding: 0;
+    margin: 0 8px 0 0;
+  }
+  .bc-dropcap-narrow::first-letter {
+    padding-right: 0;
+    margin-right: 16px;
+  }
 }
 
 /* ── pull quotes ──────────────────────────────────────────────────────────*/
@@ -273,7 +298,7 @@ html, body { margin: 0; padding: 0; }
 }
 .bc-atlas-years {
   font-family: "Space Mono", monospace;
-  font-size: 9.5px;
+  font-size: 10px;
   color: var(--ink-3);
   margin-top: 2px;
 }
@@ -321,8 +346,8 @@ html, body { margin: 0; padding: 0; }
 .bc-sidebar-kicker {
   font-family: "Space Mono", monospace;
   font-weight: 700;
-  font-size: 9.5px;
-  letter-spacing: 0.14em;
+  font-size: 10px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--brick);
 }

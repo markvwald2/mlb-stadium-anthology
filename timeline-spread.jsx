@@ -56,7 +56,7 @@
         return (txt, font) => { ctx.font = font; return ctx.measureText(txt).width; };
       })();
       const F_IN = "500 11px Oswald, sans-serif";
-      const F_SPAN = "400 9px 'Space Mono', monospace";
+      const F_SPAN = "400 10px 'Space Mono', monospace";
       const F_EXT = "500 11px Oswald, sans-serif";
       const lh = 11.5;
 
@@ -214,7 +214,7 @@
       const rail = lanes.map((f) => {
         const name = f.lines.join(" ").toUpperCase();
         let p = 13;
-        while (p > 9.5) {
+        while (p > 10) {
           const w = measure(name, "500 " + p + "px Oswald, sans-serif") + (name.length - 1) * 0.04 * p;
           if (w <= AVAIL_RAIL) break;
           p -= 0.5;
@@ -297,7 +297,7 @@
               letterSpacing="0.01em">{b.t.stadium}</text>
             {b.span ? (
               <text x={b.x1 - 7} y={b.cy} dominantBaseline="central" textAnchor="end"
-                fontFamily="'Space Mono', monospace" fontSize="9" fill={b.t.visited ? "rgba(244,238,223,.7)" : "rgba(244,238,223,.72)"}
+                fontFamily="'Space Mono', monospace" fontSize="10" fill={b.t.visited ? "rgba(244,238,223,.7)" : "rgba(244,238,223,.72)"}
                 letterSpacing="0.02em">{b.span}</text>
             ) : null}
           </g>
@@ -360,8 +360,8 @@
         })}
 
         {/* ============ HEADER BAND ============ (sits entirely above the top axis labels) */}
-        <text x="52" y="90" fontFamily="Anton, sans-serif" fontSize="44" fill={C.ink} letterSpacing="0.005em">MLB STADIUM TIMELINE</text>
-        <text x="54" y="111" fontFamily="Spectral, serif" fontStyle="italic" fontSize="16" fill={C.ink2}>Franchise stadium tenures, name changes, and known visits, 1890&#8211;2026.</text>
+        <text x="52" y="90" fontFamily="Oswald, sans-serif" fontWeight="700" fontSize="44" fill={C.ink} letterSpacing="0.005em">MLB STADIUM TIMELINE</text>
+        <text x="54" y="111" fontFamily="Spectral, serif" fontStyle="italic" fontSize="16" letterSpacing="0.04em" fill={C.ink3}>Franchise stadium tenures, name changes, and known visits, 1890&#8211;2026.</text>
 
         {/* legend — right page */}
         <Legend C={C} />
