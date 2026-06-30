@@ -344,13 +344,14 @@
         </div>
         <div id="book-layout" class="layout-grid"></div>
       </section>
-      <footer class="cv-foot">Click any thumbnail to open its local page</footer>
+      <footer class="cv-foot">Click any thumbnail to open its local page · Build <span id="build-id"></span></footer>
     </main>
   </div>
 
   <script>
     const ROOT = "../";
-    const CACHE_VERSION = new URLSearchParams(location.search).get("v") || "df21f7c";
+    const CACHE_VERSION = new URLSearchParams(location.search).get("v") || "b4ce343";
+    document.getElementById("build-id").textContent = CACHE_VERSION;
 
     function escAttr(value) {
       return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
