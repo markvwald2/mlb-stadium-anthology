@@ -19,7 +19,8 @@ These are the official production dimensions. Obey them on every spread.
 | Trimmed page | 12.50 × 10.63 | 1250 × 1063 |
 | Center split / fold | x = 12.75 | **x = 1275** |
 | Outer bleed (all four edges, bleed-only) | 0.125 | 12.5 |
-| Safe inset (critical content ≥ this far inside trim) | 0.25 | 25 |
+| Safe inset (top / bottom / outside) | 0.25 | 25 |
+| Safe inset (binding edge / gutter) | 0.5 | 50 |
 
 **Trim rectangles (px):**
 - Left page trim:  x ∈ [12.5, 1262.5], y ∈ [12.5, 1075.5]
@@ -30,11 +31,11 @@ straddling the fold. Nothing readable — text, key labels, logos, score lines,
 faces, important image subjects — may cross or sit inside it. Only full-bleed
 art / color fields / quiet grid continuation may pass through.
 
-**Safe boxes for critical content (0.25 in inside trim):**
+**Safe boxes for critical content (0.25 in top/bottom/outside, 0.5 in binding):**
 - Left page:  x ∈ [37.5, 1237.5], y ∈ [37.5, 1050.5]
 - Right page: x ∈ [1312.5, 2512.5], y ∈ [37.5, 1050.5]
-  (Left-safe right edge and right-safe left edge coincide with the gutter
-  bounds, so respecting the safe box automatically clears the gutter.)
+  (Left-safe right edge and right-safe left edge define the gutter bounds, so
+  respecting the safe box automatically clears the gutter.)
 
 **Rules of thumb**
 - Extend full-bleed art, photos, backgrounds, maps, and color fields all the way
@@ -42,8 +43,9 @@ art / color fields / quiet grid continuation may pass through.
 - Treat the outer 0.125 in (12.5 px) as bleed-only — decorative only, never
   load-bearing.
 - Keep ALL critical text, labels, logos, data, score lines, captions, and
-  important image details ≥ 0.25 in (25 px) inside the final trim, i.e. within
-  the safe boxes above, and out of the gutter zone.
+  important image details ≥ 0.25 in (25 px) inside the final trim on top,
+  bottom, and outside edges, and ≥ 0.5 in (50 px) inside the binding edge,
+  i.e. within the safe boxes above and out of the gutter zone.
 - Verify before delivery: an `eval_js` sweep of `getBBox()` on every `<text>`
   (and key marks) against the safe boxes should return zero violations. Glyph
   bounds — not the baseline — are what get trimmed, so a tall display face can
@@ -193,14 +195,9 @@ true VECTOR PDF (type, rules, diagrams stay vector; only photos rasterize):
 Two single-page PDFs per spread (correct for perfect-bound book). The artboard
 ⋯ → "Download PNG" is raster — do NOT use it for press.
 
-> **Export-sheet note / open production item (DECIDED: leave as-is):**
-> `print-page.jsx` scales each page so the design half maps to a
-> **13 × 11 in trim on a 13.25 × 11.25 in sheet** (nominal product size), NOT
-> the 12.50 × 10.63 in official trim above. This is a known, accepted mismatch:
-> the **on-canvas design must follow the official Blurb-safe specs / safe boxes
-> above** (that is what governs every spread), while the PDF page size/scale
-> intentionally stays on the legacy 13 × 11 sheet so all already-exported
-> spreads remain consistent. **Do NOT retune the harness** mid-design. If a
-> press ever needs the exact 12.75 × 10.88 in page-with-bleed sheet, do it as a
-> separate export-normalization pass that re-exports every spread together
-> (retune `TRIMW_IN`, `TRIMH_IN`, `@page size`).
+> **Export-sheet note:**
+> `print-page.jsx` now targets the Blurb Large Landscape Hardcover ImageWrap
+> 98-page interior PDF spec: final PDF page **12.625 × 10.875 in**, trim
+> **12.5 × 10.625 in**, bleed **0.125 in** on top, bottom, and outside edge
+> only, and no bleed on the binding edge. Guides show a safe area of **0.25 in**
+> on top/bottom/outside and **0.5 in** on the binding edge.

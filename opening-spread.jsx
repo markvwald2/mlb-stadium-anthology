@@ -21,13 +21,7 @@
   // images/opening/<slot>.jpg is in place.
   const NO_PHOTO = {};
 
-  // slots whose photo file was replaced post-publish: point at a fresh filename
-  // so the serve layer can't hand back a stale-cached copy of the old path.
-  const SRC_OVERRIDE = {
-    "op-l02": "images/opening/op-l02-v2.jpg",
-    "op-l04": "images/opening/op-l04-v2.jpg",
-    "op-l14": "images/opening/op-l14-v2.jpg",
-  };
+  const SRC_OVERRIDE = {};
 
   function Cell(props) {
     const p = props.park, pl = props.place;
