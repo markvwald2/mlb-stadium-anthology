@@ -350,6 +350,7 @@
 
   <script>
     const ROOT = "../";
+    const CACHE_VERSION = new URLSearchParams(location.search).get("v") || "df21f7c";
 
     function escAttr(value) {
       return String(value).replace(/&/g, "&amp;").replace(/"/g, "&quot;");
@@ -377,6 +378,11 @@
 
     function itemThumb(item) {
       return item.thumb || spreadThumb(item.page);
+    }
+
+    function versioned(path) {
+      const sep = path.includes("?") ? "&" : "?";
+      return path + sep + "v=" + encodeURIComponent(CACHE_VERSION);
     }
 
     function pageHref(page) {
@@ -417,7 +423,7 @@
           <div class="page-label">${escHTML(item.label)}</div>
           <div class="page-art">
             <div class="page-title">${escHTML(item.title)}</div>
-            <img src="${escAttr(item.thumb)}" alt="${escAttr(item.title)} thumbnail" onerror="${missingImageHandler()}">
+            <img src="${escAttr(versioned(item.thumb))}" alt="${escAttr(item.title)} thumbnail" onerror="${missingImageHandler()}">
           </div>
           <div class="page-meta">
             <div class="page-name">${escHTML(item.title)}</div>
@@ -447,7 +453,7 @@
           </div>
           <div class="page-art ${escAttr(artClass)}">
             <div class="page-title">${escHTML(item.title)}</div>
-            <img src="${escAttr(itemThumb(item))}" alt="${escAttr(item.title)} thumbnail" onerror="${missingImageHandler()}">
+            <img src="${escAttr(versioned(itemThumb(item)))}" alt="${escAttr(item.title)} thumbnail" onerror="${missingImageHandler()}">
           </div>
           <div class="page-meta">
             <div class="page-name">${escHTML(item.title)}</div>
@@ -541,7 +547,7 @@
       }).join("");
     }
 
-    fetch("book-order.json")
+    fetch(versioned("book-order.json"), { cache: "reload" })
       .then(r => r.json())
       .then(items => renderLayout(buildLayout(items)))
       .catch(err => {
