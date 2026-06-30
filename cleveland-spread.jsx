@@ -196,7 +196,7 @@
                 e(FieldPlan, { lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
                   stroke: "#5C6B78", opacity: 0.16 })) : null,
               e("div", { className: "ctxh" },
-                e("div", { className: "t" }, "Stadium Context"),
+                e("div", { className: "t" }, "The Lakefront Colossus"),
                 e("div", { className: "ln" }),
                 e("div", { className: "sub" }, "Civic Monument \u2192 Ballpark")),
               e("div", { className: "cm-ctx" },

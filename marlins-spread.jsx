@@ -244,7 +244,7 @@
             /* COLUMN 3 — STADIUM CONTEXT, frosted-glass museum panel */
             e("div", { className: "mla-col col3 panel glass" },
               e("div", { className: "mla-mod" },
-                e(SecHead, { title: "Stadium Context" }),
+                e(SecHead, { title: "Glass & Color" }),
                 e("div", { className: "mla-prose" },
                   D.stadium_context.map((p, i) => e("p", { key: i }, p))
                 )

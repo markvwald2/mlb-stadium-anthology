@@ -234,7 +234,7 @@
 
               // unified stadium context (full-width, two columns)
               e("div", { className: "rc-mod context band" },
-                e(ModHead, { title: "Stadium Context" }),
+                e(ModHead, { title: "The First Retractable Roof" }),
                 e("div", { className: "rc-prose" },
                   D.stadium_context.map((p, i) => e("p", { key: i }, p))
                 )

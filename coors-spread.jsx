@@ -158,7 +158,7 @@
 
               /* Stadium Context */
               React.createElement("div", { className: "cf-col cf-col-ctx" },
-                React.createElement(SecHead, { title: "Stadium Context" }),
+                React.createElement(SecHead, { title: "The Mile-High Row" }),
                 React.createElement("div", { className: "cf-ctx" },
                   D.stadium_context.map((p, i) => React.createElement("p", { key: i }, p))
                 )

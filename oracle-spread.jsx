@@ -12,19 +12,14 @@
     return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" });
   }
 
-  /* ---- logo wells (right page, top) ---- */
+  /* ---- logos (right page, top-right corner) ---- */
   function LogoWell(props) {
-    let mark;
     if (props.kind === "mlb") {
-      mark = e("img", { className: "op-well-img mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" });
+      return e("img", { className: "op-well-img mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" });
     } else if (props.kind === "league") {
-      mark = e("img", { className: "op-well-img nl", src: "assets/nl-logo.png", alt: "National League" });
-    } else {
-      mark = e("img", { className: "op-well-img giants", src: "assets/giants-logo.svg", alt: "San Francisco Giants" });
+      return e("img", { className: "op-well-img nl", src: "assets/nl-logo.png", alt: "National League" });
     }
-    return e("div", { className: "op-well" },
-      e("div", { className: "op-well-mark" }, mark),
-      e("div", { className: "op-well-cap" }, e("span", null, props.cap)));
+    return e("img", { className: "op-well-img giants", src: "assets/giants-logo.svg", alt: "San Francisco Giants" });
   }
 
   /* ---- weather icon (partly cloudy) ---- */
@@ -68,6 +63,9 @@
   }
 
   function Spread() {
+    const _c2 = (D.context[2] || "").split(/(?<=\.)\s+/);
+    const c2a = _c2.slice(0, 1).join(" ");
+    const c2b = _c2.slice(1).join(" ");
     return (
       e("div", { className: "op-spread", "data-screen-label": "Oracle Park spread" },
 
@@ -106,26 +104,30 @@
         /* ===================== RIGHT PAGE ===================== */
         e("div", { className: "op-page op-right" },
           e(Shoreline, null),
+          FieldDiagram ? e("figure", { className: "op-ctx-fig" },
+            e(FieldDiagram, {
+              lf: D.field.left_field, cf: D.field.center_field, rf: D.field.right_field,
+              orientation: D.field.orientation, degrees: D.field.orientation_degrees
+            })) : null,
           e("div", { className: "op-rp" },
 
             /* --- top: stadium section header + logo wells --- */
             e("div", { className: "op-tophead" },
-              e("div", { className: "op-sect" },
-                e("span", { className: "tri" }),
-                e("span", { className: "t" }, "Stadium Section")),
+              e("div", { className: "op-tophead-left" },
+                e("div", { className: "op-sect" },
+                  e("span", { className: "tri" }),
+                  e("span", { className: "t" }, "Stadium Section")),
+                /* --- identity line --- */
+                e("div", { className: "op-idline" },
+                  e("span", { className: "team" }, D.team_name),
+                  idDot(), e("span", null, D.league + " West"),
+                  idDot(), e("span", null, "Open-Air Ballpark"),
+                  idDot(), e("span", null, D.years_active),
+                  idDot(), e("span", { className: "vo" }, "Visit " + D.visit_order + " of " + D.visit_total))),
               e("div", { className: "op-wells" },
                 e(LogoWell, { kind: "team", cap: "San Francisco Giants" }),
                 e(LogoWell, { kind: "mlb", cap: "Major League Baseball" }),
                 e(LogoWell, { kind: "league", cap: "National League" }))),
-
-            /* --- identity line --- */
-            e("div", { className: "op-idline" },
-              e("span", { className: "team" }, D.team_name),
-              idDot(), e("span", null, D.league),
-              idDot(), e("span", null, D.division),
-              idDot(), e("span", null, "Open-Air Ballpark"),
-              idDot(), e("span", null, D.years_active),
-              idDot(), e("span", { className: "vo" }, "Visit " + D.visit_order + " of " + D.visit_total)),
 
             /* --- stadium grid --- */
             e("div", { className: "op-stadium" },
@@ -149,17 +151,15 @@
                     e(Slot, { id: "oracle-p4", placeholder: "Portwalk \u2014 waterfront promenade" }))),
                 e("div", { className: "op-ctxrow" },
                   e("div", { className: "op-context" },
-                    e("div", { className: "op-modh" }, "Stadium Context"),
+                    e("div", { className: "op-modh" }, "The Bay as Architecture"),
                     e("div", { className: "op-ctx" },
-                      e("p", null, D.context[0]),
-                      e("p", null, D.context[1]),
-                      FieldDiagram ? e("figure", { className: "op-ctx-fig" },
-                        e(FieldDiagram, {
-                          lf: D.field.left_field, cf: D.field.center_field, rf: D.field.right_field,
-                          orientation: D.field.orientation, degrees: D.field.orientation_degrees
-                        })) : null,
-                      e("p", null, D.context[2]),
-                      e("p", null, D.context[3])
+                      e("div", { className: "op-ctx-col1" },
+                        e("p", null, D.context[0]),
+                        e("p", null, D.context[1])),
+                      e("div", { className: "op-ctx-rest" },
+                        e("div", { className: "op-ctx-figgap", "aria-hidden": "true" }),
+                        e("p", null, D.context[2]),
+                        e("p", null, D.context[3]))
                     )
                   )))),
 
@@ -174,11 +174,10 @@
                 e("div", { className: "op-vgame" },
                   e("div", { className: "op-modh sm" }, "Game Facts"),
                   e("div", { className: "op-gtable" },
-                    grow("Visit", D.visit_order + " of " + D.visit_total + " \u00b7 " + D.trip_name),
-                    grow("Date", D.featured_day + " \u00b7 " + D.featured_date),
-                    grow("Matchup", e(React.Fragment, null, D.away_team + " (" + D.away_abbr + ") at", e("br", null), D.home_team + " (" + D.home_abbr + ")")),
+                    grow("Visit", e(React.Fragment, null, e("span", { style: { fontWeight: 700, color: "var(--orange-deep)" } }, D.visit_order + " of " + D.visit_total), " \u00b7 " + D.trip_name)),
+                    grow("Date / Time", D.featured_day + " \u00b7 " + D.featured_date + " \u00b7 " + D.first_pitch),
+                    grow("Matchup", D.away_team + " at " + D.home_team),
                     growStrong("Result", D.result_line),
-                    grow("First Pitch", D.first_pitch),
                     grow("Pitching", D.starter_away + " (" + D.away_abbr + ") vs " + D.starter_home + " (" + D.home_abbr + ")"),
                     grow("Attendance", D.attendance),
                     grow("Game Time", D.game_duration))),
@@ -204,7 +203,7 @@
                     decItem("L", D.losing_pitcher),
                     decItem("S", D.save_pitcher))),
 
-                /* photo */
+                /* visit photo — single image-slot; size via .op-vphoto .op-pcard */
                 e("div", { className: "op-vphoto" },
                   e("div", { className: "op-pcard", "data-slot": "oracle-p3" },
                     e(Slot, { id: "oracle-p3", placeholder: "Game day \u2014 McCovey Cove" })))

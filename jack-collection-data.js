@@ -10,25 +10,24 @@
     headline: { a: "All 30 Current Ballparks", b: "42 Stadiums Total" },
     deck: "Visits spanning every active Major League Baseball ballpark, plus twelve predecessor stadiums visited across eight decades.",
 
-    // dense documentary mosaic — 12-col × 5-row grid, varied spans, even gutters.
+    // documentary mosaic — 12-col × 6-row grid, 13 tiles. Deliberate mix of
+    // landscape (~1.75:1), portrait (~2:3), and square (~1.15:1) — staggered
+    // so nothing reads as a flat strip (max aspect 1.75:1).
     mosaic: [
-      { id: "jc-m01", ph: "Stadium aerial",         gc: "1 / 5",   gr: "1 / 3" },
-      { id: "jc-m02", ph: "Wrigley marquee",        gc: "5 / 8",   gr: "1 / 2" },
-      { id: "jc-m03", ph: "Fenway scoreboard",      gc: "8 / 10",  gr: "1 / 3" },
-      { id: "jc-m04", ph: "Camden Yards warehouse", gc: "10 / 13", gr: "1 / 3" },
-      { id: "jc-m05", ph: "Seating bowl, night",    gc: "5 / 8",   gr: "2 / 3" },
+      { id: "jc-m01", ph: "Stadium aerial",         gc: "1 / 4",   gr: "1 / 3" },
+      { id: "jc-m02", ph: "Wrigley marquee",        gc: "4 / 6",   gr: "1 / 4" },
+      { id: "jc-m03", ph: "Fenway scoreboard",      gc: "6 / 9",   gr: "1 / 3" },
+      { id: "jc-m04", ph: "Camden Yards warehouse", gc: "9 / 11",  gr: "1 / 4" },
+      { id: "jc-m05", ph: "Seating bowl, night",    gc: "11 / 13", gr: "1 / 3" },
       { id: "jc-m06", ph: "Buckethead \u2014 candid", gc: "1 / 4", gr: "3 / 5" },
-      { id: "jc-m07", ph: "Angel Stadium ticket",   gc: "4 / 6",   gr: "3 / 4" },
-      { id: "jc-m08", ph: "Stadium lighting",       gc: "6 / 8",   gr: "3 / 5" },
-      { id: "jc-m09", ph: "Family at the park",     gc: "8 / 11",  gr: "3 / 4" },
-      { id: "jc-m10", ph: "Yankee Stadium facade",  gc: "11 / 13", gr: "3 / 5" },
-      { id: "jc-m11", ph: "Scorecard & stubs",      gc: "4 / 6",   gr: "4 / 5" },
-      { id: "jc-m12", ph: "Fans at the gate",       gc: "8 / 11",  gr: "4 / 5" },
-      { id: "jc-m13", ph: "PNC Park exterior",      gc: "1 / 4",   gr: "5 / 6" },
-      { id: "jc-m14", ph: "Interstate highway",     gc: "4 / 7",   gr: "5 / 6" },
-      { id: "jc-m15", ph: "Coors Field tower",      gc: "7 / 9",   gr: "5 / 6" },
-      { id: "jc-m16", ph: "Rental car / lot",       gc: "9 / 11",  gr: "5 / 6" },
-      { id: "jc-m17", ph: "Sutter Health Park",     gc: "11 / 13", gr: "5 / 6" }
+      { id: "jc-m07", ph: "Angel Stadium ticket",   gc: "6 / 9",   gr: "3 / 5" },
+      { id: "jc-m08", ph: "Stadium lighting",       gc: "11 / 13", gr: "3 / 5" },
+      { id: "jc-m09", ph: "Family at the park",     gc: "4 / 6",   gr: "4 / 6" },
+      { id: "jc-m21", ph: "Field level",            gc: "4 / 6",   gr: "6 / 7" },
+      { id: "jc-m10", ph: "Yankee Stadium facade",  gc: "9 / 11",  gr: "4 / 7" },
+      { id: "jc-m11", ph: "Scorecard & stubs",      gc: "1 / 4",   gr: "5 / 7" },
+      { id: "jc-m12", ph: "Fans at the gate",       gc: "6 / 9",   gr: "5 / 7" },
+      { id: "jc-m13", ph: "PNC Park exterior",      gc: "11 / 13", gr: "5 / 7" }
     ],
 
     // "Stadium Eras" — six-part classification key. Each: one elevation drawing
@@ -36,7 +35,7 @@
     // verbatim names & order; sum = 42). `wide:true` gives a double-width column
     // whose roster runs in two sub-columns (Retro Classic, 16 parks).
     generations: [
-      { title: "Jewel Box & Early Concrete", desc: "Concrete ballparks woven into local streets, where intimate asymmetry emerged from constrained urban sites.", accent: RUST, slot: "jc-g1",
+      { title: "Jewel Box & Early Concrete", desc: "Concrete ballparks woven into local streets, where intimate asymmetry emerged from constrained urban sites.", accent: RUST, slot: "jc-g1", parksStyle: { fontSize: "11px" },
         parks: ["Wrigley Field", "Comiskey Park", "Yankee Stadium", "Tiger Stadium", "Fenway Park"] },
       { title: "Postwar Municipal", desc: "Civic-scale stadiums, expressing public ambition through monumental form and automobile access.", accent: OLIVE, slot: "jc-g2",
         parks: ["Milwaukee County Stadium", "Cleveland Municipal Stadium", "Memorial Stadium"] },

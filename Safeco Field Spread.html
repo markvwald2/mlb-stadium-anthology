@@ -118,7 +118,7 @@
   .tm-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .15em;
     text-transform: uppercase; color: var(--navy); white-space: nowrap; }
   .tm-h.green .t { color: var(--green); }
-  .tm-h .n { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .05em;
+  .tm-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
 
   /* ---- top photo strip (roof bays / structural observations) ---- */
@@ -139,7 +139,7 @@
   .tm-id-mark img { height: 48px; width: auto; display: block; }
   .tm-id-cell { flex: 1 1 0; min-width: 0; padding: 7px 12px; border-left: 1px solid var(--rule);
     display: flex; flex-direction: column; justify-content: center; gap: 3px; }
-  .tm-id-cell .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px;
+  .tm-id-cell .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--green); white-space: nowrap; }
   .tm-id-cell .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11.8px;
     letter-spacing: .01em; text-transform: uppercase; color: var(--ink); line-height: 1.08; }
@@ -168,7 +168,7 @@
     padding: 1.8px 0; border-bottom: 1px solid var(--rule); }
   .tm-frow:last-child { border-bottom: 0; }
   .tm-facts.tight .tm-frow { padding: 2.6px 0; }
-  .tm-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .05em;
+  .tm-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); }
   .tm-frow .v { display: flex; flex-direction: column; gap: 0px; min-width: 0; }
   .tm-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 11.5px; color: var(--ink); line-height: 1.18; }
@@ -176,7 +176,7 @@
     color: var(--ink-2); line-height: 1.2; }
 
   .tm-namehist { margin-top: 7px; padding-top: 6px; border-top: 1.5px solid var(--navy); }
-  .tm-namehist .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: .12em;
+  .tm-namehist .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--green); margin-bottom: 2px; }
   .tm-namehist .val { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .01em;
     text-transform: uppercase; color: var(--navy); line-height: 1.2; }
@@ -191,7 +191,7 @@
   .tm-field .tm-h { justify-content: center; }
   .tm-fieldfig { flex: 1; margin: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
   .tm-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .tm-fieldfig .fd-svg { width: 172px; height: auto; max-width: 100%; display: block; }
+  .tm-fieldfig .fd-svg { width: 172px; height: auto; max-width: 100%; display: block;  overflow: visible; }
 
   .tm-marks-r { display: flex; flex-direction: column; height: 100%; }
   .tm-marks-body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0 1px; }
@@ -199,10 +199,10 @@
   .tm-marks-row img { height: 50px; width: auto; display: block; }
   .tm-marks-row img.mlb { height: 37px; }
   .tm-tags { display: flex; flex-wrap: wrap; gap: 7px; }
-  .tm-tag { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9.5px; letter-spacing: .08em;
+  .tm-tag { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--steel-deep); border: 1px solid var(--rule-strong);
     background: rgba(255,255,255,.34); padding: 4px 9px; }
-  .tm-class { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .04em;
+  .tm-class { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.4; padding-top: 8px;
     border-top: 1px solid var(--rule); }
 
@@ -245,7 +245,7 @@
   .tm-pitch .dec i { font-style: italic; }
   .tm-pitch .dec .sp { color: var(--rule-strong); }
   .tm-cond { margin-top: 5px; padding-top: 5px; border-top: 1px solid var(--rule);
-    font-family: "Spectral", serif; font-style: italic; font-size: 9.5px; line-height: 1.28; color: var(--ink-2); }
+    font-family: "Spectral", serif; font-style: italic; font-size: 10px; line-height: 1.28; color: var(--ink-2); }
 
   /* line score — the dominant object, in a navy-framed scorecard */
   .tm-vcol.score .tm-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif;
@@ -295,6 +295,7 @@
 
   <script src="image-slot.js"></script>
   <script src="safeco-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="safeco-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

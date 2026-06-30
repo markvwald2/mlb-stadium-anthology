@@ -83,10 +83,10 @@
     font-size: 13px; letter-spacing: .22em; color: var(--orange-bright); }
   .op-hero-coord-txt .ll { font-size: 12px; color: rgba(233,228,216,.7); }
 
-  .op-hero-title { position: absolute; left: 60px; right: 60px; bottom: 150px; z-index: 5; }
+  .op-hero-title { position: absolute; left: 60px; right: 60px; bottom: 130px; z-index: 5; }
   .op-hero-name {
     margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
-    font-size: 184px; line-height: .82; letter-spacing: .004em; text-transform: uppercase;
+    font-size: 134px; line-height: .82; letter-spacing: .004em; text-transform: uppercase;
     color: #F0EAD9;
     text-shadow: 0 3px 30px rgba(0,0,0,.55), 0 1px 0 rgba(0,0,0,.25);
   }
@@ -107,7 +107,7 @@
 
   /* ============ RIGHT PAGE ============ */
   .op-shoreline { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 0; pointer-events: none; overflow: hidden; mix-blend-mode: multiply; }
-  .op-rp { position: absolute; inset: 0; padding: 38px 40px 60px 40px; z-index: 2;
+  .op-rp { position: absolute; inset: 0; padding: 38px 40px 49px 40px; z-index: 2;
     display: flex; flex-direction: column; gap: 10px; }
 
   /* section headers */
@@ -121,16 +121,11 @@
   .op-sect.bar.slim { padding-bottom: 6px; }
 
   /* top head: stadium header + logo wells */
-  .op-tophead { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
-  .op-tophead .op-sect { padding-top: 15px; flex: none; }
-  .op-wells { display: flex; gap: 9px; flex: none; }
-  .op-well { width: 150px; height: 58px; border: 1px solid var(--rule-strong);
-    background: var(--paper-hi); display: flex; align-items: center; gap: 11px; padding: 0 13px; }
-  .op-well-mark { display: flex; align-items: center; justify-content: center; width: 46px; height: 40px; flex: none; }
-  .op-well-img { display: block; width: auto; height: auto; max-width: 46px; max-height: 32px; }
-  .op-well-cap { font-family: "Space Mono", monospace; font-size: 9.5px; line-height: 1.3;
-    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); display: flex; flex-direction: column; }
-  .op-well-cap .ph { color: var(--ink-3); font-size: 8.5px; }
+  .op-tophead { display: flex; align-items: stretch; justify-content: space-between; gap: 20px; }
+  .op-tophead-left { display: flex; flex-direction: column; justify-content: space-between; flex: 1 1 auto; min-width: 0; gap: 8px; }
+  .op-tophead .op-sect { padding-top: 2px; flex: none; }
+  .op-wells { display: flex; gap: 30px; flex: none; align-items: flex-start; }
+  .op-well-img { display: block; width: auto; height: 44px; max-width: 78px; }
 
   /* identity line */
   .op-idline { display: flex; align-items: baseline; flex-wrap: nowrap; white-space: nowrap; gap: 0; padding: 6px 0 8px;
@@ -147,69 +142,82 @@
     text-transform: uppercase; color: var(--ink); padding-bottom: 6px; margin-bottom: 7px;
     border-bottom: 2px solid var(--ink); }
   .op-modh.accent { border-bottom-color: var(--orange); color: var(--orange-deep); }
+  .op-context > .op-modh { margin-top: 6px; margin-bottom: 6px; padding-bottom: 3px; }
   .op-modh.sm { font-size: 12px; padding-bottom: 5px; margin-bottom: 6px; border-bottom-width: 1.5px; }
 
   /* ---- stadium grid ---- */
-  .op-stadium { display: grid; grid-template-columns: 322px 1fr; gap: 0; flex: none; height: 522px; overflow: hidden; }
-  .op-col-facts { padding-right: 24px; display: flex; flex-direction: column; }
-  .op-col-main { padding-left: 24px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 13px; min-width: 0; }
+  .op-stadium { display: grid; grid-template-columns: 322px 1fr; grid-template-rows: minmax(0, 1fr); gap: 0; flex: none; height: 559px; overflow: hidden; }
+  .op-col-facts { padding-right: 24px; display: flex; flex-direction: column; min-height: 0; }
+  .op-col-main { padding-left: 24px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 13px; min-width: 0; min-height: 0; }
 
   /* facts table */
-  .op-table { display: flex; flex-direction: column; }
+  .op-table { display: flex; flex-direction: column; flex: 1 1 auto; justify-content: space-between; margin-bottom: 6px; }
   .op-table .row { display: grid; grid-template-columns: 96px 1fr; gap: 11px; padding: 3px 0;
     border-bottom: 1px solid var(--rule); align-items: baseline; }
   .op-table .row:last-child { border-bottom: 0; }
-  .op-table .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .1em;
+  .op-table .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); }
   .op-table .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; color: var(--ink); line-height: 1.26; white-space: pre-line; }
 
   /* classification chips */
-  .op-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 13px; }
+  .op-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 13px; margin-bottom: 10px; }
   .op-chip { border: 1px solid var(--rule-strong); background: var(--paper-hi); padding: 7px 10px; }
-  .op-chip .k { font-family: "Space Mono", monospace; font-size: 8px; letter-spacing: .14em;
+  .op-chip .k { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 3px; }
   .op-chip .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--ink); line-height: 1.05; }
 
   /* photos */
-  .op-photos { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; height: 142px; flex: none; }
+  .op-photos { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 13px; height: 154px; margin-bottom: -22px; flex: none; }
   .op-pcard { position: relative; overflow: hidden; border: 1px solid var(--rule-strong); }
   .op-pcard image-slot { width: 100%; height: 100%; display: block; }
 
-  /* context — three even columns; text flows through all three and the field
-     diagram rides inline inside the middle column, text wrapping above + below */
+  /* context — column 1 is a standalone block; columns 2–3 are a 2-column flow so
+     prose fills naturally. The field diagram is the first child of that flow, so
+     it is pinned to the top of column 2 and cannot be pushed by prose edits. */
   .op-ctxrow { display: flex; flex: 1; min-height: 0; overflow: hidden; }
-  .op-context { display: flex; flex-direction: column; min-width: 0; width: 100%; overflow: hidden; }
-  .op-ctx { columns: 3; column-gap: 18px; column-rule: 1px solid var(--rule); column-fill: auto;
+  .op-context { display: flex; flex-direction: column; min-width: 0; width: 100%; overflow: hidden; margin-top: 9px; }
+  .op-ctx { display: grid; grid-template-columns: 1fr 2fr; grid-template-rows: minmax(0, 1fr);
     flex: 1; min-height: 0; overflow: hidden; }
-  .op-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12.6px; line-height: 1.58;
-    color: var(--ink); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .op-ctx-col1 { min-width: 0; min-height: 0; overflow: hidden; height: 100%; padding-right: 9px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .op-ctx-rest { min-width: 0; min-height: 0; height: 100%; padding-left: 9px; padding-top: 2px; border-left: 1px solid var(--rule);
+    columns: 2; column-gap: 18px; column-rule: 1px solid var(--rule); column-fill: auto; }
+  .op-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 14px; line-height: 1.36;
+    letter-spacing: -0.7px; color: var(--ink); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
   .op-ctx p:last-child { margin-bottom: 0; }
-  /* per-paragraph leading: col-1 paras stay tight (diagram stays pinned); the
-     post-figure paras open up to fill column 3 (direct-edit values) */
-  .op-ctx p:nth-child(4) { line-height: 1.58; letter-spacing: 0.2px; }
-  .op-ctx p:nth-child(5) { line-height: 1.58; letter-spacing: 0.2px; }
-  .op-ctx-fig { margin: -13px 0 45px; break-inside: avoid; -webkit-column-break-inside: avoid;
+  /* column 1 leading opened up so its text bottom-aligns with the hairline;
+     the middle/right flow shares the same leading so columns end together */
+  .op-ctx-col1 p { line-height: 1.36; }
+  /* 1.65 leading; the flow is given extra height (336px vs the ~317.5px row) so
+     that at this leading the prose still fits in TWO columns instead of spilling
+     into a 4th. Both inner columns end just above the China Basin label. */
+  .op-ctx-rest p { line-height: 1.36; }
+  /* diagram pinned to the top of column 2; the middle text begins 10px below the
+     orange McCovey Cove label, which sits just beneath the diagram. */
+  .op-ctx-fig { position: absolute; top: 335px; left: 724px; width: 180px; margin: 0; z-index: 3;
     display: flex; justify-content: center; }
+  .op-ctx-figgap { height: 233px; break-inside: avoid; -webkit-column-break-inside: avoid; }
   .op-ctx-fig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .op-ctx-fig .fd-svg { width: 100%; max-width: 142px; height: auto; display: block; }
+  .op-ctx-fig .fd-svg { width: 100%; max-width: 180px; height: auto; display: block; overflow: visible; }
 
   /* ---- visit section ---- */
-  .op-visit { flex: none; display: flex; flex-direction: column; gap: 9px; height: 248px; overflow: hidden; }
+  .op-visit { flex: none; margin-top: -1px; margin-bottom: -6px; display: flex; flex-direction: column; gap: 9px; height: 248px; overflow: hidden; }
   .op-vgrid { display: grid; grid-template-columns: 322px 184px 360px 1fr; gap: 0; align-items: start; }
   .op-vgrid > div { padding: 0 22px; min-width: 0; }
   .op-vgrid > div:first-child { padding-left: 0; }
   .op-vgrid > div:last-child { padding-right: 0; }
-  .op-vwx, .op-vscore, .op-vphoto { border-left: 1px solid var(--rule); }
-  .op-vphoto { display: flex; align-items: stretch; }
-  .op-vphoto .op-pcard { width: 100%; height: 196px; }
+  .op-vwx, .op-vscore { border-left: 1px solid var(--rule); }
+  /* visit photo: one container, one card, one slot.
+     Resize the plate via width/height here; pan/zoom the image inside the slot. */
+  .op-vphoto { display: flex; align-items: stretch; justify-content: flex-end; margin-top: 0; padding-left: 0; }
+  .op-vphoto .op-pcard { width: 315px; height: 196px; flex: none; }
 
   /* game facts table */
   .op-gtable { display: flex; flex-direction: column; }
   .op-gtable .grow { display: grid; grid-template-columns: 66px 1fr; gap: 10px; padding: 1.5px 0;
     border-bottom: 1px solid var(--rule); align-items: baseline; }
   .op-gtable .grow:last-child { border-bottom: 0; }
-  .op-gtable .grow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .1em;
+  .op-gtable .grow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); }
   .op-gtable .grow .v { font-family: "Spectral", serif; font-weight: 500; font-size: 11px; color: var(--ink); line-height: 1.2; }
   .op-gtable .grow.strong .v { font-family: "Spectral", serif; font-weight: 700; font-size: 14px; color: var(--ink); }
@@ -220,13 +228,13 @@
   .op-wxmain .op-wx-ico { flex: none; }
   .op-wxtemp { display: flex; flex-direction: column; }
   .op-wxtemp .deg { font-family: "Anton", sans-serif; font-weight: 400; font-size: 34px; color: var(--ink); line-height: .82; }
-  .op-wxtemp .cond { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .12em;
+  .op-wxtemp .cond { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-2); margin-top: 5px; }
   .op-wxrows { display: flex; flex-direction: column; }
   .op-wxr { display: flex; align-items: center; gap: 10px; padding: 5px 0; border-top: 1px solid var(--rule); }
   .op-wxr .op-wxr-ico { flex: none; }
   .op-wxr-txt { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-  .op-wxr .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .14em;
+  .op-wxr .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink-3); }
   .op-wxr .v { font-family: "Spectral", serif; font-weight: 600; font-size: 13px; color: var(--ink); }
 
@@ -244,7 +252,7 @@
   .op-box thead th.sep, .op-box tbody td.sep { width: 28px; }
   .op-box tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
   .op-box tbody tr.awayrow td.tm { color: var(--dodger); }
-  .op-scorenote { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em;
+  .op-scorenote { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .06em;
     color: var(--ink-2); margin-top: 9px; }
   .op-decisions { display: flex; gap: 30px; margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--rule); }
   .op-decisions .d { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
@@ -253,18 +261,18 @@
   .op-decisions .d .dv { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink); white-space: nowrap; }
 
   /* ---- ballpark notes band ---- */
-  .op-notes { flex: none; display: flex; flex-direction: column; gap: 9px; }
+  .op-notes { flex: none; display: flex; flex-direction: column; gap: 9px; margin-top: -4px; }
   .op-ngrid { display: grid; grid-template-columns: 0.62fr 1fr 0.72fr 0.92fr 0.78fr 1.7fr 1.25fr; gap: 0; }
   .op-ngrid .nc { padding: 0 16px; border-left: 1px solid var(--rule); min-width: 0; }
   .op-ngrid .nc:first-child { padding-left: 0; border-left: 0; }
   .op-ngrid .nc:last-child { padding-right: 0; }
-  .op-ngrid .nc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .12em;
+  .op-ngrid .nc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
-  .op-ngrid .nc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 10.5px; line-height: 1.3; color: var(--ink); }
-  .op-ngrid .nc.coord .v { font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .01em; line-height: 1.4; }
+  .op-ngrid .nc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 11px; line-height: 1.3; color: var(--ink); }
+  .op-ngrid .nc.coord .v { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: -.01em; line-height: 1.4; }
   .op-ngrid .nc.cost .v.big { font-family: "Spectral", serif; font-weight: 700; font-size: 17px; line-height: 1; }
-  .op-ngrid .nc.cost .v.adj { font-family: "Space Mono", monospace; font-weight: 400; font-size: 9px; letter-spacing: .01em;
-    color: var(--ink-2); margin-top: 4px; }
+  .op-ngrid .nc.cost .v.adj { font-family: "Space Mono", monospace; font-weight: 400; font-size: 11px; letter-spacing: -.01em;
+    color: var(--ink-2); margin: 0; }
 
   /* ---- San Francisco Bay water band ---- */
   .op-water { position: absolute; left: 0; right: 0; bottom: 0; height: 44px; z-index: 1;
@@ -295,6 +303,7 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
   <script src="image-slot.js"></script>
+  <script src="field-labels.js"></script>
   <script src="oracle-data.js"></script>
   <script src="oracle-shore-store.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>

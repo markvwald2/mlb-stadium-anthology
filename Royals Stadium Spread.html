@@ -143,7 +143,7 @@
   .rs-ribbon::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1.5px; background: var(--gold); }
   .rs-ribbon .cell { flex: 1; padding: 11px 12px 12px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 5px; justify-content: center; }
   .rs-ribbon .cell:first-child { border-left: 0; }
-  .rs-ribbon .cell .rs-lbl { font-size: 9px; letter-spacing: .14em; }
+  .rs-ribbon .cell .rs-lbl { font-size: 10px; letter-spacing: .14em; }
   .rs-ribbon .cell .rv { font-family: "Spectral", serif; font-weight: 600; font-size: 15px; color: var(--ink); line-height: 1.05; }
   .rs-ribbon .team-cell, .rs-ribbon .league-cell { flex-direction: row; align-items: center; justify-content: flex-start; gap: 11px; }
   .rs-ribbon .team-cell image-slot { width: 42px; height: 42px; display: block; flex: none; }
@@ -171,7 +171,7 @@
   /* inline field-plan figure floated into the context prose */
   .rs-fieldfig { float: right; width: 150px; margin: 3px 0 8px 16px; }
   .rs-fieldfig .fd-wrap { max-width: 150px; margin: 0; }
-  .rs-fieldfig figcaption { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); text-align: center; margin-top: 5px; line-height: 1.35; }
+  .rs-fieldfig figcaption { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); text-align: center; margin-top: 5px; line-height: 1.35; }
   /* context flow (L-shape: lead under field plan, continued under visit) */
   .rs-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 14px; line-height: 1.28; color: var(--ink); text-align: justify; hyphens: auto; }
   .rs-ctx p:last-child { margin-bottom: 0; }
@@ -180,10 +180,10 @@
   .rs-ctx-lead p:first-of-type::first-letter { font-family: "Anton", sans-serif; font-weight: 400; font-size: 40px; line-height: .82; float: left; padding: 3px 7px 0 0; color: var(--royal); }
   .rs-ctxcont { margin-top: 0; }
   .rs-ctx-eyebrow { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .15em; font-size: 11px; color: var(--gold-deep); margin-bottom: 8px; }
-  .fd-svg { width: 100%; height: auto; display: block; }
+  .fd-svg { width: 100%; height: auto; display: block;  overflow: visible; }
   .fd-dist { font-family: "Space Mono", monospace; font-size: 13px; fill: #F4EEE0; font-weight: 700; paint-order: stroke; stroke: rgba(0,0,0,.35); stroke-width: 2.5px; }
   .fd-compass-n { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 14px; fill: var(--royal); }
-  .fd-caption { display: flex; justify-content: space-between; margin-top: 6px; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .1em; color: var(--ink-3); text-transform: uppercase; }
+  .fd-caption { display: flex; justify-content: space-between; margin-top: 6px; font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .1em; color: var(--ink-3); text-transform: uppercase; }
 
   /* ---------- TIMELINE ---------- */
   .rs-tl { position: relative; }
@@ -202,7 +202,7 @@
   .rs-visit::before { content: ""; position: absolute; left: 0; top: 0; right: 0; height: 3px; background: var(--gold); }
   .rs-visit .vhead { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.18); padding-bottom: 9px; margin-bottom: 12px; }
   .rs-visit .vhead .tt { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .16em; font-size: 16px; color: #fff; }
-  .rs-visit .pill { font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: #08203F; background: var(--gold); padding: 3px 8px; }
+  .rs-visit .pill { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #08203F; background: var(--gold); padding: 3px 8px; }
   .rs-visit .vlbl { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .12em; color: var(--panel-dim); font-size: 10px; }
   .rs-visit .vval { font-family: "Spectral", serif; font-weight: 500; color: #F1EBDB; font-size: 12.5px; }
 
@@ -232,7 +232,7 @@
   .rs-wx .c:first-child { border-left: 0; }
   .rs-wx .c .big { font-family: "Spectral", serif; font-weight: 700; font-size: 19px; color: #fff; line-height: 1; }
   .rs-wx .c .small { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px; color: #EFE9D8; line-height: 1.05; margin-top: 2px; }
-  .rs-wx .c .cap { font-family: "Space Mono", monospace; font-size: 8px; letter-spacing: .1em; color: var(--panel-dim); text-transform: uppercase; margin-top: 5px; }
+  .rs-wx .c .cap { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .1em; color: var(--panel-dim); text-transform: uppercase; margin-top: 5px; }
   .rs-wx .ico { display: block; margin: 0 auto 5px; }
 
   /* ---------- ESSAY ---------- */
@@ -254,7 +254,7 @@
   .rs-footer .colors .chip { width: 18px; height: 18px; border-radius: 50%; border: 1px solid rgba(255,255,255,.35); }
   .rs-footer .colors .nm { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: #E7E1D0; }
   .rs-footer .status { margin-left: auto; align-self: stretch; background: var(--royal); display: flex; flex-direction: column; justify-content: flex-start; padding: 10px 45px 0 30px; }
-  .rs-footer .status .k { font-family: "Space Mono", monospace; font-size: 9px; line-height: 1.1; letter-spacing: .2em; color: rgba(255,255,255,.8); }
+  .rs-footer .status .k { font-family: "Space Mono", monospace; font-size: 10px; line-height: 1.1; letter-spacing: .2em; color: rgba(255,255,255,.8); }
   .rs-footer .status .v { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 19px; line-height: 1.05; letter-spacing: .08em; text-transform: uppercase; color: #fff; }
 
   #root { min-height: 100vh; }
@@ -277,6 +277,7 @@
 
   <script src="image-slot.js"></script>
   <script src="royals-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="protractor-diagram.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

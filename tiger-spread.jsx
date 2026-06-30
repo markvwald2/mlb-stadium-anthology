@@ -188,7 +188,7 @@
                   e(FieldPlan, { lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
                     stroke: "#5E6E7E", opacity: 0.2 })) : null,
                 e("div", { className: "ctxh" },
-                  e("div", { className: "t" }, "Stadium Context"),
+                  e("div", { className: "t" }, "The Corner"),
                   e("div", { className: "ln" })),
                 e("div", { className: "ts-ctx" },
                   e("div", { className: "col" }, D.stadium_context.slice(0, 2).map((p, i) => e("p", { key: i }, p))),

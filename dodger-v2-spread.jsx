@@ -23,16 +23,7 @@
   ];
 
   function Slot(props) {
-    var SRC = {
-      "dodger-v2-hero": "uploads/dodger-stadium.jpg",
-      "dodger-v2-s1": "uploads/dodger-stadium.jpg",
-      "dodger-v2-s2": "uploads/dodger-stadium.jpg",
-      "dodger-v2-s3": "uploads/dodger-stadium.jpg",
-      "dodger-v2-s4": "uploads/dodger-stadium.jpg",
-      "dodger-v2-s5": "uploads/dodger-stadium.jpg"
-    };
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
-      src: SRC[props.id], statefile: ".image-slots.state.json",
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src,
       style: { width: "100%", height: "100%" } });
   }
 
@@ -155,7 +146,7 @@
       /* ============== LEFT / AERIAL ============== */
       e("div", { className: "dv2-page dv2-left", "data-screen-label": "Dodger Stadium \u2014 aerial" },
         e("div", { className: "dv2-hero-slot" },
-          e(Slot, { id: "dodger-v2-hero",
+          e(Slot, { id: "dodger-v2-hero", src: "assets/dodger-stadium-hero.jpg",
             placeholder: "Drop the elevated Chavez Ravine aerial \u2014 the open-air bowl geometry and color-coded decks, the hillside siting and terraced parking, with downtown Los Angeles in the distance. Let the photograph dominate." })),
         e("div", { className: "dv2-hero-scrim" }),
         e("div", { className: "dv2-folio" },
@@ -203,13 +194,15 @@
                 window.DodgerV2Field ? e(window.DodgerV2Field, { lf: F.left_field, cf: F.center_field, rf: F.right_field, orientation: F.orientation, degrees: F.degrees, accent: "var(--turq-ax)", counterRotate: 26 }) : null)))),
 
         /* ---- BAND 3 · ORANGE · stadium context ---- */
-        e("div", { className: "dv2-band", style: { top: "555px", height: "243px", background: "var(--orange-bg)" } },
+        e("div", { className: "dv2-band", style: { top: "555px", height: "253px", background: "var(--orange-bg)" } },
           e("div", { className: "dv2-edge", style: { background: "var(--orange)" } }),
           e("div", { className: "dv2-pad", style: { top: "14px" } },
-            e(Sec, { tag: "Stadium Context", no: "03", color: "var(--orange)" })),
+            e(Sec, { tag: "Pastel Terraces", no: "03", color: "var(--orange)" })),
           e("div", { className: "dv2-pad", style: { top: "43px" } },
             e("div", { className: "dv2-essay" },
-              D.stadium_context.map((p, i) => e("p", { key: i, style: i === 2 ? { letterSpacing: "0.2px" } : i === 3 ? { letterSpacing: "-0.1px" } : null }, p))))),
+              D.stadium_context.map((p, i) => i === 0
+                ? e("p", { key: i }, e("span", { className: "fw-dropcap" }, p.charAt(0)), p.slice(1))
+                : e("p", { key: i }, p))))),
 
         /* ---- BAND 4 · YELLOW · the visit ---- */
         e("div", { className: "dv2-band", style: { top: "808px", height: "280px", background: "var(--yellow-bg)" } },
@@ -219,7 +212,7 @@
               e("div", { style: { display: "flex", alignItems: "baseline", gap: "14px" } },
                 e(Sec, { tag: "The Visit", no: "04", color: "#B9912A" }),
                 e("div", { className: "dv2-sec sub", style: { marginLeft: 0, fontFamily: "'Barlow Semi Condensed',sans-serif", fontWeight: 500, fontSize: "12px", letterSpacing: ".2em", textTransform: "uppercase", color: "var(--ink2)", whiteSpace: "nowrap", lineHeight: 1.1 } },
-                  V.trip + " \u00b7 " + V.span + " \u00b7 No. 04 / 42")))),
+                  V.trip + " \u00b7 " + V.span)))),
           e("div", { className: "dv2-visit-other", style: { position: "absolute", right: "50px", top: "2px", height: "44px", alignItems: "center" } },
             e("div", { className: "ov-label" }, "Other Visits"),
             e("div", { className: "ov-grid" },

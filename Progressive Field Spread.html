@@ -165,7 +165,7 @@
   .pf-stack { padding: 1px 0; border-bottom: 1px solid var(--rule); }
   .pf-stack-pair { display: flex; gap: 18px; }
   .pf-stack-pair .sp-cell { flex: 1; min-width: 0; }
-  .pf-stack .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .13em;
+  .pf-stack .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .13em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 2px; }
   .pf-stack .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: .01em;
     text-transform: uppercase; color: var(--ink); line-height: 1.12; }
@@ -182,9 +182,9 @@
   .pf-fieldplan { margin: 10px 0 4px; padding-top: 12px; border-top: 1px solid var(--ink);
     display: flex; flex-direction: column; align-items: center; gap: 2px; }
   .pf-fieldplan .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .pf-fieldplan .fd-svg { width: auto; height: 124px; max-width: 100%; display: block; }
+  .pf-fieldplan .fd-svg { width: auto; height: 124px; max-width: 100%; display: block;  overflow: visible; }
   .pf-fp-cap { display: flex; justify-content: space-between; align-items: baseline; width: 100%;
-    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase;
+    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
     color: var(--ink-2); }
   .pf-fp-cap span:first-child { color: var(--navy); }
 
@@ -210,7 +210,7 @@
   .pf-data { display: flex; flex-direction: column; }
   .pf-inline { display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
     padding: 3px 0; border-bottom: 1px dotted var(--rule-strong); }
-  .pf-inline .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .1em;
+  .pf-inline .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
   .pf-inline .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11.5px; letter-spacing: .01em;
     text-transform: uppercase; color: var(--ink); text-align: right; white-space: nowrap; }
@@ -249,7 +249,7 @@
   .pf-score { }
   .pf-box { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; }
   .pf-box th, .pf-box td { text-align: center; font-size: 11px; font-weight: 400; padding: 3px 0; color: var(--ink); }
-  .pf-box thead th { color: var(--ink-3); font-weight: 700; font-size: 9.5px; border-bottom: 1.4px solid var(--ink); }
+  .pf-box thead th { color: var(--ink-3); font-weight: 700; font-size: 10px; border-bottom: 1.4px solid var(--ink); }
   .pf-box td.tm, .pf-box th.tm { text-align: left; font-family: "Oswald", sans-serif; font-weight: 600;
     font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); padding-right: 8px; width: 1%; white-space: nowrap; }
   .pf-box td.z { color: var(--ink-3); }
@@ -285,6 +285,7 @@
 
   <script src="image-slot.js"></script>
   <script src="progressive-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="progressive-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

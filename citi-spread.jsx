@@ -216,7 +216,7 @@
 
               /* col C: unified Stadium Context */
               e("div", { className: "cf-ctx-block" },
-                e("div", { className: "cf-modh" }, "Stadium Context"),
+                e("div", { className: "cf-modh" }, "The Ebbets Echo"),
                 e("div", { className: "cf-ctx" },
                   D.context.map(function (p, i) {
                     var ls = ["0.2px", "0.2px", "0px", "0.2px"];

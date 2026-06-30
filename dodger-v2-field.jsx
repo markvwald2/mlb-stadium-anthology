@@ -46,13 +46,13 @@
   }
   // paper call-out so a dimension stays legible over the colour artwork
   function dim(pt, txt, cr) {
-    const t = strip(txt), w = Math.max(74, t.length * 23 + 26), h = 46;
+    const t = strip(txt), w = Math.max(90, t.length * 28 + 32), h = 56;
     return e("g", { key: "d" + pt[0] + pt[1],
         transform: cr ? "rotate(" + (-cr) + " " + pt[0] + " " + pt[1] + ")" : null },
       e("rect", { x: pt[0] - w / 2, y: pt[1] - h / 2, width: w, height: h, rx: 6,
         fill: PAPER, fillOpacity: 0.94, stroke: HAIR, strokeWidth: 1.4 }),
-      e("text", { x: pt[0], y: pt[1] + 1, textAnchor: "middle", dominantBaseline: "middle",
-        style: mono(40, INK, 700) }, t));
+      e("text", { x: pt[0], y: pt[1], textAnchor: "middle", dominantBaseline: "central",
+        style: mono(49, INK, 700) }, t));
   }
 
   function DodgerV2Field(props) {
@@ -91,13 +91,13 @@
       ticks,
       e("line", { x1: C[0], y1: C[1], x2: northTip[0], y2: northTip[1], stroke: INK2, strokeWidth: 2.4, strokeDasharray: "9 9" }),
       e("polygon", { points: f(northTip).replace(" ", ",") + " " + f(nL).replace(" ", ",") + " " + f(nR).replace(" ", ","), fill: INK2 }),
-      e("text", { x: nLab[0], y: nLab[1] + 4, textAnchor: "middle", transform: rot(nLab[0], nLab[1] + 4), style: mono(34, INK, 700) }, "N"),
+      e("text", { x: nLab[0], y: nLab[1] + 4, textAnchor: "middle", transform: rot(nLab[0], nLab[1] + 4), style: mono(45, INK, 700) }, "N"),
       e("line", { x1: C[0], y1: C[1], x2: axisTip[0], y2: axisTip[1], stroke: BEARING, strokeWidth: 4.4 }),
       e("polygon", { points: f(axisTip).replace(" ", ",") + " " + f(axL).replace(" ", ",") + " " + f(axR).replace(" ", ","), fill: BEARING }),
       e("path", { d: "M " + f(arcA) + " A 96 96 0 0 1 " + f(arcB), fill: "none", stroke: BEARING, strokeWidth: 2.4 }),
-      e("text", { x: bLab[0] + 14, y: bLab[1] + 2, textAnchor: "start", transform: rot(bLab[0] + 14, bLab[1] + 2), style: mono(28, BEARING, 700) }, deg + "\u00b0 " + orientation),
+      e("text", { x: 529, y: -5, textAnchor: "start", transform: rot(529, -5), style: mono(49, BEARING, 700) }, deg + "\u00b0 " + orientation),
       dim(polar(C, R + 52, -FA), props.lf, cr),
-      dim(polar(C, R - 2, 8), props.cf, cr),
+      dim([519, 113], props.cf, cr),
       dim(polar(C, R + 52, FA), props.rf, cr)
     );
   }

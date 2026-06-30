@@ -62,12 +62,12 @@
     const ntip = polar(C, PR + 16, deg);
     const back = polar(ntip, 10, deg + 180), hl = polar(back, 4.5, deg - 90), hr = polar(back, 4.5, deg + 90);
     const head = [ntip, hl, hr].map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
-    const degPos = polar(C, PR + 33, deg);
+    const bc = window.FieldLabels.bearingChip(C, PR + 16, deg, 28, 20);
     const nlab = polar(C, PR + 14, 0);
 
     const chips = [
       { p: out(rot(lf, C, deg), C, 17), t: strip(props.lf) },
-      { p: rot(cf, C, deg), t: strip(props.cf) },
+      { p: window.FieldLabels.cfWallPoint(C, R, deg), t: strip(props.cf) },
       { p: out(rot(rf, C, deg), C, 17), t: strip(props.rf) }
     ];
 
@@ -91,7 +91,7 @@
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: accent }),
         e("circle", { cx: C[0], cy: C[1], r: 2.6, fill: accent }),
-        e(Chip, { x: degPos[0], y: degPos[1], text: deg + "\u00b0", size: 13, tone: "navy", padX: 7 }),
+        e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 13, tone: "navy", padX: 7 }),
         // orientation cue
         e("text", { x: ntip[0] + 12, y: ntip[1] - 4, textAnchor: "start", style: { fontFamily: "'Oswald',sans-serif", fontWeight: 600, fontSize: "10px", fill: ink2, letterSpacing: ".14em" } }, orientation),
         // distance chips

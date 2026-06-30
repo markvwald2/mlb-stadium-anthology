@@ -48,10 +48,11 @@
   }
 
   /* ----------------------------------------------------------------
-     CLOSING PAGE — single interior leaf (inside back cover).
+     OPENING PAGE — single interior leaf (inside cover).
      One cover-style cream grid on a 1275 × 1088 design page.
-     Exports through the shared project harness, which intentionally remains on
-     the legacy single-page PDF sheet for consistency with already-exported pages.
+     Exports through the single-page harness to the updated Blurb interior
+     spec: PDF 12.625 × 10.875 in · trim 12.5 × 10.625 in · bleed 0.125 in on
+     top/bottom/outside (binding edge dropped) · safe 0.25 in (0.5 in binding).
      ---------------------------------------------------------------- */
   .op-spread {
     position: relative;
@@ -177,6 +178,7 @@
 
   <script src="image-slot.js"></script>
   <script src="opening-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="cover-logo.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

@@ -231,7 +231,7 @@
         /* ---------- BAY 3 : STADIUM CONTEXT (masonry wall) ---------- */
         e("div", { className: "cbp-bay", style: { left: BAYS.context.left + "px", top: BAYS.context.top + "px",
             width: BAYS.context.width + "px", height: BAYS.context.height + "px" } },
-          e(BayHead, { title: "Stadium Context", note: "III" }),
+          e(BayHead, { title: "The Masonry Wall", note: "III" }),
           e("div", { className: "cbp-wall" },
             e("div", { className: "cbp-prose" },
               D.stadium_context.map((p, i) => e("p", { key: i }, p)))),

@@ -185,7 +185,7 @@
 
               /* stadium context — one unified block */
               e("div", { className: "sd-context" },
-                e("div", { className: "sd-seclbl" }, e("span", { className: "dot" }), e("span", { className: "t" }, "Stadium Context"), e("span", { className: "ln" })),
+                e("div", { className: "sd-seclbl" }, e("span", { className: "dot" }), e("span", { className: "t" }, "The Brutalist Bowl"), e("span", { className: "ln" })),
                 e("div", { className: "body" }, D.stadium_context.map((p, i) => e("p", { key: i }, p)))),
 
               /* game record — scorekeeper insert (dark concrete band) */

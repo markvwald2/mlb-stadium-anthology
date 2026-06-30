@@ -23,7 +23,7 @@
   function polar(C, r, a) { const t = a * Math.PI / 180; return [C[0] + r * Math.sin(t), C[1] - r * Math.cos(t)]; }
 
   function Chip(props) {
-    const fs = props.size || 11, w = props.boxW || (props.text.length * fs * 0.66 + 12), h = 17;
+    const fs = props.size || 11, w = props.boxW || (props.text.length * fs * 0.66 + 12), h = props.boxH || (fs + 7);
     const tone = props.tone || "paper";
     const fill = tone === "accent" ? navy : paperHi, stk = tone === "accent" ? navy : ruleStrong,
           col = tone === "accent" ? paperHi : ink;
@@ -56,7 +56,7 @@
     const nums = [0, 30, 60, 90].map((a, i) => {
       const p = polar(C, PR + 11, a);
       return e("text", { key: "n" + i, x: p[0], y: p[1] + 3.5, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "10px", fill: ink3 } }, a);
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "12px", fill: ink3 } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 90);
     const protArc = "M " + arcA[0].toFixed(1) + " " + arcA[1].toFixed(1) +
@@ -64,12 +64,12 @@
     const ntip = polar(C, PR + 26, deg);
     const back = polar(ntip, 8, deg + 180), hl = polar(back, 4, deg - 90), hr = polar(back, 4, deg + 90);
     const head = [ntip, hl, hr].map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
-    const degPos = [201, 34];
+    const bc = window.FieldLabels.bearingChip(C, PR + 26, deg, 30, 16);
     const nlab = polar(C, PR + 11, 0);
 
     const chips = [
       { p: out(rot(lf, C, deg), C, 13), t: props.lf },
-      { p: rot(cf, C, deg), t: props.cf },
+      { p: window.FieldLabels.cfWallPoint(C, R, deg), t: props.cf },
       { p: out(rot(rf, C, deg), C, 13), t: props.rf }
     ];
 
@@ -85,13 +85,13 @@
         e("path", { d: protArc, fill: "none", stroke: ink3, strokeWidth: 1, opacity: 0.55 }),
         ticks, nums,
         e("text", { x: nlab[0], y: nlab[1] - 7, textAnchor: "middle",
-          style: { fontFamily: "'Barlow Condensed',sans-serif", fontWeight: 700, fontSize: "11px", fill: ink, letterSpacing: ".04em" } }, "N"),
+          style: { fontFamily: "'Barlow Condensed',sans-serif", fontWeight: 700, fontSize: "12px", fill: ink, letterSpacing: ".04em" } }, "N"),
         e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink3, strokeWidth: 1, strokeDasharray: "3 3" }),
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: navy, strokeWidth: 2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: red }),
         e("circle", { cx: C[0], cy: C[1], r: 2.6, fill: navy }),
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 11 }))),
-      e(Chip, { x: degPos[0], y: degPos[1], text: deg + "\u00b0 " + abbr, size: 10, tone: "accent", boxW: 71 }));
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 17 }))),
+      e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0 " + abbr, size: 17, tone: "accent", boxW: 80 }));
   }
 
   window.AnaheimField = AnaheimField;

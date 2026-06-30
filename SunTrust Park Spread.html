@@ -130,7 +130,7 @@
     line-height: .86; letter-spacing: .01em; color: var(--paper-hi); }
   .st-ribbon .rv.feat .fof { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
     letter-spacing: .02em; color: rgba(242,233,214,.66); }
-  .st-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px;
+  .st-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--scarlet); white-space: nowrap; }
   .st-ribbon .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
     letter-spacing: .015em; text-transform: uppercase; color: var(--ink); line-height: 1.12;
@@ -163,7 +163,7 @@
   .st-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--navy); white-space: nowrap; }
   .st-h.scarlet .t { color: var(--scarlet); }
-  .st-h .n { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .05em;
+  .st-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); margin-left: auto; white-space: nowrap; }
 
   /* ---- fact tables ---- */
@@ -172,7 +172,7 @@
   .st-frow { display: grid; grid-template-columns: 104px 1fr; gap: 10px; align-items: start;
     padding: 4px 0; border-bottom: 1px solid var(--rule); }
   .st-frow:last-child { border-bottom: 0; }
-  .st-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .04em;
+  .st-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.3; }
   .st-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
   .st-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink);
@@ -238,15 +238,15 @@
   .st-wcell:first-child { border-left: 0; padding-left: 0; }
   .st-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 17px; color: var(--ink);
     line-height: 1.12; }
-  .st-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: .13em;
+  .st-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .13em;
     text-transform: uppercase; color: var(--scarlet); }
 
   /* ---- field & orientation plate ---- */
   .st-fieldfig { flex: 1 1 auto; min-height: 0; margin: 0; display: flex; flex-direction: column;
     align-items: center; justify-content: center; gap: 4px; }
   .st-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .st-fieldfig .fd-svg { width: 100%; max-width: 268px; height: auto; display: block; }
-  .st-fieldfig figcaption { margin-top: 2px; font-family: "Space Mono", monospace; font-size: 9px;
+  .st-fieldfig .fd-svg { width: 100%; max-width: 268px; height: auto; display: block;  overflow: visible; }
+  .st-fieldfig figcaption { margin-top: 2px; font-family: "Space Mono", monospace; font-size: 10px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); text-align: center; }
 
   .st-logos { flex: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule);
@@ -277,7 +277,7 @@
   .st-lc-col .st-frow .v .vs { font-size: 10.5px; }
   .st-finnote { margin-top: 9px; padding-top: 9px; border-top: 1px solid var(--rule);
     display: grid; grid-template-columns: 64px 1fr; column-gap: 10px; align-items: start; }
-  .st-finnote .fk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .04em;
+  .st-finnote .fk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--scarlet); line-height: 1.3; }
   .st-finnote .fv { font-family: "Spectral", serif; font-size: 10.5px; line-height: 1.4; color: var(--ink-2); }
 
@@ -308,6 +308,7 @@
 
   <script src="image-slot.js"></script>
   <script src="suntrust-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="suntrust-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

@@ -193,7 +193,7 @@
 
         /* ---- unified Stadium Context, full-width 3-bay text field ---- */
         e("div", { className: "tm-context" },
-          e(SecHead, { title: "Stadium Context", note: "ONE UNIFIED RECORD", green: true }),
+          e(SecHead, { title: "The Rolling Roof", note: "ONE UNIFIED RECORD", green: true }),
           e("div", { className: "tm-prose" },
             D.stadium_context.map((p, i) => e("p", { key: i }, p)))
         ),

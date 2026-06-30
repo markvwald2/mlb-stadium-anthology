@@ -207,7 +207,7 @@
 
           /* ---- shared ground plane — Stadium Context supports both twins ---- */
           e("div", { className: "tf-context" },
-            e(SecHead, { title: "Stadium Context", note: "METRODOME \u2192 TARGET FIELD" }),
+            e(SecHead, { title: "Kasota Stone", note: "METRODOME \u2192 TARGET FIELD" }),
             e("div", { className: "tf-prose4" },
               D.stadium_context.map((p, i) => e("p", { key: i,
                 style: { letterSpacing: "-0.3px" } }, p))))

@@ -158,7 +158,7 @@
 
             /* RIGHT BAY — Stadium Context */
             e("div", { className: "ms-bay right" },
-              e("div", { className: "ms-bayh" }, "Stadium Context"),
+              e("div", { className: "ms-bayh" }, "The Memorial Wall"),
               e("div", { className: "ms-ctx" },
                 D.stadium_context.map((p, i) => e("p", { key: i }, p))))
           ),

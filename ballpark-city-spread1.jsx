@@ -18,9 +18,17 @@
       }}>
         {paras.map((p, i) => {
           const isCap = dropcap && i === 0;
-          const narrow = isCap && /^["'\u201c\u2018(]*[IJ]/.test(p);
+          if (isCap) {
+            const letter = p.charAt(0);
+            const rest = p.slice(1);
+            const narrow = /[IJ]/.test(letter);
+            return (
+              <p key={i} className={"bc-dropcap" + (narrow ? " bc-dropcap-narrow" : "")} style={{ letterSpacing: "0px" }}>
+                <span className="bc-dropcap-letter">{letter}</span>{rest}
+              </p>);
+          }
           return (
-            <p key={i} className={isCap ? "bc-dropcap" + (narrow ? " bc-dropcap-narrow" : "") : ""} style={{ letterSpacing: "0px" }}>{p}</p>);
+            <p key={i} style={{ letterSpacing: "0px" }}>{p}</p>);
 
         })}
       </div>);
@@ -62,20 +70,20 @@
         style={{ position: "absolute", left: 230, top: 418, fontSize: 21 }} />
 
         <Body paras={D.EXEC} x={230} y={462} w={1006} h={486}
-        cols={3} gap={34} size={14.5} lh={1.5} dropcap fill="auto" />
+        cols={3} gap={34} size={14.5} lh={1.5} dropcap fill="balance" />
 
         {/* ============================ RIGHT PAGE =========================== */}
         <SectionHead label="WOODEN PARKS AND THE SEARCH FOR PERMANENCE" num="I" width={840}
         style={{ position: "absolute", left: 1335, top: 58, fontSize: 21 }} />
 
-        <Body paras={D.WOODEN} x={1335} y={104} w={840} h={362}
+        <Body paras={D.WOODEN} x={1335} y={104} w={840} h={366}
         cols={3} gap={28} size={13} lh={1.45} dropcap />
 
         <SectionHead label="THE JEWEL BOX IDEAL" num="II" width={840}
         style={{ position: "absolute", left: 1335, top: 486, fontSize: 21 }} />
 
-        <Body paras={D.JEWEL} x={1335} y={532} w={840} h={296}
-        cols={3} gap={28} size={13} lh={1.45} dropcap />
+        <Body paras={D.JEWEL} x={1335} y={528} w={840} h={301}
+        cols={3} gap={28} size={12.9} lh={1.45} dropcap />
 
         {/* ---- right-hand figure strip ---- */}
         <Figure fig={D.FIGS.bakerBowl} x={2205} y={104} w={300} imgH={152} />

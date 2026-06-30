@@ -19,8 +19,7 @@ These are the official production dimensions. Obey them on every spread.
 | Trimmed page | 12.50 × 10.63 | 1250 × 1063 |
 | Center split / fold | x = 12.75 | **x = 1275** |
 | Outer bleed (all four edges, bleed-only) | 0.125 | 12.5 |
-| Safe inset (top / bottom / outside) | 0.25 | 25 |
-| Safe inset (binding edge / gutter) | 0.5 | 50 |
+| Safe inset (critical content ≥ this far inside trim) | 0.25 | 25 |
 
 **Trim rectangles (px):**
 - Left page trim:  x ∈ [12.5, 1262.5], y ∈ [12.5, 1075.5]
@@ -31,11 +30,11 @@ straddling the fold. Nothing readable — text, key labels, logos, score lines,
 faces, important image subjects — may cross or sit inside it. Only full-bleed
 art / color fields / quiet grid continuation may pass through.
 
-**Safe boxes for critical content (0.25 in top/bottom/outside, 0.5 in binding):**
+**Safe boxes for critical content (0.25 in inside trim):**
 - Left page:  x ∈ [37.5, 1237.5], y ∈ [37.5, 1050.5]
 - Right page: x ∈ [1312.5, 2512.5], y ∈ [37.5, 1050.5]
-  (Left-safe right edge and right-safe left edge define the gutter bounds, so
-  respecting the safe box automatically clears the gutter.)
+  (Left-safe right edge and right-safe left edge coincide with the gutter
+  bounds, so respecting the safe box automatically clears the gutter.)
 
 **Rules of thumb**
 - Extend full-bleed art, photos, backgrounds, maps, and color fields all the way
@@ -43,9 +42,8 @@ art / color fields / quiet grid continuation may pass through.
 - Treat the outer 0.125 in (12.5 px) as bleed-only — decorative only, never
   load-bearing.
 - Keep ALL critical text, labels, logos, data, score lines, captions, and
-  important image details ≥ 0.25 in (25 px) inside the final trim on top,
-  bottom, and outside edges, and ≥ 0.5 in (50 px) inside the binding edge,
-  i.e. within the safe boxes above and out of the gutter zone.
+  important image details ≥ 0.25 in (25 px) inside the final trim, i.e. within
+  the safe boxes above, and out of the gutter zone.
 - Verify before delivery: an `eval_js` sweep of `getBBox()` on every `<text>`
   (and key marks) against the safe boxes should return zero violations. Glyph
   bounds — not the baseline — are what get trimmed, so a tall display face can
@@ -101,6 +99,34 @@ get re-corrected most often, so treat them as hard constraints, not preferences.
    vertical columns, radial systems, or asymmetrical image/data placement. The
    spread should still be readable, print-safe, and data-complete, but the
    composition should not feel reusable by swapping only photos, colors, and names.
+8. **Field-plan diagram labels — use the shared `field-labels.js` helper
+   (`window.FieldLabels`).** Every field/protractor diagram loads
+   `<script src="field-labels.js"></script>` (before the `design-canvas.jsx`
+   babel script) and places its two reader-facing labels by rule, not by hand:
+   - **Degree / bearing chip** sits OUTSIDE the arrowhead via
+     `FieldLabels.bearingChip(C, tipRadius, deg, gapX, gapY)` → `{x, y}`.
+     Horizontal: RIGHT if `sin(deg) ≥ 0` (eastern parks), else LEFT (mirrored,
+     western). Vertical: UP if `cos(deg) ≥ 0` (deg ≤ 90 or ≥ 270), else DOWN.
+     → NE up-right · SE down-right · SW down-left · NW up-left · deg==90 → up-right.
+     `tipRadius` is the arrowhead radius (usually `PR + 16`); `gapX/gapY` are the
+     offset to the chip CENTRE — ~`28/20` for a degree-only chip, ~`46/22` for a
+     wider "ORIENT · NN°" chip; scale down on small figures. (A spread whose
+     orientation is a deliberate fixed corner callout — e.g. Rogers, Tropicana —
+     keeps that callout and does NOT use `bearingChip`.)
+   - **Center-field chip** is centred ON the axis∩wall intersection via
+     `FieldLabels.cfWallPoint(C, R, deg)` (= `polar(C, R, deg)`). Never push it
+     outside the wall or hand-place it (except genuinely asymmetric hand-built
+     plans like Fenway, which are exempt).
+   - The figure's `<svg>` (or its CSS rule) MUST be `overflow: visible` so a
+     chip that sits just outside the viewBox is not clipped — a vertical clip
+     cannot be fixed by widening the container.
+   - **Exempt diagram types** (do NOT force the helper on these): genuinely
+     hand-placed asymmetric plans (Fenway); spreads whose orientation is a fixed
+     corner callout (Rogers, Tropicana — but their CF still uses `cfWallPoint`);
+     and the compact ~1 in orientation symbols (Cleveland, Tiger, Milwaukee
+     County, Yankee, Yankee 2009) that render the degree as radial plain text and
+     carry no bearing-relative CF chip. Dodger v2 is CSS-rotated, so its labels
+     are hand-placed for its fixed 26° bearing rather than via the helper.
 
 ## Preflight checklist — RUN BEFORE EVERY DELIVERY (AUTHORITATIVE)
 A spread is not done until all of these pass. Run them with `eval_js`/screenshots
@@ -116,10 +142,33 @@ geometry alone is not a preflight.
    list it with its native size, placed size, and computed DPI, and request a
    higher-res asset. Full-bleed heroes are the usual offenders (a 12.75×10.88 in
    bleed needs ~3825×3264).
-2. **No text smaller than 10px.** Sweep every text-bearing element's *computed*
-   `font-size` (design px = CSS px at 1:1). Anything `< 10px` fails — bump it to
-   ≥10px and reflow. Watch the dense game/scoreboard labels and badge glyphs;
-   widen badges or trim tracking rather than leaving sub-10px type.
+2. **Type-size floors — general-population print legibility (AUTHORITATIVE).**
+   Sweep every text-bearing element's *computed* `font-size` (design px = CSS px
+   at 1:1; 100 design px = 1 in = 72 pt, so **1 design px = 0.72 pt**). Tiers:
+   - **Hard floor: 12px (≈8.5 pt).** NOTHING readable in the book sits below this
+     — every label, eyebrow, metadata line, date, coordinate, district tag,
+     caption, badge, score line, body paragraph, and diagram data value ≥ 12px.
+     Bump and reflow; widen badges or trim tracking rather than leaving sub-floor
+     type. 12px is a FLOOR, not a target — text already larger stays as it is;
+     never shrink larger type just to meet it.
+   - **Body prose: ≥ 12px, set uniformly** (one size/tracking/leading across all
+     paragraphs — see item 5). It may run larger (e.g. 14px) where the layout
+     allows; do not force larger prose down to 12. (Tight bands fit 12px with
+     ~1.38 leading and slightly negative tracking — cf. Dodger.)
+   - **Diagram DATA labels: ≥ 12px.** Outfield distance numerals, the
+     bearing/orientation chip, and any value a reader leans in to check are
+     reader-facing data — they clear the 12px hard floor like any other data.
+   - **Diagram instrument scale marks: ≥ 8.3px (6 pt).** Degree ticks
+     (0/30/60/90), `N`, and other glance-not-read protractor/compass micro-marks
+     may sit between 8.3px and the 12px floor to stay visually subordinate, but
+     they no longer get a free pass below 6 pt — **measure them too**.
+   The field figures (`.fd-svg` / `.cbp-fig` / `.pk-fig`, plus per-spread
+   field/protractor components) generally have open space for full-size labels;
+   **enlarge the figure or raise its internal font sizes** to meet these floors
+   rather than leaving micro-type. The only thing still exempt is zero-text
+   instrument hatching (sub-ticks with no glyphs). Internal SVG `font-size` is
+   multiplied by the figure's internal scale (figure-design-px ÷ viewBox-units)
+   to get rendered design px — check the rendered value, not the raw attribute.
 3. **Nothing in the non-printable / bleed area** except intentional bleed
    photos/graphics. Run the `getBBox()`/`getBoundingClientRect()` sweep of every
    `<text>` and key mark against the per-page safe boxes AND the gutter zone;
@@ -195,9 +244,22 @@ true VECTOR PDF (type, rules, diagrams stay vector; only photos rasterize):
 Two single-page PDFs per spread (correct for perfect-bound book). The artboard
 ⋯ → "Download PNG" is raster — do NOT use it for press.
 
-> **Export-sheet note:**
-> `print-page.jsx` now targets the Blurb Large Landscape Hardcover ImageWrap
-> 98-page interior PDF spec: final PDF page **12.625 × 10.875 in**, trim
-> **12.5 × 10.625 in**, bleed **0.125 in** on top, bottom, and outside edge
-> only, and no bleed on the binding edge. Guides show a safe area of **0.25 in**
-> on top/bottom/outside and **0.5 in** on the binding edge.
+> **Export-sheet note (UPDATED — now the authoritative export spec):**
+> `print-page.jsx` prints each page at its TRUE NATIVE scale (100 design-px =
+> 1 in, `SCALE = 96/100 = 0.96`) — **nothing is resized**. The design's nominal
+> 12.5 × 10.625 in trim therefore maps exactly onto Blurb's trim. Every interior
+> page PDF is exactly:
+>   - **page 12.625 × 10.875 in = 909 × 783 pt**
+>   - trim 12.5 × 10.625 in
+>   - bleed 0.125 in on top / bottom / OUTSIDE edge only — **no bleed on the
+>     binding edge** (the binding edge is mapped flush to the trim line)
+>   - safe 0.25 in top/bottom/outside · 0.50 in binding edge
+>
+> This matches the Blurb **Large Landscape, Hardcover Dust Jacket (98 pp),
+> interior page** spec. The earlier legacy harness stretched the design onto a
+> 13 × 11 in trim / 13.25 × 11.25 in sheet — that scaling is **gone**; all
+> spreads now re-export at the corrected size. Fonts are force-loaded and
+> subset-embedded by the harness so PDFs pass Blurb upload without
+> rasterization. If the page spec ever changes again, retune `TRIMW_IN`,
+> `TRIMH_IN`, `BLEED_IN`, `PAGE_W/PAGE_H`, and the `@page size` together and
+> re-export every spread in one pass.

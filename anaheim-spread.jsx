@@ -23,13 +23,13 @@
     // .image-slots.state.json, and clearing a drop falls back to src. Files
     // live full-resolution in uploads/.
     var SRC = {
-      "anaheim-hero": "uploads/anaheim-stadium-00-main.jpg",
+      "anaheim-hero": "uploads/anaheim-stadium-00-main-alt.jpg",
       "anaheim-p1": "uploads/anaheim-stadium-01.jpg",
       "anaheim-p2": "uploads/anaheim-stadium-02.jpg",
       "anaheim-p3": "uploads/anaheim-stadium-03-42e20a0e.jpg",
       "anaheim-p4": "uploads/anaheim-stadium-04.jpg"
     };
-    var attrs = { id: props.id, placeholder: props.placeholder, shape: "rect", statefile: ".image-slots.state.json" };
+    var attrs = { id: props.id, placeholder: props.placeholder, shape: "rect" };
     if (SRC[props.id]) attrs.src = SRC[props.id];
     else if (props.src) attrs.src = props.src;
     return e("image-slot", attrs);
@@ -164,32 +164,35 @@
                 : null,
               e("div", { className: "as-foot" },
                 D.footnotes.map((ft, i) => e("div", { className: "ft", key: i },
-                  e("span", { className: "fl" }, ft[0]),
+                  e("span", { className: "fl", style: { lineHeight: i === 0 ? 1 : 1.4 } }, ft[0]),
                   e("span", { className: "fv" }, ft[1]))),
                 D.footnote_note
                   ? e("div", { className: "as-foot-note" }, D.footnote_note)
                   : null)))),
 
         /* ---- strata: three architectural lives (crossbar) ---- */
-        e("div", { className: "as-pad", style: { top: "414px" } },
+        e("div", { className: "as-pad", style: { top: "407px" } },
           e("div", { className: "as-life" },
             e("div", { className: "as-life-label" },
               e("span", { className: "ll1" }, "Three Lives"),
-              e("span", { className: "ll2", style: { width: "126px" } }, "One concrete frame")),
+              e("span", { className: "ll2", style: { width: "135px", letterSpacing: "0px" } }, "One concrete frame")),
             e("div", { className: "as-life-cols" },
               D.lifecycle.map((l, i) => e("div", { className: "as-lcol", key: i },
                 e("span", { className: "ly" }, l[0]),
                 e("span", { className: "le" }, l[1]),
                 e("span", { className: "ld" }, l[2]))))),
           e("div", { className: "as-life-note" },
-            e("span", null, e("b", null, "Era"), D.classification.era),
-            e("span", null, e("b", null, "Stadium Type"), D.classification.type),
-            e("span", null, e("b", null, "Style"), D.classification.style),
+            e("span", { style: { letterSpacing: "0.7px" } }, e("b", null, "Era"), D.classification.era),
+            e("span", { style: { letterSpacing: "0.7px", width: "238px" } }, e("b", null, "Stadium Type"), D.classification.type),
+            e("span", { style: { width: "305px" } }, e("b", null, "Style"), D.classification.style),
             e("span", null, e("b", null, "Fa\u00e7ade"), D.classification.facade),
             e("span", null, e("b", null, "Improvements"), D.classification.later))),
 
         /* ---- stadium context ---- */
-        e("div", { className: "as-pad", style: { top: "549px" } },
+        e("div", { className: "as-pad", style: { top: "569px" } },
+          e("div", { className: "as-subhead" },
+            e("span", { className: "ch" }, "Freeway Landmark"),
+            e("span", { className: "crule" })),
           e("div", { className: "as-essay" },
             D.stadium_context.map((p, i) => i === 0
               ? e("p", { key: i }, e("span", { className: "fw-dropcap" }, p.charAt(0)), p.slice(1))

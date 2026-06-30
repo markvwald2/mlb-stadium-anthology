@@ -125,7 +125,7 @@
   function SectionHead({ num, label, width, fontSize = 22, style = {} }) {
     return (
       <div className="bc-sectionhead" style={{ width, fontSize, ...style }}>
-        {num ? <span className="bc-sectionnum" style={{ fontSize: fontSize * 0.62 }}>{num}</span> : null}
+        {num ? <span className="bc-sectionnum" style={{ ...{ fontSize: fontSize * 0.62 }, fontSize: "14px" }}>{num}</span> : null}
         <span className="txt">{label}</span>
         <span className="rule" />
       </div>);
@@ -240,7 +240,7 @@
                   {dense ? null : <div className="bc-atlas-years">{r.years}</div>}
                 </div>
               </div>
-              <div className="bc-atlas-cell bc-atlas-text parks" style={cellStyle}>{r.parks}</div>
+              <div className="bc-atlas-cell bc-atlas-text parks" style={{ ...cellStyle, letterSpacing: "-0.1px" }}>{r.parks}</div>
               <div className="bc-atlas-cell bc-atlas-text" style={cellStyle}>{r.logic}</div>
               <div className="bc-atlas-cell bc-atlas-text" style={cellStyle}>{r.access}</div>
               <div className="bc-atlas-cell bc-atlas-text" style={{ ...cellStyle, letterSpacing: "-0.7px" }}>{r.trait}</div>

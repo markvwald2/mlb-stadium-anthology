@@ -155,7 +155,7 @@
 
         /* -- BAY 2 : Stadium Context (unified body) -- */
         e("div", { className: "bz-col bz-col-context" },
-          e(SecHead, { title: "Stadium Context", note: "DOWNTOWN BALLPARK \u2192 DISTRICT" }),
+          e(SecHead, { title: "Arches & Skyline", note: "DOWNTOWN BALLPARK \u2192 DISTRICT" }),
           e("div", { className: "bz-prose" },
             D.stadium_context.map((p, i) => e("p", { key: i }, p)))),
 

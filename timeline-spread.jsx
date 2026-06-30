@@ -28,7 +28,7 @@
   // ---- geometry ----
   const YMIN = D.YEAR_MIN, YMAX = D.YEAR_MAX;
   const PLOT_X0 = 314, PLOT_X1 = 2492;
-  const CHART_TOP = 158, CHART_BOT = 1022;
+  const CHART_TOP = 144, CHART_BOT = 1027;
   const LABEL_R = 292;            // right edge of franchise rail text
   const FOLD = 1275, GUT0 = 1238, GUT1 = 1312;
   const BARH = 13;
@@ -56,7 +56,7 @@
         return (txt, font) => { ctx.font = font; return ctx.measureText(txt).width; };
       })();
       const F_IN = "500 11px Oswald, sans-serif";
-      const F_SPAN = "400 10px 'Space Mono', monospace";
+      const F_SPAN = "400 12px 'Space Mono', monospace";
       const F_EXT = "500 11px Oswald, sans-serif";
       const lh = 11.5;
 
@@ -297,7 +297,7 @@
               letterSpacing="0.01em">{b.t.stadium}</text>
             {b.span ? (
               <text x={b.x1 - 7} y={b.cy} dominantBaseline="central" textAnchor="end"
-                fontFamily="'Space Mono', monospace" fontSize="10" fill={b.t.visited ? "rgba(244,238,223,.7)" : "rgba(244,238,223,.72)"}
+                fontFamily="'Space Mono', monospace" fontSize="12" fill={b.t.visited ? "rgba(244,238,223,.7)" : "rgba(244,238,223,.72)"}
                 letterSpacing="0.02em">{b.span}</text>
             ) : null}
           </g>
@@ -361,13 +361,13 @@
 
         {/* ============ HEADER BAND ============ (sits entirely above the top axis labels) */}
         <text x="52" y="90" fontFamily="Oswald, sans-serif" fontWeight="700" fontSize="44" fill={C.ink} letterSpacing="0.005em">MLB STADIUM TIMELINE</text>
-        <text x="54" y="111" fontFamily="Spectral, serif" fontStyle="italic" fontSize="16" letterSpacing="0.04em" fill={C.ink3}>Franchise stadium tenures, name changes, and known visits, 1890&#8211;2026.</text>
+        <text x="54" y="107" fontFamily="Spectral, serif" fontStyle="italic" fontSize="16" letterSpacing="0.04em" fill={C.ink3}>Franchise stadium tenures, name changes, and known visits, 1890&#8211;2026.</text>
 
         {/* legend — right page */}
         <Legend C={C} />
 
         {/* ============ FOOTER BAND ============ (above 0.25in bottom safe line) */}
-        <text x={PLOT_X1} y="1042" textAnchor="end" fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="13" fill={C.ink2} letterSpacing="0.12em">
+        <text x={PLOT_X1} y="1046" textAnchor="end" fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="13" fill={C.ink2} letterSpacing="0.12em">
           30 FRANCHISES&#160;&#160;&#183;&#160;&#160;105 STADIUM TENURES&#160;&#160;&#183;&#160;&#160;43 VISITED
         </text>
       </svg>

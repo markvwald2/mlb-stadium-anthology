@@ -117,7 +117,7 @@
     border: 2px solid var(--paper-hi); outline: 1px solid var(--navy-deep);
     box-shadow: 0 6px 16px rgba(20,18,12,.30); }
   .amf-panel figcaption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
-    padding: 13px 7px 4px; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px;
+    padding: 13px 7px 4px; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px;
     letter-spacing: .06em; text-transform: uppercase; color: #F3EEDF; line-height: 1.15;
     background: linear-gradient(0deg, rgba(14,18,28,.86), rgba(14,18,28,0)); pointer-events: none; }
 
@@ -127,7 +127,7 @@
   .amf-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13.5px; letter-spacing: .15em;
     text-transform: uppercase; color: var(--navy); white-space: nowrap; }
   .amf-h.brick .t { color: var(--brick); }
-  .amf-h .n { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .05em;
+  .amf-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
 
   /* ---- identity / classification — main roof track ---- */
@@ -141,7 +141,7 @@
   .amf-id-mark img { height: 50px; width: auto; display: block; }
   .amf-id-cell { flex: 1 1 0; min-width: 0; padding: 8px 12px; border-left: 1px solid var(--rule);
     display: flex; flex-direction: column; justify-content: center; gap: 3px; }
-  .amf-id-cell .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px;
+  .amf-id-cell .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--brick); white-space: nowrap; }
   .amf-id-cell .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13.5px;
     letter-spacing: .01em; text-transform: uppercase; color: var(--ink); line-height: 1.06; }
@@ -158,7 +158,7 @@
   .amf-specs .amf-bay.left .amf-frow { padding: 5px 0; }
   .amf-specs .amf-bay.right .amf-frow { padding: 7px 0; }
   .amf-frow:last-child { border-bottom: 0; }
-  .amf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .06em;
+  .amf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); }
   .amf-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
   .amf-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.22; }
@@ -166,11 +166,11 @@
     color: var(--ink-2); line-height: 1.24; }
   .amf-namenow { margin-top: 8px; display: flex; align-items: baseline; gap: 8px; padding-top: 7px;
     border-top: 1.5px solid var(--navy); }
-  .amf-namenow .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8.5px; letter-spacing: .12em;
+  .amf-namenow .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--brick); }
   .amf-namenow .val { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 14px; letter-spacing: .01em;
     text-transform: uppercase; color: var(--navy); }
-  .amf-namenow .yr { font-family: "Space Mono", monospace; font-size: 9.5px; color: var(--ink-3); margin-left: auto; }
+  .amf-namenow .yr { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink-3); margin-left: auto; }
 
   /* ---- the pivot hub: field dimensions + protractor ---- */
   .amf-hub { position: absolute; left: 524px; top: 540px; width: 240px; z-index: 7;
@@ -178,11 +178,11 @@
   .amf-hub-head { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-bottom: 2px; }
   .amf-hub-head .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--navy); }
-  .amf-hub-head .n { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .12em;
+  .amf-hub-head .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); }
   .amf-fieldfig { margin: 0; width: 220px; }
   .amf-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .amf-fieldfig .fd-svg { width: 220px; height: auto; max-width: 100%; display: block; }
+  .amf-fieldfig .fd-svg { width: 220px; height: auto; max-width: 100%; display: block;  overflow: visible; }
 
   /* ---- the apron beneath the fan: the visit ---- */
   .amf-apron { position: absolute; left: 38px; top: 782px; width: 798px; z-index: 6; }
@@ -219,13 +219,13 @@
   .amf-wcell .amf-wico { flex: none; }
   .amf-wcell .tx { display: flex; flex-direction: column; }
   .amf-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 18px; color: var(--ink); line-height: 1; }
-  .amf-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .1em;
+  .amf-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
 
   /* weather as a roof-track band beneath the line score */
   .amf-wx-track { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding-top: 12px;
     border-top: 1.5px solid var(--navy); }
-  .amf-wx-rail { flex: none; font-family: "Oswald", sans-serif; font-weight: 700; font-size: 8.5px; letter-spacing: .18em;
+  .amf-wx-rail { flex: none; font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .18em;
     text-transform: uppercase; color: var(--paper-hi); background: var(--brick); padding: 4px 8px; }
 
   .amf-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
@@ -243,7 +243,7 @@
   .amf-box tbody tr.win td { color: var(--brick-deep); }
   .amf-box tbody tr:last-child td { border-bottom: 1.5px solid var(--navy); }
   .amf-gcap { display: flex; align-items: center; gap: 8px; margin-top: 7px;
-    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .08em;
+    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-2); }
   .amf-gcap .sp { color: var(--rule-strong); }
 
@@ -293,6 +293,7 @@
 
   <script src="image-slot.js"></script>
   <script src="american-family-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="american-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

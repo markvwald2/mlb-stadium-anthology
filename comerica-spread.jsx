@@ -115,7 +115,7 @@
     const contextBay = e("div", { className: "cp-contentbay mid", style: { gridColumn: 4 } },
       e("div", { className: "cp-secthead" },
         e("div", { className: "tk" }),
-        e("div", { className: "t" }, "Stadium Context"),
+        e("div", { className: "t" }, "Brick & Limestone Bays"),
         e("div", { className: "ln" }),
         e("div", { className: "ix" }, "II")),
       e("div", { className: "cp-ctx" },

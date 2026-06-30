@@ -164,7 +164,7 @@
               /* ===== COL B : Stadium Context (lead) with inline field plan ===== */
               React.createElement("div", { className: "rs-col" },
                 React.createElement("div", { className: "rs-card rs-ctxcard" },
-                  React.createElement(SecHead, { ix: "04", title: "Stadium Context" }),
+                  React.createElement(SecHead, { ix: "04", title: "Fountains & Crown" }),
                   React.createElement("div", { className: "rs-ctx rs-ctx-lead" },
                     React.createElement("p", { key: 0 }, D.stadium_context[0]),
                     React.createElement("figure", { className: "rs-fieldfig" },

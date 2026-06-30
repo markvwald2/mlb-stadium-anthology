@@ -184,7 +184,7 @@
                       e("span", null, "LF \u00b7 CF \u00b7 RF (ft)")))),
 
                 e("div", { className: "cy-ctx-block" },
-                  e("div", { className: "cy-modh" }, "Stadium Context"),
+                  e("div", { className: "cy-modh" }, "The Warehouse Wall"),
                   e("div", { className: "cy-ctx" },
                     D.context.map((p, i) => e("p", { key: i }, p)))))),
 

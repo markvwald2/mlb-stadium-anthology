@@ -38,14 +38,14 @@ window.ANAHEIM = {
     ["Years Active", "1966\u2013Present"],
     ["Opened", "Apr 9, 1966"],
     ["Construction", "Began 1964"],
-    ["Address", "2000 E Gene Autry Way\nAnaheim, California"],
+    ["Address", "2000 E Gene Autry Way\nAnaheim, California", { letterSpacing: "0px", width: "100px" }],
     ["Location", "Suburban"],
     ["Coordinates", "33.8006\u00b0 N, 117.8834\u00b0 W"],
     ["Elevation", "148 ft"],
     ["Capacity", "45,517 (originally 43,204)"],
     ["All-Star Games", "1967, 1989, 2010"],
     ["Surface", "Natural grass (Tifway 419 Bermuda Grass)"],
-    ["Cost", "$24 million ($240M adj.)"],
+    ["Cost", "$24M ($240M adj.)"],
     ["Architect", "Noble W. Herzberg and Associates"],
     ["Renovation", "HOK Sport, Robert A.M. Stern Architects, and Walt Disney Imagineering", { letterSpacing: "-0.1px" }],
     ["Financing", "Publicly financed by the City of Anaheim"],
@@ -63,15 +63,15 @@ window.ANAHEIM = {
 
   /* ---- footnote rail beneath the survey ---- */
   footnotes: [
-    ["Preceded By", "Los Angeles Wrigley Field (1961)\nDodger Stadium* (1962-1965)"],
-    ["Name History", "Anaheim Stadium (1966-1997)\nEdison Intl. Field of Anaheim (1998-2003)\nAngel Stadium of Anaheim (2004-present)"]
+    ["Name History", "Anaheim Stadium (1966-1997)\nEdison Intl. Field of Anaheim (1998-2003)\nAngel Stadium of Anaheim (2004-present)"],
+    ["Preceded By", "Los Angeles Wrigley Field (1961)\nDodger Stadium* (1962-1965)"]
   ],
 
   /* ---- asterisk note rendered beneath the footnote rail ---- */
   footnote_note: "*Called \u201CChavez Ravine Stadium\u201D by Angels",
 
   /* ---- field instrument (protractor): Northeast, 43.61 deg ---- */
-  field: { left_field: "347", center_field: "396", right_field: "350", orientation: "Northeast", abbr: "NE", degrees: 43.61 },
+  field: { left_field: "347", center_field: "396", right_field: "350", orientation: "Northeast", abbr: "NE", degrees: 44 },
 
   /* ---- the three architectural lives — compact structural strata (crossbar) ----
      Descriptors drawn only from the provided Renovations field + Stadium Context;

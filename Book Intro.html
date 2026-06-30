@@ -57,10 +57,11 @@
   /* documentary photo mosaic — the hero element */
   .jc-mosaic {
     margin-top: 18px; flex: 1 1 auto; min-height: 0;
-    display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(5, 1fr);
+    display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: 1fr 1fr 0.93fr 0.93fr 1fr 1fr;
     gap: 9px;
   }
-  .jc-tile { position: relative; overflow: hidden; background: #ded9c9; }
+  .jc-tile { position: relative; background: #ded9c9; }
+  .jc-tile:hover { z-index: 5; }
   .jc-tile image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
   /* stadium eras — six-part classification key, complete rosters */

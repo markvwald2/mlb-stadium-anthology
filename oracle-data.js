@@ -34,12 +34,12 @@ window.ORACLE = {
     ["Roof", "Open Air"],
     ["Names", "Pacific Bell Park (2000\u20132003)\nSBC Park (2004\u20132005)\nAT&T Park (2006\u20132018)\nOracle Park (2019\u2013present)"],
     ["Location Type", "Waterfront; Urban"],
-    ["Preceded By", "Seals Stadium; Candlestick Park"]
+    ["Preceded By", "Seals Stadium (1958\u201359)\nCandlestick Park (1960\u20131999)"]
   ],
 
   // ---- Classification chips ----
   chips: [
-    ["Classification Era", "Retro Classic"],
+    ["Era", "Retro Classic"],
     ["Status", "Active"],
     ["Roof", "Open Air"],
     ["Location", "Waterfront/Urban"]
@@ -63,20 +63,20 @@ window.ORACLE = {
   facade_material: "Red brick masonry with exposed steel framing and glass waterfront elements",
   construction_start: "Dec 11, 1997",
   stadium_cost: "$357 million",
-  stadium_cost_adjusted: "$667 million",
+  stadium_cost_adjusted: "$667M",
   financing_method: "Primarily privately financed by the Giants, with limited public infrastructure and land/site support",
 
   // ---- Stadium context (museum wall text — one unified body, 4 paragraphs) ----
   context: [
     "Oracle Park replaced Candlestick Park by changing the Giants\u2019 relationship to San Francisco. Candlestick had been cold, windswept, football-shared, and geographically awkward for baseball, even though it carried decades of franchise history. The new waterfront park gave the Giants a baseball-only home designed around the city rather than merely located within it.",
-    "The site along San Francisco Bay was the decisive move. Instead of another large multipurpose venue at the edge of the city, the Giants built an urban waterfront ballpark whose setting became part of the game. Brick, steel, open-air seating, and compact geometry worked with water, city views, and pedestrian arrival to produce an identity that Candlestick could not offer. The park made geography feel like architecture.",
-    "The design bargain favored specificity over flexibility. Oracle Park gained intimacy, waterfront drama, local material cues, and a strong civic image. It sacrificed the broader multipurpose utility that had defined Candlestick, but that sacrifice was the point. The Giants needed a home shaped for baseball and for San Francisco\u2019s visual character, not a stadium that could treat baseball as one use among several.",
-    "Scoreboard, seating, concession, center-field, and waterfront-edge upgrades have kept the park current without changing the basic relationship between field and The Bay. Oracle Park matters because it shows the retro-classic movement at its most site-dependent. It is not only a baseball replacement for a multipurpose predecessor; it is a park whose success depends on the precision of where it sits and the geographic features nearby. In this anthology, it stands as one of the clearest examples of location becoming the stadium\u2019s central design material."
+    "The picturesque site along the San Francisco Bay was the decisive move. Instead of another large multipurpose venue at the edge of the city, the Giants built an urban waterfront ballpark where the setting became part of the game. Brick, steel, open-air seating, and compact geometry worked with water, city views, and pedestrian arrival to produce an identity that Candlestick could not offer. The park made geography feel like architecture.",
+    "The design bargain favored specificity over flexibility. Oracle Park gained intimacy, sightlines, waterfront drama, local material cues, and a strong civic image. It sacrificed the broader multipurpose utility that had defined Candlestick Park, but that sacrifice was the point. The Giants needed a home intentionally shaped for baseball and for San Francisco\u2019s visual aesthetic, not just a stadium that could treat baseball as one use among several.",
+    "Improvements to the scoreboard, premium seating, concession areas, center-field pavilion, and waterfront-edge pedestrian access have kept the park current without changing the basic relationship between the field and The Bay. Oracle Park matters because it shows the retro-classic movement at its most site-dependent. It is not only a baseball replacement for a generic multipurpose predecessor; it is a park whose success depends on the precision of where it sits and the geographic features nearby. In this anthology, it stands as one of the clearest examples of location becoming the stadium\u2019s central design material."
   ],
 
   // ---- Visit section / featured game ----
   featured_title: "Group Visit",
-  trip_name: "Northern California",
+  trip_name: "Northern California trip",
   featured_day: "Saturday",
   featured_date: "Jul 12, 2025",
   visit_count: "1",

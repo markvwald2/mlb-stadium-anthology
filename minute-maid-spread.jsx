@@ -196,7 +196,7 @@
         ),
 
         /* ----- BAY C : STADIUM CONTEXT (wide anchor) ----- */
-        e(Bay, { id: "C", name: "Stadium Context" },
+        e(Bay, { id: "C", name: "The Moving Roof" },
           e("div", { className: "mm-ctx" },
             e("div", { className: "mm-ctxnote" }, "FROM THE ASTRODOME \u2192 A MOVING ROOF \u00b7 HOUSTON, TX"),
             e("div", { className: "mm-window" },

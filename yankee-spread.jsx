@@ -366,7 +366,7 @@
             FieldPlan ? e(FieldPlan, { className: "yk-ctx-wm", lf: D.left_field_distance,
               cf: D.center_field_distance, rf: D.right_field_distance, stroke: "#5E6976", opacity: 0.10 }) : null,
             e("div", { className: "yk-ctxh" },
-              e("div", { className: "t" }, "Stadium Context"),
+              e("div", { className: "t" }, "The Copper Frieze"),
               e("div", { className: "ln nav" }),
               e("div", { className: "ln" })),
             e("div", { className: "yk-ctx" },

@@ -151,7 +151,7 @@
 
         /* ---------- BAY B : STADIUM CONTEXT (2-col prose with 2 full-width inline landscape photos) ---------- */
         e("div", { className: "pk-bay", style: bayStyle(BAYS.b) },
-          e(BayHead, { title: "Stadium Context" }),
+          e(BayHead, { title: "The Warehouse Corner" }),
           e("div", { className: "pk-wall" },
             e("div", { className: "pk-prose" },
               e("p", { key: "p0" }, D.stadium_context[0]),

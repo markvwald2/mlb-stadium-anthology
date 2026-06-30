@@ -112,7 +112,7 @@
               /* CONTEXT — tall limestone panel */
               React.createElement("div", { className: "np-context" },
                 React.createElement("div", { className: "np-modh" },
-                  React.createElement("span", null, "Stadium Context"),
+                  React.createElement("span", null, "Glass on the Anacostia"),
                   React.createElement("span", { className: "ix" }, "\u2014 I")),
                 React.createElement("div", { className: "np-ctx-body" },
                   React.createElement("div", { className: "np-ctx-paras" },

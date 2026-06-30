@@ -63,9 +63,10 @@
   .rt-note { margin-top: 6px; font-family: "Spectral", serif; font-style: italic;
     font-size: 15px; color: var(--ink-2); }
 
-  .rt-intro { position: absolute; left: 672px; top: 52px; width: 556px; z-index: 6; margin: 0;
-    font-family: "Spectral", serif; font-size: 16.5px; line-height: 1.62; color: var(--ink);
-    text-align: left; }
+  .rt-intro { position: absolute; left: 672px; top: 60px; width: 556px; z-index: 6; margin: 0;
+    font-family: "Spectral", serif; font-size: 15px; line-height: 1.62; color: var(--ink);
+    text-align: left; letter-spacing: -0.2px; }
+  .rt-intro-lead { margin-bottom: 0.2em; }
   .rt-intro::first-line { /* keep natural */ }
 
   /* ============ HEADER — by the numbers (right page) ============ */
@@ -74,7 +75,7 @@
     border-bottom: 2px solid var(--ink); padding-bottom: 7px; }
   .rt-numbers-title { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 17px;
     letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
-  .rt-numbers-span { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .04em;
+  .rt-numbers-span { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .02em;
     color: var(--ink-3); }
   .rt-numbers-row { display: grid; grid-template-columns: repeat(7, 1fr); margin-top: 16px; }
   .rt-numcell { padding: 2px 11px; border-right: 1px solid var(--rule); }
@@ -85,7 +86,7 @@
   .rt-numl { margin-top: 8px; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
   .rt-numl span { display: block; line-height: 1.18; }
-  .rt-numsub { margin-top: 6px; font-family: "Spectral", serif; font-style: italic; font-size: 10px;
+  .rt-numsub { margin-top: 6px; font-family: "Spectral", serif; font-style: italic; font-size: 12px;
     color: var(--ink-3); }
 
   /* ============ CHRONOLOGY RAIL ============ */
@@ -103,12 +104,12 @@
   .rt-pen-stroke path { fill: none; stroke: var(--rule-strong); stroke-width: 2; }
   .rt-pen-head { position: absolute; top: 0; left: 0; width: 178px; height: 60px; z-index: 2;
     display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 1px;
-    padding-bottom: 8px;
+    padding-bottom: 4px;
     background: var(--accent); filter: saturate(var(--rt-accent-sat, 1));
     box-shadow: inset 0 -2px 0 rgba(0,0,0,.16); }
   .rt-year { font-family: "Anton", sans-serif; font-size: 26px; line-height: 1; color: #F4EEDF;
     letter-spacing: .02em; }
-  .rt-pen-dates { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em;
+  .rt-pen-dates { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em;
     color: rgba(244,238,223,.82); }
   .rt-pen-content { position: absolute; top: 60px; left: 0; right: 0; bottom: 0; z-index: 3;
     display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -119,7 +120,7 @@
   .rt-name span { display: block; line-height: 1.08; }
   .rt-meta { margin-top: 5px; padding-top: 7px; border-top: 1px solid var(--rule); width: 100%;
     display: flex; justify-content: center; gap: 6px;
-    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .07em;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-2); }
   .rt-meta-dot { color: var(--accent); opacity: var(--rt-accent-op, 1); font-weight: 700; }
   .rt-route { margin-top: 9px; display: flex; flex-direction: column; align-items: center; gap: 1.5px;
@@ -128,21 +129,21 @@
   .rt-route-line { white-space: nowrap; }
   .rt-drive { margin-top: auto; padding-top: 10px; display: flex; flex-direction: column;
     align-items: center; gap: 2px; }
-  .rt-drive-label { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8px;
-    letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); }
+  .rt-drive-label { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); }
   .rt-drive-fig { display: flex; align-items: baseline; gap: 6px;
-    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .01em; color: var(--ink-2); }
+    font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: 0; color: var(--ink-2); }
   .rt-drive-mi { font-weight: 700; color: var(--ink); }
   .rt-drive-dot { color: var(--accent); font-weight: 700; }
-  .rt-route-alt { font-weight: 300; font-style: italic; font-size: 11px; color: var(--ink-3);
+  .rt-route-alt { font-weight: 300; font-style: italic; font-size: 12px; color: var(--ink-3);
     letter-spacing: 0; }
-  .rt-route-cat { font-style: normal; font-weight: 600; font-size: 10px; letter-spacing: .1em;
+  .rt-route-cat { font-style: normal; font-weight: 600; font-size: 12px; letter-spacing: .06em;
     color: var(--ink-3); margin-left: 4px; vertical-align: 1px; }
-  .rt-route-dh { font-style: normal; font-weight: 700; font-size: 10px; letter-spacing: .08em;
+  .rt-route-dh { font-style: normal; font-weight: 700; font-size: 12px; letter-spacing: .05em;
     color: var(--navy); border: 1px solid var(--navy); border-radius: 2px; padding: 0 3px 0.5px;
     margin-left: 5px; vertical-align: 1.5px; }
   .rt-stamp { margin-top: 12px; padding: 3px 9px; border: 1.6px solid currentColor; border-radius: 2px;
-    font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .16em;
+    font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; opacity: .82; transform: rotate(-4deg); }
   .rt-stamp-dh { color: var(--navy); }
   .rt-stamp-rain { color: var(--red); }
@@ -165,7 +166,7 @@
   /* ============ FOOTER — legend + colophon ============ */
   .rt-legend { position: absolute; left: 44px; bottom: 46px; z-index: 6;
     display: flex; align-items: center; gap: 22px;
-    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10.5px; letter-spacing: .1em;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-2); }
   .rt-legend-t { font-weight: 700; color: var(--ink); letter-spacing: .14em; }
   .rt-legend-item { display: inline-flex; align-items: center; gap: 7px; }
@@ -177,8 +178,8 @@
   .rt-colophon { position: absolute; right: 40px; bottom: 46px; z-index: 6;
     display: flex; align-items: center; gap: 12px; }
   .rt-colo-mlb { height: 26px; width: auto; display: block; opacity: .9; }
-  .rt-colo-txt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px;
-    letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); }
+  .rt-colo-txt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
 </style>
 </head>
 <body>
@@ -203,6 +204,7 @@
 
   <script src="image-slot.js"></script>
   <script src="road-trips-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="tweaks-panel.jsx"></script>

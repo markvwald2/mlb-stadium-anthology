@@ -180,7 +180,7 @@
                 e("div", { className: "nc-canopy" },
                   e(Slot, { id: "nc-canopy", placeholder: "Architectural photo of the black steel roof canopy / upper-deck structure added in the 2001\u20132007 renovation \u2014 the correction made visible" })),
                 e("div", { className: "nc-ctx" },
-                  e(SecHead, { title: "Stadium Context", note: "1991 \u2192 PRESENT" }),
+                  e(SecHead, { title: "The Correction", note: "1991 \u2192 PRESENT" }),
                   e("div", { className: "nc-ctx-cols" },
                     e("div", { className: "nc-ctx-col l" },
                       e("p", null, D.stadium_context[0]),

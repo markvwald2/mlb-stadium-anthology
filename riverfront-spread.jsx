@@ -139,7 +139,7 @@
 
                 /* col 3 — context */
                 React.createElement("div", { className: "rf-context" },
-                  React.createElement("div", { className: "lbl colhdr" }, "Stadium Context"),
+                  React.createElement("div", { className: "lbl colhdr" }, "The Concrete Circle"),
                   React.createElement("div", { className: "body" },
                     D.stadium_context.map((p, i) => React.createElement("p", { key: i }, p)))
                 )

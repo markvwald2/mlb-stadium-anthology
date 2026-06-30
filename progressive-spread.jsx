@@ -162,7 +162,7 @@
 
           /* ---------- COLUMN 2 · STADIUM CONTEXT ---------- */
           e("div", { className: "pf-col col-ctx" },
-            ColHead("Stadium Context"),
+            ColHead("The Toothbrush Towers"),
             e("div", { className: "pf-ctx" },
               e("p", { style: { lineHeight: 1.68, fontWeight: 600, letterSpacing: "0.2px" } }, D.context[0]),
               e("figure", { className: "pf-ctx-photo" },

@@ -39,10 +39,16 @@
   function run() {
     fitAll();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+    // Web fonts (Anton/Oswald/Spectral/Space Mono) can swap in AFTER the early
+    // fit passes, widening the prose and spilling an extra column past the page
+    // edge. Re-fit on every font load event and on window load, plus a longer
+    // retry tail, so the final settled state never overflows.
+    if (document.fonts && document.fonts.addEventListener) {
+      document.fonts.addEventListener("loadingdone", fitAll);
+    }
+    window.addEventListener("load", fitAll);
     // React mounts after this script; retry to catch the rendered DOM + late fonts.
-    setTimeout(fitAll, 120);
-    setTimeout(fitAll, 400);
-    setTimeout(fitAll, 1000);
+    [120, 400, 1000, 2000, 3500].forEach(function (t) { setTimeout(fitAll, t); });
   }
 
   if (document.readyState === "loading") {

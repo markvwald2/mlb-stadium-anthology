@@ -166,12 +166,12 @@
   .cf-facts-side { display: flex; flex-direction: column; gap: 10px; }
   .cf-fieldfig { margin: 0; }
   .cf-fieldwrap { width: 100%; max-width: 124px; margin: 0 auto; }
-  .cf-fieldfig figcaption { text-align: center; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-top: 1px; }
+  .cf-fieldfig figcaption { text-align: center; font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-top: 1px; }
   .cf-finance { border-top: 1.5px solid var(--ink); padding-top: 8px; }
   .cf-finance .fin-h, .cf-renov .fin-h { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; font-size: 11.5px; color: var(--purple); margin-bottom: 5px; }
   .cf-finance .fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .cf-finance .fin-row { padding: 6px 0 0; margin-top: 6px; border-top: 1px solid var(--rule); }
-  .cf-finance .fin-l { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 9px; color: var(--ink-3); }
+  .cf-finance .fin-l { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 10px; color: var(--ink-3); }
   .cf-finance .fin-v { font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px; color: var(--ink); line-height: 1.32; margin-top: 1px; }
 
   /* renovations side block */
@@ -210,7 +210,7 @@
   .cf-scorecard .sc-body { flex: 1; padding: 7px 18px 7px 20px; display: flex; flex-direction: column; min-width: 0; }
   .cf-scorecard .sc-date { font-family: "Space Mono", monospace; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); border-bottom: 1px solid var(--rule); padding-bottom: 7px; margin-bottom: 5px; }
   .cf-scorecard .sc-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 18px; margin: 7px 0 0; padding-top: 7px; border-top: 1px solid var(--rule); }
-  .cf-scorecard .scf-l { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 9.5px; color: var(--ink-3); }
+  .cf-scorecard .scf-l { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 10px; color: var(--ink-3); }
   .cf-scorecard .scf-v { font-family: "Spectral", serif; font-weight: 600; font-size: 13.5px; color: var(--ink); margin-top: 1px; }
   .cf-scorecard .sc-foot { margin-top: auto; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); border-top: 1px solid var(--rule); padding-top: 7px; }
 
@@ -230,7 +230,7 @@
 
   /* field-diagram (window.FieldDiagram .fd-* classes) tuned for cream/purple */
   .fd-wrap { width: 100%; }
-  .fd-svg { width: 100%; height: auto; display: block; }
+  .fd-svg { width: 100%; height: auto; display: block;  overflow: visible; }
 
   #root { min-height: 100vh; }
 </style>
@@ -253,6 +253,7 @@
 
   <script src="image-slot.js"></script>
   <script src="coors-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="protractor-diagram.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

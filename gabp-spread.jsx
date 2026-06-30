@@ -232,7 +232,7 @@
                   }) : null)),
 
               e("div", { className: "gabp-col context" },
-                e("div", { className: "gabp-modh" }, "Stadium Context"),
+                e("div", { className: "gabp-modh" }, "Smokestacks on the Ohio"),
                 e("div", { className: "gabp-ctx" },
                   e("div", { className: "ccol" }, D.context.slice(0, 2).map((p, i) => e("p", { key: i }, p))),
                   e("div", { className: "ccol" }, D.context.slice(2).map((p, i) => e("p", { key: i }, p)))))

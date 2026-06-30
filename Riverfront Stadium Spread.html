@@ -129,7 +129,7 @@
   .rf-facts { display: flex; flex-direction: column; }
   .rf-facts .row { display: grid; grid-template-columns: 98px 1fr; gap: 11px; padding: 3.4px 0; border-bottom: 1px solid var(--rule); align-items: start; }
   .rf-facts .row:first-of-type { border-top: 0; }
-  .rf-facts .row .lbl { padding-top: 2px; font-size: 9.5px; }
+  .rf-facts .row .lbl { padding-top: 2px; font-size: 10px; }
   .rf-facts .row .val { font-size: 11px; line-height: 1.2; }
 
   /* lineage under diagram */
@@ -138,7 +138,7 @@
   .rf-mid { display: flex; flex-direction: column; justify-content: space-between; }
   .rf-mid .rf-fd-wrap { max-width: 196px; margin: 0 auto 2px; }
   .rf-mid .blk { margin-top: 8px; }
-  .rf-mid .blk .k { margin-bottom: 3px; font-size: 9.5px; }
+  .rf-mid .blk .k { margin-bottom: 3px; font-size: 10px; }
   .rf-mid .blk .v { font-size: 10.5px; line-height: 1.26; }
 
   /* context */
@@ -152,7 +152,7 @@
   .rf-fd-dist { font-family: "Space Mono", monospace; font-size: 17px; font-weight: 700; fill: var(--ink); }
   .rf-fd-n { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 13px; fill: var(--ink-2); }
   .rf-fd-axis { font-family: "Archivo Expanded","Archivo",sans-serif; font-weight: 700; font-size: 18px; fill: var(--red); }
-  .rf-fd-cap { display: flex; justify-content: space-between; margin-top: 6px; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; }
+  .rf-fd-cap { display: flex; justify-content: space-between; margin-top: 6px; font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; }
 
   /* ---------- VISIT SECTION (dark concrete band) ---------- */
   .rf-visit { margin-top: auto; border-top: 3px solid var(--ink); padding-top: 0; }
@@ -164,7 +164,7 @@
   .rf-vlbl { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
   .rf-vlbl .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
   .rf-vlbl .t { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: #fff; }
-  .rf-vlbl .pill { margin-left: auto; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,.4); padding: 3px 8px; }
+  .rf-vlbl .pill { margin-left: auto; font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,.4); padding: 3px 8px; }
 
   /* score module (circular) */
   .rf-score { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; }
@@ -184,7 +184,7 @@
   .rf-box { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; margin-bottom: 16px; }
   .rf-box { margin-bottom: 8px; }
   .rf-box th, .rf-box td { text-align: center; font-size: 10px; padding: 2.2px 0; color: #DEDCD3; border-bottom: 1px solid rgba(255,255,255,.1); }
-  .rf-box thead th { color: var(--panel-dim); font-weight: 400; font-size: 9.5px; }
+  .rf-box thead th { color: var(--panel-dim); font-weight: 400; font-size: 10px; }
   .rf-box td.tm, .rf-box th.tm { text-align: left; font-family: "Archivo", sans-serif; font-weight: 700; letter-spacing: .06em; color: #fff; font-size: 12px; padding-right: 8px; }
   .rf-box .rhe { font-weight: 700; color: #fff; }
   .rf-box .rcol { color: var(--red); }
@@ -192,9 +192,9 @@
 
   /* visit info rows */
   .rf-vrow { display: grid; grid-template-columns: 100px 1fr; gap: 8px; padding: 2.2px 0; align-items: baseline; }
-  .rf-vrow .k { font-family: "Archivo", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--panel-dim); font-size: 9.5px; }
+  .rf-vrow .k { font-family: "Archivo", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--panel-dim); font-size: 10px; }
   .rf-vrow .v { font-family: "Spectral", serif; font-weight: 500; color: #EFece2; font-size: 11.5px; }
-  .rf-vsub { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .14em; color: var(--panel-dim); text-transform: uppercase; margin: 8px 0 4px; }
+  .rf-vsub { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .14em; color: var(--panel-dim); text-transform: uppercase; margin: 8px 0 4px; }
 
   /* weather strip */
   .rf-wx { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,.2); margin-top: 9px; align-items: stretch; }
@@ -202,7 +202,7 @@
   .rf-wx .c:first-child { border-left: 0; }
   .rf-wx .big { font-family: "Spectral", serif; font-weight: 700; font-size: 15px; color: #fff; line-height: 1; min-height: 14px; display: flex; align-items: center; }
   .rf-wx .small { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 10px; color: #EDEAdf; margin-top: 2px; min-height: 14px; display: flex; align-items: center; }
-  .rf-wx .cap { font-family: "Space Mono", monospace; font-size: 7.5px; letter-spacing: .1em; color: var(--panel-dim); text-transform: uppercase; margin-top: 3px; }
+  .rf-wx .cap { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .1em; color: var(--panel-dim); text-transform: uppercase; margin-top: 3px; }
   .rf-wx .ico { display: block; margin: 0 auto 3px; }
 
   /* footer colophon */
@@ -213,7 +213,7 @@
   .rf-foot .colors { margin-left: auto; display: flex; gap: 14px; }
   .rf-foot .sw { display: flex; align-items: center; gap: 7px; }
   .rf-foot .chip { width: 14px; height: 14px; border: 1px solid var(--rule-strong); }
-  .rf-foot .nm { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+  .rf-foot .nm { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 
   #root { min-height: 100vh; }
 </style>
@@ -236,6 +236,7 @@
 
   <script src="image-slot.js"></script>
   <script src="riverfront-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="circle-diagram.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

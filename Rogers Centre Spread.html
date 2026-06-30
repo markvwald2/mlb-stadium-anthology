@@ -178,7 +178,7 @@
   /* protractor (column 2, pinned to bottom) */
   .rc-fieldfig { margin: 10px 0 0; display: flex; justify-content: center; align-items: flex-start; }
   .rc-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .rc-fieldfig .fd-svg { width: 100%; max-width: 250px; height: auto; display: block; }
+  .rc-fieldfig .fd-svg { width: 100%; max-width: 250px; height: auto; display: block;  overflow: visible; }
 
   /* meta ribbon (At a Glance) — rows stretch to fill beside the protractor */
   .rc-meta { display: flex; flex-direction: column; flex: 1;
@@ -298,6 +298,7 @@
 
   <script src="image-slot.js"></script>
   <script src="rogers-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="rogers-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

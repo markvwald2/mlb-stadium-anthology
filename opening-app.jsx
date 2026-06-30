@@ -1,10 +1,9 @@
 /* opening-app.jsx — mount the opening page (single interior leaf) in a pan/zoom
    design canvas, and provide the required single-page press-ready PDF path.
 
-   Built on a 1275 × 1088 design page (12.75 in wide incl. binding bleed).
-   The shared print harness intentionally remains on the project's legacy
-   single-page export sheet for consistency with already-exported pages.
-   Warm cream paper throughout.
+   Built on a 1275 × 1088 design page (12.75 in wide incl. binding bleed; the
+   print harness drops the binding bleed and outputs the 12.625 × 10.875 in
+   interior page per the updated Blurb spec). Warm cream paper throughout.
 
    ?print=1[&page=left|right][&guides=1] → one press-ready page for vector PDF. */
 (function () {
@@ -55,7 +54,7 @@
       React.createElement(DCSection, {
         id: "opening",
         title: "Closing Page",
-        subtitle: "Inside back cover \u00b7 14 ballparks \u00b7 single interior page \u00b7 legacy vector PDF harness \u00b7 1275 \u00d7 1088 px @ 100 ppi"
+        subtitle: "Inside back cover \u00b7 14 ballparks \u00b7 single interior page \u00b7 PDF 12.625 \u00d7 10.875 in (trim 12.5 \u00d7 10.625) \u00b7 1275 \u00d7 1088 px @ 100 ppi"
       },
         React.createElement(DCArtboard, {
           id: "opening-page",

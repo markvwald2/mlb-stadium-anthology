@@ -152,7 +152,7 @@
               /* RIGHT COLUMN — context + visit */
               React.createElement("div", { className: "pnc-colR" },
                 React.createElement("div", { className: "pnc-mod context" },
-                  React.createElement("div", { className: "pnc-modh" }, "Stadium Context"),
+                  React.createElement("div", { className: "pnc-modh" }, "Skyline & Bridge"),
                   React.createElement("div", { className: "pnc-ctx" },
                     D.context.map((p, i) => React.createElement("p", { key: i }, p)))),
 

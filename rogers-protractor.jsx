@@ -78,7 +78,7 @@
     // distance chips, rotated with the field
     const chips = [
       { p: out(rot(lf, C, deg), C, 17), t: strip(props.lf) },
-      { p: out(rot(cf, C, deg), C, 16), t: strip(props.cf) },
+      { p: window.FieldLabels.cfWallPoint(C, R, deg), t: strip(props.cf) },
       { p: out(rot(rf, C, deg), C, 17), t: strip(props.rf) }
     ];
 

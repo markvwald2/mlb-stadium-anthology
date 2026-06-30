@@ -191,7 +191,7 @@
           /* ---- STADIUM CONTEXT (enamel sign panel, largest) ---- */
           e("div", { className: "lm-context" },
             e("div", { className: "hd" },
-              e("div", { className: "t" }, "Stadium Context"),
+              e("div", { className: "t" }, "The Tailgate Lot"),
               e("div", { className: "ln" }),
               e("div", { className: "sub" }, "A Public Invitation to the Majors")),
             e("div", { className: "lm-ctx-cols" },

@@ -224,7 +224,7 @@
               cf: D.center_field_distance, rf: D.right_field_distance, stroke: "#5E6976", opacity: 0.09 }) : null,
             e("div", { className: "y9-ctxh" },
               e("span", { className: "rn" }, "III"),
-              e("span", { className: "t" }, "Stadium Context"),
+              e("span", { className: "t" }, "The Frieze Returns"),
               e("div", { className: "ln nav" }),
               e("div", { className: "ln" })),
             e("div", { className: "y9-ctx" },

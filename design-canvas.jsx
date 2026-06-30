@@ -295,11 +295,51 @@ function DCViewport({ children, minScale = 0.1, maxScale = 8, style = {} }) {
       clearTimeout(saveT.current);
       try {localStorage.setItem(tfKey, JSON.stringify(tf.current));} catch {}
     };
+    // Fit the world into the viewport with a small margin. Used as the initial
+    // view and as a recovery fallback when a stored viewport would leave the
+    // canvas entirely off-screen (which reads to the user as "didn't render").
+    const fitToContent = () => {
+      const vp = vpRef.current,world = worldRef.current;
+      if (!vp || !world) return false;
+      const vr = vp.getBoundingClientRect();
+      // Measure the world's untransformed content size. Both the transform AND
+      // --dc-inv-zoom must be neutralized first: the zoom-invariant chrome
+      // (section heads / labels) scales by 1/scale, so measuring at a low scale
+      // inflates scrollWidth wildly. Pin --dc-inv-zoom to 1 so the layout
+      // reports its true scale-1 size, then restore both.
+      const prev = world.style.transform;
+      const prevInv = world.style.getPropertyValue('--dc-inv-zoom');
+      world.style.transform = 'none';
+      world.style.setProperty('--dc-inv-zoom', '1');
+      const cw = world.scrollWidth,ch = world.scrollHeight;
+      world.style.transform = prev;
+      if (prevInv) world.style.setProperty('--dc-inv-zoom', prevInv);else
+      world.style.removeProperty('--dc-inv-zoom');
+      if (!cw || !ch) return false;
+      const margin = 60;
+      const scale = Math.min(maxScale, Math.max(minScale,
+      Math.min((vr.width - margin * 2) / cw, (vr.height - margin * 2) / ch)));
+      tf.current = { x: (vr.width - cw * scale) / 2, y: (vr.height - ch * scale) / 2, scale };
+      apply();
+      return true;
+    };
+    // True when the stored transform leaves no part of the world on screen.
+    const worldOffscreen = () => {
+      const vp = vpRef.current,world = worldRef.current;
+      if (!vp || !world) return false;
+      const vr = vp.getBoundingClientRect(),wr = world.getBoundingClientRect();
+      return wr.right < vr.left + 8 || wr.left > vr.right - 8 ||
+      wr.bottom < vr.top + 8 || wr.top > vr.bottom - 8;
+    };
     try {
       const s = JSON.parse(localStorage.getItem(tfKey) || 'null');
       if (s && Number.isFinite(s.x) && Number.isFinite(s.y) && Number.isFinite(s.scale)) {
         tf.current = { x: s.x, y: s.y, scale: Math.min(maxScale, Math.max(minScale, s.scale)) };
         apply();
+        // Recover from a stored viewport that parks the canvas out of view.
+        if (worldOffscreen()) fitToContent();
+      } else {
+        fitToContent();
       }
     } catch {}
     // Flush on pagehide and unmount so a reload within the 200ms debounce
@@ -800,7 +840,7 @@ function DCArtboardFrame({ sectionId, artboard, label, order, onRename, onReorde
         </div>
       </div>
       <div ref={cardRef} className="dc-card"
-      style={{ boxShadow: '0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06)', overflow: 'hidden', width, height, background: '#fff', ...style, margin: "0px", padding: "0px", fontWeight: "600", borderRadius: "0px", letterSpacing: "-0.7px", fontSize: "12px", color: "rgba(0, 0, 0, 0.66)" }}>
+      style={{ boxShadow: '0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06)', overflow: 'hidden', width, height, background: '#fff', ...style, padding: "0px 16px 0px 14px", letterSpacing: "-0.5px" }}>
         {children || <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#bbb', fontSize: 13, fontFamily: DC.font }}>{id}</div>}
       </div>
     </div>);
@@ -920,8 +960,8 @@ function DCFocusOverlay({ entry, sectionMeta, sectionOrder }) {
       </div>
 
       {/* card centered, label + index below — only the card itself stops
-                                                                                                                                                                                                                     propagation so any backdrop click (including the margins around
-                                                                                                                                                                                                                     the card) exits focus */}
+                                                                                                                                                                                                                                                   propagation so any backdrop click (including the margins around
+                                                                                                                                                                                                                                                   the card) exits focus */}
       <div
         style={{ position: 'absolute', top: 64, bottom: 56, left: 100, right: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
         <div onClick={(e) => e.stopPropagation()} style={{ width: width * scale, height: height * scale, position: 'relative' }}>

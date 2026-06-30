@@ -8,19 +8,28 @@
   const M = window.BallparkMotifs;
   const { CityGrid, Skyline, SectionHead, Figure, AtlasGrid, NoteIcon } = M;
 
-  function Body({ paras, x, y, w, h, cols, gap, size, lh, dropcap }) {
+  function Body({ paras, x, y, w, h, cols, gap, size, lh, dropcap, fill }) {
     return (
       <div className="bc-body bc-cols" data-fit
       style={{
         position: "absolute", left: x, top: y, width: w, height: h,
-        columnCount: cols, columnGap: gap, columnFill: "balance",
+        columnCount: cols, columnGap: gap, columnFill: fill || "balance",
         fontSize: size + "px", lineHeight: lh
       }}>
         {paras.map((p, i) => {
           const isCap = dropcap && i === 0;
-          const narrow = isCap && /^["'\u201c\u2018(]*[IJ]/.test(p);
+          if (isCap) {
+            const letter = p.charAt(0);
+            const rest = p.slice(1);
+            const narrow = /[IJ]/.test(letter);
+            return (
+              <p key={i} className={"bc-dropcap" + (narrow ? " bc-dropcap-narrow" : "")}>
+                <span className="bc-dropcap-letter">{letter}</span>{rest}
+              </p>
+            );
+          }
           return (
-            <p key={i} className={isCap ? ("bc-dropcap" + (narrow ? " bc-dropcap-narrow" : "")) : ""}>{p}</p>
+            <p key={i}>{p}</p>
           );
         })}
       </div>);
@@ -71,14 +80,14 @@
         <SectionHead label="CONCRETE CIRCLES AND CLIMATE CONTROL" num="III" width={857}
         style={{ position: "absolute", left: 380, top: 58, fontSize: 21 }} />
 
-        <Body paras={D.CONCRETE} x={380} y={104} w={857} h={420}
-        cols={3} gap={30} size={13} lh={1.45} dropcap />
+        <Body paras={D.CONCRETE} x={380} y={104} w={857} h={374}
+        cols={3} gap={30} size={12.8} lh={1.45} dropcap />
 
         <SectionHead label="THE RETRO-CLASSIC TURN" num="IV" width={857}
         style={{ position: "absolute", left: 380, top: 510, fontSize: 21 }} />
 
-        <Body paras={D.RETRO} x={380} y={556} w={857} h={326}
-        cols={3} gap={30} size={13} lh={1.45} dropcap />
+        <Body paras={D.RETRO} x={380} y={556} w={857} h={308}
+        cols={3} gap={30} size={13.1} lh={1.45} dropcap />
 
         {/* retro pull quote — spans under the left-page text */}
         <div className="bc-region" style={{ left: 380, top: 898, width: 857 }}>
@@ -97,7 +106,7 @@
         cols={3} gap={26} size={13} lh={1.45} dropcap />
 
         {/* secondary companion rail — supporting systems, clearly subordinate */}
-        <SystemsSidebar data={D.SYSTEMS} x={2167} y={92} w={338} />
+        <SystemsSidebar data={D.SYSTEMS} x={2167} y={72} w={338} />
 
         {/* compact "evolution at a glance" comparison (left column, under the essay) */}
         <div className="bc-region" style={{ left: 1335, top: 588, width: 800 }}>

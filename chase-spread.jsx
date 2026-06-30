@@ -219,7 +219,7 @@
             /* COLUMN 3 — Stadium Context */
             e("div", { className: "chf-col col3" },
               e("div", { className: "chf-mod" },
-                e(SecHead, { title: "Chase Field Stadium Context" }),
+                e(SecHead, { title: "Roof Over the Desert" }),
                 e("div", { className: "chf-prose" },
                   D.stadium_context.map((p, i) => e("p", { key: i }, p))
                 )

@@ -246,7 +246,7 @@
         e("div", { className: "amf-context" },
           e("div", { className: "amf-ctx-watermark" },
             e("img", { src: "assets/wisconsin-outline.svg", alt: "" })),
-          e(SecHead, { title: "Stadium Context", note: "MILLER PARK \u2192 AMERICAN FAMILY FIELD" }),
+          e(SecHead, { title: "The Pivoting Fan", note: "MILLER PARK \u2192 AMERICAN FAMILY FIELD" }),
           e("div", { className: "amf-prose" },
             D.stadium_context.map((p, i) => e("p", { key: i }, p)))
         )

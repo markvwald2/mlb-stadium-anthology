@@ -25,7 +25,7 @@
   function strip(v) { return (v || "").toString().replace(" ft", ""); }
 
   function Chip(props) {
-    const fs = props.size || 15, w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 9) * 2), h = 22;
+    const fs = props.size || 15, w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 9) * 2), h = fs + 10;
     const tone = props.tone || "paper";
     const fill = tone === "orange" ? orange : paperHi, stk = tone === "orange" ? orangeDeep : rule, col = tone === "orange" ? "#FBF4E6" : ink;
     return e("g", null,
@@ -55,19 +55,19 @@
     }
     const nums = [0, 30, 60, 90].map((a, i) => {
       const p = polar(C, PR + 14, a);
-      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "11px", fill: ink3 } }, a);
+      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "14px", fill: ink3 } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 110);
     const protArc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
     const ntip = polar(C, PR + 16, deg);
     const back = polar(ntip, 10, deg + 180), hl = polar(back, 4.5, deg - 90), hr = polar(back, 4.5, deg + 90);
     const head = [ntip, hl, hr].map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
-    const degPos = polar(C, PR + 34, deg);
+    const bc = window.FieldLabels.bearingChip(C, PR + 16, deg, 54, 24);
     const nlab = polar(C, PR + 14, 0);
 
     const chips = [
       { p: out(rot(lf, C, deg), C, 18), t: strip(props.lf) },
-      { p: rot(cf, C, deg), t: strip(props.cf) },
+      { p: window.FieldLabels.cfWallPoint(C, R, deg), t: strip(props.cf) },
       { p: out(rot(rf, C, deg), C, 18), t: strip(props.rf) }
     ];
 
@@ -85,15 +85,15 @@
         // protractor arc + ticks + numerals
         e("path", { d: protArc, fill: "none", stroke: ink3, strokeWidth: 1.1, opacity: 0.6 }),
         ticks, nums,
-        e("text", { x: nlab[0], y: nlab[1] - 9, textAnchor: "middle", style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "12px", fill: ink, letterSpacing: ".04em" } }, "N"),
+        e("text", { x: nlab[0], y: nlab[1] - 9, textAnchor: "middle", style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "14px", fill: ink, letterSpacing: ".04em" } }, "N"),
         // north baseline (0deg) + bearing needle
         e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink2, strokeWidth: 1.1, strokeDasharray: "3 3" }),
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2.2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: black }),
         e("circle", { cx: C[0], cy: C[1], r: 3, fill: accent }),
-        e(Chip, { x: degPos[0], y: degPos[1], text: orientation + " " + deg + "\u00b0", size: 14, tone: "orange", padX: 7 }),
+        e(Chip, { x: bc.x, y: bc.y, text: orientation + " " + deg + "\u00b0", size: 19, tone: "orange", padX: 7 }),
         // distance chips (rotate with the field)
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 15 }))
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 19 }))
       )
     );
   }

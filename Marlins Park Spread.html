@@ -161,7 +161,7 @@
   .mla-ribbon .cell.coords { flex: 1.2; }
   .mla-ribbon .cell.wide { flex: 1.7; }
   .mla-ribbon .cell.wide .rv { white-space: nowrap; }
-  .mla-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px;
+  .mla-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--miami-deep); white-space: nowrap; }
   .mla-ribbon .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
     letter-spacing: .02em; text-transform: uppercase; color: var(--ink); line-height: 1.05; }
@@ -194,7 +194,7 @@
     background: var(--miami); transform: translateY(-1px); box-shadow: 2px 2px 0 rgba(216,71,62,.55); }
   .mla-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .13em;
     text-transform: uppercase; color: var(--miami-deep); white-space: nowrap; }
-  .mla-h .n { margin-left: auto; font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .08em;
+  .mla-h .n { margin-left: auto; font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
 
   /* facts / visit tables */
@@ -203,7 +203,7 @@
     padding: 2px 0; border-bottom: 1px solid var(--rule); }
   .mla-facts.compact .mla-frow { padding: 1.5px 0; }
   .mla-frow:last-child { border-bottom: 0; }
-  .mla-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .05em;
+  .mla-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.16; }
   .mla-frow .v { display: flex; flex-direction: column; gap: 2px; }
   .mla-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.24; white-space: pre-line; }
@@ -213,7 +213,7 @@
   /* field diagram instrument */
   .mla-fieldfig { margin: 4px 0 0; display: flex; justify-content: center; }
   .mla-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .mla-fieldfig .fd-svg { width: 150px; height: auto; max-width: 100%; display: block; }
+  .mla-fieldfig .fd-svg { width: 150px; height: auto; max-width: 100%; display: block; overflow: visible; }
 
   /* weather — 2 x 2 */
   .mla-weather { display: grid; grid-template-columns: 1fr 1fr; gap: 11px 12px; }
@@ -222,7 +222,7 @@
   .mla-wcell .tx { display: flex; flex-direction: column; }
   .mla-wcell .wv { font-family: "Spectral", serif; font-weight: 600; font-size: 21px; color: var(--ink); line-height: 1; }
   .mla-wcell .wv .wunit { font-size: 13px; font-weight: 500; font-variant: small-caps; letter-spacing: .03em; color: var(--ink-3); }
-  .mla-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .11em;
+  .mla-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .11em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
 
   /* line score */
@@ -243,7 +243,7 @@
 
   /* game caption + decisions */
   .mla-gcap { display: flex; align-items: center; gap: 8px; margin-top: 7px;
-    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .1em;
+    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-2); }
   .mla-gcap .sep { color: var(--rule-strong); }
   .mla-dec { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
@@ -283,6 +283,7 @@
 
   <script src="image-slot.js"></script>
   <script src="marlins-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="marlins-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

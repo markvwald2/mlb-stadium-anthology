@@ -2,7 +2,7 @@
    Renders ONE page of a two-page spread at exact Blurb "Large Landscape"
    dimensions for press-ready, single-page PDF export.
 
-   Blurb Large Landscape — Hardcover ImageWrap (98pp), INTERIOR page PDF:
+   Blurb Large Landscape — Hardcover, Dust Jacket (98pp), INTERIOR page PDF:
      trim        12.500 × 10.625 in
      bleed       0.125 in on top, bottom & OUTSIDE edge only
                  (NO bleed on the binding / spine edge)

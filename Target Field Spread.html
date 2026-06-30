@@ -193,7 +193,7 @@
     column-gap: 22px; align-items: start; align-content: start; }
   .tf-sd-facts { min-width: 0; }
   .tf-sd .tf-fieldfig { margin: 0; width: 100%; align-self: center; }
-  .tf-sd .tf-fieldfig .fd-svg { width: 100%; max-width: 215px; }
+  .tf-sd .tf-fieldfig .fd-svg { width: 100%; max-width: 215px;  overflow: visible; }
 
   .tf-block { display: flex; flex-direction: column; }
   .tf-block.plate { margin-top: 16px; }
@@ -244,7 +244,7 @@
   /* ---- field dimensions plate ---- */
   .tf-fieldfig { margin: 4px 0 0; display: flex; flex-direction: column; align-items: center; }
   .tf-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .tf-fieldfig .fd-svg { width: 184px; height: auto; max-width: 100%; display: block; }
+  .tf-fieldfig .fd-svg { width: 184px; height: auto; max-width: 100%; display: block;  overflow: visible; }
   .tf-fieldfig figcaption { margin-top: 2px; font-family: "Space Mono", monospace; font-size: 10px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
 
@@ -315,6 +315,7 @@
   <script src="image-slot.js"></script>
   <script src="target-field-data.js"></script>
   <script src="mn-outline.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="target-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

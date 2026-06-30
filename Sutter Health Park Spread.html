@@ -142,7 +142,7 @@
   /* bay headers (inspection plaque labels) */
   .shp-bayhead { display: flex; align-items: baseline; gap: 9px; border-bottom: 2px solid var(--ink);
     padding-bottom: 7px; margin-bottom: 11px; }
-  .shp-bayhead-no { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .14em;
+  .shp-bayhead-no { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--yellow-deep); flex: none; }
   .shp-bayhead-t { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 15px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--ink); white-space: nowrap; }
@@ -174,17 +174,17 @@
   .shp-table .row { display: grid; grid-template-columns: 78px 1fr; gap: 9px; padding: 2.5px 0;
     border-bottom: 1px solid var(--rule); align-items: baseline; }
   .shp-table .row:last-child { border-bottom: 0; }
-  .shp-table .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .08em;
+  .shp-table .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-3); }
   .shp-table .v { font-family: "Spectral", serif; font-weight: 500; font-size: 10.5px; color: var(--ink);
     line-height: 1.3; white-space: pre-line; }
 
   /* field geometry figure (pinned to bottom of bay 1) */
   .shp-fig { margin-top: auto; padding-top: 8px; border-top: 1px solid var(--rule); text-align: center; }
-  .shp-fig-cap { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .14em;
+  .shp-fig-cap { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
   .shp-fig .fd-wrap { display: flex; justify-content: center; }
-  .shp-fig .fd-svg { width: 100%; max-width: 215px; height: auto; display: block; margin-top: 0; }
+  .shp-fig .fd-svg { width: 100%; max-width: 215px; height: auto; display: block; margin-top: 0;  overflow: visible; }
 
   /* ---- BAY 2 context ---- */
   .shp-ctx { flex: 1; min-height: 0; }
@@ -198,7 +198,7 @@
     display: flex; justify-content: space-between; align-items: baseline;
     font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--yellow-deep); }
-  .shp-ctx-foot .ts { font-family: "Space Mono", monospace; font-weight: 400; font-size: 8.5px;
+  .shp-ctx-foot .ts { font-family: "Space Mono", monospace; font-weight: 400; font-size: 10px;
     letter-spacing: .02em; text-transform: none; color: var(--ink-2); }
 
   /* ---- BAY 3 visit ---- */
@@ -216,7 +216,7 @@
   .shp-gtable .grow { display: grid; grid-template-columns: 62px 1fr; gap: 9px; padding: 2px 0;
     border-bottom: 1px solid var(--rule); align-items: baseline; }
   .shp-gtable .grow:last-child { border-bottom: 0; }
-  .shp-gtable .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .08em;
+  .shp-gtable .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-3); }
   .shp-gtable .v { font-family: "Spectral", serif; font-weight: 500; font-size: 10.5px; color: var(--ink); line-height: 1.28; }
   .shp-gtable .grow.strong .v { font-weight: 700; font-size: 13px; }
@@ -227,7 +227,7 @@
   .shp-box { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; }
   .shp-box th, .shp-box td { text-align: center; font-size: 11px; font-weight: 400; padding: 3.5px 0;
     color: #E7E1D2; border-bottom: 1px solid rgba(231,225,210,.13); }
-  .shp-box thead th { color: #B9A24B; font-weight: 700; font-size: 9.5px; border-bottom: 1.5px solid rgba(231,225,210,.4); }
+  .shp-box thead th { color: #B9A24B; font-weight: 700; font-size: 10px; border-bottom: 1.5px solid rgba(231,225,210,.4); }
   .shp-box td.tm, .shp-box th.tm { text-align: left; font-family: "Oswald", sans-serif; font-weight: 700;
     font-size: 11px; letter-spacing: .04em; padding-right: 7px; width: 1%; white-space: nowrap; }
   .shp-box td.hit { color: #E7C24A; font-weight: 700; }
@@ -245,12 +245,12 @@
   .shp-wx-main { display: flex; align-items: center; gap: 8px; padding: 7px 11px; flex: 1; }
   .shp-wx-temp { display: flex; flex-direction: column; gap: 2px; }
   .shp-wx-main .deg { font-family: "Spectral", serif; font-weight: 700; font-size: 22px; color: var(--ink); line-height: .95; }
-  .shp-wx-main .cond { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .1em;
+  .shp-wx-main .cond { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-2); }
   .shp-wx-r { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-left: 1px solid var(--rule); flex: 1; min-width: 0; }
   .shp-wx-r .shp-wxr-ico { flex: none; }
   .shp-wx-rt { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-  .shp-wx-r .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .1em;
+  .shp-wx-r .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); }
   .shp-wx-r .v { font-family: "Spectral", serif; font-weight: 600; font-size: 11px; color: var(--ink); white-space: nowrap; }
 
@@ -277,6 +277,7 @@
 
   <script src="image-slot.js"></script>
   <script src="sutter-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="sutter-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

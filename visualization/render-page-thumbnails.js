@@ -31,7 +31,8 @@ function outputName(item) {
 }
 
 function urlFor(page) {
-  return `http://127.0.0.1:${PORT}/${encodeURIComponent(page).replace(/%2F/g, "/")}`;
+  const encodedPage = encodeURIComponent(page).replace(/%2F/g, "/");
+  return `http://127.0.0.1:${PORT}/${encodedPage}${page.includes("?") ? "&" : "?"}full=1`;
 }
 
 function contentType(file) {
@@ -75,7 +76,8 @@ function startServer() {
 }
 
 async function findArtboard(page) {
-  const handle = await page.evaluateHandle(() => {
+  async function locate() {
+    return page.evaluateHandle(() => {
     const candidates = [...document.querySelectorAll("body *")]
       .map((el, index) => {
         const r = el.getBoundingClientRect();
@@ -107,9 +109,29 @@ async function findArtboard(page) {
         ((near(item.width, 2550) || near(item.width, 1275)) && near(item.height, 1088)) ||
         (near(item.width, 2668.1) && near(item.height, 1162.5)))
       .pop()?.el || null;
+    });
+  }
+
+  let handle = await locate();
+  let element = handle.asElement();
+  if (element) return element;
+  await handle.dispose();
+
+  await page.evaluate(() => {
+    if (!document.querySelector(".design-canvas")) return;
+    document.querySelectorAll(".dc-header,.dc-sectionhead").forEach((el) => { el.style.display = "none"; });
+    const world = [...document.querySelectorAll(".design-canvas > div")]
+      .find((el) => getComputedStyle(el).transform !== "none");
+    if (world) {
+      world.style.transform = "none";
+      world.style.left = "0px";
+      world.style.top = "0px";
+    }
+    document.body.style.margin = "0";
   });
 
-  const element = handle.asElement();
+  handle = await locate();
+  element = handle.asElement();
   if (!element) {
     await handle.dispose();
     return null;

@@ -133,7 +133,7 @@
   .nc-ribbon .cell:first-child { border-left: 0; }
   .nc-ribbon .cell.team { flex: 1.45; }
   .nc-ribbon .cell.coords { flex: 1.4; }
-  .nc-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 8px;
+  .nc-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
     letter-spacing: .15em; text-transform: uppercase; color: var(--silver); white-space: nowrap; }
   .nc-ribbon .rv { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 13px;
     letter-spacing: .02em; text-transform: uppercase; color: var(--concrete-hi); line-height: 1.1; }
@@ -158,7 +158,7 @@
     letter-spacing: .04em; color: var(--ink); background: var(--silver-hi); padding: 2px 7px; }
   .nc-zh .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 25px; line-height: .9;
     letter-spacing: .02em; text-transform: uppercase; color: var(--ink); }
-  .nc-zh .n { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .12em;
+  .nc-zh .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); margin-left: auto; align-self: baseline; }
 
   /* ---- section sub-head on a hairline ---- */
@@ -166,7 +166,7 @@
     border-bottom: 1px solid var(--rule-strong); }
   .nc-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink); white-space: nowrap; }
-  .nc-h .n { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .06em;
+  .nc-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
   .nc-h.green .t { color: var(--green); }
 
@@ -175,7 +175,7 @@
   .nc-frow { display: grid; grid-template-columns: 78px 1fr; gap: 9px; align-items: start;
     padding: 4px 0; border-bottom: 1px solid var(--rule); }
   .nc-frow:last-child { border-bottom: 0; }
-  .nc-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; letter-spacing: .05em;
+  .nc-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.35; padding-top: 1px; }
   .nc-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
   .nc-frow .v .vm { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink); line-height: 1.18; white-space: pre-line; }
@@ -190,7 +190,7 @@
     padding: 4px 0; border-bottom: 1px solid var(--rule); }
   .nc-nrow:last-child { border-bottom: 0; }
   .nc-nrow .nm { font-family: "Spectral", serif; font-weight: 600; font-size: 11.5px; color: var(--ink); line-height: 1.15; }
-  .nc-nrow .yr { font-family: "Space Mono", monospace; font-size: 9.5px; color: var(--ink-3); white-space: nowrap; flex: none; }
+  .nc-nrow .yr { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink-3); white-space: nowrap; flex: none; }
 
   /* ---- logos well (restrained) ---- */
   .nc-logos { margin-top: auto; padding-top: 14px; display: flex; align-items: center;
@@ -203,7 +203,7 @@
   .nc-fieldwrap { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--rule-strong); }
   .nc-fieldwrap .nc-h { margin-bottom: 6px; }
   .nc-zone.a .nc-fieldfig { margin-top: 6px; }
-  .nc-zone.a .nc-fieldfig .fd-svg { max-width: 133px; }
+  .nc-zone.a .nc-fieldfig .fd-svg { max-width: 133px;  overflow: visible; }
   /* tighter rhythm in zone I so the instrument fits */
   .nc-zone.a .nc-frow { padding: 3px 0; }
   .nc-zone.a .nc-block { margin-top: 11px; }
@@ -245,7 +245,7 @@
   .nc-fieldrow { flex: none; margin-top: 14px; padding-top: 16px; border-top: 2px solid var(--steel);
     display: grid; grid-template-columns: 188px 1fr; column-gap: 18px; align-items: center; }
   .nc-fieldfig { margin: 0; display: flex; justify-content: center; }
-  .nc-fieldfig .fd-svg { width: 100%; max-width: 188px; height: auto; display: block; }
+  .nc-fieldfig .fd-svg { width: 100%; max-width: 188px; height: auto; display: block;  overflow: visible; }
   .nc-dims { display: flex; flex-direction: column; }
   .nc-dims .dh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
@@ -255,7 +255,7 @@
   .nc-drow .dk { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-2); }
   .nc-drow .dv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px; color: var(--ink); }
-  .nc-drow .dv small { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px; color: var(--ink-3); letter-spacing: .05em; }
+  .nc-drow .dv small { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; color: var(--ink-3); letter-spacing: .05em; }
 
   /* ============ ZONE C — GAME NIGHT ============ */
   .nc-night { flex: none; height: 419px; position: relative; margin-bottom: 16px;
@@ -281,7 +281,7 @@
     margin: 9px 0 11px; }
   .nc-final .team { display: flex; align-items: center; gap: 8px; }
   .nc-final .nm { display: flex; flex-direction: column; line-height: 1.06; }
-  .nc-final .nm .city { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8.5px;
+  .nc-final .nm .city { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
   .nc-final .nm .tn { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
     letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
@@ -301,7 +301,7 @@
   .nc-box { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; table-layout: fixed; }
   .nc-box th, .nc-box td { text-align: center; font-size: 13px; font-weight: 700; padding: 3.5px 0;
     color: var(--concrete-hi); }
-  .nc-box thead th { color: var(--silver); font-weight: 400; font-size: 9px; padding-bottom: 4px;
+  .nc-box thead th { color: var(--silver); font-weight: 400; font-size: 10px; padding-bottom: 4px;
     border-bottom: 1px solid rgba(156,155,146,.4); }
   .nc-box td.tm, .nc-box th.tm { text-align: left; font-family: "Oswald", sans-serif; font-weight: 600;
     font-size: 12px; letter-spacing: .08em; padding-right: 8px; width: 50px; white-space: nowrap; color: var(--concrete-hi); }
@@ -334,7 +334,7 @@
     padding-top: 4px; }
   .nc-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 16.5px; color: var(--ink);
     line-height: 1; white-space: nowrap; }
-  .nc-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .13em;
+  .nc-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .13em;
     text-transform: uppercase; color: var(--ink-3); }
 
   #root { min-height: 100vh; }
@@ -361,6 +361,7 @@
 
   <script src="image-slot.js"></script>
   <script src="new-comiskey-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="new-comiskey-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

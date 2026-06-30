@@ -22,10 +22,11 @@
       { n: "34", l: "STADIUMS" },
     ],
     note: "Including one Camden Yards rainout.",
+    introLead: "Let\u2019s see\u2026 Yes, Yes, No, Yes\u2026",
     intro:
-      "Across four decades, a lifelong pursuit of the game traced a route from the ballparks of " +
-      "Southern California to the bayfront of Northern California. These twelve road trips are the " +
-      "spine of the book \u2014 the stadium chapters that follow are their individual stops.",
+      "Between 1986 and 2025, twelve trips took us to ballparks across the country and across the " +
+      "major leagues. Expertly planned around efficient routes and packed schedules, each game " +
+      "checked another stadium off the poster that hung on our bedroom wall.",
 
     // right-page "by the numbers" cluster — six metrics, distinct from the
     // 12/39/34 headline on the left page. All values from the user's record.

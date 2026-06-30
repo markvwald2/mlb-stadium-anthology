@@ -51,7 +51,7 @@
   .bp-sub-sep { color: var(--rule-strong); font-size: 15px; }
 
   /* ---- two-column index ---- */
-  .bp-index { position: absolute; z-index: 1; left: 50px; right: 50px; top: 150px; bottom: 60px;
+  .bp-index { position: absolute; z-index: 1; left: 50px; right: 50px; top: 138px; bottom: 50px;
     display: grid; grid-template-columns: 1fr 1px 1fr; column-gap: 36px; }
   .bp-baseline { position: absolute; z-index: 1; left: 50px; right: 50px; bottom: 44px;
     border-top: 2px solid var(--ink); }
@@ -60,7 +60,7 @@
 
   .bp-colhead { display: grid; grid-template-columns: 30px 30px 1fr 92px; align-items: end;
     padding: 0 0 6px; border-bottom: 2px solid var(--ink); margin-bottom: 2px;
-    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .2em;
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--ink-3); }
   .bp-ch-num { grid-column: 1 / 2; }
   .bp-ch-park { grid-column: 3 / 4; padding-left: 10px; }
@@ -74,9 +74,9 @@
 
   /* ---- ballpark row ---- */
   .bp-row { display: grid; grid-template-columns: 30px 34px 1fr 92px; align-items: center;
-    height: 36px; border-bottom: 1px solid var(--rule); }
+    height: 36.5px; border-bottom: 1px solid var(--rule); }
   .bp-row:last-child { border-bottom: 0; }
-  .bp-num { font-family: "Space Mono", monospace; font-size: 11px; color: var(--ink-3); }
+  .bp-num { font-family: "Space Mono", monospace; font-size: 12px; color: var(--ink-3); }
   .bp-logo-wrap { display: flex; align-items: center; justify-content: center; }
   .bp-logo { height: 26px; width: 29px; object-fit: contain; }
   .bp-row-former .bp-logo { filter: grayscale(1); opacity: .62; }
@@ -85,10 +85,10 @@
   .bp-stadium { font-family: "Spectral", serif; font-size: 14px; line-height: 1.05; color: var(--ink);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .bp-row-former .bp-stadium { color: var(--ink-2); }
-  .bp-former { flex: none; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 7px;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--red);
-    border: 1px solid currentColor; border-radius: 2px; padding: 1px 4px; }
-  .bp-line2 { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .07em;
+  .bp-former { flex: none; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .05em; text-transform: uppercase; color: var(--red); line-height: 1.2;
+    border: 1px solid currentColor; border-radius: 2px; padding: 0 3px; }
+  .bp-line2 { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 2px; display: flex; gap: 5px;
     white-space: nowrap; line-height: 1; }
   .bp-team { font-weight: 600; color: var(--ink-2); }
@@ -96,7 +96,7 @@
   .bp-right { text-align: right; }
   .bp-visited { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .03em;
     color: var(--ink); white-space: nowrap; line-height: 1.05; }
-  .bp-tenure { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .02em;
+  .bp-tenure { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: 0;
     color: var(--ink-3); margin-top: 2px; white-space: nowrap; line-height: 1; }
 
   /* ---- footer stats bar ---- */

@@ -187,7 +187,7 @@
           /* ---- ground band: unified context + development/life-cycle parcel ---- */
           e("div", { className: "st-ground" },
             e("div", { className: "st-context" },
-              e(SecHead, { title: "Stadium Context", note: "BALLPARK \u2192 DISTRICT" }),
+              e(SecHead, { title: "Inside the Battery", note: "BALLPARK \u2192 DISTRICT" }),
               e("div", { className: "st-prose" },
                 D.stadium_context.map((p, i) => e("p", { key: i }, p)))),
             e("div", { className: "st-lifecycle" },

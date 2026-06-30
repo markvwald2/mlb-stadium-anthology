@@ -205,7 +205,7 @@
                   )
                 ),
                 e("div", { className: "glf-context" },
-                  e(SecHead, { title: "Stadium Context" }),
+                  e(SecHead, { title: "The Glass Enclosure" }),
                   e("div", { className: "glf-prose" },
                     e("div", { className: "glf-col" }, D.stadium_context.slice(0, 2).map((p, i) => e("p", { key: "a" + i }, p))),
                     e("div", { className: "glf-col" }, D.stadium_context.slice(2).map((p, i) => e("p", { key: "b" + i }, p)))

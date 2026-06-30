@@ -45,9 +45,7 @@ html, body { margin: 0; padding: 0; }
   background: rgba(34,30,24,0.10);
 }
 .bc-fold-shade {
-  position: absolute; top: 0; height: 1088px; width: 70px; left: 1240px;
-  background: linear-gradient(90deg, rgba(34,30,24,0) 0%, rgba(34,30,24,0.05) 48%, rgba(34,30,24,0.05) 52%, rgba(34,30,24,0) 100%);
-  pointer-events: none;
+  display: none;
 }
 
 /* ── display title ────────────────────────────────────────────────────────*/
@@ -122,40 +120,25 @@ html, body { margin: 0; padding: 0; }
 .bc-cols-4 { column-count: 4; }
 
 /* first-paragraph drop cap for the opening of a section.
-   Base rule = float fallback (any browser). Where `initial-letter` is
-   supported (Safari/WebKit + Chrome 110+, incl. the PDF-export path), it takes
-   over so EVERY cap spans exactly 3 lines regardless of the block's font-size
-   or line-height — which the float method can't guarantee across sizes. */
-.bc-dropcap::first-letter {
+   Uses a REAL floated <span class="bc-dropcap-letter"> rather than
+   ::first-letter / initial-letter, both of which are silently dropped inside
+   multi-column (column-count) containers in Chrome and WebKit — including the
+   PDF-export path. A floated child element is honored in columns, so the cap
+   renders reliably on screen and in print. Tuned to span ~3 body lines. */
+.bc-dropcap-letter {
+  float: left;
   font-family: "Anton", sans-serif;
   font-weight: 400;
   color: var(--navy);
-  float: left;
-  font-size: 3.05em;
-  line-height: 0.74;
-  padding: 6px 8px 0 0;
-  margin-top: 2px;
+  font-size: 5.4em;
+  line-height: 0.82;
+  padding: 0.04em 0.16em 0 0;
 }
 /* Narrow initials (I, J) are thin vertical slabs in Anton — with normal
    padding the wrapped text crowds the bar and the cap looks stranded. Add a
    wider right gutter so a narrow cap reads as a deliberate initial. */
-.bc-dropcap-narrow::first-letter {
-  padding-right: 22px;
-}
-@supports (-webkit-initial-letter: 3) or (initial-letter: 3) {
-  .bc-dropcap::first-letter {
-    -webkit-initial-letter: 3;
-    initial-letter: 3;
-    float: none;
-    font-size: 100%;
-    line-height: normal;
-    padding: 0;
-    margin: 0 8px 0 0;
-  }
-  .bc-dropcap-narrow::first-letter {
-    padding-right: 0;
-    margin-right: 16px;
-  }
+.bc-dropcap-narrow .bc-dropcap-letter {
+  padding-right: 0.42em;
 }
 
 /* ── pull quotes ──────────────────────────────────────────────────────────*/
@@ -213,7 +196,7 @@ html, body { margin: 0; padding: 0; }
   font-weight: 400;
   letter-spacing: 0.02em;
   color: var(--brick);
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 3px;
   text-transform: uppercase;
 }
@@ -239,7 +222,7 @@ html, body { margin: 0; padding: 0; }
 .bc-era-date {
   font-family: "Space Mono", monospace;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.02em;
   color: var(--ink-2);
 }
@@ -256,7 +239,7 @@ html, body { margin: 0; padding: 0; }
 }
 .bc-era-desc {
   font-family: "Spectral", serif;
-  font-size: 11.5px;
+  font-size: 12px;
   line-height: 1.28;
   color: var(--ink-2);
   margin-top: 5px;
@@ -277,15 +260,16 @@ html, body { margin: 0; padding: 0; }
   font-family: "Oswald", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  font-size: 12px;
   color: var(--ink-3);
-  padding: 0 0 7px 0;
+  padding: 6px 0 7px 0;
 }
 .bc-atlas-cell {
   padding: 11px 14px 11px 0;
   border-top: 1px solid var(--rule);
-  vertical-align: top;
+  display: flex;
+  align-items: center;
 }
 .bc-atlas-era {
   font-family: "Oswald", sans-serif;
@@ -346,7 +330,7 @@ html, body { margin: 0; padding: 0; }
 .bc-sidebar-kicker {
   font-family: "Space Mono", monospace;
   font-weight: 700;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--brick);
@@ -388,7 +372,7 @@ html, body { margin: 0; padding: 0; }
 }
 .bc-sysrow-body {
   font-family: "Spectral", serif;
-  font-size: 11.5px;
+  font-size: 12px;
   line-height: 1.4;
   color: var(--ink-2);
   margin-top: 5px;

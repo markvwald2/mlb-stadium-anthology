@@ -156,7 +156,7 @@
           /* ---- center: Stadium Context exhibition panel ---- */
           e("div", { className: "shea-context-wrap" },
             e("div", { className: "shea-context-head" },
-              e("span", { className: "lab" }, "Stadium Context"),
+              e("span", { className: "lab" }, "World's Fair Panels"),
               e("span", { className: "meta" }, "Flushing Meadows \u00b7 " + D.years_active)),
             e("div", { className: "shea-context" },
               D.stadium_context.map((p, i) => e("p", { key: i }, p)))),

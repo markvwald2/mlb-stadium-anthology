@@ -107,7 +107,7 @@
   .np-ribbon .rc:first-child { border-left: 0; padding-left: 2px; }
   .np-ribbon .rc.team { flex: 1.5 1 0; }
   .np-ribbon .rc.tight { flex: 0.7 1 0; }
-  .np-ribbon .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+  .np-ribbon .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
   .np-ribbon .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; color: var(--navy); line-height: 1.05; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
   /* main region — tall context panel | stacked right column */
@@ -140,7 +140,7 @@
   .np-catalog { display: grid; grid-template-columns: 1fr 1fr; gap: 13px 20px; }
   .np-cat { display: flex; flex-direction: column; gap: 3px; }
   .np-cat.wide { grid-column: 1 / -1; }
-  .np-cat .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); }
+  .np-cat .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); }
   .np-cat .v { font-family: "Spectral", serif; font-weight: 600; font-size: 17px; line-height: 1.12; color: var(--ink); }
   .np-cat .vn { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12.5px; color: var(--ink-2); margin-top: 1px; }
   .np-cat .dim { display: flex; gap: 22px; }
@@ -152,13 +152,13 @@
   .np-diagram { border-left: 1px solid var(--rule); padding: 0 10px; display: flex; flex-direction: column; }
   .np-fp { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1; justify-content: flex-end; }
   .np-fp .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .np-fp .fd-svg { width: 182px; height: 182px; max-width: 100%; display: block; }
+  .np-fp .fd-svg { width: 182px; height: 182px; max-width: 100%; display: block;  overflow: visible; }
   .np-fp figcaption { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--ink-2); }
 
   /* identity logos */
   .np-identity { border-left: 1px solid var(--rule); padding-left: 16px; display: flex; flex-direction: column; gap: 10px; align-items: center; }
-  .np-identity .ih { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); align-self: stretch; text-align: center; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .np-identity .ih { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); align-self: stretch; text-align: center; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
   .np-identity .logo-w { width: 64px; height: auto; display: block; }
   .np-identity .logo-mlb { width: 40px; height: auto; display: block; }
   .np-identity .logo-nl { width: 52px; height: auto; display: block; }
@@ -196,7 +196,7 @@
   .np-vrows { margin-top: 9px; display: flex; flex-direction: column; }
   .np-vrow { display: grid; grid-template-columns: 72px 1fr; gap: 8px; padding: 3px 0; border-top: 1px solid var(--rule); align-items: baseline; }
   .np-vrow:first-child { border-top: 0; }
-  .np-vrow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  .np-vrow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
   .np-vrow .v { font-family: "Spectral", serif; font-weight: 600; font-size: 13.5px; color: var(--ink); line-height: 1.25; }
 
   /* line score — civic information panel */
@@ -232,10 +232,10 @@
 
   /* pitching matchup / results column */
   .np-vg-col.np-pitch { align-items: flex-start; justify-content: flex-start; gap: 0; padding-right: 0; }
-  .np-pitch .ph { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 11px; }
+  .np-pitch .ph { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 11px; }
   .np-pitch .np-pi-rows { display: flex; flex-direction: column; gap: 7px; width: 100%; }
   .np-pitch .pr { display: flex; align-items: baseline; gap: 9px; }
-  .np-pitch .pr .ab { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: .08em; color: var(--ink-3); width: 28px; flex: none; }
+  .np-pitch .pr .ab { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .08em; color: var(--ink-3); width: 28px; flex: none; }
   .np-pitch .pr .nm { font-family: "Spectral", serif; font-weight: 600; font-size: 13px; color: var(--ink); }
   .np-pitch .np-pi-dec { display: flex; flex-direction: column; gap: 6px; margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--rule); width: 100%; }
   .np-pitch .pd { display: flex; align-items: baseline; gap: 9px; }
@@ -249,7 +249,7 @@
   .np-lgrid .lc { padding: 0 24px; border-left: 1px solid var(--rule); min-width: 0; }
   .np-lgrid .lc:first-child { padding-left: 0; border-left: 0; }
   .np-lgrid .lc:last-child { padding-right: 0; }
-  .np-lgrid .lc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
+  .np-lgrid .lc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
   .np-lgrid .lc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 11.5px; line-height: 1.32; color: var(--ink); }
   .np-lgrid .lc.cost .v.big { font-family: "Spectral", serif; font-weight: 700; font-size: 21px; line-height: 1; }
   .np-lgrid .lc.cost .v.adj { font-family: "Space Mono", monospace; font-weight: 400; font-size: 10.5px; letter-spacing: .01em; color: var(--ink-2); margin-top: 5px; }
@@ -257,7 +257,7 @@
   /* civic colophon — single-line footer beside the context column */
   .np-colophon { flex: none; margin-top: 0; padding-top: 11px; border-top: 1px solid var(--rule);
     display: flex; align-items: baseline; gap: 10px; white-space: nowrap;
-    font-family: "Space Mono", monospace; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
   .np-colophon .lead { color: var(--navy); font-weight: 700; }
   .np-colophon .sep { color: var(--red); }
 
@@ -285,6 +285,7 @@
 
   <script src="image-slot.js"></script>
   <script src="nationals-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="nationals-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

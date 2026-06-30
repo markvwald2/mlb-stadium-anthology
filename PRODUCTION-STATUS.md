@@ -6,15 +6,15 @@ per spread; do not mark a spread done without their say-so.
 
 Legend: ✅ done · ⬜ not yet confirmed
 
-> **2026-06-27 — production status refreshed.** The on-canvas design remains
-> governed by the official Blurb-safe trim/safe boxes, while the vector PDF
-> harness intentionally stays on the legacy single-page sheet for consistency
-> with already-exported pages. Spreads listed as pending still need full visual
-> re-inspection before final export. Prior confirmation notes are retained below
-> for reference.
+> **2026-06-27 — all sign-offs reset.** The interior export was re-sized to the
+> correct Blurb Large Landscape Hardcover Dust Jacket interior spec
+> (page 12.625 × 10.875 in / 909 × 783 pt; trim 12.5 × 10.625 in; no binding-edge
+> bleed; content now prints at true native scale instead of the old ~3% stretch).
+> Every spread is back to ⬜ pending a full visual re-inspection. Prior
+> confirmation notes are retained below for reference.
 
 ## Completed
-- ✅ **Globe Life Field** — confirmed 2026-06-28. Full glyph-bounds
+- ✅ **Globe Life Field** — confirmed 2026-06-28 at new trim. Full glyph-bounds
   safe-area sweep clean (0 violations); fixed right-page roof-band running heads
   (band 52→78px, bottom-anchored) and left-page hero title overflow (`bottom`
   60→78px, tight `line-height: .86`). Plate 2 swapped to group-celebration photo,
@@ -25,7 +25,7 @@ Legend: ✅ done · ⬜ not yet confirmed
 ### Ballpark spreads
 - ⬜ American Family Field
 - ⬜ Anaheim Stadium — _prior sign-off 2026-06-26: all five photos ≥300 DPI
-  (hero ≈336 DPI; panels 556–855 DPI); p3 crop re-fit. Re-inspect before final export._
+  (hero ≈336 DPI; panels 556–855 DPI); p3 crop re-fit. Re-inspect at new trim._
 - ⬜ Busch Stadium
 - ⬜ Chase Field
 - ⬜ Citi Field
@@ -36,8 +36,8 @@ Legend: ✅ done · ⬜ not yet confirmed
 - ⬜ Coors Field
 - ⬜ Fenway Park — _prior sign-off 2026-06-26: hero 300 DPI (4742×3264); four
   editorial photos ≥326 DPI; field instrument + folio + scrim final. Re-inspect
-  before final export._
-- ✅ Globe Life Field — _see Completed above (confirmed 2026-06-28)._
+  at new trim._
+- ✅ Globe Life Field — _see Completed above (confirmed 2026-06-28 at new trim)._
 - ⬜ Great American Ball Park
 - ⬜ Marlins Park
 - ⬜ Memorial Stadium
@@ -51,7 +51,7 @@ Legend: ✅ done · ⬜ not yet confirmed
 - ⬜ Petco Park
 - ⬜ PNC Park — _prior sign-off 2026-06-26: five live image-slots placed (461–611
   DPI); wide hero 5000×3333 (≈306 DPI); stacked masthead + gold L-bracket title.
-  Re-inspect before final export._
+  Re-inspect at new trim._
 - ⬜ Progressive Field
 - ⬜ Riverfront Stadium
 - ⬜ Rogers Centre

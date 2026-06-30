@@ -141,7 +141,7 @@
     letter-spacing: .14em; text-transform: uppercase; color: #C9C2B0;
     display: flex; align-items: center; gap: 16px;
   }
-  .gabp-addr .dot { color: var(--red-bright); font-size: 9px; }
+  .gabp-addr .dot { color: var(--red-bright); font-size: 10px; }
 
   /* ============ RIGHT PAGE ============ */
   .gabp-rp { position: absolute; inset: 0; padding: 36px 38px 30px 40px; z-index: 2;
@@ -162,7 +162,7 @@
   .gabp-ribbon .rcell { padding: 9px 12px; border-left: 1px solid var(--rule);
     display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
   .gabp-ribbon .rcell:first-child { border-left: 0; }
-  .gabp-ribbon .rcell .k { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .14em;
+  .gabp-ribbon .rcell .k { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink-3); }
   .gabp-ribbon .rcell .v { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 14px;
     letter-spacing: .02em; text-transform: uppercase; color: var(--ink); line-height: 1.1; }
@@ -209,7 +209,7 @@
 
   .gabp-fp { margin: 4px 0 0; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
   .gabp-fp .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .gabp-fp .fd-svg { width: 122px; height: 120px; max-width: 100%; display: block; }
+  .gabp-fp .fd-svg { width: 122px; height: 120px; max-width: 100%; display: block;  overflow: visible; }
 
   .gabp-ctx { display: flex; gap: 20px; align-items: flex-start; }
   .gabp-ctx .ccol { flex: 1 1 0; min-width: 0; }
@@ -241,7 +241,7 @@
   .gabp-wx .wxrows { display: flex; flex-direction: column; flex: 2 1 0; }
   .gabp-wx .wxr { display: flex; align-items: center; gap: 9px; padding: 6px 0; border-top: 1px solid var(--rule); flex: 1 1 0; }
   .gabp-wx .wxr-txt { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-  .gabp-wx .wxr .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 9.5px; letter-spacing: .12em;
+  .gabp-wx .wxr .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); }
   .gabp-wx .wxr .v { font-family: "Spectral", serif; font-weight: 600; font-size: 13px; color: var(--ink); }
 
@@ -291,7 +291,7 @@
     border-left: 1px solid var(--rule); }
   .gabp-foot .fcell:first-child { border-left: 0; padding-left: 0; }
   .gabp-foot .ftxt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-  .gabp-foot .ftxt .k { font-family: "Space Mono", monospace; font-size: 8.5px; letter-spacing: .12em;
+  .gabp-foot .ftxt .k { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); }
   .gabp-foot .ftxt .v { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 13px;
     letter-spacing: .04em; text-transform: uppercase; color: var(--ink); line-height: 1.08; }
@@ -321,6 +321,7 @@
 
   <script src="image-slot.js"></script>
   <script src="gabp-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="gabp-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

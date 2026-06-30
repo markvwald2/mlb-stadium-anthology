@@ -138,7 +138,9 @@
             e("span", { className: "rt-stat" },
               e("span", { className: "rt-stat-n" }, s.n), " ",
               e("span", { className: "rt-stat-l" }, s.l)))))),
-      e("p", { className: "rt-intro" }, D.intro),
+      e("div", { className: "rt-intro" },
+        e("div", { className: "rt-intro-lead" }, D.introLead),
+        e("div", null, D.intro)),
 
       // ============ HEADER — RIGHT: by the numbers ============
       e("div", { className: "rt-numbers" },

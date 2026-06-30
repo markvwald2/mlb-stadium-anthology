@@ -170,7 +170,7 @@
             e("div", { className: "shp-bay shp-bay-ctx" },
               e("div", { className: "shp-bayhead" },
                 e("span", { className: "shp-bayhead-no" }, "Bay 02"),
-                e("span", { className: "shp-bayhead-t" }, "Stadium Context")),
+                e("span", { className: "shp-bayhead-t" }, "Borrowed Ground")),
               e("div", { className: "shp-ctx" },
                 e("p", null, D.context[0]),
                 e("p", null, D.context[1]),

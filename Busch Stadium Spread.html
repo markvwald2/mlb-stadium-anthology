@@ -119,7 +119,7 @@
     border: 2px solid var(--paper-hi); outline: 1px solid var(--navy-deep);
     box-shadow: 0 5px 14px rgba(20,16,10,.26); }
   .bz-bay-cap { margin-top: 8px; text-align: center; font-family: "Oswald", sans-serif;
-    font-weight: 600; font-size: 9.5px; letter-spacing: .13em; text-transform: uppercase;
+    font-weight: 600; font-size: 10px; letter-spacing: .13em; text-transform: uppercase;
     color: var(--ink-2); line-height: 1.2; }
 
   /* ---- metadata ribbon — the bridge track ---- */
@@ -137,7 +137,7 @@
   .bz-rib-cell:nth-child(5) { flex: 1.6; }    /* Classification */
   .bz-rib-cell:nth-child(8) { flex: 1.18; }   /* Coordinates */
   .bz-rib-cell:nth-child(9) { flex: 1.12; }   /* Capacity */
-  .bz-rib-cell .rk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px;
+  .bz-rib-cell .rk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--red); white-space: nowrap; }
   .bz-rib-cell .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
     letter-spacing: .01em; text-transform: uppercase; color: var(--ink); line-height: 1.1; }
@@ -152,7 +152,7 @@
   .bz-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--navy); white-space: nowrap; }
   .bz-h.red .t { color: var(--red); }
-  .bz-h .n { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .06em;
+  .bz-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
 
   /* ---- BAY 1 : Stadium Facts + protractor ---- */
@@ -165,11 +165,11 @@
   .bz-frow { display: grid; grid-template-columns: 72px 1fr; gap: 9px; align-items: baseline;
     padding: 2.5px 0; border-bottom: 1px solid var(--rule); }
   .bz-frow:last-child { border-bottom: 0; }
-  .bz-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: .05em;
+  .bz-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.2; }
   .bz-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
   .bz-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 11.5px; color: var(--ink); line-height: 1.2; white-space: pre-line; }
-  .bz-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 9.5px;
+  .bz-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10px;
     color: var(--ink-2); line-height: 1.22; }
   .bz-frow .v .vs.roman { font-style: normal; }
 
@@ -177,11 +177,11 @@
   .bz-field-head { display: flex; flex-direction: column; gap: 2px; align-items: center; }
   .bz-field-head .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--navy); text-align: center; }
-  .bz-field-head .n { font-family: "Space Mono", monospace; font-size: 9px; letter-spacing: .08em;
+  .bz-field-head .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-3); }
   .bz-fieldfig { margin: 0; width: 100%; display: flex; justify-content: center; }
   .bz-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .bz-fieldfig .fd-svg { width: 200px; height: auto; max-width: 100%; display: block; }
+  .bz-fieldfig .fd-svg { width: 200px; height: auto; max-width: 100%; display: block;  overflow: visible; }
 
   /* ---- BAY 2 : Stadium Context ---- */
   .bz-prose { margin-top: 2px; }
@@ -225,7 +225,7 @@
     color: var(--red); }
 
   .bz-ledger { padding: 4px 16px 6px; }
-  .bz-ledger-cap { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 9px;
+  .bz-ledger-cap { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
     letter-spacing: .16em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
   .bz-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
   .bz-box th, .bz-box td { text-align: center; font-size: 12.5px; font-weight: 400; padding: 3px 0;
@@ -266,7 +266,7 @@
   .bz-wcell .tx { display: flex; flex-direction: column; align-items: center; }
   .bz-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 17px; color: var(--ink); line-height: 1; }
   .bz-wcell.sm .wv { font-size: 12px; line-height: 1.16; }
-  .bz-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 8px; letter-spacing: .1em;
+  .bz-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
 
   #root { min-height: 100vh; }
@@ -293,6 +293,7 @@
 
   <script src="image-slot.js"></script>
   <script src="busch-data.js"></script>
+  <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="busch-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

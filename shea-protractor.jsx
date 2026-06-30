@@ -62,12 +62,12 @@
     const ntip = polar(C, PR + 14, deg);
     const back = polar(ntip, 10, deg + 180), hl = polar(back, 4.5, deg - 90), hr = polar(back, 4.5, deg + 90);
     const head = [ntip, hl, hr].map(p => p[0].toFixed(1) + "," + p[1].toFixed(1)).join(" ");
-    const degPos = polar(C, PR + 32, deg);
+    const bc = window.FieldLabels.bearingChip(C, PR + 16, deg, 28, 20);
     const nlab = polar(C, PR + 13, 0);
 
     const chips = [
       { p: outp(rot(lf, C, deg), C, 15), t: strip(props.lf) },
-      { p: rot(cf, C, deg), t: strip(props.cf) },
+      { p: window.FieldLabels.cfWallPoint(C, R, deg), t: strip(props.cf) },
       { p: outp(rot(rf, C, deg), C, 15), t: strip(props.rf) }
     ];
 
@@ -93,7 +93,7 @@
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: "#B5410F" }),
         e("circle", { cx: C[0], cy: C[1], r: 2.8, fill: accent }),
-        e(Chip, { x: degPos[0], y: degPos[1], text: deg + "\u00b0", size: 12, tone: "blue", padX: 6 }),
+        e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 12, tone: "blue", padX: 6 }),
         chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 12 }))
       )
     );
