@@ -23,7 +23,16 @@
   ];
 
   function Slot(props) {
+    var SRC = {
+      "dodger-v2-hero": "uploads/dodger-stadium.jpg",
+      "dodger-v2-s1": "uploads/dodger-stadium.jpg",
+      "dodger-v2-s2": "uploads/dodger-stadium.jpg",
+      "dodger-v2-s3": "uploads/dodger-stadium.jpg",
+      "dodger-v2-s4": "uploads/dodger-stadium.jpg",
+      "dodger-v2-s5": "uploads/dodger-stadium.jpg"
+    };
     return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
+      src: SRC[props.id], statefile: ".image-slots.state.json",
       style: { width: "100%", height: "100%" } });
   }
 
@@ -141,7 +150,7 @@
   function Spread() {
     const F = D.field, V = D.visit, g1 = D.games[0], g2 = D.games[1];
 
-    return e("div", { className: "dv2", "data-screen-label": "Dodger Stadium spread (v2)" },
+    return e("div", { className: "dv2", "data-screen-label": "Dodger Stadium spread" },
 
       /* ============== LEFT / AERIAL ============== */
       e("div", { className: "dv2-page dv2-left", "data-screen-label": "Dodger Stadium \u2014 aerial" },

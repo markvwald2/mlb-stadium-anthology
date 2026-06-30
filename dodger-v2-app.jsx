@@ -29,12 +29,12 @@
   function App() {
     return React.createElement(DesignCanvas, null,
       React.createElement(DCSection, {
-        id: "dodger-stadium-v2",
-        title: "Dodger Stadium \u2014 v2",
+        id: "dodger-stadium",
+        title: "Dodger Stadium",
         subtitle: "Pastel Terraces (1962 seat palette as page architecture) \u00b7 Blurb 13 \u00d7 11 in \u00b7 25.50 \u00d7 10.88 in spread \u00b7 7650 \u00d7 3264 px @ 300 DPI (shown at 100 ppi)"
       },
         React.createElement(DCArtboard, {
-          id: "dodger-stadium-v2-spread",
+          id: "dodger-stadium-spread",
           label: "Dodger Stadium \u2014 pastel-terrace seat-tier monograph, two mirrored game panels",
           width: 2550, height: 1088,
           style: { boxShadow: "none" }
