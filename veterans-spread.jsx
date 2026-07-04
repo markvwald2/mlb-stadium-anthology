@@ -12,11 +12,12 @@
 
   function Slot(p) { return e("image-slot", { id: p.id, placeholder: p.placeholder, shape: "rect" }); }
 
-  function fact(k, v) {
+  function fact(k, v, opts) {
     if (v == null || v === "") return null;
+    opts = opts || {};
     return e("div", { className: "vet-frow" },
-      e("div", { className: "k" }, k),
-      e("div", { className: "v" }, v));
+      e("div", { className: "k", style: opts.kStyle }, k),
+      e("div", { className: "v", style: opts.vStyle }, v));
   }
   function rcell(k, v, cls, sub) {
     return e("div", { className: "vet-rc" },
@@ -103,7 +104,7 @@
             e("div", { className: "sub" }, D.division)),
           e("div", { className: "vet-wells" },
             e("div", { className: "vet-well" },
-              e("div", { className: "box" }, e("img", { src: "assets/philadelphia-phillies-logo.svg", alt: "Phillies" })),
+              e("div", { className: "box" }, e("img", { src: "assets/phillies-script-p-v2.svg", alt: "Phillies" })),
               e("div", { className: "cap" }, "Phillies")),
             e("div", { className: "vet-well" },
               e("div", { className: "box" }, e("img", { src: "assets/nl-logo.png", alt: "National League" })),
@@ -120,11 +121,12 @@
           e("div", { className: "vet-ribbon" },
             rcell("Team", D.team_short, "red"),
             rcell("League", D.league, "blue sm"),
-            rcell("Classification", "Multipurpose Era", "", "Turf & Concrete"),
+            rcell("Classification", "Multipurpose Era"),
             rcell("Years Active", D.years_active),
             rcell("Visit Order", D.visit_order + " of 42"),
             rcell("Coordinates", D.coordinates, "mono"),
-            rcell("Capacity", D.capacity_current, "", "Originally " + D.capacity_opening)),
+            rcell("Capacity", e(React.Fragment, null, D.capacity_current,
+              e("span", { style: { color: "var(--ink-3)", fontWeight: 400, marginLeft: "6px" } }, "(orig. " + D.capacity_opening + ")")))),
 
           /* ---- STADIUM SECTION ---- */
           e("section", { className: "vet-stadium", "data-screen-label": "Stadium Section" },
@@ -138,9 +140,9 @@
             e("div", { className: "vet-bays" },
               e(Slot, { id: "vet-p1", placeholder: "Exterior fa\u00e7ade \u00b7 exposed precast concrete" }),
               e(Slot, { id: "vet-p2", placeholder: "Seating bowl" }),
-              e(Slot, { id: "vet-p3", placeholder: "Scoreboard" }),
+              e(Slot, { id: "vet-p5", placeholder: "Sports-complex context" }),
               e(Slot, { id: "vet-p4", placeholder: "Concourse" }),
-              e(Slot, { id: "vet-p5", placeholder: "Sports-complex context" })),
+              e(Slot, { id: "vet-p3", placeholder: "Scoreboard" })),
 
             /* facts + field instrument */
             e("div", { className: "vet-sbody" },
@@ -150,23 +152,22 @@
                   e("div", { className: "vet-fcol" },
                     fact("Opened", D.opening_day),
                     fact("Years Active", D.years_active),
-                    fact("Construction", D.construction_start),
+                    fact("Groundbreaking", D.construction_start, { kStyle: { letterSpacing: "0.7px" } }),
                     fact("All-Star Games", D.all_star_games),
                     fact("Final Game", D.final_game),
                     fact("Demolition", D.demolition_year),
                     fact("Status", D.status),
-                    fact("Renovations", D.renovations)),
+                    fact("Surface", D.surface_type + " \u2014 " + D.surface, { vStyle: { letterSpacing: "-0.6px" } }),
+                    fact("Era", D.classification_era)),
                   e("div", { className: "vet-fcol" },
-                    fact("Surface", D.surface_type + " \u2014 " + D.surface),
                     fact("Architect", D.architect),
                     fact("Type", D.stadium_type_facts),
-                    fact("Style", D.architectural_style),
-                    fact("Roof", D.roof_type),
-                    fact("Financing", D.financing)),
-                  e("div", { className: "vet-fcol" },
+                    fact("Style", D.architectural_style, { vStyle: { letterSpacing: "-0.7px" } }),
+                    fact("Financing", D.financing),
                     fact("Fa\u00e7ade", D.facade),
-                    fact("Era", D.classification_era),
-                    fact("Location", D.location),
+                    fact("Location", D.location)),
+                  e("div", { className: "vet-fcol" },
+                    fact("Renovations", D.renovations),
                     fact("Elevation", D.elevation),
                     fact("Coordinates", D.coordinates),
                     e("div", { className: "vet-frow" },
@@ -178,7 +179,7 @@
                 e("div", { className: "vet-colhdr" }, "Field Plan"),
                 Prot ? e(Prot, { lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
                   orientation: D.orientation, degrees: D.orientation_degrees }) : null,
-                e("div", { className: "vet-instr-cap" }, "Symmetrical Bowl \u00b7 " + D.orientation + " " + D.orientation_degrees + "\u00b0")),
+                e("div", { className: "vet-instr-cap", style: { letterSpacing: 0 } }, "Symmetrical Bowl", e("br"), D.orientation + " " + D.orientation_degrees + "\u00b0")),
 
               e("div", { className: "vet-field-zone" },
                 e("div", { className: "vet-colhdr" }, "Stadium Lineage"),

@@ -18,7 +18,7 @@
   function Slot(props) {
     return e("image-slot", Object.assign({
       id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
-    }, props.style ? { style: props.style } : {}));
+    }, props.src ? { src: props.src } : {}, props.style ? { style: props.style } : {}));
   }
 
   function SecHead(props) {
@@ -28,11 +28,12 @@
   }
 
   function factRow(row, i) {
+    var vsStyle = row[0] === "Location" ? { letterSpacing: "-0.6px" } : null;
     return e("div", { className: "st-frow", key: i },
       e("div", { className: "k" }, row[0]),
       e("div", { className: "v" },
         e("span", { className: "vm" }, row[1]),
-        row[2] ? e("span", { className: "vs" }, row[2]) : null));
+        row[2] ? e("span", { className: "vs", style: vsStyle }, row[2]) : null));
   }
 
   function wxCell(value, label) {
@@ -79,17 +80,12 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "st-page st-left", "data-screen-label": "SunTrust Park \u2014 hero" },
         e("div", { className: "st-hero-slot" },
-          e(Slot, { id: "suntrust-hero", placeholder: "Drop the SunTrust Park hero \u2014 high aerial of the open-air bowl embedded in The Battery: red-brick & precast facade, steel seating-bowl canopy, plaza frontage, structured parking, freeway-edge arrival" })),
+          e(Slot, { id: "suntrust-hero", src: "images/suntrust/hero.jpg", placeholder: "Drop the SunTrust Park hero \u2014 high aerial of the open-air bowl embedded in The Battery: red-brick & precast facade, steel seating-bowl canopy, plaza frontage, structured parking, freeway-edge arrival" })),
         e("div", { className: "st-hero-scrim" }),
 
         e("img", { className: "st-hero-logo", src: "assets/atlanta-braves-logo.svg", alt: "Atlanta Braves" }),
         e("div", { className: "st-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
         e("div", { className: "st-spine" }, "EST. " + D.est + "  \u00b7  THE BATTERY ATLANTA  \u00b7  VISIT " + D.visit_order),
-
-        e("div", { className: "st-roofline" },
-          e("span", { className: "tk" }), e("span", { className: "ln" }),
-          e("span", { className: "cap" }, "OPEN-AIR \u00b7 ANCHOR TENANT \u00b7 THE BATTERY ATLANTA"),
-          e("span", { className: "ln" }), e("span", { className: "tk" })),
 
         e("div", { className: "st-hero-title" },
           e("div", { className: "st-eyebrow" }, "EDGE-CITY BALLPARK \u00b7 CUMBERLAND, GEORGIA"),
@@ -128,13 +124,13 @@
 
           /* ---- upper district photo row: five 4:3 wells, no captions ---- */
           e("div", { className: "st-pstrip" },
-            ["Aerial / exterior \u2014 red brick, precast stone & steel canopy",
-             "Seating bowl \u2014 open-air, field & canopy rhythm",
-             "Scoreboard / videoboard",
-             "The Battery \u2014 plaza storefront & public realm",
-             "Construction \u2014 steel frame, c. 2016"].map(function (ph, i) {
+            [["images/suntrust/p1.jpg", "Aerial / exterior \u2014 red brick, precast stone & steel canopy"],
+             ["images/suntrust/p2.jpg", "Seating bowl \u2014 open-air, field & canopy rhythm"],
+             ["images/suntrust/p3.jpg", "Scoreboard / videoboard"],
+             ["images/suntrust/p4.jpg", "The Battery \u2014 plaza storefront & public realm"],
+             ["images/suntrust/p5.jpg", "Construction \u2014 steel frame, c. 2016"]].map(function (row, i) {
               return e("div", { className: "st-pcell", key: i },
-                e(Slot, { id: "st-strip-" + (i + 1), placeholder: ph }));
+                e(Slot, { id: "st-strip-" + (i + 1), src: row[0], placeholder: row[1] }));
             })),
 
           /* ---- parcel grid: facts | visit & game | the Battery site plan ---- */
@@ -177,8 +173,7 @@
               e(SecHead, { title: "Field & Orientation", note: D.field.orientation + " " + D.field.degrees + "\u00b0 \u00b7 OPEN-AIR BOWL" }),
               e("figure", { className: "st-fieldfig" },
                 Protractor ? e(Protractor, { lf: D.field.left_field, cf: D.field.center_field,
-                  rf: D.field.right_field, orientation: D.field.orientation, degrees: D.field.degrees }) : null,
-                e("figcaption", null, "Field axis \u00b7 " + D.field.orientation + " " + D.field.degrees + "\u00b0 \u00b7 distances in feet")),
+                  rf: D.field.right_field, orientation: D.field.orientation, degrees: D.field.degrees }) : null),
               e("div", { className: "st-logos" },
                 e("div", { className: "st-logocell" }, e("img", { src: "assets/atlanta-braves-logo.svg", alt: "Atlanta Braves" })),
                 e("div", { className: "st-logocell" }, e("img", { src: "assets/mlb-logo.svg", alt: "Major League Baseball" })),

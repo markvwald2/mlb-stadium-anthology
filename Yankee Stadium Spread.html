@@ -110,13 +110,13 @@
   /* =================== RIGHT / LIMESTONE CIVIC SHEET =================== */
   .yk-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
     background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
-  .yk-rp { position: absolute; top: 58px; left: 40px; right: 40px; bottom: 40px; z-index: 2; display: flex; flex-direction: column; }
+  .yk-rp { position: absolute; top: 38px; left: 40px; right: 40px; bottom: 40px; z-index: 2; display: flex; flex-direction: column; }
 
   /* ---- frieze crown bled flush to the top & sides of the right page ---- */
-  .yk-crown { position: absolute; top: -45.5px; left: -40px; width: 1275px !important; height: 25px;
+  .yk-crown { position: absolute; top: -25.5px; left: -40px; width: 1275px !important; height: 25px;
     z-index: 3; display: block; }
   /* solid navy beam fill across the 12.5px top bleed of the right page */
-  .yk-crown-bleed { position: absolute; top: -58px; left: -40px; width: 1275px; height: 13px; z-index: 3; background: #0C2340; }
+  .yk-crown-bleed { position: absolute; top: -38px; left: -40px; width: 1275px; height: 13px; z-index: 3; background: #0C2340; }
 
   /* ---- sheet title-block ---- */
   .yk-head { display: flex; align-items: flex-end; justify-content: space-between;
@@ -135,15 +135,15 @@
   .yk-head .hr .v.dem { color: var(--brass); }
 
   /* ---- TIER 1 : facade-bay photo strip ---- */
-  .yk-bays { flex: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 6px; }
+  .yk-bays { flex: none; display: grid; grid-template-columns: 1fr 1fr 0.46fr 1fr 1fr; gap: 12px; margin-top: 6px; }
   .yk-bay { position: relative; display: flex; flex-direction: column; }
   .yk-bay .arch { height: 13px; width: 100%; display: block; flex: none; }
-  .yk-bay .frame { position: relative; height: 116px; border: 1px solid var(--rule-2);
+  .yk-bay .frame { position: relative; height: 150px; border: 1px solid var(--rule-2);
     overflow: hidden; background: var(--paper-2); }
   .yk-bay .frame image-slot { width: 100%; height: 100%; display: block; }
 
   /* ---- metadata ribbon (civic datum) ---- */
-  .yk-ribbon { flex: none; display: grid; grid-template-columns: 1fr 1.05fr 1.55fr 0.82fr 0.73fr 1.12fr 1.18fr; margin-top: 11px;
+  .yk-ribbon { flex: none; display: grid; grid-template-columns: 1fr 1.05fr 1.55fr 0.82fr 0.73fr 1.12fr 1.18fr; margin-top: 8px;
     border-top: 1px solid var(--navy); border-bottom: 1px solid var(--rule-2); }
   .yk-rb { padding: 7px 13px; border-left: 1px solid var(--rule); }
   .yk-rb:first-child { border-left: 0; padding-left: 2px; }
@@ -154,7 +154,7 @@
   .yk-rb .v.sm { font-size: 12px; }
 
   /* ---- TIER 2 : the monument (facts | instruments) ---- */
-  .yk-monument { flex: none; margin-top: 11px; }
+  .yk-monument { flex: none; margin-top: 8px; }
   .yk-parcel { display: flex; align-items: center; gap: 12px; flex: none; }
   .yk-parcel .badge { width: 28px; height: 28px; background: var(--navy); color: #F4F0E5; flex: none;
     display: flex; align-items: center; justify-content: center;
@@ -167,16 +167,16 @@
     text-transform: uppercase; color: var(--ink-2); }
   .yk-parcel .ribbon b { color: var(--navy); font-weight: 600; }
 
-  .yk-mgrid { display: grid; grid-template-columns: 1.9fr 0.6fr 1.0fr; gap: 0; margin-top: 9px; }
+  .yk-mgrid { display: grid; grid-template-columns: 1.9fr 0.6fr 1.0fr; gap: 0; margin-top: 6px; }
   /* facts table */
   .yk-facts { padding-right: 20px; border-right: 1px solid var(--rule); }
   .yk-ftable { width: 100%; border-collapse: collapse; }
   .yk-ftable tr { border-bottom: 1px solid var(--rule); }
   .yk-ftable tr:last-child { border-bottom: 0; }
-  .yk-ftable th { text-align: left; vertical-align: baseline; width: 100px; padding: 2px 10px 2px 0;
+  .yk-ftable th { text-align: left; vertical-align: baseline; width: 100px; padding: 1px 10px 1px 0;
     font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); }
-  .yk-ftable td { vertical-align: baseline; padding: 2px 0; font-family: "Spectral", serif;
+  .yk-ftable td { vertical-align: baseline; padding: 1px 0; font-family: "Spectral", serif;
     font-size: 12px; line-height: 1.34; color: var(--ink); }
   .yk-ftable td b { color: var(--navy); font-weight: 600; }
   .yk-ftable td .sub { color: var(--ink-3); }
@@ -186,19 +186,20 @@
     flex-direction: column; align-items: center; gap: 9px; text-align: center; }
   .yk-fieldcol .hd { align-self: flex-start; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
-  .yk-fieldcol svg.pro { width: 120px; height: auto; }
-  .yk-dimrow { display: flex; gap: 14px; }
-  .yk-dimrow .chip { display: flex; flex-direction: column; align-items: center; }
+  .yk-fieldcol svg.pro { width: 150px; height: auto; }
+  .yk-dimrow { display: flex; gap: 13px; }
+  .yk-dimrow .chip { display: flex; flex-direction: row; align-items: baseline; gap: 5px; }
   .yk-dimrow .chip .n { font-family: "Space Mono", monospace; font-weight: 700; font-size: 14px; color: var(--ink); }
   .yk-dimrow .chip .l { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
-    letter-spacing: .14em; color: var(--ink-3); margin-top: 1px; }
+    letter-spacing: .14em; color: var(--ink-3); }
   .yk-fieldnote { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 12px;
     letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 
   /* lifecycle ladder (now its own column) */
   .yk-life { padding-left: 18px; }
   .yk-life .hd { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
-    letter-spacing: .14em; text-transform: uppercase; color: var(--navy); margin-bottom: 7px; }
+    letter-spacing: .14em; text-transform: uppercase; color: #E9E3D3; margin-bottom: 7px;
+    background-color: #0C2340; padding: 4px 8px; }
   .yk-liferow { display: grid; grid-template-columns: 64px 1fr; align-items: baseline; gap: 10px;
     padding: 2.5px 0; border-bottom: 1px dotted var(--rule-2); }
   .yk-liferow:last-child { border-bottom: 0; }
@@ -208,10 +209,14 @@
   .yk-liferow .lab .n { color: var(--ink-3); font-weight: 400; letter-spacing: .04em; }
 
   /* Honors — All-Star + World Series as one decorative year-rule */
-  .yk-honors { flex: none; margin-top: 9px; padding: 7px 0; border-top: 1px solid var(--navy);
-    border-bottom: 1px solid var(--rule-2); display: flex; align-items: baseline; gap: 16px; white-space: nowrap; }
+  .yk-honors { flex: none; margin-top: 6px; padding: 7px 0; border-top: 1px solid var(--navy);
+    border-bottom: 1px solid var(--rule-2); display: flex; align-items: baseline; gap: 10px; white-space: nowrap; }
   .yk-honors .hgroup { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
-  .yk-honors .hgroup:last-child { flex: 1 1 auto; }
+  .yk-honors .hgroup:last-child { flex: 0 1 auto; min-width: 0; }
+  /* World Series: all years condensed onto ONE row via tight tracking so the
+     full honors rule fits on a single line within the trim */
+  .yk-honors .hgroup:last-child .yk-ws-grid { flex-wrap: nowrap; justify-content: flex-start;
+    gap: 0 2px; flex: 0 1 auto; }
   .yk-honors .hlab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--navy); flex: none; }
   .yk-honors .hsep { align-self: stretch; width: 1px; background: var(--rule-2); flex: none; }
@@ -229,16 +234,17 @@
   .yk-ctxh .ln { flex: 1; height: 1px; background: var(--rule); }
   .yk-ctxh .ln.nav { background: var(--navy); height: 2px; flex: 0 0 30px; }
   .yk-ctx { position: relative; z-index: 1; flex: 1 1 auto; min-height: 0;
-    column-count: 2; column-gap: 40px; column-fill: balance;
+    column-count: 3; column-gap: 32px; column-fill: auto;
     column-rule: 1px solid var(--rule); }
-  .yk-ctx p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 13.5px; line-height: 1.5;
+  .yk-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 18.7px;
+    letter-spacing: 0px;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .yk-ctx p:last-child { margin-bottom: 0; }
   .yk-ctx p:first-child::first-letter { font-family: "Oswald", sans-serif; font-weight: 700;
     font-size: 47px; float: left; line-height: .82; padding: 4px 8px 0 0; color: var(--navy); }
 
   /* ---- VISIT SECTION : night / illuminated navy band ---- */
-  .yk-visit { flex: none; margin-top: 11px; background: var(--navy); color: #E7EAF0;
+  .yk-visit { flex: none; margin-top: 10px; background: var(--navy); color: #E7EAF0;
     position: relative; overflow: hidden; }
   /* fine pinstripe ruling inside the navy band — restrained */
   .yk-visit::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
@@ -308,8 +314,24 @@
   .yk-wx .w .lab { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: #8C9AB4; }
 
+  /* pitching / decision — single-line rows (label + value inline) */
+  .yk-pitchline { display: flex; align-items: baseline; gap: 12px; margin-top: 9px; }
+  .yk-pitchline:first-of-type { margin-top: 12px; }
+  .yk-pitchline .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: .15em; text-transform: uppercase; color: #8C9AB4; flex: none; white-space: nowrap; }
+  .yk-pitchline .v { font-family: "Spectral", serif; font-size: 12px; color: #E7EAF0; line-height: 1.3; }
+  .yk-pitchline .v b { color: var(--brass-2); font-weight: 600; }
+
+  /* game-time conditions — horizontal strip anchored to the base of the result column */
+  .yk-wxstrip { display: flex; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 11px;
+    border-top: 1px solid rgba(255,255,255,.13); }
+  .yk-wxstrip .w { display: flex; flex-direction: column; gap: 2px; }
+  .yk-wxstrip .w .val { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: #FFFFFF; line-height: 1; }
+  .yk-wxstrip .w .lab { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 12px; letter-spacing: .1em;
+    text-transform: uppercase; color: #8C9AB4; }
+
   /* footer colophon */
-  .yk-foot { flex: none; display: flex; align-items: center; gap: 14px; margin-top: 9px;
+  .yk-foot { flex: none; display: flex; align-items: center; gap: 14px; margin-top: 6px;
     font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .04em; color: var(--ink-3); }
   .yk-foot .plate { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }

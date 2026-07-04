@@ -292,6 +292,7 @@
           e("div", { className: "yk-bays" },
             bay("yk-b1", "Limestone & concrete exterior elevation along 161st Street"),
             bay("yk-b2", "Copper / painted concrete frieze detail at the upper-deck roofline"),
+            bay("yk-bp", "Portrait \u2014 facade column or grandstand tier"),
             bay("yk-b3", "Triple-deck grandstand interior and the bowl"),
             bay("yk-b5", "Archival aerial \u2014 the monument in the South Bronx grid")
           ),
@@ -324,8 +325,8 @@
                     factRow("Architect", e("b", null, D.architect)),
                     factRow("Style", D.architectural_style),
                     factRow("Structure", D.facade_material),
-                    factRow("Surface", D.playing_surface + " \u00b7 Elev. " + D.elevation),
-                    factRow("Lineage", e(React.Fragment, null, "Hilltop Park (1903\u20131912); Polo Grounds (1913\u20131922)", e("span", { className: "sub" }, "  \u2192  "), e("b", null, "Yankee Stadium (1923-2008)"), e("span", { className: "sub" }, "  \u2192  "), "Yankee Stadium (2009- present)")),
+                    factRow("Surface", D.playing_surface),
+                    factRow("Lineage", e(React.Fragment, null, "Hilltop Park (1903\u2013\u201912); Polo Grounds (1913\u2013\u201922)", e("span", { className: "sub" }, "  \u2192  "), e("b", null, "Yankee Stadium (1923-2008)"), e("span", { className: "sub" }, "  \u2192  "), "Yankee Stadium (2009- )")),
                     factRow("Cost", e(React.Fragment, null, D.stadium_cost, e("span", { className: "sub" }, " (" + D.stadium_cost_adjusted + " adj.) \u00b7 " + D.financing_method.replace("Privately financed by Yankees owners ", "Privately financed, ").replace(" and ", " & ")))),
                     factRow("Address", D.address),
                     factRow("Renovations", D.renovations)))),
@@ -337,8 +338,7 @@
                 e("div", { className: "yk-dimrow" },
                   dim(D.left_field_distance, "LF"),
                   dim(D.center_field_distance, "CF"),
-                  dim(D.right_field_distance, "RF")),
-                e("div", { className: "yk-fieldnote" }, "Oriented " + D.orientation + " \u00b7 bearing " + D.orientation_degrees + "\u00b0")),
+                  dim(D.right_field_distance, "RF"))),
 
               /* lifecycle */
               e("div", { className: "yk-life" },
@@ -383,32 +383,29 @@
                 e("div", { className: "yk-scorerow" + (awayWin ? " win" : "") },
                   e("div", { className: "tmwrap" },
                     e("img", { className: "logo", src: "assets/detroit-tigers-logo.svg", alt: "" }),
-                    e("div", { className: "tm" }, D.away_team_abbreviation)),
+                    e("div", { className: "tm" }, "Tigers")),
                   e("div", { className: "sc" }, D.box.away.r)),
                 e("div", { className: "yk-scorerow" + (!awayWin ? " win" : "") },
                   e("div", { className: "tmwrap" },
                     e("img", { className: "logo", src: "assets/new-york-yankees-logo.svg", alt: "" }),
-                    e("div", { className: "tm" }, D.home_team_abbreviation)),
+                    e("div", { className: "tm" }, "Yankees")),
                   e("div", { className: "sc" }, D.box.home.r)),
-                e("div", { className: "venue" }, D.away_team + " at " + D.home_team)),
+                e("div", { className: "yk-wxstrip" },
+                  wx(D.temperature, "Temp"),
+                  wx(D.conditions, "Sky"),
+                  wx(D.wind, "Wind"),
+                  wx(D.humidity, "Humidity"))),
 
               /* line score + pitching + game-time conditions */
               e("div", { className: "yk-vcol" },
                 e("div", { className: "yk-vh" }, "Line Score \u00b7 " + D.innings_played + " Innings"),
                 LineScore(D.box),
-                e("div", { className: "yk-botrow" },
-                  e("div", { className: "yk-pitch" },
-                    e("div", { className: "yk-prow" },
-                      e("div", { className: "k" }, "Pitching Matchup"),
-                      e("div", { className: "v" }, D.pitching_matchup)),
-                    e("div", { className: "yk-prow" },
-                      e("div", { className: "k" }, "Decision"),
-                      e("div", { className: "v" }, e("b", null, "W: " + D.winning_pitcher), "  /  L: " + D.losing_pitcher))),
-                  e("div", { className: "yk-wx" },
-                    wx(D.temperature, "Temp"),
-                    wx(D.conditions, "Sky"),
-                    wx(D.wind, "Wind"),
-                    wx(D.humidity, "Humidity")))),
+                e("div", { className: "yk-pitchline" },
+                  e("span", { className: "k" }, "Pitching Matchup"),
+                  e("span", { className: "v" }, D.pitching_matchup)),
+                e("div", { className: "yk-pitchline" },
+                  e("span", { className: "k" }, "Decision"),
+                  e("span", { className: "v" }, e("b", null, "W: " + D.winning_pitcher), "  /  L: " + D.losing_pitcher))),
 
               /* visit info */
               e("div", { className: "yk-vcol" },
@@ -425,7 +422,7 @@
           e("div", { className: "yk-foot" },
             e("span", { className: "plate" }, "Bronx Civic Frieze"),
             e("span", { className: "sep" }, "\u2014"),
-            e("span", null, "Yankee Stadium, 161st St & River Ave \u00b7 ", D.coordinates),
+            e("span", null, "Yankee Stadium, 161st St & River Ave \u00b7 Elevation 55 feet"),
             e("span", { className: "end" }, "Ruth-Era Triple-Deck Monument"))
         )
       )
@@ -437,8 +434,8 @@
     }
     function dim(v, l) {
       return e("div", { className: "chip" },
-        e("div", { className: "n" }, (v || "").replace(" ft", "")),
-        e("div", { className: "l" }, l));
+        e("span", { className: "l" }, l),
+        e("span", { className: "n" }, (v || "").replace(" ft", "")));
     }
     function wx(val, lab) {
       return e("div", { className: "w" }, e("div", { className: "val" }, val), e("div", { className: "lab" }, lab));

@@ -89,8 +89,8 @@
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 90);
     const arc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
     const ntip = polar(C, PR + 4, deg);
-    const nlab = polar(C, PR + 13, 0);
-    const elab = polar(C, PR + 16, 90);
+    const nlab = polar(C, PR + 9, 0);
+    const elab = polar(C, PR + 11, 90);
     const dlab = polar(C, PR + 22, deg);
 
     return e("svg", { viewBox: "6 0 180 132", className: props.className, role: "img",
@@ -110,9 +110,7 @@
       e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink3, strokeWidth: 0.9, strokeDasharray: "2.5 2.5" }),
       e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: brass, strokeWidth: 2, strokeLinecap: "round" }),
       e("circle", { cx: ntip[0], cy: ntip[1], r: 2.6, fill: brass }),
-      e("circle", { cx: C[0], cy: C[1], r: 2.4, fill: ink }),
-      e("text", { x: dlab[0], y: dlab[1] + 4, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "12px", fill: brass } }, deg + "\u00b0")
+      e("circle", { cx: C[0], cy: C[1], r: 2.4, fill: ink })
     );
   }
 

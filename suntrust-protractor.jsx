@@ -86,8 +86,8 @@
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: navy, strokeWidth: 2.1, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: scarlet }),
         e("circle", { cx: C[0], cy: C[1], r: 3, fill: navy }),
-        e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0 " + orientation, size: 12, tone: "accent", padX: 7 }),
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 13 }))
+        e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0 " + orientation, size: 14, tone: "accent", padX: 7 }),
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 14 }))
       )
     );
   }

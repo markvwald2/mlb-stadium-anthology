@@ -49,11 +49,11 @@ window.SUNTRUST = {
     ["Roof", "Open air"],
     ["Surface", "Natural grass", "Seashore Paspalum Platinum TE"],
     ["Capacity", "41,108", "41,149 opening"],
-    ["Facade", "Red brick masonry, precast stone & steel", "metal seating-bowl canopy"],
+    ["Facade", "Red brick masonry with precast stone, steel structure, and large metal seating-bowl canopy"],
     ["Elevation", "1,010 ft"],
     ["Name History", "SunTrust Park (2017\u20132019)\nTruist Park (2020\u2013present)"],
-    ["Preceded By", "Atlanta\u2013Fulton County Stadium\nTurner Field"],
-    ["Address", "755 Battery Avenue SE", "Atlanta, GA 30339"]
+    ["Preceded By", "Atlanta\u2013Fulton County Stadium (1966\u20131996)\nTurner Field (1997\u20132016)"],
+    ["Address", "755 Battery Avenue SE, Atlanta, GA 30339"]
   ],
 
   // ---- Development & Life Cycle parcel (the economics / lifecycle) ----
@@ -63,7 +63,7 @@ window.SUNTRUST = {
     ["Setting", "Open-air ballpark integrated with", "mixed-use entertainment district"],
     ["Construction Start", "Sep 16, 2014"],
     ["Opening Day", "Apr 14, 2017"],
-    ["Original Cost", "$622 million", "$818 million adjusted"],
+    ["Original Cost", "$622 million", "$818 million adj."],
     ["Financing", "Public\u2013private partnership", "Cobb County / Cobb-Marietta authority bonds and Cumberland CID support funded part of the stadium; the Braves funded the balance and The Battery development"],
     ["Renovations", "Ongoing technology, hospitality, premium seating & entertainment-district upgrades"],
     ["Location", "Urban / Suburban", "entertainment district"]
@@ -123,7 +123,7 @@ window.SUNTRUST = {
   stadium_context: [
     "SunTrust Park, now Truist Park, was built because the Braves wanted a different kind of control than Turner Field could offer. Turner Field had been adapted from Olympic infrastructure and remained tied to a city-owned stadium model. The move to Cumberland gave the franchise a baseball-only park integrated with a surrounding commercial district, closer to a large share of its suburban ticket base and more directly connected to year-round development revenue.",
     "The site decision is the story. Instead of doubling down on downtown Atlanta, the Braves moved to an edge-city setting near the regional highway network, where the ballpark and mixed-use district could be planned together. That choice made the stadium less a standalone civic venue and more a real-estate platform. Baseball became the anchor for restaurants, offices, hospitality, structured parking, and controlled pedestrian activity.",
-    "The design bargain was powerful but revealing. The Braves gained a contemporary park with retro-classic cues and a surrounding entertainment district that could generate value beyond eighty-one home games. They also accepted a more privatized, managed form of urbanism, where the stadium experience is carefully concentrated around the commercial edges of the development. Ongoing technology, hospitality, premium seating, and district upgrades are part of the same logic.",
-    "SunTrust Park matters because it shows where the post-Camden Yards movement went once the ballpark itself was no longer enough. The question was not only how to design a good venue, but how to own and monetize the land around it. In the anthology, it marks a shift from ballpark-as-building to ballpark-as-district."
+    "The design bargain was powerful but revealing. The Braves gained a contemporary park with retro-classic cues and a surrounding entertainment district that could generate value beyond 81 home games. They also accepted a more privatized, managed form of urbanism, where the stadium experience is carefully concentrated around the commercial edges of the development. Ongoing technology, hospitality, premium seating, and district upgrades are part of the same logic, reinforcing the district's year-round role.",
+    "SunTrust Park matters because it shows where the post-Camden Yards movement went once the ballpark itself was no longer enough. The question was not only how to design a good venue, but how to own and monetize the land around it. In the anthology, it marks a shift from ballpark-as-building to ballpark-as-district. That distinction defines an important new chapter in the evolution of modern baseball architecture."
   ]
 };

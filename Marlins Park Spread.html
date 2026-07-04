@@ -103,6 +103,7 @@
   .mla-name {
     margin: 0; font-family: "Saira Condensed", "Oswald", sans-serif; font-weight: 700;
     font-size: 158px; line-height: .80; letter-spacing: .045em; text-transform: uppercase;
+    white-space: nowrap;
     color: #F2F6F6; -webkit-text-fill-color: #F2F6F6;
     text-shadow: 0 3px 26px rgba(0,0,0,.45);
   }
@@ -117,6 +118,7 @@
 
   .mla-marks { position: absolute; left: 60px; bottom: 66px; z-index: 5;
     display: flex; align-items: center; gap: 16px; white-space: nowrap; }
+  .mla-hero-city { position: absolute; left: 60px; bottom: 60px; z-index: 5; margin-top: 0; }
   .mla-marks .mlb { height: 42px; width: auto; display: block; }
   .mla-marks .div { width: 1px; height: 28px; background: rgba(228,238,238,.4); }
   .mla-marks .lg { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 15px;
@@ -126,8 +128,8 @@
 
   /* ============ RIGHT PAGE ============ */
   /* 42px left padding clears the 0.25in safe inset + gutter (content starts x=1317). */
-  .mla-rp { position: absolute; inset: 0; padding: 40px 38px 38px 42px;
-    display: flex; flex-direction: column; gap: 15px; z-index: 2; }
+  .mla-rp { position: absolute; inset: 0; padding: 38px 38px 38px 42px;
+    display: flex; flex-direction: column; gap: 11px; z-index: 2; }
 
   /* glass panel base */
   .panel { position: relative; background:
@@ -139,7 +141,7 @@
 
   /* ---- roof-cassette photo bay ---- */
   .mla-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; flex: none; }
-  .mla-cassette { position: relative; margin: 0; height: 172px; padding: 8px;
+  .mla-cassette { position: relative; margin: 0; height: 174px; padding: 8px;
     background: linear-gradient(180deg, #F8FAFA, #EBF0EF); border: 1px solid #AFBFBF;
     box-shadow: 0 1px 0 rgba(255,255,255,.85) inset; }
   .mla-cassette::before { content: ""; position: absolute; left: 8px; right: 8px; top: 3px; height: 2px;
@@ -170,9 +172,9 @@
 
   /* ---- three-column body ---- */
   .mla-body { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1.08fr; gap: 14px; min-height: 0; }
-  .mla-col { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding: 13px 15px 14px; }
-  .mla-col.stack { padding: 0; gap: 12px; }
-  .mla-subpanel { padding: 13px 15px 14px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .mla-col { display: flex; flex-direction: column; gap: 9px; min-width: 0; padding: 11px 15px 11px; }
+  .mla-col.stack { padding: 0; gap: 9px; }
+  .mla-subpanel { padding: 8px 15px 8px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .mla-subpanel.fieldbox { margin-top: auto; gap: 0; }
   .mla-col.visit, .mla-subpanel.visit { background:
       linear-gradient(180deg, rgba(214,231,233,.5), rgba(196,222,224,.28) 42%, rgba(176,210,213,.30)); }
@@ -206,6 +208,7 @@
   .mla-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.16; }
   .mla-frow .v { display: flex; flex-direction: column; gap: 2px; }
+  .mla-frow .v.vinline { flex-direction: row; align-items: baseline; gap: 8px; flex-wrap: wrap; }
   .mla-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.24; white-space: pre-line; }
   .mla-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12px;
     color: var(--ink-2); line-height: 1.28; }
@@ -213,10 +216,10 @@
   /* field diagram instrument */
   .mla-fieldfig { margin: 4px 0 0; display: flex; justify-content: center; }
   .mla-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .mla-fieldfig .fd-svg { width: 150px; height: auto; max-width: 100%; display: block; overflow: visible; }
+  .mla-fieldfig .fd-svg { width: 205px; height: auto; max-width: 100%; display: block; overflow: visible; }
 
   /* weather — 2 x 2 */
-  .mla-weather { display: grid; grid-template-columns: 1fr 1fr; gap: 11px 12px; }
+  .mla-weather { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 12px; }
   .mla-wcell { display: flex; align-items: center; gap: 10px; }
   .mla-wcell .mla-wico { flex: none; }
   .mla-wcell .tx { display: flex; flex-direction: column; }
@@ -227,7 +230,7 @@
 
   /* line score */
   .mla-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; margin-top: 1px; }
-  .mla-box th, .mla-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 3.5px 0;
+  .mla-box th, .mla-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 2px 0;
     color: var(--ink); border-bottom: 1px solid var(--rule); }
   .mla-box thead th { color: var(--ink-3); font-weight: 500; font-size: 12px; border-bottom: 1.5px solid var(--ink); }
   .mla-box td.tm, .mla-box th.tm { text-align: left; font-weight: 700; font-size: 12px; letter-spacing: .06em;
@@ -257,8 +260,16 @@
   .mla-col.col3.glass { background:
       linear-gradient(160deg, rgba(255,255,255,.74), rgba(232,243,243,.44) 48%, rgba(202,226,227,.36)); }
   .mla-prose { columns: 1; }
-  .mla-prose p { margin: 0 0 11px; font-family: "Spectral", serif; font-size: 13px; line-height: 1.80;
-    color: var(--ink); text-align: justify; hyphens: auto; }
+  .mla-prose p { margin: 0 0 8px; font-family: "Spectral", serif; font-size: 13.5px; line-height: 1.47;
+    color: var(--ink); text-align: justify; hyphens: auto; letter-spacing: 0.12px; }
+  .mla-col3marks { margin-top: auto; padding-top: 11px; border-top: 1px solid var(--rule-strong);
+    display: flex; align-items: center; gap: 14px; white-space: nowrap; }
+  .mla-col3marks .mlb { height: 38px; width: auto; display: block; }
+  .mla-col3marks .div { width: 1px; height: 26px; background: var(--rule-strong); }
+  .mla-col3marks .lg { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 14px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); }
+  .mla-col3marks .dv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--caliente-deep); }
   .mla-prose p:last-child { margin-bottom: 0; }
 
   #root { min-height: 100vh; }

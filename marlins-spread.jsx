@@ -27,11 +27,12 @@
   }
 
   function factRow(row, i) {
+    var opts = (row[3] && typeof row[3] === "object") ? row[3] : {};
     return e("div", { className: "mla-frow", key: i },
       e("div", { className: "k" }, row[0]),
-      e("div", { className: "v" },
+      e("div", { className: "v" + (opts.inline ? " vinline" : "") },
         e("span", { className: "vm" }, row[1]),
-        row[2] ? e("span", { className: "vs" }, row[2]) : null
+        row[2] ? e("span", { className: "vs", style: opts.vsStyle || null }, row[2]) : null
       )
     );
   }
@@ -133,23 +134,16 @@
           e("div", { className: "mla-deco-rule top" },
             e("span", { className: "step" }), e("span", { className: "l" })
           ),
-          e("h1", { className: "mla-name" }, "MARLINS"),
-          e("h1", { className: "mla-name" }, "PARK"),
+          e("h1", { className: "mla-name" }, "MARLINS PARK"),
           e("div", { className: "mla-deco-rule bot" },
             e("span", { className: "l" }), e("span", { className: "step" })
-          ),
-          e("div", { className: "mla-sub" },
-            e("span", { className: "bar" }),
-            e("span", { className: "txt" }, D.city + ", " + D.state)
           )
         ),
 
-        // colophon, bottom-left
-        e("div", { className: "mla-marks" },
-          e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-          e("span", { className: "div" }),
-          e("span", { className: "lg" }, D.league),
-          e("span", { className: "dv" }, D.division_short)
+        // city/state, bottom-left
+        e("div", { className: "mla-sub mla-hero-city" },
+          e("span", { className: "bar" }),
+          e("span", { className: "txt" }, D.city + ", " + D.state)
         )
       ),
 
@@ -212,9 +206,8 @@
                   e("span", null, D.game_duration)
                 ),
                 e("div", { className: "mla-dec" },
-                  e("p", null, e("b", null, "SP:"), " ", e("i", null, D.away_starter), " (" + D.box.away.abbr + ") \u00b7 ", e("i", null, D.home_starter), " (" + D.box.home.abbr + ")"),
-                  e("p", null, e("b", null, "W:"), " ", e("i", null, D.winning_pitcher), " (" + D.winning_team + ") \u00b7 ", e("b", null, "L:"), " ", e("i", null, D.losing_pitcher), " (" + D.losing_team + ")"),
-                  e("p", { className: "sv" }, e("b", null, "S:"), " ", e("i", null, D.save_pitcher), " (" + D.save_team + ")")
+                  e("p", null, e("i", null, D.away_starter), " (" + D.box.away.abbr + ") vs ", e("i", null, D.home_starter), " (" + D.box.home.abbr + ")"),
+                  e("p", null, e("b", null, "W:"), " ", e("i", null, D.winning_pitcher), " \u00b7 ", e("b", null, "L:"), " ", e("i", null, D.losing_pitcher), " \u00b7 ", e("b", null, "S:"), " ", e("i", null, D.save_pitcher))
                 )
               ),
               e("div", { className: "mla-mod" },
@@ -248,6 +241,12 @@
                 e("div", { className: "mla-prose" },
                   D.stadium_context.map((p, i) => e("p", { key: i }, p))
                 )
+              ),
+              e("div", { className: "mla-col3marks" },
+                e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
+                e("span", { className: "div" }),
+                e("span", { className: "lg" }, D.league),
+                e("span", { className: "dv" }, D.division_short)
               )
             )
           )

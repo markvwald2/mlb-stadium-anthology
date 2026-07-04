@@ -34,23 +34,23 @@ window.MARLINS = {
   // ---- Stadium Facts (structural spec) ----
   facts: [
     ["Opened", "April 4, 2012"],
-    ["Construction Start", "Jul 1, 2009"],
+    ["Groundbreaking", "Jul 1, 2009"],
     ["Opening Capacity", "36,742"],
     ["Current Capacity", "37,442"],
-    ["Surface", "Mixed / changed over time", "Celebration bermudagrass 2012; Platinum TE paspalum 2014\u20132019; Shaw Sports Turf B1K since 2020"],
+    ["Surface", "Mixed / changed over time", "Celebration bermudagrass 2012; Platinum TE paspalum 2014\u2013'19; Shaw Sports Turf B1K since 2020", { vsStyle: { letterSpacing: "-0.6px" } }],
     ["Type", "Retractable-roof baseball-only ballpark"],
     ["Roof", "Retractable"],
     ["Location", "Urban"],
     ["Elevation", "10 ft"],
     ["Address", "501 Marlins Way, Miami, FL 33125"],
     ["Coordinates", "25.7781\u00b0 N, 80.2197\u00b0 W"],
-    ["Original Cost", "$634 million", "$889 million adjusted"]
+    ["Original Cost", "$634 million", "$889 million adjusted", { inline: true }]
   ],
 
   // ---- Design & Lifecycle (design facts) ----
   lifecycle: [
     ["Architect", "Populous"],
-    ["Architectural Style", "Contemporary neomodern retractable-roof ballpark"],
+    ["Style", "Contemporary neomodern retractable-roof ballpark"],
     ["Facade", "White stucco, silver metal, exposed steel, and extensive glass facade / retractable panels"],
     ["Name History", "Marlins Park (2012\u20132020)\nloanDepot park (2021\u2013Present)"],
     ["Preceded By", "Pro Player Stadium / Sun Life Stadium"],

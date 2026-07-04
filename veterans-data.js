@@ -34,7 +34,7 @@ window.VETERANS = {
   architectural_style: "Brutalist modern multipurpose concrete stadium",
   stadium_type_facts: "Open-air octorad multipurpose stadium",
   facade: "Exposed reinforced / precast concrete circular octorad bowl",
-  surface_type: "Artificial turf",
+  surface_type: "Artificial",
   surface: "AstroTurf 1971\u20132001; NexTurf 2001\u20132003",
   capacity_opening: "56,371",
   capacity_current: "65,352",
@@ -50,7 +50,7 @@ window.VETERANS = {
   original_cost: "$63 million",
   adjusted_cost: "$501 million",
   financing: "Publicly financed by the City of Philadelphia as a municipal multipurpose stadium",
-  renovations: "Scoreboard, turf, seating, suites, concessions, football, and safety updates across Phillies and Eagles tenancies",
+  renovations: "Scoreboard, turf, seating, suites, concessions, football-related, and safety updates across Phillies and Eagles tenancies",
 
   // ---- Lineage ----
   preceded_by: "Recreation Park; Baker Bowl; Shibe Park / Connie Mack Stadium",

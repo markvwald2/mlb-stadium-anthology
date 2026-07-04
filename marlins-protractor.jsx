@@ -25,7 +25,7 @@
   function strip(v) { return (v || "").toString().replace(/\s*ft$/i, ""); }
 
   function Chip(props) {
-    const fs = props.size || 15, w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 9) * 2), h = 22;
+    const fs = props.size || 15, w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 9) * 2), h = props.h || (fs + 9);
     const tone = props.tone || "paper";
     const fill = tone === "accent" ? miami : paperHi, stk = tone === "accent" ? miamiDeep : rule, col = tone === "accent" ? "#F5F8F7" : ink;
     return e("g", null,
@@ -54,8 +54,8 @@
       ticks.push(e("line", { key: "t" + a, x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1], stroke: big ? miamiDeep : ruleStrong, strokeWidth: big ? 1.4 : 0.9, opacity: big ? 0.85 : 0.5 }));
     }
     const nums = [0, 30, 60, 90, 120, 150].map((a, i) => {
-      const p = polar(C, PR + 14, a);
-      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "10.5px", fill: ink3 } }, a);
+      const p = polar(C, PR + 15, a);
+      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4.5, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "13px", fill: ink3 } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, MAX);
     const protArc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -85,15 +85,15 @@
         // protractor arc + ticks + numerals
         e("path", { d: protArc, fill: "none", stroke: ink3, strokeWidth: 1.1, opacity: 0.55 }),
         ticks, nums,
-        e("text", { x: nlab[0], y: nlab[1] - 9, textAnchor: "middle", style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "12px", fill: miamiDeep, letterSpacing: ".04em" } }, "N"),
+        e("text", { x: nlab[0], y: nlab[1] - 9, textAnchor: "middle", style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "13px", fill: miamiDeep, letterSpacing: ".04em" } }, "N"),
         // north baseline (0°) + bearing needle
         e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink2, strokeWidth: 1.1, strokeDasharray: "3 3" }),
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2.2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: calienteDeep }),
         e("circle", { cx: C[0], cy: C[1], r: 3, fill: accent }),
-        e(Chip, { x: bc.x, y: bc.y, text: orientation + " \u00b7 " + deg + "\u00b0", size: 12, tone: "accent", padX: 7 }),
+        e(Chip, { x: bc.x, y: bc.y, text: orientation + " \u00b7 " + deg + "\u00b0", size: 19, tone: "accent", padX: 7 }),
         // distance chips
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 15 }))
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 19 }))
       )
     );
   }
