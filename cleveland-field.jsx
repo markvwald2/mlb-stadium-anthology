@@ -101,7 +101,7 @@
     const nums = [0, 45, 90].map((a, i) => {
       const p = polar(C, PR + 12, a);
       return e("text", { key: "n" + i, x: p[0], y: p[1] + 3.5, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "9.5px", fill: ink3 } }, a);
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "13px", fill: ink3 } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 90);
     const arc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -119,14 +119,14 @@
       e("path", { d: arc, fill: "none", stroke: ink3, strokeWidth: 1 }),
       ticks, nums,
       e("text", { x: nlab[0], y: nlab[1] - 4, textAnchor: "middle",
-        style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "12px", fill: ink } }, "N"),
+        style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "13px", fill: ink } }, "N"),
       // north baseline + bearing needle
       e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink3, strokeWidth: 0.9, strokeDasharray: "2.5 2.5" }),
       e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: red, strokeWidth: 2, strokeLinecap: "round" }),
       e("circle", { cx: ntip[0], cy: ntip[1], r: 2.6, fill: red }),
       e("circle", { cx: C[0], cy: C[1], r: 2.4, fill: ink }),
       e("text", { x: dlab[0], y: dlab[1] + 4, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "12px", fill: red } }, deg + "\u00b0")
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "13px", fill: red } }, deg + "\u00b0")
     );
   }
 

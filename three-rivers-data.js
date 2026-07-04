@@ -32,7 +32,7 @@ window.THREE_RIVERS = {
   capacity_current: "47,971",
   elevation: "730 ft",
   coordinates: "40.4467\u00b0 N, 80.0128\u00b0 W",
-  address: "600 Stadium Circle, Pittsburgh, PA 15212 (former site)",
+  address: "600 Stadium Circle<br>Pittsburgh, PA 15212 (former site)",
   location: "Riverfront",
   team_colors: "Black \u00b7 Gold \u00b7 White",
 

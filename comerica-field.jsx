@@ -26,7 +26,7 @@
 
   function Chip(props) {
     const fs = props.size || 13;
-    const w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 7) * 2), h = 19;
+    const w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 7) * 2), h = Math.max(19, fs + 7);
     const hot = props.tone === "hot";
     const fill = hot ? orange : paper, stk = hot ? orange : rule, col = hot ? "#F4EEDF" : navy;
     return e("g", null,
@@ -61,7 +61,7 @@
     const nums = [0, 90, 180].map((a, i) => {
       const p = polar(C, PR + 13, a);
       return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "12px", fill: ink3 } }, a);
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "13px", fill: ink3 } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 180);
     const protArc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -91,15 +91,15 @@
       e("path", { d: protArc, fill: "none", stroke: ink3, strokeWidth: 1, opacity: 0.6 }),
       ticks, nums,
       e("text", { x: nlab[0], y: nlab[1] - 9, textAnchor: "middle",
-        style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "15px", fill: navy, letterSpacing: ".04em" } }, "N"),
+        style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "13px", fill: navy, letterSpacing: ".04em" } }, "N"),
       // north baseline (0°) + bearing needle
       e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink3, strokeWidth: 1, strokeDasharray: "3 3" }),
       e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: orange, strokeWidth: 2.1, strokeLinecap: "round" }),
       e("polygon", { points: head, fill: navyDeep }),
       e("circle", { cx: C[0], cy: C[1], r: 2.8, fill: orange }),
-      e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 14, tone: "hot", padX: 6 }),
+      e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 17, tone: "hot", padX: 6 }),
       // distance chips (in place on the field)
-      chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 15 }))
+      chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 17 }))
     );
   }
 

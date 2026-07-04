@@ -219,7 +219,7 @@
                 e("div", { className: "cf-modh" }, "The Ebbets Echo"),
                 e("div", { className: "cf-ctx" },
                   D.context.map(function (p, i) {
-                    var ls = ["0.2px", "0.2px", "0px", "0.2px"];
+                    var ls = ["0.2px", "0.2px", "0.2px", "0.2px"];
                     return e("p", { key: i, style: { letterSpacing: ls[i] != null ? ls[i] : "0.2px" } }, p);
                   })))
             )),

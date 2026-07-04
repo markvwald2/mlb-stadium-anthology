@@ -94,7 +94,7 @@
 
   function Guides(props) {
     const side = props && props.side === "left" ? "left" : "right";
-    // Asymmetric safe margins: 0.25in outside/top/bottom, 0.50in binding edge.
+    // Asymmetric safe margins: 0.25in outside/top/bottom, 0.50in binding edge (Blurb product spec).
     const SAFE_OUT = 0.25 * IN; // 24
     const SAFE_BIND = 0.5 * IN; // 48
 

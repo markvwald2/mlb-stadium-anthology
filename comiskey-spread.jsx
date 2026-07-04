@@ -219,8 +219,8 @@
                     drow("Setting", "Urban"),
                     drow("Original Cost", "$750k"),
                     drow("Adjusted", "$25.9M")),
-                  e("div", { style: { fontFamily: "'Spectral',serif", fontStyle: "italic", fontSize: "11px",
-                    lineHeight: 1.42, color: "#B8AF9B", marginTop: "10px" } },
+                  e("div", { style: { fontFamily: "'Spectral',serif", fontStyle: "italic", fontSize: "12px",
+                    lineHeight: 1.38, color: "#B8AF9B", marginTop: "6px" } },
                     "Privately financed by White Sox owner Charles Comiskey.")))),
 
             /* WEATHER */

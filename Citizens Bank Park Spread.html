@@ -77,7 +77,7 @@
   .cbp-plaque .brk.bl { left: 7px; bottom: 7px; border-right: 0; border-top: 0; }
   .cbp-plaque .brk.br { right: 7px; bottom: 7px; border-left: 0; border-top: 0; }
   .cbp-name { margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
-    font-size: 116px; line-height: .84; letter-spacing: .018em; text-transform: uppercase;
+    font-size: 100px; line-height: .84; letter-spacing: .006em; text-transform: uppercase;
     color: #ECE2CB; white-space: nowrap; }
   .cbp-place { display: flex; align-items: center; gap: 16px; margin-top: 20px; padding-left: 2px; }
   .cbp-place .bar { width: 46px; height: 2px; background: rgba(232,224,206,.55); }
@@ -112,7 +112,7 @@
   .cbp-lintel .lcell { flex: 1; display: flex; flex-direction: column; justify-content: center;
     gap: 3px; padding: 6px 12px; border-right: 1px solid var(--stone-deep); }
   .cbp-lintel .lcell:last-child { border-right: 0; }
-  .cbp-lintel .lk { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .16em;
+  .cbp-lintel .lk { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--ink3); }
   .cbp-lintel .lv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: .02em;
     text-transform: uppercase; color: var(--ink); line-height: 1.05; }
@@ -131,15 +131,15 @@
     padding: 6px 9px 7px; margin-bottom: 11px; background: var(--navy); color: var(--paper-hi); }
   .cbp-bayhead .nm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px;
     letter-spacing: .1em; text-transform: uppercase; line-height: 1; }
-  .cbp-bayhead .nt { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .1em;
+  .cbp-bayhead .nt { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .1em;
     color: rgba(244,236,218,.62); }
 
   /* section eyebrow on a brick-course rule */
   .cbp-h { display: flex; align-items: baseline; gap: 8px; padding-bottom: 4px; margin-bottom: 8px;
     border-bottom: 2px solid var(--brick); }
-  .cbp-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .12em;
+  .cbp-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--brick-deep); white-space: nowrap; }
-  .cbp-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em;
+  .cbp-h .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink3); margin-left: auto; }
 
   /* ---- photo plates (no captions) ---- */
@@ -150,24 +150,24 @@
 
   /* ---- material / color keys ---- */
   .cbp-keys { margin-top: 11px; display: flex; flex-direction: column; gap: 8px; }
-  .cbp-key .kt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .12em;
+  .cbp-key .kt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--brick-deep); padding-bottom: 3px; margin-bottom: 4px;
     border-bottom: 1px solid var(--rule); }
   .cbp-key .ks { display: flex; flex-direction: column; gap: 2px; }
   .cbp-key .krow { display: flex; align-items: center; gap: 7px; }
   .cbp-key .sw { width: 15px; height: 10px; flex: none; border: 1px solid rgba(33,26,20,.35); }
-  .cbp-key .kl { font-family: "Spectral", serif; font-size: 10.5px; color: var(--ink); }
+  .cbp-key .kl { font-family: "Spectral", serif; font-size: 12px; color: var(--ink); }
 
   /* ---- facts table (brick-course dividers) ---- */
   .cbp-facts { display: flex; flex-direction: column; }
   .cbp-frow { display: grid; grid-template-columns: 74px 1fr; gap: 9px; align-items: baseline;
     padding: 4px 0; border-bottom: 1px solid var(--rule); }
   .cbp-frow:last-child { border-bottom: 0; }
-  .cbp-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .06em;
+  .cbp-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink3); line-height: 1.2; }
   .cbp-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
   .cbp-frow .v .vm { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink); line-height: 1.22; }
-  .cbp-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10px;
+  .cbp-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12px;
     color: var(--ink2); line-height: 1.2; }
   .cbp-frow .v .vs.cont { font-style: normal; font-weight: 600; font-size: 12px; color: var(--ink); line-height: 1.22; }
 
@@ -183,7 +183,7 @@
   .cbp-wall::before { content: ""; position: absolute; left: 50%; top: 8px; bottom: 8px; width: 1px;
     background: rgba(168,154,124,.18); }
   .cbp-prose { position: relative; z-index: 1; }
-  .cbp-prose p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 11.5px; line-height: 1.34;
+  .cbp-prose p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.34;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .cbp-prose p:last-child { margin-bottom: 0; }
   .cbp-prose p:first-of-type::first-letter { font-family: "Saira Condensed", sans-serif; font-weight: 700; float: left;
@@ -207,7 +207,7 @@
     background: var(--paper-hi); border: 1.5px solid var(--ink2); border-radius: 50%; }
   .lin-name { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink);
     white-space: nowrap; line-height: 1.1; }
-  .lin-yr { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink3);
+  .lin-yr { font-family: "Space Mono", monospace; font-size: 12px; color: var(--ink3);
     letter-spacing: .02em; white-space: nowrap; }
   .lin-node.term::before { background: var(--brick); border-color: var(--brick);
     width: 9px; height: 9px; left: -19.5px; top: 1px; }
@@ -218,8 +218,8 @@
   .cbp-upgrades { position: absolute; left: 260px; right: 0; top: 70px; bottom: 2px;
     display: flex; flex-direction: column; justify-content: flex-start; transform: translateX(-16px); }
   .cbp-upgrades .cbp-h { margin-bottom: 7px; }
-  .cbp-upgrades .cbp-h .t { font-size: 10px; letter-spacing: .06em; }
-  .cbp-upgrades .cbp-h .n { font-size: 10px; }
+  .cbp-upgrades .cbp-h .t { font-size: 12px; letter-spacing: .06em; }
+  .cbp-upgrades .cbp-h .n { font-size: 12px; }
   .up-note { margin: 0; font-family: "Spectral", serif; font-style: italic; font-size: 12px;
     line-height: 1.5; color: var(--ink2); }
 
@@ -228,9 +228,9 @@
   .cbp-visithead { background: var(--brick-deep); color: var(--paper-hi); padding: 9px 11px 10px; margin-bottom: 12px; }
   .cbp-visithead .vh-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
   .cbp-visithead .vh-no { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 17px; letter-spacing: .08em; }
-  .cbp-visithead .vh-tag { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .14em;
+  .cbp-visithead .vh-tag { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em;
     color: #E6C7A0; }
-  .cbp-visithead .vh-sub { font-family: "Spectral", serif; font-style: italic; font-size: 11px;
+  .cbp-visithead .vh-sub { font-family: "Spectral", serif; font-style: italic; font-size: 12px;
     color: rgba(244,236,218,.82); margin-top: 4px; }
 
   .cbp-match { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 8px; }
@@ -239,9 +239,9 @@
   .cbp-match .team .tt { display: flex; flex-direction: column; line-height: 1; }
   .cbp-match .team .tt.r { align-items: flex-end; }
   .cbp-match .team .tt .ab { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 22px; color: var(--ink); }
-  .cbp-match .team .tt .nm { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
+  .cbp-match .team .tt .nm { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink3); margin-top: 2px; }
-  .cbp-match .at { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .14em;
+  .cbp-match .at { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .14em;
     color: var(--ink3); }
   .cbp-result { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 21px; letter-spacing: .01em;
     text-transform: uppercase; color: var(--brick); text-align: center; padding: 7px 0; margin-bottom: 10px;
@@ -251,7 +251,7 @@
   .cbp-gi .girow { display: flex; justify-content: space-between; align-items: baseline; gap: 8px;
     padding: 4px 0; border-bottom: 1px solid var(--rule); }
   .cbp-gi .girow:last-child { border-bottom: 0; }
-  .cbp-gi .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .08em;
+  .cbp-gi .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink3); }
   .cbp-gi .v { font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px; color: var(--ink); }
 
@@ -259,26 +259,26 @@
   .cbp-wcell { display: flex; align-items: center; gap: 8px; }
   .cbp-wcell .tx { display: flex; flex-direction: column; }
   .cbp-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1; }
-  .cbp-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
+  .cbp-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink3); margin-top: 3px; }
 
   .cbp-pitch { margin-bottom: 13px; }
   .cbp-pitch .prow { display: grid; grid-template-columns: 32px 1fr 22px; gap: 8px; align-items: baseline;
     padding: 4px 0; border-bottom: 1px solid var(--rule); }
   .cbp-pitch .prow:last-child { border-bottom: 0; }
-  .cbp-pitch .pt { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .04em; color: var(--ink3); }
+  .cbp-pitch .pt { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em; color: var(--ink3); }
   .cbp-pitch .prow.dec .pt.w { color: var(--field); } .cbp-pitch .prow.dec .pt.l { color: var(--brick); } .cbp-pitch .prow.dec .pt.s { color: var(--navy); }
   .cbp-pitch .pn { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink); }
-  .cbp-pitch .pd { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink3); text-align: right; }
+  .cbp-pitch .pd { font-family: "Space Mono", monospace; font-size: 12px; color: var(--ink3); text-align: right; }
 
   /* line score — navy outfield-signal board */
   .cbp-board { background: var(--navy); padding: 8px 9px 9px; margin-bottom: 12px; }
   .cbp-board table { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; }
-  .cbp-board th, .cbp-board td { text-align: center; font-size: 10px; font-weight: 400; padding: 2.5px 0;
+  .cbp-board th, .cbp-board td { text-align: center; font-size: 12px; font-weight: 400; padding: 2.5px 0;
     color: #DCE6EF; border-bottom: 1px solid rgba(220,230,239,.16); }
-  .cbp-board thead th { color: rgba(220,230,239,.5); font-size: 10px; }
+  .cbp-board thead th { color: rgba(220,230,239,.5); font-size: 12px; }
   .cbp-board td.tm, .cbp-board th.tm { text-align: left; font-family: "Oswald", sans-serif; font-weight: 700;
-    font-size: 10px; letter-spacing: .05em; padding-right: 6px; white-space: nowrap; color: #F4ECDA; }
+    font-size: 12px; letter-spacing: .05em; padding-right: 6px; white-space: nowrap; color: #F4ECDA; }
   .cbp-board td.sep, .cbp-board th.sep { border-left: 1px solid rgba(220,230,239,.3); }
   .cbp-board td.rc { color: #F0B24A; font-weight: 700; }
   .cbp-board tbody tr:last-child td { border-bottom: 0; }

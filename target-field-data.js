@@ -41,7 +41,7 @@ window.TARGET = {
     ["Surface", "Natural grass", "Four-way Kentucky bluegrass blend"],
     ["Capacity", "38,544 (originally 39,504)"],
     ["Elevation", "830 ft"],
-    ["Preceded By", "Metropolitan Stadium\nHubert H. Humphrey Metrodome"]
+    ["Preceded By", "Metropolitan Stadium (1961\u201381)\nMetrodome (1982\u20132009)"]
   ],
 
   // ---- Construction & Setting (factual right column) ----

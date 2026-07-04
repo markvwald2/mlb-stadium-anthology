@@ -251,11 +251,11 @@
     '  transition:border-color .12s}' +
     ':host([data-over]) .ring{border-color:#c96442}' +
     ':host([data-filled]) .ring{display:none}' +
-    // Controls sit BELOW the mask (top:100%), absolutely positioned so the
-    // author-declared slot height is unaffected. The gap is padding, not a
-    // top offset, so the hover target stays contiguous with the frame.
-    '.ctl{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:8px;' +
-    '  display:flex;gap:6px;opacity:0;pointer-events:none;transition:opacity .12s;z-index:2;' +
+    // Controls sit INSIDE the mask (bottom-center overlay) so no ancestor's
+    // overflow:hidden (tight photo cards, etc.) can clip them. Hover-only and
+    // never shown in print, so overlaying the image edge is harmless.
+    '.ctl{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);' +
+    '  display:flex;gap:6px;opacity:0;pointer-events:none;transition:opacity .12s;z-index:3;' +
     '  white-space:nowrap}' +
     ':host([data-filled][data-editable]:hover) .ctl,:host([data-reframe]) .ctl' +
     '  {opacity:1;pointer-events:auto}' +

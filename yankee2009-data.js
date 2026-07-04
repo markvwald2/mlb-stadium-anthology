@@ -32,7 +32,7 @@ window.YK2009 = {
   coordinates: "40.8292\u00b0 N, 73.9264\u00b0 W",
   stadium_cost: "$2.3 billion",
   stadium_cost_adjusted: "$3.45 billion",
-  financing_method: "Yankees-financed project using tax-exempt public bonds plus substantial city/state land, infrastructure, parking, and tax subsidy support",
+  financing_method: "Yankees-financed project using tax-exempt public bonds plus city/state land, infrastructure, parking, and tax subsidy support",
   address: "1 E 161 Street, Bronx, NY 10451",
   location_classification: "Urban",
   construction_start: "Aug 19, 2006",

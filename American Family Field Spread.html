@@ -6,7 +6,7 @@
 <title>American Family Field — Spread</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -60,39 +60,33 @@
   .amf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .amf-hero-scrim { position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(8,12,20,.52) 0%, rgba(8,12,20,0) 22%),
-      linear-gradient(0deg, rgba(8,11,18,.94) 0%, rgba(8,11,18,.68) 20%, rgba(8,11,18,.12) 40%, rgba(8,11,18,0) 52%); }
+      linear-gradient(to bottom right, rgba(8,11,18,.9) 0%, rgba(8,11,18,.6) 18%, rgba(8,11,18,.28) 34%, rgba(8,11,18,.06) 48%, rgba(8,11,18,0) 58%),
+      linear-gradient(0deg, rgba(8,11,18,.82) 0%, rgba(8,11,18,.30) 12%, rgba(8,11,18,0) 24%); }
 
-  .amf-hero-logo { position: absolute; left: 60px; top: 52px; height: 104px; width: auto; z-index: 5;
+  .amf-hero-logo { position: absolute; right: 60px; top: 40px; height: 58px; width: auto; z-index: 5;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,.5)); }
   .amf-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(226,222,210,.62); text-transform: uppercase; }
-  .amf-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
-    transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
-    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .34em;
+  .amf-spine { position: absolute; left: 115px; top: 460px; z-index: 5;
+    transform: rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: 3px; text-align: left;
     color: rgba(226,222,210,.48); text-transform: uppercase; white-space: nowrap; }
 
-  .amf-roofline { position: absolute; left: 64px; right: 64px; top: 214px; z-index: 4;
+  .amf-roofline { position: absolute; left: 64px; right: 64px; top: 604px; z-index: 4;
     display: flex; align-items: center; gap: 12px; opacity: .52; pointer-events: none; }
   .amf-roofline .ln { flex: 1; height: 1px; background: rgba(226,222,210,.42); }
   .amf-roofline .tk { width: 1px; height: 11px; background: rgba(226,222,210,.55); flex: none; }
-  .amf-roofline .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em;
+  .amf-roofline .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .3em;
     color: rgba(226,222,210,.7); text-transform: uppercase; flex: none; }
 
-  .amf-hero-title { position: absolute; left: 58px; right: 58px; bottom: 176px; z-index: 5; }
+  .amf-hero-title { position: absolute; left: 60px; right: 58px; top: 56px; z-index: 5; }
   .amf-name {
-    position: relative; margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
-    font-size: 152px; line-height: .82; letter-spacing: .004em; text-transform: uppercase;
-    color: #F2ECDC; -webkit-text-fill-color: #F2ECDC; text-shadow: 0 4px 30px rgba(0,0,0,.5);
+    position: relative; margin: 0; font-family: "Alfa Slab One", serif; font-weight: 400;
+    font-size: 84px; line-height: 1.0; letter-spacing: .005em; text-transform: uppercase;
+    color: #F3ECD8; -webkit-text-fill-color: #F3ECD8; text-shadow: 0 3px 22px rgba(0,0,0,.55);
   }
-  .amf-name::after {
-    content: attr(data-t); position: absolute; left: 0; top: 0; pointer-events: none;
-    background-image: var(--grain); background-size: 240px 168px;
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent; mix-blend-mode: multiply; opacity: .5;
-  }
-  .amf-sub { display: flex; align-items: center; gap: 18px; margin-top: 26px; }
+  .amf-sub { display: flex; align-items: center; gap: 18px; margin-top: 22px; }
   .amf-sub .bar { width: 56px; height: 3px; background: var(--gold); flex: none; }
   .amf-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 30px;
     letter-spacing: .3em; text-transform: uppercase; color: var(--gold-hi); white-space: nowrap; }
@@ -117,7 +111,7 @@
     border: 2px solid var(--paper-hi); outline: 1px solid var(--navy-deep);
     box-shadow: 0 6px 16px rgba(20,18,12,.30); }
   .amf-panel figcaption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
-    padding: 13px 7px 4px; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px;
+    padding: 13px 7px 4px; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .06em; text-transform: uppercase; color: #F3EEDF; line-height: 1.15;
     background: linear-gradient(0deg, rgba(14,18,28,.86), rgba(14,18,28,0)); pointer-events: none; }
 
@@ -127,7 +121,7 @@
   .amf-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13.5px; letter-spacing: .15em;
     text-transform: uppercase; color: var(--navy); white-space: nowrap; }
   .amf-h.brick .t { color: var(--brick); }
-  .amf-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .05em;
+  .amf-h .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
 
   /* ---- identity / classification — main roof track ---- */
@@ -141,58 +135,58 @@
   .amf-id-mark img { height: 50px; width: auto; display: block; }
   .amf-id-cell { flex: 1 1 0; min-width: 0; padding: 8px 12px; border-left: 1px solid var(--rule);
     display: flex; flex-direction: column; justify-content: center; gap: 3px; }
-  .amf-id-cell .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+  .amf-id-cell .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--brick); white-space: nowrap; }
   .amf-id-cell .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13.5px;
     letter-spacing: .01em; text-transform: uppercase; color: var(--ink); line-height: 1.06; }
 
   /* ---- specs: facts (left bay) + construction (right bay) ---- */
-  .amf-specs { position: absolute; left: 38px; top: 300px; width: 798px; z-index: 6;
+  .amf-specs { position: absolute; left: 38px; top: 324px; width: 798px; z-index: 6;
     display: grid; grid-template-columns: 1fr 1fr; column-gap: 30px; }
   .amf-bay.right { border-left: 1px solid var(--rule); padding-left: 28px; }
   .amf-facts { display: flex; flex-direction: column; }
-  .amf-frow { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: baseline;
+  .amf-frow { display: grid; grid-template-columns: 108px 1fr; gap: 10px; align-items: baseline;
     padding: 3px 0; border-bottom: 1px solid var(--rule); }
-  .amf-facts.tight .amf-frow { padding: 2px 0; }
+  .amf-facts.tight .amf-frow { padding: 1px 0; }
   /* airier row spacing in the two spec columns to fill the white space beneath */
-  .amf-specs .amf-bay.left .amf-frow { padding: 5px 0; }
-  .amf-specs .amf-bay.right .amf-frow { padding: 7px 0; }
+  .amf-specs .amf-bay.left .amf-frow { padding: 2px 0; }
+  .amf-specs .amf-bay.right .amf-frow { padding: 5px 0; }
   .amf-frow:last-child { border-bottom: 0; }
-  .amf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .06em;
+  .amf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); }
   .amf-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
   .amf-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.22; }
-  .amf-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10.5px;
+  .amf-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12px;
     color: var(--ink-2); line-height: 1.24; }
   .amf-namenow { margin-top: 8px; display: flex; align-items: baseline; gap: 8px; padding-top: 7px;
     border-top: 1.5px solid var(--navy); }
-  .amf-namenow .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .12em;
+  .amf-namenow .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--brick); }
   .amf-namenow .val { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 14px; letter-spacing: .01em;
     text-transform: uppercase; color: var(--navy); }
-  .amf-namenow .yr { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink-3); margin-left: auto; }
+  .amf-namenow .yr { font-family: "Space Mono", monospace; font-size: 12px; color: var(--ink-3); margin-left: auto; }
 
   /* ---- the pivot hub: field dimensions + protractor ---- */
-  .amf-hub { position: absolute; left: 524px; top: 540px; width: 240px; z-index: 7;
+  .amf-hub { position: absolute; left: 524px; top: 534px; width: 240px; z-index: 7;
     display: flex; flex-direction: column; align-items: center; }
   .amf-hub-head { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-bottom: 2px; }
   .amf-hub-head .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--navy); }
-  .amf-hub-head .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em;
+  .amf-hub-head .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); }
   .amf-fieldfig { margin: 0; width: 220px; }
   .amf-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
   .amf-fieldfig .fd-svg { width: 220px; height: auto; max-width: 100%; display: block;  overflow: visible; }
 
   /* ---- the apron beneath the fan: the visit ---- */
-  .amf-apron { position: absolute; left: 38px; top: 782px; width: 798px; z-index: 6; }
-  .amf-apron-head { display: flex; align-items: baseline; gap: 14px; padding-bottom: 8px; margin-bottom: 10px;
+  .amf-apron { position: absolute; left: 38px; top: 801px; width: 798px; z-index: 6; }
+  .amf-apron-head { display: flex; align-items: flex-end; gap: 14px; padding-bottom: 6px; margin-bottom: 6px;
     border-bottom: 2px solid var(--navy); }
-  .amf-apron-head .tag { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .2em;
+  .amf-apron-head .tag { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--paper-hi); background: var(--brick); padding: 4px 11px; }
   .amf-apron-head .ttl { font-family: "Anton", sans-serif; font-weight: 400; font-size: 27px; letter-spacing: .01em;
     text-transform: uppercase; color: var(--navy); line-height: 1; white-space: nowrap; }
-  .amf-apron-head .meta { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em;
+  .amf-apron-head .meta { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-2); margin-left: auto; }
 
   .amf-apron-grid { display: grid; grid-template-columns: 1.42fr 1.06fr 1.42fr; column-gap: 22px; align-items: start; }
@@ -203,12 +197,12 @@
   .amf-pitch .match { display: flex; flex-direction: column; align-items: flex-start; gap: 1px;
     margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12.5px; color: var(--ink);
     line-height: 1.18; white-space: nowrap; }
-  .amf-pitch .match em { font-family: "Space Mono", monospace; font-style: normal; font-size: 10px;
+  .amf-pitch .match em { font-family: "Space Mono", monospace; font-style: normal; font-size: 12px;
     letter-spacing: .04em; color: var(--brick); font-weight: 700; }
   .amf-pitch .match .vs { font-style: italic; color: var(--ink-3); margin: 2px 0; }
   .amf-pitch .dec { display: flex; flex-direction: column; gap: 2px; }
   .amf-pitch .dec p { margin: 0; font-family: "Spectral", serif; font-size: 12px; color: var(--ink); white-space: nowrap; }
-  .amf-pitch .dec p b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: .04em;
+  .amf-pitch .dec p b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em;
     color: var(--brick-deep); display: inline-block; width: 14px; }
   .amf-pitch .dec p i { font-style: italic; }
   .amf-pitch .dec p.sv { color: var(--ink-2); }
@@ -219,19 +213,19 @@
   .amf-wcell .amf-wico { flex: none; }
   .amf-wcell .tx { display: flex; flex-direction: column; }
   .amf-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 18px; color: var(--ink); line-height: 1; }
-  .amf-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
+  .amf-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
 
   /* weather as a roof-track band beneath the line score */
-  .amf-wx-track { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding-top: 12px;
+  .amf-wx-track { display: flex; align-items: center; gap: 14px; margin-top: 9px; padding-top: 8px;
     border-top: 1.5px solid var(--navy); }
-  .amf-wx-rail { flex: none; font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .18em;
+  .amf-wx-rail { flex: none; font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .18em;
     text-transform: uppercase; color: var(--paper-hi); background: var(--brick); padding: 4px 8px; }
 
   .amf-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
-  .amf-box th, .amf-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 3px 0;
+  .amf-box th, .amf-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 2px 0;
     color: var(--ink); border-bottom: 1px solid var(--rule); }
-  .amf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10.5px; border-bottom: 1.5px solid var(--navy); }
+  .amf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 12px; border-bottom: 1.5px solid var(--navy); }
   .amf-box td.tm, .amf-box th.tm { text-align: left; font-weight: 700; font-size: 12px; letter-spacing: .07em;
     padding-right: 10px; width: 1%; white-space: nowrap; }
   .amf-box .rcol { font-weight: 700; }
@@ -242,19 +236,19 @@
   .amf-box thead th.sep, .amf-box tbody td.sep { width: 24px; }
   .amf-box tbody tr.win td { color: var(--brick-deep); }
   .amf-box tbody tr:last-child td { border-bottom: 1.5px solid var(--navy); }
-  .amf-gcap { display: flex; align-items: center; gap: 8px; margin-top: 7px;
-    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em;
+  .amf-gcap { display: flex; align-items: center; gap: 8px; margin-top: 4px;
+    font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-2); }
   .amf-gcap .sp { color: var(--rule-strong); }
 
   /* ---- outermost roof panel: stadium context ---- */
-  .amf-context { position: absolute; left: 858px; top: 96px; width: 378px; bottom: 44px; z-index: 6;
+  .amf-context { position: absolute; left: 858px; top: 96px; width: 358px; bottom: 44px; z-index: 6;
     display: flex; flex-direction: column; }
   .amf-context .amf-h { border-bottom-color: var(--navy); border-bottom-width: 1.5px; }
   .amf-context .amf-h, .amf-prose { position: relative; z-index: 1; }
   .amf-prose { margin-top: 2px; columns: 1; }
-  .amf-prose p { margin: 0 0 14px; font-family: "Spectral", serif; font-size: 14.4px; line-height: 1.76;
-    color: var(--ink); text-align: justify; hyphens: auto; }
+  .amf-prose p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 14.3px; line-height: 24.2px;
+    letter-spacing: 0.1px; color: var(--ink); text-align: justify; hyphens: auto; }
   .amf-prose p:first-of-type::first-letter { font-family: "Anton", sans-serif; font-weight: 400;
     float: left; font-size: 56px; line-height: .8; padding: 4px 9px 0 0; color: var(--brick); }
   .amf-prose p:last-child { margin-bottom: 0; }

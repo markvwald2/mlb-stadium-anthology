@@ -141,7 +141,7 @@
   function Spread() {
     const F = D.field, V = D.visit, g1 = D.games[0], g2 = D.games[1];
 
-    return e("div", { className: "dv2", "data-screen-label": "Dodger Stadium spread" },
+    return e("div", { className: "dv2", "data-screen-label": "Dodger Stadium spread (v2)" },
 
       /* ============== LEFT / AERIAL ============== */
       e("div", { className: "dv2-page dv2-left", "data-screen-label": "Dodger Stadium \u2014 aerial" },

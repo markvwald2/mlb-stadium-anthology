@@ -64,7 +64,7 @@
     const nums = numerals.map((nd, i) => {
       const p = polar(C, PR + 15, nd[0]);
       return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "10px", fill: ink2 } }, nd[1]);
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "11px", fill: ink2 } }, nd[1]);
     });
     const arcA = polar(C, PR, -90), arcB = polar(C, PR, 90);
     const protArc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -107,10 +107,10 @@
         e("circle", { cx: C[0], cy: C[1], r: 2.6, fill: navy }),
         // orientation callout, top-left corner (clear of the dial)
         e("text", { x: 22, y: 50, textAnchor: "start",
-          style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "12px", fill: accent, letterSpacing: ".06em" } },
+          style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "16px", fill: accent, letterSpacing: ".06em" } },
           orientation + " \u00b7 " + bearing + "\u00b0"),
         // distance chips
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 14 }))
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 16 }))
       )
     );
   }

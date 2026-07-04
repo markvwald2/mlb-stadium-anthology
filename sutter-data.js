@@ -40,7 +40,7 @@ window.SUTTER = {
     ["Facade", "Concrete masonry units \u00b7 red brick block + trim"],
     ["Roof", "Open Air"],
     ["Type", "Open-air MiLB park adapted for temporary MLB"],
-    ["Renovations", "2025 temp. MLB upgrades \u2014 clubhouse, lighting, broadcast, dugout, training, seating"],
+    ["Renovations", "2025 temporary MLB upgrades: clubhouse, lighting, broadcast, dugout, training, and seating"],
     ["Names", "Raley Field (2000\u201319)\nSutter Health Park (2020\u2013present)"],
     ["Opening Day", "May 15, 2000"],
     ["Construction", "Started Oct 28, 1999"],
@@ -68,9 +68,9 @@ window.SUTTER = {
 
   // ---- Bay 3 \u2014 Visit / featured game ----
   featured_title: "Group Visit",
-  trip_name: "Northern California",
+  trip_name: "Northern California Trip",
   featured_day: "Friday",
-  featured_date: "Jul 11, 2025",
+  featured_date: "July 11, 2025",
   away_team: "Toronto Blue Jays",
   away_abbr: "TOR",
   home_team: "Oakland Athletics",

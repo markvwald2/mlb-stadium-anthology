@@ -9,7 +9,9 @@
   const e = React.createElement;
 
   // ---- page geometry (1in = 100px) ----
-  const SAFE = { L0: 37.5, L1: 1237.5, R0: 1312.5, R1: 2512.5 };
+  // Inner (gutter-side) bounds pulled to the 0.5in BINDING-safe box (was 0.25in:
+  // L1 1237.5 / R0 1312.5) so the binding-side pennant columns clear the spine.
+  const SAFE = { L0: 37.5, L1: 1210, R0: 1340, R1: 2512.5 };
   const COLS = 6;                        // trips per page
   const COLW_PAGE = (SAFE.L1 - SAFE.L0) / COLS; // 200
   const CARDW = 178;
@@ -140,7 +142,7 @@
               e("span", { className: "rt-stat-l" }, s.l)))))),
       e("div", { className: "rt-intro" },
         e("div", { className: "rt-intro-lead" }, D.introLead),
-        e("div", null, D.intro)),
+        e("div", { style: { letterSpacing: "-0.2px", fontSize: "15px" } }, D.intro)),
 
       // ============ HEADER — RIGHT: by the numbers ============
       e("div", { className: "rt-numbers" },

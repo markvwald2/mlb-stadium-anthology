@@ -98,13 +98,13 @@
       e("path", { d: arc, fill: "none", stroke: ink3, strokeWidth: 1 }),
       ticks,
       e("text", { x: nlab[0], y: nlab[1] - 4, textAnchor: "middle",
-        style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "12px", fill: ink } }, "N"),
+        style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "13px", fill: ink } }, "N"),
       // bearing needle to ENE (75 deg from north)
       e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: brass, strokeWidth: 2, strokeLinecap: "round" }),
       e("polygon", { points: arrowPts, fill: brass }),
       e("circle", { cx: C[0], cy: C[1], r: 2.4, fill: ink }),
       e("text", { x: dlab[0], y: dlab[1] + 4, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "11.5px", fill: brass } }, orientation + " \u00b7 " + deg + "\u00b0")
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "16px", fill: brass } }, orientation + " \u00b7 " + deg + "\u00b0")
     );
   }
 

@@ -179,8 +179,7 @@
               e("div", { className: "tt" }, "Stadium", e("span", null, "Identity"))),
             e("div", { className: "yf-baybody" },
               ident("Team", "New York Yankees"),
-              ident("League", "American League"),
-              ident("Division", "AL East"),
+              ident("Division", "American League East"),
               ident("Classification Era", "Retro Classic"),
               ident("Years Active", D.years_active),
               ident("Status", e("span", { className: "act" }, D.status)),
@@ -212,14 +211,14 @@
               spec("Opened", e(React.Fragment, null, e("b", null, "Apr 16, 2009"), e("br"), e("span", { className: "sub" }, "Broke ground Aug 19, 2006"))),
               spec("Architect", e("b", null, D.architect)),
               spec("Capacity", e(React.Fragment, null, e("b", null, D.capacity_current), e("span", { className: "sub" }, " \u00b7 " + D.capacity_opening + " at opening"))),
-              spec("Surface", "Natural grass \u00b7 Kentucky bluegrass"),
+              spec("Surface", "Natural \u00b7 Kentucky bluegrass"),
               spec("Cost", e(React.Fragment, null, e("b", null, D.stadium_cost), e("span", { className: "sub" }, " \u00b7 $3.45B adj."))),
               spec("Type", "Open-air baseball-only"),
               /* engraved cornerstone — the monument: style, facade, cost & financing */
               e("div", { className: "yf-cornerstone" },
                 e("div", { className: "cs-text" },
                   e("div", { className: "k" }, "Architectural Style"),
-                  e("div", { className: "v" }, D.architectural_style)),
+                  e("div", { className: "v", style: { letterSpacing: "0.2px" } }, D.architectural_style)),
                 e("div", { className: "cs-text" },
                   e("div", { className: "k" }, "Facade"),
                   e("div", { className: "v" }, D.facade_material)),
@@ -242,7 +241,7 @@
                 e("div", { className: "yf-conn" }),
                 Lin("Yankee Stadium", "The Bronx, 1923\u20132008"),
                 e("div", { className: "yf-conn" }),
-                Lin("Yankee Stadium", "The Bronx, " + D.years_active, true)),
+                Lin("Yankee Stadium", "The Bronx, 2009\u2013", true)),
               /* interior bowl photo — fills the bay beneath the chain */
               e("div", { className: "yf-photostack" },
                 e("div", { className: "yf-photo" },
@@ -257,12 +256,12 @@
               e("div", { className: "tt" }, "Stadium", e("span", null, "Context"))),
             e("div", { className: "yf-baybody" },
               e("div", { className: "yf-ctx" },
-                e("p", null, D.stadium_context[0]),
-                e("p", null, D.stadium_context[1]),
+                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17px" } }, D.stadium_context[0]),
+                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17px" } }, D.stadium_context[1]),
                 e("div", { className: "yf-ctx-photo" },
                   e(Slot, { id: "yf-ctx-photo", src: "images/yankee2009/hero-facade.jpg", placeholder: "The monumental limestone street wall along River Avenue / 161st Street \u2014 facade and replicated frieze in its Bronx setting" })),
-                e("p", null, D.stadium_context[2]),
-                e("p", null, D.stadium_context[3])))
+                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17px" } }, D.stadium_context[2]),
+                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17px" } }, D.stadium_context[3])))
           ),
 
           /* ===== BAY 5 — VISIT & GAME ARTIFACT ===== */
@@ -286,7 +285,7 @@
                   e("div", { className: "ab" }, D.home_team_abbreviation),
                   e("div", { className: "sc" }, D.box.home.r))),
               e("div", { className: "yf-matchup" }, D.away_team + " at " + D.home_team),
-              e("div", { className: "yf-startline" }, "Starters \u00b7 " + D.pitching_matchup),
+              e("div", { className: "yf-startline" }, D.pitching_matchup),
 
               /* line score — refined archival scoreboard insert */
               LineScore(D.box),

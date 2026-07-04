@@ -76,7 +76,7 @@
     display: flex; align-items: center; gap: 12px; opacity: .62; pointer-events: none; }
   .rc-roofline .ln { flex: 1; height: 1px; background: rgba(206,222,242,.4); }
   .rc-roofline .tk { width: 1px; height: 11px; background: rgba(206,222,242,.6); flex: none; }
-  .rc-roofline .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .26em;
+  .rc-roofline .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .26em;
     color: rgba(206,222,242,.74); text-transform: uppercase; flex: none; }
 
   .rc-hero-title { position: absolute; left: 60px; right: auto; max-width: 800px; bottom: 64px; z-index: 5; }
@@ -109,7 +109,7 @@
   /* ============ RIGHT PAGE ============ */
   /* left pad clears the fold + gutter (content starts x=1275+44=1319). */
   .rc-rp { position: absolute; inset: 0; padding: 40px 40px 38px 44px; z-index: 2;
-    display: grid; grid-template-columns: 1.72fr 1fr; gap: 0; }
+    display: grid; grid-template-columns: 1.72fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 0; }
   .rc-stadium { padding-right: 30px; display: flex; flex-direction: column; min-width: 0; }
   .rc-visit { padding-left: 30px; border-left: 1.5px solid var(--rule-strong);
     display: flex; flex-direction: column; min-width: 0; }
@@ -120,21 +120,21 @@
   .rc-bigtitle { margin: 0; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 23px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
   .rc-bigrule { flex: 1; height: 2px; background: var(--navy); opacity: .85; }
-  .rc-bigsub { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .14em;
+  .rc-bigsub { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink-2); white-space: nowrap; flex: none; }
 
-  .rc-modhead { display: flex; align-items: baseline; gap: 9px; padding-bottom: 5px; margin-bottom: 8px;
+  .rc-modhead { display: flex; align-items: baseline; gap: 9px; padding-bottom: 4px; margin-bottom: 6px;
     border-bottom: 1px solid var(--rule-strong); }
   .rc-modtitle { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--royal); white-space: nowrap; }
-  .rc-modnote { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .05em;
+  .rc-modnote { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); }
 
   .rc-mod { display: flex; flex-direction: column; min-width: 0; }
 
   /* ---- photo strip (3 frames) — grows to fill the top ---- */
   .rc-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; flex: 1 1 auto;
-    min-height: 150px; margin-bottom: 18px; }
+    min-height: 90px; margin-bottom: 14px; }
   .rc-frame { position: relative; margin: 0; min-height: 0; }
   .rc-frame image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
     border: 1px solid var(--rule-strong); }
@@ -142,37 +142,38 @@
   /* ---- data cluster (facts, field dims, at a glance, context) pinned to bottom ---- */
   .rc-dcluster { flex: none; display: flex; flex-direction: column; }
   /* ---- facts (full-width, two columns) ---- */
-  .rc-mod.facts-mod { flex: none; margin-bottom: 12px; }
+  .rc-mod.facts-mod { flex: none; margin-bottom: 8px; }
   .rc-facts.twocol { display: block; column-count: 2; column-gap: 32px; }
   .rc-facts.twocol .rc-frow { break-inside: avoid; padding: 3px 0; }
   /* drop the dangling hairline at the foot of the left column */
   .rc-facts.twocol .rc-frow:nth-child(7) { border-bottom: 0; }
   /* ---- protractor | meta row ---- */
   .rc-drow { display: grid; grid-template-columns: 1fr 0.92fr; gap: 26px; flex: none;
-    margin-bottom: 12px; align-items: stretch; }
+    margin-bottom: 8px; align-items: stretch; }
   .rc-mod.meta-mod { margin-top: 0; display: flex; flex-direction: column; }
   .rc-mod.field { margin-top: 0; }
 
   /* facts tables */
   .rc-facts { display: flex; flex-direction: column; }
-  .rc-frow { display: grid; grid-template-columns: 84px 1fr; gap: 10px; align-items: baseline;
+  .rc-frow { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: baseline;
     padding: 1.5px 0; border-bottom: 1px solid var(--rule); }
   .rc-frow:last-child { border-bottom: 0; }
-  .rc-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .04em;
+  .rc-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--ink-3); }
   .rc-frow .v { display: flex; flex-direction: column; gap: 1px; }
-  .rc-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 10.5px; color: var(--ink); line-height: 1.18; white-space: pre-line; }
-  .rc-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10px;
+  .rc-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; color: var(--ink); line-height: 1.22; white-space: pre-line; }
+  .rc-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12px;
     color: var(--ink-2); line-height: 1.18; }
   .rc-facts.tight .rc-frow { padding: 2px 0; }
 
   /* context — full-width two-column band */
   .rc-mod.context.band { flex: none; }
-  .rc-prose { column-count: 2; column-gap: 30px; }
-  .rc-prose p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 11px; line-height: 1.5;
-    color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
-  .rc-prose p:last-child { margin-bottom: 0; }
-  .rc-prose p:first-child::first-letter { float: left; font-family: "Spectral", serif;
+  .rc-prose { display: grid; grid-template-columns: 1fr 1fr; gap: 0 30px; align-items: start; }
+  .rc-pcol { min-width: 0; }
+  .rc-pcol p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.36;
+    color: var(--ink); text-align: justify; hyphens: auto; letter-spacing: -0.5px; }
+  .rc-pcol p:last-child { margin-bottom: 0; }
+  .rc-pcol:first-child p:first-child::first-letter { float: left; font-family: "Spectral", serif;
     font-weight: 600; font-size: 32px; line-height: 0.82; padding: 2px 7px 0 0; color: var(--navy); }
 
   /* protractor (column 2, pinned to bottom) */
@@ -188,62 +189,62 @@
   .rc-meta .rc-mcell:last-child { border-bottom: 0; }
   .rc-meta .micon { flex: none; width: 19px; height: 19px; display: flex; align-items: center; justify-content: center; }
   .rc-meta .micon svg { width: 19px; height: 19px; }
-  .rc-meta .ml { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .07em;
+  .rc-meta .ml { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--royal); }
   .rc-meta .mv { margin-left: auto; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .02em; text-transform: uppercase; color: var(--ink); text-align: right; line-height: 1.1; }
 
   /* ============ VISIT SECTION ============ */
   .rc-navbar { display: flex; align-items: center; gap: 9px; flex: none;
-    background: var(--navy); color: #EAEFF6; padding: 7px 13px; margin-bottom: 14px; }
-  .rc-navbar .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .12em;
+    background: var(--navy); color: #EAEFF6; padding: 7px 13px; margin-bottom: 10px; }
+  .rc-navbar .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; white-space: nowrap; }
   .rc-navbar .sep { color: rgba(234,239,246,.5); }
-  .rc-navbar .val { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11.5px; letter-spacing: .07em;
+  .rc-navbar .val { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .07em;
     text-transform: uppercase; white-space: nowrap; }
-  .rc-navbar.result { justify-content: center; background: var(--royal); padding: 9px 14px; margin: 0 0 12px; }
+  .rc-navbar.result { justify-content: center; background: var(--royal); padding: 9px 14px; margin: 0 0 8px; }
   .rc-navbar.result .val.big { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .08em; white-space: nowrap; }
 
   /* visit-section caption under the big head */
-  .rc-visit-cap { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em;
+  .rc-visit-cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-2); margin: -4px 0 14px; padding-bottom: 9px;
     border-bottom: 1px solid var(--rule); }
 
   /* stat strip */
-  .rc-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; flex: none; margin-bottom: 11px;
-    border-bottom: 1px solid var(--rule); padding-bottom: 10px; }
+  .rc-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; flex: none; margin-bottom: 8px;
+    border-bottom: 1px solid var(--rule); padding-bottom: 7px; }
   .rc-stat { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; min-width: 0; }
   .rc-stat .rc-ico { width: 21px; height: 21px; margin-bottom: 1px; }
-  .rc-stat .sv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: 0;
+  .rc-stat .sv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0;
     color: var(--ink); line-height: 1.05; white-space: nowrap; }
-  .rc-stat .sl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .02em;
+  .rc-stat .sl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .02em;
     text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
 
   /* weather */
-  .rc-mod.weather { flex: none; margin-bottom: 11px; }
+  .rc-mod.weather { flex: none; margin-bottom: 8px; }
   .rc-wx { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 10px; align-items: center; }
   .rc-wcell { display: flex; align-items: center; gap: 9px; }
   .rc-wcell .tx { display: flex; flex-direction: column; }
   .rc-wcell .wv { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 26px; color: var(--ink); line-height: 1; }
   .rc-wcell .wv.sm { font-size: 15px; font-weight: 600; }
-  .rc-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .06em;
+  .rc-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
 
   /* matchup */
   .rc-matchup { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex: none;
-    padding: 2px 0 11px; }
+    padding: 2px 0 8px; }
   .rc-matchup .mlogo { height: 56px; width: 56px; object-fit: contain; flex: none; }
   .rc-matchup .mtxt { flex: 1; text-align: center; display: flex; flex-direction: column; gap: 2px; }
   .rc-matchup .mtxt .away, .rc-matchup .mtxt .home { font-family: "Oswald", sans-serif; font-weight: 600;
     font-size: 17px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink); line-height: 1.05; }
-  .rc-matchup .mtxt .at { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .2em;
+  .rc-matchup .mtxt .at { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .2em;
     color: var(--ink-3); }
 
   /* line score */
-  .rc-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; margin-bottom: 12px; }
+  .rc-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; margin-bottom: 8px; }
   .rc-box th, .rc-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 4px 0;
     color: var(--ink); border-bottom: 1px solid var(--rule); }
-  .rc-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10px; border-bottom: 1.5px solid var(--navy); }
+  .rc-box thead th { color: var(--ink-3); font-weight: 500; font-size: 12px; border-bottom: 1.5px solid var(--navy); }
   .rc-box td.tm, .rc-box th.tm { text-align: left; font-weight: 700; font-size: 12px; letter-spacing: .06em;
     padding-right: 8px; width: 1%; white-space: nowrap; color: var(--navy); }
   .rc-box .rcol { font-weight: 700; }
@@ -258,17 +259,17 @@
   /* starters / decision */
   .rc-decgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .rc-dcol { display: flex; flex-direction: column; gap: 2px; }
-  .rc-dcol .dh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .12em;
+  .rc-dcol .dh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--royal); margin-bottom: 3px; }
   .rc-dcol p { margin: 0; font-family: "Spectral", serif; font-size: 12px; color: var(--ink); line-height: 1.4; }
   .rc-dcol p b { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; }
   .rc-dcol p b.w { color: #1b7a45; } .rc-dcol p b.l { color: var(--red); }
   .rc-dcol p i { font-style: italic; color: var(--ink-2); }
-  .rc-dcol p.vs { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink-3); margin: 1px 0; }
+  .rc-dcol p.vs { font-family: "Space Mono", monospace; font-size: 12px; color: var(--ink-3); margin: 1px 0; }
   .rc-dcol p.sv { color: var(--ink-2); }
 
   /* visit photo — grows to fill remaining column space (toward 4:3) */
-  .rc-vphoto { position: relative; margin: 12px 0; flex: 1 1 auto; min-height: 150px; }
+  .rc-vphoto { position: relative; margin: 10px 0; flex: 1 1 auto; min-height: 120px; }
   .rc-vphoto image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
     border: 1px solid var(--rule-strong); }
 

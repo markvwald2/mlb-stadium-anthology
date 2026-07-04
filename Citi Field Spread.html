@@ -106,11 +106,11 @@
     display: flex; align-items: center; gap: 14px;
     font-family: "Space Mono", monospace; font-size: 12.5px; letter-spacing: .05em;
     color: rgba(234,226,208,.74); }
-  .cf-hero-colophon .dot { color: var(--orange); font-size: 10px; }
+  .cf-hero-colophon .dot { color: var(--orange); font-size: 12px; }
   .cf-hero-colophon .hl { font-style: normal; color: var(--orange); }
 
   /* ===================== RIGHT PAGE ===================== */
-  .cf-rp { position: absolute; inset: 0; padding: 32px 40px; display: flex; flex-direction: column;
+  .cf-rp { position: absolute; inset: 0; padding: 32px 40px 40px 40px; display: flex; flex-direction: column;
     gap: 11px; z-index: 2; }
 
   /* arched photo arcade (rotunda bays) */
@@ -131,7 +131,7 @@
   .cf-rc { flex: 1 1 auto; padding: 9px 18px; border-left: 1px solid rgba(234,226,208,.14);
     display: flex; flex-direction: column; justify-content: center; gap: 3px; min-width: 0; }
   .cf-rc:first-child { border-left: 0; }
-  .cf-rc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .2em;
+  .cf-rc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--granite-pale); white-space: nowrap; }
   .cf-rc .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .04em;
     text-transform: uppercase; color: #F2ECDC; line-height: 1.06; white-space: nowrap; }
@@ -143,7 +143,7 @@
   .cf-rc.brand .id { display: flex; flex-direction: column; gap: 2px; }
   .cf-rc.brand .team { font-family: "Anton", sans-serif; font-weight: 400; font-size: 18px;
     letter-spacing: .01em; text-transform: uppercase; color: #F2ECDC; line-height: 1; white-space: nowrap; }
-  .cf-rc.brand .sub { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10.5px;
+  .cf-rc.brand .sub { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--granite-pale); line-height: 1.32; white-space: nowrap; }
   .cf-rc.vo { flex: 1 1 auto; }
   .cf-rc.asg { flex: 1 1 auto; }
@@ -168,7 +168,7 @@
   .cf-modh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--brick); padding-bottom: 6px; margin-bottom: 9px;
     border-bottom: 1px solid var(--rule-strong); }
-  .cf-modh.sm { font-size: 10.5px; }
+  .cf-modh.sm { font-size: 12px; }
 
   /* ===================== STADIUM SECTION ===================== */
   .cf-zone { display: flex; flex-direction: column; min-height: 0; }
@@ -182,23 +182,23 @@
   .cf-row { display: grid; grid-template-columns: 1fr; gap: 1px; padding: 2px 0;
     border-bottom: 1px solid var(--rule); }
   .cf-row:last-child { border-bottom: 0; }
-  .cf-row .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .12em;
+  .cf-row .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); }
   .cf-row .v { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink); line-height: 1.28; }
 
   .cf-arch-col .cf-arch { display: flex; flex-direction: column; gap: 7px; }
-  .cf-arch-col .ab .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .14em;
+  .cf-arch-col .ab .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--blue); margin-bottom: 2px; }
-  .cf-arch-col .ab .v { font-family: "Spectral", serif; font-weight: 400; font-size: 11.5px; color: var(--ink);
+  .cf-arch-col .ab .v { font-family: "Spectral", serif; font-weight: 400; font-size: 12px; color: var(--ink);
     line-height: 1.34; }
 
   /* field plan (protractor) sits below architecture notes */
   .cf-fieldplan { margin: 16px 0 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .cf-fieldplan .cf-modh.sm { align-self: stretch; margin-bottom: 2px; }
   .cf-fieldplan .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .cf-fieldplan .fd-svg { width: auto; height: 158px; max-width: 100%; display: block; overflow: visible; }
+  .cf-fieldplan .fd-svg { width: auto; height: 185px; max-width: 100%; display: block; overflow: visible; }
   .cf-fp-cap { display: flex; justify-content: space-between; align-items: baseline; width: 100%;
-    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
     color: var(--ink-2); }
   .cf-fp-cap span:first-child { color: var(--brick); }
 
@@ -221,12 +221,12 @@
 
   .cf-game { display: flex; flex-direction: column; }
   .cf-game-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
-  .cf-game .eyebrow { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .07em;
+  .cf-game .eyebrow { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--ink-2); }
-  .cf-game .fin { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .14em;
+  .cf-game .fin { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink-3); border: 1px solid var(--rule-strong);
     padding: 2px 8px; border-radius: 2px; white-space: nowrap; }
-  .cf-game-date { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 11px;
+  .cf-game-date { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .18em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 7px; }
   .cf-versus { display: flex; flex-direction: column; border-top: 1.5px solid var(--ink); }
   .cf-trow { display: grid; grid-template-columns: 40px 1fr auto auto; align-items: center;
@@ -236,11 +236,11 @@
   .cf-trow .id { min-width: 0; }
   .cf-trow .id .nm { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 17px;
     letter-spacing: .03em; text-transform: uppercase; line-height: 1.02; white-space: nowrap; color: var(--ink); }
-  .cf-trow .id .mt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px;
+  .cf-trow .id .mt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
   .cf-trow.reds .id .nm { color: var(--brick); }
   .cf-trow.mets .id .nm { color: var(--blue); }
-  .cf-trow .wl { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+  .cf-trow .wl { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
     width: 21px; height: 21px; display: flex; align-items: center; justify-content: center;
     border: 1px solid var(--rule-strong); border-radius: 2px; color: var(--ink-3); }
   .cf-trow .runs { font-family: "Anton", sans-serif; font-weight: 400; font-size: 36px; line-height: .82;
@@ -251,16 +251,16 @@
   .cf-trow.win.reds .wl { background: var(--brick); border-color: var(--brick); color: #F3EDDD; }
   .cf-game .gmeta { display: flex; gap: 22px; margin-top: 9px; padding-top: 7px;
     border-top: 1px solid var(--rule); }
-  .cf-gs .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .15em;
+  .cf-gs .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .15em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 3px; }
   .cf-gs .v { font-family: "Spectral", serif; font-weight: 600; font-size: 15px; color: var(--ink); }
 
   /* line score */
   .cf-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; margin-top: 4px; }
-  .cf-box th, .cf-box td { text-align: center; font-size: 11.5px; font-weight: 400; padding: 2px 0;
+  .cf-box th, .cf-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 2px 0;
     color: var(--ink); border-bottom: 1px solid var(--rule); }
-  .cf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10.5px; border-bottom: 1.5px solid var(--ink); }
-  .cf-box td.tm, .cf-box th.tm { text-align: left; font-weight: 600; font-size: 11.5px; letter-spacing: .05em;
+  .cf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 12px; border-bottom: 1.5px solid var(--ink); }
+  .cf-box td.tm, .cf-box th.tm { text-align: left; font-weight: 600; font-size: 12px; letter-spacing: .05em;
     color: var(--ink); padding-right: 10px; width: 1%; white-space: nowrap; }
   .cf-box .rhe { font-weight: 700; }
   .cf-box th.sep, .cf-box td.sep { border-left: 1.5px solid var(--ink); padding-left: 7px; }
@@ -274,15 +274,15 @@
 
   .cf-pitch { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
   .cf-pitch .pr { display: flex; flex-direction: column; gap: 3px; }
-  .cf-pitch .pr .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .15em;
+  .cf-pitch .pr .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .15em;
     text-transform: uppercase; color: var(--blue); }
   .cf-pitch .pr .v { font-family: "Spectral", serif; font-size: 12.5px; color: var(--ink); line-height: 1.3; }
 
   .cf-note { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--rule);
     display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: start; }
-  .cf-note .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .15em;
+  .cf-note .lab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .15em;
     text-transform: uppercase; color: var(--brick); white-space: nowrap; padding-top: 2px; }
-  .cf-note .txt { font-family: "Spectral", serif; font-style: italic; font-size: 11.5px; line-height: 1.4;
+  .cf-note .txt { font-family: "Spectral", serif; font-style: italic; font-size: 12px; line-height: 1.4;
     color: var(--ink); text-wrap: pretty; }
 
   /* weather */
@@ -292,7 +292,7 @@
   .cf-wx { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
   .cf-wx .cf-wx-ico { display: block; }
   .cf-wx .val { font-family: "Spectral", serif; font-weight: 700; font-size: 14px; color: var(--ink); line-height: 1.05; }
-  .cf-wx .lab { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .15em;
+  .cf-wx .lab { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .15em;
     text-transform: uppercase; color: var(--ink-3); }
 
   /* ===================== FOOTER — construction & finance datum ===================== */
@@ -301,11 +301,11 @@
   .cf-fc { padding: 0 20px; border-left: 1px solid var(--rule); min-width: 0; }
   .cf-fc:first-child { padding-left: 0; border-left: 0; }
   .cf-fc:last-child { padding-right: 0; }
-  .cf-fc .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .15em;
+  .cf-fc .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .15em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
   .cf-fc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; line-height: 1.3; color: var(--ink); }
   .cf-fc.cost .v.big { font-family: "Anton", sans-serif; font-weight: 400; font-size: 22px; line-height: .95; letter-spacing: .01em; }
-  .cf-fc.cost .v.adj { font-family: "Space Mono", monospace; font-size: 10px; color: var(--ink-2); margin-top: 4px; }
+  .cf-fc.cost .v.adj { font-family: "Space Mono", monospace; font-size: 12px; color: var(--ink-2); margin-top: 4px; }
   .cf-fc.marks { display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding-left: 22px; }
   .cf-fc.marks .league { height: 36px; width: auto; display: block; }
   .cf-fc.marks .mlb { height: 23px; width: auto; display: block; opacity: .85; }

@@ -60,7 +60,7 @@
       const o = numOverride[a];
       const x = o ? o[0] : d[0], y = (o ? o[1] : d[1]) + 4;
       return e("text", { key: "n" + i, x: x, y: y, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "11px", fill: creamDim } }, a);
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "12px", fill: creamDim } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 90);
     const protArc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -117,7 +117,7 @@
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: red, strokeWidth: 2.2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: red }),
         e("circle", { cx: C[0], cy: C[1], r: 2.6, fill: cream }),
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 13 }))
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 17 }))
       )
     );
   }

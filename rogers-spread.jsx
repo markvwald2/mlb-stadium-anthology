@@ -234,9 +234,16 @@
 
               // unified stadium context (full-width, two columns)
               e("div", { className: "rc-mod context band" },
-                e(ModHead, { title: "The First Retractable Roof" }),
+                e(ModHead, { title: "Baseball's First Retractable Roof" }),
                 e("div", { className: "rc-prose" },
-                  D.stadium_context.map((p, i) => e("p", { key: i }, p))
+                  e("div", { className: "rc-pcol" },
+                    e("p", null, D.stadium_context[0]),
+                    e("p", null, D.stadium_context[1])
+                  ),
+                  e("div", { className: "rc-pcol" },
+                    e("p", null, D.stadium_context[2]),
+                    e("p", null, D.stadium_context[3])
+                  )
                 )
               )
             )

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Dodger Stadium — Pastel Terraces</title>
+<title>Dodger Stadium — Spread v2 (Pastel Terraces)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -18,7 +18,7 @@
   }
 
   /* ================================================================
-     DODGER STADIUM — "Pastel Terraces"
+     DODGER STADIUM v2 — "Pastel Terraces"
      Blurb Large Landscape 13 × 11 in spread · 2550 × 1088 px @ 100ppi.
      Export 3× = 7650 × 3264. Center split / fold at x = 1275.
      The 1962 original-seating palette IS the page architecture. The four
@@ -84,8 +84,8 @@
 
   /* ===================== RIGHT / TERRACES (shared) ===================== */
   .dv2-band { position: absolute; left: 0; width: 1275px; overflow: hidden; }
-  .dv2-pad { position: absolute; left: 50px; right: 50px; }
-  .dv2-edge { position: absolute; left: 50px; right: 50px; height: 3px; top: 0; }
+  .dv2-pad { position: absolute; left: 65px; right: 50px; }
+  .dv2-edge { position: absolute; left: 65px; right: 50px; height: 3px; top: 0; }
 
   .dv2-sec { display: flex; align-items: baseline; gap: 13px; }
   .dv2-sec .tag { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 27px;
@@ -95,12 +95,12 @@
     letter-spacing: .2em; text-transform: uppercase; color: var(--ink2); margin-left: auto; white-space: nowrap; }
 
   /* ---- BAND 1 / photo frieze + identity ribbon ---- */
-  .dv2-frieze { position: absolute; left: 50px; right: 50px; display: flex; gap: 6px; }
+  .dv2-frieze { position: absolute; left: 65px; right: 50px; display: flex; gap: 6px; }
   .dv2-frieze figure { flex: 1 1 0; min-width: 0; margin: 0; height: 100%; background: #DfD6C2;
     border-bottom: 3px solid var(--sky); }
   .dv2-frieze image-slot { display: block; width: 100%; height: 100%; }
 
-  .dv2-ribbon { position: absolute; left: 50px; right: 50px; display: flex; height: 50px; align-items: stretch;
+  .dv2-ribbon { position: absolute; left: 65px; right: 50px; display: flex; height: 50px; align-items: stretch;
     border-top: 1.5px solid var(--sky); }
   .dv2-ribbon .rc { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center;
     padding: 4px 12px 4px 14px; position: relative; }
@@ -160,7 +160,7 @@
   .dv2-essay { columns: 4; column-gap: 24px; }
   .dv2-essay p { margin: 0 0 4px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.36;
     color: var(--ink); text-align: justify; hyphens: auto;
-    -webkit-hyphens: auto; hyphenate-limit-chars: 6 3 3; letter-spacing: 0px; }
+    -webkit-hyphens: auto; hyphenate-limit-chars: 6 3 3; letter-spacing: -0.1px; }
   .dv2-essay p:last-child { margin-bottom: 0; }
   /* Real floated span — ::first-letter is silently dropped inside columns:* containers. */
   .dv2-essay .fw-dropcap { font-family: "Barlow Condensed", sans-serif; font-weight: 700;
@@ -179,7 +179,7 @@
     letter-spacing: .01em; color: var(--ink); white-space: nowrap; line-height: 1.05; }
   .dv2-visit-other .ov-opp { font-family: "Barlow Semi Condensed", sans-serif; font-size: 12px;
     font-weight: 500; letter-spacing: .02em; color: var(--ink2); white-space: nowrap; margin-top: 0; line-height: 1.05; }
-  .dv2-panels { position: absolute; left: 50px; right: 50px;
+  .dv2-panels { position: absolute; left: 65px; right: 50px;
     display: flex; flex-direction: row; gap: 16px; align-items: stretch; }
 
   .dv2-gm { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column;
@@ -202,7 +202,7 @@
   /* zone 1 — metadata */
   .dv2-mc { display: flex; flex-direction: column; padding-top: 7px; border-top: 1px solid var(--hair); }
   .dv2-gm .z-meta .dv2-mc:first-child { border-top: 0; padding-top: 0; }
-  .dv2-mc .ml { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: -0.6px;
+  .dv2-mc .ml { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: -0.7px;
     text-transform: uppercase; color: var(--ink3); line-height: 1.2; }
   .dv2-mc .mv { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 600; font-size: 13px;
     color: var(--ink); margin-top: 0px; }

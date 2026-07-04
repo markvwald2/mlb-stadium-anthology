@@ -37,7 +37,7 @@ window.AMFAM = {
     ["Years Active", "2001\u2013present"],
     ["Classification", "Retro Classic"],
     ["Stadium Type", "Retractable-roof baseball-only ballpark"],
-    ["Capacity (Opening)", "41,900"],
+    ["CAPACITY", "41,900"],
     ["Surface", "Natural grass", "Kentucky bluegrass"],
     ["Architect", "HKS \u00b7 NBBJ \u00b7 Eppstein Uhen"],
     ["Architectural Style", "Retro-classic retractable-roof ballpark with industrial roof expression"],
@@ -52,11 +52,11 @@ window.AMFAM = {
 
   // ---- Construction / lifecycle ----
   lifecycle: [
-    ["Construction Start", "Nov 9, 1996"],
+    ["GROUNDBREAKING", "Nov 9, 1996"],
     ["Opened", "April 6, 2001"],
     ["Cost", "$400 million"],
     ["Adjusted Cost", "$727 million"],
-    ["Financing", "Public-private; SE Wisconsin Pro Baseball Park District sales-tax bonds + Brewers / private"]
+    ["Financing", "Public-private; SE Wisconsin Pro Baseball Park District sales-tax bonds, Brewers/private"]
   ],
 
   // ---- Field dimensions module (at the pivot hub) ----
@@ -75,7 +75,6 @@ window.AMFAM = {
     ["First Visit", "Jul 5, 2001"],
     ["Featured Visit", "Jul 22, 2023"],
     ["Trip", "Northern Midwest"],
-    ["Game", "Brewers 4, Braves 3"],
     ["Attendance", "39,707"],
     ["Duration", "2:32"]
   ],
@@ -122,10 +121,10 @@ window.AMFAM = {
   // ---- Supporting photography (roof panels, fanned across the crown) ----
   // each: [slot id, short caption, aspect "4:3" | "3:4"]
   panels: [
-    ["amfam-p1", "Exterior \u00b7 brick & the fan roof", "4:3"],
-    ["amfam-p2", "Seating bowl beneath the closed roof", "4:3"],
-    ["amfam-p3", "Center-field scoreboard", "4:3"],
-    ["amfam-p4", "Concourse & the Hot Corner", "4:3"],
-    ["amfam-p5", "Roof interior \u00b7 pivoting panels", "4:3"]
+    ["amfam-p1", "Exterior \u00b7 brick & the fan roof", "4:3", "uploads/miller-park-01.jpg"],
+    ["amfam-p2", "Seating bowl beneath the closed roof", "4:3", "uploads/miller-park-02.jpg"],
+    ["amfam-p3", "Center-field scoreboard", "4:3", "uploads/miller-park-03.jpg"],
+    ["amfam-p4", "Concourse & the Hot Corner", "4:3", "uploads/miller-park-04.jpg"],
+    ["amfam-p5", "Roof interior \u00b7 pivoting panels", "4:3", "uploads/miller-park-05.jpg"]
   ]
 };

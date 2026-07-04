@@ -5,7 +5,7 @@
   const CircleDiagram = window.CircleDiagram;
 
   function Slot(props) {
-    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src, fit: props.fit, maxdim: props.maxdim });
   }
 
   // concentric-ring SVG (hero motif + page watermark)
@@ -47,11 +47,14 @@
 
         /* ===== LEFT / HERO ===== */
         React.createElement("div", { className: "rf-page rf-left" },
+          React.createElement("div", { className: "rf-hero-slot" },
+            React.createElement(Slot, { id: "rf-hero", placeholder: "Riverfront Stadium \u00b7 field view", src: "uploads/riverfront-00-main-v4-92ea5aed.jpg", maxdim: 1400 })),
           React.createElement("div", { className: "rf-hero-scrim" }),
           React.createElement(Rings, { className: "rf-hero-rings", stroke: "#EDEAE0", op: 0.16, rings: [250, 222, 196, 172] }),
-          React.createElement("div", { className: "rf-hero-folio" }, "Plate 09"),
           React.createElement("div", { className: "rf-hero-title" },
-            React.createElement("h1", { className: "rf-hero-name" }, "Riverfront", React.createElement("span", { className: "l2" }, "Stadium")),
+            React.createElement("h1", { className: "rf-hero-name" }, "Riverfront", React.createElement("span", { className: "l2" }, "Stadium"))
+          ),
+          React.createElement("div", { className: "rf-hero-sub" },
             React.createElement("div", { className: "rf-hero-loc" },
               React.createElement("span", { className: "bar" }),
               React.createElement("span", { className: "txt" }, D.city + ", " + D.state)),
@@ -85,10 +88,10 @@
                 React.createElement("span", { className: "ln" })),
 
               React.createElement("div", { className: "rf-photos" },
-                React.createElement(Slot, { id: "rf-p1", placeholder: "Exterior \u00b7 riverfront" }),
-                React.createElement(Slot, { id: "rf-p2", placeholder: "Interior \u00b7 baseball config" }),
-                React.createElement(Slot, { id: "rf-p3", placeholder: "Circular bowl structure" }),
-                React.createElement(Slot, { id: "rf-p4", placeholder: "Detail \u00b7 concrete fa\u00e7ade" })
+                React.createElement(Slot, { id: "rf-p1", placeholder: "Exterior \u00b7 riverfront", src: "uploads/riverfront-stadium-alternate5.jpg", maxdim: 900 }),
+                React.createElement(Slot, { id: "rf-p2", placeholder: "Interior \u00b7 baseball config", src: "uploads/riverfront-stadium-02-6b6cc828.jpg", maxdim: 900 }),
+                React.createElement(Slot, { id: "rf-p3", placeholder: "Circular bowl structure", src: "uploads/riverfront-stadium-crowd.jpg", maxdim: 900 }),
+                React.createElement(Slot, { id: "rf-p4", placeholder: "Detail \u00b7 concrete fa\u00e7ade", src: "uploads/riverfront-stadium-04-hires.jpg", maxdim: 900 })
               ),
 
               React.createElement("div", { className: "rf-sgrid" },
@@ -97,8 +100,7 @@
                 React.createElement("div", { className: "rf-facts" },
                   React.createElement("div", { className: "lbl colhdr" }, "Stadium Facts"),
                   factRow("Team", D.team_name),
-                  factRow("League", D.league),
-                  factRow("Division", D.division),
+                  factRow("Division", "National League West/Central"),
                   factRow("Opened", D.opened),
                   factRow("Architect", D.architect),
                   factRow("Style", D.architectural_style),
@@ -107,12 +109,19 @@
                   factRow("Capacity", D.capacity_opening + " (originally " + D.capacity_current + ")"),
                   factRow("Elevation", D.elevation),
                   factRow("Cost", D.stadium_cost + " (" + D.stadium_cost_adjusted + " adj.)"),
-                  factRow("Financing", D.financing_method),
-                  factRow("Successor", D.succeeded_by),
-                  React.createElement("div", { className: "rf-logos" },
-                    React.createElement("img", { src: "assets/reds.svg", alt: "Cincinnati Reds", className: "rf-logo" }),
-                    React.createElement("img", { src: "assets/nl-logo.png", alt: "National League", className: "rf-logo" })
-                  )
+                  React.createElement("div", { className: "rf-pb" },
+                    React.createElement("div", { className: "pbitem" },
+                      React.createElement("div", { className: "lbl k" }, "Preceded By"),
+                      React.createElement("div", { className: "val v" },
+                        D.preceded_by.split(" \u00b7 ").map(function (s, i, a) {
+                          return React.createElement(React.Fragment, { key: i }, s, i < a.length - 1 ? React.createElement("br", null) : null);
+                        }))),
+                    React.createElement("div", { className: "pbitem" },
+                      React.createElement("div", { className: "lbl k" }, "Name History"),
+                      React.createElement("div", { className: "val v" }, D.name_history)),
+                    React.createElement("div", { className: "pbitem" },
+                      React.createElement("div", { className: "lbl k" }, "Successor"),
+                      React.createElement("div", { className: "val v" }, D.succeeded_by)))
                 ),
 
                 /* col 2 — diagram + lineage + era timeline */
@@ -123,15 +132,14 @@
                     orientation: D.orientation, degrees: D.orientation_degrees, accent: C.primary.hex
                   }) : null,
                   React.createElement("div", { className: "blk" },
-                    React.createElement("div", { className: "lbl k" }, "Name History"),
-                    React.createElement("div", { className: "val v" }, D.name_history)),
-                  React.createElement("div", { className: "blk" },
-                    React.createElement("div", { className: "lbl k" }, "Preceded By"),
-                    React.createElement("div", { className: "val v" }, D.preceded_by)),
-                  React.createElement("div", { className: "blk" },
                     React.createElement("div", { className: "lbl k" }, "Construction & Era"),
                     React.createElement("div", { className: "val v" },
-                      "Construction Start " + D.construction_start + " \u00b7 Opened " + D.opening_day + " \u00b7 Final game " + D.final_game + " \u00b7 Razed " + D.demolition_year)),
+                      ["- Construction start " + D.construction_start, "- Opened " + D.opening_day, "- Final game " + D.final_game, "- Razed " + D.demolition_year].map(function (s, i, a) {
+                        return React.createElement(React.Fragment, { key: i }, s, i < a.length - 1 ? React.createElement("br", null) : null);
+                      }))),
+                  React.createElement("div", { className: "blk" },
+                    React.createElement("div", { className: "lbl k" }, "Financing"),
+                    React.createElement("div", { className: "val v" }, D.financing_method)),
                   React.createElement("div", { className: "blk" },
                     React.createElement("div", { className: "lbl k" }, "Renovations"),
                     React.createElement("div", { className: "val v" }, D.renovations))
@@ -186,7 +194,7 @@
                 ),
 
                 /* visit facts */
-                React.createElement("div", { className: "vcol", style: { display: "flex", flexDirection: "column" } },
+                React.createElement("div", { className: "vcol rf-vinfo", style: { display: "flex", flexDirection: "column" } },
                   React.createElement("div", { className: "rf-vsub", style: { marginTop: 0 } }, "Visit Information"),
                   React.createElement("div", { style: { flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", paddingTop: 6, paddingBottom: 2 } },
                     vrow("Visit No.", String(D.visit_order) + " / 42"),
@@ -195,6 +203,14 @@
                     vrow("First Pitch", D.start_time + " " + D.time_zone),
                     vrow("Duration", D.game_duration),
                     vrow("Trip", D.trip_name))
+                ),
+
+                /* league / club marks — right edge of the visit band */
+                React.createElement("div", { className: "vcol rf-vlogos" },
+                  React.createElement("span", { className: "plq" },
+                    React.createElement("img", { src: "assets/reds.svg", alt: "Cincinnati Reds", className: "rf-logo" })),
+                  React.createElement("span", { className: "plq" },
+                    React.createElement("img", { src: "assets/nl-logo.png", alt: "National League", className: "rf-logo" }))
                 )
               )
             ),

@@ -37,7 +37,7 @@
       { stadium: "Polo Grounds", start: 1911, end: 1957, visited: false, visitYears: [], visitCount: 0, renames: [] },
       { stadium: "Seals Stadium", start: 1958, end: 1959, visited: false, visitYears: [], visitCount: 0, renames: [] },
       { stadium: "Candlestick Park", start: 1960, end: 1999, visited: false, visitYears: [], visitCount: 0, renames: [{ year: 1995, name: "3-Com Park" }] },
-      { stadium: "Pacific Bell Park", start: 2000, end: 2026, visited: true, visitYears: [2025], visitCount: 1, renames: [{ year: 2004, name: "SBC Park" }, { year: 2006, name: "AT&T Park" }, { year: 2019, name: "Oracle Park" }] },
+      { stadium: "Pac. Bell", start: 2000, end: 2026, visited: true, visitYears: [2025], visitCount: 1, renames: [{ year: 2004, name: "SBC" }, { year: 2006, name: "AT&T Park" }, { year: 2019, name: "Oracle" }] },
     ]},
     { lines: ["Brooklyn / Los Angeles Dodgers"], tenures: [
       { stadium: "Washington Park", start: 1890, end: 1891, visited: false, visitYears: [], visitCount: 0, renames: [] },
@@ -57,7 +57,7 @@
       { stadium: "Columbia Park", start: 1901, end: 1908, visited: false, visitYears: [], visitCount: 0, renames: [] },
       { stadium: "Shibe Park", start: 1909, end: 1954, visited: false, visitYears: [], visitCount: 0, renames: [{ year: 1953, name: "Connie Mack Stadium" }] },
       { stadium: "Municipal Stadium", start: 1955, end: 1967, visited: false, visitYears: [], visitCount: 0, renames: [] },
-      { stadium: "Oakland Coliseum", start: 1968, end: 2024, visited: false, visitYears: [], visitCount: 0, renames: [{ year: 1998, name: "Network Associates" }, { year: 2004, name: "McAfee" }, { year: 2011, name: "O.co Coliseum" }, { year: 2019, name: "RingCentral" }] },
+      { stadium: "Oakland Coliseum", start: 1968, end: 2024, visited: false, visitYears: [], visitCount: 0, renames: [{ year: 1998, name: "Network Assoc." }, { year: 2004, name: "McAfee" }, { year: 2011, name: "O.co Coliseum" }, { year: 2019, name: "RingCentral" }] },
       { stadium: "Sutter Health Park", start: 2025, end: 2026, visited: true, visitYears: [2025], visitCount: 1, renames: [] },
     ]},
     { lines: ["Washington Senators / Minnesota Twins"], tenures: [
@@ -87,7 +87,7 @@
     ]},
     { lines: ["Cleveland Indians / Guardians"], tenures: [
       { stadium: "League Park", start: 1901, end: 1931, visited: false, visitYears: [], visitCount: 0, renames: [{ year: 1916, name: "Dunn Field" }] },
-      { stadium: "Cleveland (Municipal) Stadium", start: 1932, end: 1993, visited: true, visitYears: [1990], visitCount: 1, renames: [] },
+      { stadium: "Cleveland Municipal Stadium", start: 1932, end: 1993, visited: true, visitYears: [1990], visitCount: 1, renames: [] },
       { stadium: "Jacobs Field", start: 1994, end: 2026, visited: true, visitYears: [2001, 2011], visitCount: 2, renames: [{ year: 2008, name: "Progressive Field" }] },
     ]},
     { lines: ["Chicago Cubs"], tenures: [
@@ -97,7 +97,7 @@
     { lines: ["Chicago White Sox"], tenures: [
       { stadium: "South Side Park", start: 1901, end: 1910, visited: false, visitYears: [], visitCount: 0, renames: [] },
       { stadium: "White Sox Park", start: 1910, end: 1990, visited: true, visitYears: [1969, 1988], visitCount: 2, labelAbove: true, renames: [{ year: 1913, name: "Comiskey Park" }, { year: 1962, name: "White Sox Park", relabel: true }, { year: 1976, name: "Comiskey Park" }] },
-      { stadium: "New Comiskey Park", start: 1991, end: 2026, visited: true, visitYears: [2001], visitCount: 1, renames: [{ year: 2003, name: "U.S. Cellular Field" }, { year: 2016, name: "Guaranteed Rate Field" }, { year: 2024, name: "Rate Field" }] },
+      { stadium: "New Comiskey Park", start: 1991, end: 2026, visited: true, visitYears: [2001], visitCount: 1, renames: [{ year: 2003, name: "U.S. Cellular Field" }, { year: 2016, name: "Guaranteed Rate" }, { year: 2024, name: "Rate Field" }] },
     ]},
     { lines: ["St. Louis Cardinals"], tenures: [
       { stadium: "Sportsman's Park", start: 1890, end: 1891, visited: false, visitYears: [], visitCount: 0, renames: [] },
@@ -132,7 +132,7 @@
       { stadium: "Citi Field", start: 2009, end: 2026, visited: true, visitYears: [2019], visitCount: 1, renames: [] },
     ]},
     { lines: ["L.A. / California / Anaheim Angels"], tenures: [
-      { stadium: "Los Angeles Wrigley Field", start: 1961, end: 1961, visited: false, visitYears: [], visitCount: 0, renames: [] },
+      { stadium: "Wrigley Field (Los Angeles)", start: 1961, end: 1961, visited: false, visitYears: [], visitCount: 0, renames: [] },
       { stadium: "Dodger Stadium", start: 1962, end: 1965, visited: false, visitYears: [], visitCount: 0, renames: [] },
       { stadium: "Anaheim Stadium", start: 1966, end: 2026, visited: true, visitYears: [1986, 2006], visitCount: 2, renames: [{ year: 1998, name: "Edison Int'l Field" }, { year: 2004, name: "Angel Stadium" }] },
     ]},
@@ -157,7 +157,7 @@
     ]},
     { lines: ["Seattle Mariners"], tenures: [
       { stadium: "Kingdome", start: 1977, end: 1999, visited: false, visitYears: [], visitCount: 0, renames: [] },
-      { stadium: "Safeco Field", start: 1999, end: 2026, visited: true, visitYears: [2003], visitCount: 1, renames: [{ year: 2019, name: "T-Mobile Park" }] },
+      { stadium: "Safeco Field", start: 1999, end: 2026, visited: true, visitYears: [2003], visitCount: 1, renames: [{ year: 2019, name: "T-Mobile" }] },
     ]},
     { lines: ["Toronto Blue Jays"], tenures: [
       { stadium: "Exhibition Stadium", start: 1977, end: 1989, visited: false, visitYears: [], visitCount: 0, renames: [] },

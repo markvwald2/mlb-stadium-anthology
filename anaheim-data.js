@@ -63,8 +63,8 @@ window.ANAHEIM = {
 
   /* ---- footnote rail beneath the survey ---- */
   footnotes: [
-    ["Name History", "Anaheim Stadium (1966-1997)\nEdison Intl. Field of Anaheim (1998-2003)\nAngel Stadium of Anaheim (2004-present)"],
-    ["Preceded By", "Los Angeles Wrigley Field (1961)\nDodger Stadium* (1962-1965)"]
+    ["Name History", "Anaheim Stadium \u00b7 1966-1997\nEdison Intl. Field of Anaheim \u00b7 1998-2003\nAngel Stadium of Anaheim \u00b7 2004-present"],
+    ["Preceded By", "Wrigley Field (Los Angeles) \u00b7 1961\nDodger Stadium* \u00b7 1962-1965"]
   ],
 
   /* ---- asterisk note rendered beneath the footnote rail ---- */

@@ -105,7 +105,7 @@
     display: flex; flex-direction: column; justify-content: center; gap: 5px; }
   .pnc-meta .cell:first-child { border-left: 0; padding-left: 0; }
   .pnc-meta .cell.brand { justify-content: center; align-items: center; padding-left: 15px; padding-right: 15px; }
-  .pnc-meta .cell .k { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(206,198,180,.7); }
+  .pnc-meta .cell .k { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: rgba(206,198,180,.7); }
   .pnc-meta .cell .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .16em; text-transform: uppercase; color: #ECE6D8; }
   .pnc-meta .logos { margin-left: auto; flex-direction: row; align-items: center; gap: 20px; border-left: 0; }
   .pnc-meta .logos .mlb { height: 40px; width: auto; display: block; border-radius: 3px; }
@@ -126,7 +126,7 @@
 
   /* ============ RIGHT PAGE ============ */
   /* outer padding = 0.40in: clears 0.375in trim-safe margin on top/right/bottom and the gutter safety zone on the left (content starts at x=1315, zone ends 1312.5). */
-  .pnc-rp { position: absolute; inset: 0; padding: 40px 40px 40px 40px; display: flex; flex-direction: column; gap: 12px; z-index: 1; }
+  .pnc-rp { position: absolute; inset: 0; padding: 40px 40px 40px 40px; display: flex; flex-direction: column; gap: 6px; z-index: 1; }
   .pnc-right > .pnc-rp { z-index: 2; }
 
   /* black section bars */
@@ -138,7 +138,7 @@
 
   /* photo strip */
   .pnc-photos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 13px; flex: none; }
-  .pnc-pcard { position: relative; aspect-ratio: 4 / 3; }
+  .pnc-pcard { position: relative; aspect-ratio: 16 / 10; }
   .pnc-pcard .pnc-pslot {
     position: absolute; inset: 0; width: 100%; height: 100%; display: block;
     border: 1px solid var(--rule-strong);
@@ -150,17 +150,17 @@
 
   /* identity ribbon */
   .pnc-ribbon { display: flex; background: var(--black); flex: none; }
-  .pnc-ribbon .rc { flex: 1; padding: 10px 14px; border-left: 1px solid rgba(255,255,255,.12);
+  .pnc-ribbon .rc { flex: 1; padding: 7px 14px; border-left: 1px solid rgba(255,255,255,.12);
     display: flex; flex-direction: column; justify-content: center; gap: 5px; min-width: 0; }
   .pnc-ribbon .rc:first-child { border-left: 0; }
   .pnc-ribbon .rc.logo { flex: 0 0 auto; flex-direction: row; align-items: center; justify-content: center; padding-left: 18px; padding-right: 18px; }
   .pnc-ribbon .rc.team { flex: 1.5; }
   .pnc-ribbon .rc.team .v { white-space: nowrap; letter-spacing: .02em; }
-  .pnc-ribbon .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .12em;
+  .pnc-ribbon .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--gold-bright); }
   .pnc-ribbon .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 16px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--panel-ink); line-height: 1.08; }
-  .pnc-ribbon .v.coords { font-family: "Space Mono", monospace; font-weight: 400; font-size: 11px; letter-spacing: .02em; line-height: 1.35; }
+  .pnc-ribbon .v.coords { font-family: "Space Mono", monospace; font-weight: 400; font-size: 12px; letter-spacing: .02em; line-height: 1.35; }
   .pnc-ribbon .teamrow { display: flex; align-items: center; gap: 12px; }
   .pnc-ribbon .nl-logo { height: 44px; width: auto; display: block; align-self: center; }
 
@@ -176,10 +176,10 @@
 
   /* facts table */
   .pnc-table { display: flex; flex-direction: column; }
-  .pnc-table .row { display: grid; grid-template-columns: 134px 1fr; gap: 12px; padding: 2.5px 0;
+  .pnc-table .row { display: grid; grid-template-columns: 134px 1fr; gap: 12px; padding: 1.5px 0;
     border-bottom: 1px solid var(--rule); align-items: baseline; }
   .pnc-table .row:last-child { border-bottom: 0; }
-  .pnc-table .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .12em;
+  .pnc-table .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); }
   .pnc-table .v { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink); line-height: 1.28; }
 
@@ -187,8 +187,8 @@
   .pnc-mod.details { margin-top: auto; margin-bottom: auto; }
   .pnc-fp { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
   .pnc-fp .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .pnc-fp .fd-svg { width: 200px; height: 183px; max-width: 100%; display: block; overflow: visible; }
-  .pnc-fp figcaption { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .22em;
+  .pnc-fp .fd-svg { width: 250px; height: auto; max-width: 100%; display: block; overflow: visible; }
+  .pnc-fp figcaption { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .22em;
     text-transform: uppercase; color: var(--ink-2); }
 
   /* historical context */
@@ -207,11 +207,11 @@
   .pnc-fgrid .fc { padding: 0 22px; border-left: 1px solid var(--rule); min-width: 0; }
   .pnc-fgrid .fc:first-child { padding-left: 0; border-left: 0; }
   .pnc-fgrid .fc:last-child { padding-right: 0; }
-  .pnc-fgrid .fc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
+  .pnc-fgrid .fc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
-  .pnc-fgrid .fc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 11px; line-height: 1.3; color: var(--ink); }
+  .pnc-fgrid .fc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; line-height: 1.3; color: var(--ink); }
   .pnc-fgrid .fc.cost .v.big { font-family: "Spectral", serif; font-weight: 700; font-size: 20px; line-height: 1; }
-  .pnc-fgrid .fc.cost .v.adj { font-family: "Space Mono", monospace; font-weight: 400; font-size: 10.5px; letter-spacing: .02em;
+  .pnc-fgrid .fc.cost .v.adj { font-family: "Space Mono", monospace; font-weight: 400; font-size: 12px; letter-spacing: .02em;
     color: var(--ink-2); margin-top: 5px; }
   .pnc-vgrid { display: grid; grid-template-columns: 240px 1fr 156px; gap: 0; margin-top: 12px; }
   .pnc-vgrid > div { padding: 0 20px; }
@@ -221,7 +221,7 @@
   .pnc-wx { border-left: 1px solid var(--rule); }
 
   /* featured game */
-  .pnc-vgame .eyebrow { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .2em;
+  .pnc-vgame .eyebrow { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
   .pnc-vgame .match { display: flex; align-items: baseline; gap: 10px; font-family: "Oswald", sans-serif;
     font-weight: 700; font-size: 34px; letter-spacing: .01em; line-height: 1; }
@@ -236,7 +236,7 @@
   .pnc-vgame .gresult { font-family: "Spectral", serif; font-weight: 700; font-size: 22px; color: var(--ink);
     margin-top: 8px; letter-spacing: .005em; }
   .pnc-vgame .gmeta { display: flex; flex-direction: row; gap: 24px; margin-top: 8px; }
-  .pnc-vgame .gs .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .12em;
+  .pnc-vgame .gs .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 3px; }
   .pnc-vgame .gs .v { font-family: "Spectral", serif; font-weight: 600; font-size: 16px; color: var(--ink); }
 
@@ -244,7 +244,7 @@
   .pnc-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
   .pnc-box th, .pnc-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 4px 0;
     color: var(--ink); border-bottom: 1px solid var(--rule); }
-  .pnc-box thead th { color: var(--ink-3); font-weight: 500; font-size: 11px; border-bottom: 1.5px solid var(--ink); }
+  .pnc-box thead th { color: var(--ink-3); font-weight: 500; font-size: 12px; border-bottom: 1.5px solid var(--ink); }
   .pnc-box td.tm, .pnc-box th.tm { text-align: left; font-weight: 600; font-size: 12px; letter-spacing: .08em;
     color: var(--ink); padding-right: 14px; width: 1%; white-space: nowrap; }
   .pnc-box tbody tr.win td.tm { color: var(--ink); }
@@ -261,26 +261,26 @@
   .pnc-dec { display: flex; flex-wrap: wrap; gap: 6px 26px; margin-top: 13px; }
   .pnc-dec.sub { margin-top: 9px; padding-top: 9px; border-top: 1px solid var(--rule); }
   .pnc-dec .di { display: flex; align-items: baseline; gap: 8px; }
-  .pnc-dec .di .k { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .08em;
+  .pnc-dec .di .k { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .08em;
     color: var(--gold-deep); }
   .pnc-dec .di .v { font-family: "Spectral", serif; font-size: 12.5px; color: var(--ink); }
   .pnc-dec.matchup { justify-content: flex-start; align-items: baseline; gap: 0; flex-wrap: nowrap; }
   .pnc-dec.matchup .vs { margin: 0 22px; font-family: "Spectral", serif; font-style: italic; font-size: 12.5px; color: var(--ink-2); }
 
   /* weather */
-  .pnc-wx .wxh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 11px; letter-spacing: .2em;
+  .pnc-wx .wxh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 12px; }
   .pnc-wx .wxmain { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
   .pnc-wx .wxmain .pnc-wx-ico { stroke: var(--ink-2); flex: none; }
   .pnc-wx .wxtemp { display: flex; flex-direction: column; }
   .pnc-wx .wxtemp .deg { font-family: "Spectral", serif; font-weight: 700; font-size: 26px; color: var(--ink); line-height: 1; }
-  .pnc-wx .wxtemp .cond { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em;
+  .pnc-wx .wxtemp .cond { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink-2); margin-top: 3px; }
   .pnc-wx .wxrows { display: flex; flex-direction: column; }
   .pnc-wx .wxr { display: flex; flex-direction: row; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid var(--rule); }
   .pnc-wx .wxr .pnc-wxr-ico { flex: none; }
   .pnc-wx .wxr-txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-  .pnc-wx .wxr .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em;
+  .pnc-wx .wxr .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--ink-3); }
   .pnc-wx .wxr .v { font-family: "Spectral", serif; font-weight: 600; font-size: 14px; color: var(--ink); }
 

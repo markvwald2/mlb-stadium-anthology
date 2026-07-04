@@ -78,7 +78,7 @@
     display: flex; align-items: center; gap: 12px; opacity: .5; pointer-events: none; }
   .chf-roofline .ln { flex: 1; height: 1px; background: rgba(232,224,208,.4); }
   .chf-roofline .tk { width: 1px; height: 11px; background: rgba(232,224,208,.55); flex: none; }
-  .chf-roofline .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em;
+  .chf-roofline .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .3em;
     color: rgba(232,224,208,.66); text-transform: uppercase; flex: none; }
 
   .chf-hero-title { position: absolute; left: 58px; right: 58px; bottom: 168px; z-index: 5; }
@@ -120,7 +120,7 @@
   .chf-frame image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
     border: 1px solid var(--rule-strong); }
   .chf-frame figcaption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
-    padding: 14px 8px 5px; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px;
+    padding: 14px 8px 5px; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .1em; text-transform: uppercase; color: #F2ECDD; line-height: 1.2;
     background: linear-gradient(0deg, rgba(20,16,12,.82), rgba(20,16,12,0)); pointer-events: none; }
 
@@ -135,7 +135,7 @@
     width: 3px; background: var(--sedona); }
   .chf-ribbon .rib-logo { height: 46px; width: auto; display: block; }
   .chf-ribbon .cell.coords { flex: 1.25; }
-  .chf-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+  .chf-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--sedona); white-space: nowrap; }
   .chf-ribbon .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15px;
     letter-spacing: .03em; text-transform: uppercase; color: var(--ink); line-height: 1.05; white-space: nowrap; }
@@ -144,7 +144,7 @@
 
   /* ---- three-column body ---- */
   .chf-body { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1.28fr; min-height: 0; }
-  .chf-col { display: flex; flex-direction: column; gap: 11px; min-width: 0; padding: 4px 26px 0; }
+  .chf-col { display: flex; flex-direction: column; gap: 7px; min-width: 0; padding: 4px 26px 0; }
   .chf-col.col1 { padding-left: 0; }
   .chf-col.col2 { border-left: 1px solid var(--rule); }
   .chf-col.col3 { border-left: 1px solid var(--rule); padding-right: 0; }
@@ -152,24 +152,24 @@
   /* module + red section header */
   .chf-mod { display: flex; flex-direction: column; min-width: 0; }
   .chf-mod.field { margin-top: auto; }
-  .chf-h { display: flex; align-items: baseline; gap: 9px; padding-bottom: 6px; margin-bottom: 8px;
+  .chf-h { display: flex; align-items: baseline; gap: 9px; padding-bottom: 4px; margin-bottom: 5px;
     border-bottom: 1px solid var(--rule-strong); }
   .chf-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .15em;
     text-transform: uppercase; color: var(--sedona); white-space: nowrap; }
-  .chf-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em;
+  .chf-h .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); }
 
   /* facts / visit tables */
   .chf-facts { display: flex; flex-direction: column; }
   .chf-frow { display: grid; grid-template-columns: 124px 1fr; gap: 12px; align-items: baseline;
-    padding: 2px 0; border-bottom: 1px solid var(--rule); }
-  .chf-facts.compact .chf-frow { padding: 3px 0; }
+    padding: 1px 0; border-bottom: 1px solid var(--rule); }
+  .chf-facts.compact .chf-frow { padding: 2px 0; }
   .chf-frow:last-child { border-bottom: 0; }
-  .chf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .07em;
+  .chf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--ink-3); }
   .chf-frow .v { display: flex; flex-direction: column; gap: 2px; }
   .chf-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink); line-height: 1.26; }
-  .chf-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 11px;
+  .chf-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12px;
     color: var(--ink-2); line-height: 1.28; }
 
   /* field diagram */
@@ -178,11 +178,11 @@
   .chf-fd-svg { width: 172px; height: 131px; display: block; }
   /* protractor field plan */
   .chf-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .chf-fieldfig .fd-svg { width: 196px; height: auto; max-width: 100%; display: block;  overflow: visible; }
+  .chf-fieldfig .fd-svg { width: 200px; height: auto; max-width: 100%; display: block;  overflow: visible; }
 
   /* featured-game caption */
   .chf-gcap { display: flex; align-items: center; gap: 8px; margin-top: 8px;
-    font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .12em;
+    font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-2); }
   .chf-gcap .sep { color: var(--rule-strong); }
 
@@ -192,14 +192,14 @@
   .chf-wcell .chf-wico { flex: none; }
   .chf-wcell .tx { display: flex; flex-direction: column; }
   .chf-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 22px; color: var(--ink); line-height: 1; }
-  .chf-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .12em;
+  .chf-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
 
   /* line score */
   .chf-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
   .chf-box th, .chf-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 4px 0;
     color: var(--ink); border-bottom: 1px solid var(--rule); }
-  .chf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 11px; border-bottom: 1.5px solid var(--ink); }
+  .chf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 12px; border-bottom: 1.5px solid var(--ink); }
   .chf-box td.tm, .chf-box th.tm { text-align: left; font-weight: 700; font-size: 12px; letter-spacing: .08em;
     padding-right: 12px; width: 1%; white-space: nowrap; }
   .chf-box .rcol { font-weight: 700; }
@@ -213,7 +213,7 @@
   /* decisions */
   .chf-dec { margin-top: 11px; display: flex; flex-direction: column; gap: 4px; }
   .chf-dec p { margin: 0; font-family: "Spectral", serif; font-size: 12.5px; color: var(--ink); }
-  .chf-dec p b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .06em;
+  .chf-dec p b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .06em;
     color: var(--sedona-deep); }
   .chf-dec p i { font-style: italic; }
   .chf-dec p.sv { color: var(--ink-2); }

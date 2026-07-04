@@ -85,8 +85,7 @@
           React.createElement("text", { x: cfPt[0] + 7, y: cfPt[1] - 12, className: "rf-fd-axis", textAnchor: "start" }, orientation)
         ),
         React.createElement("div", { className: "rf-fd-cap" },
-          React.createElement("span", null, "FIELD AXIS \u00b7 " + orientation + " (" + deg + "\u00b0)"),
-          React.createElement("span", null, "SYMMETRICAL \u00b7 DISTANCES IN FEET")
+          React.createElement("span", null, "FIELD AXIS \u00b7 " + orientation + " (" + deg + "\u00b0)")
         )
       )
     );

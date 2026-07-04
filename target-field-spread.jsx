@@ -172,7 +172,7 @@
                 e("figure", { className: "tf-fieldfig" },
                   Protractor ? e(Protractor, { lf: D.field.left_field, cf: D.field.center_field,
                     rf: D.field.right_field, orientation: D.field.orientation, degrees: D.field.degrees }) : null,
-                  e("figcaption", null, "All distances in feet \u00b7 " + D.field.orientation + " " + D.field.degrees + "\u00b0")))),
+                  e("figcaption", null, "All distances in feet")))),
 
             /* ===== LEDGER II — VISIT ===== */
             e("div", { className: "tf-ledger visit" },
@@ -210,7 +210,7 @@
             e(SecHead, { title: "Kasota Stone", note: "METRODOME \u2192 TARGET FIELD" }),
             e("div", { className: "tf-prose4" },
               D.stadium_context.map((p, i) => e("p", { key: i,
-                style: { letterSpacing: "-0.3px" } }, p))))
+                style: { letterSpacing: "-0.4px" } }, p))))
         )
       )
     );

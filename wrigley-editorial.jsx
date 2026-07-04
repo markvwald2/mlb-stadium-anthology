@@ -9,7 +9,7 @@
   const D = window.WRIGLEY;
 
   function Slot(props) {
-    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" });
+    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect", src: props.src, fit: props.fit });
   }
 
   /* line-art weather glyphs */
@@ -35,7 +35,6 @@
       ["Opened", D.opening_day],
       ["First Cubs Game", "April 20, 1916"],
       ["Groundbreaking", D.construction_start],
-      ["Years Active", D.years_active],
       ["Renovations", D.renovations],
       ["Capacity", D.capacity_current + " (" + D.capacity_opening + " originally)"],
       ["Surface", D.playing_surface_type + " (" + D.surface + ")"],
@@ -52,16 +51,11 @@
         /* ===================== LEFT PAGE / AERIAL ===================== */
         React.createElement("div", { className: "we-page we-left", "data-screen-label": "Wrigley Field aerial" },
           React.createElement("div", { className: "we-hero-slot" },
-            React.createElement(Slot, { id: "wrigley-aerial", placeholder: "Drop the Wrigley aerial \u2014 the ballpark embedded in the Chicago street grid, rooftops beyond the outfield" })),
+            React.createElement(Slot, { id: "wrigley-aerial", src: "uploads/wrigley-field-00-main-e8c77535.jpg", fit: "cover", placeholder: "Drop the Wrigley aerial \u2014 the ballpark embedded in the Chicago street grid, rooftops beyond the outfield" })),
           React.createElement("div", { className: "we-hero-scrim" }),
           React.createElement("div", { className: "we-hero-mast" },
-            React.createElement("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-            React.createElement("span", { className: "mast-div" }),
-            React.createElement("img", { className: "nl", src: (window.NL_LOGO_SRC || "assets/nl-logo.png"), alt: "National League" })),
+            React.createElement("img", { className: "wf-logo", src: "assets/wrigley-field-logo.svg", alt: "Wrigley Field" })),
           React.createElement("div", { className: "we-hero-block" },
-            React.createElement("div", { className: "we-hero-crest" },
-              React.createElement("img", { src: "assets/chicago-cubs-logo.svg", alt: "Chicago Cubs" })),
-            React.createElement("h1", { className: "we-hero-name" }, "WRIGLEY FIELD"),
             React.createElement("div", { className: "we-hero-loc" }, D.city + ", " + D.state),
             React.createElement("div", { className: "we-hero-rule" }),
             React.createElement("div", { className: "we-hero-stats" },
@@ -76,10 +70,10 @@
 
             /* --- photo strip --- */
             React.createElement("div", { className: "we-photos" },
-              photo("we-p1", "Marquee", "narrow"),
-              photo("we-p2", "Ivy Wall"),
-              photo("we-p3", "Grandstand"),
-              photo("we-p4", "Skyline", "narrow")),
+              photo("we-p1", "Marquee", "narrow", "uploads/wrigley-field-01.jpg"),
+              photo("we-p2", "Ivy Wall", null, "uploads/wrigley-field-02.jpg"),
+              photo("we-p3", "Grandstand", null, "uploads/wrigley-field-03.jpg"),
+              photo("we-p4", "Skyline", "narrow", "uploads/wrigley-field-04.jpg")),
 
             /* --- metadata ribbon --- */
             React.createElement("div", { className: "we-ribbon" },
@@ -109,11 +103,16 @@
               React.createElement("div", { className: "we-field" },
                 React.createElement("div", { className: "we-modh center" }, "Field Dimensions"),
                 React.createElement("div", { className: "we-fd-group" },
-                  React.createElement("div", { className: "we-fd-wrap" },
-                    window.WrigleyProtractor ? React.createElement(window.WrigleyProtractor, {
-                      lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
-                      orientation: D.orientation, degrees: D.orientation_degrees, accent: "#1C3D72"
-                    }) : null),
+                  React.createElement("div", { className: "we-streets" },
+                    React.createElement("div", { className: "we-st we-st-top" }, "Waveland"),
+                    React.createElement("div", { className: "we-st we-st-right" }, "Sheffield"),
+                    React.createElement("div", { className: "we-st we-st-bottom" }, "Addison"),
+                    React.createElement("div", { className: "we-st we-st-left" }, "Clark"),
+                    React.createElement("div", { className: "we-fd-wrap" },
+                      window.WrigleyProtractor ? React.createElement(window.WrigleyProtractor, {
+                        lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
+                        orientation: D.orientation, degrees: D.orientation_degrees, accent: "#1C3D72"
+                      }) : null)),
                   React.createElement("div", { className: "we-fd-nick" }, "\u201CThe Friendly Confines\u201D"))),
 
               React.createElement("div", { className: "we-context" },
@@ -191,9 +190,9 @@
   }
 
   /* ---------- helpers ---------- */
-  function photo(id, label, mod) {
+  function photo(id, label, mod, src) {
     return React.createElement("div", { className: "we-pcard " + (mod || "") },
-      React.createElement(Slot, { id: id, placeholder: label }),
+      React.createElement(Slot, { id: id, placeholder: label, src: src, fit: "cover" }),
       React.createElement("div", { className: "we-pcap" }, label));
   }
   function ribCell(k, v) {

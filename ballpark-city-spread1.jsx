@@ -50,26 +50,26 @@
         <TimelineRail items={D.TIMELINE} x={45} y={54} h={720}
         headLabel={["THE LONG ARC", "OF BALLPARK", "EVOLUTION"]} />
 
-        <div className="bc-region bc-chapter-kicker" style={{ left: 230, top: 70, width: 1000 }}>
+        <div className="bc-region bc-chapter-kicker" style={{ left: 230, top: 70, width: 964 }}>
           {D.META.chapter}
         </div>
 
-        <h1 className="bc-title bc-region" style={{ left: 226, top: 96, width: 1010, fontSize: 146 }}>
+        <h1 className="bc-title bc-region" style={{ left: 226, top: 96, width: 968, fontSize: 146 }}>
           <span className="l1">{D.META.title[0]}</span>
           <span className="l2">{D.META.title[1]}</span>
         </h1>
 
         {/* rule + diamond under title */}
-        <div className="bc-region" style={{ left: 230, top: 392, width: 1006, display: "flex", alignItems: "center", gap: 0 }}>
+        <div className="bc-region" style={{ left: 230, top: 392, width: 964, display: "flex", alignItems: "center", gap: 0 }}>
           <span style={{ flex: 1, height: 0, borderTop: "1.5px solid var(--rule-2)" }}></span>
           <span style={{ width: 9, height: 9, background: "var(--brick)", transform: "rotate(45deg)", margin: "0 0 0 0" }}></span>
           <span style={{ flex: 1, height: 0, borderTop: "1.5px solid var(--rule-2)" }}></span>
         </div>
 
-        <SectionHead label={"BASEBALL\u2019S BUILT ENVIRONMENT"} num={"\u00a7"} width={1006}
+        <SectionHead label={"BASEBALL\u2019S BUILT ENVIRONMENT"} num={"\u00a7"} width={964}
         style={{ position: "absolute", left: 230, top: 418, fontSize: 21 }} />
 
-        <Body paras={D.EXEC} x={230} y={462} w={1006} h={486}
+        <Body paras={D.EXEC} x={230} y={462} w={964} h={486}
         cols={3} gap={34} size={14.5} lh={1.5} dropcap fill="balance" />
 
         {/* ============================ RIGHT PAGE =========================== */}

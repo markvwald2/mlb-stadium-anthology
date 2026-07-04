@@ -38,7 +38,7 @@
     const accent = yellow;
     const deg = (props.degrees != null) ? props.degrees : 46;
     const orientation = props.orientation || "NE";
-    const C = [180, 198], R = 90, PR = 128;
+    const C = [180, 198], R = 66, PR = 96;
     const home = [C[0], C[1] + R], cf = [C[0], C[1] - R], lf = [C[0] - R, C[1]], rf = [C[0] + R, C[1]];
     const dd = R * 0.30;
     const b1 = [C[0] + dd, C[1] + R - dd], b2 = [C[0], C[1] + R - 2 * dd], b3 = [C[0] - dd, C[1] + R - dd];
@@ -53,7 +53,7 @@
     }
     const nums = [0, 30, 60, 90].map((a, i) => {
       const p = polar(C, PR + 14, a);
-      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "11px", fill: ink3 } }, a);
+      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "12px", fill: ink3 } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 110);
     const protArc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -70,7 +70,7 @@
     ];
 
     return e("div", { className: "fd-wrap" },
-      e("svg", { viewBox: "79 30 294 290", className: "fd-svg", role: "img", "aria-label": "Field dimensions plan, oriented " + orientation + " " + deg + " degrees" },
+      e("svg", { viewBox: "66 30 294 290", className: "fd-svg", role: "img", "aria-label": "Field dimensions plan, oriented " + orientation + " " + deg + " degrees" },
         e("defs", null,
           e("linearGradient", { id: "sutterProtGrass", x1: "0", y1: "0", x2: "0", y2: "1" },
             e("stop", { offset: "0", stopColor: grassHi }), e("stop", { offset: "1", stopColor: grass }))
@@ -86,8 +86,8 @@
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2.2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: black }),
         e("circle", { cx: C[0], cy: C[1], r: 3, fill: accent }),
-        e(Chip, { x: bc.x, y: bc.y, text: orientation + " " + deg + "\u00b0", size: 14, tone: "yellow", padX: 7 }),
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 15 }))
+        e(Chip, { x: bc.x, y: bc.y, text: orientation + " " + deg + "\u00b0", size: 17, tone: "yellow", padX: 7 }),
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 17 }))
       )
     );
   }

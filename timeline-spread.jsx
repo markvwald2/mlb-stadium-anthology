@@ -32,14 +32,31 @@
   const LABEL_R = 292;            // right edge of franchise rail text
   const FOLD = 1275, GUT0 = 1238, GUT1 = 1312;
   const BARH = 13;
+  // ---- year-free GUTTER GAP centered on the fold ----
+  // Seasons map at ONE linear scale (PX_SEASON); seasons >= GUT_SPLIT are shifted
+  // right by GUT_GAP, so the 0.5in binding-safe band straddling the fold
+  // (~1213..1339) holds NO year. Bars cross the dead band as continuous tenures;
+  // that span references no year. GUT_SPLIT (1950) is picked so no tenure boundary
+  // lands on it (no start==1950, no end==1949) -> xOf stays single-valued with no
+  // stretched boundary season.
+  const GUT_GAP = 126;
+  const GUT_SPLIT = 1950;
+  const NSEAS = YMAX - YMIN + 1;
+  const PX_SEASON = (PLOT_X1 - PLOT_X0 - GUT_GAP) / NSEAS;
   // span model: each season owns a full slot [xOf(yr), xOf(yr+1)]. There are
   // (YMAX-YMIN+1) seasons, so the divisor is +1 and xOf(YMAX+1) == PLOT_X1.
-  const xOf = (yr) => PLOT_X0 + (yr - YMIN) / (YMAX - YMIN + 1) * (PLOT_X1 - PLOT_X0);
+  const xOf = (yr) => PLOT_X0 + (yr - YMIN) * PX_SEASON + (yr >= GUT_SPLIT ? GUT_GAP : 0);
   const lanes = D.FRANCHISES;
   const N = lanes.length;
   const laneH = (CHART_BOT - CHART_TOP) / N;
 
   const inGutter = (a, b) => a < GUT1 && b > GUT0;
+  // Readable labels/spans/external callouts must ALSO clear the 0.5in binding-safe
+  // band: left edge >= 1337.5 on the right page, right edge <= 1212.5 on the left.
+  // Year-true marks (notches, diamonds) keep the narrower GUT zone above, so they
+  // stay on their true year; only readable text avoids this wider band.
+  const LG0 = 1210.5, LG1 = 1339.5; // 2px safety vs canvas-measure/render slop
+  const inLabelGutter = (a, b) => a < LG1 && b > LG0;
   const hit = (r, o, pad) => (r.x - pad < o.x + o.w && r.x + r.w + pad > o.x && r.y - pad < o.y + o.h && r.y + r.h + pad > o.y);
 
   function TimelineSpread() {
@@ -102,7 +119,7 @@
         if (b.t.labelOutside || b.t.labelAbove) { b.inside = false; externals.push(b); return; } // force primary to an external callout
         const nameW = measure(b.t.stadium, F_IN);
         const nameFits = b.w >= nameW + 16;
-        const nameInGutter = inGutter(b.x0 + 7, b.x0 + 7 + nameW);
+        const nameInGutter = inLabelGutter(b.x0 + 7, b.x0 + 7 + nameW);
         const denseVisits = (b.t.visitYears || []).length >= 8; // e.g. Coors (every year) — keep bar clear for the diamond run
         if (nameFits && !nameInGutter && !denseVisits) {
           b.inside = true;
@@ -110,7 +127,19 @@
           const span = b.t.spanText || (b.t.end >= YMAX ? (b.t.start + "\u2013now")
             : (b.t.start + "\u2013" + ("0" + (b.t.end % 100)).slice(-2)));
           const spanW = measure(span, F_SPAN);
-          if (b.w >= nameW + spanW + 26 && !inGutter(b.x1 - 7 - spanW, b.x1 - 7)) { b.span = span; b.spanW = spanW; }
+          if (b.w >= nameW + spanW + 26) {
+            let spanX = b.x1 - 7;                              // default: right end of the bar
+            if (inLabelGutter(spanX - spanW, spanX)) {
+              // bar terminates at the fold, so its right-end span lands in the
+              // binding band. Pull the span back to the gutter's LEFT face so it
+              // stays on the (long) bar but clears the binding-safe zone.
+              const cand = (xOf(GUT_SPLIT) - GUT_GAP) - 5;    // right-align just left of the gap
+              if (cand - spanW > b.x0 + 7 + nameW + 12 && !inLabelGutter(cand - spanW, cand)) {
+                spanX = cand; b.spanRelocated = true;
+              } else { spanX = null; }                        // no room even relocated -> drop
+            }
+            if (spanX != null) { b.span = span; b.spanW = spanW; b.spanX = spanX; }
+          }
         } else {
           b.inside = false;
           externals.push(b);
@@ -141,7 +170,7 @@
         for (const c of order) {
           const r = { x: c.x, y: c.y, w: tw, h: lh };
           if (r.x < PLOT_X0 - 0.5 || r.x + r.w > PLOT_X1 + 0.5) continue;
-          if (inGutter(r.x - 2, r.x + r.w + 2)) continue;
+          if (inLabelGutter(r.x - 2, r.x + r.w + 2)) continue;
           let bad = false;
           for (const o of obstacles) { if (hit(r, o, 0.8)) { bad = true; break; } }
           if (!bad) for (const p of placed) { if (hit(r, p, 1.5)) { bad = true; break; } }
@@ -187,10 +216,14 @@
             return;
           }
           const nextX = idx + 1 < rs.length ? xOf(rs[idx + 1].year) : barEnd;
-          const spanLimit = b.span ? (b.x1 - 7 - (b.spanW || 0) - 6) : b.x1;
+          const spanLimit = (b.span && !b.spanRelocated) ? (b.x1 - 7 - (b.spanW || 0) - 6) : b.x1;
           const segEnd = Math.min(nextX, spanLimit) - 4;
           let startX = tickX + 5;
           if (b.inside) startX = Math.max(startX, b.x0 + 7 + (b.nameW || 0) + 9);
+          // Right-page rename names must clear the 0.5in binding-safe edge (1337.5).
+          // The year-true notch stays on the continuous bar; only the readable name
+          // slides out of the near-binding band (it remains on the bar, so still legible).
+          if (startX > FOLD && startX < 1337.5) startX = 1337.5;
           if (!r.force && startX + tw > segEnd) return;            // no room in segment (unless forced)
           if (inGutter(startX - 2, startX + tw + 2)) return;      // gutter
           renameLabels.push({ x: startX, y: b.cy, txt: r.name });
@@ -244,6 +277,9 @@
           const x = xOf(y);
           return <line key={"g" + y} x1={x} y1={CHART_TOP} x2={x} y2={CHART_BOT} stroke={C.rule} strokeWidth="1" />;
         })}
+        {/* 1950 boundary — LEFT face of the gutter gap (mirrors the 1950 gridline on the
+           gap's right edge), so the fold-split "19" is anchored symmetrically to "50" */}
+        <line x1={xOf(GUT_SPLIT) - GUT_GAP} y1={CHART_TOP} x2={xOf(GUT_SPLIT) - GUT_GAP} y2={CHART_BOT} stroke={C.rule} strokeWidth="1" />
         {/* present edge */}
         <line x1={PLOT_X1} y1={CHART_TOP} x2={PLOT_X1} y2={CHART_BOT} stroke={C.ruleStrong} strokeWidth="1" strokeDasharray="2 3" />
 
@@ -259,13 +295,20 @@
         {/* ---- decade labels (top + bottom), gutter label suppressed ---- */}
         {decades.map((y) => {
           const x = xOf(y);
-          if (Math.abs(x - FOLD) < 46) return null;
+          // suppress the fold-straddling decade (1950): its line sits at the gap's
+          // right edge and a centered label would bleed into the binding-safe band.
+          if (x > 1196 && x < 1354) return null;
           return (
             <g key={"dl" + y}>
               <text x={x} y={CHART_TOP - 9} textAnchor="middle" fontFamily="'Space Mono', monospace" fontSize="14" fill={C.ink2} letterSpacing="0.04em">{y}</text>
             </g>
           );
         })}
+
+        {/* ---- fold-split 1950 marker: the mid-century decade falls on the binding,
+             so its label is split "19" | gutter | "50" and reads across the spread ---- */}
+        <text x={1211} y={CHART_TOP - 9} textAnchor="end" fontFamily="'Space Mono', monospace" fontSize="14" fill={C.ink2} letterSpacing="0.04em">19</text>
+        <text x={1340} y={CHART_TOP - 9} textAnchor="start" fontFamily="'Space Mono', monospace" fontSize="14" fill={C.ink2} letterSpacing="0.04em">50</text>
 
         {/* ---- franchise rail labels (single line, auto-fit) ---- */}
         {lanes.map((f, i) => {
@@ -296,7 +339,7 @@
               fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="11" fill={C.paperHi}
               letterSpacing="0.01em">{b.t.stadium}</text>
             {b.span ? (
-              <text x={b.x1 - 7} y={b.cy} dominantBaseline="central" textAnchor="end"
+              <text x={b.spanX != null ? b.spanX : (b.x1 - 7)} y={b.cy} dominantBaseline="central" textAnchor="end"
                 fontFamily="'Space Mono', monospace" fontSize="12" fill={b.t.visited ? "rgba(244,238,223,.7)" : "rgba(244,238,223,.72)"}
                 letterSpacing="0.02em">{b.span}</text>
             ) : null}

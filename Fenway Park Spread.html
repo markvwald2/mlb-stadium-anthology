@@ -141,13 +141,13 @@
 
   .fw-colors { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--rule);
     display: flex; align-items: center; gap: 14px; }
-  .fw-colors-lab { font-family: "Jost", sans-serif; font-weight: 500; font-size: 11px; letter-spacing: .16em;
+  .fw-colors-lab { font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--cream-dim); }
   .fw-sw-row { display: flex; gap: 14px; }
   .fw-sw { display: flex; align-items: center; gap: 6px; }
   .fw-sw-chip { width: 13px; height: 13px; border-radius: 50%; display: block; border: 1px solid rgba(11,24,16,.7);
     box-shadow: inset 0 1px 1px rgba(255,255,255,.18); }
-  .fw-sw-name { font-family: "Spectral", serif; font-size: 11px; color: var(--cream); }
+  .fw-sw-name { font-family: "Spectral", serif; font-size: 12px; color: var(--cream); }
 
   /* Col B — documentation photo bays */
   .fw-colB { display: flex; flex-direction: column; gap: 11px; min-width: 0; }
@@ -167,31 +167,31 @@
     border: 2px solid #14291A; border-radius: 2px; padding: 14px 18px 15px;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 2px 9px rgba(0,0,0,.28); }
   .fw-panel-head { font-family: "Jost", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .2em;
-    text-transform: uppercase; color: var(--ink); padding-bottom: 7px; margin-bottom: 9px;
+    text-transform: uppercase; color: var(--ink); padding-bottom: 2px; margin-bottom: 4px;
     border-bottom: 2px solid var(--ink); }
-  .fw-ctx-panel { flex: none; min-height: 0; display: flex; flex-direction: column; }
+  .fw-ctx-panel { flex: none; min-height: 0; display: flex; flex-direction: column; padding-bottom: 5px; }
   .fw-ctx-cols { columns: 2; column-gap: 22px; column-rule: 1px solid #C9C0AC; }
   .fw-ctx-cols p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.45;
-    letter-spacing: -0.2px; color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
+    letter-spacing: -0.1px; color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid-column; }
   .fw-ctx-cols p:last-child { margin-bottom: 0; }
   .fw-ctx-cols p:first-of-type::first-letter { /* drop cap rendered as real .fw-dropcap span — ::first-letter float is dropped inside multicol */ }
   .fw-dropcap { float: left; font-family: "Spectral", serif; font-weight: 700;
     font-size: 3.1em; line-height: .66; padding: 4px 7px 0 0; color: var(--brick); }
 
   .fw-cWrap { flex: 1; min-height: 0; display: grid; grid-template-columns: 4fr 1fr; grid-template-rows: minmax(0, 1fr); gap: 12px; align-items: stretch; }
-  .fw-life-panel { padding: 9px 15px 9px; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
-  .fw-life { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 6px; min-height: 0; }
-  .fw-life-grp { display: flex; flex-direction: column; justify-content: space-between; gap: 5px; }
+  .fw-life-panel { padding: 8px 15px 10px; display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+  .fw-life { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 2px; min-height: 0; }
+  .fw-life-grp { display: contents; }
   .fw-life-era { display: flex; align-items: baseline; gap: 5px; margin-bottom: 1px;
     border-bottom: 0.75px solid var(--ink); padding-bottom: 0; }
-  .fw-life-era .yr { font-family: "Jost", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: .04em;
+  .fw-life-era .yr { font-family: "Jost", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em;
     color: var(--brick); }
-  .fw-life-era .ti { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .09em;
+  .fw-life-era .ti { font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .09em;
     text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
   .fw-life-row { display: grid; grid-template-columns: 30px 1fr; gap: 6px; align-items: baseline; padding: 0; }
-  .fw-life-yr { font-family: "Jost", sans-serif; font-weight: 600; font-size: 10px; letter-spacing: .02em;
+  .fw-life-yr { font-family: "Jost", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .02em;
     color: var(--brick); }
-  .fw-life-note { font-family: "Spectral", serif; font-size: 10px; line-height: 1.13; color: var(--ink); }
+  .fw-life-note { font-family: "Spectral", serif; font-size: 12px; line-height: 1.08; color: var(--ink); }
 
   /* brick marks plate */
   .fw-brick-plate { position: relative; border-radius: 2px; overflow: hidden; min-height: 0;
@@ -207,13 +207,13 @@
     border-top: 1px solid rgba(231,222,198,.28); padding-top: 9px; }
   .fw-est-big { font-family: "Jost", sans-serif; font-weight: 600; font-size: 16px; letter-spacing: .14em;
     line-height: 1; white-space: nowrap; color: #F0E8D2; }
-  .fw-est-sm { font-family: "Spectral", serif; font-style: italic; font-size: 10px; line-height: 1; color: rgba(240,232,210,.82); text-align: center; }
+  .fw-est-sm { font-family: "Spectral", serif; font-style: italic; font-size: 12px; line-height: 1; color: rgba(240,232,210,.82); text-align: center; }
 
   /* site / setting strip */
   .fw-setting { flex: none; display: flex; align-items: baseline; gap: 12px; padding-top: 3px; }
-  .fw-setting-lab { flex: none; font-family: "Jost", sans-serif; font-weight: 600; font-size: 10px;
+  .fw-setting-lab { flex: none; font-family: "Jost", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .18em; text-transform: uppercase; color: var(--cream); }
-  .fw-setting-txt { font-family: "Spectral", serif; font-style: italic; font-size: 10px; line-height: 1.3;
+  .fw-setting-txt { font-family: "Spectral", serif; font-style: italic; font-size: 12px; line-height: 1.3;
     color: var(--cream-dim); }
 
   /* ===== VISIT SECTION ===== */
@@ -232,9 +232,9 @@
   .fw-visit-badge { display: flex; align-items: flex-end; gap: 4px; }
   .fw-vb-no { font-family: "Jost", sans-serif; font-weight: 600; font-size: 22px; line-height: .85; color: var(--cream); }
   .fw-vb-of { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
-  .fw-vb-of .lab { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em;
+  .fw-vb-of .lab { font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--cream-dim); }
-  .fw-vb-of .num { font-family: "Jost", sans-serif; font-weight: 600; font-size: 10px; color: var(--cream-2);
+  .fw-vb-of .num { font-family: "Jost", sans-serif; font-weight: 600; font-size: 12px; color: var(--cream-2);
     margin-top: 0px; }
 
   .fw-visit-body { flex: 1; display: grid; grid-template-columns: 1.62fr 1fr; gap: 18px; min-height: 0; }
@@ -245,7 +245,7 @@
   .fw-feat-date { font-family: "Jost", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--cream); }
   .fw-feat-match { font-family: "Spectral", serif; font-size: 12px; color: var(--cream-2); flex: 1; }
-  .fw-feat-tag { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .14em;
+  .fw-feat-tag { font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--cream-dim); }
 
   .fw-scoreboard { position: relative; background: transparent;
@@ -269,7 +269,7 @@
     box-shadow: inset 0 0 0 1px rgba(231,222,198,.05), inset 0 1px 5px rgba(0,0,0,.6);
     text-shadow: 0 1px 0 rgba(0,0,0,.4); }
   .fw-sb-cell.num { aspect-ratio: auto; background: none; border: 0; box-shadow: none; text-shadow: none;
-    font-size: 10px; color: var(--cream-dim); height: 14px; }
+    font-size: 12px; color: var(--cream-dim); height: 16px; }
   .fw-sb-tot { display: flex; align-items: center; justify-content: center;
     background: linear-gradient(180deg, #20402B, #1A3624); border: 0; border-radius: 0;
     font-family: "Jost", sans-serif; font-weight: 600; font-size: 19px; letter-spacing: .02em; color: #EDE5CD;
@@ -277,7 +277,7 @@
     text-shadow: 0 1px 0 rgba(0,0,0,.4); min-height: 100%; }
   .fw-sb-tot.r { color: #EDE5CD; }
   .fw-sb-tot.lab { background: none; border: 0; box-shadow: none; text-shadow: none; color: var(--cream-dim);
-    font-family: "Jost", sans-serif; font-size: 10px; letter-spacing: .1em; }
+    font-family: "Jost", sans-serif; font-size: 12px; letter-spacing: .1em; }
 
   /* ===== two equal game blocks ===== */
   .fw-games { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; min-height: 0; }
@@ -288,13 +288,13 @@
   .fw-game::before { content: ""; position: absolute; top: 64px; right: 138px; height: 150px;
     width: 2px; background: rgba(226,217,192,.72); pointer-events: none; z-index: 1; }
   .fw-game-bar { display: flex; align-items: baseline; gap: 10px; margin-bottom: 3px; }
-  .fw-game-tag { font-family: "Jost", sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: .14em;
+  .fw-game-tag { font-family: "Jost", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .14em;
     color: #13281A; background: var(--cream); padding: 1.5px 8px; border-radius: 2px; }
   .fw-game-date { font-family: "Jost", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--cream); }
-  .fw-game-dn { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
+  .fw-game-dn { font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--cream-dim); margin-left: auto; }
-  .fw-game-match { font-family: "Spectral", serif; font-size: 11px; line-height: 1.3; margin-bottom: 7px; }
+  .fw-game-match { font-family: "Spectral", serif; font-size: 12px; line-height: 1.3; margin-bottom: 7px; }
   .fw-game-match .mt { color: var(--cream-2); }
   .fw-game-match .pm { color: var(--cream-dim); }
   .fw-game-match .pm::before { content: "  \2014  "; color: var(--cream-dim); }
@@ -307,8 +307,8 @@
   .fw-game-rec { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 4px; }
   .fw-game-rec:first-child { border-left: 0; }
   .fw-game-rec.wide { grid-column: 3; }
-  .fw-game-rec.wide .v { white-space: nowrap; font-size: 11.5px; font-family: "Jost", sans-serif; margin-top: 5px; }
-  .fw-game-rec .k { font-family: "Jost", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .06em;
+  .fw-game-rec.wide .v { white-space: nowrap; font-size: 12px; font-family: "Jost", sans-serif; margin-top: 5px; }
+  .fw-game-rec .k { font-family: "Jost", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--cream-dim); }
   .fw-game-rec .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px; color: var(--cream); }
   .fw-game-recs-left .fw-game-rec .v { font-family: "MatrixTitle", "Space Mono", monospace;
@@ -318,10 +318,10 @@
   .fw-game-pw { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
   .fw-game-pitch { display: flex; gap: 14px; flex-wrap: wrap; flex: 1; min-width: 0; }
   .fw-game-pitch span { display: inline-flex; align-items: center; gap: 6px;
-    font-family: "Spectral", serif; font-size: 10.5px; color: var(--cream-2); }
+    font-family: "Spectral", serif; font-size: 12px; color: var(--cream-2); }
   .fw-game-pitch b.lt { flex: none; width: 16px; height: 16px; border-radius: 50%;
     display: inline-flex; align-items: center; justify-content: center;
-    font-family: "Jost", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0; line-height: 1;
+    font-family: "Jost", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0; line-height: 1;
     color: rgba(255,255,255,.92); text-shadow: 0 1px 1px rgba(0,0,0,.5);
     border: 1px solid rgba(0,0,0,.5);
     box-shadow: inset 0 1.5px 2px rgba(255,255,255,.55), inset 0 -2px 3px rgba(0,0,0,.45),
@@ -335,7 +335,7 @@
   .fw-game-wx { flex: none; display: flex; align-items: baseline; gap: 11px;
     padding-left: 14px; }
   .fw-game-wx .t { font-family: "Jost", sans-serif; font-weight: 700; font-size: 16px; color: var(--cream); }
-  .fw-game-wx span:not(.t) { font-family: "Spectral", serif; font-size: 10.5px; color: var(--cream-dim); }
+  .fw-game-wx span:not(.t) { font-family: "Spectral", serif; font-size: 12px; color: var(--cream-dim); }
 
   #root { min-height: 100vh; }
 </style>

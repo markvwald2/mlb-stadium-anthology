@@ -24,7 +24,7 @@ window.RIVERFRONT = {
   architectural_style: "Circular multipurpose concrete doughnut stadium",
   facade_material: "Exposed reinforced/precast concrete circular multipurpose bowl",
   playing_surface_type: "Mixed / changed over time",
-  surface: "AstroTurf 8 (1970\u20132000); natural grass (2001\u20132002)",
+  surface: "AstroTurf 8 (1970\u20132000); natural grass (2001\u2013'02)",
   capacity_opening: "51,050",
   capacity_current: "52,952",
   elevation: "490 ft",
@@ -37,7 +37,7 @@ window.RIVERFRONT = {
 
   // ---- Lineage ----
   name_history: "Riverfront Stadium (1970\u20131996); Cinergy Field (1996\u20132002)",
-  preceded_by: "Union Grounds \u00b7 Avenue Grounds \u00b7 Bank Street Grounds \u00b7 League Park \u00b7 Palace of the Fans \u00b7 Redland Field / Crosley Field",
+  preceded_by: "Union Grounds (1869\u201370) \u00b7 Avenue Grounds (1876\u201379) \u00b7 Bank Street Grounds (1880\u201383) \u00b7 League Park (1884\u20131901) \u00b7 Palace of the Fans (1902\u201311) \u00b7 Redland Field / Crosley Field (1912\u201370)",
 
   // ---- Construction & era timeline ----
   construction_start: "Feb 1, 1968",

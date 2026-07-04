@@ -7,17 +7,36 @@
   const e = React.createElement;
   const D = window.THREE_RIVERS;
   const Survey = window.TRSSurvey, Icon = window.TRSIcon, Prot = window.TRSProtractor, Pop = window.TRSPopcorn;
+  const GOLD_P = "#EEBB45";
+
+  function Confluence() {
+    return e("svg", { viewBox: "0 0 160 134", role: "img", "aria-label": "Confluence of Pittsburgh's three rivers" },
+      e("path", { d: "M12 12 C 44 34 62 58 80 88", fill: "none", stroke: GOLD_P, strokeWidth: 3.2, strokeLinecap: "round", opacity: 0.9 }),
+      e("path", { d: "M148 12 C 116 34 98 58 80 88", fill: "none", stroke: GOLD_P, strokeWidth: 3.2, strokeLinecap: "round", opacity: 0.9 }),
+      e("path", { d: "M80 88 C 73 106 57 120 38 130", fill: "none", stroke: GOLD_P, strokeWidth: 4.6, strokeLinecap: "round" }),
+      e("circle", { cx: 80, cy: 88, r: 4.6, fill: GOLD_P }));
+  }
 
   function Slot(p) {
-    return e("image-slot", { id: p.id, placeholder: p.placeholder, shape: "rect" });
+    var a = { id: p.id, placeholder: p.placeholder, shape: "rect" };
+    if (p.src) a.src = p.src;
+    return e("image-slot", a);
   }
 
   /* ---------- helpers ---------- */
-  function fact(k, v) {
+  function fact(k, v, opts) {
     if (v == null || v === "") return null;
+    const vProps = { className: "v" };
+    if (opts && opts.style) vProps.style = opts.style;
+    if (typeof v === "string" && v.indexOf("<") !== -1) {
+      vProps.dangerouslySetInnerHTML = { __html: v };
+      return e("div", { className: "trs-frow" },
+        e("div", { className: "k" }, k),
+        e("div", vProps));
+    }
     return e("div", { className: "trs-frow" },
       e("div", { className: "k" }, k),
-      e("div", { className: "v" }, v));
+      e("div", vProps, v));
   }
 
   function LineScore(box, innings) {
@@ -77,8 +96,7 @@
     return e("div", { className: "trs-game", key: g.no },
       e("div", { className: "trs-gbar" },
         e("span", { className: "tag" }, "GAME " + g.no),
-        e("span", { className: "ttl" }, g.away_name.toUpperCase() + " (" + g.away_abbr + ")  AT  " +
-          g.home_name.toUpperCase() + " (" + g.home_abbr + ")")),
+        e("span", { className: "ttl" }, g.away_name.toUpperCase() + "  AT  " + g.home_name.toUpperCase())),
       e("div", { className: "trs-gbody" },
         // left — score + starters + decision
         e("div", { className: "trs-gleft" },
@@ -87,8 +105,8 @@
             scoreLine(g.away_name, g.away_runs, !homeWin)),
           e("div", { className: "trs-starters" },
             e("div", { className: "lbl" }, "Starting Pitchers"),
-            e("div", { className: "sp" }, g.away_starter + " (" + g.away_abbr + ")"),
-            e("div", { className: "vs" }, "vs."),
+            e("div", { className: "sp" }, g.away_starter + " (" + g.away_abbr + ")",
+              e("span", { className: "vs" }, "vs.")),
             e("div", { className: "sp" }, g.home_starter + " (" + g.home_abbr + ")")),
           e("div", { className: "trs-dec" },
             e("div", { className: "lbl" }, "Decision"),
@@ -128,26 +146,36 @@
       /* ===== LEFT / HERO ===== */
       e("div", { className: "trs-page trs-left" },
         e("div", { className: "trs-hero-slot" },
-          e("image-slot", { id: "trs-hero", placeholder: "Aerial hero \u2014 circular bowl, three-river confluence, bridges & downtown Pittsburgh", shape: "rect" })),
+          e("image-slot", { id: "trs-hero", src: "images/three-rivers/hero-main.jpg", placeholder: "Aerial hero \u2014 circular bowl, three-river confluence, bridges & downtown Pittsburgh", shape: "rect" })),
         e("div", { className: "trs-hero-scrim" }),
         e(Survey, { className: "trs-survey-bl", stroke: "#E3CB7C", op: 0.5 }),
         e(Survey, { className: "trs-survey-br", stroke: "#E3CB7C", op: 0.42 }),
-        e("div", { className: "trs-hero-folio" }, "Plate 13 \u00b7 Multipurpose Era"),
+        e("div", { className: "trs-hero-crest" },
+          e("img", { src: "assets/pirates-p.svg", className: "pmark", alt: "Pittsburgh Pirates" }),
+          e("div", { className: "tt" },
+            e("div", { className: "nm" }, D.team_name),
+            e("div", { className: "sub" }, D.league + "  \u00b7  " + D.division))),
         e("div", { className: "trs-hero-title" },
+          e("div", { className: "trs-hero-eyebrow" },
+            e("span", null, "Pittsburgh"),
+            e("span", { className: "dd" }),
+            e("span", null, "Confluence of Three Rivers")),
           e("h1", { className: "trs-hero-name" },
             e("span", { className: "l1" }, "Three Rivers"),
-            e("span", { className: "l2" }, "Stadium")),
+            e("span", { className: "l2" }, "Stadium"))),
+        e("div", { className: "trs-hero-foot" },
           e("div", { className: "trs-hero-loc" },
             e("span", { className: "bar" }),
             e("span", { className: "txt" }, D.city + ", " + D.state)),
           e("div", { className: "trs-hero-meta" },
             D.years_active + "  \u00b7  " + D.stadium_type + "  \u00b7  ",
-            e("span", { className: "dem" }, D.status))),
-        e("div", { className: "trs-hero-team" },
-          e("img", { src: "assets/pirates-p.svg", className: "pmark", alt: "Pittsburgh Pirates" }),
-          e("div", { className: "tt" },
-            e("div", { className: "nm" }, D.team_name),
-            e("div", { className: "sub" }, D.league + "  \u00b7  " + D.division)))),
+            e("span", { className: "dem" }, D.status)),
+          e("div", { className: "trs-hero-rivers" },
+            e("span", null, "Allegheny"),
+            e("span", { className: "sep" }, "\u00b7"),
+            e("span", null, "Monongahela"),
+            e("span", { className: "sep" }, "\u2192"),
+            e("span", null, "Ohio")))),
 
       /* ===== RIGHT PAGE ===== */
       e("div", { className: "trs-page trs-right" },
@@ -161,9 +189,9 @@
               e("span", { className: "ln" })),
 
             e("div", { className: "trs-photos" },
-              e(Slot, { id: "trs-p1", placeholder: "Exterior \u00b7 exposed concrete bowl" }),
-              e(Slot, { id: "trs-p2", placeholder: "Interior \u00b7 baseball configuration" }),
-              e(Slot, { id: "trs-p3", placeholder: "Scoreboard / upper deck" })),
+              e(Slot, { id: "trs-p1", src: "images/three-rivers/p-exterior.jpg", placeholder: "Exterior \u00b7 exposed concrete bowl" }),
+              e(Slot, { id: "trs-p2", src: "images/three-rivers/p-interior.jpg", placeholder: "Interior \u00b7 baseball configuration" }),
+              e(Slot, { id: "trs-p3", src: "images/three-rivers/p-scoreboard.png", placeholder: "Scoreboard / upper deck" })),
 
             e("div", { className: "trs-facts" },
               e("div", { className: "fcol" },
@@ -177,7 +205,7 @@
                 fact("Capacity", D.capacity_opening + " \u2192 " + D.capacity_current),
                 fact("Surface", D.surface_type + " \u2014 " + D.surface),
                 fact("Architect", D.architect),
-                fact("Type", D.stadium_type_facts),
+                fact("Type", D.stadium_type_facts, { style: { letterSpacing: "-0.7px" } }),
                 fact("Style", D.architectural_style),
                 fact("Renovations", D.renovations)),
               e("div", { className: "fcol" },
@@ -219,7 +247,7 @@
               e("div", { className: "fc" }, Icon("clock", { size: 22, stroke: "#23211C", sw: 1.4 }),
                 e("div", { className: "lab two" }, g1.first_pitch.replace(" EDT", "")),
                 e("div", { className: "lab two" }, g2.first_pitch.replace(" EDT", "")),
-                e("div", { className: "sub" }, "First Pitch \u00b7 EDT")),
+                e("div", { className: "sub" }, "First Pitch")),
               e("div", { className: "fc" }, Icon("ticket", { size: 22, stroke: "#23211C", sw: 1.4 }),
                 e("div", { className: "lab" }, D.attendance),
                 e("div", { className: "sub" }, "Attendance"))),
@@ -237,7 +265,7 @@
                   vfRow("Center Field", D.center_field_distance),
                   vfRow("Right Field", D.right_field_distance),
                   vfRow("Orientation", D.orientation + " \u00b7 " + D.orientation_degrees + "\u00b0"),
-                  e("div", { className: "note" }, "Symmetrical concrete bowl \u00b7 distances in feet")))),
+                  e("div", { className: "note" }, "Symmetrical concrete bowl")))),
 
             /* colophon ribbon */
             e("div", { className: "trs-foot" },

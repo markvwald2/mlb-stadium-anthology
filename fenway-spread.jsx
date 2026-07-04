@@ -25,7 +25,7 @@
   function LeftPage() {
     return e("div", { className: "fw-page fw-left", "data-screen-label": "Fenway Park \u2014 left (hero)" },
       e("div", { className: "fw-hero-slot" },
-        e(Slot, { id: "fenway-hero", src: "images/fenway/hero.jpg", placeholder: "Fenway Park \u2014 aerial / Green Monster & city edge" })),
+        e(Slot, { id: "fenway-hero", src: "images/fenway/hero-hd.jpg", placeholder: "Fenway Park \u2014 aerial / Green Monster & city edge" })),
       e("div", { className: "fw-hero-scrim" }),
       // top-left league mast
       e("div", { className: "fw-mast" },

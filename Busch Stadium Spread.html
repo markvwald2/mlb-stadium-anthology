@@ -76,7 +76,7 @@
     display: flex; align-items: center; gap: 12px; opacity: .55; pointer-events: none; }
   .bz-datum .ln { flex: 1; height: 1px; background: rgba(233,226,210,.40); }
   .bz-datum .tk { width: 1px; height: 11px; background: rgba(233,226,210,.55); flex: none; }
-  .bz-datum .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em;
+  .bz-datum .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .3em;
     color: rgba(233,226,210,.74); text-transform: uppercase; flex: none; }
 */
 
@@ -119,7 +119,7 @@
     border: 2px solid var(--paper-hi); outline: 1px solid var(--navy-deep);
     box-shadow: 0 5px 14px rgba(20,16,10,.26); }
   .bz-bay-cap { margin-top: 8px; text-align: center; font-family: "Oswald", sans-serif;
-    font-weight: 600; font-size: 10px; letter-spacing: .13em; text-transform: uppercase;
+    font-weight: 600; font-size: 12px; letter-spacing: .13em; text-transform: uppercase;
     color: var(--ink-2); line-height: 1.2; }
 
   /* ---- metadata ribbon — the bridge track ---- */
@@ -137,7 +137,7 @@
   .bz-rib-cell:nth-child(5) { flex: 1.6; }    /* Classification */
   .bz-rib-cell:nth-child(8) { flex: 1.18; }   /* Coordinates */
   .bz-rib-cell:nth-child(9) { flex: 1.12; }   /* Capacity */
-  .bz-rib-cell .rk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+  .bz-rib-cell .rk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--red); white-space: nowrap; }
   .bz-rib-cell .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
     letter-spacing: .01em; text-transform: uppercase; color: var(--ink); line-height: 1.1; }
@@ -147,12 +147,12 @@
   .bz-rib-cell .vo-of { font-weight: 600; font-size: 13px; color: var(--ink); line-height: 1; white-space: nowrap; }
 
   /* ---- shared section eyebrow ---- */
-  .bz-h { display: flex; align-items: baseline; gap: 9px; padding-bottom: 6px; margin-bottom: 9px;
+  .bz-h { display: flex; align-items: baseline; gap: 9px; padding-bottom: 4px; margin-bottom: 5px;
     border-bottom: 1.5px solid var(--navy); }
   .bz-h .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 15px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--navy); white-space: nowrap; }
   .bz-h.red .t { color: var(--red); }
-  .bz-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em;
+  .bz-h .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); margin-left: auto; }
 
   /* ---- BAY 1 : Stadium Facts + protractor ---- */
@@ -162,26 +162,26 @@
   .bz-col-visit   { left: 781px; top: 342px; width: 456px; bottom: 40px; }
 
   .bz-facts { display: flex; flex-direction: column; }
-  .bz-frow { display: grid; grid-template-columns: 72px 1fr; gap: 9px; align-items: baseline;
-    padding: 2.5px 0; border-bottom: 1px solid var(--rule); }
+  .bz-frow { display: grid; grid-template-columns: 78px 1fr; gap: 9px; align-items: baseline;
+    padding: 1px 0; border-bottom: 1px solid var(--rule); }
   .bz-frow:last-child { border-bottom: 0; }
-  .bz-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .05em;
+  .bz-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.2; }
   .bz-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-  .bz-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 11.5px; color: var(--ink); line-height: 1.2; white-space: pre-line; }
-  .bz-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 10px;
+  .bz-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; color: var(--ink); line-height: 1.15; white-space: pre-line; }
+  .bz-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12px;
     color: var(--ink-2); line-height: 1.22; }
   .bz-frow .v .vs.roman { font-style: normal; }
 
-  .bz-field { margin-top: 10px; padding-top: 9px; border-top: 1.5px solid var(--navy); }
+  .bz-field { margin-top: 3px; padding-top: 3px; border-top: 1.5px solid var(--navy); }
   .bz-field-head { display: flex; flex-direction: column; gap: 2px; align-items: center; }
   .bz-field-head .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--navy); text-align: center; }
-  .bz-field-head .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .08em;
+  .bz-field-head .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-3); }
   .bz-fieldfig { margin: 0; width: 100%; display: flex; justify-content: center; }
   .bz-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .bz-fieldfig .fd-svg { width: 200px; height: auto; max-width: 100%; display: block;  overflow: visible; }
+  .bz-fieldfig .fd-svg { width: 196px; height: auto; max-width: 100%; display: block;  overflow: visible; }
 
   /* ---- BAY 2 : Stadium Context ---- */
   .bz-prose { margin-top: 2px; }
@@ -204,7 +204,7 @@
     color: rgba(247,239,226,.5); }
   .bz-visit-head .tag .t-sub { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; line-height: 1; color: rgba(247,239,226,.74); }
-  .bz-visit-head .ord { margin-left: auto; font-family: "Space Mono", monospace; font-size: 11px;
+  .bz-visit-head .ord { margin-left: auto; font-family: "Space Mono", monospace; font-size: 12px;
     letter-spacing: .1em; text-transform: uppercase; color: rgba(247,239,226,.86); }
 
   .bz-visit-body { display: flex; flex-direction: column; }
@@ -215,7 +215,7 @@
   .bz-visit-top { display: flex; gap: 10px; align-items: center; padding: 4px 16px; }
   .bz-vfacts { flex: 1.28 1 0; min-width: 0; display: flex; flex-direction: column; }
   .bz-vfacts .bz-frow { grid-template-columns: 84px 1fr; padding: 2.5px 0; }
-  .bz-vfacts .bz-frow .v .vm { font-size: 11.5px; }
+  .bz-vfacts .bz-frow .v .vm { font-size: 12px; }
   .bz-vmatch { flex: 1 1 0; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 16px; }
   .bz-vmatch .tm { display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .bz-vmatch .tm img { height: 68px; width: auto; display: block; }
@@ -225,12 +225,12 @@
     color: var(--red); }
 
   .bz-ledger { padding: 4px 16px 6px; }
-  .bz-ledger-cap { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 10px;
+  .bz-ledger-cap { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .16em; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
   .bz-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
   .bz-box th, .bz-box td { text-align: center; font-size: 12.5px; font-weight: 400; padding: 3px 0;
     color: var(--ink); border-bottom: 1px solid var(--rule); }
-  .bz-box thead th { color: var(--ink-3); font-weight: 500; font-size: 10.5px; border-bottom: 1.5px solid var(--navy); }
+  .bz-box thead th { color: var(--ink-3); font-weight: 500; font-size: 12px; border-bottom: 1.5px solid var(--navy); }
   .bz-box td.tm, .bz-box th.tm { text-align: left; font-weight: 700; font-size: 12.5px; letter-spacing: .07em;
     padding-right: 8px; width: 1%; white-space: nowrap; }
   .bz-box .rcol { font-weight: 700; }
@@ -245,18 +245,18 @@
   .bz-pitch { padding: 8px 16px 4px; }
   .bz-pitch .match { font-family: "Spectral", serif; font-size: 12.5px; color: var(--ink);
     line-height: 1.4; margin-bottom: 5px; }
-  .bz-pitch .match em { font-family: "Space Mono", monospace; font-style: normal; font-size: 10px;
+  .bz-pitch .match em { font-family: "Space Mono", monospace; font-style: normal; font-size: 12px;
     letter-spacing: .03em; color: var(--ink-3); margin: 0 4px 0 3px; }
   .bz-pitch .match .v { font-style: italic; color: var(--ink-3); margin: 0 4px; }
   .bz-pitch .dec { display: flex; flex-wrap: wrap; gap: 4px 16px; }
   .bz-pitch .dec span { font-family: "Spectral", serif; font-size: 12px; color: var(--ink); }
-  .bz-pitch .dec b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10.5px; letter-spacing: .04em;
+  .bz-pitch .dec b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .04em;
     color: var(--red-deep); margin-right: 4px; }
   .bz-pitch .dec .sv { color: var(--ink-2); }
 
   .bz-wx { border-top: 1.5px solid var(--navy); }
   .bz-wx-head { background: var(--red); color: var(--paper-hi); text-align: center;
-    font-family: "Oswald", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: .28em;
+    font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .28em;
     text-transform: uppercase; padding: 5px 0; }
   .bz-wx-cells { display: grid; grid-template-columns: repeat(4, 1fr); padding: 12px 8px; }
   .bz-wcell { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 0 4px;
@@ -266,7 +266,7 @@
   .bz-wcell .tx { display: flex; flex-direction: column; align-items: center; }
   .bz-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 17px; color: var(--ink); line-height: 1; }
   .bz-wcell.sm .wv { font-size: 12px; line-height: 1.16; }
-  .bz-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .1em;
+  .bz-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
 
   #root { min-height: 100vh; }

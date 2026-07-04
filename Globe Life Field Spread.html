@@ -85,7 +85,7 @@
     display: flex; align-items: center; gap: 12px; pointer-events: none; opacity: .82; }
   .glf-trussdatum .ln { flex: 1; height: 1px; background: rgba(220,230,235,.34); }
   .glf-trussdatum .tk { width: 1px; height: 16px; background: rgba(220,230,235,.5); flex: none; }
-  .glf-trussdatum .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em;
+  .glf-trussdatum .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .3em;
     color: rgba(220,230,235,.66); text-transform: uppercase; flex: none; }
   .glf-trussdatum .cap.r { color: rgba(157,176,187,.8); }
 
@@ -133,8 +133,8 @@
   .glf-roof .tkrow { flex: 1; display: flex; align-items: center; justify-content: space-between; height: 16px; }
   .glf-roof .tkrow .tk { width: 1px; height: 16px; background: rgba(157,176,187,.4); }
 
-  .glf-inner { flex: 1; min-height: 0; padding: 12px 40px 44px 40px;
-    display: flex; flex-direction: column; gap: 11px; }
+  .glf-inner { flex: 1; min-height: 0; padding: 12px 40px 38px 40px;
+    display: flex; flex-direction: column; gap: 8px; }
 
   /* ---- clerestory metadata ribbon ---- */
   .glf-ribbon { flex: none; display: flex; align-items: stretch;
@@ -148,24 +148,24 @@
   .glf-ribbon .cell.marks img { height: 42px; width: auto; display: block; }
   .glf-ribbon .cell.marks img.al { height: 34px; }
   .glf-ribbon .cell.coords { flex: 1.3; }
-  .glf-ribbon .rl { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 10px;
+  .glf-ribbon .rl { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .16em; text-transform: uppercase; color: var(--rblue); white-space: nowrap; }
   .glf-ribbon .rv { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 14px;
     letter-spacing: .02em; text-transform: uppercase; color: var(--ink); line-height: 1.08; }
   .glf-ribbon .cell:nth-child(4) { flex: 1.45; }
   .glf-ribbon .cell.coords { flex: 1.45; }
-  .glf-ribbon .cell.coords .rv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 10.5px;
+  .glf-ribbon .cell.coords .rv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
     letter-spacing: -.02em; text-transform: none; white-space: nowrap; }
 
   /* ---- section eyebrow signage ---- */
   .glf-h { display: flex; align-items: baseline; gap: 12px; padding-bottom: 5px; margin-bottom: 8px;
     border-bottom: 1.5px solid var(--rule-strong); }
   .glf-h .idx { width: 9px; height: 9px; background: var(--rred); flex: none; align-self: center; }
-  .glf-h .s { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .14em;
+  .glf-h .s { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--rblue); }
   .glf-h .t { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 21px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
-  .glf-h .n { font-family: "Space Mono", monospace; font-size: 10px; letter-spacing: .06em;
+  .glf-h .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); margin-left: auto; white-space: nowrap; }
 
   /* ---- BODY: data spine + glass-wall rail ---- */
@@ -175,18 +175,18 @@
     border-left: 1px solid var(--rule); min-height: 0; min-width: 0; }
 
   /* glass-mullion fact bays */
-  .glf-bays { display: grid; grid-template-columns: repeat(12, 1fr); margin-bottom: 13px; }
-  .glf-bay { padding: 0 16px 11px; border-left: 1px solid var(--rule); min-width: 0; }
+  .glf-bays { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: 1fr 1fr; height: 320px; margin-bottom: 4px; }
+  .glf-bay { padding: 0 16px 5px; border-left: 1px solid var(--rule); min-width: 0; display: flex; flex-direction: column; }
   .glf-bay.rowstart { border-left: 0; padding-left: 0; }
-  .glf-bay.row2 { border-top: 1px solid var(--rule); padding-top: 11px; }
+  .glf-bay.row2 { border-top: 1px solid var(--rule); padding-top: 5px; }
   .glf-bay-cat { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 12.5px;
     letter-spacing: .16em; text-transform: uppercase; color: var(--rblue);
-    padding-bottom: 5px; margin-bottom: 6px; border-bottom: 1px solid var(--rule);
+    padding-bottom: 4px; margin-bottom: 3px; border-bottom: 1px solid var(--rule);
     display: flex; align-items: center; gap: 7px; }
   .glf-bay-cat::before { content: ""; width: 5px; height: 5px; background: var(--glass-deep); flex: none; }
-  .glf-bay-rows { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; align-items: baseline; }
+  .glf-bay-rows { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: baseline; flex: 1 1 auto; align-content: space-between; }
   .glf-bay-row { display: contents; }
-  .glf-bay-row .bk { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px;
+  .glf-bay-row .bk { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; padding-top: 2px; }
   .glf-bay-row .bv { font-family: "Spectral", serif; font-weight: 500; font-size: 12px;
     color: var(--ink); line-height: 1.26; white-space: pre-line; }
@@ -202,23 +202,23 @@
     padding-bottom: 4px; margin-bottom: 2px; border-bottom: 1px solid var(--rule); }
   .glf-fieldcap .fc { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 12px;
     letter-spacing: .16em; text-transform: uppercase; color: var(--rblue); }
-  .glf-fieldcap .fo { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+  .glf-fieldcap .fo { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
     letter-spacing: .04em; color: var(--ink-2); }
   .glf-bay-cat .fo { margin-left: auto; font-family: "Space Mono", monospace; font-weight: 700;
-    font-size: 11px; letter-spacing: .04em; color: var(--ink-2); }
-  .glf-fieldwrap { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
-  .glf-fieldwrap .fo { font-family: "Space Mono", monospace; font-weight: 700; font-size: 11px;
+    font-size: 12px; letter-spacing: .04em; color: var(--ink-2); }
+  .glf-fieldwrap { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: 4px; }
+  .glf-fieldwrap .fo { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
     letter-spacing: .04em; color: var(--ink-2); white-space: nowrap; }
-  .glf-fieldfig { margin: 0; display: flex; justify-content: center; flex: none; }
+  .glf-fieldfig { margin: 10px 0 0; display: flex; justify-content: center; flex: none; }
   .glf-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .glf-fieldfig .fd-svg { width: 100px; height: auto; max-width: 100%; display: block;  overflow: visible; }
+  .glf-fieldfig .fd-svg { width: 106px; height: auto; max-width: 100%; display: block;  overflow: visible; }
 
   /* unified Stadium Context */
   .glf-context { flex: 1; min-height: 0; display: flex; flex-direction: column; }
   .glf-prose { display: flex; align-items: flex-start; }
   .glf-prose .glf-col { flex: 1 1 0; min-width: 0; padding-right: 14px; }
   .glf-prose .glf-col + .glf-col { padding-right: 0; padding-left: 14px; border-left: 1px solid var(--rule); }
-  .glf-prose p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 13.0px; line-height: 1.38;
+  .glf-prose p { margin: 0 0 5px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.32;
     letter-spacing: 0.2px;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .glf-prose .glf-col p:last-child { margin-bottom: 0; }
@@ -279,13 +279,13 @@
   .glf-wcell .tx { display: flex; flex-direction: column; align-items: center; }
   .glf-wcell .wv { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 17px;
     color: var(--ink); line-height: 1.05; white-space: nowrap; }
-  .glf-wcell .wl { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px;
+  .glf-wcell .wl { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
 
   .glf-vfacts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px 16px; }
   .glf-vf { display: flex; flex-direction: column; gap: 1px; padding-bottom: 4px;
     border-bottom: 1px solid var(--rule); }
-  .glf-vf .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 10px;
+  .glf-vf .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
   .glf-vf .v { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink);
     line-height: 1.18; }

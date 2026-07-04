@@ -10,7 +10,7 @@
   const e = React.createElement;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect", src: props.src });
   }
 
   /* ---- logo wells (Bay 1) ---- */
@@ -21,7 +21,7 @@
     } else if (props.kind === "league") {
       mark = e("img", { className: "shp-well-img al", src: "assets/american-league-logo.png", alt: "American League" });
     } else {
-      mark = e("img", { className: "shp-well-img team", src: "assets/oakland-athletics-logo.svg", alt: "Athletics" });
+      mark = e("img", { className: "shp-well-img team", src: "assets/athletics-cap-logo.svg", alt: "Athletics" });
     }
     return e("div", { className: "shp-well", title: props.cap },
       e("div", { className: "shp-well-mark" }, mark));
@@ -92,13 +92,13 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         e("div", { className: "shp-page shp-left", "data-screen-label": "Sutter Health Park hero" },
           e("div", { className: "shp-hero-slot" },
-            e(Slot, { id: "sutter-hero", placeholder: "Drop the Sutter Health Park aerial \u2014 ballpark + Sacramento River + Tower Bridge + urban edge" })),
+            e(Slot, { id: "sutter-hero", src: "uploads/sutter-health-park-00-main-300dpi-4230a7e1.jpg", placeholder: "Drop the Sutter Health Park aerial \u2014 ballpark + Sacramento River + Tower Bridge + urban edge" })),
           e("div", { className: "shp-hero-scrim" }),
           e("div", { className: "shp-hero-folio" }, "Interim Riverfront Warehouse \u00b7 Temporary MLB"),
 
           /* small bearing cue */
           e("div", { className: "shp-hero-coord" },
-            e("svg", { width: "28", height: "28", viewBox: "0 0 30 30", fill: "none", stroke: "rgba(238,231,214,.7)", strokeWidth: "1" },
+            e("svg", { width: "28", height: "28", viewBox: "0 0 30 30", fill: "none", stroke: "#5D584B", strokeWidth: "1" },
               e("circle", { cx: "15", cy: "15", r: "11" }),
               e("path", { d: "M15 4 L15 26 M4 15 L26 15", strokeWidth: "0.7", opacity: "0.55" }),
               e("path", { d: "M20 9 L23 6 L21.5 10.5 Z", fill: "#E2A734", stroke: "none" })),
@@ -111,10 +111,9 @@
             e("span", { className: "shp-rivet tl" }), e("span", { className: "shp-rivet tr" }),
             e("span", { className: "shp-rivet bl" }), e("span", { className: "shp-rivet br" }),
             e("div", { className: "shp-plate-inner" },
-              e("h1", { className: "shp-plate-name" }, "SUTTER", e("br", null), "HEALTH", e("br", null), "PARK"),
+              e("h1", { className: "shp-plate-name" }, "SUTTER HEALTH PARK"),
               e("div", { className: "shp-plate-rule" }),
               e("div", { className: "shp-plate-foot" },
-                e("img", { className: "shp-plate-mark", src: "assets/oakland-athletics-logo.svg", alt: "Athletics" }),
                 e("div", { className: "shp-plate-sub" }, "West Sacramento, California")))),
 
           /* metadata + colophon footer */
@@ -128,7 +127,7 @@
               e("span", { className: "dot" }, "\u00b7"),
               e("span", null, "MLB use opened ", e("em", null, D.opened_mlb))),
             e("div", { className: "shp-colophon" },
-              e("img", { className: "shp-colo-as", src: "assets/oakland-athletics-logo.svg", alt: "Athletics" }),
+              e("span", { className: "shp-colo-as", role: "img", "aria-label": "Athletics" }),
               e("span", { className: "shp-colo-div" }),
               e("img", { className: "shp-colo-mlb", src: "assets/mlb-logo.svg", alt: "MLB" }),
               e("span", { className: "shp-colo-txt" }, "Major League Baseball")))
@@ -160,7 +159,6 @@
                 D.facts.map((f, i) => factRow(f[0], f[1], i))),
 
               e("div", { className: "shp-fig" },
-                e("div", { className: "shp-fig-cap" }, "Field Geometry \u00b7 survey"),
                 FieldDiagram ? e(FieldDiagram, {
                   lf: D.field.left_field, cf: D.field.center_field, rf: D.field.right_field,
                   orientation: D.field.orientation, degrees: D.field.orientation_degrees
@@ -176,7 +174,7 @@
                 e("p", null, D.context[1]),
                 e("div", { className: "shp-ctx-photo" },
                   e("div", { className: "shp-pcard" },
-                    e(Slot, { id: "sutter-p3", placeholder: "Warehouse-district masonry \u2014 concourse or facade detail" }))),
+                    e(Slot, { id: "sutter-p3", src: "uploads/sutter-health-park-01.jpg", placeholder: "Warehouse-district masonry \u2014 concourse or facade detail" }))),
                 e("p", null, D.context[2]),
                 e("p", null, D.context[3])),
               e("div", { className: "shp-ctx-foot" },
@@ -192,7 +190,7 @@
 
               e("div", { className: "shp-vphoto top" },
                 e("div", { className: "shp-pcard" },
-                  e(Slot, { id: "sutter-p1", placeholder: "Riverfront approach \u2014 ballpark + Tower Bridge" }))),
+                  e(Slot, { id: "sutter-p1", src: "uploads/sutter-health-park-02.jpg", placeholder: "Riverfront approach \u2014 ballpark + Tower Bridge" }))),
 
               e("div", { className: "shp-visit-title" },
                 e("span", { className: "gt" }, D.featured_title),
@@ -203,7 +201,7 @@
                 growStrong("Result", D.result_line),
                 grow("First Pitch", D.first_pitch + " \u00b7 night"),
                 grow("Pitching", D.starter_away + " (" + D.away_abbr + ") vs " + D.starter_home + " (" + D.home_abbr + ")"),
-                grow("Attendance", D.attendance + " \u00b7 " + D.game_duration)),
+                grow("Attendance", e(React.Fragment, null, D.attendance, " ", e("span", { className: "k", style: { marginLeft: "30px" } }, "Duration"), " " + D.game_duration))),
 
               e("div", { className: "shp-score" },
                 BoxScore(D.box),
@@ -226,7 +224,7 @@
 
               e("div", { className: "shp-vphoto bot" },
                 e("div", { className: "shp-pcard" },
-                  e(Slot, { id: "sutter-p2", placeholder: "Open-air bowl \u2014 hot July night, group visit" }))))
+                  e(Slot, { id: "sutter-p2", src: "uploads/sutter-health-park-03.jpg", placeholder: "Open-air bowl \u2014 hot July night, group visit" }))))
           )
         )
       )

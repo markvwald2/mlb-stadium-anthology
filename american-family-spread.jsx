@@ -33,13 +33,13 @@
   const TRACKS = [1228, 985, 742, 505]; // roof-track arc radii (outer -> inner)
 
   function Slot(props) {
-    return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect" },
+    return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src },
       props.style ? { style: props.style } : {}));
   }
   function SecHead(props) {
     return e("div", { className: "amf-h" + (props.brick ? " brick" : "") },
       e("span", { className: "t" }, props.title),
-      props.note ? e("span", { className: "n" }, props.note) : null);
+      props.note ? e("span", { className: "n", style: props.noteStyle || undefined }, props.note) : null);
   }
   function factRow(row, i) {
     return e("div", { className: "amf-frow", key: i },
@@ -124,7 +124,7 @@
         return e("figure", { className: "amf-panel", key: i,
           style: { left: (c[0] - W / 2).toFixed(1) + "px", top: (c[1] - H / 2).toFixed(1) + "px",
             width: W + "px", height: H + "px", transform: "rotate(" + a.toFixed(1) + "deg)", zIndex: Math.round(z) } },
-          e(Slot, { id: pn[0], placeholder: pn[1] }));
+          e(Slot, { id: pn[0], placeholder: pn[1], src: pn[3] }));
       }));
   }
 
@@ -134,11 +134,10 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "amf-page amf-left", "data-screen-label": "American Family Field — hero" },
         e("div", { className: "amf-hero-slot" },
-          e(Slot, { id: "amfam-hero", placeholder: "Drop the American Family Field hero \u2014 night aerial of the fan-shaped retractable roof, brick-and-steel mass, surrounding lots & the Menomonee valley" })),
+          e(Slot, { id: "amfam-hero", src: "uploads/miller-park-00-main.jpg", placeholder: "Drop the American Family Field hero \u2014 night aerial of the fan-shaped retractable roof, brick-and-steel mass, surrounding lots & the Menomonee valley" })),
         e("div", { className: "amf-hero-scrim" }),
 
         e("img", { className: "amf-hero-logo", src: "assets/milwaukee-brewers-logo.svg", alt: "Milwaukee Brewers" }),
-        e("div", { className: "amf-folio" }, "VISIT NO. " + D.visit_order),
         e("div", { className: "amf-spine" }, "EST. " + D.est + "  \u00b7  MILWAUKEE, WISCONSIN  \u00b7  VISIT " + D.visit_order),
 
         // a single faint roof-track datum line across the hero — the fan idea, stated quietly
@@ -226,7 +225,7 @@
               e(SecHead, { title: "Line Score", note: "FINAL \u00b7 " + D.box.innings + " \u00b7 " + D.game_duration, brick: true }),
               LineScore(D.box),
               e("div", { className: "amf-gcap" },
-                e("span", null, "Att. " + D.visit[6][1]),
+                e("span", null, "Att. " + D.visit[5][1]),
                 e("span", { className: "sp" }, "\u00b7"),
                 e("span", null, "First pitch 6:15 PM CDT")),
               e("div", { className: "amf-wx-track" },
@@ -246,7 +245,7 @@
         e("div", { className: "amf-context" },
           e("div", { className: "amf-ctx-watermark" },
             e("img", { src: "assets/wisconsin-outline.svg", alt: "" })),
-          e(SecHead, { title: "The Pivoting Fan", note: "MILLER PARK \u2192 AMERICAN FAMILY FIELD" }),
+          e(SecHead, { title: "The Pivoting Fan", note: "MILLER PARK \u2192 AMERICAN FAMILY FIELD", noteStyle: { letterSpacing: "-0.7px", fontSize: "12px" } }),
           e("div", { className: "amf-prose" },
             D.stadium_context.map((p, i) => e("p", { key: i }, p)))
         )

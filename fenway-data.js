@@ -59,11 +59,11 @@ window.FENWAY = {
   // brief (long version pared to the key milestones per era; dates verbatim).
   lifecycle: [
     { era: "1912\u20131947", title: "Early Years & Reconstruction", items: [
-      { yr: "1934", note: "Original wood structure replaced with steel and concrete, establishing the park\u2019s modern form." },
-      { yr: "1947", note: "Permanent night-game lighting installed; the left-field wall adopts its green paint scheme." }
+      { yr: "1934", note: "Original wood structure replaced with steel and concrete." },
+      { yr: "1947", note: "Permanent lighting installed; the left-field wall adopts its green paint scheme." }
     ]},
     { era: "1976\u20132000", title: "Late-Century Tweaks", items: [
-      { yr: "1988", note: "\u201c600 Club\u201d luxury seating and suites added above the grandstand behind home plate." }
+      { yr: "1988", note: "\u201c600 Club\u201d luxury seating and suites added above the home plate grandstand." }
     ]},
     { era: "2002\u2013Present", title: "Modernization", items: [
       { yr: "2003", note: "Green Monster Seats added atop the left-field wall." },
