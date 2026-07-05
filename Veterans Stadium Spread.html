@@ -66,8 +66,8 @@
   .vet-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(180deg, rgba(12,11,8,.46) 0%, rgba(12,11,8,0) 26%),
-      linear-gradient(0deg, rgba(10,9,6,.95) 0%, rgba(10,9,6,.72) 22%, rgba(10,9,6,.16) 46%, rgba(10,9,6,0) 60%);
+      linear-gradient(180deg, rgba(12,11,8,.30) 0%, rgba(12,11,8,0) 18%),
+      linear-gradient(0deg, rgba(9,8,5,.80) 0%, rgba(9,8,5,.5) 20%, rgba(9,8,5,.18) 40%, rgba(9,8,5,0) 56%);
   }
   /* faint octorad civic plan, integrated into the lower asphalt */
   .vet-hero-plan { position: absolute; left: 430px; bottom: -120px; width: 760px; height: 760px; z-index: 3; pointer-events: none; }
@@ -84,14 +84,14 @@
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(232,226,210,.6); text-transform: uppercase; text-align: right; }
 
-  .vet-hero-title { position: absolute; left: 62px; right: 80px; bottom: 196px; z-index: 5; }
+  .vet-hero-title { position: absolute; left: 62px; right: 80px; bottom: 54px; z-index: 5; }
+  .vet-hero-kicker { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 24px;
+    letter-spacing: .34em; text-transform: uppercase; color: #D8D1BF; margin: 0 0 14px 5px;
+    text-shadow: 0 1px 10px rgba(0,0,0,.5); }
   .vet-hero-name { margin: 0; line-height: .82; }
   .vet-hero-name .l1 { display: block; font-family: "Anton", sans-serif; font-weight: 400;
-    font-size: 150px; letter-spacing: .005em; text-transform: uppercase; color: #ECE5D2;
-    transform: scaleY(1.06); transform-origin: bottom left; }
-  .vet-hero-name .l2 { display: block; font-family: "Anton", sans-serif; font-weight: 400;
-    font-size: 150px; letter-spacing: .005em; text-transform: uppercase; color: #F1EAD9;
-    transform: scaleY(1.06); transform-origin: bottom left; margin-top: 14px; }
+    font-size: 176px; letter-spacing: .004em; text-transform: uppercase; color: #F1EAD9;
+    transform: scaleY(1.06); transform-origin: bottom left; text-shadow: 0 2px 16px rgba(0,0,0,.5); }
   .vet-hero-loc { display: inline-flex; align-items: center; gap: 16px; margin-top: 30px; }
   .vet-hero-loc .bar { width: 52px; height: 6px; background: var(--red); flex: none; }
   .vet-hero-loc .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 25px;
@@ -100,20 +100,9 @@
     letter-spacing: .12em; text-transform: uppercase; color: #ADA694; }
   .vet-hero-meta .dem { color: var(--amber); }
 
-  /* bottom-left: identity + logo wells */
-  .vet-hero-foot { position: absolute; left: 62px; bottom: 50px; z-index: 5; display: flex; align-items: flex-end; gap: 26px; }
-  .vet-hero-ident { display: flex; flex-direction: column; gap: 5px; padding-bottom: 4px; }
-  .vet-hero-ident .nm { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 22px; letter-spacing: .06em;
-    text-transform: uppercase; color: var(--red); line-height: 1; }
-  .vet-hero-ident .sub { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 14px; letter-spacing: .22em;
-    text-transform: uppercase; color: #C8C1AF; }
-  .vet-wells { display: flex; gap: 14px; }
-  .vet-well { width: 78px; display: flex; flex-direction: column; align-items: center; gap: 7px; }
-  .vet-well .box { width: 78px; height: 78px; border: 1px solid rgba(232,226,210,.34); background: rgba(20,19,15,.5);
-    display: flex; align-items: center; justify-content: center; }
-  .vet-well .box img { max-width: 52px; max-height: 52px; width: auto; height: auto; display: block; }
-  .vet-well .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
-    color: #9C9582; text-align: center; line-height: 1.3; }
+  /* bottom-right: bare league / team logos */
+  .vet-hero-foot { position: absolute; right: 64px; bottom: 54px; z-index: 5; display: flex; align-items: center; gap: 26px; }
+  .vet-logo { height: 52px; width: auto; display: block; filter: drop-shadow(0 2px 9px rgba(0,0,0,.6)); }
 
   /* ============ RIGHT PAGE ============ */
   .vet-rp { position: absolute; inset: 0; padding: 39.5px 40px 39.5px; display: flex; flex-direction: column; z-index: 2; }

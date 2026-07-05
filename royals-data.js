@@ -27,7 +27,7 @@ window.ROYALS = {
   capacity_opening: "40,625",
   capacity_current: "37,903",
   name_history: "Royals Stadium (1973\u20131993); Kauffman Stadium (1993\u2013present)",
-  preceded_by: "Municipal Stadium",
+  preceded_by: "Municipal Stadium (1969\u20131972)",
   elevation: "870 ft",
   coordinates: "39.0514\u00b0 N, 94.4806\u00b0 W",
   stadium_cost: "$70 million",

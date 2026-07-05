@@ -24,7 +24,7 @@
   function strip(v) { return (v || "").toString().replace(/\s*ft$/i, ""); }
 
   function Chip(props) {
-    const fs = props.size || 13, w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 8) * 2), h = 19;
+    const fs = props.size || 13, w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 8) * 2), h = Math.round(fs * 1.42);
     const tone = props.tone || "paper";
     const fill = tone === "blue" ? blue : paperHi, stk = tone === "blue" ? "#072357" : ruleStrong, col = tone === "blue" ? "#F2F4FB" : ink;
     return e("g", null,
@@ -55,7 +55,7 @@
     }
     const nums = [0, 30, 60, 90].map((a, i) => {
       const p = polar(C, PR + 13, a);
-      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "10px", fill: ink3 } }, a);
+      return e("text", { key: "n" + i, x: p[0], y: p[1] + 5, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "18px", fill: ink3 } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 90);
     const protArc = "M " + arcA[0].toFixed(1) + " " + arcA[1].toFixed(1) + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -87,14 +87,14 @@
         // protractor arc + ticks + numerals
         e("path", { d: protArc, fill: "none", stroke: ink3, strokeWidth: 1, opacity: 0.55 }),
         ticks, nums,
-        e("text", { x: nlab[0], y: nlab[1] - 8, textAnchor: "middle", style: { fontFamily: "'Saira Semi Condensed',sans-serif", fontWeight: 700, fontSize: "11px", fill: slate, letterSpacing: ".04em" } }, "N"),
+        e("text", { x: nlab[0], y: nlab[1] - 9, textAnchor: "middle", style: { fontFamily: "'Saira Semi Condensed',sans-serif", fontWeight: 700, fontSize: "18px", fill: slate, letterSpacing: ".04em" } }, "N"),
         // north baseline (0 deg) + bearing needle
         e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink3, strokeWidth: 1, strokeDasharray: "3 3" }),
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: "#B5410F" }),
         e("circle", { cx: C[0], cy: C[1], r: 2.8, fill: accent }),
-        e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 12, tone: "blue", padX: 6 }),
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 12 }))
+        e(Chip, { x: bc.x + 28.8, y: bc.y - 9.6, text: deg + "\u00b0", size: 26, tone: "blue", padX: 6 }),
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 26 }))
       )
     );
   }

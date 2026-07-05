@@ -39,7 +39,7 @@ window.MILEHIGH = {
   surface: "Kentucky bluegrass",
   architect: "Original Bears Stadium by local municipal designers; later expansions by several firms",
   stadium_type: "Open-air multipurpose stadium adapted for MLB expansion",
-  architectural_style: "Utilitarian open-air multipurpose stadium with expandable movable-grandstand engineering",
+  architectural_style: "Utilitarian open-air multipurpose stadium with expandable movable-grandstand",
   facade_material: "Concrete and steel grandstands with movable steel east-stand structure",
   name_history: "Bears Stadium (1948\u20131968); Mile High Stadium (1969\u20132001)",
   succeeded_by: "Coors Field",
@@ -50,7 +50,7 @@ window.MILEHIGH = {
   // ---- Finance ----
   stadium_cost: "$500k",
   stadium_cost_adjusted: "$7 million",
-  financing_method: "Publicly financed and expanded by Denver as a municipal stadium; Rockies tenancy used the existing facility as an interim MLB venue",
+  financing_method: "Publicly financed and expanded by Denver as a municipal stadium; Rockies tenancy used the existing facility as an interim Major League Baseball venue",
 
   // ---- Field geometry ----
   left_field_distance: "333 ft",

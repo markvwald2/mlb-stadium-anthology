@@ -59,8 +59,8 @@
   .sd-hero-scrim {
     position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(14,13,10,.34) 0%, rgba(14,13,10,0) 22%),
-      linear-gradient(0deg, rgba(12,11,8,.90) 0%, rgba(12,11,8,.46) 26%, rgba(12,11,8,0) 50%);
+      linear-gradient(180deg, rgba(10,9,7,.55) 0%, rgba(10,9,7,.12) 18%, rgba(10,9,7,0) 32%),
+      linear-gradient(0deg, rgba(12,11,8,.86) 0%, rgba(12,11,8,.50) 16%, rgba(12,11,8,.14) 30%, rgba(12,11,8,0) 44%);
   }
   .sd-hero-arcs { position: absolute; inset: 0; width: 1275px; height: 1088px; opacity: .55; pointer-events: none; }
   .sd-hero-folio {
@@ -68,6 +68,9 @@
     font-family: "Space Mono", monospace; font-size: 16px; letter-spacing: .30em;
     color: rgba(231,222,203,.62); text-transform: uppercase;
   }
+
+  /* wordmark masthead (top-left, on the black sky) */
+  .sd-title-top { position: absolute; left: 80px; top: 80px; z-index: 5; }
 
   /* municipal sign panel */
   .sd-sign {
@@ -126,7 +129,7 @@
   /* ===== THE DATA WELL (vertical concrete circulation tower) ===== */
   .sd-well {
     position: relative; overflow: hidden;
-    margin-top: -34px; margin-bottom: -30px;
+    margin-top: -4px; margin-bottom: -8px;
     border-radius: 50% / 74px;
     border: 1px solid var(--rule-strong);
     background:
@@ -138,7 +141,7 @@
   .sd-well-inner { position: absolute; inset: 0; padding: 40px 34px 30px; display: flex; flex-direction: column; }
 
   /* identity */
-  .sd-identity { margin-bottom: 12px; }
+  .sd-identity { margin-top: -10px; margin-bottom: 12px; }
   .sd-marks { display: flex; align-items: center; justify-content: center; gap: 30px; padding: 4px 0 8px; }
   .sd-mark { height: 42px; width: auto; display: block; }
   .sd-mark.team { height: 50px; margin: 0 -14.5px; }
@@ -152,7 +155,7 @@
 
   /* embedded field instrument */
   .sd-instrument { margin-top: 14px; }
-  .sd-prot-wrap { width: 100%; max-width: 290px; margin: 35px auto 0; }
+  .sd-prot-wrap { width: 100%; max-width: 212px; margin: 35px auto 0; }
   .sd-prot-svg { width: 100%; height: auto; display: block; overflow: visible; }
   .sd-prot-cap { display: flex; justify-content: space-between; margin-top: 36px; font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; }
 
@@ -186,7 +189,7 @@
   /* stadium context */
   .sd-context { margin-top: 16px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
   .sd-context .body { column-count: 2; column-gap: 26px; margin-top: 2px; }
-  .sd-context p { margin: 0 0 10px; font-family: "Spectral", serif; font-size: 13.5px; line-height: 1.5; letter-spacing: -0.1px; color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid; -webkit-column-break-inside: avoid; }
+  .sd-context p { margin: 0 0 10px; font-family: "Spectral", serif; font-size: 13.5px; line-height: 18.35px; letter-spacing: -0.1px; color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid; -webkit-column-break-inside: avoid; }
   .sd-context p:first-child::first-letter { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 42px; line-height: .78; float: left; padding: 5px 9px 0 0; color: var(--brown); }
 
   /* ===== GAME RECORD (dark concrete band) ===== */
@@ -205,7 +208,7 @@
 
   /* score */
   .sd-vband .score { align-items: stretch; }
-  .sd-vband .score .date { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em; color: var(--panel-dim); text-transform: uppercase; }
+  .sd-vband .score .date { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: 0; color: var(--panel-dim); text-transform: uppercase; }
   .sd-score { margin: 8px 0 4px; }
   .sd-score .tm { display: flex; align-items: center; gap: 16px; }
   .sd-score .tm .tok { position: relative; width: 56px; height: 56px; border-radius: 50%; background: #ECE8DD; border: 1px solid var(--rule-strong); display: flex; align-items: center; justify-content: center; flex: none; overflow: hidden; }
@@ -248,7 +251,7 @@
   .sd-vrow { display: grid; grid-template-columns: 86px 1fr; gap: 8px; padding: 2px 0; align-items: baseline; }
   .sd-vrow .k { font-family: "Archivo", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .07em; color: var(--panel-dim); font-size: 12px; }
   .sd-vrow .v { font-family: "Spectral", serif; font-weight: 500; color: #EFEADD; font-size: 12px; line-height: 1.2; }
-  .sd-vband .info .sd-vrow { grid-template-columns: 78px 1fr; }
+  .sd-vband .info .sd-vrow { grid-template-columns: 100px 1fr; }
   .sd-vband .info { justify-content: space-between; padding-top: 11px; padding-bottom: 12px; }
 
   /* weather strip */

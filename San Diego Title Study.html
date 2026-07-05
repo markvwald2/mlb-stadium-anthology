@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="design_doc_mode" content="canvas" />
+<title>San Diego Hero — Title Placement Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #2b2b2e; font-family: "Archivo", sans-serif; }
+
+  .frame {
+    position: absolute;
+    --gold: #B98D3E;
+    --brown: #5A3A24;
+  }
+  .cap {
+    font-family: "Space Mono", monospace; color: #cfcabb; font-size: 22px;
+    letter-spacing: .08em; margin-bottom: 14px; text-transform: uppercase;
+  }
+  .cap b { color: #E9B65A; font-weight: 700; }
+  .cap span { display: block; font-size: 15px; color: #8f8a7d; letter-spacing: .04em; margin-top: 6px; text-transform: none; }
+
+  .page {
+    position: relative; width: 1275px; height: 1088px;
+    background: #14130F; overflow: hidden;
+  }
+  .page .hero { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+
+  /* scrims — each variant chooses one */
+  .scrim-bottom {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(0deg, rgba(12,11,8,.68) 0%, rgba(12,11,8,.26) 20%, rgba(12,11,8,0) 40%);
+  }
+  .scrim-top {
+    position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, rgba(10,9,7,.62) 0%, rgba(10,9,7,.14) 20%, rgba(10,9,7,0) 34%);
+  }
+
+  /* ── title atoms (from the spread) ── */
+  .eyebrow {
+    font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .30em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .wordmark { margin: 0; display: flex; flex-direction: column; }
+  .wordmark .l1, .wordmark .l2 {
+    font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase;
+    color: #ECE6D7; line-height: 1.0; font-size: 82px; letter-spacing: .05em;
+  }
+  .wordmark .l2 { font-weight: 300; color: #D8D0BC; }
+  .loc { display: inline-flex; align-items: center; gap: 14px; }
+  .loc .bar { width: 46px; height: 3px; background: var(--brown); }
+  .loc .txt {
+    font-family: "Archivo", sans-serif; font-weight: 600; font-size: 23px;
+    letter-spacing: .34em; text-transform: uppercase; color: #E7E0D1;
+  }
+  .meta {
+    color: #B6AE9C; font-family: "Space Mono", monospace;
+    font-size: 15px; letter-spacing: .14em; text-transform: uppercase;
+  }
+  .meta .dem { color: var(--gold); }
+
+  .abs { position: absolute; z-index: 5; }
+  .accent-left { border-left: 4px solid var(--gold); padding-left: 26px; }
+
+  /* trim guide */
+  .safe { position: absolute; inset: 37.5px; border: 1px dashed rgba(233,182,90,.28); pointer-events: none; z-index: 8; }
+</style>
+</head>
+<body>
+
+  <!-- ============ A · CURRENT (baseline, all bottom) ============ -->
+  <div class="frame" style="left: 80px; top: 80px;">
+    <div class="cap"><b>A</b> · Current — all bottom-left<span>Baseline. Title anchored low; the black sky at top is unused.</span></div>
+    <div class="page">
+      <img class="hero" src="uploads/jack-murphy-stadium-00-main-c39a25c4.jpg" alt="" />
+      <div class="scrim-bottom"></div>
+      <div class="abs accent-left" style="left:80px; bottom:84px;">
+        <div class="eyebrow" style="margin-bottom:16px;">Mission Valley · California</div>
+        <h1 class="wordmark"><span class="l1">San Diego</span><span class="l2">Stadium</span></h1>
+        <div class="loc" style="margin-top:24px;"><span class="bar"></span><span class="txt">San Diego, California</span></div>
+        <div class="meta" style="margin-top:18px;">1969&ndash;2003 &nbsp;·&nbsp; Open-Air Multipurpose Stadium &nbsp;·&nbsp; <span class="dem">Demolished</span></div>
+      </div>
+      <div class="safe"></div>
+    </div>
+  </div>
+
+  <!-- ============ B · MASTHEAD (whole block up top) ============ -->
+  <div class="frame" style="left: 1515px; top: 80px;">
+    <div class="cap"><b>B</b> · Masthead — whole block top-left<span>Title rides the black sky; photo reads clean below with no bottom scrim.</span></div>
+    <div class="page">
+      <img class="hero" src="uploads/jack-murphy-stadium-00-main-c39a25c4.jpg" alt="" />
+      <div class="scrim-top"></div>
+      <div class="abs accent-left" style="left:80px; top:80px;">
+        <div class="eyebrow" style="margin-bottom:16px;">Mission Valley · California</div>
+        <h1 class="wordmark"><span class="l1">San Diego</span><span class="l2">Stadium</span></h1>
+        <div class="loc" style="margin-top:24px;"><span class="bar"></span><span class="txt">San Diego, California</span></div>
+        <div class="meta" style="margin-top:18px;">1969&ndash;2003 &nbsp;·&nbsp; Open-Air Multipurpose Stadium &nbsp;·&nbsp; <span class="dem">Demolished</span></div>
+      </div>
+      <div class="safe"></div>
+    </div>
+  </div>
+
+  <!-- ============ C · SPLIT (wordmark up, tags stay down) ============ -->
+  <div class="frame" style="left: 2950px; top: 80px;">
+    <div class="cap"><b>C</b> · Split — wordmark up, tags down<span>Recommended. Wordmark on black up top; location + lifecycle frame the bottom.</span></div>
+    <div class="page">
+      <img class="hero" src="uploads/jack-murphy-stadium-00-main-c39a25c4.jpg" alt="" />
+      <div class="scrim-top"></div>
+      <div class="scrim-bottom"></div>
+      <div class="abs" style="left:80px; top:80px;">
+        <div class="eyebrow" style="margin-bottom:16px;">Mission Valley · California</div>
+        <h1 class="wordmark"><span class="l1">San Diego</span><span class="l2">Stadium</span></h1>
+      </div>
+      <div class="abs accent-left" style="left:80px; bottom:84px;">
+        <div class="loc"><span class="bar"></span><span class="txt">San Diego, California</span></div>
+        <div class="meta" style="margin-top:18px;">1969&ndash;2003 &nbsp;·&nbsp; Open-Air Multipurpose Stadium &nbsp;·&nbsp; <span class="dem">Demolished</span></div>
+      </div>
+      <div class="safe"></div>
+    </div>
+  </div>
+
+  <!-- ============ D · TOP MINIMAL (wordmark only, clean) ============ -->
+  <div class="frame" style="left: 4385px; top: 80px;">
+    <div class="cap"><b>D</b> · Top minimal — wordmark only<span>Purest use of the black band; no bottom scrim, photo entirely open.</span></div>
+    <div class="page">
+      <img class="hero" src="uploads/jack-murphy-stadium-00-main-c39a25c4.jpg" alt="" />
+      <div class="scrim-top"></div>
+      <div class="abs accent-left" style="left:80px; top:84px;">
+        <div class="eyebrow" style="margin-bottom:16px;">Mission Valley · California · 1969&ndash;2003</div>
+        <h1 class="wordmark"><span class="l1">San Diego</span><span class="l2">Stadium</span></h1>
+      </div>
+      <div class="safe"></div>
+    </div>
+  </div>
+
+</body>
+</html>

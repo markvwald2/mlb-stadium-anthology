@@ -6,7 +6,7 @@
 <title>Royals Stadium — Spread</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:wght@700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -67,25 +67,25 @@
   .rs-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 3;
     background:
-      linear-gradient(180deg, rgba(8,22,44,.46) 0%, rgba(8,22,44,0) 26%),
-      linear-gradient(0deg, rgba(6,18,38,.90) 0%, rgba(6,18,38,.52) 24%, rgba(6,18,38,0) 50%);
+      linear-gradient(180deg, rgba(6,18,38,.64) 0%, rgba(6,18,38,.3) 20%, rgba(6,18,38,0) 42%),
+      linear-gradient(0deg, rgba(6,18,38,.46) 0%, rgba(6,18,38,0) 18%);
   }
   /* the famous outfield fountains — a fine cascade motif along the right edge */
   .rs-fountains { position: absolute; top: 0; right: 0; width: 360px; height: 1088px; z-index: 2; opacity: .5; pointer-events: none; }
   /* crown emblem, upper-left */
-  .rs-crown { position: absolute; left: 80px; top: 60px; z-index: 6; width: auto; height: 132px; display: block; }
+  .rs-crown { position: absolute; left: 80px; bottom: 56px; z-index: 6; width: auto; height: 132px; display: block; }
   .rs-folio {
     position: absolute; left: 80px; top: 210px; z-index: 6;
     font-family: "Space Mono", monospace; font-size: 16px; letter-spacing: .3em;
     color: rgba(225,233,245,.62); text-transform: uppercase;
   }
-  .rs-hero-title { position: absolute; left: 76px; bottom: 96px; z-index: 6; }
+  .rs-hero-title { position: absolute; left: 76px; top: 72px; z-index: 6; }
   .rs-hero-name {
-    margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
-    color: #F1E8D3; font-size: 178px; line-height: .82; letter-spacing: .004em;
+    margin: 0; font-family: "Playfair Display", "Spectral", Georgia, serif; font-weight: 800;
+    color: var(--gold); font-size: 104px; line-height: 1.0; letter-spacing: 0;
     text-transform: uppercase; text-shadow: 0 3px 40px rgba(0,0,0,.5);
   }
-  .rs-hero-name .l2 { display: block; color: #E7D6B6; }
+  .rs-hero-name .l2 { display: block; color: #F1E8D3; }
   .rs-hero-banner {
     display: inline-flex; align-items: center; gap: 16px; margin-top: 28px;
   }
@@ -100,7 +100,7 @@
     color: #C7D2E2;
   }
   .rs-hero-era {
-    position: absolute; left: 80px; bottom: 56px; z-index: 6;
+    position: absolute; left: 80px; top: 366px; z-index: 6;
     font-family: "Oswald", sans-serif; font-weight: 500; font-size: 16px;
     letter-spacing: .22em; text-transform: uppercase; color: #93A9C6;
   }
@@ -169,14 +169,14 @@
   .rs-fieldcard { flex: 0 0 auto; }
   .rs-ctxcard { flex: 1 1 auto; }
   /* inline field-plan figure floated into the context prose */
-  .rs-fieldfig { float: right; width: 150px; margin: 3px 0 8px 16px; }
-  .rs-fieldfig .fd-wrap { max-width: 150px; margin: 0; }
+  .rs-fieldfig { float: right; width: 168px; margin: 3px 0 8px 16px; }
+  .rs-fieldfig .fd-wrap { max-width: 168px; margin: 0; }
   .rs-fieldfig figcaption { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); text-align: center; margin-top: 5px; line-height: 1.35; }
   /* context flow (L-shape: lead under field plan, continued under visit) */
-  .rs-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 14px; line-height: 1.28; color: var(--ink); text-align: justify; hyphens: auto; }
+  .rs-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 14px; line-height: 23.8px; color: var(--ink); text-align: justify; hyphens: auto; }
   .rs-ctx p:last-child { margin-bottom: 0; }
   /* col-2 lead prose: open the leading so it bottom-aligns with col-3 continued prose */
-  .rs-ctx-lead p { line-height: 1.397; }
+  .rs-ctx-lead p { line-height: 23.8px; }
   .rs-ctx-lead p:first-of-type::first-letter { font-family: "Anton", sans-serif; font-weight: 400; font-size: 40px; line-height: .82; float: left; padding: 3px 7px 0 0; color: var(--royal); }
   .rs-ctxcont { margin-top: 0; }
   .rs-ctx-eyebrow { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .15em; font-size: 12px; color: var(--gold-deep); margin-bottom: 8px; }

@@ -6,7 +6,7 @@
 <title>Mile High Stadium — Spread</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Graduate&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -55,37 +55,43 @@
   .mh-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .mh-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 3;
-    background:
-      linear-gradient(180deg, rgba(18,17,20,.34) 0%, rgba(18,17,20,0) 22%),
-      linear-gradient(0deg, rgba(13,12,15,.92) 0%, rgba(13,12,15,.48) 28%, rgba(13,12,15,0) 54%);
+    background: linear-gradient(180deg, rgba(238,233,222,.72) 0%, rgba(238,233,222,.28) 12%, rgba(238,233,222,0) 24%);
   }
 
-  /* altitude / coordinate datum — lower right */
-  .mh-datum { position: absolute; right: 74px; bottom: 152px; z-index: 5; width: 330px; height: 250px; pointer-events: none; }
-  .mh-datum-grid { position: absolute; right: 0; bottom: 0; opacity: .6; }
-  .mh-datum-read { position: absolute; right: 22px; bottom: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
-  .mh-datum .mh-elev { display: flex; align-items: baseline; gap: 9px; }
-  .mh-datum .mh-elev .ev { font-family: "Anton", sans-serif; font-size: 70px; line-height: .82; color: #F1ECE0; letter-spacing: .004em; text-shadow: 0 3px 30px rgba(0,0,0,.5); }
-  .mh-datum .mh-elev .eu { font-family: "Space Mono", monospace; font-weight: 700; font-size: 20px; color: var(--purple-hi); letter-spacing: .08em; }
-  .mh-datum .mh-elev-cap { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .16em; font-size: 13px; color: #D9D0BE; }
-  .mh-datum .mh-coord { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; margin-top: 9px; padding-top: 9px; border-top: 1px solid rgba(122,93,176,.5); }
-  .mh-datum .mh-coord span { font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .04em; color: #EBE3D2; }
-  .mh-datum-tick { position: absolute; right: 0; top: 0; width: 1px; height: 250px; background: linear-gradient(180deg, transparent, rgba(122,93,176,.7) 60%, var(--purple-hi)); }
+  /* ── top masthead: title + elevation, purple on the pale sky ── */
+  .mh-topmast {
+    position: absolute; left: 0; right: 0; top: 0; z-index: 6;
+    padding: 44px 76px 0; display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .mh-topmast-r { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+  .mh-topmast .mh-elev-cap { font-family: "Space Mono", monospace; font-weight: 700; text-transform: uppercase; letter-spacing: .22em; font-size: 13px; color: var(--purple); }
+  .mh-topmast .mh-elev { display: flex; align-items: baseline; gap: 10px; margin-top: 8px; }
+  .mh-topmast .mh-elev .ev { font-family: "Bebas Neue", sans-serif; font-size: 92px; line-height: .78; color: var(--purple-deep); letter-spacing: .01em; }
+  .mh-topmast .mh-elev .eu { font-family: "Space Mono", monospace; font-weight: 700; font-size: 22px; color: var(--purple); letter-spacing: .08em; }
 
-  .mh-hero-title { position: absolute; left: 76px; bottom: 150px; z-index: 6; }
-  .mh-hero-name { margin: 0; font-family: "Anton", sans-serif; font-weight: 400; color: #F3ECDB; line-height: .92; letter-spacing: .006em; text-transform: uppercase; text-shadow: 0 3px 38px rgba(0,0,0,.55); }
+  .mh-hero-name { margin: 0; font-family: "Graduate", "Oswald", sans-serif; font-weight: 700; color: var(--purple-deep); line-height: .92; letter-spacing: .01em; text-transform: uppercase; }
   .mh-hero-name span { display: block; white-space: nowrap; }
-  .mh-hero-name span:first-child { font-size: 104px; }
-  .mh-hero-name span:last-child { font-size: 104px; color: #E7DDC8; }
-  .mh-hero-loc { margin-top: 18px; font-family: "Oswald", sans-serif; font-weight: 500; white-space: nowrap; font-size: 33px; letter-spacing: .12em; text-transform: uppercase; color: #E7DDC8; }
-  .mh-hero-rule { margin-top: 20px; width: 264px; height: 3px; background: var(--purple-hi); }
-  .mh-hero-era { margin-top: 16px; display: flex; align-items: center; gap: 15px; white-space: nowrap; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 16px; letter-spacing: .13em; text-transform: uppercase; color: #C8BEAC; }
-  .mh-hero-era .dot { color: #9A7FD0; font-size: 20px; font-weight: 700; }
+  .mh-hero-name span:first-child { font-size: 90px; }
+  .mh-hero-name span:last-child { font-size: 90px; color: var(--purple); }
 
-  .mh-hero-marks { position: absolute; left: 76px; bottom: 56px; z-index: 6; display: flex; align-items: center; gap: 20px; }
-  .mh-hero-marks .nl { height: 56px; width: auto; display: block; }
-  .mh-hero-marks .div { width: 1px; height: 46px; background: rgba(232,226,214,.32); }
-  .mh-hero-marks .mlb { height: 40px; width: auto; display: block; }
+  /* ── decreased bottom band: location + marks + era/coord ── */
+  .mh-plate {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 5; height: 150px;
+    padding: 22px 76px 40px; display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(180deg, rgba(60,42,99,.8) 0%, rgba(36,26,61,.8) 100%);
+    border-top: 3px solid var(--purple-hi);
+  }
+  .mh-plate-l { display: flex; flex-direction: column; gap: 14px; }
+  .mh-plate-r { display: flex; flex-direction: column; align-items: flex-end; gap: 9px; text-align: right; }
+  .mh-hero-loc { font-family: "Oswald", sans-serif; font-weight: 500; white-space: nowrap; font-size: 22px; letter-spacing: .12em; text-transform: uppercase; color: #E7DDC8; }
+  .mh-hero-era { display: flex; align-items: center; gap: 14px; white-space: nowrap; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 15px; letter-spacing: .13em; text-transform: uppercase; color: #C8BEAC; }
+  .mh-hero-era .dot { color: #9A7FD0; font-size: 18px; font-weight: 700; }
+  .mh-plate .mh-coord { font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .04em; color: #C7BEDA; }
+
+  .mh-hero-marks { display: flex; align-items: center; gap: 18px; }
+  .mh-hero-marks .nl { height: 36px; width: auto; display: block; }
+  .mh-hero-marks .div { width: 1px; height: 30px; background: rgba(232,226,214,.32); }
+  .mh-hero-marks .mlb { height: 26px; width: auto; display: block; }
 
   /* ---------- RIGHT PAGE SHELL ---------- */
   .mh-rp { position: absolute; inset: 0; padding: 38px 46px 36px 44px; display: flex; flex-direction: column; }
@@ -132,7 +138,7 @@
   .mh-photo { margin: 0; flex: 1; display: flex; flex-direction: column; border: 1px solid var(--rule-strong); background: var(--paper-hi); padding: 6px 6px 4px; min-height: 0; }
   .mh-photo image-slot { display: block; width: 100%; flex: 1 1 auto; min-height: 96px; }
   .mh-fieldfig { margin: 0; border: 1px solid var(--rule-strong); background: var(--paper-hi); padding: 6px 6px 4px; }
-  .mh-fieldwrap { width: 100%; max-width: 162px; margin: 0 auto; }
+  .mh-fieldwrap { width: 100%; max-width: 187px; margin: 0 auto; }
   .mh-fieldfig figcaption { text-align: center; font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); margin-top: 2px; }
   .mh-finance { border-top: 1.5px solid var(--ink); padding-top: 8px; }
   .mh-finance .fin-h { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; color: var(--purple); margin-bottom: 5px; }
@@ -147,7 +153,7 @@
   .mh-timeline .tl-t { font-family: "Oswald", sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: .16em; font-size: 12px; color: var(--purple); }
   .mh-timeline .tl-s { font-family: "Spectral", serif; font-style: italic; font-size: 12px; color: var(--ink-2); }
   .mh-timeline .tl-track { position: relative; display: grid; grid-template-columns: repeat(8, 1fr); }
-  .mh-timeline .tl-line { position: absolute; top: 5px; left: 10%; right: 10%; height: 2px; background: var(--rule-strong); z-index: 0; }
+  .mh-timeline .tl-line { position: absolute; top: 5px; left: 6.25%; right: 6.25%; height: 2px; background: var(--rule-strong); z-index: 0; }
   .mh-timeline .tl-span { position: absolute; top: 4px; left: 56.25%; width: 12.5%; height: 4px; background: var(--purple); z-index: 1; }
   .mh-timeline .tl-node { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; }
   .mh-timeline .tl-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--paper); border: 2px solid var(--rule-strong); }
@@ -161,9 +167,9 @@
   .mh-ctx { columns: 2; column-gap: 24px; column-rule: 1px solid var(--rule); margin-top: 8px; }
   .mh-ctx p { margin: 0 0 5px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 1.42; color: var(--ink); text-align: justify; hyphens: auto; }
   .mh-ctx p:last-child { margin-bottom: 0; }
-  .mh-ctx p:first-child::first-letter {
-    font-family: "Anton", sans-serif; font-weight: 400; color: var(--purple);
-    -webkit-initial-letter: 2 2; initial-letter: 2 2; margin-right: 8px;
+  .mh-ctx .mh-dropcap {
+    float: left; font-family: "Anton", sans-serif; font-weight: 400; color: var(--purple);
+    font-size: 46px; line-height: .72; margin: 3px 7px 0 0; text-transform: uppercase;
   }
 
   /* ---------- VISIT SUMMARY STRIP ---------- */

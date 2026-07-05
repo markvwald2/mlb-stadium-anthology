@@ -10,7 +10,7 @@
   const Icon = window.VetIcon, Survey = window.VetSurvey, Octorad = window.VetOctorad, Prot = window.VetProtractor;
   const g = D.game;
 
-  function Slot(p) { return e("image-slot", { id: p.id, placeholder: p.placeholder, shape: "rect" }); }
+  function Slot(p) { return e("image-slot", { id: p.id, src: p.src, placeholder: p.placeholder, shape: "rect" }); }
 
   function fact(k, v, opts) {
     if (v == null || v === "") return null;
@@ -76,11 +76,11 @@
       e("div", { className: "vet-page vet-left", "data-screen-label": "Veterans Stadium hero" },
         e("div", { className: "vet-hero-slot" },
           e("image-slot", { id: "vet-hero",
+            src: "uploads/veterans-stadium-00-main.jpg",
             placeholder: "Elevated aerial \u2014 complete circular bowl, surrounding parking fields, South Philadelphia sports complex; skyline secondary",
             shape: "rect" })),
         e("div", { className: "vet-hero-scrim" }),
         e(Survey, { className: "vet-hero-survey", stroke: "#CFC8B6", op: 0.16 }),
-        e(Octorad, { className: "vet-hero-plan", stroke: "#D9D2BF", op: 0.2, accent: "#E0B763", degrees: D.orientation_degrees }),
 
         e("div", { className: "vet-marker" },
           e("div", { className: "yr" }, "1971"),
@@ -88,30 +88,17 @@
         e("div", { className: "vet-hero-folio" }, "Municipal Era \u00b7 Sports-Complex"),
 
         e("div", { className: "vet-hero-title" },
+          e("div", { className: "vet-hero-kicker" }, "Veterans Stadium"),
           e("h1", { className: "vet-hero-name" },
-            e("span", { className: "l1" }, "Veterans"),
-            e("span", { className: "l2" }, "Stadium")),
+            e("span", { className: "l1" }, "The Vet")),
           e("div", { className: "vet-hero-loc" },
             e("span", { className: "bar" }),
-            e("span", { className: "txt" }, D.city + ", " + D.state)),
-          e("div", { className: "vet-hero-meta" },
-            D.years_active + "  \u00b7  " + D.stadium_type + "  \u00b7  ",
-            e("span", { className: "dem" }, D.status))),
+            e("span", { className: "txt" }, "South Philadelphia Sports Complex"))),
 
         e("div", { className: "vet-hero-foot" },
-          e("div", { className: "vet-hero-ident" },
-            e("div", { className: "nm" }, D.team_short),
-            e("div", { className: "sub" }, D.division)),
-          e("div", { className: "vet-wells" },
-            e("div", { className: "vet-well" },
-              e("div", { className: "box" }, e("img", { src: "assets/phillies-script-p-v2.svg", alt: "Phillies" })),
-              e("div", { className: "cap" }, "Phillies")),
-            e("div", { className: "vet-well" },
-              e("div", { className: "box" }, e("img", { src: "assets/nl-logo.png", alt: "National League" })),
-              e("div", { className: "cap" }, "National League")),
-            e("div", { className: "vet-well" },
-              e("div", { className: "box" }, e("img", { src: "assets/mlb-logo.svg", alt: "Major League Baseball" })),
-              e("div", { className: "cap" }, "Major League Baseball"))))),
+          e("img", { className: "vet-logo", src: "assets/phillies-script-p-v2.svg", alt: "Phillies" }),
+          e("img", { className: "vet-logo", src: "assets/nl-logo.png", alt: "National League" }),
+          e("img", { className: "vet-logo", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }))),
 
       /* ===== RIGHT PAGE ===== */
       e("div", { className: "vet-page vet-right" },
@@ -120,7 +107,7 @@
           /* operations metadata ribbon */
           e("div", { className: "vet-ribbon" },
             rcell("Team", D.team_short, "red"),
-            rcell("League", D.league, "blue sm"),
+            rcell("Division", "National League East", "blue sm"),
             rcell("Classification", "Multipurpose Era"),
             rcell("Years Active", D.years_active),
             rcell("Visit Order", D.visit_order + " of 42"),
@@ -138,11 +125,11 @@
 
             /* five structural bays */
             e("div", { className: "vet-bays" },
-              e(Slot, { id: "vet-p1", placeholder: "Exterior fa\u00e7ade \u00b7 exposed precast concrete" }),
-              e(Slot, { id: "vet-p2", placeholder: "Seating bowl" }),
-              e(Slot, { id: "vet-p5", placeholder: "Sports-complex context" }),
-              e(Slot, { id: "vet-p4", placeholder: "Concourse" }),
-              e(Slot, { id: "vet-p3", placeholder: "Scoreboard" })),
+              e(Slot, { id: "vet-p1", src: "uploads/veterans-stadium-01.jpg", placeholder: "Exterior fa\u00e7ade \u00b7 exposed precast concrete" }),
+              e(Slot, { id: "vet-p2", src: "uploads/veterans-stadium-02.jpg", placeholder: "Seating bowl" }),
+              e(Slot, { id: "vet-p5", src: "uploads/veterans-stadium-03.jpg", placeholder: "No-hitter front page" }),
+              e(Slot, { id: "vet-p4", src: "uploads/veterans-stadium-04.jpg", placeholder: "Aerial \u00b7 sports-complex context" }),
+              e(Slot, { id: "vet-p3", src: "uploads/veterans-stadium-05.jpg", placeholder: "Seating bowl \u00b7 night" })),
 
             /* facts + field instrument */
             e("div", { className: "vet-sbody" },

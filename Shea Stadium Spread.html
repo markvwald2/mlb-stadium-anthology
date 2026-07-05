@@ -68,7 +68,7 @@
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(14,16,22,.5) 0%, rgba(14,16,22,0) 24%),
-      linear-gradient(0deg, rgba(11,12,17,.95) 0%, rgba(11,12,17,.74) 22%, rgba(11,12,17,.14) 47%, rgba(11,12,17,0) 62%);
+      linear-gradient(0deg, rgba(11,12,17,.55) 0%, rgba(11,12,17,.2) 12%, rgba(11,12,17,0) 26%);
   }
   /* faint open-air bowl plan integrated low-left */
   .shea-hero-bowl { position: absolute; left: -150px; bottom: -180px; width: 720px; height: 720px; z-index: 3; pointer-events: none; }
@@ -87,7 +87,7 @@
     color: rgba(233,228,215,.62); text-transform: uppercase; text-align: right; line-height: 1.5; }
 
   /* bottom-left signage title block — World's Fair / highway-wayfinding sign system */
-  .shea-hero-title { position: absolute; left: 60px; bottom: 60px; z-index: 5; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; width: max-content; max-width: 1150px; }
+  .shea-hero-title { position: absolute; left: 60px; bottom: 40px; z-index: 5; display: flex; flex-direction: column; align-items: flex-start; gap: 9px; width: max-content; max-width: 1150px; }
   /* main blue sign bar + orange globe tab */
   .shea-sign-main { display: inline-flex; align-items: stretch; width: max-content; background: var(--blue); box-shadow: 0 3px 18px rgba(8,10,16,.42); }
   .shea-sign-main .nm { flex: none; font-family: "Saira Semi Condensed", sans-serif; font-weight: 800;
@@ -147,9 +147,9 @@
   .shea-sechead .num { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .1em; color: var(--ink-3); }
 
   /* ---- metadata datum (transit/parkway route rule) ---- */
-  .shea-datum { display: grid; grid-template-columns: 0.85fr 1fr 1.45fr 0.95fr 1.45fr 1fr 0.9fr; flex: none;
+  .shea-datum { display: grid; grid-template-columns: 1.23fr 1.46fr 2.21fr 1.39fr 2.62fr 1.85fr 1.31fr; flex: none;
     margin-top: 9px; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
-  .shea-dc { padding: 6px 14px 7px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
+  .shea-dc { padding: 6px 11px 7px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; }
   .shea-dc:first-child { border-left: 0; padding-left: 1px; }
   .shea-dc .k { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .13em;
     text-transform: uppercase; color: var(--ink-3); }
@@ -177,7 +177,7 @@
   .shea-context-head .meta { margin-left: auto; font-family: "Space Mono", monospace; font-size: 12px;
     letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
   .shea-context { column-count: 3; column-gap: 28px; column-rule: 1px solid var(--rule); margin-top: 10px; flex: 1; min-height: 0; }
-  .shea-context p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 13.8px; line-height: 1.38;
+  .shea-context p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12.6px; line-height: 17.2px; letter-spacing: 0;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .shea-context p:last-child { margin-bottom: 0; }
   .shea-context p:first-of-type::first-letter { font-family: "Saira Semi Condensed", sans-serif; font-weight: 800;
@@ -200,7 +200,7 @@
   .shea-sec2-life { flex: 1; min-width: 0; border-left: 1px solid var(--rule); padding-left: 17px; display: flex; flex-direction: column; }
   .shea-life-diagram { margin-top: auto; padding-top: 8px; display: flex; justify-content: center; }
 
-  .shea-frow { display: grid; grid-template-columns: 74px 1fr; gap: 9px; padding: 2px 0;
+  .shea-frow { display: grid; grid-template-columns: 98px 1fr; gap: 9px; padding: 2px 0;
     border-bottom: 1px solid var(--rule); align-items: baseline; }
   .shea-frow:last-child { border-bottom: 0; }
   .shea-frow .k { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .08em;
@@ -208,8 +208,8 @@
   .shea-frow .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; color: var(--ink); line-height: 1.2; }
   .shea-frow .v .mono { font-family: "Space Mono", monospace; font-size: 12px; }
 
-  .shea-prot-wrap { width: 112px; }
-  .shea-prot-svg { width: 112px; height: auto; display: block; }
+  .shea-prot-wrap { width: 145px; }
+  .shea-prot-svg { width: 145px; height: auto; display: block; overflow: visible; }
 
   /* lifecycle civic-schedule ledger */
   .shea-life { display: flex; flex-direction: column; }

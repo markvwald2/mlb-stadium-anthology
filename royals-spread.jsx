@@ -7,7 +7,7 @@
 
   function Slot(props) {
     return React.createElement("image-slot", Object.assign({
-      id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
+      id: props.id, src: props.src, placeholder: props.placeholder, shape: props.shape || "rect"
     }, props.style ? { style: props.style } : {}));
   }
 
@@ -66,7 +66,7 @@
         /* ============ LEFT PAGE / HERO ============ */
         React.createElement("div", { className: "rs-page rs-left" },
           React.createElement("div", { className: "rs-hero-slot" },
-            React.createElement(Slot, { id: "royals-hero", placeholder: "Drop the Royals Stadium hero photo (fountains \u00b7 crown scoreboard)", shape: "rect" })
+            React.createElement(Slot, { id: "royals-hero", src: "uploads/royals-stadium-00-main2.jpg", placeholder: "Drop the Royals Stadium hero photo (fountains \u00b7 crown scoreboard)", shape: "rect" })
           ),
           React.createElement(Fountains, null),
           React.createElement("div", { className: "rs-hero-scrim" }),
@@ -87,10 +87,10 @@
 
             /* ---- IMAGE STRIP ---- */
             React.createElement("div", { className: "rs-strip" },
-              React.createElement(Slot, { id: "royals-s1", placeholder: "Exterior \u00b7 entry" }),
-              React.createElement(Slot, { id: "royals-s2", placeholder: "Outfield fountains" }),
-              React.createElement(Slot, { id: "royals-s3", placeholder: "Crown scoreboard" }),
-              React.createElement(Slot, { id: "royals-s4", placeholder: "Sports complex \u00b7 aerial" })
+              React.createElement(Slot, { id: "royals-s1", src: "uploads/royals-stadium-01.jpg", placeholder: "Exterior \u00b7 entry" }),
+              React.createElement(Slot, { id: "royals-s2", src: "uploads/royals-stadium-02.jpg", placeholder: "Outfield fountains" }),
+              React.createElement(Slot, { id: "royals-s3", src: "uploads/royals-stadium-03.jpg", placeholder: "Crown scoreboard" }),
+              React.createElement(Slot, { id: "royals-s4", src: "uploads/royals-stadium-04.jpg", placeholder: "Sports complex \u00b7 aerial" })
             ),
 
             /* ---- SPEC RIBBON ---- */
@@ -198,7 +198,7 @@
                     )
                   ),
                   React.createElement("div", { className: "rs-matchup" },
-                    React.createElement("img", { className: "mlogo", src: "assets/angels-logo.svg", alt: "Angels" }),
+                    React.createElement("img", { className: "mlogo", src: "assets/angels-logo-1986.png", alt: "California Angels" }),
                     teamScore(D.box.away.abbr, D.box.away.r, D.box.away.r > D.box.home.r),
                     React.createElement("span", { className: "at" }, "AT"),
                     teamScore(D.box.home.abbr, D.box.home.r, D.box.home.r > D.box.away.r),

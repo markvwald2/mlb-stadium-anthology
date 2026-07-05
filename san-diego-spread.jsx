@@ -11,7 +11,7 @@
   const C = D.colors;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src });
   }
 
   /* sweeping radial-arc system — the bowl / circulation geometry, anchored
@@ -83,16 +83,19 @@
       /* ============== LEFT PAGE / HERO ============== */
       e("div", { className: "sd-page sd-left", "data-screen-label": "San Diego Stadium \u2014 hero" },
         e("div", { className: "sd-hero-slot" },
-          e(Slot, { id: "sandiego-hero", placeholder: "Drop the San Diego Stadium aerial \u2014 the open-air concrete bowl in Mission Valley: freeway adjacency, vast parking fields, round circulation towers, the valley setting (avoid close baseball imagery)" })),
+          e(Slot, { id: "sandiego-hero", src: "uploads/jack-murphy-stadium-00-main-c39a25c4.jpg", placeholder: "Drop the San Diego Stadium aerial \u2014 the open-air concrete bowl in Mission Valley: freeway adjacency, vast parking fields, round circulation towers, the valley setting (avoid close baseball imagery)" })),
         e("div", { className: "sd-hero-scrim" }),
         e(ArcSystem, { className: "sd-hero-arcs", stroke: "#E7DECB", op: 0.16, cx: 1180, cy: 150, radii: [560, 470, 386, 308] }),
 
-        /* municipal sign panel, low-left */
-        e("div", { className: "sd-sign" },
+        /* wordmark masthead, top-left (rides the black sky) */
+        e("div", { className: "sd-title-top" },
           e("div", { className: "sd-sign-top" }, "Mission Valley \u00b7 California"),
           e("h1", { className: "sd-hero-name" },
             e("span", { className: "l1" }, "San Diego"),
-            e("span", { className: "l2" }, "Stadium")),
+            e("span", { className: "l2" }, "Stadium"))),
+
+        /* location + lifecycle, low-left */
+        e("div", { className: "sd-sign" },
           e("div", { className: "sd-hero-loc" },
             e("span", { className: "bar" }),
             e("span", { className: "txt" }, D.city + ", " + D.state)),
@@ -125,7 +128,6 @@
 
                 /* identity: team / league / marks */
                 e("div", { className: "sd-identity" },
-                  e("div", { className: "sd-seclbl" }, e("span", { className: "dot" }), e("span", { className: "t" }, "Identity")),
                   e("div", { className: "sd-marks" },
                     e("img", { src: "assets/padres-friar.svg", alt: "San Diego Padres", className: "sd-mark team" }),
                     e("img", { src: "assets/mlb-logo.svg", alt: "Major League Baseball", className: "sd-mark" }),
@@ -135,7 +137,7 @@
                 /* stadium facts — museum table */
                 e("div", { className: "sd-facts" },
                   e("div", { className: "colhdr" }, "Stadium Facts"),
-                  factRow("Construction Start", D.construction_start),
+                  factRow(e("span", { style: { letterSpacing: "0.5px" } }, "Break ", e("span", { style: { letterSpacing: "-0.9px" } }, "Ground")), D.construction_start),
                   factRow("Opened", D.opened),
                   factRow("Active", D.years_active_mlb),
                   factRow("Architect", D.architect),

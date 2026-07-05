@@ -12,7 +12,7 @@
   function Slot(props) {
     return React.createElement("image-slot", Object.assign({
       id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
-    }, props.style ? { style: props.style } : {}));
+    }, props.src ? { src: props.src } : {}, props.style ? { style: props.style } : {}));
   }
 
   function SecHead(props) {
@@ -52,8 +52,8 @@
       { y: "1960", cap: "Broncos begin tenancy", mlb: false },
       { y: "1968", cap: "Renamed Mile High Stadium", mlb: false },
       { y: "1993", cap: "MLB play begins", mlb: true },
-      { y: "1994", cap: "Final MLB game \u00b7 Aug 11", mlb: true },
-      { y: "2000", cap: "Last Bronco game \u00b7 Dec 23", mlb: false },
+      { y: "1994", cap: "Final MLB game", date: "Aug 11", mlb: true },
+      { y: "2000", cap: "Last Bronco game", date: "Dec 23", mlb: false },
       { y: "2002", cap: "Demolished", mlb: false }
     ];
     return React.createElement("div", { className: "mh-timeline" },
@@ -63,7 +63,7 @@
         nodes.map((n, i) => React.createElement("div", { key: i, className: "tl-node" + (n.mlb ? " mlb" : "") },
           React.createElement("span", { className: "tl-dot" }),
           React.createElement("span", { className: "tl-yr" }, n.y),
-          React.createElement("span", { className: "tl-cap" }, n.cap)
+          React.createElement("span", { className: "tl-cap" }, n.cap, n.date ? [React.createElement("br", { key: "b" }), n.date] : null)
         ))
       )
     );
@@ -76,47 +76,45 @@
         /* ============ LEFT PAGE / HERO ============ */
         React.createElement("div", { className: "mh-page mh-left" },
           React.createElement("div", { className: "mh-hero-slot" },
-            React.createElement(Slot, { id: "milehigh-hero", placeholder: "Drop the Mile High Stadium hero photo \u2014 open-air multipurpose bowl: concrete-and-steel grandstands, movable east stand, packed crowd, Front Range / Denver edge", shape: "rect" })
+            React.createElement(Slot, { id: "milehigh-hero", src: "uploads/mile-high-stadium-00-main-93e6537b.jpg", placeholder: "Drop the Mile High Stadium hero photo \u2014 open-air multipurpose bowl: concrete-and-steel grandstands, movable east stand, packed crowd, Front Range / Denver edge", shape: "rect" })
           ),
           React.createElement("div", { className: "mh-hero-scrim" }),
 
-          /* altitude / coordinate datum — lower right */
-          React.createElement("div", { className: "mh-datum" },
-            React.createElement(SurveyGrid, { className: "mh-datum-grid", w: 330, h: 250, step: 30, stroke: "rgba(225,221,212,.26)" }),
-            React.createElement("div", { className: "mh-datum-read" },
+          /* ── top masthead: title + elevation, purple on the pale sky ── */
+          React.createElement("div", { className: "mh-topmast" },
+            React.createElement("h1", { className: "mh-hero-name" },
+              React.createElement("span", null, "Mile High "),
+              React.createElement("span", null, "Stadium")
+            ),
+            React.createElement("div", { className: "mh-topmast-r" },
+              React.createElement("div", { className: "mh-elev-cap" }, "Elevation \u00b7 exactly one mile"),
               React.createElement("div", { className: "mh-elev" },
                 React.createElement("span", { className: "ev" }, "5,280"),
                 React.createElement("span", { className: "eu" }, "FT")
-              ),
-              React.createElement("div", { className: "mh-elev-cap" }, "Elevation \u00b7 exactly one mile"),
-              React.createElement("div", { className: "mh-coord" },
-                React.createElement("span", null, D.lat),
-                React.createElement("span", null, D.lon)
               )
-            ),
-            React.createElement("div", { className: "mh-datum-tick" })
-          ),
-
-          React.createElement("div", { className: "mh-hero-title" },
-            React.createElement("h1", { className: "mh-hero-name" },
-              React.createElement("span", null, "Mile High"),
-              React.createElement("span", null, "Stadium")
-            ),
-            React.createElement("div", { className: "mh-hero-loc" }, D.city + ", " + D.state),
-            React.createElement("div", { className: "mh-hero-rule" }),
-            React.createElement("div", { className: "mh-hero-era" },
-              React.createElement("span", null, D.status),
-              React.createElement("span", { className: "dot" }, "\u00b7"),
-              React.createElement("span", null, D.roof_type),
-              React.createElement("span", { className: "dot" }, "\u00b7"),
-              React.createElement("span", null, D.years_active)
             )
           ),
 
-          React.createElement("div", { className: "mh-hero-marks" },
-            React.createElement("img", { className: "nl", src: "assets/nl-logo.png", alt: "National League" }),
-            React.createElement("span", { className: "div" }),
-            React.createElement("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" })
+          /* ── decreased bottom band: location + marks + era/coord ── */
+          React.createElement("div", { className: "mh-plate" },
+            React.createElement("div", { className: "mh-plate-l" },
+              React.createElement("div", { className: "mh-hero-loc" }, D.city + ", " + D.state),
+              React.createElement("div", { className: "mh-hero-marks" },
+                React.createElement("img", { className: "nl", src: "assets/nl-logo.png", alt: "National League" }),
+                React.createElement("span", { className: "div" }),
+                React.createElement("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" })
+              )
+            ),
+            React.createElement("div", { className: "mh-plate-r" },
+              React.createElement("div", { className: "mh-hero-era" },
+                React.createElement("span", null, D.status),
+                React.createElement("span", { className: "dot" }, "\u00b7"),
+                React.createElement("span", null, D.roof_type),
+                React.createElement("span", { className: "dot" }, "\u00b7"),
+                React.createElement("span", null, D.years_active)
+              ),
+              React.createElement("div", { className: "mh-coord" }, D.lat + "  \u00b7  " + D.lon)
+            )
           )
         ),
 
@@ -166,10 +164,10 @@
 
                 React.createElement("div", { className: "mh-photos" },
                   React.createElement("figure", { className: "mh-photo" },
-                    React.createElement(Slot, { id: "milehigh-rp-1", placeholder: "Open-air bowl \u2014 concrete-and-steel grandstands, packed crowd", shape: "rect" })
+                    React.createElement(Slot, { id: "milehigh-rp-1", src: "uploads/mile-high-stadium-01.jpg", placeholder: "Open-air bowl \u2014 concrete-and-steel grandstands, packed crowd", shape: "rect" })
                   ),
                   React.createElement("figure", { className: "mh-photo" },
-                    React.createElement(Slot, { id: "milehigh-rp-2", placeholder: "Movable east stand \u2014 expandable steel grandstand structure", shape: "rect" })
+                    React.createElement(Slot, { id: "milehigh-rp-2", src: "uploads/mile-high-stadium-02.jpg", placeholder: "Movable east stand \u2014 expandable steel grandstand structure", shape: "rect" })
                   )
                 ),
 
@@ -181,7 +179,7 @@
                         orientation: D.orientation, degrees: D.orientation_degrees, accent: C.primary.hex
                       }) : null
                     ),
-                    React.createElement("figcaption", { style: { letterSpacing: "0.3px" } }, "Field plan \u00b7 LF " + D.left_field_distance + " \u00b7 CF " + D.center_field_distance + " \u00b7 RF " + D.right_field_distance)
+                    React.createElement("figcaption", { style: { letterSpacing: "0.3px", textTransform: "uppercase" } }, "LF " + D.left_field_distance + " \u00b7 CF " + D.center_field_distance + " \u00b7 RF " + D.right_field_distance)
                   ),
                   React.createElement("div", { className: "mh-finance" },
                     React.createElement("div", { className: "fin-h" }, "Cost & Financing"),
@@ -199,7 +197,11 @@
 
               /* context prose */
               React.createElement("div", { className: "mh-ctx" },
-                D.stadium_context.map((p, i) => React.createElement("p", { key: i }, p))
+                D.stadium_context.map((p, i) => i === 0
+                  ? React.createElement("p", { key: i, className: "lead" },
+                      React.createElement("span", { className: "mh-dropcap" }, p.slice(0, 1)),
+                      p.slice(1))
+                  : React.createElement("p", { key: i }, p))
               )
             ),
 
@@ -239,7 +241,7 @@
                 ),
 
                 React.createElement("figure", { className: "mh-photo mh-vphoto" },
-                  React.createElement(Slot, { id: "milehigh-rp-3", placeholder: "Home opener \u2014 game-day crowd / field, Rockies vs Expos, Apr 9, 1993", shape: "rect" })
+                  React.createElement(Slot, { id: "milehigh-rp-3", src: "uploads/mile-high-stadium-03.jpg", placeholder: "Home opener \u2014 game-day crowd / field, Rockies vs Expos, Apr 9, 1993", shape: "rect" })
                 )
               )
             )
