@@ -58,8 +58,7 @@
   .cy-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .cy-hero-scrim { position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(12,11,8,.42) 0%, rgba(12,11,8,0) 24%),
-      linear-gradient(0deg, rgba(12,11,8,.95) 0%, rgba(12,11,8,.72) 17%, rgba(12,11,8,.18) 38%, rgba(12,11,8,0) 52%); }
+      linear-gradient(0deg, rgba(12,11,8,.72) 0%, rgba(12,11,8,.46) 12%, rgba(12,11,8,.12) 27%, rgba(12,11,8,0) 40%); }
   /* faint architectural / rail-alignment grid over the image */
   .cy-hero-grid { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background-image:
@@ -69,19 +68,16 @@
     mask-image: linear-gradient(0deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.15) 46%, transparent 62%); }
 
   .cy-bracket { position: absolute; z-index: 5; width: 44px; height: 44px; }
-  .cy-bracket.tl { top: 46px; left: 46px; border-top: 2px solid var(--orange); border-left: 2px solid var(--orange); }
+  .cy-bracket.tl { top: 46px; right: 46px; border-top: 2px solid var(--orange); border-right: 2px solid var(--orange); }
 
-  .cy-hero-folio { position: absolute; left: 96px; top: 52px; z-index: 5;
-    display: flex; align-items: center; gap: 13px;
+  .cy-hero-folio { position: absolute; right: 96px; top: 52px; z-index: 5;
+    display: flex; flex-direction: row-reverse; align-items: center; gap: 13px;
     font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .28em;
-    color: rgba(231,224,208,.7); text-transform: uppercase; }
+    color: rgba(33,30,24,.82); text-transform: uppercase; }
   .cy-hero-folio .tick { width: 26px; height: 2px; background: var(--orange); }
 
-  /* hero title — Freight Nameplate (B&O railroad / boxcar wayfinding, mounted on the wall) */
-  .cy-hero-plate { position: absolute; left: 56px; bottom: 150px; z-index: 5;
-    padding: 26px 36px 22px; border: 2px solid rgba(192,203,191,.5);
-    background: linear-gradient(180deg, rgba(22,28,22,.42), rgba(12,15,12,.30));
-    box-shadow: 0 10px 34px rgba(0,0,0,.35); }
+  /* hero title — solid condensed type set directly on the open sky */
+  .cy-hero-plate { position: absolute; left: 72px; top: 66px; z-index: 5; max-width: 720px; }
   .cy-hero-plate .bolt { position: absolute; width: 8px; height: 8px; border-radius: 50%;
     background: #C0CBBF; opacity: .72; }
   .cy-hero-plate .bolt.tl { left: 8px; top: 8px; }
@@ -89,12 +85,12 @@
   .cy-hero-plate .bolt.bl { left: 8px; bottom: 8px; }
   .cy-hero-plate .bolt.br { right: 8px; bottom: 8px; }
   .cy-hero-name { margin: 0; font-family: "Bebas Neue", sans-serif; line-height: .9;
-    letter-spacing: .045em; color: #EFE8D6; text-shadow: 0 2px 18px rgba(0,0,0,.5); }
+    letter-spacing: .045em; color: #263D2F; text-shadow: 0 1px 2px rgba(241,234,219,.45); }
   .cy-hero-name .l1, .cy-hero-name .l2 { display: block; white-space: nowrap; font-size: 104px; }
-  .cy-hero-rule { height: 1px; background: rgba(231,224,208,.34); margin: 14px 0 11px; }
+  .cy-hero-rule { height: 1px; background: rgba(33,30,24,.30); margin: 14px 0 11px; }
   .cy-hero-sub { display: flex; justify-content: space-between; align-items: center; gap: 34px;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; }
-  .cy-hero-sub .city { color: #E6DEC9; }
+  .cy-hero-sub .city { color: #201D17; }
   .cy-hero-sub .mk { color: var(--orange); border: 1px solid rgba(223,90,30,.6); padding: 3px 9px;
     font-weight: 700; letter-spacing: .14em; }
 
@@ -124,17 +120,17 @@
   .cy-hero-colophon { position: absolute; left: 250px; bottom: 58px; z-index: 5;
     display: flex; align-items: center; gap: 14px;
     font-family: "Space Mono", monospace; font-size: 12.5px; letter-spacing: .06em;
-    color: rgba(231,224,208,.74); }
+    color: rgba(231,224,208,.9); text-shadow: 0 1px 7px rgba(0,0,0,.9), 0 0 2px rgba(0,0,0,.7); }
   .cy-hero-colophon .dot { color: var(--orange); font-size: 12px; }
   .cy-hero-colophon .hl { font-style: normal; color: var(--orange); }
 
   /* ===================== RIGHT PAGE ===================== */
   .cy-rp { position: absolute; inset: 0; padding: 40px; display: flex; flex-direction: column;
-    gap: 15px; z-index: 2; }
+    gap: 12px; z-index: 2; }
 
   /* photo strip — warehouse bays */
   .cy-photos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; flex: none; }
-  .cy-pcard { position: relative; aspect-ratio: 4 / 3; }
+  .cy-pcard { position: relative; aspect-ratio: 7 / 5; }
   .cy-pcard image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
     border: 1px solid var(--rule-strong); }
 
@@ -179,15 +175,14 @@
     letter-spacing: .08em; color: var(--brick); }
 
   /* stadium sub-columns: facts | context */
-  .cy-stadium-cols { flex: 1; display: grid; grid-template-columns: 0.84fr 1fr; gap: 0; min-height: 0; }
+  .cy-stadium-cols { flex: 1; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 0; min-height: 0; }
   .cy-stadium-cols .cy-facts { padding-right: 26px; display: flex; flex-direction: column; }
   .cy-stadium-cols .cy-ctx-block { padding-left: 26px; border-left: 1px solid var(--rule); }
 
   /* field plan (protractor) — sits in the open space below the facts table */
-  .cy-fieldplan { margin: auto 0 0; padding-top: 8px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .cy-fieldplan .cy-modh.sm { align-self: stretch; margin-bottom: 2px; }
+  .cy-fieldplan { margin: 14px 0 0; padding-top: 4px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
   .cy-fieldplan .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .cy-fieldplan .fd-svg { width: auto; height: 100px; max-width: 100%; display: block;  overflow: visible; }
+  .cy-fieldplan .fd-svg { width: auto; height: 150px; max-width: 100%; display: block;  overflow: visible; }
   .cy-fp-cap { display: flex; justify-content: space-between; align-items: baseline; width: 100%;
     font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
     color: var(--ink-2); }
@@ -198,7 +193,7 @@
     border-bottom: 1px solid var(--rule-strong); }
   .cy-modh.sm { font-size: 12px; }
 
-  .cy-table { display: flex; flex-direction: column; }
+  .cy-table { display: flex; flex-direction: column; flex: 1; justify-content: space-between; }
   .cy-row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 3.5px 0;
     border-bottom: 1px solid var(--rule); align-items: baseline; }
   .cy-row:last-child { border-bottom: 0; }
@@ -207,16 +202,16 @@
   .cy-row .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.3; }
   .cy-row.renos .v, .cy-row.facade .v, .cy-row.style .v { font-size: 12px; line-height: 1.32; }
 
-  .cy-ctx { columns: 2; column-gap: 24px; }
-  .cy-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.44;
+  .cy-ctx { columns: 1; column-gap: 24px; }
+  .cy-ctx p { margin: 0 0 5px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.67;
     color: var(--ink); text-align: justify; hyphens: auto; -webkit-hyphens: auto;
     break-inside: avoid-column; }
   .cy-ctx p:last-child { margin-bottom: 0; }
 
   /* ===================== VISIT ZONE ===================== */
-  .cy-zone.visit .cy-zoneh.on-panel { border-bottom-color: var(--steel); }
-  .cy-zone.visit .cy-zoneh.on-panel .num { background: var(--steel); }
-  .cy-zone.visit .cy-zoneh.on-panel .t { color: var(--steel-deep); }
+  .cy-zone.visit .cy-zoneh.on-panel { border-bottom-color: var(--ink); }
+  .cy-zone.visit .cy-zoneh.on-panel .num { background: var(--ink); }
+  .cy-zone.visit .cy-zoneh.on-panel .t { color: var(--ink); }
 
   .cy-game { padding: 2px 0 12px; }
   .cy-game .eyebrow { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em;
@@ -237,7 +232,7 @@
   .cy-gs .v { font-family: "Spectral", serif; font-weight: 600; font-size: 16px; color: var(--ink); }
 
   /* line score */
-  .cy-score { margin-top: 4px; }
+  .cy-score { margin-top: 16px; }
   .cy-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; margin-top: 6px; }
   .cy-box th, .cy-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 4px 0;
     color: var(--ink); border-bottom: 1px solid var(--rule); }
@@ -255,14 +250,14 @@
   .cy-box tbody tr:first-child td.tm { color: var(--brick); }
 
   /* pitching */
-  .cy-pitch { margin-top: 13px; display: flex; flex-direction: column; gap: 9px; }
+  .cy-pitch { margin-top: 22px; display: flex; flex-direction: column; gap: 9px; }
   .cy-pitch .pr { display: flex; flex-direction: column; gap: 3px; }
   .cy-pitch .pr .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--steel); }
   .cy-pitch .pr .v { font-family: "Spectral", serif; font-size: 13px; color: var(--ink); line-height: 1.3; }
 
   /* weather */
-  .cy-weather { margin-top: 15px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  .cy-weather { margin-top: 22px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
     border-top: 1px solid var(--rule); padding-top: 13px; }
   .cy-wx { display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center;
     border-left: 1px solid var(--rule); padding: 0 6px; }
@@ -272,12 +267,12 @@
   .cy-wx .lab { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--ink-3); }
 
-  .cy-fc.marks { display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding-left: 24px; }
-  .cy-fc.marks .league { height: 32px; width: auto; display: block; }
-  .cy-fc.marks .mlb { height: 23px; width: auto; display: block; opacity: .85; }
+  .cy-fc.marks { display: flex; align-items: center; justify-content: flex-end; gap: 26px; padding-left: 34px; }
+  .cy-fc.marks .league { height: 46px; width: auto; display: block; }
+  .cy-fc.marks .mlb { height: 34px; width: auto; display: block; opacity: .85; }
 
   /* ===================== FOOTER — construction & finance datum ===================== */
-  .cy-finance { flex: none; display: grid; grid-template-columns: 0.9fr 1.25fr 1fr 2fr auto; gap: 0;
+  .cy-finance { flex: none; display: grid; grid-template-columns: 0.9fr 1.25fr 1fr 1.55fr auto; gap: 0;
     border-top: 2px solid var(--steel); padding-top: 11px; }
   .cy-fc { padding: 0 22px; border-left: 1px solid var(--rule); min-width: 0; }
   .cy-fc:first-child { padding-left: 0; border-left: 0; }
@@ -285,8 +280,8 @@
   .cy-fc .k { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
   .cy-fc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; line-height: 1.3; color: var(--ink); }
-  .cy-fc.cost .v.big { font-family: "Anton", sans-serif; font-weight: 400; font-size: 22px; line-height: .95; letter-spacing: .01em; }
-  .cy-fc.cost .v.adj { font-family: "Space Mono", monospace; font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+  .cy-fc.cost .v.big { font-family: "Anton", sans-serif; font-weight: 400; font-size: 22px; line-height: .95; letter-spacing: .01em; white-space: nowrap; }
+  .cy-fc.cost .v.adj { font-family: "Space Mono", monospace; font-size: 12px; color: var(--ink-2); margin-top: 4px; white-space: nowrap; }
 
   #root { min-height: 100vh; }
 </style>

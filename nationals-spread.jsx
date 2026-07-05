@@ -9,7 +9,7 @@
   const FieldDiagram = window.NatsProtractor;
 
   function Slot(props) {
-    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect" });
+    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect", src: props.src });
   }
 
   function ribCell(k, v, cls) {
@@ -31,9 +31,9 @@
       React.createElement("div", { className: "v" }, v));
   }
 
-  function photoCard(id, cap, tag, placeholder) {
+  function photoCard(id, cap, tag, placeholder, src) {
     return React.createElement("div", { className: "np-pcard" },
-      React.createElement(Slot, { id: id, placeholder: placeholder }));
+      React.createElement(Slot, { id: id, placeholder: placeholder, src: src }));
   }
 
   function BoxScore(box) {
@@ -69,7 +69,7 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         React.createElement("div", { className: "np-page np-left", "data-screen-label": "Nationals Park hero" },
           React.createElement("div", { className: "np-hero-slot" },
-            React.createElement(Slot, { id: "nats-hero", placeholder: "Drop the Nationals Park aerial \u2014 bowl + Navy Yard / Capitol Riverfront district + Anacostia River" })),
+            React.createElement(Slot, { id: "nats-hero", src: "uploads/nationals-park-00-main.jpg", placeholder: "Drop the Nationals Park aerial \u2014 bowl + Navy Yard / Capitol Riverfront district + Anacostia River" })),
           React.createElement("div", { className: "np-hero-scrim" }),
 
           React.createElement("div", { className: "np-hero-head" },
@@ -118,7 +118,7 @@
                   React.createElement("div", { className: "np-ctx-paras" },
                     D.context.map((p, i) => React.createElement("p", { key: i }, p))),
                   React.createElement("div", { className: "np-ctx-photo" },
-                    React.createElement(Slot, { id: "nats-ctx-photo", placeholder: "Navy Yard / Capitol Riverfront district \u2014 civic context plate" })))),
+                    React.createElement(Slot, { id: "nats-ctx-photo", src: "uploads/nationals-park-02.jpg", placeholder: "Navy Yard / Capitol Riverfront district \u2014 civic context plate" })))),
 
               /* RIGHT — specs + photos */
               React.createElement("div", { className: "np-rmain" },
@@ -147,7 +147,7 @@
                         lf: D.field.left_field, cf: D.field.center_field, rf: D.field.right_field,
                         orientation: D.field.orientation, degrees: D.field.orientation_degrees, accent: "#14264B"
                       }) : null,
-                      React.createElement("figcaption", { style: { letterSpacing: "1px" } }, "Oriented " + D.field.orientation + " \u00b7 Bearing " + D.field.orientation_degrees + "\u00b0"))),
+                      React.createElement("figcaption", { style: { letterSpacing: "0.4px", transform: "translateY(-20px)" } }, "Oriented " + D.field.orientation + " \u00b7 Bearing " + D.field.orientation_degrees + "\u00b0"))),
 
                   /* identity logos */
                   React.createElement("div", { className: "np-identity" },
@@ -160,29 +160,26 @@
 
                 /* photo civic blocks */
                 React.createElement("div", { className: "np-photos" },
-                  photoCard("nats-p1", "Exterior", "Exterior", "Precast civic facade / S Capitol St entrance"),
-                  photoCard("nats-p2", "Concourse", "Concourse", "Open concourse / bowl + river view"),
-                  photoCard("nats-p3", "Riverfront", "Riverfront", "Anacostia riverfront / Navy Yard district")),
+                  photoCard("nats-p1", "Exterior", "Exterior", "Precast civic facade / S Capitol St entrance", "uploads/nationals-park-04.jpg"),
+                  photoCard("nats-p2", "Concourse", "Concourse", "Open concourse / bowl + river view", "uploads/nationals-park-01.jpg"),
+                  photoCard("nats-p3", "Riverfront", "Riverfront", "Anacostia riverfront / Navy Yard district", "uploads/nationals-park-03.jpg")),
 
                 /* --- VISIT BAND --- */
                 React.createElement("div", { className: "np-visit" },
               React.createElement("div", { className: "np-modh" },
-                React.createElement("span", null, "Visit \u2014 Featured Game"),
+                React.createElement("span", null, "Visit \u2014 " + D.trip_name + " Trip"),
                 React.createElement("span", { className: "ix" }, "\u2014 III")),
               React.createElement("div", { className: "np-visit-grid" },
 
                 /* game details — Metro info table */
                 React.createElement("div", { className: "np-vg-col" },
                   React.createElement("div", { className: "np-veyebrow" },
-                    React.createElement("div", null, D.trip_name + " Trip"),
                     React.createElement("div", null, D.featured_day + ", " + D.featured_date)),
                   React.createElement("div", { className: "np-vresult" }, "Cardinals 5, Nationals 1"),
                   React.createElement("div", { className: "np-vrows" },
                     vRow("Attendance", D.attendance),
                     vRow("First Pitch", D.first_pitch),
-                    vRow("Duration", D.time_of_game),
-                    vRow("Weather", D.weather.temperature + " \u00b7 " + D.weather.conditions),
-                    vRow("Wind / Hum.", D.weather.wind + " \u00b7 " + D.weather.humidity))),
+                    vRow("Duration", D.time_of_game))),
 
                 /* line score + team logos */
                 React.createElement("div", { className: "np-vg-col np-vscore" },
@@ -213,7 +210,13 @@
                       React.createElement("span", { className: "v" }, D.losing_pitcher)),
                     React.createElement("div", { className: "pd" },
                       React.createElement("span", { className: "k" }, "S"),
-                      React.createElement("span", { className: "v dash" }, "\u2014"))))
+                      React.createElement("span", { className: "v dash" }, "\u2014")))),
+                React.createElement("div", { className: "np-weather" },
+                  React.createElement("div", { className: "np-wx-grid" },
+                    wxCell("Temp", D.weather.temperature),
+                    wxCell("Sky", D.weather.conditions),
+                    wxCell("Wind", D.weather.wind),
+                    wxCell("Humidity", D.weather.humidity)))
               )
             ),
 
@@ -233,7 +236,7 @@
                 React.createElement("div", { className: "np-colophon" },
                   React.createElement("span", { className: "lead" }, "The Ballpark as Civic Anchor"),
                   React.createElement("span", { className: "sep" }, "\u2014"),
-                  React.createElement("span", { className: "loc" }, "Navy Yard / Capitol Riverfront \u00b7 Anacostia River, Washington, D.C."))
+                  React.createElement("span", { className: "loc" }, "Navy Yard / Capitol Riverfront \u00b7 Anacostia River"))
               )
             )
           )
@@ -257,6 +260,11 @@
     return React.createElement("div", { className: "lc" },
       React.createElement("div", { className: "k" }, k),
       React.createElement("div", { className: "v" }, v));
+  }
+  function wxCell(k, v) {
+    return React.createElement("div", { className: "wx" },
+      React.createElement("span", { className: "k" }, k),
+      React.createElement("span", { className: "v" }, v));
   }
 
   window.NatsSpread = Spread;

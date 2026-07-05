@@ -36,7 +36,6 @@ window.CITI = {
 
   // ---- Stadium facts (museum specification sheet) ----
   facts: [
-    ["Opened", "April 13, 2009"],
     ["Years Active", "2009\u2013present"],
     ["Capacity", "41,922"],
     ["Surface", "Natural grass (Kentucky bluegrass)"],

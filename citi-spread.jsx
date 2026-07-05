@@ -15,7 +15,7 @@
   function Bay(props) {
     return e("div", { className: "cf-bay" },
       e("div", { className: "cf-bay-frame" },
-        e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" })),
+        e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src })),
       e("span", { className: "cf-bay-key", "aria-hidden": "true" }));
   }
 
@@ -26,10 +26,11 @@
       e("span", { className: "v" }), e("span", { className: "h" }));
   }
 
-  function ZoneHead(num, title) {
+  function ZoneHead(num, title, sub) {
     return e("div", { className: "cf-zoneh" },
       e("span", { className: "key" }, num),
       e("span", { className: "t" }, title),
+      sub ? e("span", { className: "trip" }, sub) : null,
       e("span", { className: "arch", "aria-hidden": "true" }),
       Interlock());
   }
@@ -82,8 +83,7 @@
   function wx(icon, val, lab) {
     return e("div", { className: "cf-wx" },
       wxIcon(icon),
-      e("div", { className: "val" }, val),
-      e("div", { className: "lab" }, lab));
+      e("div", { className: "val" }, val));
   }
 
   function LineScore(box) {
@@ -113,7 +113,7 @@
       /* ===================== LEFT PAGE / HERO ===================== */
       e("div", { className: "cf-page cf-left", "data-screen-label": "Citi Field hero" },
         e("div", { className: "cf-hero-slot" },
-          e("image-slot", { id: "citi-hero", shape: "rect",
+          e("image-slot", { id: "citi-hero", shape: "rect", src: "uploads/citi-field-00-main2.jpg",
             placeholder: "Drop the Citi Field aerial \u2014 Jackie Robinson Rotunda + brick facade, seating bowl, Flushing Meadows rail / parkways / parking, Manhattan skyline beyond" })),
         e("div", { className: "cf-hero-scrim" }),
         e("div", { className: "cf-hero-grid", "aria-hidden": "true" }),
@@ -127,7 +127,7 @@
         e("div", { className: "cf-hero-plate" },
           e("div", { className: "cf-hero-eyebrow" }, "National League \u00b7 NL East"),
           e("h1", { className: "cf-hero-name" }, "Citi Field"),
-          e("div", { className: "cf-hero-rule" }, e("span", { className: "arch", "aria-hidden": "true" })),
+          e("div", { className: "cf-hero-rule" }),
           e("div", { className: "cf-hero-sub" },
             e("span", { className: "city" }, D.city + ", " + D.state),
             e("span", { className: "midf" }, "\u2014"),
@@ -151,11 +151,11 @@
 
           /* --- arched photo arcade (rotunda bays) --- */
           e("div", { className: "cf-arcade" },
-            e(Bay, { id: "citi-p1", placeholder: "Jackie Robinson Rotunda / brick facade" }),
-            e(Bay, { id: "citi-p2", placeholder: "Seating bowl + field" }),
-            e(Bay, { id: "citi-p3", placeholder: "Scoreboard" }),
-            e(Bay, { id: "citi-p4", placeholder: "Open concourse" }),
-            e(Bay, { id: "citi-p5", placeholder: "Plaza / Flushing Meadows context" })),
+            e(Bay, { id: "citi-p1", src: "uploads/citi-field-01.jpg", placeholder: "Jackie Robinson Rotunda / brick facade" }),
+            e(Bay, { id: "citi-p2", src: "uploads/citi-field-02.jpg", placeholder: "Seating bowl + field" }),
+            e(Bay, { id: "citi-p3", src: "uploads/citi-field-03.jpg", placeholder: "Scoreboard" }),
+            e(Bay, { id: "citi-p4", src: "uploads/citi-field-04.jpg", placeholder: "Open concourse" }),
+            e(Bay, { id: "citi-p5", src: "uploads/citi-field-05.jpg", placeholder: "Plaza / Flushing Meadows context" })),
 
           /* --- limestone metadata datum ribbon --- */
           e("div", { className: "cf-ribbon" },
@@ -163,7 +163,6 @@
               e("img", { className: "cap", src: "assets/new-york-mets-logo.svg", alt: "New York Mets" }),
               e("div", { className: "id" },
                 e("div", { className: "team" }, D.team_name),
-                e("div", { className: "sub" }, D.league),
                 e("div", { className: "sub" }, D.division))),
             ribCell("Classification", D.classification_era),
             ribCell("Years Active", D.years_active),
@@ -205,14 +204,12 @@
                     e("div", { className: "k" }, "Renovations"),
                     e("div", { className: "v" }, D.renovations))),
                 e("figure", { className: "cf-fieldplan" },
-                  e("figcaption", { className: "cf-modh sm" }, "Field Plan"),
                   Prot ? e(Prot, {
                     lf: D.field.left_field, cf: D.field.center_field, rf: D.field.right_field,
                     orientation: D.field.orientation, bearing: D.field.bearing
                   }) : null,
                   e("div", { className: "cf-fp-cap" },
-                    e("span", null, "Orientation " + D.field.orientation + " \u00b7 " + D.field.bearing + "\u00b0"),
-                    e("span", null, "LF \u00b7 CF \u00b7 RF (ft)")))),
+                    e("span", null, "Orientation " + D.field.orientation + " \u00b7 " + D.field.bearing + "\u00b0")))),
 
               /* col C: unified Stadium Context */
               e("div", { className: "cf-ctx-block" },
@@ -226,15 +223,14 @@
 
           /* ===== VISIT SECTION ===== */
           e("div", { className: "cf-zone visit" },
-            ZoneHead("II", "Group Visit"),
+            ZoneHead("II", "Group Visit", D.trip_name),
             e("div", { className: "cf-visit-grid" },
 
               /* featured game — versus ledger */
               e("div", { className: "cf-game" },
                 e("div", { className: "cf-game-head" },
-                  e("span", { className: "eyebrow" }, "Trip \u00b7 " + D.trip_name),
+                  e("span", { className: "cf-game-date" }, D.featured_day + ", " + D.featured_date),
                   e("span", { className: "fin" }, "Final \u00b7 " + D.box.innings + " IN")),
-                e("div", { className: "cf-game-date" }, D.featured_day + ", " + D.featured_date),
                 e("div", { className: "cf-versus" },
                   teamRow({ team: "reds", logo: "assets/reds.svg", name: D.away_team,
                     abbr: D.away_abbr, side: "Away", runs: D.box.away.r,
@@ -257,13 +253,13 @@
                     e("span", { className: "v" }, D.matchup_line)),
                   e("div", { className: "pr" },
                     e("span", { className: "k" }, "Decisions"),
-                    e("span", { className: "v" }, D.decisions_line))),
+                    e("span", { className: "v" }, D.decisions_line)))),
+
+              /* game note + weather */
+              e("div", { className: "cf-weatherwrap" },
                 e("div", { className: "cf-note" },
                   e("span", { className: "lab" }, "Game Note"),
-                  e("span", { className: "txt" }, D.game_note))),
-
-              /* weather */
-              e("div", { className: "cf-weatherwrap" },
+                  e("span", { className: "txt" }, D.game_note)),
                 e("div", { className: "cf-modh sm" }, "Weather"),
                 e("div", { className: "cf-weather" },
                   wx("temp", D.weather.temperature, "Temp"),

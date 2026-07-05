@@ -32,7 +32,6 @@ window.CAMDEN = {
 
   // ---- Stadium facts (museum specification sheet) ----
   facts: [
-    ["Opened", "April 6, 1992"],
     ["Years Active", "1992\u2013present"],
     ["Capacity", "48,041 opening \u00b7 42,455 current"],
     ["Surface", "Natural grass (Kentucky bluegrass)"],
@@ -65,7 +64,7 @@ window.CAMDEN = {
   opening_day: "Apr 6, 1992",
   construction_start: "Jun 28, 1989",
   stadium_cost: "$110 million",
-  stadium_cost_adjusted: "$252 million",
+  stadium_cost_adjusted: "$252M",
   financing_method: "Publicly financed by the Maryland Stadium Authority with Orioles lease payments and related revenues",
 
   // ---- Visit Section / featured game (Jul 13, 2019) ----

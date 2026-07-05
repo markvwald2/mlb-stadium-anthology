@@ -96,7 +96,7 @@
             key: i, x: l.x, y: l.y, textAnchor: l.anchor || "middle",
             transform: l.rot ? "rotate(" + l.rot + " " + l.x + " " + l.y + ")" : null,
             style: {
-              fontFamily: "'Space Mono', monospace", fontSize: "11px", letterSpacing: ".24em",
+              fontFamily: "'Space Mono', monospace", fontSize: "12px", letterSpacing: ".24em",
               fill: l.accent ? orangeDeep : bayDeep, opacity: l.accent ? 0.92 : 0.7
             }
           }, body);

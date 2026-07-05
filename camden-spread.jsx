@@ -10,7 +10,7 @@
   const Prot = window.CamdenProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src });
   }
 
   /* warehouse / factory glyph (sawtooth roof) — architectural data marker */
@@ -79,9 +79,9 @@
         row(box.home, box.home.r > box.away.r)));
   }
 
-  function photoCard(id, ph) {
+  function photoCard(id, ph, src) {
     return e("div", { className: "cy-pcard" },
-      e(Slot, { id: id, placeholder: ph }));
+      e(Slot, { id: id, placeholder: ph, src: src }));
   }
 
   function Spread() {
@@ -90,19 +90,16 @@
       /* ===================== LEFT PAGE / HERO ===================== */
       e("div", { className: "cy-page cy-left", "data-screen-label": "Camden Yards hero" },
         e("div", { className: "cy-hero-slot" },
-          e(Slot, { id: "camden-hero", placeholder: "Drop the Camden Yards aerial \u2014 stadium bowl, B&O Warehouse edge, downtown Baltimore + harbor" })),
+          e(Slot, { id: "camden-hero", placeholder: "Drop the Camden Yards aerial \u2014 stadium bowl, B&O Warehouse edge, downtown Baltimore + harbor", src: "uploads/camden-yards-00-hero.jpg" })),
         e("div", { className: "cy-hero-scrim" }),
         e("div", { className: "cy-hero-grid", "aria-hidden": "true" }),
 
-        /* drafting registration bracket + folio (top-left) */
-        e("div", { className: "cy-bracket tl", "aria-hidden": "true" }),
+        /* folio (top-right) */
         e("div", { className: "cy-hero-folio" },
           e("span", { className: "tick" }), e("span", null, D.folio)),
 
         /* freight nameplate title block (lower-left) */
         e("div", { className: "cy-hero-plate" },
-          e("span", { className: "bolt tl" }), e("span", { className: "bolt tr" }),
-          e("span", { className: "bolt bl" }), e("span", { className: "bolt br" }),
           e("h1", { className: "cy-hero-name" },
             e("span", { className: "l1" }, "Oriole Park"),
             e("span", { className: "l2" }, "at Camden Yards")),
@@ -129,20 +126,18 @@
 
           /* --- photo strip (warehouse bays) --- */
           e("div", { className: "cy-photos" },
-            photoCard("camden-p1", "B&O Warehouse facade / exterior"),
-            photoCard("camden-p2", "Seating bowl + field"),
-            photoCard("camden-p3", "Scoreboard"),
-            photoCard("camden-p4", "Warehouse concourse"),
-            photoCard("camden-p5", "Aerial / downtown")),
+            photoCard("camden-p1", "B&O Warehouse facade / exterior", "uploads/camden-yards-01.jpg"),
+            photoCard("camden-p2", "Seating bowl + field", "uploads/camden-yards-02.jpg"),
+            photoCard("camden-p3", "Scoreboard", "uploads/camden-yards-03.jpg"),
+            photoCard("camden-p4", "Warehouse concourse", "uploads/camden-yards-04.jpg"),
+            photoCard("camden-p5", "Aerial / downtown", "uploads/camden-yards-05.jpg")),
 
           /* --- metadata datum ribbon (THE WAREHOUSE DATUM SPINE) --- */
           e("div", { className: "cy-ribbon" },
             e("div", { className: "cy-rc brand" },
-              e("img", { className: "cap", src: "assets/baltimore-orioles-logo.svg", alt: "Baltimore Orioles" }),
               e("div", { className: "id" },
                 e("div", { className: "team" }, D.team_name),
-                e("div", { className: "sub" }, D.league),
-                e("div", { className: "sub" }, D.division))),
+                e("div", { className: "sub" }, "American League East"))),
             e("div", { className: "cy-rc" },
               e("div", { className: "k" }, "Classification"),
               e("div", { className: "v" }, D.classification_era)),
@@ -174,14 +169,10 @@
 
                   /* field plan (protractor) hung in the open space below the facts */
                   e("figure", { className: "cy-fieldplan" },
-                    e("figcaption", { className: "cy-modh sm" }, "Field Plan"),
                     Prot ? e(Prot, {
                       lf: D.field.left_field, cf: D.field.center_field, rf: D.field.right_field,
                       orientation: D.field.orientation, bearing: D.field.bearing
-                    }) : null,
-                    e("div", { className: "cy-fp-cap" },
-                      e("span", null, "Orientation " + D.field.orientation + " \u00b7 " + D.field.bearing + "\u00b0"),
-                      e("span", null, "LF \u00b7 CF \u00b7 RF (ft)")))),
+                    }) : null)),
 
                 e("div", { className: "cy-ctx-block" },
                   e("div", { className: "cy-modh" }, "The Warehouse Wall"),
