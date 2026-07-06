@@ -21,10 +21,11 @@
   const TRACKS = [214, 456, 828];
   const BAY_TOP = 56, BAY_H = 990;
   // shared photo band spanning Bay A (Identity) + Bay B (Stadium Record)
-  const AB_PHOTO = { left: 44, top: 766, width: 406, height: 280 };
+  const AB_PHOTO = { left: 44, top: 814, width: 406, height: 232 };
 
   function Slot(props) {
     return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
+      src: props.src, fit: props.fit, position: props.position,
       style: { width: "100%", height: "100%" } });
   }
   function SecHead(props) {
@@ -71,9 +72,9 @@
     if (kind === "drop") return e("svg", c, e("path", { d: "M12 2.8l5 6.2a6.4 6.4 0 1 1-10 0z" }));
     return null;
   }
-  function wxCell(icon, value, label) {
+  function wxCell(icon, value, label, ls) {
     return e("div", { className: "mm-wcell" }, WxIcon(icon),
-      e("div", { className: "tx" }, e("div", { className: "wv" }, value), e("div", { className: "wl" }, label)));
+      e("div", { className: "tx" }, e("div", { className: "wv", style: ls ? { letterSpacing: ls } : null }, value), e("div", { className: "wl" }, label)));
   }
 
   function Board(box) {
@@ -104,17 +105,11 @@
       /* ============== LEFT PAGE / HERO ============== */
       e("div", { className: "mm-page mm-left", "data-screen-label": "Minute Maid Park \u2014 hero" },
         e("div", { className: "mm-hero-slot" },
-          e(Slot, { id: "mmp-hero",
+          e(Slot, { id: "mmp-hero", src: "uploads/minute-maid-park-00-main-563895c1.jpg",
             placeholder: "Drop the Minute Maid Park hero \u2014 dusk interior toward left field: the train, Crawford Boxes, downtown skyline & the open retractable roof" })),
         e("div", { className: "mm-hero-scrim" }),
 
-        e("img", { className: "mm-astros", src: "assets/houston-astros-logo.svg", alt: "Houston Astros" }),
         e("div", { className: "mm-spine" }, "EST. " + D.est + "  \u00b7  HOUSTON, TEXAS  \u00b7  VISIT " + D.visit_order),
-
-        e("div", { className: "mm-roofline" },
-          e("span", { className: "tk" }), e("span", { className: "ln" }),
-          e("span", { className: "cap" }, "RETRACTABLE ROOF \u00b7 UNION STATION TERMINAL"),
-          e("span", { className: "ln" }), e("span", { className: "tk" })),
 
         e("div", { className: "mm-titlewrap" },
           e("div", { className: "mm-plate" },
@@ -134,13 +129,7 @@
                 e("span", { className: "ofl" }, "OF"),
                 e("span", { className: "ofn" }, "42")))),
           e("span", { className: "mm-pdiv" }),
-          e("span", { className: "mm-tag" }, D.tagline),
-          e("div", { className: "mm-marks" },
-            e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-            e("span", { className: "divln" }),
-            e("img", { className: "al", src: "assets/american-league-logo.png", alt: "American League" }),
-            e("span", { className: "divln" }),
-            e("span", { className: "lg" }, "AL West")))
+          e("span", { className: "mm-tag" }, D.tagline))
       ),
 
       /* ============== RIGHT PAGE / FIVE TRACK BAYS ============== */
@@ -175,7 +164,7 @@
             e("span", { className: "yr" }, D.all_star),
             e("span", { className: "lb" }, "All-Star", e("br", null), "Game Host")),
           e("div", { className: "mm-names" },
-            e(SecHead, { title: "Preceded By", note: "PRIOR HOMES" }),
+            e(SecHead, { title: "Preceded By" }),
             D.preceded_by.map((n, i) =>
               e("div", { className: "nrow", key: i },
                 e("span", { className: "nn" }, n[0]),
@@ -198,7 +187,7 @@
         /* ----- BAY C : STADIUM CONTEXT (wide anchor) ----- */
         e(Bay, { id: "C", name: "The Moving Roof" },
           e("div", { className: "mm-ctx" },
-            e("div", { className: "mm-ctxnote" }, "FROM THE ASTRODOME \u2192 A MOVING ROOF \u00b7 HOUSTON, TX"),
+            e("div", { className: "mm-ctxnote" }, "FROM THE ASTRODOME \u2192 A MOVING ROOF"),
             e("div", { className: "mm-window" },
               e("div", { className: "mm-prose" },
                 D.stadium_context.map((p, i) => e("p", { key: i }, p)))))
@@ -212,15 +201,15 @@
 
           // dominant 4:3 roof photo
           e("figure", { className: "mm-plate-photo mm-photo-fill", style: { width: "100%" } },
-            e(Slot, { id: D.photos[1][0], placeholder: D.photos[1][1] })),
+            e(Slot, { id: D.photos[1][0], src: "uploads/minute-maid-park-01.jpg", position: "50% 22%", placeholder: D.photos[1][1] })),
 
           // two-column data band : field geometry | visit facts
           e("div", { className: "mm-de-grid" },
             // LEFT : field geometry
             e("div", { className: "mm-de-col" },
               e("div", { className: "mm-figblock" },
-                e(SecHead, { title: "Field Geometry", note: "FT \u00b7 " + F.orientation + " " + F.degrees + "\u00b0" }),
-                window.MMPProtractor ? e(window.MMPProtractor, { lf: F.left_field, cf: F.center_field, rf: F.right_field, degrees: F.degrees, orientation: F.orientation }) : null)),
+                e(SecHead, { title: "Field Geometry" }),
+                window.MMPProtractor ? e("div", { style: { position: "relative", left: "5px", top: "10px" } }, e(window.MMPProtractor, { lf: F.left_field, cf: F.center_field, rf: F.right_field, degrees: F.degrees, orientation: F.orientation })) : null)),
             // RIGHT : visit facts
             e("div", { className: "mm-de-col" },
               e("div", { className: "mm-figblock" },
@@ -238,7 +227,7 @@
             e("div", { className: "mm-wx mm-wx-line" },
               wxCell("temp", D.weather.temperature, "Temp"),
               wxCell("sky", D.weather.conditions, "Sky"),
-              wxCell("wind", D.weather.wind, "Wind"),
+              wxCell("wind", D.weather.wind, "Wind", "-1.2px"),
               wxCell("drop", D.weather.humidity, "Humidity"))),
 
           // pitching matchup — full-width strip, three pitchers across
@@ -246,11 +235,11 @@
             e(SecHead, { title: "Pitching Matchup" }),
             e("div", { className: "mm-pitch3" },
               e("div", { className: "pcell" },
-                e("span", { className: "pteam" }, D.pitching.away_team + " \u00b7 Start"),
+                e("span", { className: "pteam" }, D.pitching.away_team + " \u00b7 Starter"),
                 e("span", { className: "pname" }, D.pitching.away),
                 e("span", { className: "pdec" }, "Decision " + D.pitching.away_dec)),
               e("div", { className: "pcell" },
-                e("span", { className: "pteam" }, D.pitching.home_team + " \u00b7 Start"),
+                e("span", { className: "pteam" }, D.pitching.home_team + " \u00b7 Starter"),
                 e("span", { className: "pname" }, D.pitching.home),
                 e("span", { className: "pdec" }, "Decision " + D.pitching.home_dec)),
               e("div", { className: "pcell" },
@@ -260,7 +249,7 @@
 
           // bottom photo — Crawford Boxes & the left-field train, spanning the column
           e("figure", { className: "mm-plate-photo mm-photo-fill mm-deblock", style: { width: "100%" } },
-            e(Slot, { id: D.photos[2][0], placeholder: D.photos[2][1] }))
+            e(Slot, { id: D.photos[2][0], src: "uploads/minute-maid-park-03.jpg", placeholder: D.photos[2][1] }))
         )
         ,
 
@@ -268,7 +257,7 @@
         e("figure", { className: "mm-plate-photo mm-ab-photo",
             style: { left: AB_PHOTO.left + "px", top: AB_PHOTO.top + "px",
               width: AB_PHOTO.width + "px", height: AB_PHOTO.height + "px" } },
-          e(Slot, { id: "mmp-ab", placeholder: "Wide establishing exterior \u2014 Union Station frontage, brick facade & the ballpark beyond" }))
+          e(Slot, { id: "mmp-ab", src: "uploads/minute-maid-park-02.jpg", placeholder: "Wide establishing exterior \u2014 Union Station frontage, brick facade & the ballpark beyond" }))
       )
     );
   }

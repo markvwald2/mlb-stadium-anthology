@@ -55,7 +55,7 @@
   .pf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .pf-hero-scrim { position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(12,14,18,.5) 0%, rgba(12,14,18,0) 22%),
+      linear-gradient(180deg, rgba(12,14,18,.66) 0%, rgba(12,14,18,.28) 16%, rgba(12,14,18,0) 30%),
       linear-gradient(0deg, rgba(12,14,18,.78) 0%, rgba(12,14,18,.32) 22%, rgba(12,14,18,0) 40%); }
 
   /* cyan drafting overlay */
@@ -69,38 +69,42 @@
     border-top: 1px dashed rgba(150,190,228,.4); }
   .pf-draft .structlab { bottom: 116px; left: 300px; font-size: 12px; letter-spacing: .26em; color: rgba(150,190,228,.5); }
 
-  .pf-hero-folio { position: absolute; left: 96px; top: 52px; z-index: 4;
+  .pf-hero-folio { position: absolute; left: 56px; bottom: 104px; z-index: 4;
     display: flex; align-items: center; gap: 13px;
     font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .28em;
     color: rgba(236,234,225,.78); text-transform: uppercase; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
   .pf-hero-folio .tick { width: 26px; height: 2px; background: var(--red); }
 
   /* fabricated-steel sign band title */
-  .pf-band { position: absolute; left: 56px; width: 1086px; height: 120px; bottom: 286px; z-index: 4;
-    display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(180deg, #232b34 0%, #161c23 52%, #0f141a 100%);
-    border-top: 1px solid rgba(150,190,228,.18); border-bottom: 1px solid rgba(0,0,0,.5);
-    box-shadow: 0 14px 40px rgba(0,0,0,.4), inset 0 0 0 1px rgba(120,132,146,.18); }
+  .pf-band { position: absolute; left: 56px; width: 1086px; height: 140px; top: 40px; z-index: 4;
+    display: flex; align-items: center; justify-content: center; }
   .pf-band .rail { position: absolute; left: 12px; right: 12px; height: 3px;
-    background: linear-gradient(90deg, transparent, rgba(150,158,168,.5) 8%, rgba(150,158,168,.5) 92%, transparent); }
+    background: linear-gradient(90deg, transparent, rgba(210,216,224,.85) 8%, rgba(210,216,224,.85) 92%, transparent);
+    box-shadow: 0 1px 5px rgba(0,0,0,.55); }
   .pf-band .rail.t { top: 12px; } .pf-band .rail.b { bottom: 12px; }
-  .pf-band .star { position: absolute; color: var(--red); font-size: 30px; line-height: 1; }
+  .pf-band .star { position: absolute; color: var(--red); font-size: 38px; line-height: 1;
+    text-shadow: 0 1px 6px rgba(0,0,0,.6); }
   .pf-band .star.l { left: 34px; } .pf-band .star.r { right: 34px; }
   .pf-band-name { margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
-    font-size: 60px; line-height: 1; letter-spacing: .05em; color: #F4F2EA; text-transform: uppercase;
-    white-space: nowrap; text-shadow: 0 2px 14px rgba(0,0,0,.5); }
+    font-size: 92px; line-height: 1; letter-spacing: .04em; color: #F7F5EE; text-transform: uppercase;
+    white-space: nowrap; text-shadow: 0 2px 3px rgba(0,0,0,.92), 0 4px 26px rgba(0,0,0,.8), 0 0 42px rgba(0,0,0,.55); }
 
-  .pf-subplate { position: absolute; left: 56px; bottom: 196px; z-index: 4;
-    background: rgba(18,22,28,.78); border: 1px solid rgba(120,132,146,.32); padding: 8px 20px; }
-  .pf-subplate .city { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 27px;
-    letter-spacing: .26em; text-transform: uppercase; color: #DDE0E4; }
+  .pf-subplate { position: absolute; left: 56px; width: 1086px; top: 194px; z-index: 4; text-align: center; }
+  .pf-subplate .city { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 23px;
+    letter-spacing: .42em; text-transform: uppercase; color: rgba(232,230,222,.9); white-space: nowrap;
+    text-shadow: 0 1px 8px rgba(0,0,0,.6); }
 
-  .pf-geo { position: absolute; left: 56px; bottom: 62px; z-index: 4;
-    background: rgba(12,30,56,.66); border: 1px solid rgba(94,134,174,.5); padding: 11px 18px;
-    font-family: "Space Mono", monospace; font-size: 13.5px; letter-spacing: .08em;
-    color: rgba(178,206,232,.92); }
-  .pf-geo .row + .row { margin-top: 5px; color: rgba(150,184,216,.82); }
-  .pf-geo .row.addr { font-size: 12px; letter-spacing: .05em; }
+  .pf-geofoot { position: absolute; left: 56px; right: 56px; bottom: 56px; z-index: 4;
+    padding-top: 12px; border-top: 1px solid rgba(150,190,228,.42);
+    display: flex; align-items: baseline; justify-content: space-between; gap: 24px;
+    font-family: "Space Mono", monospace; font-size: 13.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: rgba(184,210,234,.94); text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+  .pf-geofoot .grp { display: flex; align-items: baseline; gap: 16px; min-width: 0; }
+  .pf-geofoot .grp.r { justify-content: flex-end; text-align: right; }
+  .pf-geofoot .tick { align-self: center; width: 26px; height: 2px; background: var(--red); flex: none; }
+  .pf-geofoot .seg { color: rgba(150,184,216,.82); }
+  .pf-geofoot .loc { color: rgba(150,184,216,.82); }
+  .pf-geofoot .addr { font-size: 12px; letter-spacing: .08em; color: rgba(150,184,216,.82); }
 
   /* ===================== RIGHT PAGE — DRAFTING FRAME ===================== */
   .pf-frame { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
@@ -155,14 +159,14 @@
     border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 6px 0; margin: 14px 0 9px; }
 
   /* col 1 — identity */
-  .pf-logos { display: flex; align-items: center; gap: 14px; padding: 2px 0 6px; }
-  .pf-logos .team { height: 46px; width: auto; display: block; }
+  .pf-logos { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 2px 0 6px; }
+  .pf-logos .team { height: 37px; width: auto; display: block; position: relative; left: 70px; }
   .pf-logos .mlb { height: 30px; width: auto; display: block; }
-  .pf-logos .lg { height: 36px; width: auto; display: block; }
+  .pf-logos .lg { height: 36px; width: auto; display: block; position: relative; left: -70px; }
   .pf-idline { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--navy); padding-bottom: 4px; border-bottom: 1px solid var(--rule); }
 
-  .pf-stack { padding: 1px 0; border-bottom: 1px solid var(--rule); }
+  .pf-stack { padding: 2.5px 0; border-bottom: 1px solid var(--rule); }
   .pf-stack-pair { display: flex; gap: 18px; }
   .pf-stack-pair .sp-cell { flex: 1; min-width: 0; }
   .pf-stack .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .13em;
@@ -171,18 +175,18 @@
     text-transform: uppercase; color: var(--ink); line-height: 1.12; }
   .pf-stack .v.hot { color: var(--red); }
   .pf-stack .v.lng { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; text-transform: none;
-    letter-spacing: 0; line-height: 1.22; }
+    letter-spacing: -0.5px; line-height: 1.22; }
 
-  .pf-names { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12.5px; letter-spacing: .02em;
-    text-transform: uppercase; color: var(--ink); line-height: 1.5; }
+  .pf-names { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: -.01em;
+    text-transform: uppercase; color: var(--ink); line-height: 1.28; }
   .pf-names .cur { color: var(--red); }
   .pf-names .yr { font-family: "Space Mono", monospace; font-weight: 400; font-size: 12px; color: var(--ink-3);
     letter-spacing: 0; text-transform: none; }
 
-  .pf-fieldplan { margin: 10px 0 4px; padding-top: 12px; border-top: 1px solid var(--ink);
+  .pf-fieldplan { margin: 10px 0 4px; padding-top: 22px; border-top: 1px solid var(--ink);
     display: flex; flex-direction: column; align-items: center; gap: 2px; }
   .pf-fieldplan .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .pf-fieldplan .fd-svg { width: auto; height: 124px; max-width: 100%; display: block;  overflow: visible; }
+  .pf-fieldplan .fd-svg { width: auto; height: 180px; max-width: 100%; display: block;  overflow: visible; }
   .pf-fp-cap { display: flex; justify-content: space-between; align-items: baseline; width: 100%;
     font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
     color: var(--ink-2); }
@@ -191,8 +195,8 @@
   /* col 2 — context */
   .col-ctx { }
   .pf-ctx { }
-  .pf-ctx p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 13px; line-height: 1.5;
-    color: var(--ink); }
+  .pf-ctx p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 13px; line-height: 1.55;
+    letter-spacing: 0; text-align: justify; color: var(--ink); }
   .pf-ctx p:last-child { margin-bottom: 0; }
   /* full-column-width photos set into the prose flow (text breaks above/below) */
   .pf-ctx-photo { margin: 6px 0 10px; width: 100%; height: 240px; position: relative; }
@@ -203,8 +207,8 @@
   .pf-ctx-photo image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
     border: 1px solid var(--frame-soft); }
   /* photo anchored to the bottom of the visit/game column */
-  .pf-game-photo { margin: 0; padding-top: 14px; width: 100%; }
-  .pf-game-photo image-slot { width: 100%; height: 231px; display: block; border: 1px solid var(--frame-soft); }
+  .pf-game-photo { margin: 0; padding-top: 6px; width: 100%; }
+  .pf-game-photo image-slot { width: 100%; height: 190px; display: block; border: 1px solid var(--frame-soft); }
 
   /* col 3 — visit / game data */
   .pf-data { display: flex; flex-direction: column; }

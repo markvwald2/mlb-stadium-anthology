@@ -29,7 +29,7 @@ window.GABP = {
   ribbon: [
     ["Opened", "Mar 31, 2003"],
     ["Capacity", "42,271 \u2192 45,814"],
-    ["Architect", "HOK Sport \u00b7 GBBN \u00b7 Moody Nolan"],
+    ["Years Active", "2003\u2013Present"],
     ["Surface", "Natural Grass"],
     ["Type", "Open-Air Baseball"],
     ["Roof", "Open Air"],
@@ -40,12 +40,12 @@ window.GABP = {
   // ---- Stadium Facts (museum specification sheet) ----
   facts: [
     ["Construction Start", "Aug 1, 2000"],
-    ["Years Active", "2003\u2013Present"],
-    ["Renovations", "Scoreboard, club, seating, concessions, social-space, and riverfront district upgrades"],
+    ["Architect", "HOK Sport \u00b7 GBBN \u00b7 Moody Nolan"],
     ["Surface", "Perennial ryegrass mixture"],
     ["Facade", "Brick & cast stone/sandstone base, white-painted steel, and glass"],
-    ["Architectural Style", "Retro-contemporary riverfront ballpark"],
-    ["Financing", "Public\u2013private; Hamilton County sales-tax / public funds with Reds private share"]
+    ["Style", "Retro-contemporary riverfront ballpark"],
+    ["Financing", "Public\u2013private; Hamilton County sales-tax / public funds with Reds private share"],
+    ["Renovations", "Scoreboard, club, seating, concessions, social-space, and riverfront district upgrades"]
   ],
 
   // ---- Reds home-grounds lineage (oldest to immediate predecessor) ----
@@ -82,7 +82,7 @@ window.GABP = {
   // ---- Stadium Context (one unified text block, 4 paragraphs) ----
   context: [
     "Great American Ball Park replaced Riverfront Stadium without leaving Cincinnati\u2019s riverfront story behind. That is the key to understanding it. The Reds did not need a new geographic identity as much as a new architectural one. Riverfront had made sense as a shared concrete civic platform for baseball and football, but by the early 2000s its multipurpose symmetry, artificial turf inheritance, and large all-purpose scale no longer fit MLB\u2019s direction.",
-    "The new park kept baseball on the Ohio River while changing the meaning of that location. Instead of a circular stadium designed for conversion, Great American Ball Park offered an open-air baseball-only form with industrial and riverboat references, brick facades, cast stone, glass, and white-painted steel. The setting remained downtown and riverfront, but the experience became more particular to the Reds and to baseball.",
+    "The new park kept baseball on the banks of the Ohio River while changing the meaning of that location. Instead of a circular stadium designed for conversion, Great American Ball Park offered an open-air baseball-only form with industrial and riverboat references, brick facades, cast stone, glass, and white-painted steel. The setting remained downtown and riverfront, but the experience became more particular to the Reds and to baseball.",
     "The design bargain was typical of the retro-classic period but locally inflected. Cincinnati gained asymmetry, better intimacy, premium spaces, riverfront views, and a stronger connection to team history. It also became part of a broader downtown riverfront development environment, where plazas, garages, bridge movement, and neighboring venues all shaped arrival. Later scoreboard, club, seating, concession, social-space, and district upgrades have continued that evolution.",
     "Great American Ball Park matters because it shows that replacing a multipurpose stadium did not always mean rejecting the old site. Sometimes the correction was architectural rather than geographic. Cincinnati kept the river and changed the container, turning the same civic edge from a shared concrete apparatus into a ballpark that could carry local references and modern baseball economics at once."
   ],

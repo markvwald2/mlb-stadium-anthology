@@ -10,7 +10,7 @@
 window.MMP = {
   // ---- Identity (hero title block, left page) ----
   stadium_name: "Minute Maid Park",
-  name_lines: ["MINUTE MAID", "PARK"],
+  name_lines: ["MINUTE MAID PARK"],
   city: "Houston",
   state: "Texas",
   team_city: "HOUSTON",
@@ -23,7 +23,7 @@ window.MMP = {
   elevation: "45 ft",
   address: "501 Crawford Street, Houston, TX 77002",
   visit_order: 35,
-  tagline: "BUILT FOR BASEBALL \u00b7 BENEATH A MOVING ROOF",
+  tagline: "RETRACTABLE ROOF \u00b7 UNION STATION TERMINAL",
 
   // ---- Bay A : identity route board ----
   identity: [
@@ -51,12 +51,12 @@ window.MMP = {
 
   // ---- Bay B : museum facts ----
   facts: [
-    ["Opened", "Mar 30, 2000", "construction begun Nov 1, 1997"],
+    ["Opened", "Mar 30, 2000", "groundbreaking Nov 1, 1997"],
     ["Capacity", "40,950"],
     ["Surface", "Natural grass", "Seashore Paspalum"],
     ["Architect", "HOK Sport"],
     ["Roof", "Retractable"],
-    ["Facade", "Red brick masonry; steel-and-glass retractable-roof structure", "preserved Union Station frontage"],
+    ["Facade", "Red brick masonry; steel-and-glass retractable-roof structure; preserved Union Station frontage"],
     ["Style", "Retro-classic downtown retractable-roof ballpark woven into historic railroad-station architecture"],
     ["Elevation", "45 ft"],
     ["Coordinates", "29.7569\u00b0 N, 95.3556\u00b0 W"],
@@ -87,7 +87,7 @@ window.MMP = {
   visit: [
     ["Trip", "Texas"],
     ["Date", "Sat \u00b7 Sep 11, 2021"],
-    ["Matchup", "Angels (LAA) at Astros (HOU)"],
+    ["Matchup", "LAA at HOU"],
     ["Result", "Angels 4, Astros 2"],
     ["Attendance", "31,547"],
     ["First Pitch", "6:10 PM CDT"],

@@ -33,10 +33,10 @@ window.CBP = {
 
   /* ---- carved stone lintel inscription (right-page header course) ---- */
   lintel: [
-    ["Team", "Philadelphia Phillies"],
+    ["Team", "PHILLIES"],
     ["League", "National League"],
     ["Division", "NL East"],
-    ["Classification Era", "Retro Classic"],
+    ["ERA", "Retro Classic"],
     ["Opened", "2004"],
     ["Years Active", "2004\u2013present"],
     ["Status", "Active"],
@@ -46,14 +46,14 @@ window.CBP = {
   /* ---- Stadium Facts bay (museum tabular) ----
      [label, value, sub]  — sub renders as a small italic gloss. */
   facts: [
-    ["Opened", "Apr 12, 2004", "construction begun Jun 28, 2001"],
+    ["Opened", "Apr 12, 2004", "groundbreaking Jun 28, 2001"],
     ["Capacity", "43,500"],
     ["Surface", "Natural grass", "Riviera Bermuda outfield \u00b7 Kentucky bluegrass infield"],
     ["Roof", "Open air", "open-air, baseball-only ballpark"],
     ["Architect", "EwingCole \u00b7 HOK Sport"],
     ["Facade", "Red brick, precast / light-stone trim, granite & exposed steel"],
     ["Style", "Retro-classic sports-complex, Philly rowhouse & industrial cues"],
-    ["All-Star Game", "2026", "scheduled"],
+    ["All-Star Game", "2026"],
     ["Cost", "$458M (2004)", "$781M adjusted"],
     ["Financing", "Public\u2013private", "Phillies private + Philadelphia / state public"],
     ["Elevation", "20 ft"],
@@ -117,9 +117,9 @@ window.CBP = {
     title: "Group Visit",
     trip: "Northeast v2",
     home_team: "Philadelphia Phillies",
-    home_abbr: "PHI",
+    home_abbr: "Phillies",
     away_team: "Washington Nationals",
-    away_abbr: "WSH",
+    away_abbr: "Nationals",
     result: "Nationals 10, Phillies 8",
     attendance: "43,319",
     first_pitch: "7:28 PM EDT",

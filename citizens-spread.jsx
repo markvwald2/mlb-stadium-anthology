@@ -55,7 +55,7 @@
   }
   function factRow(row, i) {
     return e("div", { className: "cbp-frow", key: i },
-      e("div", { className: "k" }, row[0]),
+      e("div", { className: "k", style: row[0] === "All-Star Game" ? { letterSpacing: "0.1px" } : null }, row[0]),
       e("div", { className: "v" },
         e("span", { className: "vm" }, row[1]),
         row[2] ? e("span", { className: "vs" + (row[3] ? " cont" : "") }, row[2]) : null));
@@ -162,7 +162,6 @@
             e("span", { className: "brk bl" }), e("span", { className: "brk br" }),
             e("h1", { className: "cbp-name" }, D.name_one_line),
             e("div", { className: "cbp-place" },
-              Dg.Bell ? e(Dg.Bell, { size: 30, color: "#BA0C2F" }) : null,
               e("span", { className: "bar" }),
               e("span", { className: "txt" }, D.city + ", " + D.state)))),
 
@@ -224,7 +223,6 @@
           e(BayHead, { title: "Stadium Facts", note: "II" }),
           e("div", { className: "cbp-facts" }, D.facts.map(factRow)),
           e("div", { className: "cbp-fieldblock" },
-            e(SecHead, { title: "Field Dimensions", note: "FT \u00b7 ORIENT." }),
             window.CitizensProtractor ? e(window.CitizensProtractor, { lf: F.left_field, cf: F.center_field,
               rf: F.right_field, orientation: F.orientation, degrees: F.degrees }) : null)),
 
@@ -255,7 +253,7 @@
 
           // ONGOING UPGRADES — verbatim renovations note, tucked in the small area below the field diagram
           e("div", { className: "cbp-upgrades" },
-            e(SecHead, { title: "Ongoing Upgrades", note: "2004 \u2192" }),
+            e(SecHead, { title: "Ongoing Upgrades" }),
             e("p", { className: "up-note" }, D.renovation_note)))
         ,
 
@@ -265,43 +263,44 @@
           e("div", { className: "cbp-visithead" },
             e("div", { className: "vh-top" },
               e("span", { className: "vh-no" }, "VISIT NO. " + V.no),
-              e("span", { className: "vh-tag" }, V.night ? "NIGHT GAME" : "")),
-            e("div", { className: "vh-sub" }, V.day + " \u00b7 " + V.date + " \u00b7 " + V.title + " \u00b7 Trip: " + V.trip)),
+              e("span", { className: "vh-tag" }, V.trip)),
+            e("div", { className: "vh-sub" }, V.day + " \u00b7 " + V.date + " \u00b7 " + V.title + (V.night ? " \u00b7 Night Game" : ""))),
 
           // matchup line
           e("div", { className: "cbp-match" },
             e("div", { className: "team away" },
               e("img", { src: "assets/washington-nationals-logo.svg", alt: V.away_team }),
-              e("div", { className: "tt" }, e("span", { className: "ab" }, V.away_abbr), e("span", { className: "nm" }, "Washington"))),
+              e("div", { className: "tt" }, e("span", { className: "nm" }, "Washington"), e("span", { className: "ab" }, V.away_abbr))),
             e("span", { className: "at" }, "AT"),
             e("div", { className: "team home" },
-              e("div", { className: "tt r" }, e("span", { className: "ab" }, V.home_abbr), e("span", { className: "nm" }, "Philadelphia")),
+              e("div", { className: "tt r" }, e("span", { className: "nm" }, "Philadelphia"), e("span", { className: "ab" }, V.home_abbr)),
               e("img", { src: "assets/philadelphia-phillies-logo.svg", alt: V.home_team }))),
 
-          e("div", { className: "cbp-result" }, V.result),
+          e("div", { className: "cbp-vbody" },
+            e("div", { className: "cbp-result" }, V.result),
 
-          e("div", { className: "cbp-gi" },
-            e("div", { className: "girow" }, e("span", { className: "k" }, "Attendance"), e("span", { className: "v" }, V.attendance)),
-            e("div", { className: "girow" }, e("span", { className: "k" }, "First Pitch"), e("span", { className: "v" }, V.first_pitch)),
-            e("div", { className: "girow" }, e("span", { className: "k" }, "Time of Game"), e("span", { className: "v" }, V.duration))),
+            e("div", { className: "cbp-gi" },
+              e("div", { className: "girow" }, e("span", { className: "k" }, "Attendance"), e("span", { className: "v" }, V.attendance)),
+              e("div", { className: "girow" }, e("span", { className: "k" }, "First Pitch"), e("span", { className: "v" }, V.first_pitch)),
+              e("div", { className: "girow" }, e("span", { className: "k" }, "Time of Game"), e("span", { className: "v" }, V.duration))),
 
-          e(SecHead, { title: "Weather", note: "MAY 4, 2019" }),
-          e("div", { className: "cbp-wx" },
-            wxCell("temp", W.temperature, "Temp"),
-            wxCell("cloud", W.conditions, "Sky"),
-            wxCell("wind", W.wind, "Wind"),
-            wxCell("drop", W.humidity, "Humidity")),
+            e(SecHead, { title: "Weather", note: "MAY 4, 2019" }),
+            e("div", { className: "cbp-wx" },
+              wxCell("temp", W.temperature, "Temp"),
+              wxCell("cloud", W.conditions, "Sky"),
+              wxCell("wind", W.wind, "Wind"),
+              wxCell("drop", W.humidity, "Humidity")),
 
-          e(SecHead, { title: "Pitching", note: "MATCHUP \u00b7 DECISIONS" }),
-          e("div", { className: "cbp-pitch" },
-            e("div", { className: "prow" }, e("span", { className: "pt" }, P.away_team), e("span", { className: "pn" }, P.away), e("span", { className: "pd" }, "GS")),
-            e("div", { className: "prow" }, e("span", { className: "pt" }, P.home_team), e("span", { className: "pn" }, P.home), e("span", { className: "pd" }, "GS")),
-            e("div", { className: "prow dec" }, e("span", { className: "pt w" }, "W"), e("span", { className: "pn" }, P.win), e("span", { className: "pd" }, "")),
-            e("div", { className: "prow dec" }, e("span", { className: "pt l" }, "L"), e("span", { className: "pn" }, P.loss), e("span", { className: "pd" }, "")),
-            e("div", { className: "prow dec" }, e("span", { className: "pt s" }, "SV"), e("span", { className: "pn" }, P.save), e("span", { className: "pd" }, ""))),
+            e(SecHead, { title: "Pitching", note: "MATCHUP \u00b7 DECISIONS" }),
+            e("div", { className: "cbp-pitch" },
+              e("div", { className: "prow" }, e("span", { className: "pt" }, P.away_team), e("span", { className: "pn" }, P.away), e("span", { className: "pd" }, "GS")),
+              e("div", { className: "prow" }, e("span", { className: "pt" }, P.home_team), e("span", { className: "pn" }, P.home), e("span", { className: "pd" }, "GS")),
+              e("div", { className: "prow dec" }, e("span", { className: "pt w" }, "W"), e("span", { className: "pn" }, P.win), e("span", { className: "pd" }, "")),
+              e("div", { className: "prow dec" }, e("span", { className: "pt l" }, "L"), e("span", { className: "pn" }, P.loss), e("span", { className: "pd" }, "")),
+              e("div", { className: "prow dec" }, e("span", { className: "pt s" }, "SV"), e("span", { className: "pn" }, P.save), e("span", { className: "pd" }, ""))),
 
-          e(SecHead, { title: "Line Score", note: "FINAL \u00b7 9 INN \u00b7 " + V.duration }),
-          e("div", { className: "cbp-board" }, Board(D.box)),
+            e(SecHead, { title: "Line Score", note: "FINAL \u00b7 9 INN \u00b7 " + V.duration }),
+            e("div", { className: "cbp-board" }, Board(D.box))),
 
           e("figure", { className: "cbp-photo cbp-visit-photo" },
             e(Slot, { id: "cbp-p4",

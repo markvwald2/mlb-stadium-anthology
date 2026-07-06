@@ -9,7 +9,7 @@
 window.BUSCH = {
   // ---- Identity (hero title block, left page) ----
   stadium_name: "Busch Stadium",
-  name_lines: ["BUSCH", "STADIUM"],
+  name_lines: ["BUSCH STADIUM"],
   city: "St. Louis",
   state: "Missouri",
   est: "2006",
@@ -43,10 +43,10 @@ window.BUSCH = {
     ["Architect", "Populous, with HOK Sport heritage"],
     ["Facade", "Red brick & limestone / cast-stone masonry; exposed structural steel entrance arch"],
     ["Original Cost", "$365 million", "adjusted $583 million"],
-    ["Financing", "Primarily privately financed (Cardinals ownership)", "limited state / local public assistance & infrastructure support"],
+    ["Financing", "Primarily privately financed (Cardinals ownership); limited state / local public assistance & infrastructure support"],
     ["Renovations", "Ballpark Village phased development; scoreboard, club, seating & hospitality upgrades"],
     ["Location", "Downtown \u00b7 700 Clark Avenue"],
-    ["Preceded By", "Busch Stadium II\nSportsman\u2019s Park\nUnion Park\nLeague Park\nRobison Field"]
+    ["Preceded By", "Sportsman\u2019s Park (1880-1891)\nUnion Park (1892-1897)\nLeague Park (1898)\nRobison Field (1899-1920)\nSportsman\u2019s Park (1920-1952)\nBusch Stadium (1953-1965)\nBusch Stadium II (1966-2005)"]
   ],
 
   // ---- Field dimensions module (protractor at the pivot) ----
@@ -61,7 +61,7 @@ window.BUSCH = {
   // ---- Featured visit information ----
   visit: [
     ["First Pitch", "6:15 PM CDT"],
-    ["Game Duration", "2:27"],
+    ["Duration", "2:27"],
     ["Attendance", "41,929"],
     ["Other Visits", "Aug 18, 2024"]
   ],
@@ -104,10 +104,10 @@ window.BUSCH = {
   // ---- Supporting photography (five documentary bays). Captions match the
   // supplied concept image. each: [slot id, drop placeholder, caption] ----
   bays: [
-    ["busch-p1", "Third-base entry \u2014 brick facade & steel entrance arch", "Third Base Entry"],
-    ["busch-p2", "View from right field \u2014 seating bowl & field", "View from Right Field"],
-    ["busch-p3", "Center-field scoreboard", "Scoreboard"],
-    ["busch-p4", "Concourse & Ballpark Village edge", "Concourse"],
-    ["busch-p5", "Downtown St. Louis \u2014 Gateway Arch & river", "Downtown St. Louis"]
+    ["busch-p1", "Third-base entry \u2014 brick facade & steel entrance arch", "Third Base Entry", "uploads/busch-stadium-04.jpg"],
+    ["busch-p2", "View from right field \u2014 seating bowl & field", "View from Right Field", "uploads/busch-stadium-03.jpg"],
+    ["busch-p3", "Center-field scoreboard", "Scoreboard", "uploads/busch-stadium-06.jpg"],
+    ["busch-p4", "Concourse & Ballpark Village edge", "Concourse", "uploads/busch-stadium-01.jpg"],
+    ["busch-p5", "Downtown St. Louis \u2014 Gateway Arch & river", "Downtown St. Louis", "uploads/busch-stadium-05.jpg"]
   ]
 };

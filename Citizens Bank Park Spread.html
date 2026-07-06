@@ -52,8 +52,7 @@
   .cbp-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .cbp-hero-scrim { position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(12,10,7,.5) 0%, rgba(12,10,7,0) 22%),
-      linear-gradient(0deg, rgba(10,8,6,.95) 0%, rgba(10,8,6,.78) 20%, rgba(10,8,6,.18) 42%, rgba(10,8,6,0) 56%); }
+      linear-gradient(0deg, rgba(10,8,6,.82) 0%, rgba(10,8,6,.32) 8%, rgba(10,8,6,0) 18%); }
 
   .cbp-folio { position: absolute; right: 56px; top: 58px; z-index: 5; text-align: right;
     font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .26em;
@@ -65,9 +64,9 @@
     color: rgba(232,224,206,.46); text-transform: uppercase; white-space: nowrap; }
 
   /* ---- mounted brick-and-stone signage plaque ---- */
-  .cbp-titlewrap { position: absolute; left: 56px; right: 56px; bottom: 168px; z-index: 5; }
+  .cbp-titlewrap { position: absolute; left: 56px; right: 56px; top: 56px; z-index: 5; }
   .cbp-plaque { position: relative; display: inline-block; padding: 22px 40px 26px;
-    background: linear-gradient(180deg, rgba(28,20,14,.5), rgba(20,14,9,.62));
+    background: linear-gradient(180deg, rgba(28,20,14,.25), rgba(20,14,9,.25));
     border-top: 2px solid rgba(216,205,182,.85); border-bottom: 2px solid rgba(216,205,182,.85);
     box-shadow: inset 0 0 0 1px rgba(0,0,0,.35); }
   /* steel bracket corner detailing — no drop shadow */
@@ -77,7 +76,7 @@
   .cbp-plaque .brk.bl { left: 7px; bottom: 7px; border-right: 0; border-top: 0; }
   .cbp-plaque .brk.br { right: 7px; bottom: 7px; border-left: 0; border-top: 0; }
   .cbp-name { margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
-    font-size: 100px; line-height: .84; letter-spacing: .006em; text-transform: uppercase;
+    font-size: 82px; line-height: .84; letter-spacing: 1.49px; text-transform: uppercase;
     color: #ECE2CB; white-space: nowrap; }
   .cbp-place { display: flex; align-items: center; gap: 16px; margin-top: 20px; padding-left: 2px; }
   .cbp-place .bar { width: 46px; height: 2px; background: rgba(232,224,206,.55); }
@@ -86,7 +85,7 @@
 
   /* ---- foundation marks band ---- */
   .cbp-foot { position: absolute; left: 0; right: 0; bottom: 0; height: 124px; z-index: 5;
-    background: linear-gradient(180deg, rgba(10,8,6,0), rgba(8,6,4,.92) 34%);
+    background: linear-gradient(180deg, rgba(8,6,4,0), rgba(8,6,4,.42) 62%, rgba(8,6,4,.6) 100%);
     display: flex; align-items: center; padding: 0 58px 44px; gap: 26px; }
   .cbp-foot .fcol { display: flex; align-items: center; gap: 14px; flex: none; }
   .cbp-foot img.phi { height: 56px; width: auto; }
@@ -215,7 +214,7 @@
   .lin-node.term .lin-yr { color: var(--brick-deep); }
 
   /* ongoing upgrades — compact renovations note, tucked below the field diagram */
-  .cbp-upgrades { position: absolute; left: 260px; right: 0; top: 70px; bottom: 2px;
+  .cbp-upgrades { position: absolute; left: 246px; top: 99px; width: 157px; height: 106px;
     display: flex; flex-direction: column; justify-content: flex-start; transform: translateX(-16px); }
   .cbp-upgrades .cbp-h { margin-bottom: 7px; }
   .cbp-upgrades .cbp-h .t { font-size: 12px; letter-spacing: .06em; }
@@ -225,6 +224,7 @@
 
   /* ---- visit tower bay ---- */
   .cbp-visit { gap: 0; }
+  .cbp-vbody { padding: 0 14px; }
   .cbp-visithead { background: var(--brick-deep); color: var(--paper-hi); padding: 9px 11px 10px; margin-bottom: 12px; }
   .cbp-visithead .vh-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
   .cbp-visithead .vh-no { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 17px; letter-spacing: .08em; }
@@ -240,7 +240,7 @@
   .cbp-match .team .tt.r { align-items: flex-end; }
   .cbp-match .team .tt .ab { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 22px; color: var(--ink); }
   .cbp-match .team .tt .nm { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--ink3); margin-top: 2px; }
+    text-transform: uppercase; color: var(--ink3); margin-bottom: 2px; }
   .cbp-match .at { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .14em;
     color: var(--ink3); }
   .cbp-result { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 21px; letter-spacing: .01em;

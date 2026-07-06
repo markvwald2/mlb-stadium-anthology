@@ -53,8 +53,8 @@
   .gabp-left  { left: 0; width: 1275px; background: #14110E; overflow: hidden; }
   .gabp-right { left: 1275px; width: 1275px; background: var(--paper); }
   /* Ohio-River course watermark — faint river-haze tint behind all content */
-  .gabp-river-wm { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1;
-    pointer-events: none; opacity: .19; mix-blend-mode: multiply; transform: translate(-48px, -62px); }
+  .gabp-river-wm { position: absolute; inset: 0; width: calc(100% + 90px); height: calc(100% + 190px); z-index: 1;
+    pointer-events: none; opacity: .19; mix-blend-mode: multiply; transform: translate(-48px, -160px); }
   .gabp-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
     background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
   /* center fold — flat hairline only */
@@ -84,38 +84,36 @@
   .gabp-hero-scrim {
     position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(10,9,8,.40) 0%, rgba(10,9,8,0) 24%),
-      linear-gradient(0deg, rgba(10,9,8,.90) 0%, rgba(10,9,8,.58) 22%, rgba(10,9,8,.10) 44%, rgba(10,9,8,0) 58%);
+      linear-gradient(0deg, rgba(10,9,8,.68) 0%, rgba(10,9,8,.34) 12%, rgba(10,9,8,.06) 24%, rgba(10,9,8,0) 34%);
   }
   .gabp-hero-folio {
     position: absolute; left: 60px; top: 56px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
-    color: rgba(236,230,216,.66); text-transform: uppercase;
+    color: rgba(26,23,20,.82); text-transform: uppercase;
   }
 
   /* signage panel framed by trusses */
   .gabp-sign {
-    position: absolute; left: 58px; bottom: 196px; z-index: 5;
+    position: absolute; right: 58px; top: 64px; z-index: 5;
     display: flex; align-items: stretch; gap: 0;
-    background: linear-gradient(180deg, rgba(18,14,11,.18), rgba(18,14,11,.46));
-    padding: 0; box-shadow: 0 18px 50px rgba(0,0,0,.4);
+    padding: 0;
   }
   .gabp-sign .sign-stack { flex: 0 0 16px; width: 16px; }
   .gabp-sign-inner {
-    padding: 26px 40px 24px; display: flex; flex-direction: column; align-items: center;
-    border-top: 2px solid rgba(231,224,206,.30); border-bottom: 2px solid rgba(231,224,206,.30);
+    padding: 0; display: flex; flex-direction: column; align-items: center;
   }
   .gabp-hero-name {
     margin: 0; font-family: "Big Shoulders Display", sans-serif; font-weight: 800;
-    font-size: 120px; line-height: .84; letter-spacing: .005em; text-transform: uppercase;
-    text-align: center; color: #F0E9D7;
-    text-shadow: 0 2px 22px rgba(0,0,0,.5);
+    font-size: 100px; line-height: .84; letter-spacing: .005em; text-transform: uppercase;
+    text-align: center; color: var(--red-bright);
+    text-shadow: 0 1px 4px rgba(0,0,0,.28);
+    -webkit-text-stroke: 2.8px #ffffff; paint-order: stroke fill;
   }
   .gabp-hero-loc { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 22px; }
   .gabp-hero-loc .bar { width: 46px; height: 3px; background: var(--red-bright); flex: none; }
   .gabp-hero-loc .txt {
     font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 26px;
-    letter-spacing: .34em; text-transform: uppercase; color: #EAE3D3; padding-left: .34em;
+    letter-spacing: .34em; text-transform: uppercase; color: #1A1714; padding-left: .34em;
   }
 
   /* bottom identity metadata */
@@ -130,9 +128,8 @@
   .gabp-meta .mcell .k { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: rgba(206,198,180,.7); }
   .gabp-meta .mcell .v { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; color: #ECE6D8; line-height: 1.18; }
   .gabp-meta .mcell .v.mono { font-family: "Space Mono", monospace; font-weight: 400; font-size: 13px; letter-spacing: .01em; }
-  .gabp-meta .logos { margin-left: auto; flex-direction: row; align-items: center; gap: 22px; border-left: 0; padding-right: 0; }
+  .gabp-meta .logos { margin-left: auto; flex-direction: row; align-items: center; gap: 26px; border-left: 0; padding-right: 0; }
   .gabp-meta .logos .reds { height: 60px; width: auto; display: block; }
-  .gabp-meta .logos .logos-r { display: flex; align-items: center; gap: 18px; padding-left: 22px; border-left: 1px solid rgba(228,220,200,.18); }
   .gabp-meta .logos .mlb { height: 42px; width: auto; display: block; }
   .gabp-meta .logos .nl { height: 50px; width: auto; display: block; }
   .gabp-addr {
@@ -198,18 +195,18 @@
   .gabp-table .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.3; }
 
   /* predecessor lineage rail */
-  .gabp-lineage { list-style: none; margin: 0 0 8px; padding: 0; position: relative; display: flex; flex-direction: column; }
+  .gabp-lineage { list-style: none; margin: 0 0 4px; padding: 0; position: relative; display: flex; flex-direction: column; }
   .gabp-lineage::before { content: ""; position: absolute; left: 3px; top: 8px; bottom: 8px; width: 1px; background: var(--rule-strong); }
-  .gabp-lineage li { display: flex; align-items: center; gap: 9px; padding: 1px 0; position: relative; }
+  .gabp-lineage li { display: flex; align-items: center; gap: 9px; padding: 0 0; position: relative; }
   .gabp-lineage .dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--paper-hi);
     border: 1.5px solid var(--rule-strong); position: relative; z-index: 1; }
   .gabp-lineage li.last .dot { background: var(--red); border-color: var(--red-deep); }
   .gabp-lineage .nm { font-family: "Spectral", serif; font-size: 12px; color: var(--ink-2); line-height: 1.18; }
   .gabp-lineage li.last .nm { color: var(--ink); font-weight: 600; }
 
-  .gabp-fp { margin: 4px 0 0; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .gabp-fp { margin: 2px 0 0; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
   .gabp-fp .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .gabp-fp .fd-svg { width: 122px; height: 120px; max-width: 100%; display: block;  overflow: visible; }
+  .gabp-fp .fd-svg { width: auto; height: 166px; max-width: 100%; display: block;  overflow: visible; }
 
   .gabp-ctx { display: flex; gap: 20px; align-items: flex-start; }
   .gabp-ctx .ccol { flex: 1 1 0; min-width: 0; }

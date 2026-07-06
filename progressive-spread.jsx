@@ -14,7 +14,7 @@
   const Prot = window.ProgProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src });
   }
 
   /* engineering drafting frame: perimeter double line, ruler ticks, corner
@@ -83,19 +83,17 @@
       /* ===================== LEFT PAGE / HERO ===================== */
       e("div", { className: "pf-page pf-left", "data-screen-label": "Progressive Field hero" },
         e("div", { className: "pf-hero-slot" },
-          e(Slot, { id: "prog-hero", placeholder: "Drop the Progressive Field hero \u2014 painted exposed steel, light towers, seating bowl, downtown Cleveland skyline beyond the outfield" })),
+          e(Slot, { id: "prog-hero", src: "uploads/progressive-field-00-main.jpg", placeholder: "Drop the Progressive Field hero \u2014 painted exposed steel, light towers, seating bowl, downtown Cleveland skyline beyond the outfield" })),
         e("div", { className: "pf-hero-scrim" }),
 
         /* faint cyan drafting overlay */
         e("div", { className: "pf-draft", "aria-hidden": "true" },
           e("div", { className: "pf-dlabel elev" },
             e("span", { className: "lead" }), e("span", null, "ELEV. 650'\u20130\"")),
-          e("div", { className: "pf-dlabel gridn" }, "GRID N"),
-          e("div", { className: "pf-dline struct" }),
-          e("div", { className: "pf-dlabel structlab" }, "STRUCTURAL LINE")),
+          e("div", { className: "pf-dlabel gridn" }, "GRID N")),
 
         e("div", { className: "pf-hero-folio" },
-          e("span", { className: "tick" }), e("span", null, D.folio)),
+          e("span", null, D.folio)),
 
         /* fabricated-steel sign band title */
         e("div", { className: "pf-band" },
@@ -106,11 +104,15 @@
         e("div", { className: "pf-subplate" },
           e("span", { className: "city" }, D.city + ", " + D.state)),
 
-        /* coordinates / elevation tag */
-        e("div", { className: "pf-geo" },
-          e("div", { className: "row" }, D.coordinates_n + "  \u00b7  " + D.coordinates_w),
-          e("div", { className: "row" }, "ELEVATION: " + D.elevation.toUpperCase() + "  \u00b7  " + D.location.toUpperCase()),
-          e("div", { className: "row addr" }, D.address.toUpperCase()))
+        /* coordinates / elevation / address — survey footer strip (no box) */
+        e("div", { className: "pf-geofoot" },
+          e("div", { className: "grp l" },
+            e("span", { className: "tick" }),
+            e("span", null, D.coordinates_n + "  \u00b7  " + D.coordinates_w),
+            e("span", { className: "seg" }, "ELEV " + D.elevation.toUpperCase())),
+          e("div", { className: "grp r" },
+            e("span", { className: "loc" }, D.location.toUpperCase()),
+            e("span", { className: "addr" }, D.address.toUpperCase())))
       ),
 
       /* ===================== RIGHT PAGE / DRAFTING FRAME ===================== */
@@ -141,7 +143,7 @@
             StackRow("All-Star Games", D.all_star_games),
 
             e("figure", { className: "pf-id-photo" },
-              e(Slot, { id: "prog-p2", placeholder: "Painted exposed steel / brick structural detail" })),
+              e(Slot, { id: "prog-p2", src: "uploads/progressive-field-03.jpg", placeholder: "Painted exposed steel / brick structural detail" })),
 
             StackRow("Architect", "HOK Sport", true),
             StackRow("Type / Roof", "Open-air baseball-only ballpark \u00b7 Open Air"),
@@ -153,23 +155,22 @@
               e("div", { className: "v" },
                 e("div", null, "League Park (1890\u20131931)"),
                 e("div", null, "Cleveland Municipal Stadium (1932\u20131993)"))),
-            StackRow("Financing", D.financing_method),
-
-            SubHead("Name History"),
-            e("div", { className: "pf-names" },
-              e("div", null, "Jacobs Field ", e("span", { className: "yr" }, "(1994\u20132007)")),
-              e("div", { className: "cur" }, "Progressive Field ", e("span", { className: "yr" }, "(2008\u2013present)")))),
+            StackRow("Financing", D.financing_method)),
 
           /* ---------- COLUMN 2 · STADIUM CONTEXT ---------- */
           e("div", { className: "pf-col col-ctx" },
             ColHead("The Toothbrush Towers"),
             e("div", { className: "pf-ctx" },
-              e("p", { style: { lineHeight: 1.68, fontWeight: 600, letterSpacing: "0.2px" } }, D.context[0]),
+              e("p", { style: { lineHeight: 1.45, fontWeight: 600 } }, D.context[0]),
               e("figure", { className: "pf-ctx-photo" },
-                e(Slot, { id: "prog-p1", placeholder: "Bowl + downtown skyline beyond the outfield at dusk" })),
-              e("p", { style: { lineHeight: 1.68 } }, D.context[1]),
-              e("p", { style: { lineHeight: 1.68 } }, D.context[2]),
-              e("p", { style: { lineHeight: 1.68, letterSpacing: "0px" } }, D.context[3]))),
+                e(Slot, { id: "prog-p1", src: "uploads/progressive-field-01.jpg", placeholder: "Bowl + downtown skyline beyond the outfield at dusk" })),
+              e("p", { style: { lineHeight: 1.45 } }, D.context[1]),
+              e("p", { style: { lineHeight: 1.45 } }, D.context[2]),
+              e("p", { style: { lineHeight: 1.45 } }, D.context[3]),
+              SubHead("Name History"),
+              e("div", { className: "pf-names" },
+                e("div", null, "Jacobs Field ", e("span", { className: "yr" }, "(1994\u20132007)")),
+                e("div", { className: "cur" }, "Progressive Field ", e("span", { className: "yr" }, "(2008\u2013present)"))))),
 
           /* ---------- COLUMN 3 · VISIT / GAME DATA ---------- */
           e("div", { className: "pf-col col-game" },
@@ -207,13 +208,10 @@
               Prot ? e(Prot, {
                 lf: D.field.left_field, cf: D.field.center_field, rf: D.field.right_field,
                 orientation: D.field.orientation, bearing: D.field.bearing
-              }) : null,
-              e("figcaption", { className: "pf-fp-cap" },
-                e("span", null, "Orientation " + D.field.orientation + " \u00b7 " + D.field.bearing + "\u00b0"),
-                e("span", null, "LF \u00b7 CF \u00b7 RF (ft)"))),
+              }) : null),
 
             e("figure", { className: "pf-game-photo" },
-              e(Slot, { id: "prog-p3", placeholder: "Home-plate gate and marquee on the night of the visit" })))
+              e(Slot, { id: "prog-p3", src: "uploads/progressive-field-02.jpg", placeholder: "Home-plate gate and marquee on the night of the visit" })))
         )
       )
     );

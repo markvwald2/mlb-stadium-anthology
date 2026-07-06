@@ -8,7 +8,7 @@
   const FieldDiagram = window.GABPProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect", fit: "cover" });
+    return e("image-slot", { id: props.id, src: props.src, placeholder: props.placeholder, shape: props.shape || "rect", fit: "cover" });
   }
 
   /* White-painted-steel truss vertical — smokestack / light-tower marker.
@@ -109,9 +109,10 @@
       e("div", { className: "v" }, v));
   }
   function factRow(k, v, i) {
+    var vStyle = k === "Style" ? { letterSpacing: "-0.7px" } : null;
     return e("div", { className: "row", key: i },
       e("div", { className: "k" }, k),
-      e("div", { className: "v" }, v));
+      e("div", { className: "v", style: vStyle }, v));
   }
   function infoRow(k, v) {
     return e("div", { className: "irow" },
@@ -132,10 +133,10 @@
         e("div", { className: "k" }, k),
         e("div", { className: "v" }, v)));
   }
-  function photoWell(id, placeholder) {
+  function photoWell(id, placeholder, src) {
     return e("div", { className: "gabp-well", "data-slot": id },
       e("div", { className: "wframe" },
-        e(Slot, { id: id, placeholder: placeholder })),
+        e(Slot, { id: id, src: src, placeholder: placeholder })),
       e("div", { className: "wbase" }));
   }
 
@@ -147,20 +148,18 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         e("div", { className: "gabp-page gabp-left", "data-screen-label": "Great American Ball Park hero" },
           e("div", { className: "gabp-hero-slot" },
-            e(Slot, { id: "gabp-hero", placeholder: "Drop the Great American Ball Park aerial \u2014 Ohio River, downtown skyline, red bowl, white steel towers" })),
+            e(Slot, { id: "gabp-hero-2", src: "images/gabp/hero-main.jpg", placeholder: "Drop the Great American Ball Park aerial \u2014 Ohio River, downtown skyline, red bowl, white steel towers" })),
           e("div", { className: "gabp-hero-scrim" }),
-          e("div", { className: "gabp-hero-folio" }, "Retro Classic ballpark \u00b7 No. 24"),
+          e("div", { className: "gabp-hero-folio" }, "RETRO CLASSIC \u00b7 VISIT NO. 24"),
 
           /* steel-framed riverfront signage panel */
           e("div", { className: "gabp-sign" },
-            e(Stack, { cls: "sign-stack" }),
             e("div", { className: "gabp-sign-inner" },
               e("h1", { className: "gabp-hero-name" }, "Great American", e("br", null), "Ball Park"),
               e("div", { className: "gabp-hero-loc" },
                 e("span", { className: "bar" }),
                 e("span", { className: "txt" }, "Cincinnati, Ohio"),
-                e("span", { className: "bar" }))),
-            e(Stack, { cls: "sign-stack" })),
+                e("span", { className: "bar" })))),
 
           /* bottom identity metadata */
           e("div", { className: "gabp-meta" },
@@ -176,9 +175,8 @@
               e("div", { className: "v" }, D.elevation)),
             e("div", { className: "mcell logos" },
               e("img", { className: "reds", src: "assets/reds.svg", alt: "Cincinnati Reds" }),
-              e("div", { className: "logos-r" },
-                e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "MLB" }),
-                e("img", { className: "nl", src: "assets/nl-logo.png", alt: "National League" })))
+              e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "MLB" }),
+              e("img", { className: "nl", src: "assets/nl-logo.png", alt: "National League" }))
           ),
           e("div", { className: "gabp-addr" },
             e("span", null, D.team_name),
@@ -194,13 +192,13 @@
             /* --- photo strip held between steel trusses --- */
             e("div", { className: "gabp-strip" },
               e(Stack, null),
-              photoWell("gabp-p1", "Brick facade / riverfront entry"),
+              photoWell("gabp-p1", "Brick facade / riverfront entry", "images/gabp/p1-riverfront.jpg"),
               e(Stack, null),
-              photoWell("gabp-p2", "Red seating bowl"),
+              photoWell("gabp-p2", "Red seating bowl", "images/gabp/p2-bowl.jpg"),
               e(Stack, null),
-              photoWell("gabp-p3", "Scoreboard"),
+              photoWell("gabp-p3", "Scoreboard", "images/gabp/p3-smokestacks.jpg"),
               e(Stack, null),
-              photoWell("gabp-p4", "Concourse / river integration"),
+              photoWell("gabp-p4", "Concourse / river integration", "images/gabp/p4-bridge.jpg"),
               e(Stack, null)),
 
             /* --- metadata ribbon + river datum --- */

@@ -49,16 +49,15 @@
   .mm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .mm-hero-scrim { position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(8,12,20,.55) 0%, rgba(8,12,20,0) 24%),
-      linear-gradient(0deg, rgba(7,11,17,.95) 0%, rgba(7,11,17,.74) 22%, rgba(7,11,17,.16) 44%, rgba(7,11,17,0) 58%); }
+      linear-gradient(180deg, rgba(6,9,15,.72) 0%, rgba(6,9,15,.34) 16%, rgba(6,9,15,.08) 30%, rgba(6,9,15,0) 42%); }
 
-  .mm-astros { position: absolute; left: 58px; top: 50px; height: 98px; width: auto; z-index: 5;
+  .mm-astros { position: absolute; right: 58px; top: 50px; height: 98px; width: auto; z-index: 5;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,.55)); }
   .mm-folio { position: absolute; right: 56px; top: 60px; z-index: 5; text-align: right;
     font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .26em;
     color: rgba(228,222,208,.66); text-transform: uppercase; line-height: 1.8; }
   .mm-folio b { display: block; color: var(--orange-hi); font-weight: 700; }
-  .mm-spine { position: absolute; left: 36px; top: 50%; z-index: 5;
+  .mm-spine { position: absolute; left: 44px; top: 50%; z-index: 5;
     transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
     font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .34em;
     color: rgba(228,222,208,.5); text-transform: uppercase; white-space: nowrap; }
@@ -72,23 +71,22 @@
     color: rgba(228,222,208,.72); text-transform: uppercase; flex: none; }
 
   /* ---- station-sign title block ---- */
-  .mm-titlewrap { position: absolute; left: 58px; right: 58px; bottom: 150px; z-index: 5; }
+  .mm-titlewrap { position: absolute; left: 58px; top: 50px; z-index: 6; text-align: left; }
   .mm-plate { display: inline-block; position: relative; padding: 26px 40px 30px;
-    background: linear-gradient(180deg, #14263A 0%, #0E1C2C 100%);
-    border: 2px solid rgba(154,150,140,.6);
-    box-shadow: 0 10px 40px rgba(0,0,0,.5), inset 0 0 0 1px rgba(0,0,0,.4); }
+    background: none;
+    border: 0;
+    box-shadow: none; }
   .mm-plate::before, .mm-plate::after,
-  .mm-plate > .blt { content: ""; position: absolute; width: 8px; height: 8px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #C9C3B4, #6F6E68); }
+  .mm-plate > .blt { content: none; display: none; }
   .mm-plate::before { left: 11px; top: 11px; }
   .mm-plate::after  { right: 11px; top: 11px; }
   .mm-plate .blt.bl { left: 11px; bottom: 11px; }
   .mm-plate .blt.br { right: 11px; bottom: 11px; }
   .mm-name { margin: 0; font-family: "Saira Condensed", "Oswald", sans-serif; font-weight: 700;
-    font-size: 118px; line-height: .86; letter-spacing: .035em; text-transform: uppercase;
+    font-size: 90px; line-height: .86; letter-spacing: .035em; text-transform: uppercase;
     color: #F3EAD4;
     text-shadow: 0 0 24px rgba(226,150,72,.26), 0 1px 0 rgba(0,0,0,.45); }
-  .mm-place { display: flex; align-items: center; gap: 16px; margin-top: 24px; padding-left: 4px; }
+  .mm-place { display: flex; align-items: center; gap: 16px; margin-top: 10px; padding-left: 4px; }
   .mm-place .arw { color: var(--orange-hi); font-family: "Oswald", sans-serif; font-size: 22px; }
   .mm-place .bar { width: 40px; height: 2px; background: rgba(228,222,208,.5); }
   .mm-place .txt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 27px;
@@ -96,7 +94,7 @@
 
   /* ---- bottom platform band ---- */
   .mm-platband { position: absolute; left: 0; right: 0; bottom: 0; height: 110px; z-index: 5;
-    background: linear-gradient(180deg, rgba(8,13,20,.0), rgba(8,13,20,.92) 34%);
+    background: linear-gradient(180deg, rgba(8,13,20,.0), rgba(8,13,20,.05) 34%);
     display: flex; align-items: center; padding: 0 58px 46px; gap: 26px; }
   .mm-platform { flex: none; display: flex; flex-direction: column; align-items: flex-start;
     border-left: 3px solid var(--orange); padding: 4px 0 4px 14px; }
@@ -190,7 +188,7 @@
   /* ---- BAY B : facts + lifecycle ---- */
   .mm-facts { display: flex; flex-direction: column; }
   .mm-frow { display: grid; grid-template-columns: 78px 1fr; gap: 9px; align-items: baseline;
-    padding: 7px 0; border-bottom: 1px solid var(--rule); }
+    padding: 6.3px 0; border-bottom: 1px solid var(--rule); }
   .mm-frow:last-child { border-bottom: 0; }
   .mm-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.2; }
@@ -213,7 +211,7 @@
   /* ---- BAY C : stadium context, station-window grid ---- */
   .mm-ctx { flex: 1; display: flex; flex-direction: column; }
   .mm-ctxnote { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em;
-    text-transform: uppercase; color: var(--ink-3); padding-bottom: 6px; margin-bottom: 4px;
+    text-transform: uppercase; color: var(--ink-3); text-align: center; padding-bottom: 6px; margin-bottom: 4px;
     border-bottom: 1.5px solid var(--navy); }
   .mm-window { position: relative; flex: 1; margin-top: 6px; padding: 22px 22px 20px;
     border: 1.5px solid var(--rule-strong);
@@ -223,7 +221,7 @@
   .mm-window::before { content: ""; position: absolute; left: 0; right: 0; top: 33%; height: 1px; background: rgba(166,150,122,.28); }
   .mm-window::after  { content: ""; position: absolute; left: 0; right: 0; top: 66%; height: 1px; background: rgba(166,150,122,.28); }
   .mm-prose { position: relative; z-index: 1; }
-  .mm-prose p { margin: 0 0 11px; font-family: "Spectral", serif; font-size: 14px; line-height: 1.56;
+  .mm-prose p { margin: 0 0 11px; font-family: "Spectral", serif; font-size: 14px; line-height: 1.66;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .mm-prose p:last-child { margin-bottom: 0; }
   .mm-prose p:first-of-type::first-letter { font-family: "Saira Condensed", sans-serif; font-weight: 700; float: left;
@@ -255,7 +253,7 @@
     text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
 
   /* line score as a departure board */
-  .mm-board { background: var(--navy); padding: 8px 9px 9px; margin-top: 2px; }
+  .mm-board { background: var(--navy); padding: 6px 9px 7px; margin-top: 2px; }
   .mm-board table { width: 100%; border-collapse: collapse; font-family: "Space Mono", monospace; }
   .mm-board th, .mm-board td { text-align: center; font-size: 12px; font-weight: 400; padding: 2.5px 0;
     color: #DCE6EF; border-bottom: 1px solid rgba(220,230,239,.16); }
@@ -288,10 +286,10 @@
   .mm-photo43 { width: 100%; aspect-ratio: 4 / 3; height: auto; }
   .mm-photo-fill { width: 100%; flex: 1 1 0; min-height: 0; }
   .mm-photo-fill image-slot { height: 100%; }
-  .mm-de-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 14px 0; align-items: start; }
+  .mm-de-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 9px 0; align-items: start; }
   .mm-de-col { display: flex; flex-direction: column; min-width: 0; }
   .mm-de-col .mm-figblock { margin-bottom: 0; }
-  .mm-deblock { margin-top: 14px; }
+  .mm-deblock { margin-top: 9px; }
   .mm-logos-de { margin-top: 14px; }
   .mm-bay-de .mm-vrow { padding: 3px 0; }
   .mm-bay-de .mm-h { margin-bottom: 6px; padding-bottom: 3px; }

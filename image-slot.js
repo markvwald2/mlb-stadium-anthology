@@ -73,21 +73,6 @@
   // fails silently and the drop is lost on reload). Slots default to the
   // shared STATE_FILE; getStore() memoizes one store per distinct file.
   const STORES = new Map();
-
-  function rawGitHubSidecarUrl(file) {
-    if (location.hostname.slice(-10) !== '.github.io') return null;
-    const repo = location.pathname.split('/').filter(Boolean)[0];
-    const owner = location.hostname.split('.')[0];
-    if (!owner || !repo || !file) return null;
-    const clean = String(file).replace(/^\.\//, '').replace(/^\/+/, '');
-    const encoded = clean.split('/').map(encodeURIComponent).join('/');
-    return 'https://raw.githubusercontent.com/' + owner + '/' + repo + '/main/' + encoded;
-  }
-
-  function fetchJson(url) {
-    return fetch(url).then((r) => (r.ok ? r.json() : null));
-  }
-
   function getStore(file) {
     file = file || STATE_FILE;
     const cached = STORES.get(file);
@@ -106,12 +91,8 @@
 
     function load() {
       if (loadP) return loadP;
-      loadP = fetchJson(file)
-        .then((j) => {
-          if (j) return j;
-          const rawUrl = rawGitHubSidecarUrl(file);
-          return rawUrl ? fetchJson(rawUrl).catch(() => null) : null;
-        })
+      loadP = fetch(file)
+        .then((r) => (r.ok ? r.json() : null))
         .then((j) => {
           // Merge: sidecar loses to any in-memory change that raced ahead of
           // the fetch (drop or clear) so neither is clobbered by hydration.

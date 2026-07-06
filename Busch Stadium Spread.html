@@ -60,10 +60,10 @@
   .bz-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .bz-hero-scrim { position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(10,8,6,.50) 0%, rgba(10,8,6,0) 24%),
-      linear-gradient(0deg, rgba(10,8,6,.95) 0%, rgba(10,8,6,.72) 22%, rgba(10,8,6,.16) 42%, rgba(10,8,6,0) 56%); }
+      linear-gradient(180deg, rgba(8,6,4,.62) 0%, rgba(8,6,4,.5) 14%, rgba(8,6,4,.34) 24%, rgba(8,6,4,.16) 34%, rgba(8,6,4,0) 46%),
+      linear-gradient(0deg, rgba(10,8,6,.55) 0%, rgba(10,8,6,.2) 12%, rgba(10,8,6,0) 24%); }
 
-  .bz-folio { position: absolute; right: 58px; top: 60px; z-index: 5;
+  .bz-folio { position: absolute; right: 58px; bottom: 58px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(233,226,210,.66); text-transform: uppercase; }
   .bz-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
@@ -80,10 +80,10 @@
     color: rgba(233,226,210,.74); text-transform: uppercase; flex: none; }
 */
 
-  .bz-hero-title { position: absolute; left: 58px; right: 58px; bottom: 150px; z-index: 5; }
+  .bz-hero-title { position: absolute; left: 58px; right: 58px; top: 56px; z-index: 5; }
   .bz-name {
     position: relative; margin: 0; font-family: "Abril Fatface", Georgia, serif; font-weight: 400;
-    font-size: 150px; line-height: .86; letter-spacing: 0; text-transform: uppercase;
+    font-size: 100px; line-height: .9; letter-spacing: 0; text-transform: uppercase; white-space: nowrap;
     color: #F2ECDC; -webkit-text-fill-color: #F2ECDC; text-shadow: 0 4px 28px rgba(0,0,0,.5);
   }
   .bz-name::after {
@@ -94,10 +94,12 @@
   }
   .bz-sub { display: flex; align-items: center; margin-top: 22px; }
   .bz-sub .txt { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 35px;
-    letter-spacing: .03em; text-transform: uppercase; color: #C8323C; white-space: nowrap; }
+    letter-spacing: .03em; text-transform: uppercase; color: #E7434D; white-space: nowrap;
+    text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 2px 14px rgba(0,0,0,.7); }
   .bz-geo { margin-top: 14px; display: flex; flex-direction: column; gap: 5px; }
   .bz-geo .ln { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 19px; letter-spacing: .05em;
-    color: #E6DEC9; text-transform: uppercase; white-space: nowrap; }
+    color: #F0E9D6; text-transform: uppercase; white-space: nowrap;
+    text-shadow: 0 1px 3px rgba(0,0,0,.92), 0 2px 10px rgba(0,0,0,.7); }
 
   .bz-marks { position: absolute; left: 60px; bottom: 54px; z-index: 5;
     display: flex; align-items: center; gap: 22px; white-space: nowrap; }
@@ -115,7 +117,7 @@
   .bz-strip { position: absolute; left: 38px; top: 44px; width: 1199px;
     display: flex; gap: 18px; align-items: flex-start; z-index: 4; }
   .bz-bay { flex: 1 1 0; min-width: 0; margin: 0; display: flex; flex-direction: column; }
-  .bz-bay image-slot { width: 100%; height: 158px; display: block;
+  .bz-bay image-slot { width: 100%; height: 196px; display: block;
     border: 2px solid var(--paper-hi); outline: 1px solid var(--navy-deep);
     box-shadow: 0 5px 14px rgba(20,16,10,.26); }
   .bz-bay-cap { margin-top: 8px; text-align: center; font-family: "Oswald", sans-serif;
@@ -123,7 +125,7 @@
     color: var(--ink-2); line-height: 1.2; }
 
   /* ---- metadata ribbon — the bridge track ---- */
-  .bz-ribbon { position: absolute; left: 38px; top: 228px; width: 1199px; z-index: 6;
+  .bz-ribbon { position: absolute; left: 38px; top: 252px; width: 1199px; z-index: 6;
     display: flex; align-items: stretch;
     border-top: 2px solid var(--navy); border-bottom: 2px solid var(--navy);
     background: linear-gradient(0deg, rgba(223,214,192,.5), rgba(244,238,223,.85)); }
@@ -179,13 +181,13 @@
     text-transform: uppercase; color: var(--navy); text-align: center; }
   .bz-field-head .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-3); }
-  .bz-fieldfig { margin: 0; width: 100%; display: flex; justify-content: center; }
+  .bz-fieldfig { margin: 12px 0 0; width: 100%; display: flex; justify-content: center; }
   .bz-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
   .bz-fieldfig .fd-svg { width: 196px; height: auto; max-width: 100%; display: block;  overflow: visible; }
 
   /* ---- BAY 2 : Stadium Context ---- */
   .bz-prose { margin-top: 2px; }
-  .bz-prose p { margin: 0 0 13px; font-family: "Spectral", serif; font-size: 13.6px; line-height: 1.68;
+  .bz-prose p { margin: 0 0 13px; font-family: "Spectral", serif; font-size: 13.6px; line-height: 1.864;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .bz-prose p:first-of-type::first-letter { font-family: "Anton", sans-serif; font-weight: 400;
     float: left; font-size: 56px; line-height: .78; padding: 5px 9px 0 0; color: var(--red); }

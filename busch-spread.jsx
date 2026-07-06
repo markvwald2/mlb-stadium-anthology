@@ -14,7 +14,7 @@
   const Protractor = window.BuschProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src, position: props.position });
   }
   function SecHead(props) {
     return e("div", { className: "bz-h" + (props.red ? " red" : "") },
@@ -90,7 +90,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "bz-page bz-left", "data-screen-label": "Busch Stadium \u2014 hero" },
         e("div", { className: "bz-hero-slot" },
-          e(Slot, { id: "busch-hero", placeholder: "Drop the Busch Stadium hero \u2014 dusk aerial: brick & cast-stone mass, the open bowl, downtown skyline, the Gateway Arch and the Mississippi River bridges beyond" })),
+          e(Slot, { id: "busch-hero", src: "uploads/busch-stadium-00-main.jpg", placeholder: "Drop the Busch Stadium hero \u2014 dusk aerial: brick & cast-stone mass, the open bowl, downtown skyline, the Gateway Arch and the Mississippi River bridges beyond" })),
         e("div", { className: "bz-hero-scrim" }),
 
         e("div", { className: "bz-folio" }, "VISIT NO. " + D.visit_order),
@@ -120,7 +120,7 @@
         e("div", { className: "bz-strip" },
           D.bays.map((b, i) =>
             e("figure", { className: "bz-bay", key: i },
-              e(Slot, { id: b[0], placeholder: b[1] })))),
+              e(Slot, { id: b[0], src: b[3], placeholder: b[1] })))),
 
         /* ---- metadata ribbon — the bridge track ---- */
         e("div", { className: "bz-ribbon" },
@@ -146,9 +146,7 @@
           e(SecHead, { title: "Stadium Facts", note: "MUSEUM RECORD" }),
           e("div", { className: "bz-facts" }, D.facts.map(factRow)),
           e("div", { className: "bz-field" },
-            e("div", { className: "bz-field-head" },
-              e("span", { className: "t" }, "Field Dimensions & Orientation"),
-              e("span", { className: "n" }, "ORIENTED " + D.field.orientation + " \u00b7 " + D.field.degrees + "\u00b0")),
+            e("div", { className: "bz-field-head" }),
             e("figure", { className: "bz-fieldfig" },
               Protractor ? e(Protractor, { lf: D.field.left_field, cf: D.field.center_field,
                 rf: D.field.right_field, orientation: D.field.orientation, degrees: D.field.degrees }) : null))),
@@ -211,7 +209,7 @@
 
             /* documentary photo filling the lower bay */
             e("figure", { className: "bz-visit-photo" },
-              e(Slot, { id: "busch-p6", placeholder: "The group at Busch Stadium \u2014 Aug 17, 2024" }))))
+              e(Slot, { id: "busch-p6", src: "uploads/busch-stadium-02.jpg", placeholder: "The group at Busch Stadium \u2014 Aug 17, 2024" }))))
       )
     );
   }
