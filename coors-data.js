@@ -28,7 +28,7 @@ window.COORS = {
   capacity_opening: "50,200",
   capacity_current: "46,891",
   name_history: "\u2014",                       // n/a
-  preceded_by: "Mile High Stadium",
+  preceded_by: "Mile High Stadium (1993-94)",
   succeeded_by: "\u2014",                        // n/a
   elevation: "5,200 ft",
   coordinates: "39.7561\u00b0 N, 104.9942\u00b0 W",
@@ -42,7 +42,7 @@ window.COORS = {
   construction_start: "Oct 16, 1992",
   renovations: "Rooftop deck opened in 2014; scoreboard, club, seating, concessions, and social-space upgrades",
   renovation_history: [
-    "Opened in 1995, Coors Field has been upgraded steadily toward a more casual, revenue-rich game day\u2014without disturbing its retro-classic brick-and-steel frame.",
+    "Coors Field has been upgraded steadily toward a more casual, revenue-rich game day\u2014without disturbing its retro-classic brick-and-steel frame.",
     "The defining change came in 2014, when roughly 3,800 of the highest right-field upper-deck seats gave way to The Rooftop, a two-level social deck of bars, lounges, and standing room. Successive scoreboard and video-board upgrades, plus reworked club levels, premium seating, concessions, and social spaces, have kept the building current while leaving its character intact."
   ],
   left_field_distance: "347 ft",

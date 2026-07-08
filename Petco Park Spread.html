@@ -61,7 +61,6 @@
   .pk-hero-slot image-slot { width: 100%; height: 100%; display: block; }
   .pk-hero-scrim { position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(90deg, rgba(10,8,5,.92) 0px, rgba(10,8,5,.86) 150px, rgba(10,8,5,.12) 290px, rgba(10,8,5,0) 420px),
       linear-gradient(180deg, rgba(10,8,5,.5) 0%, rgba(10,8,5,0) 20%); }
 
   .pk-folio { position: absolute; right: 50px; top: 52px; z-index: 5; text-align: right;
@@ -163,7 +162,7 @@
     color: var(--ink-on); padding: 1px 0 2px; }
   .pk-naming .yr { font-style: italic; font-weight: 400; font-size: 12px; color: var(--ink-on2); }
 
-  .pk-fig { display: block; width: 100%; height: auto; margin-top: 2px; transform: translateX(-8px); }
+  .pk-fig { display: block; width: 100%; height: auto; margin-top: 2px; transform: translateX(-8px); overflow: visible; }
 
   /* ---- Bay B : stadium context narrative sheet (wide; prose flows across in 2 cols) ---- */
   .pk-ctxrow { flex: 0 0 auto; display: flex; gap: 14px; height: 132px; margin-top: 14px; }
@@ -178,13 +177,13 @@
   .pk-wall::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
     background: repeating-linear-gradient(0deg, rgba(162,74,49,.07) 0 26px, transparent 26px 28px); }
   .pk-prose { position: relative; z-index: 1; }
-  .pk-prose p { margin: 0 0 10px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 1.68;
-    color: var(--ink-on); text-align: justify; hyphens: auto; }
-  .pk-ctxfig { column-span: all; -webkit-column-span: all; width: 100%; height: 196px;
-    margin: 7px 0 13px; break-inside: avoid; }
-  .pk-ctxfig:last-child { margin-bottom: 0; }
+  .pk-prose p { margin: 0 0 8px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 1.5;
+    letter-spacing: -0.1px; color: var(--ink-on); text-align: justify; hyphens: auto; }
+  .pk-prose .pk-ctxfig { column-span: all; -webkit-column-span: all; width: 100%; height: 222px;
+    margin: 8px 0; break-inside: avoid; }
+  .pk-prose .pk-ctxfig:last-child { margin-bottom: 0; }
   .pk-prose p:last-child { margin-bottom: 0; }
-  .pk-prose p:first-of-type::first-letter { font-family: "Saira Condensed", sans-serif; font-weight: 800; float: left;
+  .pk-prose .fw-dropcap { font-family: "Saira Condensed", sans-serif; font-weight: 800; float: left;
     font-size: 55px; line-height: .72; padding: 6px 10px 0 0; color: var(--brick-hi); }
 
   /* ---- Bay C : blackened-steel photo frames (no pane overlay) ---- */
@@ -208,19 +207,19 @@
     border: 1px solid #0C0A06; border-top: 2px solid var(--gold);
     color: var(--ink-on); padding: 10px 12px 11px; }
   .pk-vhead .vh-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
-  .pk-vhead .vh-no { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: .12em;
+  .pk-vhead .vh-no { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 1.7px;
     color: var(--gold-hi); }
   .pk-vhead .vh-tag { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em; color: var(--ink-on2); }
   .pk-vhead .vh-sub { font-family: "Spectral", serif; font-style: italic; font-size: 12px;
     color: var(--ink-on2); margin-top: 5px; }
 
-  .pk-match { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 11px 0 9px; }
+  .pk-match { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 14px; margin: 11px 0 9px; }
   .pk-match .team { display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .pk-match .team img { box-sizing: content-box; height: 37px; width: auto; object-fit: contain;
     background: linear-gradient(180deg, #F2E9D6, #E1D4B9); padding: 8px 11px; border-radius: 8px;
     border: 1px solid rgba(0,0,0,.22); box-shadow: 0 3px 8px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.55); }
   .pk-match .team .tn { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 17px;
-    letter-spacing: .02em; text-transform: uppercase; color: var(--ink-on); line-height: 1; }
+    letter-spacing: .02em; text-transform: uppercase; color: var(--ink-on); line-height: 1; text-align: center; }
   .pk-match .at { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--gold); }
   .pk-result { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 21px; letter-spacing: .02em;

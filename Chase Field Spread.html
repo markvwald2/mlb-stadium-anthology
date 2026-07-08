@@ -6,7 +6,7 @@
 <title>Chase Field — Spread</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Ultra&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -74,33 +74,34 @@
     color: rgba(232,224,208,.5); text-transform: uppercase; white-space: nowrap; }
 
   /* faint roof-track datum line — the environmental machine */
-  .chf-roofline { position: absolute; left: 64px; right: 64px; top: 210px; z-index: 4;
+  .chf-roofline { position: absolute; left: 64px; right: 64px; top: 222px; z-index: 4;
     display: flex; align-items: center; gap: 12px; opacity: .5; pointer-events: none; }
   .chf-roofline .ln { flex: 1; height: 1px; background: rgba(232,224,208,.4); }
   .chf-roofline .tk { width: 1px; height: 11px; background: rgba(232,224,208,.55); flex: none; }
   .chf-roofline .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .3em;
     color: rgba(232,224,208,.66); text-transform: uppercase; flex: none; }
 
-  .chf-hero-title { position: absolute; left: 58px; right: 58px; bottom: 168px; z-index: 5; }
+  .chf-hero-title { position: absolute; left: auto; right: 58px; top: 120px; z-index: 5; text-align: right; }
   .chf-name {
-    position: relative; margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
-    font-size: 178px; line-height: .82; letter-spacing: .006em; text-transform: uppercase;
+    position: relative; margin: 0; font-family: "Ultra", serif; font-weight: 400;
+    font-size: 112px; line-height: .96; letter-spacing: .006em; text-transform: uppercase;
     color: #ECE2CE; -webkit-text-fill-color: #ECE2CE;
-    text-shadow: 0 4px 30px rgba(0,0,0,.5);
+    text-shadow: 0 2px 12px rgba(0,0,0,.28);
   }
   .chf-name::after {
-    content: attr(data-t); position: absolute; left: 0; top: 0; pointer-events: none;
+    content: attr(data-t); position: absolute; right: 0; top: 0; pointer-events: none;
     background-image: var(--grain); background-size: 240px 168px;
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
     mix-blend-mode: multiply; opacity: .5;
   }
-  .chf-sub { display: flex; align-items: center; gap: 18px; margin-top: 26px; }
-  .chf-sub .bar { width: 54px; height: 3px; background: var(--sand); flex: none; }
+  .chf-sub { display: flex; align-items: center; justify-content: flex-end; gap: 18px; margin-top: 22px; }
+  .chf-sub .bar { width: 54px; height: 3px; background: var(--sedona); flex: none; }
   .chf-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 30px;
-    letter-spacing: .32em; text-transform: uppercase; color: var(--sand); white-space: nowrap; }
+    letter-spacing: .32em; text-transform: uppercase; color: #ECE2CE; white-space: nowrap;
+    text-shadow: 0 2px 14px rgba(0,0,0,.55); }
 
-  .chf-marks { position: absolute; left: 60px; bottom: 70px; z-index: 5;
+  .chf-marks { position: absolute; left: 60px; bottom: 38px; z-index: 5;
     display: flex; align-items: center; gap: 18px; white-space: nowrap; }
   .chf-marks .mlb { height: 44px; width: auto; display: block; }
   .chf-marks .div { width: 1px; height: 30px; background: rgba(232,224,208,.4); }
@@ -115,14 +116,10 @@
     display: flex; flex-direction: column; gap: 16px; z-index: 2; }
 
   /* ---- photo strip ---- */
-  .chf-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; flex: none; }
+  .chf-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; flex: none; }
   .chf-frame { position: relative; margin: 0; height: 156px; }
   .chf-frame image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
     border: 1px solid var(--rule-strong); }
-  .chf-frame figcaption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
-    padding: 14px 8px 5px; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
-    letter-spacing: .1em; text-transform: uppercase; color: #F2ECDD; line-height: 1.2;
-    background: linear-gradient(0deg, rgba(20,16,12,.82), rgba(20,16,12,0)); pointer-events: none; }
 
   /* ---- identity ribbon ---- */
   .chf-ribbon { display: flex; align-items: stretch; flex: none;
@@ -144,10 +141,23 @@
 
   /* ---- three-column body ---- */
   .chf-body { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1.28fr; min-height: 0; }
-  .chf-col { display: flex; flex-direction: column; gap: 7px; min-width: 0; padding: 4px 26px 0; }
+  .chf-col { display: flex; flex-direction: column; gap: 7px; min-width: 0; padding: 4px 26px 0;
+    position: relative; }
+  .chf-col::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+    border-bottom: 1px solid var(--rule); }
+  .chf-col.col1::after { right: 26px; }
+  .chf-col.col2::after { left: 26px; right: 26px; }
+  .chf-col.col3::after { left: 26px; }
   .chf-col.col1 { padding-left: 0; }
   .chf-col.col2 { border-left: 1px solid var(--rule); }
   .chf-col.col3 { border-left: 1px solid var(--rule); padding-right: 0; }
+
+  /* fill columns 1 & 3 vertically */
+  .chf-col.col1 .chf-mod, .chf-col.col3 .chf-mod { flex: 1; }
+  .chf-col.col1 .chf-facts { flex: 1; justify-content: space-between; padding-bottom: 14px; }
+  .chf-col.col3 .chf-mod { flex: 1; }
+  .chf-col.col3 .chf-prose { flex: 1; }
+  .chf-col.col3 .chf-prose image-slot { display: block; border: 1px solid var(--rule-strong); }
 
   /* module + red section header */
   .chf-mod { display: flex; flex-direction: column; min-width: 0; }
@@ -173,7 +183,7 @@
     color: var(--ink-2); line-height: 1.28; }
 
   /* field diagram */
-  .chf-fieldfig { margin: 2px 0 0; display: flex; justify-content: center; }
+  .chf-fieldfig { margin: 14px 0 0; display: flex; justify-content: center; }
   .chf-fd-wrap { width: 100%; display: flex; justify-content: center; }
   .chf-fd-svg { width: 172px; height: 131px; display: block; }
   /* protractor field plan */
@@ -191,7 +201,7 @@
   .chf-wcell { display: flex; align-items: center; gap: 11px; }
   .chf-wcell .chf-wico { flex: none; }
   .chf-wcell .tx { display: flex; flex-direction: column; }
-  .chf-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 22px; color: var(--ink); line-height: 1; }
+  .chf-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 18px; color: var(--ink); line-height: 1; }
   .chf-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
 
@@ -219,7 +229,7 @@
   .chf-dec p.sv { color: var(--ink-2); }
 
   /* prose columns */
-  .chf-prose p { margin: 0 0 11px; font-family: "Spectral", serif; font-size: 14px; line-height: 1.74;
+  .chf-prose p { margin: 0 0 11px; font-family: "Spectral", serif; font-size: 14px; line-height: 20px;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .chf-prose p:last-child { margin-bottom: 0; }
 

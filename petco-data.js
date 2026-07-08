@@ -39,7 +39,6 @@ window.PETCO = {
      [label, value, sub?]  — sub renders as a small italic gloss. */
   identity: [
     ["Team", "San Diego Padres"],
-    ["League", "National League"],
     ["Division", "NL West"],
     ["Opened", "Apr 8, 2004", "construction begun May 3, 2000"],
     ["Years Active", "2004\u2013present"],
@@ -51,11 +50,12 @@ window.PETCO = {
     ["Capacity", "39,860", "originally 42,445"],
     ["Surface", "Natural grass", "Bandera Bermuda grass"],
     ["Architect", "HOK Sport \u00b7 Antoine Predock"],
-    ["Class / Roof", "Retro Classic \u00b7 Open air", "open-air, baseball-only ballpark"],
-    ["Facade", "Indian sandstone, stucco & white-painted steel", "+ preserved red-brick Western Metal Supply building"],
+    ["Class / Roof", "Retro Classic \u00b7 Open air", "Open-air, baseball-only ballpark", "vm"],
+    ["Facade", "Indian sandstone, stucco & white-painted steel", "+ preserved red-brick Western Metal Supply building", "vm"],
     ["Location", "Downtown \u00b7 East Village", "near Gaslamp Quarter, trolley lines & bayfront"],
     ["Address", "100 Park Boulevard, San Diego, CA 92101"],
-    ["Elevation", "40 ft", "32.7073\u00b0 N, 117.1566\u00b0 W"],
+    ["Elevation", "40 ft"],
+    ["Coordinates", "32.7073\u00b0 N, 117.1566\u00b0 W"],
     ["Cost", "$450M (2004) \u00b7 $767M adj.", "public\u2013private partnership: redevelopment funds + Padres private"],
     ["All-Star Game", "2016"],
     ["Renovations", "Scoreboard, social-space, seating, outfield, premium-area & technology upgrades; Gallagher Square"]
@@ -99,8 +99,8 @@ window.PETCO = {
   /* ---- Bay C · architectural window openings (no captions) ----
      [slot id, drop-guidance placeholder (disappears when filled)] ---- */
   windows: [
-    ["petco-w1", "Western Metal Supply building \u2014 preserved red-brick warehouse anchoring the left-field corner"],
-    ["petco-w2", "Open concourse & white-painted steel structure \u2014 sandstone / stucco material detailing"],
+    ["petco-w1", "Western Metal Supply building \u2014 preserved red-brick warehouse anchoring the left-field corner", "uploads/petco-park-01.jpg"],
+    ["petco-w2", "Open concourse & white-painted steel structure \u2014 sandstone / stucco material detailing", "uploads/petco-park-02.jpg"],
     ["petco-w3", "Downtown skyline integration \u2014 East Village frontage, Gallagher Square & the bay beyond"]
   ],
   window_plate: ["Built for baseball.", "Built for the city."],

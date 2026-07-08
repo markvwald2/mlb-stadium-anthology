@@ -9,7 +9,7 @@
   const Protractor = window.CountyProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src });
   }
 
   /* ---- weather / utility line icons ---- */
@@ -26,7 +26,8 @@
   function Bay(props) {
     return e("div", { className: "lm-bay" + (props.className ? " " + props.className : "") },
       e("div", { className: "hd" }, e("div", { className: "lm-lbl" }, props.label,
-        props.rule ? e("span", { className: "ln" }) : null)),
+        props.rule ? e("span", { className: "ln" }) : null),
+        props.headerRight ? e("div", { className: "lm-hd-right" }, props.headerRight) : null),
       e("div", { className: "bd" }, props.children));
   }
 
@@ -76,7 +77,7 @@
       /* ============ LEFT / NIGHT-AERIAL HERO ============ */
       e("div", { className: "lm-page lm-left", "data-screen-label": "Milwaukee County Stadium — hero (left page)" },
         e("div", { className: "lm-hero-slot" },
-          e(Slot, { id: "mcs-hero", placeholder: "Drop the Milwaukee County Stadium night / dusk aerial \u2014 the open municipal bowl, light towers, giant outfield scoreboard, and the fairgrounds parking fields" })),
+          e(Slot, { id: "mcs-hero", src: "uploads/county-stadium-00-main-2ee57177.jpg", placeholder: "Drop the Milwaukee County Stadium night / dusk aerial \u2014 the open municipal bowl, light towers, giant outfield scoreboard, and the fairgrounds parking fields" })),
         e("div", { className: "lm-hero-scrim" }),
 
         e("div", { className: "lm-hero-datum" }, D.coordinates,
@@ -100,8 +101,6 @@
       /* ============ RIGHT / SCOREBOARD FACE ============ */
       e("div", { className: "lm-page lm-right", "data-screen-label": "Milwaukee County Stadium — scoreboard page (right)" },
         e("div", { className: "lm-board" }),
-        e("div", { className: "lm-bolt tl" }), e("div", { className: "lm-bolt tr" }),
-        e("div", { className: "lm-bolt bl" }), e("div", { className: "lm-bolt br" }),
 
         e("div", { className: "lm-rp" },
 
@@ -115,20 +114,24 @@
           e("div", { className: "lm-upper" },
             e("div", { className: "lm-identity" },
               e("div", { className: "lm-id-top" },
-                e("div", { className: "lm-id-glove" }, e("img", { src: "assets/brewers-glove-sm.png", alt: "Milwaukee Brewers" })),
+                e("div", { className: "lm-id-logos" },
+                  e("div", { className: "lm-id-glove braves" }, e("img", { src: "assets/milwaukee-braves-cap.svg", alt: "Milwaukee Braves" })),
+                  e("div", { className: "lm-id-glove" }, e("img", { src: "assets/brewers-glove-sm.png", alt: "Milwaukee Brewers" }))),
                 e("div", { className: "lm-id-name" },
-                  e("div", { className: "nm" }, "Milwaukee", e("br", null), "Brewers"),
-                  e("div", { className: "lg" }, "Home Club"))),
+                  e("div", { className: "nm" }, "Milwaukee"),
+                  e("div", { className: "clubs" }, "Braves & Brewers"),
+                  e("div", { className: "lg" }, "Home Clubs \u00b7 " + D.years_active))),
               e("div", { className: "lm-id-lamps" }, Array.from({ length: 17 }).map((_, i) => e("span", { key: i, className: "b" }))),
               e("div", { className: "lm-id-bottom" },
                 e("div", { className: "lm-id-tag" }, "FEATURED VISIT", e("br", null), e("span", null, D.featured_visit_date)),
                 e("div", { className: "lm-id-wells" },
                   e("div", { className: "lm-id-well" }, e("img", { src: "assets/american-league-logo.png", alt: "American League" })),
+                  e("div", { className: "lm-id-well" }, e("img", { src: "assets/nl-logo.png", alt: "National League" })),
                   e("div", { className: "lm-id-well" }, e("img", { src: "assets/mlb-logo.svg", alt: "MLB" }))))),
             e("div", { className: "lm-photos" },
-              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p1", placeholder: "Exposed steel grandstand & ramps" })),
-              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p2", placeholder: "Open-air seating bowl" })),
-              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p3", placeholder: "Outfield lamp-matrix scoreboard" })))
+              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p1", src: "uploads/county-stadium-01.jpg", placeholder: "Exposed steel grandstand & ramps" })),
+              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p2", src: "uploads/county-stadium-02.jpg", placeholder: "Open-air seating bowl" })),
+              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p3", src: "uploads/county-stadium-03.jpg", placeholder: "Outfield lamp-matrix scoreboard" })))
           ),
 
           /* ---- data bays ---- */
@@ -142,13 +145,14 @@
                 fRow("Surface", e(React.Fragment, null, D.playing_surface, " \u00b7 ", D.surface_detail)),
                 fRow("Capacity", e(React.Fragment, null, e("b", null, D.capacity_opening), " \u2192 ", e("b", null, D.capacity_current))),
                 fRow("Roof", D.roof_type),
-                fRow("Type", D.stadium_type, true),
-                fRow("Structure", D.facade, true))),
+                fRow("Structure", D.facade, true),
+                fRow("Style", D.architectural_style, true))),
               e("div", { className: "lm-allstar" },
                 e("div", { className: "k" }, "MLB All-Star Games"),
                 e("div", { className: "v" }, D.allstar_years))),
 
             /* LIFECYCLE */
+            e("div", { className: "lm-data-right" },
             e(Bay, { label: "Lifecycle", rule: true },
               kv("Construction Start", D.construction_start),
               kv("Opening Day", D.opening_day, "amber"),
@@ -165,9 +169,7 @@
               e(Bay, { label: "Classification", rule: true },
                 kv("Era", D.classification_era),
                 kv("Status", D.status, "red"),
-                kv("League", D.league),
-                e("div", { className: "lm-kv" }, e("div", { className: "k" }, "Division"),
-                  e("div", { className: "v sm" }, D.division)),
+                kv("Type", D.stadium_type),
                 kv("Location", D.location_type)),
               e(Bay, { label: "Financing" },
                 kv("Owner", D.financing_owner, "amber"),
@@ -186,6 +188,7 @@
                 e("div", { className: "lm-fd-orient" },
                   e("div", { className: "k" }, "Orientation"),
                   e("div", { className: "v" }, D.orientation + " \u00b7 " + D.orientation_degrees + "\u00b0"))))
+            )
           ),
 
           /* ---- STADIUM CONTEXT (enamel sign panel, largest) ---- */
@@ -210,22 +213,22 @@
               e("div", { className: "lm-vrows" },
                 vRow("Trip", D.trip_name, "amber"),
                 vRow("Date", D.featured_visit_day + ", " + D.featured_visit_date),
-                vRow("First Pitch", D.first_pitch, "amber"),
-                vRow("Attendance", D.attendance)),
+                vRow("First Pitch", D.first_pitch, "amber")),
               e("div", { className: "lm-firstvisit" },
                 e("span", { className: "k" }, "First Visit"),
                 e("span", { className: "v" }, D.first_visit_date))),
 
             /* line score + pitching (starters matchup & decisions) */
-            e(Bay, { label: "Line Score", rule: true },
-              e("div", { className: "lm-line-wrap" }, LineScore(D.box),
-                e("div", { className: "lm-line-cap" }, "Final \u00b7 " + D.innings_played + " Innings \u00b7 " + D.game_duration)),
+            e(Bay, { label: "Line Score", rule: true,
+                headerRight: "Final \u00b7 " + D.innings_played + " Innings \u00b7 " + D.game_duration },
+              e("div", { className: "lm-line-wrap" }, LineScore(D.box)),
               e("div", { className: "lm-line-pitch" },
                 e("div", { className: "pr match" }, e("span", { className: "tag" }, "Starters"),
                   e("span", { className: "nm" }, D.box.away.abbr + " " + D.away_starter + " vs " + D.box.home.abbr + " " + D.home_starter)),
                 e("div", { className: "wl" },
                   e("div", { className: "pr" }, e("span", { className: "tag" }, "W"), e("span", { className: "nm" }, D.winning_pitcher)),
-                  e("div", { className: "pr" }, e("span", { className: "tag" }, "L"), e("span", { className: "nm" }, D.losing_pitcher))))),
+                  e("div", { className: "pr" }, e("span", { className: "tag" }, "L"), e("span", { className: "nm" }, D.losing_pitcher)),
+                  e("div", { className: "att" }, e("span", { className: "tag" }, "ATT"), e("span", { className: "nm" }, D.attendance))))),
 
             /* weather */
             e(Bay, { label: "Conditions", rule: true },

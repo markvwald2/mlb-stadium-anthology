@@ -32,7 +32,7 @@
 
   function Slot(props) {
     return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
-      style: { width: "100%", height: "100%" } });
+      src: props.src, style: { width: "100%", height: "100%" } });
   }
   function Head(props) {
     return e("div", { className: "tf-head" },
@@ -93,51 +93,41 @@
 
   function Spread() {
     const F = D.field, V = D.visit, P = D.pitching, W = D.weather;
+    const coord = (D.specs.find(function (s) { return s[0] === "Coordinates"; }) || [])[1] || "";
 
     return e("div", { className: "tf-spread", "data-screen-label": "Tropicana Field spread" },
 
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "tf-page tf-left", "data-screen-label": "Tropicana Field \u2014 dome hero (left page)" },
         e("div", { className: "tf-hero-slot" },
-          e(Slot, { id: "trop-hero",
+          e(Slot, { id: "trop-hero", src: "uploads/tropicana-field-00-main.jpg",
             placeholder: "Drop the Tropicana Field interior hero \u2014 an MLB game occurring INSIDE the engineered enclosure: slanted white PTFE dome ceiling, catwalk rings, suspended lighting & the synthetic turf below. Emphasize the enclosed roof volume; avoid exterior glamour, skyline or Florida sunshine." })),
         e("div", { className: "tf-hero-scrim" }),
-
-        // faint catwalk-ring motif over the photo, lower-right
-        e("svg", { className: "tf-hero-rings", width: 560, height: 560, viewBox: "0 0 560 560", fill: "none" },
-          [262, 214, 166, 118, 70].map((r, i) => e("circle", { key: i, cx: 280, cy: 280, r: r, stroke: "#bcd2ea", strokeWidth: 1, opacity: 0.13 })),
-          Array.from({ length: 24 }).map((_, i) => {
-            const a = i * 15 * Math.PI / 180, x1 = 280 + 262 * Math.sin(a), y1 = 280 - 262 * Math.cos(a),
-              x2 = 280 + 70 * Math.sin(a), y2 = 280 - 70 * Math.cos(a);
-            return e("line", { key: "k" + i, x1: x1, y1: y1, x2: x2, y2: y2, stroke: "#bcd2ea", strokeWidth: 1, opacity: 0.07 });
-          })),
 
         e("div", { className: "tf-folio" }, "VISIT", e("b", null, "NO. " + D.visit_order), "\u00b7 " + D.trip.toUpperCase()),
         e("div", { className: "tf-spine" }, "FIXED-DOME MULTIPURPOSE \u00b7 EST. 1990 \u00b7 ST. PETERSBURG, FLORIDA"),
 
-        // roof-track datum
-        e("div", { className: "tf-roofline" },
-          e("span", { className: "tk" }), e("span", { className: "ln" }),
-          e("span", { className: "cap" }, "FIELD AXIS \u00b7 " + F.orientation + " " + F.bearing + "\u00b0 \u00b7 FIXED DOME"),
-          e("span", { className: "ln" }), e("span", { className: "tk" })),
+        // white identification plate \u2014 mounted at the top
+        e("div", { className: "tf-idplate" },
+          e("img", { className: "tf-team-logo", src: "assets/tampa-bay-rays-logo.svg", alt: D.team_name }),
+          e("div", { className: "tf-id-txt" },
+            e("div", { className: "tm" }, D.team_name),
+            e("div", { className: "lg" },
+              e("span", null, D.league), e("span", null, "\u00b7"), e("span", { className: "dv" }, D.division))),
+          e("span", { className: "tf-id-div" }),
+          e("img", { className: "tf-mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
+          e("img", { className: "tf-al", src: "assets/american-league-logo.png", alt: "American League" })),
 
-        // ---- title plaque (mounted civic wayfinding) ----
-        e("div", { className: "tf-plate" },
-          e("span", { className: "rivet rv1" }), e("span", { className: "rivet rv2" }),
-          e("h1", { className: "tf-plate-name" },
-            D.name_lines[0], " ", e("span", { className: "l2" }, D.name_lines[1])),
-          e("div", { className: "tf-plate-city" },
+        // ---- title, anchored at the bottom on the scrim ----
+        e("div", { className: "tf-titleblock" },
+          e("p", { className: "tf-eyebrow" },
+            e("span", { className: "dot" }), "Fixed-dome multipurpose \u00b7 Est. 1990"),
+          e("h1", { className: "tf-title" },
+            e("span", null, D.name_lines[0]),
+            e("span", { className: "l2" }, D.name_lines[1])),
+          e("div", { className: "tf-cityrow" },
             e("span", { className: "bar" }),
-            e("span", { className: "txt" }, D.city + ", " + D.state)),
-          e("div", { className: "tf-identity" },
-            e("img", { className: "tf-team-logo", src: "assets/tampa-bay-rays-logo.svg", alt: D.team_name }),
-            e("div", { className: "tf-id-txt" },
-              e("div", { className: "tm" }, D.team_name),
-              e("div", { className: "lg" },
-                e("span", null, D.league), e("span", null, "\u00b7"), e("span", { className: "dv" }, D.division))),
-            e("span", { className: "tf-id-div" }),
-            e("img", { className: "tf-mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-            e("img", { className: "tf-al", src: "assets/american-league-logo.png", alt: "American League" })))
+            e("span", { className: "txt" }, D.city + ", " + D.state)))
       ),
 
       /* ================= RIGHT PAGE / SERVICE DECK ================= */
@@ -175,7 +165,7 @@
         /* ---- Bay A : single roof-bay photo ---- */
         e("div", { className: "tf-bay", style: rect(BAYS.a) },
           e("figure", { className: "tf-frame", style: { margin: 0, width: "100%", height: "100%" } },
-            e(Slot, { id: D.roof_photos[0][0], placeholder: D.roof_photos[0][1] }))),
+            e(Slot, { id: D.roof_photos[0][0], placeholder: D.roof_photos[0][1], src: D.roof_photos[0][2] }))),
 
         /* ---- Bay B : facility specification register ---- */
         e("div", { className: "tf-bay", style: rect(BAYS.b) },
@@ -187,7 +177,7 @@
           e("div", { className: "tf-ctx-prose" },
             D.stadium_context.slice(0, 3).map((p, i) => e("p", { key: i, style: i === 0 ? { fontWeight: 500 } : null }, p)),
             e("figure", { className: "tf-ctx-photo", key: "photo" },
-              e(Slot, { id: D.roof_photos[1][0], placeholder: D.roof_photos[1][1] })),
+              e(Slot, { id: D.roof_photos[1][0], placeholder: D.roof_photos[1][1], src: D.roof_photos[1][2] })),
             e("p", { key: 3 }, D.stadium_context[3]))),
 
         /* ---- Bay F : Construction & Lifecycle (middle row, right) ---- */
@@ -198,7 +188,7 @@
             e("div", { className: "tf-keyfoot" },
               e("div", { className: "tf-logos" },
                 e("img", { src: "assets/tampa-bay-rays-logo.svg", alt: "Rays" }),
-                e("img", { src: "assets/mlb-logo.svg", alt: "MLB" }),
+                e("img", { src: "assets/mlb-logo.svg", alt: "MLB", style: { height: "30.8px" } }),
                 e("img", { className: "al", src: "assets/american-league-logo.png", alt: "American League" }))))),
 
         /* ---- Bay D : Game Operations display ---- */
@@ -257,7 +247,7 @@
                   e("span", { className: "lb" }, c[1]))))),
             // RIGHT: bottom-right photo
             e("figure", { className: "tf-ctxphoto", style: { margin: 0 } },
-              e(Slot, { id: D.support_photo[0], placeholder: D.support_photo[1] }))))
+              e(Slot, { id: D.support_photo[0], placeholder: D.support_photo[1], src: D.support_photo[2] }))))
       )
     );
   }

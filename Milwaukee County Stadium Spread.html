@@ -59,6 +59,9 @@
   .lm-lbl::before { content: ""; width: 5px; height: 5px; border-radius: 50%; flex: none;
     background: var(--amber); box-shadow: 0 0 5px 1px rgba(244,178,35,.7); }
   .lm-lbl .ln { flex: 1 1 auto; height: 1px; background: var(--rule); }
+  .lm-bay > .hd > .lm-lbl { flex: 1 1 auto; min-width: 0; }
+  .lm-hd-right { flex: none; font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--amber-dim); white-space: nowrap; }
 
   /* bulb-matrix display lettering (clipped lamp grid) — the hero title device */
   .lm-bulb { color: transparent; -webkit-background-clip: text; background-clip: text;
@@ -75,12 +78,12 @@
   .lm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .lm-hero-scrim { position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(0deg, rgba(6,10,18,.97) 0%, rgba(6,10,18,.74) 20%, rgba(6,10,18,.12) 42%, rgba(6,10,18,0) 56%),
-      linear-gradient(90deg, rgba(6,10,18,.62) 0%, rgba(6,10,18,.14) 30%, rgba(6,10,18,0) 50%),
-      radial-gradient(120% 80% at 50% 8%, rgba(244,178,35,.05), transparent 55%); }
+      linear-gradient(180deg, rgba(6,10,18,.55) 0%, rgba(6,10,18,.36) 22%, rgba(6,10,18,.12) 44%, rgba(6,10,18,0) 60%),
+      linear-gradient(0deg, rgba(6,10,18,.40) 0%, rgba(6,10,18,.06) 15%, rgba(6,10,18,0) 26%),
+      linear-gradient(90deg, rgba(6,10,18,.28) 0%, rgba(6,10,18,.05) 32%, rgba(6,10,18,0) 52%); }
 
   /* coordinate datum tag, top-left */
-  .lm-hero-datum { position: absolute; top: 56px; left: 64px; z-index: 5;
+  .lm-hero-datum { position: absolute; bottom: 56px; left: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px;
     letter-spacing: .22em; text-transform: uppercase; color: #d6c79f; }
   .lm-hero-datum .sub { display: block; font-family: "Saira Condensed", sans-serif; font-weight: 400;
@@ -94,7 +97,7 @@
     box-shadow: inset 0 0 0 2px rgba(0,0,0,.05), 0 2px 9px rgba(0,0,0,.55); }
 
   /* title block bottom-left — assembled scoreboard signage */
-  .lm-hero-block { position: absolute; left: 64px; bottom: 56px; right: 120px; z-index: 5; }
+  .lm-hero-block { position: absolute; left: 64px; top: 56px; right: 120px; z-index: 5; }
   .lm-hero-kicker { display: flex; align-items: center; gap: 12px; font-family: "Saira Condensed", sans-serif;
     font-weight: 600; font-size: 13px; letter-spacing: .3em; text-transform: uppercase; color: var(--amber);
     margin-bottom: 18px; }
@@ -141,10 +144,9 @@
 
   /* ============================ RIGHT / SCOREBOARD FACE ============================ */
   /* lit board inside the painted-steel housing */
-  .lm-board { position: absolute; inset: 22px; background:
+  .lm-board { position: absolute; inset: 0; background:
       radial-gradient(130% 100% at 50% 0%, #122440 0%, #0b1626 60%, #081120 100%);
-    border: 2px solid var(--steel-deep);
-    box-shadow: inset 0 0 0 2px var(--steel-hi), inset 0 0 70px rgba(0,0,0,.6), 0 0 30px rgba(0,0,0,.5); }
+    box-shadow: inset 0 0 70px rgba(0,0,0,.6); }
   /* faint unlit bulb grid across the board */
   .lm-board::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
     background-image: radial-gradient(circle, rgba(255,214,102,.05) 0 1.1px, transparent 1.7px);
@@ -156,7 +158,7 @@
   .lm-bolt.tl { left: 6px; top: 6px; } .lm-bolt.tr { right: 6px; top: 6px; }
   .lm-bolt.bl { left: 6px; bottom: 6px; } .lm-bolt.br { right: 6px; bottom: 6px; }
 
-  .lm-rp { position: absolute; inset: 40px 38px 38px 38px; z-index: 2; display: flex; flex-direction: column; }
+  .lm-rp { position: absolute; inset: 37.5px; z-index: 2; display: flex; flex-direction: column; }
 
   /* engraved board nameplate (the board's own label) */
   .lm-boardlabel { flex: none; display: flex; align-items: center; justify-content: center; gap: 14px;
@@ -205,8 +207,15 @@
   .lm-id-name { min-width: 0; }
   .lm-id-name .nm { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 35px;
     line-height: .92; letter-spacing: .01em; text-transform: uppercase; color: var(--cream); }
-  .lm-id-name .lg { margin-top: 2px; font-family: "Saira Condensed", sans-serif; font-weight: 500;
+  .lm-id-name .clubs { margin-top: 3px; font-family: "Saira Condensed", sans-serif; font-weight: 700;
+    font-size: 19px; line-height: 1; letter-spacing: .02em; text-transform: uppercase; color: var(--cream); }
+  .lm-id-name .lg { margin-top: 4px; font-family: "Saira Condensed", sans-serif; font-weight: 500;
     font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--amber); }
+  /* dual home-club logos (Braves + Brewers) */
+  .lm-id-logos { display: flex; align-items: center; gap: 8px; flex: none; }
+  .lm-id-logos .lm-id-glove { width: 58px; height: 58px; }
+  .lm-id-logos .lm-id-glove img { width: 46px; height: 46px; }
+  .lm-id-logos .lm-id-glove.braves img { width: 50px; height: 50px; }
   /* lit scoreboard lamp bar — fills the identity bay's mid band */
   .lm-id-lamps { position: relative; display: flex; align-items: center; justify-content: space-between; padding: 0 3px; height: 8px; }
   .lm-id-lamps::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(244,178,35,.16); }
@@ -229,8 +238,9 @@
   .lm-photo image-slot { width: 100%; height: 100%; display: block; }
 
   /* ---- data bays grid ---- */
-  .lm-data { flex: none; height: 252px; display: grid; gap: 12px;
-    grid-template-columns: 1.32fr 1fr 1fr 1.04fr; margin-top: 14px; }
+  .lm-data { flex: none; align-items: stretch; display: grid; gap: 14px;
+    grid-template-columns: 352px 1fr; margin-top: 14px; }
+  .lm-data-right { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; min-height: 0; }
   .lm-stack { display: grid; grid-template-rows: 1fr auto; gap: 9px; min-height: 0; }
   /* compress the stacked Classification + Financing bays so Financing fits its
      cell instead of overflowing down into the context panel below */
@@ -246,10 +256,10 @@
   .lm-ftab { width: 100%; border-collapse: collapse; }
   .lm-ftab tr { border-bottom: 1px solid rgba(244,178,35,.12); }
   .lm-ftab tr:last-child { border-bottom: 0; }
-  .lm-ftab th { text-align: left; vertical-align: baseline; width: 82px; padding: 3px 9px 3px 0;
+  .lm-ftab th { text-align: left; vertical-align: baseline; width: 82px; padding: 1.5px 9px 1.5px 0;
     font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--muted); }
-  .lm-ftab td { vertical-align: baseline; padding: 3px 0; font-family: "Space Mono", monospace;
+  .lm-ftab td { vertical-align: baseline; padding: 1.5px 0; font-family: "Space Mono", monospace;
     font-size: 12px; line-height: 1.3; color: var(--cream); }
   .lm-ftab td.desc { font-family: "Spectral", serif; font-size: 12px; color: #cdd9e6; line-height: 1.34; }
   .lm-ftab td b { color: var(--amber-hi); font-weight: 700; }
@@ -266,7 +276,7 @@
   /* pin the protractor toward the top of its bay so its lower bearing label
      clears the field-dimension numbers underneath */
   .lm-fd-instr { display: flex; align-items: flex-start; justify-content: center; flex: 1 1 auto; min-height: 0; padding-top: 3px; }
-  .lm-fd-instr svg { width: 122px; height: auto; }
+  .lm-fd-instr svg { width: 162px; height: auto; }
   .lm-fd-rows { flex: none; border-top: 1px solid rgba(244,178,35,.16); padding-top: 7px; }
   .lm-fd-dims { display: grid; grid-template-columns: repeat(3, 1fr); }
   .lm-fd-dims .c { text-align: center; border-left: 1px solid rgba(244,178,35,.14); padding: 1px 0; }
@@ -282,7 +292,7 @@
   .lm-fd-orient .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: var(--red-hi); }
 
   /* ---- STADIUM CONTEXT — warm enamel sign panel (largest) ---- */
-  .lm-context { flex: 1 1 auto; min-height: 0; margin-top: 14px; position: relative;
+  .lm-context { flex: none; min-height: 0; margin-top: auto; position: relative;
     background: linear-gradient(176deg, var(--enamel) 0%, var(--enamel-2) 100%);
     border: 2px solid var(--steel-deep);
     box-shadow: inset 0 0 0 2px #b9af90, inset 0 0 40px rgba(120,108,76,.25), 0 3px 12px rgba(0,0,0,.4);
@@ -303,27 +313,27 @@
     font-weight: 800; font-size: 42px; float: left; line-height: .74; padding: 5px 9px 0 0; color: #b8451f; }
 
   /* ---- GAME SCOREBOARD PANEL (second-largest) ---- */
-  .lm-game { flex: none; height: 238px; margin-top: 14px; display: grid;
+  .lm-game { flex: none; height: 204px; margin-top: 9px; display: grid;
     grid-template-columns: 1fr 1.46fr 0.92fr; gap: 12px; }
   /* result / visit column */
   .lm-gresult { display: flex; flex-direction: column; }
   .lm-gresult .bd { gap: 0; }
-  .lm-score-line { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 25px;
+  .lm-score-line { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 22px;
     line-height: 1; letter-spacing: .01em; text-transform: uppercase; color: var(--cream); }
   .lm-score-line .win { color: var(--amber-hi); text-shadow: 0 0 9px rgba(244,178,35,.45); }
   .lm-matchup { font-family: "Saira Condensed", sans-serif; font-weight: 400; font-size: 12px;
-    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; margin-bottom: 8px; }
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; margin-bottom: 5px; }
   .lm-vrows { display: flex; flex-direction: column; flex: 1 1 auto; }
   .lm-vrow { display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
-    padding: 2.5px 0; border-bottom: 1px dotted rgba(244,178,35,.18); }
+    padding: 1px 0; border-bottom: 1px dotted rgba(244,178,35,.18); }
   .lm-vrow:last-child { border-bottom: 0; }
   .lm-vrow .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
   .lm-vrow .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: var(--cream); text-align: right; }
   .lm-vrow .v.amber { color: var(--amber-hi); }
   /* highlighted first-visit line pinned to the bottom of the Game column */
-  .lm-firstvisit { flex: none; margin-top: 9px; display: flex; align-items: baseline;
-    justify-content: space-between; gap: 10px; padding: 7px 10px;
+  .lm-firstvisit { flex: none; margin-top: 4px; display: flex; align-items: baseline;
+    justify-content: space-between; gap: 10px; padding: 4px 10px;
     background: rgba(244,178,35,.1); border: 1px solid rgba(244,178,35,.32); }
   .lm-firstvisit .k { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--amber); flex: none; }
@@ -332,17 +342,17 @@
 
   /* line score — lamp cells */
   .lm-line-wrap { flex: 1 1 auto; display: flex; flex-direction: column; justify-content: center; }
-  .lm-line { width: 100%; border-collapse: separate; border-spacing: 3px; table-layout: fixed;
+  .lm-line { width: 100%; border-collapse: separate; border-spacing: 2px; table-layout: fixed;
     font-variant-numeric: tabular-nums; }
-  .lm-line { border-spacing: 3px; }
+  .lm-line { border-spacing: 2px; }
   .lm-line th, .lm-line td { text-align: center; font-family: "Space Mono", monospace; font-size: 12.5px; }
   .lm-line thead th { font-weight: 400; font-size: 12px; color: var(--muted-2); letter-spacing: .04em; padding-bottom: 3px; }
   .lm-line td.tm, .lm-line th.tm { width: 44px; text-align: left; }
   .lm-line .cell { background: var(--well); border: 1px solid #1d3350;
-    color: #cfe0f1; font-weight: 700; padding: 5px 0; box-shadow: inset 0 0 5px rgba(0,0,0,.6); }
+    color: #cfe0f1; font-weight: 700; padding: 3px 0; box-shadow: inset 0 0 5px rgba(0,0,0,.6); }
   .lm-line tr.home .cell { color: var(--amber-hi); }
   .lm-line .tmcell { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 13px;
-    letter-spacing: .04em; color: var(--cream); padding: 4px 4px 4px 0; text-align: left; }
+    letter-spacing: .04em; color: var(--cream); padding: 2px 4px 2px 0; text-align: left; }
   .lm-line tr.home .tmcell { color: var(--amber); }
   .lm-line .rhe { background: #0a1a30; border-color: #2b4a72; font-weight: 700; }
   .lm-line .rcol { color: var(--amber-hi) !important; box-shadow: inset 0 0 8px rgba(244,178,35,.2); }
@@ -376,16 +386,21 @@
   .lm-pitch .pr .nm { font-family: "Spectral", serif; font-size: 12px; color: var(--cream); line-height: 1.2; }
 
   /* pitching block relocated into the Line Score bay (starters matchup + W/L decisions) */
-  .lm-line-pitch { flex: none; border-top: 1px solid rgba(244,178,35,.16); padding-top: 6px; margin-top: 6px; }
+  .lm-line-pitch { flex: none; border-top: 1px solid rgba(244,178,35,.16); padding-top: 5px; margin-top: 4px; }
   .lm-line-pitch .pr { display: flex; align-items: baseline; gap: 9px; padding: 1.5px 0; }
   .lm-line-pitch .pr .tag { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--amber); flex: none; }
   .lm-line-pitch .pr.match .tag { width: 64px; }
   .lm-line-pitch .pr .nm { font-family: "Spectral", serif; font-size: 12px; color: var(--cream); line-height: 1.25; }
-  .lm-line-pitch .wl { display: grid; grid-template-columns: max-content max-content; justify-content: start;
-    column-gap: 48px; margin-top: 3px;
-    border-top: 1px solid rgba(244,178,35,.1); padding-top: 4px; }
+  .lm-line-pitch .wl { display: grid; grid-template-columns: max-content max-content 1fr; align-items: baseline;
+    column-gap: 48px; margin-top: 2px;
+    border-top: 1px solid rgba(244,178,35,.1); padding-top: 3px; }
   .lm-line-pitch .wl .tag { width: 14px; }
+  .lm-line-pitch .wl .att { display: flex; align-items: baseline; gap: 8px; justify-self: end; }
+  .lm-line-pitch .wl .att .tag { width: auto; font-family: "Saira Condensed", sans-serif; font-weight: 700;
+    font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+  .lm-line-pitch .wl .att .nm { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
+    color: var(--cream); }
 
   /* ---- footer colophon ---- */
   .lm-foot { flex: none; display: flex; align-items: center; gap: 13px; margin-top: 12px;

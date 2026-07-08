@@ -8,7 +8,7 @@
   const Protractor = window.MemorialProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src });
   }
 
   /* ---- faint stadium-bowl footprint (the oval) behind the protractor ---- */
@@ -73,7 +73,7 @@
       /* ================= LEFT PAGE — carved monument hero ================= */
       e("div", { className: "ms-page ms-left", "data-screen-label": "Memorial Stadium hero" },
         e("div", { className: "ms-hero-slot" },
-          e(Slot, { id: "ms-hero", placeholder: "Drop a dramatic low-angle photograph of the memorial facade \u2014 colonnade, gateway, reinforced-concrete mass (treat it like a civic monument, not the field)" })),
+          e(Slot, { id: "ms-hero", src: "uploads/memorial-stadium-00-main-d4a3b435.jpg", placeholder: "Drop a dramatic low-angle photograph of the memorial facade \u2014 colonnade, gateway, reinforced-concrete mass (treat it like a civic monument, not the field)" })),
         e("div", { className: "ms-hero-scrim" }),
 
         e("div", { className: "ms-hero-folio" },
@@ -81,7 +81,7 @@
           e("span", null, "Baltimore Orioles")),
 
         e("div", { className: "ms-hero-title" },
-          e("h1", { className: "ms-hero-name" }, "Memorial", e("span", { className: "l2" }, "Stadium")),
+          e("h1", { className: "ms-hero-name" }, "Memorial Stadium"),
           e("div", { className: "ms-hero-rule" }),
           e("div", { className: "ms-hero-loc" }, D.city + ", " + D.state)),
 
@@ -106,11 +106,11 @@
 
           /* --- photo plates (museum framing, no captions) --- */
           e("div", { className: "ms-plates" },
-            plate("ms-p1", "Memorial facade \u2014 gateway elevation"),
-            plate("ms-p2", "Seating bowl interior"),
-            plate("ms-p3", "Lower concourse"),
-            plate("ms-p4", "Scoreboard"),
-            plate("ms-p5", "Exterior elevation")),
+            plate("ms-p1", "memorial-stadium-01.jpg", "Memorial facade \u2014 gateway elevation"),
+            plate("ms-p2", "memorial-stadium-02.jpg", "Aerial \u2014 stadium and city"),
+            plate("ms-p3", "memorial-stadium-03.jpg", "Seating bowl \u2014 field from the stands"),
+            plate("ms-p4", "memorial-stadium-04.jpg", "Field level \u2014 batting practice"),
+            plate("ms-p5", "memorial-stadium-05.jpg", "Bowl interior at dusk")),
 
           /* --- the gateway: three bays --- */
           e("div", { className: "ms-gateway" },
@@ -119,7 +119,6 @@
             e("div", { className: "ms-bay left" },
               e("div", { className: "ms-bayh" }, "Stadium Record"),
               e("div", { className: "ms-record" },
-                recRow("Classification", D.classification_era),
                 recRow("Team", e("b", null, D.team_name)),
                 recRow("League", D.league + " \u00b7 " + D.division),
                 recRow("Architect", D.architect),
@@ -229,9 +228,9 @@
       )
     );
 
-    function plate(id, ph) {
+    function plate(id, src, ph) {
       return e("div", { className: "ms-plate" },
-        e("div", { className: "inner" }, e(Slot, { id: id, placeholder: ph })));
+        e("div", { className: "inner" }, e(Slot, { id: id, src: "uploads/" + src, placeholder: ph })));
     }
     function stat(icon, lab, val, lead) {
       return e("div", { className: "ms-stat" + (lead ? " lead" : "") },

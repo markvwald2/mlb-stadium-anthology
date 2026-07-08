@@ -9,7 +9,7 @@
   const Protractor = window.ClevelandProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect" }, props.src ? { src: props.src } : {}));
   }
 
   /* faint datum / survey linework over the aerial plate */
@@ -103,7 +103,7 @@
       /* ============ LEFT / AERIAL HERO PLATE ============ */
       e("div", { className: "cm-page cm-left" },
         e("div", { className: "cm-hero-slot" },
-          e(Slot, { id: "cms-hero", placeholder: "Drop the Cleveland Municipal Stadium aerial \u2014 the lakefront civic bowl between Lake Erie, the rail yards, and downtown Cleveland" })),
+          e(Slot, { id: "cms-hero", src: "uploads/cleveland-hero-v2.jpg", placeholder: "Drop the Cleveland Municipal Stadium aerial \u2014 the lakefront civic bowl between Lake Erie, the rail yards, and downtown Cleveland" })),
         e("div", { className: "cm-hero-scrim" }),
         e(PlatLines, null),
         e("div", { className: "cm-shore" }, "Lake Erie Shoreline"),
@@ -113,12 +113,7 @@
 
         e("div", { className: "cm-hero-mast" },
           e("div", { className: "cm-mast-logos" },
-            e("div", { className: "cm-logo-well club" },
-              e("img", { src: "assets/cleveland-wahoo-logo.svg", alt: "Cleveland" })),
-            e("div", { className: "cm-logo-well" },
-              e("img", { src: "assets/american-league-logo.png", alt: "American League" })),
-            e("div", { className: "cm-logo-well" },
-              e("img", { src: "assets/mlb-logo.svg", alt: "Major League Baseball" })))
+            e("img", { className: "cm-mast-mark", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }))
         ),
 
         e("div", { className: "cm-hero-block" },
@@ -129,7 +124,7 @@
           e("div", { className: "cm-hero-loc" },
             e("span", { className: "bar" }),
             e("span", { className: "txt" }, D.city + ", " + D.state)),
-          e("div", { className: "cm-hero-team" }, D.team_name),
+          e("div", { className: "cm-hero-team" }, "Cleveland Indians"),
           e("div", { className: "cm-hero-era" },
             e("div", { className: "cmark" }, e("img", { src: "assets/cleveland-wahoo-logo.svg", alt: "" })),
             e("div", { className: "etext" },
@@ -154,7 +149,7 @@
           /* ---- panoramic datum strip ---- */
           e("div", { className: "cm-datum" },
             e("div", { className: "cm-datum-slot" },
-              e(Slot, { id: "cms-pano", placeholder: "Drop a wide lakefront panorama \u2014 Lake Erie horizon, rail & port corridor, and the downtown Cleveland skyline behind the stadium" }))
+              e(Slot, { id: "cms-pano", src: "uploads/municipal-stadium-01.png", placeholder: "Drop a wide lakefront panorama \u2014 Lake Erie horizon, rail & port corridor, and the downtown Cleveland skyline behind the stadium" }))
           ),
 
           /* ---- lifecycle band ---- */
@@ -184,7 +179,7 @@
                   factRow("Roof", D.roof_type),
                   factRow("Capacity", e(React.Fragment, null, "Opening ", e("b", null, D.capacity_opening), " \u00b7 MLB ", e("b", null, D.capacity_later))),
                   factRow("Location", D.location_classification),
-                  factRow("Address", D.address),
+                  factRow("Address", e(React.Fragment, null, "1085 W 3rd Street", e("br"), "Cleveland, OH 44114 (former site)")),
                   factRow("Cost", e(React.Fragment, null, D.stadium_cost, " (", D.stadium_cost_adjusted, " adj.)")),
                   factRow("Financing", D.financing_method),
                   factRow("Renovations", D.renovations)))
@@ -213,10 +208,10 @@
             e("div", { className: "cm-rcol" },
               e("div", { className: "cm-coltitle" }, e("div", { className: "t" }, "Civic Plates"), e("div", { className: "ln" })),
               e("div", { className: "cm-photos" },
-                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p1", placeholder: "Stripped-classical exterior facade" })),
-                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p2", placeholder: "Open-air bowl & grandstand" })),
-                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p3", placeholder: "Concourse interior" })),
-                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p4", placeholder: "Scoreboard / outfield" }))),
+                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p1", src: "uploads/municipal-stadium-02-8515c300.jpg", placeholder: "Stripped-classical exterior facade" })),
+                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p2", src: "uploads/municipal-stadium-05-93869c5d.jpg", placeholder: "Open-air bowl & grandstand" })),
+                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p3", src: "uploads/municipal-stadium-04-29bb25b7.jpg", placeholder: "Concourse interior" })),
+                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p4", src: "uploads/municipal-stadium-03-9a103987.jpg", placeholder: "Scoreboard / outfield" }))),
               e("div", { className: "cm-instr" },
                 Protractor ? e(Protractor, { orientation: D.orientation, degrees: D.orientation_degrees }) : null,
                 e("div", { className: "cm-fdims" },
@@ -235,9 +230,8 @@
           e("div", { className: "cm-ribbon" },
             e("div", { className: "end" }, e("img", { src: "assets/american-league-logo.png", alt: "American League" })),
             e("div", { className: "cell" },
-              e("div", { className: "k" }, "League / Division"),
-              e("div", { className: "v" }, D.league),
-              e("div", { className: "v sub" }, D.division)),
+              e("div", { className: "k" }, "Division"),
+              e("div", { className: "v" }, "American League East")),
             e("div", { className: "cell" },
               e("div", { className: "k" }, "Era"),
               e("div", { className: "v" }, D.classification_era)),
@@ -301,7 +295,7 @@
 
               /* night-game photo */
               e("div", { className: "cm-vphoto" },
-                e(Slot, { id: "cms-night", placeholder: "Night game under the lights \u2014 Aug 13, 1990" }))
+                e(Slot, { id: "cms-night", src: "uploads/municipal-stadium-06.jpg", placeholder: "Night game under the lights \u2014 Aug 13, 1990" }))
             )
           ),
 

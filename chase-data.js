@@ -27,6 +27,7 @@ window.CHASE = {
   coordinates_n: "33.4453\u00b0 N",
   coordinates_w: "112.0669\u00b0 W",
   capacity_opening: "48,500",
+  capacity_current: "48,330",
 
   // ---- Stadium facts (engineering specification sheet) ----
   facts: [
@@ -45,7 +46,7 @@ window.CHASE = {
     ["Location", "Downtown"],
     ["Elevation", "1,085 ft"],
     ["Coordinates", "33.4453\u00b0 N, 112.0669\u00b0 W"],
-    ["Address", "401 E Jefferson Street, Phoenix, AZ 85004"],
+    ["Address", "401 E Jefferson Street\nPhoenix, AZ 85004"],
     ["Cost", "$354 million ($699 million adj.)"],
     ["Financing", "Public-private; Maricopa County sales-tax / public bonds funded the majority, with a Diamondbacks / private contribution"]
   ],
@@ -101,11 +102,10 @@ window.CHASE = {
 
   // ---- Supporting image strip (right page) ----
   strip: [
-    ["chase-s1", "Exterior \u00b7 retractable roof massing"],
-    ["chase-s2", "Interior \u00b7 bowl & playing field"],
-    ["chase-s3", "Center-field videoboard"],
-    ["chase-s4", "Warehouse concourse & hospitality"],
-    ["chase-s5", "Construction \u00b7 steel roof spans, 1997"]
+    ["chase-s1", "the visit", "uploads/chase-field-03.jpg"],
+    ["chase-s2", "the pool", "uploads/chase-field-02.jpg"],
+    ["chase-s3", "dinner over the field", "uploads/chase-field-04.jpg"],
+    ["chase-s4", "aerial", "uploads/chase-field-05-b7e05840.jpg"]
   ],
 
   // ---- Color system (styling tokens; surfaced once as a swatch key if needed) ----

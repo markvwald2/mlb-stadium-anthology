@@ -53,7 +53,7 @@
       const p1 = polar(C, PR, a), p2 = polar(C, PR - (big ? 13 : 7), a);
       ticks.push(e("line", { key: "t" + a, x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1], stroke: big ? ink : ruleStrong, strokeWidth: big ? 1.4 : 0.9, opacity: big ? 0.9 : 0.55 }));
     }
-    const nums = [0, 30, 60, 90].map((a, i) => {
+    const nums = [30, 60, 90].map((a, i) => {
       const p = polar(C, PR + 14, a);
       return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "14px", fill: ink3 } }, a);
     });

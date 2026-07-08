@@ -82,7 +82,7 @@
       // protractor arc + ticks + numerals
       e("path", { d: protArc, fill: "none", stroke: silverSoft, strokeWidth: 1.1, opacity: 0.6 }),
       ticks, nums,
-      e("text", { x: nlab[0], y: nlab[1] - 9, textAnchor: "middle", style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "18px", fill: silver, letterSpacing: ".04em" } }, "N"),
+      e("text", { x: nlab[0], y: nlab[1] - 15, textAnchor: "middle", style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "18px", fill: silver, letterSpacing: ".04em" } }, "N"),
       // north baseline (0°) + bearing needle
       e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: silverSoft, strokeWidth: 1.1, strokeDasharray: "3 3" }),
       e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: bulb, strokeWidth: 2.2, strokeLinecap: "round" }),

@@ -10,7 +10,7 @@
   const Protractor = window.YankeeProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src });
   }
 
   /* ---- Civic Colonnade frieze (studies treatment #7) ---------------------
@@ -228,7 +228,7 @@
       /* ============ LEFT / NIGHT HERO PLATE ============ */
       e("div", { className: "yk-page yk-left", "data-screen-label": "Hero — Yankee Stadium night" },
         e("div", { className: "yk-hero-slot" },
-          e(Slot, { id: "yk-hero", placeholder: "Drop the original Yankee Stadium aerial \u2014 the floodlit triple-deck bowl in the South Bronx at 161st & River Avenue, night game" })),
+          e(Slot, { id: "yk-hero", src: "uploads/old-yankee-stadium-00-main.jpeg", placeholder: "Drop the original Yankee Stadium aerial \u2014 the floodlit triple-deck bowl in the South Bronx at 161st & River Avenue, night game" })),
         e("div", { className: "yk-hero-scrim" }),
         e("div", { className: "yk-pinstripe" }),
         e("div", { className: "yk-hero-frieze-bleed" }),
@@ -290,11 +290,11 @@
 
           /* TIER 1 — facade-bay photo strip */
           e("div", { className: "yk-bays" },
-            bay("yk-b1", "Limestone & concrete exterior elevation along 161st Street"),
-            bay("yk-b2", "Copper / painted concrete frieze detail at the upper-deck roofline"),
-            bay("yk-bp", "Portrait \u2014 facade column or grandstand tier"),
-            bay("yk-b3", "Triple-deck grandstand interior and the bowl"),
-            bay("yk-b5", "Archival aerial \u2014 the monument in the South Bronx grid")
+            bay("yk-b1", "Limestone & concrete exterior elevation along 161st Street", "uploads/old-yankee-stadium-01.jpg"),
+            bay("yk-b2", "Copper / painted concrete frieze detail at the upper-deck roofline", "uploads/old-yankee-stadium-02.jpg"),
+            bay("yk-bp", "Portrait \u2014 facade column or grandstand tier", "uploads/old-yankee-stadium-03.jpg"),
+            bay("yk-b3", "Triple-deck grandstand interior and the bowl", "uploads/old-yankee-stadium-04.jpg"),
+            bay("yk-b5", "Archival aerial \u2014 the monument in the South Bronx grid", "uploads/old-yankee-stadium-05.jpg")
           ),
 
           /* metadata ribbon */
@@ -428,9 +428,9 @@
       )
     );
 
-    function bay(id, ph) {
+    function bay(id, ph, src) {
       return e("div", { className: "yk-bay" },
-        e("div", { className: "frame" }, e(Slot, { id: id, placeholder: ph })));
+        e("div", { className: "frame" }, e(Slot, { id: id, placeholder: ph, src: src })));
     }
     function dim(v, l) {
       return e("div", { className: "chip" },

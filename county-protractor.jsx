@@ -33,7 +33,7 @@
     const nums = [90, 135, 180].filter((a) => a !== deg).map((a, i) => {
       const p = polar(C, PR + 13, a);
       return e("text", { key: "n" + i, x: p[0], y: p[1] + 3.5, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "9px", fill: muted } }, a);
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "10px", fill: muted } }, a);
     });
     const arcA = polar(C, PR, 90), arcB = polar(C, PR, 180);
     const arc = "M " + arcA[0].toFixed(1) + " " + arcA[1].toFixed(1) + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -58,7 +58,7 @@
       e("circle", { cx: ntip[0], cy: ntip[1], r: 2.6, fill: red }),
       e("circle", { cx: C[0], cy: C[1], r: 2.4, fill: amber }),
       e("text", { x: dlab[0], y: dlab[1] + 4, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "12px", fill: red } }, deg + "\u00b0")
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "14px", fill: red } }, deg + "\u00b0")
     );
   }
 

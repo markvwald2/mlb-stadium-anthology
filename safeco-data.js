@@ -45,17 +45,17 @@ window.TMOBILE = {
     ["Stadium Type", "Open-air, retractable umbrella roof"],
     ["Roof", "Retractable canopy (not enclosed)"],
     ["Facade", "Brick & exposed steel; steel canopy"],
-    ["Capacity (Current)", "47,943"],
+    ["CAPACITY", "47,943"],
     ["Preceded By", "Kingdome"],
     ["Address", "1250 1st Ave S, Seattle, WA 98134"]
   ],
 
   // ---- Construction / lifecycle ----
   lifecycle: [
-    ["Construction Start", "Mar 8, 1997"],
+    ["GROUNDBREAKING", "Mar 8, 1997"],
     ["Opened", "Jul 15, 1999"],
     ["Cost", "$517 million ($1 billion adjusted)"],
-    ["Financing", "Public-private; WA State & King County tax-backed bonds (majority) + Mariners / private"]
+    ["Financing", "Public-private; WA State & King County tax-backed bonds (majority) plus Mariners and private"]
   ],
 
   // ---- Name history + renovations callouts (lifecycle bay) ----
@@ -63,7 +63,7 @@ window.TMOBILE = {
   renovations: "2019 rename; roof, scoreboard, seating, club & hospitality upgrades; outfield fences moved in before the 2013 season.",
 
   // ---- Setting / classification tags (roof-bay tags) ----
-  tags: ["Urban / Industrial-Edge", "Downtown-Edge", "Rail-Adjacent"],
+  tags: ["Urban / Industrial-Edge", "Downtown-Edge", "Rail-Adjacent", "Brick & Steel", "Open-Air"],
   classification_line: "Retro-Classic Renaissance \u00b7 Weather-Protection Engineering",
 
   // ---- Field dimensions module (the small surveying instrument) ----
@@ -115,23 +115,19 @@ window.TMOBILE = {
 
   // ---- Stadium context (ONE unified body — museum wall text, paragraph breaks intact) ----
   stadium_context: [
-    "Safeco Field belongs to the stadium history of Seattle because it was built to solve a specific civic and baseball problem: to replace the Kingdome with a baseball-specific venue that kept Seattle\u2019s game outdoors while protecting against persistent rain. Its placement and ownership model reflected the Pacific Northwest\u2019s climate, the Mariners\u2019 post-1995 popularity, and the late-1990s demand for modern revenue spaces, making the ballpark a product of its metropolitan moment rather than simply a neutral venue for games. The building\u2019s identity is therefore inseparable from the economics, transportation assumptions, and expansion logic that shaped its commission.",
-    "Architecturally, the park is best understood through industrial retro ballpark with engineered weather protection. Its seating geometry, exterior language, and circulation patterns expressed brick, exposed steel, retractable canopy, real grass, and views toward the city, rail yards, port, and mountains. Those choices positioned the stadium within the Retro-Classic Renaissance of MLB design, when clubs and cities were negotiating new expectations for capacity, television, premium inventory, civic image, and the increasingly managed experience of spectatorship.",
-    "Updates have modernized hospitality, technology, and fan movement while preserving the unusual roof concept: shelter without a sealed dome. The changes did more than update finishes or add amenities. They altered how the stadium performed as a business asset, how it framed the field, and how it translated baseball into a broader entertainment product. In that sense, the building records not only one architectural idea but several layers of baseball economics pressed into the same site.",
-    "The stadium\u2019s importance is clearest when measured against the parks that came before and after it. It corrected the Kingdome\u2019s enclosed multipurpose experience without abandoning Seattle\u2019s weather reality. It can read as typical, transitional, or influential depending on which layer is being examined, but it consistently reveals how MLB venues respond to larger pressures: regional growth, public finance, media presentation, team branding, and the search for a more profitable game-day environment.",
-    "For a stadium anthology, Safeco Field is useful because it resists a single category. It shows how regional climate can produce a distinct version of the retro ballpark rather than a generic downtown template. Its value lies in the way the building makes baseball\u2019s design priorities visible: where the sport wanted to be located, what kind of public it imagined, and how the architecture of watching baseball changed across decades.",
-    "Safeco Field\u2019s setting is defined by Seattle\u2019s SoDo district, between downtown, rail yards, port infrastructure, highways, and the Seahawks\u2019 stadium. The surrounding geography matters because it determines how the ballpark is approached, how it is photographed, and how strongly it participates in the daily urban fabric beyond game days.",
-    "The park is embedded in an industrial and event-district landscape rather than a traditional retail neighborhood. In planning terms, the site reveals the relationship between baseball and infrastructure: highways, rail lines, parking fields, transit nodes, waterfronts, downtown blocks, or redevelopment districts become part of the stadium experience as much as the seating bowl itself.",
-    "Light rail, commuter rail, ferries, garages, and highway approaches all shape the approach, with crowd movement braided through working infrastructure. The result is a ballpark environment whose character comes from more than architecture. Arrival sequences, edge conditions, views, climate, and land-use patterns all shape how the stadium sits in memory and how it fits into the wider history of MLB place-making."
+    "Safeco Field replaced the Kingdome by correcting the central contradiction of Seattle baseball: the city needed weather protection, but the Mariners needed a place that felt less like baseball inside a sealed multipurpose container. The Kingdome had provided cover and capacity, yet its fixed-dome form belonged to an era when flexibility often mattered more than texture. Safeco Field kept protection while reopening the game to air, views, and district character.",
+    "The site on the downtown industrial edge gave the new ballpark a vocabulary the Kingdome lacked. Brick, exposed steel trusses, and the massive retractable canopy connected the building to a warehouse-district setting without trapping it in a nostalgic costume. The roof was not meant to create an indoor stadium so much as an umbrella over an open-air park. That distinction shaped the entire identity of the building.",
+    "The design bargain was finely calibrated. Seattle gained a baseball-only venue with urban materials and better sightlines, while retaining the ability to manage rain. The roof, scoreboard, seating, club, video, hospitality, and fan-space improvements over time have kept the park aligned with contemporary expectations for an MLB venue, but the essential premise has remained intact: shield the event without enclosing the experience.",
+    "Now T-Mobile Park, the stadium matters because it represents one of the retro era\u2019s smarter adaptations to climate. It did not reject the lesson of the Kingdome entirely. It kept the need for protection and changed the architectural answer. In the anthology, it stands as a bridge between dome-era pragmatism and the later preference for city-facing, baseball-specific parks."
   ],
 
   // ---- Supporting photography (roof bays — structural observations) ----
   // each: [slot id, drop guidance]
   panels: [
-    ["tmobile-p1", "Exterior \u00b7 brick facade & exposed steel"],
-    ["tmobile-p2", "Retractable canopy roof structure"],
-    ["tmobile-p3", "Seating bowl & the field"],
-    ["tmobile-p4", "Concourse steelwork"],
-    ["tmobile-p5", "Safeco-era / construction archival image"]
+    ["tmobile-p1", "Exterior \u00b7 brick facade & exposed steel", "assets/safeco-p1.jpg"],
+    ["tmobile-p2", "Retractable canopy roof structure", "assets/safeco-p2.jpg"],
+    ["tmobile-p3", "Seating bowl & the field", "assets/safeco-p3.jpg"],
+    ["tmobile-p4", "Concourse steelwork", "assets/safeco-p4.jpg"],
+    ["tmobile-p5", "Safeco-era / construction archival image", "assets/safeco-p5.jpg"]
   ]
 };

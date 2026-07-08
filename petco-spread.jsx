@@ -25,8 +25,8 @@
   const SEPS = [[393, 96, 944], [935, 96, 944]];
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
-      style: { width: "100%", height: "100%" } });
+    return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect",
+      style: { width: "100%", height: "100%" } }, props.src ? { src: props.src } : {}));
   }
   function BayHead(props) {
     return e("div", { className: "pk-bayhead" },
@@ -39,7 +39,7 @@
       e("div", { className: "k" }, row[0]),
       e("div", { className: "v" },
         e("span", { className: "vm" }, row[1]),
-        row[2] ? e("span", { className: "vs" }, row[2]) : null));
+        row[2] ? e("span", { className: row[3] === "vm" ? "vm" : "vs" }, row[2]) : null));
   }
 
   /* weather icons (line drafting) */
@@ -91,7 +91,7 @@
       /* ============== LEFT PAGE / HERO ============== */
       e("div", { className: "pk-page pk-left", "data-screen-label": "Petco Park \u2014 hero" },
         e("div", { className: "pk-hero-slot" },
-          e(Slot, { id: "petco-hero",
+          e(Slot, { id: "petco-hero", src: "uploads/petco-park-00-main-5eb1df62.jpg",
             placeholder: "Drop the Petco Park dusk district aerial \u2014 the preserved Western Metal Supply building, downtown East Village street grid, Gallagher Square, open concourses & the bay beyond. Avoid field-centered framing." })),
         e("div", { className: "pk-hero-scrim" }),
         e("div", { className: "pk-folio" }, "VISIT", e("b", null, "NO. " + D.visit_order)),
@@ -140,12 +140,12 @@
           e("div", { className: "pk-sched" }, D.identity.map(schedRow)),
           e(Sub, null, "Specifications"),
           e("div", { className: "pk-sched" }, D.specs.map(schedRow)),
-          e("div", { className: "pk-sched", style: { marginTop: "4px" } },
-            schedRow(["Era / Classification", "Retro Classic"], "ec"),
+          e("div", { className: "pk-sched", style: { borderTop: "1px solid var(--rule)" } },
+            schedRow(["Era", "Retro Classic"], "ec"),
             schedRow(["Preceded By", D.preceded_by], "pb")),
           e(Sub, null, "Field Geometry"),
           window.PetcoProtractor ? e("div", { style: { display: "flex", justifyContent: "center" } },
-            e("div", { style: { width: "232px" } },
+            e("div", { style: { width: "198px" } },
               e(window.PetcoProtractor, { lf: F.left_field, cf: F.center_field, rf: F.right_field,
                 orientation: F.orientation, degrees: F.degrees }))) : null),
 
@@ -154,14 +154,16 @@
           e(BayHead, { title: "The Warehouse Corner" }),
           e("div", { className: "pk-wall" },
             e("div", { className: "pk-prose" },
-              e("p", { key: "p0" }, D.stadium_context[0]),
+              e("p", { key: "p0" },
+                e("span", { className: "fw-dropcap" }, D.stadium_context[0].charAt(0)),
+                D.stadium_context[0].slice(1)),
               e("p", { key: "p1" }, D.stadium_context[1]),
               e("figure", { className: "pk-window pk-ctxfig", key: "f0" },
-                e(Slot, { id: D.windows[0][0], placeholder: D.windows[0][1] })),
+                e(Slot, { id: D.windows[0][0], placeholder: D.windows[0][1], src: D.windows[0][2] })),
               e("p", { key: "p2" }, D.stadium_context[2]),
               e("p", { key: "p3" }, D.stadium_context[3]),
               e("figure", { className: "pk-window pk-ctxfig", key: "f1" },
-                e(Slot, { id: D.windows[1][0], placeholder: D.windows[1][1] }))))),
+                e(Slot, { id: D.windows[1][0], placeholder: D.windows[1][1], src: D.windows[1][2] }))))),
 
         /* ---------- BAY D : VISIT INFORMATION (game artifact) ---------- */
         e("div", { className: "pk-bay", style: bayStyle(BAYS.d) },

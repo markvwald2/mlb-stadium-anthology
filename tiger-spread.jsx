@@ -8,7 +8,7 @@
   const Protractor = window.TigerProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src });
   }
 
   /* faint plat / survey linework drawn over the aerial plate */
@@ -86,7 +86,7 @@
       /* ============ LEFT / AERIAL PLATE ============ */
       e("div", { className: "ts-page ts-left" },
         e("div", { className: "ts-hero-slot" },
-          e(Slot, { id: "ts-hero", placeholder: "Drop the Tiger Stadium aerial \u2014 the ballpark inside the Corktown street grid at Michigan & Trumbull" })),
+          e(Slot, { id: "ts-hero", src: "uploads/tiger-stadium-00-main-31a229d7.jpg", placeholder: "Drop the Tiger Stadium aerial \u2014 the ballpark inside the Corktown street grid at Michigan & Trumbull" })),
         e("div", { className: "ts-hero-scrim" }),
         e(PlatLines, null),
         e("div", { className: "ts-street michigan" }, "Michigan Avenue"),
@@ -197,9 +197,9 @@
 
               /* photo column */
               e("div", { className: "ts-photos" },
-                photo("ts-p1", "Exterior", "4:3", "Brick & steel facade \u2014 Trumbull Avenue elevation"),
-                photo("ts-p2", "Seating Bowl", "4:3", "Double-decked grandstand interior"),
-                photo("ts-p3", "Concourse", "4:3", "Steel-column lower concourse"))
+                photo("ts-p1", "Exterior", "4:3", "Brick & steel facade \u2014 Trumbull Avenue elevation", "uploads/tiger-stadium-01.jpg"),
+                photo("ts-p2", "Seating Bowl", "4:3", "Double-decked grandstand interior", "uploads/tiger-stadium-02.jpg"),
+                photo("ts-p3", "Concourse", "4:3", "Steel-column lower concourse", "uploads/tiger-stadium-03.jpg"))
             )
           ),
 
@@ -252,24 +252,22 @@
                 virow("Trip", D.trip_name))
             ),
 
-            /* weather strip */
+            /* weather ribbon — colophon rides as the final cell */
             e("div", { className: "ts-weather" },
               wx("temp", D.temperature, "Temperature"),
               wx("sun", D.conditions, "Conditions"),
               wx("wind", D.wind, "Wind"),
-              wx("drop", D.humidity, "Humidity"))
-          ),
-
-          /* footer colophon */
-          e("div", { className: "ts-foot" },
-            e("span", { className: "end" }, "The Corner Lot"))
+              wx("drop", D.humidity, "Humidity"),
+              e("div", { className: "ts-wx ts-colophon" },
+                e("span", { className: "end" }, "The Corner Lot")))
+          )
         )
       )
     );
 
-    function photo(id, name, ratio, ph) {
+    function photo(id, name, ratio, ph, src) {
       return e("div", { className: "ts-pcard" },
-        e("div", { className: "frame" }, e(Slot, { id: id, placeholder: ph })));
+        e("div", { className: "frame" }, e(Slot, { id: id, placeholder: ph, src: src })));
     }
     function wx(icon, val, lab) {
       return e("div", { className: "ts-wx" },

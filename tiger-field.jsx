@@ -115,15 +115,13 @@
       ),
       e("path", { d: arc, fill: "none", stroke: ink3, strokeWidth: 1 }),
       ticks,
-      e("text", { x: nlab[0], y: nlab[1] - 4, textAnchor: "middle",
-        style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "12px", fill: ink } }, "N"),
       // bearing needle
       e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink3, strokeWidth: 0.9, strokeDasharray: "2.5 2.5" }),
       e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: orange, strokeWidth: 2, strokeLinecap: "round" }),
       e("circle", { cx: ntip[0], cy: ntip[1], r: 2.6, fill: orange }),
       e("circle", { cx: C[0], cy: C[1], r: 2.4, fill: ink }),
       e("text", { x: dlab[0], y: dlab[1] + 4, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "12px", fill: orange } }, deg + "\u00b0")
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "21px", fill: orange } }, deg + "\u00b0")
     );
   }
 

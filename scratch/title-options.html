@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Safeco title options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Zilla+Slab:wght@700;900&family=DM+Serif+Display&family=Saira+Condensed:wght@700;800&family=Big+Shoulders+Display:wght@800&family=Oswald:wght@600&family=Anton&family=Spectral:ital@0;1&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper-hi:#F3ECDC; --green-hi:#1C766D;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:#0C1E22; font-family:"Spectral",serif; color:#F2ECDC;
+    padding:40px 56px 60px;}
+  h2{font-family:"Space Mono",monospace; font-size:13px; letter-spacing:.28em; text-transform:uppercase;
+    color:rgba(191,215,210,.6); margin:0 0 4px;}
+  .note{font-family:"Spectral",serif; font-style:italic; font-size:14px; color:rgba(242,236,220,.5); margin:0 0 14px;}
+  .opt{padding:30px 0 34px; border-bottom:1px solid rgba(191,215,210,.14);}
+  .title{margin:0; text-transform:uppercase; color:#F2ECDC; line-height:.82;}
+  .l{display:block;}
+  .sub{display:flex; align-items:center; gap:16px; margin-top:16px;}
+  .sub .bar{width:44px; height:2.5px; background:var(--green-hi); flex:none;}
+  .sub .txt{font-family:"Oswald",sans-serif; font-weight:600; font-size:20px; letter-spacing:.3em; color:#BFD7D2;}
+
+  /* 1 Fjalla One */
+  .f1 .title{font-family:"Fjalla One",sans-serif; font-weight:400; font-size:96px; letter-spacing:.01em;}
+  /* 2 Zilla Slab 900 */
+  .f2 .title{font-family:"Zilla Slab",serif; font-weight:900; font-size:92px; letter-spacing:.005em; line-height:.86;}
+  /* 3 DM Serif Display */
+  .f3 .title{font-family:"DM Serif Display",serif; font-weight:400; font-size:94px; letter-spacing:.005em; line-height:.86;}
+  /* 4 Saira Condensed 800 */
+  .f4 .title{font-family:"Saira Condensed",sans-serif; font-weight:800; font-size:104px; letter-spacing:.01em;}
+  /* 5 Big Shoulders Display 800 */
+  .f5 .title{font-family:"Big Shoulders Display",sans-serif; font-weight:800; font-size:104px; letter-spacing:.005em;}
+  /* 6 Oswald 600 (current-system workhorse) */
+  .f6 .title{font-family:"Oswald",sans-serif; font-weight:600; font-size:96px; letter-spacing:.02em;}
+</style>
+</head>
+<body>
+  <div class="opt f1">
+    <h2>1 — Fjalla One</h2>
+    <p class="note">Sturdy humanist condensed. Industrial, understated — reads like painted structural steel signage.</p>
+    <h1 class="title"><span class="l">Safeco</span><span class="l">Field</span></h1>
+    <div class="sub"><span class="bar"></span><span class="txt">Seattle · Washington</span></div>
+  </div>
+  <div class="opt f2">
+    <h2>2 — Zilla Slab 900</h2>
+    <p class="note">Slab serif. Archival / typewriter-adjacent — pairs directly with the Space Mono data type.</p>
+    <h1 class="title"><span class="l">Safeco</span><span class="l">Field</span></h1>
+    <div class="sub"><span class="bar"></span><span class="txt">Seattle · Washington</span></div>
+  </div>
+  <div class="opt f3">
+    <h2>3 — DM Serif Display</h2>
+    <p class="note">High-contrast serif. Elegant engraved nameplate — premium, ship-nameplate feel.</p>
+    <h1 class="title"><span class="l">Safeco</span><span class="l">Field</span></h1>
+    <div class="sub"><span class="bar"></span><span class="txt">Seattle · Washington</span></div>
+  </div>
+  <div class="opt f4">
+    <h2>4 — Saira Condensed 800</h2>
+    <p class="note">Geometric condensed. Engineering / technical — echoes the annotation and diagram vocabulary.</p>
+    <h1 class="title"><span class="l">Safeco</span><span class="l">Field</span></h1>
+    <div class="sub"><span class="bar"></span><span class="txt">Seattle · Washington</span></div>
+  </div>
+  <div class="opt f5">
+    <h2>5 — Big Shoulders Display 800</h2>
+    <p class="note">Athletic industrial. Broad, confident — civic-signage energy without going full poster.</p>
+    <h1 class="title"><span class="l">Safeco</span><span class="l">Field</span></h1>
+    <div class="sub"><span class="bar"></span><span class="txt">Seattle · Washington</span></div>
+  </div>
+  <div class="opt f6">
+    <h2>6 — Oswald 600 (in-system)</h2>
+    <p class="note">The book's existing workhorse. Cohesive, quiet — no new font introduced.</p>
+    <h1 class="title"><span class="l">Safeco</span><span class="l">Field</span></h1>
+    <div class="sub"><span class="bar"></span><span class="txt">Seattle · Washington</span></div>
+  </div>
+</body>
+</html>

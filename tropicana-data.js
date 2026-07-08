@@ -36,12 +36,12 @@ window.TROPICANA = {
   specs: [
     ["Stadium Type", "Fixed-dome multipurpose stadium", "adapted for baseball"],
     ["Era", "Multipurpose Shared Use"],
-    ["Roof", "Fixed dome", "slanted PTFE / fiberglass tensile membrane"],
+    ["Status", "Active"],
     ["Surface", "Artificial turf", "Shaw Sports Turf TruHop synthetic turf"],
     ["Architect", "HOK Sport \u00b7 Lescher & Mahoney"],
     ["Facade", "Concrete structure; slanted PTFE / fiberglass fabric dome; glazed rotunda entries"],
     ["Capacity", "25,025", "opened at 45,000"],
-    ["Status", "Active"],
+    ["Roof", "Fixed dome", "slanted PTFE / fiberglass tensile membrane"],
     ["Financing", "Publicly financed by the City of St. Petersburg as a fixed-dome stadium intended to attract MLB"],
     ["Address", "1 Tropicana Drive St. Petersburg, Florida 33705"],
     ["Coordinates", "27.7683\u00b0 N, 82.6533\u00b0 W"],
@@ -50,13 +50,13 @@ window.TROPICANA = {
 
   /* ---- Bay E · construction / lifecycle data ---- */
   lifecycle: [
-    ["Construction Start", "Nov 22, 1986"],
+    ["Groundbreaking", "Nov 22, 1986"],
     ["Location", "Downtown edge \u00b7 St. Petersburg"],
     ["Opening Day", "Mar 3, 1990", "as Florida Suncoast Dome"],
     ["MLB Tenant", "Rays, 1998\u2013present"],
     ["Name History", "Florida Suncoast Dome (1990\u201393)\nThunderDome (1993\u201396)\nTropicana Field (1996\u2013present)"],
     ["Original Cost", "$130M (1990)", "$320M adjusted"],
-    ["Renovations", "Field, catwalk, lighting, scoreboard, seating, turf, ray tank & fan-space updates; storm-damage & relocation issues in the 2020s"]
+    ["Renovations", "Field, catwalk, lighting, scoreboard, seating, turf, ray tank & fan-space updates; storm-damage & forced relocation during the 2025 season"]
   ],
 
   /* ---- field geometry (small protractor instrument, Bay E) ---- */
@@ -80,18 +80,18 @@ window.TROPICANA = {
   stadium_context: [
     "Tropicana Field is one of the strangest MLB stadium stories because it was not originally the answer to an existing major-league franchise\u2019s ordinary facility problem. It was a fixed-dome civic bet that St. Petersburg could build its way into major-league relevance. When the Rays arrived in 1998, the building finally had the tenant it had been waiting for, but it also carried the limitations of a late multipurpose dome adapted for baseball.",
     "The downtown-edge site gave St. Petersburg a major sports address, yet the building\u2019s interior condition mattered more than its urban setting. The fixed roof, catwalks, artificial turf, and enclosed environment made climate control the defining experience. In Florida, shelter had obvious value, but the stadium\u2019s form also separated baseball from the outdoor conditions, views, and urban texture that the retro-classic era was beginning to restore elsewhere.",
-    "The design bargain was blunt. Tropicana Field offered certainty, shade, and a controllable interior, but at the cost of baseball-specific atmosphere. Field changes, catwalk adjustments, lighting, scoreboards, seating, turf, the ray tank, and fan-space updates have all tried to make the building more workable and more distinctive. Later storm-damage and relocation issues in the 2020s only reinforced the sense that the park has always existed under pressure.",
+    "The design bargain was blunt. Tropicana Field offered certainty, shade, and a controllable interior, but at the cost of baseball-specific atmosphere and ambiance. Field changes, catwalk adjustments, lighting, scoreboards, seating, turf, the ray tank, and fan-space updates have all tried to make the building more workable and more distinctive. Later storm-damage and a forced relocation during the 2025 season only reinforced the sense that the park has always existed under pressure.",
     "Tropicana Field matters because it shows the limits of the dome-era solution at the moment baseball was moving away from it. It is not merely unpopular or odd; it is evidence of a civic strategy that valued landing a franchise and controlling climate more than producing a traditional ballpark. Its unresolved status makes it feel less like a completed stadium chapter than an argument baseball has never fully settled in Tampa Bay."
   ],
 
   /* ---- Bay A · two stacked roof-bay photo strips (no captions) ----
      [slot id, drop-guidance placeholder] ---- */
   roof_photos: [
-    ["trop-roof1", "Dome interior \u2014 slanted white PTFE ceiling, catwalk rings & suspended lighting over the bowl. Looking up into the enclosed roof volume."],
-    ["trop-roof2", "Catwalk / roof-truss detail \u2014 the suspended ring walkways and structural hardware spanning the dome."]
+    ["trop-roof1", "Dome interior \u2014 slanted white PTFE ceiling, catwalk rings & suspended lighting over the bowl. Looking up into the enclosed roof volume.", "uploads/tropicana-field-01.jpg"],
+    ["trop-roof2", "Catwalk / roof-truss detail \u2014 the suspended ring walkways and structural hardware spanning the dome.", "uploads/tropicana-field-02.jpg"]
   ],
   /* Bay E supporting photo */
-  support_photo: ["trop-supp1", "Interior concourse or glazed rotunda entry \u2014 concrete structure, cool artificial light, the synthetic field beyond."],
+  support_photo: ["trop-supp1", "Interior concourse or glazed rotunda entry \u2014 concrete structure, cool artificial light, the synthetic field beyond.", "uploads/tropicana-field-03.jpg"],
 
   /* ---- Bay D · featured visit / game (game-operations display) ---- */
   visit: {

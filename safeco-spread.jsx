@@ -16,8 +16,38 @@
 
   function Slot(props) {
     return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect" },
+      props.src ? { src: props.src } : {},
       props.style ? { style: props.style } : {}));
   }
+  // instrument-style compass rose — the Mariners' nautical identity, drawn as a
+  // navigation instrument to match the book's cartographic/diagram vocabulary.
+  function CompassRose() {
+    const C = 64, ticks = [];
+    for (let a = 0; a < 360; a += 15) {
+      const card = (a % 90 === 0), major = (a % 45 === 0);
+      const r0 = card ? 40 : (major ? 46 : 49), r1 = 55;
+      const rad = a * Math.PI / 180;
+      ticks.push(e("line", { key: "t" + a,
+        x1: (C + r0 * Math.sin(rad)).toFixed(1), y1: (C - r0 * Math.cos(rad)).toFixed(1),
+        x2: (C + r1 * Math.sin(rad)).toFixed(1), y2: (C - r1 * Math.cos(rad)).toFixed(1),
+        stroke: "#BFD7D2", strokeWidth: card ? 1.6 : (major ? 1.1 : 0.7),
+        opacity: card ? 0.85 : (major ? 0.55 : 0.32) }));
+    }
+    return e("svg", { className: "tm-compass", viewBox: "0 0 128 128" },
+      e("circle", { cx: C, cy: C, r: 58, fill: "none", stroke: "#BFD7D2", strokeWidth: 1.3, opacity: 0.55 }),
+      e("circle", { cx: C, cy: C, r: 38, fill: "none", stroke: "#BFD7D2", strokeWidth: 0.8, opacity: 0.32 }),
+      ticks,
+      // north/south needle: elongated two-point star, north filled green-hi
+      e("polygon", { points: "64,14 71,64 64,58 57,64", fill: "#1C766D" }),
+      e("polygon", { points: "64,114 57,64 64,70 71,64", fill: "#BFD7D2", opacity: 0.55 }),
+      // east/west arms
+      e("polygon", { points: "14,64 64,57 58,64 64,71", fill: "#BFD7D2", opacity: 0.42 }),
+      e("polygon", { points: "114,64 64,71 70,64 64,57", fill: "#BFD7D2", opacity: 0.42 }),
+      e("circle", { cx: C, cy: C, r: 3.4, fill: "#0C1E22", stroke: "#BFD7D2", strokeWidth: 1 }),
+      e("text", { x: C, y: 9, textAnchor: "middle", fontFamily: "Space Mono, monospace",
+        fontSize: 11, letterSpacing: 1, fill: "#BFD7D2", opacity: 0.9 }, "N"));
+  }
+
   function SecHead(props) {
     return e("div", { className: "tm-h" + (props.green ? " green" : "") },
       e("span", { className: "t" }, props.title),
@@ -63,7 +93,7 @@
       const p1 = [cx + R * Math.sin(a1 * Math.PI / 180), cy - R * Math.cos(a1 * Math.PI / 180)];
       ribs.push(e("path", { key: "rib" + i,
         d: "M " + p0[0].toFixed(1) + " " + p0[1].toFixed(1) + " A " + R + " " + R + " 0 0 1 " + p1[0].toFixed(1) + " " + p1[1].toFixed(1),
-        fill: "none", stroke: "#6E777D", strokeWidth: i === 0 ? 2.2 : 1.5, opacity: i === 0 ? 0.42 : 0.27 }));
+        fill: "none", stroke: "#6E777D", strokeWidth: i === 0 ? 1.4 : 0.9, opacity: i === 0 ? 0.2 : 0.12 }));
     });
     // radial truss members
     const spokes = [];
@@ -72,7 +102,7 @@
       const pa = [cx + Ra * Math.sin(a * Math.PI / 180), cy - Ra * Math.cos(a * Math.PI / 180)];
       const pb = [cx + Rb * Math.sin(a * Math.PI / 180), cy - Rb * Math.cos(a * Math.PI / 180)];
       spokes.push(e("line", { key: "sp" + a, x1: pa[0].toFixed(1), y1: pa[1].toFixed(1), x2: pb[0].toFixed(1), y2: pb[1].toFixed(1),
-        stroke: "#6E777D", strokeWidth: 1.2, opacity: 0.22 }));
+        stroke: "#6E777D", strokeWidth: 0.8, opacity: 0.1 }));
     }
     return e("svg", { className: "tm-armature", viewBox: "0 0 1275 1088", preserveAspectRatio: "none" }, ribs, spokes);
   }
@@ -82,7 +112,7 @@
     return e("div", { className: "tm-strip" },
       D.panels.map((pn, i) =>
         e("figure", { className: "tm-plate", key: i },
-          e(Slot, { id: pn[0], placeholder: pn[1] }))));
+          e(Slot, { id: pn[0], placeholder: pn[1], src: pn[2] }))));
   }
 
   function Spread() {
@@ -91,7 +121,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "tm-page tm-left", "data-screen-label": "Safeco Field — hero" },
         e("div", { className: "tm-hero-slot" },
-          e(Slot, { id: "tmobile-hero", placeholder: "Drop the Safeco Field hero \u2014 elevated / aerial view where the retractable steel canopy is unmistakable above the lit field, with the SoDo rail corridor, port cranes & downtown edge beyond" })),
+          e(Slot, { id: "tmobile-hero", src: "assets/safeco-hero.jpg", placeholder: "Drop the Safeco Field hero \u2014 elevated / aerial view where the retractable steel canopy is unmistakable above the lit field, with the SoDo rail corridor, port cranes & downtown edge beyond" })),
         e("div", { className: "tm-hero-scrim" }),
 
         e("img", { className: "tm-hero-logo", src: "assets/seattle-mariners-logo.svg", alt: "Seattle Mariners" }),
@@ -107,27 +137,18 @@
         e("div", { className: "tm-hero-title" },
           D.name_lines.map((ln, i) => e("h1", { className: "tm-name", key: i }, ln)),
           e("div", { className: "tm-sub" },
-            e("span", { className: "bar" }),
-            e("span", { className: "txt" }, D.city + ", " + D.state))),
+            e("span", { className: "place" }, D.city + " \u00b7 " + D.state))),
 
-        // engineering-annotation metadata stack, lower-right of the hero
+        // engineering annotation — single-line metadata, lower-left
         e("div", { className: "tm-annot" },
-          e("div", { className: "tm-annot-row" },
-            e("span", { className: "al" }, "COORD"),
-            e("span", { className: "av" }, D.coord_lines[0]), e("span", { className: "av" }, D.coord_lines[1])),
-          e("div", { className: "tm-annot-row" },
-            e("span", { className: "al" }, "ELEV"),
-            e("span", { className: "av" }, D.elevation)),
-          e("div", { className: "tm-annot-row" },
-            e("span", { className: "al" }, "OPENED"),
-            e("span", { className: "av" }, "1999"))),
-
-        e("div", { className: "tm-marks" },
-          e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-          e("span", { className: "divln" }),
-          e("img", { className: "al", src: "assets/american-league-logo.png", alt: "American League" }),
-          e("span", { className: "divln" }),
-          e("span", { className: "dv" }, "American League \u00b7 " + D.division))
+          e("span", { className: "al" }, "COORD"),
+          e("span", { className: "av" }, D.coord_lines[0] + " \u00b7 " + D.coord_lines[1]),
+          e("span", { className: "sep" }),
+          e("span", { className: "al" }, "ELEV"),
+          e("span", { className: "av" }, D.elevation),
+          e("span", { className: "sep" }),
+          e("span", { className: "al" }, "OPENED"),
+          e("span", { className: "av" }, "1999"))
       ),
 
       /* ================= RIGHT PAGE / THE ROOF BAYS ================= */
@@ -156,15 +177,15 @@
         e("div", { className: "tm-shelf" },
           // bay 1 — stadium facts
           e("div", { className: "tm-bay b1" },
-            e(SecHead, { title: "Stadium Facts", note: "MUSEUM RECORD" }),
+            e(SecHead, { title: "Ballpark Facts", note: "MUSEUM RECORD" }),
             e("div", { className: "tm-facts" }, D.facts.map(factRow))),
 
           // bay 2 — construction & lifecycle + name history
           e("div", { className: "tm-bay b2" },
-            e(SecHead, { title: "Construction & Lifecycle", note: "1997\u2013PRESENT" }),
+            e(SecHead, { title: "CONSTRUCTION", note: "1997\u2013PRESENT" }),
             e("div", { className: "tm-facts" }, D.lifecycle.map(factRow)),
             e("div", { className: "tm-namehist" },
-              e("div", { className: "lab" }, "Name History"),
+              e("div", { className: "lab" }, "Evolution"),
               e("div", { className: "val" },
                 D.name_history.split(/(\([^)]*\))/).map(function (s, i) {
                   return /^\(/.test(s) ? e("span", { key: i, className: "yr" }, s) : s;
@@ -187,15 +208,17 @@
                     e("img", { src: "assets/american-league-logo.png", alt: "American League" }),
                     e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" })),
                   e("div", { className: "tm-tags" },
-                    D.tags.map((t, i) => e("span", { className: "tm-tag", key: i }, t))),
-                  e("div", { className: "tm-class" }, D.classification_line)))))
+                    D.tags.map((t, i) => e("span", { className: "tm-tag", key: i }, t)))))),
+            e("div", { className: "tm-class" }, D.classification_line))
         ),
 
         /* ---- unified Stadium Context, full-width 3-bay text field ---- */
         e("div", { className: "tm-context" },
-          e(SecHead, { title: "The Rolling Roof", note: "ONE UNIFIED RECORD", green: true }),
+          e(SecHead, { title: "The Rolling Roof", note: "SODO MOJO", green: true }),
           e("div", { className: "tm-prose" },
-            D.stadium_context.map((p, i) => e("p", { key: i }, p)))
+            D.stadium_context.map((p, i) => i === 0
+              ? e("p", { key: i }, e("span", { className: "fw-dropcap" }, p.charAt(0)), p.slice(1))
+              : e("p", { key: i }, p)))
         ),
 
         /* ============ VISIT SECTION ============ */

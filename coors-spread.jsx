@@ -181,13 +181,15 @@
                   React.createElement("div", { className: "sc-body" },
                     React.createElement("div", { className: "sc-date" }, D.box.date + "  \u00b7  Final / 14 innings"),
                     Scoreboard(D.box),
-                    React.createElement("div", { className: "sc-facts" },
-                      scFact("Attendance", D.attendance),
-                      scFact("First Pitch", D.start_time + " " + D.time_zone),
-                      scFact("Game Length", D.game_duration),
-                      scFact("Winning Pitcher", D.winning_pitcher),
-                      scFact("Losing Pitcher", D.losing_pitcher),
-                      scFact("Save", D.save_pitcher)
+                    React.createElement("div", { className: "sc-facts-line" },
+                      scInline("First Pitch", D.start_time + " " + D.time_zone),
+                      scInline("Game Length", D.game_duration),
+                      scInline("Attendance", D.attendance)
+                    ),
+                    React.createElement("div", { className: "sc-facts-line" },
+                      scInline("W", D.winning_pitcher),
+                      scInline("L", D.losing_pitcher),
+                      scInline("Save", D.save_pitcher)
                     )
                   )
                 ),
@@ -265,6 +267,12 @@
     return React.createElement("div", { className: "scf" },
       React.createElement("div", { className: "scf-l" }, label),
       React.createElement("div", { className: "scf-v" }, value));
+  }
+
+  function scInline(label, value) {
+    return React.createElement("span", { className: "scf-inline" },
+      React.createElement("span", { className: "scf-l" }, label),
+      React.createElement("span", { className: "scf-v" }, value));
   }
 
   /* Integrated scoreboard: line score with the runs column enlarged as the headline. */

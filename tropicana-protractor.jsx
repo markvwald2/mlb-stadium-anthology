@@ -28,7 +28,7 @@
   function strip(v) { return (v || "").toString().replace(/\s*ft$/i, ""); }
 
   function Chip(props) {
-    const fs = props.size || 14, w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 9) * 2), h = 21;
+    const fs = props.size || 14, w = Math.max(props.minW || 0, props.text.length * fs * 0.62 + (props.padX || 9) * 2), h = props.h || Math.round(fs * 1.5);
     const tone = props.tone || "paper";
     const fill = tone === "accent" ? accent : chipFill, stk = tone === "accent" ? "#9c7d10" : chipStroke;
     return e("g", null,
@@ -63,7 +63,7 @@
     const nums = numerals.map((nd, i) => {
       const p = polar(C, PR + 15, nd[0]);
       return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle",
-        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "10px", fill: ink2 } }, nd[1]);
+        style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "14px", fill: ink2 } }, nd[1]);
     });
     const arcA = polar(C, PR, -90), arcB = polar(C, PR, 90);
     const protArc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -95,14 +95,14 @@
         ticks, nums,
         e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink2, strokeWidth: 1, strokeDasharray: "3 3", opacity: 0.7 }),
         e("text", { x: polar(C, PR + 15, 0)[0], y: polar(C, PR + 15, 0)[1] - 9, textAnchor: "middle",
-          style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "11px", fill: navy, letterSpacing: ".04em" } }, "N"),
+          style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "14px", fill: navy, letterSpacing: ".04em" } }, "N"),
         e("line", { x1: needleBase[0], y1: needleBase[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2.2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: accent }),
         e("circle", { cx: C[0], cy: C[1], r: 2.6, fill: navy }),
-        e("text", { x: 22, y: 50, textAnchor: "start",
-          style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "12px", fill: navy, letterSpacing: ".06em" } },
+        e("text", { x: 314, y: 50, textAnchor: "end",
+          style: { fontFamily: "'Oswald',sans-serif", fontWeight: 700, fontSize: "20px", fill: navy, letterSpacing: ".06em" } },
           orientation + " \u00b7 " + bearing + "\u00b0"),
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 14 }))
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 20 }))
       )
     );
   }

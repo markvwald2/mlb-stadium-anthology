@@ -9,7 +9,7 @@
   const Pinwheel = window.ComiskeyPinwheel;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect" }, props.src ? { src: props.src } : {}));
   }
 
   // dark chip so the white-fill White Sox mark (and any mark) reads on cream
@@ -62,15 +62,14 @@
       /* ============ LEFT / AERIAL PLATE ============ */
       e("div", { className: "cm-page cm-left", "data-screen-label": "Comiskey left page" },
         e("div", { className: "cm-hero-slot" },
-          e(Slot, { id: "cm-hero", placeholder: "Drop the Comiskey Park aerial \u2014 the jewel-box grandstand on the South Side with the Chicago skyline beyond" })),
+          e(Slot, { id: "cm-hero", src: "uploads/comiskey-park-00-main.jpg", placeholder: "Drop the Comiskey Park aerial \u2014 the jewel-box grandstand on the South Side with the Chicago skyline beyond" })),
         e("div", { className: "cm-hero-scrim" }),
 
         /* lit stat plate */
         e("div", { className: "cm-statplate" },
           e("div", { className: "cm-statinner" },
             e("div", { className: "cm-stat" }, e("div", { className: "k" }, "Opened"), e("div", { className: "v" }, "1910")),
-            e("div", { className: "cm-stat" }, e("div", { className: "k" }, "Closed"), e("div", { className: "v" }, "1990")),
-            e("div", { className: "cm-stat" }, e("div", { className: "k" }, "Elevation"), e("div", { className: "v" }, "595 FT")))),
+            e("div", { className: "cm-stat" }, e("div", { className: "k" }, "Closed"), e("div", { className: "v" }, "1990")))),
 
         /* title block */
         e("div", { className: "cm-hero-block" },
@@ -86,7 +85,7 @@
             e("span", { className: "star" }, "\u2605")),
           e("div", { className: "cm-hero-foot" },
             e("div", { className: "cm-foot-logos" },
-              e("div", { className: "cm-logo-well" }, e("img", { src: "assets/chicago-white-sox-logo.svg", alt: "Chicago White Sox" })),
+              e("div", { className: "cm-logo-well" }, e("img", { src: "assets/white-sox-1988.svg", alt: "Chicago White Sox" })),
               e("div", { className: "cm-logo-well" }, e("img", { src: "assets/mlb-logo.svg", alt: "Major League Baseball" }))),
             e("div", { className: "cm-foot-addr" },
               e("b", null, "324 W 35th Street"), e("br"), "Chicago, IL 60616 \u00b7 Former Site")))
@@ -100,22 +99,22 @@
 
           /* ---- photo bays ---- */
           e("div", { className: "cm-photostrip" },
-            photoBay("cm-p1", "Exterior \u2014 brick, concrete & steel grandstand along 35th Street"),
-            photoBay("cm-p2", "View from the upper deck across the playing field"),
-            photoBay("cm-p3", "The exploding scoreboard \u2014 the pinwheel light towers in full burst"),
-            photoBay("cm-p4", "Concourse beneath the deck \u2014 steel columns and ramps"),
-            photoBay("cm-p5", "South Side neighborhood \u2014 the ballpark inside the city blocks")),
+            photoBay("cm-p1", "Exterior \u2014 brick, concrete & steel grandstand along 35th Street", "uploads/comiskey-park-04.jpg"),
+            photoBay("cm-p2", "View from the upper deck across the playing field", "uploads/comiskey-park-03.jpg"),
+            photoBay("cm-p3", "The exploding scoreboard \u2014 the pinwheel light towers in full burst", "uploads/comiskey-park-01.jpg"),
+            photoBay("cm-p4", "Concourse beneath the deck \u2014 steel columns and ramps", "uploads/comiskey-park-02.jpg"),
+            photoBay("cm-p5", "South Side neighborhood \u2014 the ballpark inside the city blocks", "uploads/comiskey-park-05.jpg")),
 
           /* ---- metadata ribbon ---- */
           e("div", { className: "cm-ribbon" },
             e("div", { className: "cm-ribcell logo" },
-              e("img", { src: "assets/chicago-white-sox-logo.svg", alt: "Chicago White Sox" }),
+              e("img", { src: "assets/white-sox-1988.svg", alt: "Chicago White Sox" }),
               e("div", { className: "stack" },
                 e("div", { className: "k" }, "Team"),
                 e("div", { className: "v" }, "Chicago", e("br"), "White Sox"))),
             e("div", { className: "cm-ribcell" },
-              e("div", { className: "k" }, "League"),
-              e("div", { className: "v" }, "American", e("br"), "League ", e("small", null, D.division))),
+              e("div", { className: "k" }, "Division"),
+              e("div", { className: "v" }, "AL West/Central")),
             e("div", { className: "cm-ribcell" },
               e("div", { className: "k" }, "Classification"),
               e("div", { className: "v" }, "Jewel Box &", e("br"), "Early Concrete")),
@@ -139,6 +138,7 @@
                 e("div", { className: "t" }, "Stadium Facts")),
               e("div", { className: "cm-pbody" },
                 e("table", { className: "cm-ftable" }, e("tbody", null,
+                  factRow("Elevation", "595 FT"),
                   factRow("Architect", D.architect),
                   factRow("Style", D.architectural_style),
                   factRow("Structure", D.facade_material),
@@ -165,7 +165,7 @@
                       e("div", { className: "nm" }, "Toronto", e("br"), "Blue Jays")),
                     e("div", { className: "cm-vat" }, "at"),
                     e("div", { className: "cm-vteam" },
-                      e("img", { src: "assets/chicago-white-sox-logo.svg", alt: "Chicago White Sox" }),
+                      e("img", { src: "assets/white-sox-1988.svg", alt: "Chicago White Sox" }),
                       e("div", { className: "nm" }, "Chicago", e("br"), "White Sox"))),
                   e("div", { className: "cm-vdate" }, "Tuesday, August 16, 1988"),
                   e("div", { className: "cm-vvenue" }, "Comiskey Park \u00b7 " + D.visit_type + " \u00b7 " + D.trip_name + " Trip")),
@@ -239,8 +239,7 @@
               e("div", { className: "cm-mbody" },
                 e("div", { className: "cm-field" },
                   Field ? e(Field, { lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
-                    orientation: D.orientation, degrees: D.orientation_degrees }) : null,
-                  e("div", { className: "cap" }, "Orientation ", e("b", null, "Northeast \u00b7 45\u00b0"))))),
+                    orientation: D.orientation, degrees: D.orientation_degrees }) : null))),
 
             /* LIFECYCLE */
             e("div", { className: "cm-module" },
@@ -256,9 +255,9 @@
       )
     );
 
-    function photoBay(id, ph) {
+    function photoBay(id, ph, src) {
       return e("div", { className: "cm-photopanel" },
-        e(Slot, { id: id, placeholder: ph }),
+        e(Slot, { id: id, placeholder: ph, src: src }),
         e("div", { className: "bezel" }));
     }
     function wx(icon, val, lab) {

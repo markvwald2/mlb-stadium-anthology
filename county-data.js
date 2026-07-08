@@ -9,7 +9,7 @@ window.MCS = {
   classification_era: "Postwar Municipal",
   era_short: "Postwar Municipal Era",
   years_active: "1953\u20132000",
-  stadium_type: "Open-air municipal baseball stadium",
+  stadium_type: "Open-air municipal stadium",
   status: "Demolished",
 
   // ---- Location ----
@@ -26,7 +26,7 @@ window.MCS = {
   // ---- Stadium Facts ----
   opened: "1953",
   architect: "Osborn Engineering",
-  facade: "Steel-and-concrete municipal grandstand with utilitarian exposed stadium structure",
+  facade: "Steel-and-concrete grandstand with utilitarian exposed stadium structure",
   architectural_style: "Postwar municipal baseball stadium with expandable utilitarian bowl planning",
   playing_surface: "Natural grass",
   surface_detail: "Bluegrass",

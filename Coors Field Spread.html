@@ -59,12 +59,11 @@
   .cf-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 3;
     background:
-      linear-gradient(180deg, rgba(20,18,15,.30) 0%, rgba(20,18,15,0) 22%),
-      linear-gradient(0deg, rgba(16,14,11,.90) 0%, rgba(16,14,11,.46) 26%, rgba(16,14,11,0) 52%);
+      linear-gradient(0deg, rgba(16,14,11,.62) 0%, rgba(16,14,11,.22) 11%, rgba(16,14,11,0) 24%);
   }
 
   /* the Mile-High Datum — surveyor benchmark + coordinate read-out, lower-right */
-  .cf-datum { position: absolute; right: 78px; bottom: 150px; z-index: 5; width: 360px; height: 300px; pointer-events: none; }
+  .cf-datum { position: absolute; right: 78px; bottom: 56px; z-index: 5; width: 360px; height: 300px; pointer-events: none; }
   .cf-datum-grid { position: absolute; right: 0; bottom: 0; opacity: .55; }
   .cf-datum-read {
     position: absolute; right: 20px; bottom: 0; display: flex; flex-direction: column; gap: 7px;
@@ -76,7 +75,7 @@
   .cf-datum .dv { font-family: "Space Mono", monospace; font-size: 19px; letter-spacing: .06em; color: #EFE7D6; }
   .cf-datum-tick { position: absolute; right: 0; top: 0; width: 1px; height: 300px; background: linear-gradient(180deg, transparent, rgba(122,93,176,.7) 60%, var(--purple-hi)); }
 
-  .cf-hero-title { position: absolute; left: 76px; bottom: 150px; z-index: 6; }
+  .cf-hero-title { position: absolute; left: 76px; top: 56px; z-index: 6; }
   .cf-hero-name {
     margin: 0; font-family: "Anton", sans-serif; font-weight: 400; white-space: nowrap;
     color: #F3ECDB; font-size: 122px; line-height: .84; letter-spacing: .006em;
@@ -97,7 +96,7 @@
   .cf-hero-marks { position: absolute; left: 76px; bottom: 56px; z-index: 6; display: flex; align-items: center; gap: 20px; }
   .cf-hero-marks .nl { height: 58px; width: auto; display: block; }
   .cf-hero-marks .div { width: 1px; height: 48px; background: rgba(232,226,214,.32); }
-  .cf-hero-marks .mlb { height: 42px; width: auto; display: block; }
+  .cf-hero-marks .mlb { height: 34px; width: auto; display: block; }
 
   /* ---------- RIGHT PAGE SHELL ---------- */
   .cf-rp { position: absolute; inset: 0; padding: 40px 46px 40px 44px; display: flex; flex-direction: column; }
@@ -114,12 +113,12 @@
   /* ---------- IMAGE STRIP ---------- */
   .cf-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; flex: 0 0 auto; }
   .cf-frame { margin: 0; display: flex; flex-direction: column; }
-  .cf-frame image-slot { width: 100%; height: 208px; display: block; border: 1.5px solid var(--ink); }
+  .cf-frame image-slot { width: 100%; height: 213px; display: block; border: 1.5px solid var(--ink); }
 
   /* ---------- METADATA RIBBON ---------- */
   .cf-ribbon {
-    display: flex; align-items: stretch; margin-top: 18px;
-    border-top: 2.5px solid var(--ink); border-bottom: 2.5px solid var(--ink);
+    display: flex; align-items: stretch; margin-top: 13px;
+    border-top: 12px solid var(--purple); border-bottom: 2.5px solid var(--ink);
     position: relative;
   }
   .cf-ribbon .cell { flex: 1; padding: 11px 16px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 5px; justify-content: center; }
@@ -148,23 +147,24 @@
   .cf-scoreboard tbody tr.win .rcol { color: var(--purple); }
 
   /* ---------- STADIUM SECTION ---------- */
-  .cf-stadium { display: grid; grid-template-columns: 700px 1fr; gap: 30px; margin-top: 12px; flex: 1 1 auto; min-height: 0; align-items: stretch; position: relative; }
+  .cf-stadium { display: grid; grid-template-columns: 700px 1fr; gap: 30px; margin-top: 6px; flex: 1 1 auto; min-height: 0; align-items: stretch; position: relative; }
   .cf-stadium::after { content: ""; position: absolute; top: 4px; bottom: 4px; left: 715px; width: 1px; background: var(--rule-strong); }
   .cf-col { display: flex; flex-direction: column; min-width: 0; }
+  .cf-col-facts { align-self: start; }
 
   /* facts column inner grid: table + (diagram + finance) */
   .cf-facts-grid { display: grid; grid-template-columns: 1fr 240px; gap: 22px; align-items: stretch; flex: 1; }
 
   /* facts table — roomier, stretches to match the History column height */
   .cf-facts { border: 1px solid var(--rule-strong); align-self: stretch; display: flex; flex-direction: column; }
-  .cf-facts .row { display: grid; grid-template-columns: 112px 1fr; border-bottom: 1px solid var(--rule); flex: 1; }
+  .cf-facts .row { display: grid; grid-template-columns: 112px 1fr; border-bottom: 1px solid var(--rule); align-items: center; flex: 1; }
   .cf-facts .row:last-child { border-bottom: 0; }
-  .cf-facts .row .fl { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); font-size: 12px; padding: 4px 10px; border-right: 1px solid var(--rule); background: var(--paper-lo); display: flex; align-items: center; }
-  .cf-facts .row .fv { font-family: "Spectral", serif; font-weight: 500; color: var(--ink); font-size: 12px; line-height: 1.22; padding: 4px 11px; }
+  .cf-facts .row .fl { align-self: stretch; display: flex; align-items: center; font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); font-size: 12px; padding: 3px 10px; border-right: 1px solid var(--rule); background: var(--paper-lo); display: flex; align-items: center; }
+  .cf-facts .row .fv { font-family: "Spectral", serif; font-weight: 500; color: var(--ink); font-size: 12px; line-height: 1.22; padding: 3px 11px; }
 
   /* facts side: field diagram (no heading) + construction & finance */
-  .cf-facts-side { display: flex; flex-direction: column; gap: 10px; }
-  .cf-fieldfig { margin: 0; }
+  .cf-facts-side { display: flex; flex-direction: column; gap: 6px; }
+  .cf-fieldfig { margin: 0; position: relative; top: 5px; }
   .cf-fieldwrap { width: 100%; max-width: 124px; margin: 0 auto; }
   .cf-fieldfig figcaption { text-align: center; font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-top: 1px; }
   .cf-finance { border-top: 1.5px solid var(--ink); padding-top: 8px; }
@@ -174,15 +174,14 @@
   .cf-finance .fin-l { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; color: var(--ink-3); }
   .cf-finance .fin-v { font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px; color: var(--ink); line-height: 1.32; margin-top: 1px; }
 
-  /* renovations side block */
-  .cf-renov { border-top: 1.5px solid var(--ink); padding-top: 8px; }
-  .cf-renov .renov-v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; color: var(--ink); line-height: 1.3; margin: 0 0 5px; text-align: justify; hyphens: auto; }
+  /* renovations side block — annotated change-log, distinct from body prose */
+  .cf-renov { border: 1.5px solid var(--purple); padding: 14px 9px; }
+  .cf-renov .renov-v { position: relative; font-family: "Spectral", serif; font-style: italic; font-weight: 500; font-size: 12px; color: var(--ink-2); line-height: 1.22; margin: 0 0 3px; text-align: left; hyphens: none; }
   .cf-renov .renov-v:last-child { margin-bottom: 0; }
 
   /* context prose — two balanced columns */
   .cf-ctx { columns: 2; column-gap: 22px; column-rule: 1px solid var(--rule); }
-  .cf-ctx p { margin: 0 0 5px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.46; color: var(--ink); text-align: justify; hyphens: auto; }
-  .cf-ctx p:nth-child(1), .cf-ctx p:nth-child(2) { line-height: 1.48; }
+  .cf-ctx p { margin: 0 0 3px; font-family: "Spectral", serif; font-size: 12px; line-height: 16.46px; color: var(--ink); text-align: justify; hyphens: auto; }
   .cf-ctx p:last-child { margin-bottom: 0; }
   .cf-ctx p:first-child::first-letter {
     font-family: "Anton", sans-serif; font-weight: 400; color: var(--purple);
@@ -209,6 +208,8 @@
   }
   .cf-scorecard .sc-body { flex: 1; padding: 7px 18px 7px 20px; display: flex; flex-direction: column; min-width: 0; }
   .cf-scorecard .sc-date { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); border-bottom: 1px solid var(--rule); padding-bottom: 7px; margin-bottom: 5px; }
+  .cf-scorecard .sc-facts-line { display: flex; align-items: baseline; gap: 22px; margin: 7px 0 0; padding-top: 7px; border-top: 1px solid var(--rule); white-space: nowrap; }
+  .cf-scorecard .scf-inline { display: inline-flex; align-items: baseline; gap: 7px; }
   .cf-scorecard .sc-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 18px; margin: 7px 0 0; padding-top: 7px; border-top: 1px solid var(--rule); }
   .cf-scorecard .scf-l { font-family: "Oswald", sans-serif; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; color: var(--ink-3); }
   .cf-scorecard .scf-v { font-family: "Spectral", serif; font-weight: 600; font-size: 13.5px; color: var(--ink); margin-top: 1px; }

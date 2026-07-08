@@ -14,7 +14,7 @@
   function Slot(props) {
     return e("image-slot", Object.assign({
       id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
-    }, props.style ? { style: props.style } : {}));
+    }, props.src ? { src: props.src } : {}, props.style ? { style: props.style } : {}));
   }
 
   // red section eyebrow on a hairline, with optional mono note
@@ -29,7 +29,8 @@
     return e("div", { className: "chf-frow", key: i },
       e("div", { className: "k" }, row[0]),
       e("div", { className: "v" },
-        e("span", { className: "vm" }, row[1]),
+        e("span", { className: "vm" }, String(row[1]).split("\n").flatMap((ln, j) =>
+          j === 0 ? [ln] : [e("br", { key: "b" + j }), ln])),
         row[2] ? e("span", { className: "vs" }, row[2]) : null
       )
     );
@@ -97,10 +98,8 @@
       /* ============ LEFT PAGE / HERO ============ */
       e("div", { className: "chf-page chf-left" },
         e("div", { className: "chf-hero-slot" },
-          e(Slot, { id: "chase-hero", placeholder: "Drop the Chase Field hero \u2014 aerial of the retractable roof, downtown Phoenix grid, desert basin & mountains at dusk", shape: "rect" })
+          e(Slot, { id: "chase-hero", src: "uploads/chase-field-00-main.jpg", placeholder: "Drop the Chase Field hero \u2014 aerial of the retractable roof, downtown Phoenix grid, desert basin & mountains at dusk", shape: "rect" })
         ),
-        e("div", { className: "chf-hero-scrim" }),
-
         // Diamondbacks mark, upper-left
         e("img", { className: "chf-hero-logo", src: "assets/arizona-diamondbacks-logo.svg", alt: "Arizona Diamondbacks" }),
 
@@ -128,8 +127,6 @@
 
         // colophon, bottom-left
         e("div", { className: "chf-marks" },
-          e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-          e("span", { className: "div" }),
           e("span", { className: "lg" }, D.league),
           e("span", { className: "dv" }, D.division)
         )
@@ -143,8 +140,7 @@
           e("div", { className: "chf-strip" },
             D.strip.map((s, i) =>
               e("figure", { className: "chf-frame", key: i },
-                e(Slot, { id: s[0], placeholder: s[1] }),
-                e("figcaption", null, s[1])
+                e(Slot, { id: s[0], placeholder: s[1], src: s[2] })
               )
             )
           ),
@@ -158,7 +154,7 @@
             ribCell("League", D.league),
             ribCell("Stadium Classification", D.classification_ribbon),
             ribCell("Years Active", D.years_active),
-            ribCell("Opening Capacity", D.capacity_opening),
+            ribCell("Current Capacity", D.capacity_current),
             ribCell("Visit Number", D.visit_order + " of " + D.visit_total)
           ),
 
@@ -221,7 +217,12 @@
               e("div", { className: "chf-mod" },
                 e(SecHead, { title: "Roof Over the Desert" }),
                 e("div", { className: "chf-prose" },
-                  D.stadium_context.map((p, i) => e("p", { key: i }, p))
+                  D.stadium_context.flatMap((p, i) => {
+                    const para = e("p", { key: "p" + i }, p);
+                    return i === 1
+                      ? [para, e(Slot, { key: "photo", id: "chf-ctx-photo", src: "uploads/chase-field-01.jpg", placeholder: "roof / interior view", style: { width: "100%", height: "193px", margin: "5px 0 11px" } })]
+                      : [para];
+                  })
                 )
               )
             )

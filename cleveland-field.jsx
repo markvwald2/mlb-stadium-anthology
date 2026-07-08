@@ -98,7 +98,7 @@
       ticks.push(e("line", { key: "t" + a, x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1],
         stroke: big ? ink : lineSoft, strokeWidth: big ? 1.2 : 0.8 }));
     }
-    const nums = [0, 45, 90].map((a, i) => {
+    const nums = [90].map((a, i) => {
       const p = polar(C, PR + 12, a);
       return e("text", { key: "n" + i, x: p[0], y: p[1] + 3.5, textAnchor: "middle",
         style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "13px", fill: ink3 } }, a);

@@ -61,7 +61,7 @@
     position: absolute; inset: 0; pointer-events: none;
     background:
       linear-gradient(180deg, rgba(10,9,6,.46) 0%, rgba(10,9,6,0) 24%),
-      linear-gradient(0deg, rgba(10,9,6,.95) 0%, rgba(10,9,6,.74) 18%, rgba(10,9,6,.20) 40%, rgba(10,9,6,0) 56%);
+      linear-gradient(0deg, rgba(10,9,6,.90) 0%, rgba(10,9,6,.60) 13%, rgba(10,9,6,.16) 28%, rgba(10,9,6,0) 42%);
   }
   /* faint inscription baseline rules — orange accent only */
   .ms-hero-folio {
@@ -72,10 +72,10 @@
   }
   .ms-hero-folio .tick { width: 34px; height: 2px; background: var(--orange-bright); }
 
-  .ms-hero-title { position: absolute; left: 64px; right: 64px; bottom: 150px; z-index: 5; }
+  .ms-hero-title { position: absolute; left: 64px; right: 64px; bottom: 94px; z-index: 5; }
   .ms-hero-name {
     margin: 0; font-family: "Cinzel", serif; font-weight: 800;
-    font-size: 130px; line-height: .92; letter-spacing: .015em; text-transform: uppercase;
+    font-size: 96px; line-height: .96; letter-spacing: .01em; text-transform: uppercase;
     color: #ECE3CF;
     /* incised / carved-into-stone bevel */
     text-shadow:
@@ -100,7 +100,7 @@
 
   /* ============ RIGHT PAGE ============ */
   /* outer padding clears the 0.375in trim-safe margin + gutter safety on the left. */
-  .ms-rp { position: absolute; inset: 0; padding: 38px 40px 36px 44px; display: flex; flex-direction: column; gap: 16px; z-index: 2; }
+  .ms-rp { position: absolute; inset: 0; padding: 38px 40px 40px 44px; display: flex; flex-direction: column; gap: 16px; z-index: 2; }
 
   /* monograph section header — thin double rule, carved label */
   .ms-sec {
@@ -205,7 +205,7 @@
   .ms-stage { position: relative; width: 100%; height: 266px; }
   .ms-orient .fd-wrap { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-54%);
     z-index: 1; display: flex; justify-content: center; }
-  .ms-orient .fd-svg { width: 182px; height: 174px; max-width: 100%; display: block; overflow: visible; }
+  .ms-orient .fd-svg { width: 230px; height: 208px; max-width: 100%; display: block; overflow: visible; }
   .ms-orient .cap {
     position: relative; z-index: 1;
     font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .20em;
@@ -231,7 +231,7 @@
   .ms-cs-row.end .v { color: var(--orange-deep); }
 
   /* ---- RIGHT BAY : Stadium Context prose ---- */
-  .ms-ctx { columns: 2; column-gap: 26px; column-rule: 1px solid var(--rule); }
+  .ms-ctx { columns: 1; }
   .ms-ctx p { margin: 0 0 8px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.57;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .ms-ctx p:first-child::first-letter {
@@ -290,7 +290,7 @@
   .ms-box tbody tr.away td.tm { color: var(--orange-deep); }
 
   .ms-pitchrow { display: flex; justify-content: space-between; align-items: baseline; gap: 18px;
-    margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--rule); }
+    margin-top: 15px; }
   .ms-pitchrow .item { display: flex; align-items: baseline; gap: 11px; min-width: 0; }
   .ms-pitchrow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
@@ -306,7 +306,7 @@
   .ms-vrow .v { font-family: "Spectral", serif; font-weight: 600; font-size: 14px; color: var(--ink); }
   .ms-vrow.lead .v { color: var(--orange-deep); }
 
-  .ms-weather { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 19px;
+  .ms-weather { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 14px;
     border-top: 1.5px solid var(--ink); padding-top: 8px; }
   .ms-wx { display: flex; flex-direction: column; align-items: center; gap: 5px;
     padding: 0 4px; border-left: 1px solid var(--rule); }

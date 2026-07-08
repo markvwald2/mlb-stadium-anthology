@@ -30,14 +30,14 @@ window.TIGER = {
   coordinates: "42.3325\u00b0 N, 83.0691\u00b0 W",
   stadium_cost: "$300k",
   stadium_cost_adjusted: "$10 million",
-  financing_method: "Privately financed by Tigers owner Frank Navin",
+  financing_method: "Privately financed by owner Frank Navin",
   address: "2121 Trumbull Avenue, Detroit, MI 48216",
   location_classification: "Urban",
   construction_start: "1911",
   opening_day: "Apr 20, 1912",
   final_game: "Sep 27, 1999",
   demolition_year: "2009",
-  renovations: "Expanded as Briggs Stadium in the 1930s; upper-deck enclosure, lights, scoreboards, seating, and structural updates",
+  renovations: "Expanded in the 1930s; upper-deck enclosure, lights, scoreboards, seating, and structural updates",
 
   // ---- Field geometry ----
   left_field_distance: "340 ft",
@@ -92,7 +92,7 @@ window.TIGER = {
 
   // ---- Stadium Context (uploads/stadium-context.csv) — FULL, VERBATIM, breaks intact ----
   stadium_context: [
-    "Tiger Stadium began as Navin Field in 1912 and grew into one of baseball's most forceful urban ballparks. It replaced Bennett Park with a steel, concrete, and brick structure that could expand with Detroit and with the ambitions of the Tigers. Its later names, Briggs Stadium and Tiger Stadium, mark more than ownership changes. They trace how one corner at Michigan and Trumbull became a long-running civic address for Detroit baseball.",
+    "Tiger Stadium began as Navin Field in 1912 and grew into one of baseball's most forceful and revered urban ballparks. It replaced Bennett Park with a steel, concrete, and brick structure that could expand with Detroit and with the ambitions of the Tigers. Its later names, Briggs Stadium and Tiger Stadium, mark more than ownership changes. They trace how one corner at Michigan and Trumbull became a long-running civic address for Detroit baseball.",
     "The site gave the park its power. Tiger Stadium was not set apart in a sports complex or designed as a regional object. It was embedded in the city, with the field and grandstands pressed into an urban block. That compression produced unusual geometry, layered decks, and the famous sense that the building was almost too much structure for its site. Baseball there felt vertical, close, and enclosed by the city around it.",
     "Its expansions in the 1930s and later updates for lights, scoreboards, seating, and structure showed how an early ballpark could be enlarged into something more monumental without becoming a modern multipurpose stadium. But those same layers also made the building harder to adapt indefinitely. By the late twentieth century, the park's age, constraints, and limited modern revenue spaces worked against it, even as they remained central to its character.",
     "Comerica Park succeeded it in 2000, moving the Tigers into a downtown retro-classic setting with more contemporary amenities and a different spatial logic. Tiger Stadium's demolition in 2009 closed a chapter that had outlasted almost every normal stadium cycle. Its value in the anthology is that it shows the jewel-box idea at full urban intensity: not merely quaint or nostalgic, but dense, muscular, and eventually too physically specific for the business model that followed."

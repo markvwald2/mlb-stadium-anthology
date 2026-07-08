@@ -57,14 +57,12 @@
   .cm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .cm-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(0deg, rgba(8,7,5,.95) 0%, rgba(8,7,5,.74) 17%, rgba(8,7,5,.12) 38%, rgba(8,7,5,0) 50%),
-      linear-gradient(90deg, rgba(8,7,5,.66) 0%, rgba(8,7,5,.16) 30%, rgba(8,7,5,0) 50%),
-      linear-gradient(180deg, rgba(8,7,5,.5) 0%, rgba(8,7,5,0) 22%); }
+      linear-gradient(0deg, rgba(8,7,5,.5) 0%, rgba(8,7,5,.16) 10%, rgba(8,7,5,0) 20%); }
   /* faint scoreboard-pylon verticals rising over the plate */
   .cm-pylons { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: .5; }
 
-  /* stat plate — lit vertical marquee, top-left */
-  .cm-statplate { position: absolute; top: 52px; left: 58px; z-index: 6;
+  /* stat plate — lit vertical marquee, now bottom-left */
+  .cm-statplate { position: absolute; bottom: 52px; left: 58px; z-index: 6;
     background: #110D07; border: 2px solid #04030100; padding: 12px; border-radius: 2px;
     box-shadow: 0 12px 34px rgba(0,0,0,.55), inset 0 0 0 1px #2E2716; }
   .cm-statplate::before { content: ""; position: absolute; inset: 4px; border-radius: 2px; pointer-events: none;
@@ -79,15 +77,15 @@
   .cm-stat .v { font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 27px;
     color: #EDE3CC; letter-spacing: .02em; margin-top: 2px; line-height: 1; white-space: nowrap; }
 
-  /* title block bottom-left */
-  .cm-hero-block { position: absolute; left: 60px; bottom: 60px; right: 70px; z-index: 6; }
+  /* title block now top-left */
+  .cm-hero-block { position: absolute; left: 60px; top: 60px; right: 70px; z-index: 6; }
   .cm-eyebrow { display: flex; align-items: center; gap: 13px; margin-bottom: 20px;
     font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .34em;
-    text-transform: uppercase; color: var(--bulb); }
-  .cm-eyebrow::after { content: ""; height: 1.5px; width: 78px; background: linear-gradient(90deg,var(--bulb),transparent); display: block; }
+    text-transform: uppercase; color: #1A1610; }
+  .cm-eyebrow::after { content: ""; height: 1.5px; width: 78px; background: linear-gradient(90deg,#1A1610,transparent); display: block; }
 
   .cm-title-marquee { position: relative; display: inline-block; padding: 17px; border-radius: 3px;
-    background: #110D07; box-shadow: 0 18px 50px rgba(0,0,0,.6), inset 0 0 0 2px #322a1d, 0 0 0 2px #05040250; }
+    background: #110D07; box-shadow: 0 5px 16px rgba(0,0,0,.32), inset 0 0 0 2px #322a1d, 0 0 0 2px #05040250; }
   .cm-title-marquee::before { content: ""; position: absolute; inset: 4px; border-radius: 2px; pointer-events: none;
     background-image: radial-gradient(circle, var(--bulb) 0 2px, rgba(120,92,40,.45) 2.4px 3.2px, transparent 3.4px);
     background-size: 17px 17px; background-position: center; }
@@ -96,10 +94,10 @@
     box-shadow: inset 0 1px 0 #FBF5E6, inset 0 -3px 8px rgba(120,95,50,.22); }
   .cm-title-text { margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 800;
     font-size: 100px; line-height: .84; letter-spacing: .004em; text-transform: uppercase;
-    color: #1A1610; text-shadow: 0 1px 0 #FBF5E6; white-space: nowrap; }
+    color: #1A1610; white-space: nowrap; }
   .cm-loc { display: flex; align-items: center; gap: 14px; margin-top: 22px;
     font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 30px; letter-spacing: .14em;
-    text-transform: uppercase; color: #ECE2CB; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+    text-transform: uppercase; color: #1A1610; }
   .cm-loc .star { color: var(--brick-2); font-size: 22px; }
 
   .cm-hero-foot { display: flex; align-items: center; gap: 22px; margin-top: 26px; }
@@ -107,8 +105,8 @@
   .cm-logo-well { flex: none; display: flex; align-items: center; justify-content: center; }
   .cm-logo-well img { height: 48px; width: auto; display: block; }
   .cm-foot-addr { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 13.5px; letter-spacing: .12em;
-    text-transform: uppercase; color: #CFC4AC; line-height: 1.55; }
-  .cm-foot-addr b { color: #fff; font-weight: 600; }
+    text-transform: uppercase; color: #2A2118; line-height: 1.55; }
+  .cm-foot-addr b { color: #1A1610; font-weight: 700; }
 
   /* =================== RIGHT / SCOREBOARD MACHINE =================== */
   .cm-ghost { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .9; }
@@ -148,7 +146,10 @@
     font-size: 12px; letter-spacing: .02em; color: #9A8F76; margin-top: 2px; }
   .cm-ribcell .v.mono { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px; }
   .cm-ribcell.logo { flex-direction: row; align-items: center; gap: 11px; }
-  .cm-ribcell.logo img { height: 34px; width: auto; flex: none; }
+  .cm-ribcell.logo img { height: 30px; width: auto; flex: none; box-sizing: content-box;
+    margin-left: -10px;
+    background: #EDE6D3; padding: 5px 7px; border-radius: 3px; border: 1px solid rgba(0,0,0,.25);
+    box-shadow: 0 1px 4px rgba(0,0,0,.4); }
   .cm-ribcell.logo .stack { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 
   /* ---- middle row (three scoreboard panels) ---- */
@@ -173,7 +174,7 @@
   .cm-ftable tr { border-bottom: 1px solid var(--rule); }
   .cm-ftable tr:last-child { border-bottom: 0; }
   .cm-ftable th { text-align: left; vertical-align: baseline; width: 86px; padding: 4px 9px 4px 0;
-    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
+    font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.6px;
     text-transform: uppercase; color: var(--ink-3); }
   .cm-ftable td { vertical-align: baseline; padding: 4px 0; font-family: "Spectral", serif;
     font-size: 12px; line-height: 1.34; color: var(--ink); }
