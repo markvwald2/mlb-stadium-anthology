@@ -86,7 +86,7 @@
       /* ============ LEFT / AERIAL PLATE ============ */
       e("div", { className: "ts-page ts-left" },
         e("div", { className: "ts-hero-slot" },
-          e(Slot, { id: "ts-hero", src: "uploads/tiger-stadium-00-main-31a229d7.jpg", placeholder: "Drop the Tiger Stadium aerial \u2014 the ballpark inside the Corktown street grid at Michigan & Trumbull" })),
+          e(Slot, { id: "ts-hero", src: "images/tiger/tiger-stadium-00-main-31a229d7.jpg", placeholder: "Drop the Tiger Stadium aerial \u2014 the ballpark inside the Corktown street grid at Michigan & Trumbull" })),
         e("div", { className: "ts-hero-scrim" }),
         e(PlatLines, null),
         e("div", { className: "ts-street michigan" }, "Michigan Avenue"),
@@ -197,9 +197,9 @@
 
               /* photo column */
               e("div", { className: "ts-photos" },
-                photo("ts-p1", "Exterior", "4:3", "Brick & steel facade \u2014 Trumbull Avenue elevation", "uploads/tiger-stadium-01.jpg"),
-                photo("ts-p2", "Seating Bowl", "4:3", "Double-decked grandstand interior", "uploads/tiger-stadium-02.jpg"),
-                photo("ts-p3", "Concourse", "4:3", "Steel-column lower concourse", "uploads/tiger-stadium-03.jpg"))
+                photo("ts-p1", "Exterior", "4:3", "Brick & steel facade \u2014 Trumbull Avenue elevation", "images/tiger/tiger-stadium-01.jpg"),
+                photo("ts-p2", "Seating Bowl", "4:3", "Double-decked grandstand interior", "images/tiger/tiger-stadium-02.jpg"),
+                photo("ts-p3", "Concourse", "4:3", "Steel-column lower concourse", "images/tiger/tiger-stadium-03.jpg"))
             )
           ),
 

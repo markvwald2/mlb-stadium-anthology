@@ -67,7 +67,7 @@
       ] },
       { year: "1988", name: "Midwest", accent: "#B0792A", col: 1, games: [
         g("Aug 12", "Wrigley Field",             "Cubs", "Cardinals"),
-        g("Aug 12", "Milwaukee County Stadium",  "Brewers", "Orioles", null, { Brewers: "brewers-ball-in-glove.png" }),
+        g("Aug 12", "Milwaukee County Stadium",  "Brewers", "Orioles", null, { Brewers: "brewers-ball-in-glove.png", Orioles: "orioles-cartoon-logo.svg" }),
         g("Aug 13", "Wrigley Field",             "Cubs", "Cardinals"),
         g("Aug 14", "Riverfront Stadium",        "Reds", "Braves"),
         g("Aug 15", "Tiger Stadium",             "Tigers", "Twins"),

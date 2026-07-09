@@ -23,11 +23,11 @@
     // .image-slots.state.json, and clearing a drop falls back to src. Files
     // live full-resolution in uploads/.
     var SRC = {
-      "anaheim-hero": "uploads/anaheim-stadium-00-main-alt.jpg",
-      "anaheim-p1": "uploads/anaheim-stadium-01.jpg",
-      "anaheim-p2": "uploads/anaheim-stadium-02.jpg",
-      "anaheim-p3": "uploads/anaheim-stadium-03-42e20a0e.jpg",
-      "anaheim-p4": "uploads/anaheim-stadium-04.jpg"
+      "anaheim-hero": "images/anaheim/anaheim-stadium-00-main-alt-7844e55b.jpg",
+      "anaheim-p1": "images/anaheim/anaheim-stadium-01.jpg",
+      "anaheim-p2": "images/anaheim/anaheim-stadium-02.jpg",
+      "anaheim-p3": "images/anaheim/anaheim-stadium-03-42e20a0e.jpg",
+      "anaheim-p4": "images/anaheim/anaheim-stadium-04.jpg"
     };
     var attrs = { id: props.id, placeholder: props.placeholder, shape: "rect" };
     if (SRC[props.id]) attrs.src = SRC[props.id];

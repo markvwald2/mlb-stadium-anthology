@@ -105,7 +105,7 @@
       /* ============== LEFT PAGE / HERO ============== */
       e("div", { className: "mm-page mm-left", "data-screen-label": "Minute Maid Park \u2014 hero" },
         e("div", { className: "mm-hero-slot" },
-          e(Slot, { id: "mmp-hero", src: "uploads/minute-maid-park-00-main-563895c1.jpg",
+          e(Slot, { id: "mmp-hero", src: "images/minute-maid/minute-maid-park-00-main-563895c1.jpg",
             placeholder: "Drop the Minute Maid Park hero \u2014 dusk interior toward left field: the train, Crawford Boxes, downtown skyline & the open retractable roof" })),
         e("div", { className: "mm-hero-scrim" }),
 
@@ -201,7 +201,7 @@
 
           // dominant 4:3 roof photo
           e("figure", { className: "mm-plate-photo mm-photo-fill", style: { width: "100%" } },
-            e(Slot, { id: D.photos[1][0], src: "uploads/minute-maid-park-01.jpg", position: "50% 22%", placeholder: D.photos[1][1] })),
+            e(Slot, { id: D.photos[1][0], src: "images/minute-maid/minute-maid-park-01.jpg", position: "50% 22%", placeholder: D.photos[1][1] })),
 
           // two-column data band : field geometry | visit facts
           e("div", { className: "mm-de-grid" },
@@ -249,7 +249,7 @@
 
           // bottom photo — Crawford Boxes & the left-field train, spanning the column
           e("figure", { className: "mm-plate-photo mm-photo-fill mm-deblock", style: { width: "100%" } },
-            e(Slot, { id: D.photos[2][0], src: "uploads/minute-maid-park-03.jpg", placeholder: D.photos[2][1] }))
+            e(Slot, { id: D.photos[2][0], src: "images/minute-maid/minute-maid-park-03.jpg", placeholder: D.photos[2][1] }))
         )
         ,
 
@@ -257,7 +257,7 @@
         e("figure", { className: "mm-plate-photo mm-ab-photo",
             style: { left: AB_PHOTO.left + "px", top: AB_PHOTO.top + "px",
               width: AB_PHOTO.width + "px", height: AB_PHOTO.height + "px" } },
-          e(Slot, { id: "mmp-ab", src: "uploads/minute-maid-park-02.jpg", placeholder: "Wide establishing exterior \u2014 Union Station frontage, brick facade & the ballpark beyond" }))
+          e(Slot, { id: "mmp-ab", src: "images/minute-maid/minute-maid-park-02.jpg", placeholder: "Wide establishing exterior \u2014 Union Station frontage, brick facade & the ballpark beyond" }))
       )
     );
   }

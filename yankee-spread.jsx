@@ -228,7 +228,7 @@
       /* ============ LEFT / NIGHT HERO PLATE ============ */
       e("div", { className: "yk-page yk-left", "data-screen-label": "Hero — Yankee Stadium night" },
         e("div", { className: "yk-hero-slot" },
-          e(Slot, { id: "yk-hero", src: "uploads/old-yankee-stadium-00-main.jpeg", placeholder: "Drop the original Yankee Stadium aerial \u2014 the floodlit triple-deck bowl in the South Bronx at 161st & River Avenue, night game" })),
+          e(Slot, { id: "yk-hero", src: "images/yankee/old-yankee-stadium-00-main.jpeg", placeholder: "Drop the original Yankee Stadium aerial \u2014 the floodlit triple-deck bowl in the South Bronx at 161st & River Avenue, night game" })),
         e("div", { className: "yk-hero-scrim" }),
         e("div", { className: "yk-pinstripe" }),
         e("div", { className: "yk-hero-frieze-bleed" }),
@@ -290,11 +290,11 @@
 
           /* TIER 1 — facade-bay photo strip */
           e("div", { className: "yk-bays" },
-            bay("yk-b1", "Limestone & concrete exterior elevation along 161st Street", "uploads/old-yankee-stadium-01.jpg"),
-            bay("yk-b2", "Copper / painted concrete frieze detail at the upper-deck roofline", "uploads/old-yankee-stadium-02.jpg"),
-            bay("yk-bp", "Portrait \u2014 facade column or grandstand tier", "uploads/old-yankee-stadium-03.jpg"),
-            bay("yk-b3", "Triple-deck grandstand interior and the bowl", "uploads/old-yankee-stadium-04.jpg"),
-            bay("yk-b5", "Archival aerial \u2014 the monument in the South Bronx grid", "uploads/old-yankee-stadium-05.jpg")
+            bay("yk-b1", "Limestone & concrete exterior elevation along 161st Street", "images/yankee/old-yankee-stadium-01.jpg"),
+            bay("yk-b2", "Copper / painted concrete frieze detail at the upper-deck roofline", "images/yankee/old-yankee-stadium-02.jpg"),
+            bay("yk-bp", "Portrait \u2014 facade column or grandstand tier", "images/yankee/old-yankee-stadium-03.jpg"),
+            bay("yk-b3", "Triple-deck grandstand interior and the bowl", "images/yankee/old-yankee-stadium-04.jpg"),
+            bay("yk-b5", "Archival aerial \u2014 the monument in the South Bronx grid", "images/yankee/old-yankee-stadium-05.jpg")
           ),
 
           /* metadata ribbon */

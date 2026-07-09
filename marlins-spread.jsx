@@ -16,7 +16,7 @@
   function Slot(props) {
     return e("image-slot", Object.assign({
       id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
-    }, props.style ? { style: props.style } : {}));
+    }, props.src ? { src: props.src } : {}, props.style ? { style: props.style } : {}));
   }
 
   function SecHead(props) {
@@ -109,7 +109,7 @@
       /* ============ LEFT PAGE / HERO ============ */
       e("div", { className: "mla-page mla-left" },
         e("div", { className: "mla-hero-slot" },
-          e(Slot, { id: "marlins-hero", placeholder: "Drop the Marlins Park hero \u2014 aerial looking down at the white retractable-roof shell, glass facade, Little Havana / former Orange Bowl site & Miami skyline beyond", shape: "rect" })
+          e(Slot, { id: "marlins-hero", src: "images/marlins/marlins-hero.webp", placeholder: "Drop the Marlins Park hero \u2014 aerial looking down at the white retractable-roof shell, glass facade, Little Havana / former Orange Bowl site & Miami skyline beyond", shape: "rect" })
         ),
         e("div", { className: "mla-hero-scrim" }),
 
@@ -155,7 +155,7 @@
           e("div", { className: "mla-strip" },
             D.strip.map((s, i) =>
               e("figure", { className: "mla-cassette", key: i },
-                e(Slot, { id: s[0], placeholder: s[1] })
+                e(Slot, { id: s[0], src: s[2], placeholder: s[1] })
               )
             )
           ),

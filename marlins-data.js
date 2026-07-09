@@ -114,8 +114,8 @@ window.MARLINS = {
 
   // ---- Supporting image bay (right page roof cassettes) ----
   strip: [
-    ["marlins-s1", "Drop the exterior shell \u2014 white stucco, silver metal & glass facade with the retractable roof closed"],
-    ["marlins-s2", "Drop the seating bowl \u2014 interior under the roof, field & color-cut seats"],
-    ["marlins-s3", "Drop the glass facade / concourse \u2014 curtain-wall daylight, left-field windows"]
+    ["marlins-s1", "Drop the exterior shell \u2014 white stucco, silver metal & glass facade with the retractable roof closed", "images/marlins/marlins-s1.webp"],
+    ["marlins-s2", "Drop the seating bowl \u2014 interior under the roof, field & color-cut seats", "images/marlins/marlins-s2.webp"],
+    ["marlins-s3", "Drop the glass facade / concourse \u2014 curtain-wall daylight, left-field windows", "images/marlins/marlins-s3.webp"]
   ]
 };

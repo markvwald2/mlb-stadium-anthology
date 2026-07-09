@@ -121,7 +121,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "tm-page tm-left", "data-screen-label": "Safeco Field — hero" },
         e("div", { className: "tm-hero-slot" },
-          e(Slot, { id: "tmobile-hero", src: "assets/safeco-hero.jpg", placeholder: "Drop the Safeco Field hero \u2014 elevated / aerial view where the retractable steel canopy is unmistakable above the lit field, with the SoDo rail corridor, port cranes & downtown edge beyond" })),
+          e(Slot, { id: "tmobile-hero", src: "images/safeco/safeco-hero.jpg", placeholder: "Drop the Safeco Field hero \u2014 elevated / aerial view where the retractable steel canopy is unmistakable above the lit field, with the SoDo rail corridor, port cranes & downtown edge beyond" })),
         e("div", { className: "tm-hero-scrim" }),
 
         e("img", { className: "tm-hero-logo", src: "assets/seattle-mariners-logo.svg", alt: "Seattle Mariners" }),

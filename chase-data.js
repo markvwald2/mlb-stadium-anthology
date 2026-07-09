@@ -102,10 +102,10 @@ window.CHASE = {
 
   // ---- Supporting image strip (right page) ----
   strip: [
-    ["chase-s1", "the visit", "uploads/chase-field-03.jpg"],
-    ["chase-s2", "the pool", "uploads/chase-field-02.jpg"],
-    ["chase-s3", "dinner over the field", "uploads/chase-field-04.jpg"],
-    ["chase-s4", "aerial", "uploads/chase-field-05-b7e05840.jpg"]
+    ["chase-s1", "the visit", "images/chase/chase-field-03.jpg"],
+    ["chase-s2", "the pool", "images/chase/chase-field-02.jpg"],
+    ["chase-s3", "dinner over the field", "images/chase/chase-field-04.jpg"],
+    ["chase-s4", "aerial", "images/chase/chase-field-05-b7e05840.jpg"]
   ],
 
   // ---- Color system (styling tokens; surfaced once as a swatch key if needed) ----

@@ -5,7 +5,7 @@
   const FieldDiagram = window.PNCProtractor;
 
   function Slot(props) {
-    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect", maxdim: props.maxdim });
+    return React.createElement("image-slot", { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect", maxdim: props.maxdim, src: props.src || ("images/pnc/" + props.id + ".jpg") });
   }
 
   /* Pirates wordmark — gold "P" mark. */
@@ -230,7 +230,7 @@
   }
   function photoCard(id, l1, l2) {
     return React.createElement("div", { className: "pnc-pcard", "data-slot": id },
-      React.createElement("image-slot", { id: id, class: "pnc-pslot", shape: "rect", placeholder: l1 + " " + l2 }));
+      React.createElement("image-slot", { id: id, class: "pnc-pslot", shape: "rect", src: "images/pnc/" + id + ".jpg", placeholder: l1 + " " + l2 }));
   }
   function ribCell(k, v) {
     return React.createElement("div", { className: "rc" },

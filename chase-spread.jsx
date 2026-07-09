@@ -98,7 +98,7 @@
       /* ============ LEFT PAGE / HERO ============ */
       e("div", { className: "chf-page chf-left" },
         e("div", { className: "chf-hero-slot" },
-          e(Slot, { id: "chase-hero", src: "uploads/chase-field-00-main.jpg", placeholder: "Drop the Chase Field hero \u2014 aerial of the retractable roof, downtown Phoenix grid, desert basin & mountains at dusk", shape: "rect" })
+          e(Slot, { id: "chase-hero", src: "images/chase/chase-field-00-main-c30fef9a.jpg", placeholder: "Drop the Chase Field hero \u2014 aerial of the retractable roof, downtown Phoenix grid, desert basin & mountains at dusk", shape: "rect" })
         ),
         // Diamondbacks mark, upper-left
         e("img", { className: "chf-hero-logo", src: "assets/arizona-diamondbacks-logo.svg", alt: "Arizona Diamondbacks" }),
@@ -220,7 +220,7 @@
                   D.stadium_context.flatMap((p, i) => {
                     const para = e("p", { key: "p" + i }, p);
                     return i === 1
-                      ? [para, e(Slot, { key: "photo", id: "chf-ctx-photo", src: "uploads/chase-field-01.jpg", placeholder: "roof / interior view", style: { width: "100%", height: "193px", margin: "5px 0 11px" } })]
+                      ? [para, e(Slot, { key: "photo", id: "chf-ctx-photo", src: "images/chase/chase-field-01.jpg", placeholder: "roof / interior view", style: { width: "100%", height: "193px", margin: "5px 0 11px" } })]
                       : [para];
                   })
                 )

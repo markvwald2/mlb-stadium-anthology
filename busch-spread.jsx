@@ -90,7 +90,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "bz-page bz-left", "data-screen-label": "Busch Stadium \u2014 hero" },
         e("div", { className: "bz-hero-slot" },
-          e(Slot, { id: "busch-hero", src: "uploads/busch-stadium-00-main.jpg", placeholder: "Drop the Busch Stadium hero \u2014 dusk aerial: brick & cast-stone mass, the open bowl, downtown skyline, the Gateway Arch and the Mississippi River bridges beyond" })),
+          e(Slot, { id: "busch-hero", src: "images/busch/busch-stadium-00-main.jpg", placeholder: "Drop the Busch Stadium hero \u2014 dusk aerial: brick & cast-stone mass, the open bowl, downtown skyline, the Gateway Arch and the Mississippi River bridges beyond" })),
         e("div", { className: "bz-hero-scrim" }),
 
         e("div", { className: "bz-folio" }, "VISIT NO. " + D.visit_order),
@@ -209,7 +209,7 @@
 
             /* documentary photo filling the lower bay */
             e("figure", { className: "bz-visit-photo" },
-              e(Slot, { id: "busch-p6", src: "uploads/busch-stadium-02.jpg", placeholder: "The group at Busch Stadium \u2014 Aug 17, 2024" }))))
+              e(Slot, { id: "busch-p6", src: "images/busch/busch-stadium-02.jpg", placeholder: "The group at Busch Stadium \u2014 Aug 17, 2024" }))))
       )
     );
   }

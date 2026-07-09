@@ -124,10 +124,10 @@ window.TMOBILE = {
   // ---- Supporting photography (roof bays — structural observations) ----
   // each: [slot id, drop guidance]
   panels: [
-    ["tmobile-p1", "Exterior \u00b7 brick facade & exposed steel", "assets/safeco-p1.jpg"],
-    ["tmobile-p2", "Retractable canopy roof structure", "assets/safeco-p2.jpg"],
-    ["tmobile-p3", "Seating bowl & the field", "assets/safeco-p3.jpg"],
-    ["tmobile-p4", "Concourse steelwork", "assets/safeco-p4.jpg"],
-    ["tmobile-p5", "Safeco-era / construction archival image", "assets/safeco-p5.jpg"]
+    ["tmobile-p1", "Exterior \u00b7 brick facade & exposed steel", "images/safeco/safeco-p1.jpg"],
+    ["tmobile-p2", "Retractable canopy roof structure", "images/safeco/safeco-p2.jpg"],
+    ["tmobile-p3", "Seating bowl & the field", "images/safeco/safeco-p3.jpg"],
+    ["tmobile-p4", "Concourse steelwork", "images/safeco/safeco-p4.jpg"],
+    ["tmobile-p5", "Safeco-era / construction archival image", "images/safeco/safeco-p5.jpg"]
   ]
 };

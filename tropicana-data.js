@@ -87,11 +87,11 @@ window.TROPICANA = {
   /* ---- Bay A · two stacked roof-bay photo strips (no captions) ----
      [slot id, drop-guidance placeholder] ---- */
   roof_photos: [
-    ["trop-roof1", "Dome interior \u2014 slanted white PTFE ceiling, catwalk rings & suspended lighting over the bowl. Looking up into the enclosed roof volume.", "uploads/tropicana-field-01.jpg"],
-    ["trop-roof2", "Catwalk / roof-truss detail \u2014 the suspended ring walkways and structural hardware spanning the dome.", "uploads/tropicana-field-02.jpg"]
+    ["trop-roof1", "Dome interior \u2014 slanted white PTFE ceiling, catwalk rings & suspended lighting over the bowl. Looking up into the enclosed roof volume.", "images/tropicana/tropicana-field-01.jpg"],
+    ["trop-roof2", "Catwalk / roof-truss detail \u2014 the suspended ring walkways and structural hardware spanning the dome.", "images/tropicana/tropicana-field-02.jpg"]
   ],
   /* Bay E supporting photo */
-  support_photo: ["trop-supp1", "Interior concourse or glazed rotunda entry \u2014 concrete structure, cool artificial light, the synthetic field beyond.", "uploads/tropicana-field-03.jpg"],
+  support_photo: ["trop-supp1", "Interior concourse or glazed rotunda entry \u2014 concrete structure, cool artificial light, the synthetic field beyond.", "images/tropicana/tropicana-field-03.jpg"],
 
   /* ---- Bay D · featured visit / game (game-operations display) ---- */
   visit: {

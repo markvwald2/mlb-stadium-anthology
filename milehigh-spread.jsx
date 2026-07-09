@@ -76,7 +76,7 @@
         /* ============ LEFT PAGE / HERO ============ */
         React.createElement("div", { className: "mh-page mh-left" },
           React.createElement("div", { className: "mh-hero-slot" },
-            React.createElement(Slot, { id: "milehigh-hero", src: "uploads/mile-high-stadium-00-main-93e6537b.jpg", placeholder: "Drop the Mile High Stadium hero photo \u2014 open-air multipurpose bowl: concrete-and-steel grandstands, movable east stand, packed crowd, Front Range / Denver edge", shape: "rect" })
+            React.createElement(Slot, { id: "milehigh-hero", src: "images/milehigh/mile-high-stadium-00-main-93e6537b.jpg", placeholder: "Drop the Mile High Stadium hero photo \u2014 open-air multipurpose bowl: concrete-and-steel grandstands, movable east stand, packed crowd, Front Range / Denver edge", shape: "rect" })
           ),
           React.createElement("div", { className: "mh-hero-scrim" }),
 
@@ -164,10 +164,10 @@
 
                 React.createElement("div", { className: "mh-photos" },
                   React.createElement("figure", { className: "mh-photo" },
-                    React.createElement(Slot, { id: "milehigh-rp-1", src: "uploads/mile-high-stadium-01.jpg", placeholder: "Open-air bowl \u2014 concrete-and-steel grandstands, packed crowd", shape: "rect" })
+                    React.createElement(Slot, { id: "milehigh-rp-1", src: "images/milehigh/mile-high-stadium-01.jpg", placeholder: "Open-air bowl \u2014 concrete-and-steel grandstands, packed crowd", shape: "rect" })
                   ),
                   React.createElement("figure", { className: "mh-photo" },
-                    React.createElement(Slot, { id: "milehigh-rp-2", src: "uploads/mile-high-stadium-02.jpg", placeholder: "Movable east stand \u2014 expandable steel grandstand structure", shape: "rect" })
+                    React.createElement(Slot, { id: "milehigh-rp-2", src: "images/milehigh/mile-high-stadium-02.jpg", placeholder: "Movable east stand \u2014 expandable steel grandstand structure", shape: "rect" })
                   )
                 ),
 
@@ -241,7 +241,7 @@
                 ),
 
                 React.createElement("figure", { className: "mh-photo mh-vphoto" },
-                  React.createElement(Slot, { id: "milehigh-rp-3", src: "uploads/mile-high-stadium-03.jpg", placeholder: "Home opener \u2014 game-day crowd / field, Rockies vs Expos, Apr 9, 1993", shape: "rect" })
+                  React.createElement(Slot, { id: "milehigh-rp-3", src: "images/milehigh/mile-high-stadium-03.jpg", placeholder: "Home opener \u2014 game-day crowd / field, Rockies vs Expos, Apr 9, 1993", shape: "rect" })
                 )
               )
             )

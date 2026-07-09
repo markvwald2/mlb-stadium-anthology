@@ -66,7 +66,7 @@
         /* ============ LEFT PAGE / HERO ============ */
         React.createElement("div", { className: "rs-page rs-left" },
           React.createElement("div", { className: "rs-hero-slot" },
-            React.createElement(Slot, { id: "royals-hero", src: "uploads/royals-stadium-00-main2.jpg", placeholder: "Drop the Royals Stadium hero photo (fountains \u00b7 crown scoreboard)", shape: "rect" })
+            React.createElement(Slot, { id: "royals-hero", src: "images/royals/royals-stadium-00-main.jpg", placeholder: "Drop the Royals Stadium hero photo (fountains \u00b7 crown scoreboard)", shape: "rect" })
           ),
           React.createElement(Fountains, null),
           React.createElement("div", { className: "rs-hero-scrim" }),
@@ -87,10 +87,10 @@
 
             /* ---- IMAGE STRIP ---- */
             React.createElement("div", { className: "rs-strip" },
-              React.createElement(Slot, { id: "royals-s1", src: "uploads/royals-stadium-01.jpg", placeholder: "Exterior \u00b7 entry" }),
-              React.createElement(Slot, { id: "royals-s2", src: "uploads/royals-stadium-02.jpg", placeholder: "Outfield fountains" }),
-              React.createElement(Slot, { id: "royals-s3", src: "uploads/royals-stadium-03.jpg", placeholder: "Crown scoreboard" }),
-              React.createElement(Slot, { id: "royals-s4", src: "uploads/royals-stadium-04.jpg", placeholder: "Sports complex \u00b7 aerial" })
+              React.createElement(Slot, { id: "royals-s1", src: "images/royals/royals-stadium-01.jpg", placeholder: "Exterior \u00b7 entry" }),
+              React.createElement(Slot, { id: "royals-s2", src: "images/royals/royals-stadium-02.jpg", placeholder: "Outfield fountains" }),
+              React.createElement(Slot, { id: "royals-s3", src: "images/royals/royals-stadium-03.jpg", placeholder: "Crown scoreboard" }),
+              React.createElement(Slot, { id: "royals-s4", src: "images/royals/royals-stadium-04.jpg", placeholder: "Sports complex \u00b7 aerial" })
             ),
 
             /* ---- SPEC RIBBON ---- */

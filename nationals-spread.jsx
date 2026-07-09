@@ -69,7 +69,7 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         React.createElement("div", { className: "np-page np-left", "data-screen-label": "Nationals Park hero" },
           React.createElement("div", { className: "np-hero-slot" },
-            React.createElement(Slot, { id: "nats-hero", src: "uploads/nationals-park-00-main.jpg", placeholder: "Drop the Nationals Park aerial \u2014 bowl + Navy Yard / Capitol Riverfront district + Anacostia River" })),
+            React.createElement(Slot, { id: "nats-hero", src: "images/nationals/nationals-park-00-main-2c43bc04.jpg", placeholder: "Drop the Nationals Park aerial \u2014 bowl + Navy Yard / Capitol Riverfront district + Anacostia River" })),
           React.createElement("div", { className: "np-hero-scrim" }),
 
           React.createElement("div", { className: "np-hero-head" },
@@ -118,7 +118,7 @@
                   React.createElement("div", { className: "np-ctx-paras" },
                     D.context.map((p, i) => React.createElement("p", { key: i }, p))),
                   React.createElement("div", { className: "np-ctx-photo" },
-                    React.createElement(Slot, { id: "nats-ctx-photo", src: "uploads/nationals-park-02.jpg", placeholder: "Navy Yard / Capitol Riverfront district \u2014 civic context plate" })))),
+                    React.createElement(Slot, { id: "nats-ctx-photo", src: "images/nationals/nationals-park-02.jpg", placeholder: "Navy Yard / Capitol Riverfront district \u2014 civic context plate" })))),
 
               /* RIGHT — specs + photos */
               React.createElement("div", { className: "np-rmain" },
@@ -160,9 +160,9 @@
 
                 /* photo civic blocks */
                 React.createElement("div", { className: "np-photos" },
-                  photoCard("nats-p1", "Exterior", "Exterior", "Precast civic facade / S Capitol St entrance", "uploads/nationals-park-04.jpg"),
-                  photoCard("nats-p2", "Concourse", "Concourse", "Open concourse / bowl + river view", "uploads/nationals-park-01.jpg"),
-                  photoCard("nats-p3", "Riverfront", "Riverfront", "Anacostia riverfront / Navy Yard district", "uploads/nationals-park-03.jpg")),
+                  photoCard("nats-p1", "Exterior", "Exterior", "Precast civic facade / S Capitol St entrance", "images/nationals/nationals-park-04.jpg"),
+                  photoCard("nats-p2", "Concourse", "Concourse", "Open concourse / bowl + river view", "images/nationals/nationals-park-01.jpg"),
+                  photoCard("nats-p3", "Riverfront", "Riverfront", "Anacostia riverfront / Navy Yard district", "images/nationals/nationals-park-03.jpg")),
 
                 /* --- VISIT BAND --- */
                 React.createElement("div", { className: "np-visit" },

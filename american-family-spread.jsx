@@ -134,7 +134,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "amf-page amf-left", "data-screen-label": "American Family Field — hero" },
         e("div", { className: "amf-hero-slot" },
-          e(Slot, { id: "amfam-hero", src: "uploads/miller-park-00-main.jpg", placeholder: "Drop the American Family Field hero \u2014 night aerial of the fan-shaped retractable roof, brick-and-steel mass, surrounding lots & the Menomonee valley" })),
+          e(Slot, { id: "amfam-hero", src: "images/american-family/miller-park-00-main-c17983a5.jpg", placeholder: "Drop the American Family Field hero \u2014 night aerial of the fan-shaped retractable roof, brick-and-steel mass, surrounding lots & the Menomonee valley" })),
         e("div", { className: "amf-hero-scrim" }),
 
         e("img", { className: "amf-hero-logo", src: "assets/milwaukee-brewers-logo.svg", alt: "Milwaukee Brewers" }),

@@ -90,7 +90,7 @@
       /* ===================== LEFT PAGE / HERO ===================== */
       e("div", { className: "cy-page cy-left", "data-screen-label": "Camden Yards hero" },
         e("div", { className: "cy-hero-slot" },
-          e(Slot, { id: "camden-hero", placeholder: "Drop the Camden Yards aerial \u2014 stadium bowl, B&O Warehouse edge, downtown Baltimore + harbor", src: "uploads/camden-yards-00-hero.jpg" })),
+          e(Slot, { id: "camden-hero", placeholder: "Drop the Camden Yards aerial \u2014 stadium bowl, B&O Warehouse edge, downtown Baltimore + harbor", src: "images/camden/camden-yards-00-hero.jpg" })),
         e("div", { className: "cy-hero-scrim" }),
         e("div", { className: "cy-hero-grid", "aria-hidden": "true" }),
 
@@ -126,11 +126,11 @@
 
           /* --- photo strip (warehouse bays) --- */
           e("div", { className: "cy-photos" },
-            photoCard("camden-p1", "B&O Warehouse facade / exterior", "uploads/camden-yards-01.jpg"),
-            photoCard("camden-p2", "Seating bowl + field", "uploads/camden-yards-02.jpg"),
-            photoCard("camden-p3", "Scoreboard", "uploads/camden-yards-03.jpg"),
-            photoCard("camden-p4", "Warehouse concourse", "uploads/camden-yards-04.jpg"),
-            photoCard("camden-p5", "Aerial / downtown", "uploads/camden-yards-05.jpg")),
+            photoCard("camden-p1", "B&O Warehouse facade / exterior", "images/camden/camden-yards-01.jpg"),
+            photoCard("camden-p2", "Seating bowl + field", "images/camden/camden-yards-02.jpg"),
+            photoCard("camden-p3", "Scoreboard", "images/camden/camden-yards-03.jpg"),
+            photoCard("camden-p4", "Warehouse concourse", "images/camden/camden-yards-04.jpg"),
+            photoCard("camden-p5", "Aerial / downtown", "images/camden/camden-yards-05.jpg")),
 
           /* --- metadata datum ribbon (THE WAREHOUSE DATUM SPINE) --- */
           e("div", { className: "cy-ribbon" },

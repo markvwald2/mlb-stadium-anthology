@@ -17,7 +17,7 @@ window.NEWCOMISKEY = {
   // ---- Identity (hero title block, left page) ----
   stadium_name: "New Comiskey Park",
   name_kicker: "NEW",
-  name_lines: ["COMISKEY", "PARK"],
+  name_lines: ["COMISKEY PARK"],
   city: "Chicago",
   state: "Illinois",
   district: "South Side",
@@ -46,10 +46,9 @@ window.NEWCOMISKEY = {
     ["Const. Start", "May 7, 1989"],
     ["Architect", "HOK Sport"],
     ["Type", "Open-air \u00b7 baseball-only"],
-    ["Roof", "Open air"],
     ["Surface", "Natural grass", "Kentucky bluegrass"],
-    ["Style", "Late-modern", "retrofitted retro-classic"],
-    ["Facade", "Concrete & steel", "arched-window facade; black steel canopy"],
+    ["Style", "Late-modern retrofitted retro-classic"],
+    ["Facade", "Concrete & steel; arched-window facade; black steel canopy"],
     ["Location", "Urban", "333 W 35th St, Chicago, IL 60616"],
     ["Elevation", "595 ft"],
     ["Coordinates", "41.83\u00b0 N, 87.6339\u00b0 W"]
@@ -88,7 +87,7 @@ window.NEWCOMISKEY = {
   //      the date is stated once. Night game is communicated by the 6:07 PM
   //      first pitch, so "Night" is not listed separately. Save is n/a. ----
   visit: [
-    ["First Visit", "Wed \u00b7 Jul 4, 2001"],
+    ["Date", "Wed \u00b7 Jul 4, 2001"],
     ["First Pitch", "6:07 PM CDT"],
     ["Attendance", "22,934"],
     ["Duration", "2:51"]

@@ -113,7 +113,7 @@
       /* ===================== LEFT PAGE / HERO ===================== */
       e("div", { className: "cf-page cf-left", "data-screen-label": "Citi Field hero" },
         e("div", { className: "cf-hero-slot" },
-          e("image-slot", { id: "citi-hero", shape: "rect", src: "uploads/citi-field-00-main2.jpg",
+          e("image-slot", { id: "citi-hero", shape: "rect", src: "images/citi/citi-field-00-main2.jpg",
             placeholder: "Drop the Citi Field aerial \u2014 Jackie Robinson Rotunda + brick facade, seating bowl, Flushing Meadows rail / parkways / parking, Manhattan skyline beyond" })),
         e("div", { className: "cf-hero-scrim" }),
         e("div", { className: "cf-hero-grid", "aria-hidden": "true" }),
@@ -151,11 +151,11 @@
 
           /* --- arched photo arcade (rotunda bays) --- */
           e("div", { className: "cf-arcade" },
-            e(Bay, { id: "citi-p1", src: "uploads/citi-field-01.jpg", placeholder: "Jackie Robinson Rotunda / brick facade" }),
-            e(Bay, { id: "citi-p2", src: "uploads/citi-field-02.jpg", placeholder: "Seating bowl + field" }),
-            e(Bay, { id: "citi-p3", src: "uploads/citi-field-03.jpg", placeholder: "Scoreboard" }),
-            e(Bay, { id: "citi-p4", src: "uploads/citi-field-04.jpg", placeholder: "Open concourse" }),
-            e(Bay, { id: "citi-p5", src: "uploads/citi-field-05.jpg", placeholder: "Plaza / Flushing Meadows context" })),
+            e(Bay, { id: "citi-p1", src: "images/citi/citi-field-01.jpg", placeholder: "Jackie Robinson Rotunda / brick facade" }),
+            e(Bay, { id: "citi-p2", src: "images/citi/citi-field-02.jpg", placeholder: "Seating bowl + field" }),
+            e(Bay, { id: "citi-p3", src: "images/citi/citi-field-03.jpg", placeholder: "Scoreboard" }),
+            e(Bay, { id: "citi-p4", src: "images/citi/citi-field-04.jpg", placeholder: "Open concourse" }),
+            e(Bay, { id: "citi-p5", src: "images/citi/citi-field-05.jpg", placeholder: "Plaza / Flushing Meadows context" })),
 
           /* --- limestone metadata datum ribbon --- */
           e("div", { className: "cf-ribbon" },

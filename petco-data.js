@@ -99,8 +99,8 @@ window.PETCO = {
   /* ---- Bay C · architectural window openings (no captions) ----
      [slot id, drop-guidance placeholder (disappears when filled)] ---- */
   windows: [
-    ["petco-w1", "Western Metal Supply building \u2014 preserved red-brick warehouse anchoring the left-field corner", "uploads/petco-park-01.jpg"],
-    ["petco-w2", "Open concourse & white-painted steel structure \u2014 sandstone / stucco material detailing", "uploads/petco-park-02.jpg"],
+    ["petco-w1", "Western Metal Supply building \u2014 preserved red-brick warehouse anchoring the left-field corner", "images/petco/petco-park-01.jpg"],
+    ["petco-w2", "Open concourse & white-painted steel structure \u2014 sandstone / stucco material detailing", "images/petco/petco-park-02.jpg"],
     ["petco-w3", "Downtown skyline integration \u2014 East Village frontage, Gallagher Square & the bay beyond"]
   ],
   window_plate: ["Built for baseball.", "Built for the city."],

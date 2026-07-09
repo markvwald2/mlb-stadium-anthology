@@ -104,10 +104,10 @@ window.BUSCH = {
   // ---- Supporting photography (five documentary bays). Captions match the
   // supplied concept image. each: [slot id, drop placeholder, caption] ----
   bays: [
-    ["busch-p1", "Third-base entry \u2014 brick facade & steel entrance arch", "Third Base Entry", "uploads/busch-stadium-04.jpg"],
-    ["busch-p2", "View from right field \u2014 seating bowl & field", "View from Right Field", "uploads/busch-stadium-03.jpg"],
-    ["busch-p3", "Center-field scoreboard", "Scoreboard", "uploads/busch-stadium-06.jpg"],
-    ["busch-p4", "Concourse & Ballpark Village edge", "Concourse", "uploads/busch-stadium-01.jpg"],
-    ["busch-p5", "Downtown St. Louis \u2014 Gateway Arch & river", "Downtown St. Louis", "uploads/busch-stadium-05.jpg"]
+    ["busch-p1", "Third-base entry \u2014 brick facade & steel entrance arch", "Third Base Entry", "images/busch/busch-stadium-04.jpg"],
+    ["busch-p2", "View from right field \u2014 seating bowl & field", "View from Right Field", "images/busch/busch-stadium-03.jpg"],
+    ["busch-p3", "Center-field scoreboard", "Scoreboard", "images/busch/busch-stadium-06.jpg"],
+    ["busch-p4", "Concourse & Ballpark Village edge", "Concourse", "images/busch/busch-stadium-01.jpg"],
+    ["busch-p5", "Downtown St. Louis \u2014 Gateway Arch & river", "Downtown St. Louis", "images/busch/busch-stadium-05.jpg"]
   ]
 };

@@ -100,7 +100,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "tf-page tf-left", "data-screen-label": "Tropicana Field \u2014 dome hero (left page)" },
         e("div", { className: "tf-hero-slot" },
-          e(Slot, { id: "trop-hero", src: "uploads/tropicana-field-00-main.jpg",
+          e(Slot, { id: "trop-hero", src: "images/tropicana/tropicana-field-00-main-22435553.jpg",
             placeholder: "Drop the Tropicana Field interior hero \u2014 an MLB game occurring INSIDE the engineered enclosure: slanted white PTFE dome ceiling, catwalk rings, suspended lighting & the synthetic turf below. Emphasize the enclosed roof volume; avoid exterior glamour, skyline or Florida sunshine." })),
         e("div", { className: "tf-hero-scrim" }),
 

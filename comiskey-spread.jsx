@@ -62,7 +62,7 @@
       /* ============ LEFT / AERIAL PLATE ============ */
       e("div", { className: "cm-page cm-left", "data-screen-label": "Comiskey left page" },
         e("div", { className: "cm-hero-slot" },
-          e(Slot, { id: "cm-hero", src: "uploads/comiskey-park-00-main.jpg", placeholder: "Drop the Comiskey Park aerial \u2014 the jewel-box grandstand on the South Side with the Chicago skyline beyond" })),
+          e(Slot, { id: "cm-hero", src: "images/comiskey/comiskey-park-00-main-40d390bc.jpg", placeholder: "Drop the Comiskey Park aerial \u2014 the jewel-box grandstand on the South Side with the Chicago skyline beyond" })),
         e("div", { className: "cm-hero-scrim" }),
 
         /* lit stat plate */
@@ -99,11 +99,11 @@
 
           /* ---- photo bays ---- */
           e("div", { className: "cm-photostrip" },
-            photoBay("cm-p1", "Exterior \u2014 brick, concrete & steel grandstand along 35th Street", "uploads/comiskey-park-04.jpg"),
-            photoBay("cm-p2", "View from the upper deck across the playing field", "uploads/comiskey-park-03.jpg"),
-            photoBay("cm-p3", "The exploding scoreboard \u2014 the pinwheel light towers in full burst", "uploads/comiskey-park-01.jpg"),
-            photoBay("cm-p4", "Concourse beneath the deck \u2014 steel columns and ramps", "uploads/comiskey-park-02.jpg"),
-            photoBay("cm-p5", "South Side neighborhood \u2014 the ballpark inside the city blocks", "uploads/comiskey-park-05.jpg")),
+            photoBay("cm-p1", "Exterior \u2014 brick, concrete & steel grandstand along 35th Street", "images/comiskey/comiskey-park-04.jpg"),
+            photoBay("cm-p2", "View from the upper deck across the playing field", "images/comiskey/comiskey-park-03.jpg"),
+            photoBay("cm-p3", "The exploding scoreboard \u2014 the pinwheel light towers in full burst", "images/comiskey/comiskey-park-01.jpg"),
+            photoBay("cm-p4", "Concourse beneath the deck \u2014 steel columns and ramps", "images/comiskey/comiskey-park-02.jpg"),
+            photoBay("cm-p5", "South Side neighborhood \u2014 the ballpark inside the city blocks", "images/comiskey/comiskey-park-05.jpg")),
 
           /* ---- metadata ribbon ---- */
           e("div", { className: "cm-ribbon" },

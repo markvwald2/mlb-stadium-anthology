@@ -11,6 +11,7 @@
   function Slot(props) {
     const a = { id: props.id, placeholder: props.placeholder, shape: props.shape || "rect", maxdim: props.maxdim || 1200 };
     if (props.src) a.src = props.src;
+    else a.src = "images/oracle/" + props.id + ".webp";
     return e("image-slot", a);
   }
 
@@ -74,7 +75,7 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         e("div", { className: "op-page op-left", "data-screen-label": "Oracle Park hero" },
           e("div", { className: "op-hero-slot" },
-            e(Slot, { id: "oracle-hero", src: "uploads/oracle-park-00-main-848832b8.jpg", maxdim: 4243, placeholder: "Drop the Oracle Park aerial \u2014 ballpark + McCovey Cove + bay + city skyline" })),
+            e(Slot, { id: "oracle-hero", src: "images/oracle/oracle-park-00-main-848832b8.jpg", maxdim: 4243, placeholder: "Drop the Oracle Park aerial \u2014 ballpark + McCovey Cove + bay + city skyline" })),
           e("div", { className: "op-hero-scrim" }),
           e("div", { className: "op-hero-folio" }, "Retro Classic \u00b7 Waterfront ballpark"),
 

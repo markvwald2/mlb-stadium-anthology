@@ -36,6 +36,7 @@
 
   function Slot(props) {
     return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
+      src: props.src || ("images/citizens/" + props.id + ".webp"),
       style: { width: "100%", height: "100%" } });
   }
   function BayHead(props) {

@@ -77,7 +77,7 @@
       /* ============ LEFT / NIGHT-AERIAL HERO ============ */
       e("div", { className: "lm-page lm-left", "data-screen-label": "Milwaukee County Stadium — hero (left page)" },
         e("div", { className: "lm-hero-slot" },
-          e(Slot, { id: "mcs-hero", src: "uploads/county-stadium-00-main-2ee57177.jpg", placeholder: "Drop the Milwaukee County Stadium night / dusk aerial \u2014 the open municipal bowl, light towers, giant outfield scoreboard, and the fairgrounds parking fields" })),
+          e(Slot, { id: "mcs-hero", src: "images/county/county-stadium-00-main-2ee57177.jpg", placeholder: "Drop the Milwaukee County Stadium night / dusk aerial \u2014 the open municipal bowl, light towers, giant outfield scoreboard, and the fairgrounds parking fields" })),
         e("div", { className: "lm-hero-scrim" }),
 
         e("div", { className: "lm-hero-datum" }, D.coordinates,
@@ -129,9 +129,9 @@
                   e("div", { className: "lm-id-well" }, e("img", { src: "assets/nl-logo.png", alt: "National League" })),
                   e("div", { className: "lm-id-well" }, e("img", { src: "assets/mlb-logo.svg", alt: "MLB" }))))),
             e("div", { className: "lm-photos" },
-              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p1", src: "uploads/county-stadium-01.jpg", placeholder: "Exposed steel grandstand & ramps" })),
-              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p2", src: "uploads/county-stadium-02.jpg", placeholder: "Open-air seating bowl" })),
-              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p3", src: "uploads/county-stadium-03.jpg", placeholder: "Outfield lamp-matrix scoreboard" })))
+              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p1", src: "images/county/county-stadium-01.jpg", placeholder: "Exposed steel grandstand & ramps" })),
+              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p2", src: "images/county/county-stadium-02.jpg", placeholder: "Open-air seating bowl" })),
+              e("div", { className: "lm-photo" }, e(Slot, { id: "mcs-p3", src: "images/county/county-stadium-03.jpg", placeholder: "Outfield lamp-matrix scoreboard" })))
           ),
 
           /* ---- data bays ---- */

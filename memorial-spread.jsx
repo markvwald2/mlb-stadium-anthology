@@ -73,7 +73,7 @@
       /* ================= LEFT PAGE — carved monument hero ================= */
       e("div", { className: "ms-page ms-left", "data-screen-label": "Memorial Stadium hero" },
         e("div", { className: "ms-hero-slot" },
-          e(Slot, { id: "ms-hero", src: "uploads/memorial-stadium-00-main-d4a3b435.jpg", placeholder: "Drop a dramatic low-angle photograph of the memorial facade \u2014 colonnade, gateway, reinforced-concrete mass (treat it like a civic monument, not the field)" })),
+          e(Slot, { id: "ms-hero", src: "images/memorial/memorial-stadium-00-main-d4a3b435.jpg", placeholder: "Drop a dramatic low-angle photograph of the memorial facade \u2014 colonnade, gateway, reinforced-concrete mass (treat it like a civic monument, not the field)" })),
         e("div", { className: "ms-hero-scrim" }),
 
         e("div", { className: "ms-hero-folio" },
@@ -230,7 +230,7 @@
 
     function plate(id, src, ph) {
       return e("div", { className: "ms-plate" },
-        e("div", { className: "inner" }, e(Slot, { id: id, src: "uploads/" + src, placeholder: ph })));
+        e("div", { className: "inner" }, e(Slot, { id: id, src: "images/memorial/" + src, placeholder: ph })));
     }
     function stat(icon, lab, val, lead) {
       return e("div", { className: "ms-stat" + (lead ? " lead" : "") },

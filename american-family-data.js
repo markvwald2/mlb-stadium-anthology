@@ -121,10 +121,10 @@ window.AMFAM = {
   // ---- Supporting photography (roof panels, fanned across the crown) ----
   // each: [slot id, short caption, aspect "4:3" | "3:4"]
   panels: [
-    ["amfam-p1", "Exterior \u00b7 brick & the fan roof", "4:3", "uploads/miller-park-01.jpg"],
-    ["amfam-p2", "Seating bowl beneath the closed roof", "4:3", "uploads/miller-park-02.jpg"],
-    ["amfam-p3", "Center-field scoreboard", "4:3", "uploads/miller-park-03.jpg"],
-    ["amfam-p4", "Concourse & the Hot Corner", "4:3", "uploads/miller-park-04.jpg"],
-    ["amfam-p5", "Roof interior \u00b7 pivoting panels", "4:3", "uploads/miller-park-05.jpg"]
+    ["amfam-p1", "Exterior \u00b7 brick & the fan roof", "4:3", "images/american-family/miller-park-01.jpg"],
+    ["amfam-p2", "Seating bowl beneath the closed roof", "4:3", "images/american-family/miller-park-02.jpg"],
+    ["amfam-p3", "Center-field scoreboard", "4:3", "images/american-family/miller-park-03.jpg"],
+    ["amfam-p4", "Concourse & the Hot Corner", "4:3", "images/american-family/miller-park-04.jpg"],
+    ["amfam-p5", "Roof interior \u00b7 pivoting panels", "4:3", "images/american-family/miller-park-05.jpg"]
   ]
 };

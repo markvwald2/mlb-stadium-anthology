@@ -12,7 +12,7 @@
   const Protractor = window.ComericaProtractor;
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect" });
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src || ("images/comerica/" + props.id + ".webp") });
   }
 
   /* ---- small line icons ---- */

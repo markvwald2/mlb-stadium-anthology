@@ -55,8 +55,8 @@
       ticks.push(e("line", { key: "t" + a, x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1], stroke: big ? ink : ruleStrong, strokeWidth: big ? 1.4 : 0.9, opacity: big ? 0.9 : 0.55 }));
     }
     const nums = [30, 60, 90].map((a, i) => {
-      const p = polar(C, PR + 14, a);
-      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "13px", fill: ink3 } }, a);
+      const p = polar(C, PR + 18, a);
+      return e("text", { key: "n" + i, x: p[0], y: p[1] + 4, textAnchor: "middle", style: { fontFamily: "'Space Mono',monospace", fontWeight: 700, fontSize: "14px", fill: ink3 } }, a);
     });
     const arcA = polar(C, PR, 0), arcB = polar(C, PR, 110);
     const protArc = "M " + arcA[0] + " " + arcA[1] + " A " + PR + " " + PR + " 0 0 1 " + arcB[0].toFixed(1) + " " + arcB[1].toFixed(1);
@@ -67,9 +67,9 @@
     const nlab = polar(C, PR + 14, 0);
 
     const chips = [
-      { p: out(rot(lf, C, deg), C, 18), t: strip(props.lf) },
+      { p: out(rot(lf, C, deg), C, 11), t: strip(props.lf) },
       { p: window.FieldLabels.cfWallPoint(C, R, deg), t: strip(props.cf) },
-      { p: out(rot(rf, C, deg), C, 18), t: strip(props.rf) }
+      { p: out(rot(rf, C, deg), C, 11), t: strip(props.rf) }
     ];
 
     return e("svg", { viewBox: "20 28 320 290", className: "pk-fig", role: "img", "aria-label": "Field geometry plan, oriented " + orientation + " " + deg + " degrees" },
@@ -88,8 +88,8 @@
       e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2.2, strokeLinecap: "round" }),
       e("polygon", { points: head, fill: arrow }),
       e("circle", { cx: C[0], cy: C[1], r: 3, fill: accent }),
-      e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 16.5, tone: "accent", padX: 8 }),
-      chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 17.5 }))
+      e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 20, tone: "accent", padX: 8 }),
+      chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 20 }))
     );
   }
 

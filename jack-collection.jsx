@@ -20,7 +20,7 @@
     return e("section", { className: "jc-mosaic" },
       D.mosaic.map(function (m) {
         return e("div", { className: "jc-tile", style: { gridColumn: m.gc, gridRow: m.gr }, key: m.id },
-          e("image-slot", { id: m.id, shape: "rect", placeholder: m.ph }));
+          e("image-slot", { id: m.id, src: "images/book-intro/" + m.id + ".webp", shape: "rect", placeholder: m.ph }));
       }));
   }
 
@@ -37,7 +37,7 @@
               e("div", { className: "jc-gen-era-name", style: { color: g.accent } }, g.title),
               e("div", { className: "jc-gen-era-desc" }, g.desc)),
             e("div", { className: "jc-gen-draw" },
-              e("image-slot", { id: g.slot, shape: "rect", maxdim: 1100, placeholder: "elevation drawing" })),
+              e("image-slot", { id: g.slot, src: "images/book-intro/" + g.slot + ".webp", shape: "rect", maxdim: 1100, placeholder: "elevation drawing" })),
             e("p", { className: "jc-gen-parks", style: g.parksStyle || null }, g.parks.join(", ")));
         })));
   }

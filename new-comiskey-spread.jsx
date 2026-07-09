@@ -18,7 +18,7 @@
   function Slot(props) {
     return e("image-slot", Object.assign({
       id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
-    }, props.style ? { style: props.style } : {}));
+    }, props.src ? { src: props.src } : {}, props.style ? { style: props.style } : {}));
   }
 
   function SecHead(props) {
@@ -30,7 +30,7 @@
   function ZoneHead(props) {
     return e("div", { className: "nc-zh" },
       e("span", { className: "rn" }, props.rn),
-      e("span", { className: "t" }, props.title),
+      e("span", { className: "t", style: props.tstyle || null }, props.title),
       props.note ? e("span", { className: "n" }, props.note) : null);
   }
 
@@ -92,16 +92,10 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "nc-page nc-left", "data-screen-label": "New Comiskey Park \u2014 hero" },
         e("div", { className: "nc-hero-slot" },
-          e(Slot, { id: "nc-hero", placeholder: "Drop the New Comiskey Park hero \u2014 dusk / night view emphasizing the late-modern concrete bowl, steep upper-deck massing, exposed structure, the black steel roof canopy silhouette, and the field glow emerging from inside the mass. Avoid skyline emphasis, fireworks dominance, crowd-energy photography" })),
+          e(Slot, { id: "nc-hero", src: "images/new-comiskey/guaranteed-rate-field-00-main.jpg", placeholder: "Drop the New Comiskey Park hero \u2014 dusk / night view emphasizing the late-modern concrete bowl, steep upper-deck massing, exposed structure, the black steel roof canopy silhouette, and the field glow emerging from inside the mass. Avoid skyline emphasis, fireworks dominance, crowd-energy photography" })),
         e("div", { className: "nc-hero-scrim" }),
 
         e("div", { className: "nc-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
-        e("div", { className: "nc-spine" }, "EST. " + D.est + "  \u00b7  CHICAGO, ILLINOIS  \u00b7  " + D.district.toUpperCase()),
-
-        e("div", { className: "nc-roofline" },
-          e("span", { className: "tk" }), e("span", { className: "ln" }),
-          e("span", { className: "cap" }, "OPEN-AIR \u00b7 BLACK STEEL CANOPY \u00b7 SOUTH SIDE, CHICAGO"),
-          e("span", { className: "ln" }), e("span", { className: "tk" })),
 
         e("div", { className: "nc-hero-title" },
           e("div", { className: "nc-chord" },
@@ -153,7 +147,7 @@
 
             /* ===== ZONE A — THE STADIUM ===== */
             e("div", { className: "nc-zone a" },
-              e(ZoneHead, { rn: "I", title: "The Stadium", note: "Details" }),
+              e(ZoneHead, { rn: "I", title: "The Stadium", note: "Details", tstyle: { fontSize: "24px" } }),
               e("div", { className: "nc-facts" }, D.facts.map(factRow)),
               e("div", { className: "nc-block" },
                 e(SecHead, { title: "Lifecycle" }),
@@ -175,12 +169,12 @@
 
             /* ===== ZONE B — THE CORRECTION (spine) ===== */
             e("div", { className: "nc-zone b" },
-              e(ZoneHead, { rn: "II", title: "Concrete Before Camden", note: "The Last Modern Park" }),
+              e(ZoneHead, { rn: "II", title: "Concrete Before Camden", note: "The Last Modern Park", tstyle: { fontSize: "24px", letterSpacing: "0px" } }),
               e("div", { className: "nc-spine-body" },
                 e("div", { className: "nc-canopy" },
-                  e(Slot, { id: "nc-canopy", placeholder: "Architectural photo of the black steel roof canopy / upper-deck structure added in the 2001\u20132007 renovation \u2014 the correction made visible" })),
+                  e(Slot, { id: "nc-canopy", src: "images/new-comiskey/guaranteed-rate-field-aerial-dusk.jpg", placeholder: "Aerial dusk view of New Comiskey Park with the Chicago skyline beyond — the bowl, canopy, and South Side context" })),
                 e("div", { className: "nc-ctx" },
-                  e(SecHead, { title: "The Correction", note: "1991 \u2192 PRESENT" }),
+                  e(SecHead, { title: "The Park That Aged Overnight", note: "1991 \u2192 PRESENT" }),
                   e("div", { className: "nc-ctx-cols" },
                     e("div", { className: "nc-ctx-col l" },
                       e("p", null, D.stadium_context[0]),
@@ -195,13 +189,12 @@
 
             /* ===== ZONE C — GAME NIGHT ===== */
             e("div", { className: "nc-zone c" },
-              e(ZoneHead, { rn: "III", title: "Game Night", note: "Jul 4, 2001" }),
+              e(ZoneHead, { rn: "III", title: "Game Night", note: "Jul 4, 2001", tstyle: { fontSize: "24px" } }),
               e("div", { className: "nc-night" },
-                sparkCluster(),
                 e("div", { className: "nc-night-cell" },
-                  e(Slot, { id: "nc-night", placeholder: "Night-game photo \u2014 the lit field, scoreboard, and seating bowl under lights on the Jul 4, 2001 visit (field-green glow)" })),
+                  e(Slot, { id: "nc-night", src: "images/new-comiskey/guaranteed-rate-field-01.jpg", placeholder: "Facade / main gate of the ballpark — arched-window bays, masonry, the black steel canopy above" })),
                 e("div", { className: "nc-night-cell" },
-                  e(Slot, { id: "nc-night2", placeholder: "Second night view \u2014 black steel canopy / upper-deck bowl, scoreboard or concourse under the lights" }))),
+                  e(Slot, { id: "nc-night2", src: "images/new-comiskey/guaranteed-rate-field-03.jpg", placeholder: "Second night view \u2014 black steel canopy / upper-deck bowl, scoreboard or concourse under the lights" }))),
               e("div", { className: "nc-visit" },
                 e(SecHead, { title: "Visit Information", note: "MIN AT CWS" }),
                 e("div", { className: "nc-facts" }, D.visit.map(factRow))),

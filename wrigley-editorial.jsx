@@ -51,7 +51,7 @@
         /* ===================== LEFT PAGE / AERIAL ===================== */
         React.createElement("div", { className: "we-page we-left", "data-screen-label": "Wrigley Field aerial" },
           React.createElement("div", { className: "we-hero-slot" },
-            React.createElement(Slot, { id: "wrigley-aerial", src: "uploads/wrigley-field-00-main-e8c77535.jpg", fit: "cover", placeholder: "Drop the Wrigley aerial \u2014 the ballpark embedded in the Chicago street grid, rooftops beyond the outfield" })),
+            React.createElement(Slot, { id: "wrigley-aerial", src: "images/wrigley/wrigley-field-00-main.jpg", fit: "cover", placeholder: "Drop the Wrigley aerial \u2014 the ballpark embedded in the Chicago street grid, rooftops beyond the outfield" })),
           React.createElement("div", { className: "we-hero-scrim" }),
           React.createElement("div", { className: "we-hero-mast" },
             React.createElement("img", { className: "wf-logo", src: "assets/wrigley-field-logo.svg", alt: "Wrigley Field" })),
@@ -70,10 +70,10 @@
 
             /* --- photo strip --- */
             React.createElement("div", { className: "we-photos" },
-              photo("we-p1", "Marquee", "narrow", "uploads/wrigley-field-01.jpg"),
-              photo("we-p2", "Ivy Wall", null, "uploads/wrigley-field-02.jpg"),
-              photo("we-p3", "Grandstand", null, "uploads/wrigley-field-03.jpg"),
-              photo("we-p4", "Skyline", "narrow", "uploads/wrigley-field-04.jpg")),
+              photo("we-p1", "Marquee", "narrow", "images/wrigley/wrigley-field-01.jpg"),
+              photo("we-p2", "Ivy Wall", null, "images/wrigley/wrigley-field-02.jpg"),
+              photo("we-p3", "Grandstand", null, "images/wrigley/wrigley-field-03.jpg"),
+              photo("we-p4", "Skyline", "narrow", "images/wrigley/wrigley-field-04.jpg")),
 
             /* --- metadata ribbon --- */
             React.createElement("div", { className: "we-ribbon" },

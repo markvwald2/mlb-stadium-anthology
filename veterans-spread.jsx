@@ -76,7 +76,7 @@
       e("div", { className: "vet-page vet-left", "data-screen-label": "Veterans Stadium hero" },
         e("div", { className: "vet-hero-slot" },
           e("image-slot", { id: "vet-hero",
-            src: "uploads/veterans-stadium-00-main.jpg",
+            src: "images/veterans/veterans-stadium-00-main-9c2d2c47.jpg",
             placeholder: "Elevated aerial \u2014 complete circular bowl, surrounding parking fields, South Philadelphia sports complex; skyline secondary",
             shape: "rect" })),
         e("div", { className: "vet-hero-scrim" }),
@@ -125,11 +125,11 @@
 
             /* five structural bays */
             e("div", { className: "vet-bays" },
-              e(Slot, { id: "vet-p1", src: "uploads/veterans-stadium-01.jpg", placeholder: "Exterior fa\u00e7ade \u00b7 exposed precast concrete" }),
-              e(Slot, { id: "vet-p2", src: "uploads/veterans-stadium-02.jpg", placeholder: "Seating bowl" }),
-              e(Slot, { id: "vet-p5", src: "uploads/veterans-stadium-03.jpg", placeholder: "No-hitter front page" }),
-              e(Slot, { id: "vet-p4", src: "uploads/veterans-stadium-04.jpg", placeholder: "Aerial \u00b7 sports-complex context" }),
-              e(Slot, { id: "vet-p3", src: "uploads/veterans-stadium-05.jpg", placeholder: "Seating bowl \u00b7 night" })),
+              e(Slot, { id: "vet-p1", src: "images/veterans/veterans-stadium-01.jpg", placeholder: "Exterior fa\u00e7ade \u00b7 exposed precast concrete" }),
+              e(Slot, { id: "vet-p2", src: "images/veterans/veterans-stadium-02.jpg", placeholder: "Seating bowl" }),
+              e(Slot, { id: "vet-p5", src: "images/veterans/veterans-stadium-03.jpg", placeholder: "No-hitter front page" }),
+              e(Slot, { id: "vet-p4", src: "images/veterans/veterans-stadium-04.jpg", placeholder: "Aerial \u00b7 sports-complex context" }),
+              e(Slot, { id: "vet-p3", src: "images/veterans/veterans-stadium-05.jpg", placeholder: "Seating bowl \u00b7 night" })),
 
             /* facts + field instrument */
             e("div", { className: "vet-sbody" },

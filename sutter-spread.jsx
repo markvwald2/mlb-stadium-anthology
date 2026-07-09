@@ -92,7 +92,7 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         e("div", { className: "shp-page shp-left", "data-screen-label": "Sutter Health Park hero" },
           e("div", { className: "shp-hero-slot" },
-            e(Slot, { id: "sutter-hero", src: "uploads/sutter-health-park-00-main-300dpi-4230a7e1.jpg", placeholder: "Drop the Sutter Health Park aerial \u2014 ballpark + Sacramento River + Tower Bridge + urban edge" })),
+            e(Slot, { id: "sutter-hero", src: "images/sutter/sutter-health-park-00-main.jpg", placeholder: "Drop the Sutter Health Park aerial \u2014 ballpark + Sacramento River + Tower Bridge + urban edge" })),
           e("div", { className: "shp-hero-scrim" }),
           e("div", { className: "shp-hero-folio" }, "Interim Riverfront Warehouse \u00b7 Temporary MLB"),
 
@@ -174,7 +174,7 @@
                 e("p", null, D.context[1]),
                 e("div", { className: "shp-ctx-photo" },
                   e("div", { className: "shp-pcard" },
-                    e(Slot, { id: "sutter-p3", src: "uploads/sutter-health-park-01.jpg", placeholder: "Warehouse-district masonry \u2014 concourse or facade detail" }))),
+                    e(Slot, { id: "sutter-p3", src: "images/sutter/sutter-health-park-01.jpg", placeholder: "Warehouse-district masonry \u2014 concourse or facade detail" }))),
                 e("p", null, D.context[2]),
                 e("p", null, D.context[3])),
               e("div", { className: "shp-ctx-foot" },
@@ -190,7 +190,7 @@
 
               e("div", { className: "shp-vphoto top" },
                 e("div", { className: "shp-pcard" },
-                  e(Slot, { id: "sutter-p1", src: "uploads/sutter-health-park-02.jpg", placeholder: "Riverfront approach \u2014 ballpark + Tower Bridge" }))),
+                  e(Slot, { id: "sutter-p1", src: "images/sutter/sutter-health-park-02.jpg", placeholder: "Riverfront approach \u2014 ballpark + Tower Bridge" }))),
 
               e("div", { className: "shp-visit-title" },
                 e("span", { className: "gt" }, D.featured_title),
@@ -224,7 +224,7 @@
 
               e("div", { className: "shp-vphoto bot" },
                 e("div", { className: "shp-pcard" },
-                  e(Slot, { id: "sutter-p2", src: "uploads/sutter-health-park-03.jpg", placeholder: "Open-air bowl \u2014 hot July night, group visit" }))))
+                  e(Slot, { id: "sutter-p2", src: "images/sutter/sutter-health-park-03.jpg", placeholder: "Open-air bowl \u2014 hot July night, group visit" }))))
           )
         )
       )

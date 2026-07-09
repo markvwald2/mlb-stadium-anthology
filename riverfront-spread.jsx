@@ -48,7 +48,7 @@
         /* ===== LEFT / HERO ===== */
         React.createElement("div", { className: "rf-page rf-left" },
           React.createElement("div", { className: "rf-hero-slot" },
-            React.createElement(Slot, { id: "rf-hero", placeholder: "Riverfront Stadium \u00b7 field view", src: "uploads/riverfront-00-main-v4-92ea5aed.jpg", maxdim: 1400 })),
+            React.createElement(Slot, { id: "rf-hero", placeholder: "Riverfront Stadium \u00b7 field view", src: "images/riverfront/riverfront-00-main-v4-92ea5aed.jpg", maxdim: 1400 })),
           React.createElement("div", { className: "rf-hero-scrim" }),
           React.createElement(Rings, { className: "rf-hero-rings", stroke: "#EDEAE0", op: 0.16, rings: [250, 222, 196, 172] }),
           React.createElement("div", { className: "rf-hero-title" },
@@ -88,10 +88,10 @@
                 React.createElement("span", { className: "ln" })),
 
               React.createElement("div", { className: "rf-photos" },
-                React.createElement(Slot, { id: "rf-p1", placeholder: "Exterior \u00b7 riverfront", src: "uploads/riverfront-stadium-alternate5.jpg", maxdim: 900 }),
-                React.createElement(Slot, { id: "rf-p2", placeholder: "Interior \u00b7 baseball config", src: "uploads/riverfront-stadium-02-6b6cc828.jpg", maxdim: 900 }),
-                React.createElement(Slot, { id: "rf-p3", placeholder: "Circular bowl structure", src: "uploads/riverfront-stadium-crowd.jpg", maxdim: 900 }),
-                React.createElement(Slot, { id: "rf-p4", placeholder: "Detail \u00b7 concrete fa\u00e7ade", src: "uploads/riverfront-stadium-04-hires.jpg", maxdim: 900 })
+                React.createElement(Slot, { id: "rf-p1", placeholder: "Exterior \u00b7 riverfront", src: "images/riverfront/riverfront-stadium-alternate5.jpg", maxdim: 900 }),
+                React.createElement(Slot, { id: "rf-p2", placeholder: "Interior \u00b7 baseball config", src: "images/riverfront/riverfront-stadium-02-6b6cc828.jpg", maxdim: 900 }),
+                React.createElement(Slot, { id: "rf-p3", placeholder: "Circular bowl structure", src: "images/riverfront/riverfront-stadium-crowd.jpg", maxdim: 900 }),
+                React.createElement(Slot, { id: "rf-p4", placeholder: "Detail \u00b7 concrete fa\u00e7ade", src: "images/riverfront/riverfront-stadium-04-hires.jpg", maxdim: 900 })
               ),
 
               React.createElement("div", { className: "rf-sgrid" },

@@ -83,7 +83,7 @@
       /* ===================== LEFT PAGE / HERO ===================== */
       e("div", { className: "pf-page pf-left", "data-screen-label": "Progressive Field hero" },
         e("div", { className: "pf-hero-slot" },
-          e(Slot, { id: "prog-hero", src: "uploads/progressive-field-00-main.jpg", placeholder: "Drop the Progressive Field hero \u2014 painted exposed steel, light towers, seating bowl, downtown Cleveland skyline beyond the outfield" })),
+          e(Slot, { id: "prog-hero", src: "images/progressive/progressive-field-00-main-03ebb94f.jpg", placeholder: "Drop the Progressive Field hero \u2014 painted exposed steel, light towers, seating bowl, downtown Cleveland skyline beyond the outfield" })),
         e("div", { className: "pf-hero-scrim" }),
 
         /* faint cyan drafting overlay */
@@ -143,7 +143,7 @@
             StackRow("All-Star Games", D.all_star_games),
 
             e("figure", { className: "pf-id-photo" },
-              e(Slot, { id: "prog-p2", src: "uploads/progressive-field-03.jpg", placeholder: "Painted exposed steel / brick structural detail" })),
+              e(Slot, { id: "prog-p2", src: "images/progressive/progressive-field-03.jpg", placeholder: "Painted exposed steel / brick structural detail" })),
 
             StackRow("Architect", "HOK Sport", true),
             StackRow("Type / Roof", "Open-air baseball-only ballpark \u00b7 Open Air"),
@@ -163,7 +163,7 @@
             e("div", { className: "pf-ctx" },
               e("p", { style: { lineHeight: 1.45, fontWeight: 600 } }, D.context[0]),
               e("figure", { className: "pf-ctx-photo" },
-                e(Slot, { id: "prog-p1", src: "uploads/progressive-field-01.jpg", placeholder: "Bowl + downtown skyline beyond the outfield at dusk" })),
+                e(Slot, { id: "prog-p1", src: "images/progressive/progressive-field-01.jpg", placeholder: "Bowl + downtown skyline beyond the outfield at dusk" })),
               e("p", { style: { lineHeight: 1.45 } }, D.context[1]),
               e("p", { style: { lineHeight: 1.45 } }, D.context[2]),
               e("p", { style: { lineHeight: 1.45 } }, D.context[3]),
@@ -211,7 +211,7 @@
               }) : null),
 
             e("figure", { className: "pf-game-photo" },
-              e(Slot, { id: "prog-p3", src: "uploads/progressive-field-02.jpg", placeholder: "Home-plate gate and marquee on the night of the visit" })))
+              e(Slot, { id: "prog-p3", src: "images/progressive/progressive-field-02.jpg", placeholder: "Home-plate gate and marquee on the night of the visit" })))
         )
       )
     );

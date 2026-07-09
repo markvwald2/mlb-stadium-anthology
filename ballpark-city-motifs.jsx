@@ -142,6 +142,7 @@
         <div style={{ position: "relative", width: w, height: imgH }}>
           <image-slot
             id={fig.id}
+            src={"images/ballpark-city/" + fig.id + ".jpg"}
             statefile={".image-slots-" + fig.id.replace(/[^a-z0-9]/gi, "") + ".state.json"}
             shape="rect"
             fit="cover"

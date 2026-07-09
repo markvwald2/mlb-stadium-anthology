@@ -10,7 +10,7 @@
 
   function Slot(props) {
     return React.createElement("image-slot", Object.assign({
-      id: props.id, placeholder: props.placeholder, shape: props.shape || "rect"
+      id: props.id, placeholder: props.placeholder, shape: props.shape || "rect", src: props.src || ("images/coors/" + props.id + ".webp")
     }, props.style ? { style: props.style } : {}));
   }
 
@@ -144,7 +144,8 @@
                       React.createElement("div", { className: "cf-fieldwrap" },
                         FieldDiagram ? React.createElement(FieldDiagram, {
                           lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
-                          orientation: D.orientation, degrees: D.orientation_degrees, accent: C.primary.hex
+                          orientation: D.orientation, degrees: D.orientation_degrees, accent: C.primary.hex,
+                          fontScale: 1.45
                         }) : null
                       )
                     ),

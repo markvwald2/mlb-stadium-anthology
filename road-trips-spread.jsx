@@ -31,7 +31,7 @@
   }
 
   function Slot(p) {
-    return e("image-slot", { id: p.id, placeholder: p.ph, shape: "rect" });
+    return e("image-slot", { id: p.id, src: "images/road-trips/" + p.id + ".webp", placeholder: p.ph, shape: "rect" });
   }
 
   // ---- editorial line icons for "The Journey by the Numbers" ----

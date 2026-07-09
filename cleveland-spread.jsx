@@ -103,7 +103,7 @@
       /* ============ LEFT / AERIAL HERO PLATE ============ */
       e("div", { className: "cm-page cm-left" },
         e("div", { className: "cm-hero-slot" },
-          e(Slot, { id: "cms-hero", src: "uploads/cleveland-hero-v2.jpg", placeholder: "Drop the Cleveland Municipal Stadium aerial \u2014 the lakefront civic bowl between Lake Erie, the rail yards, and downtown Cleveland" })),
+          e(Slot, { id: "cms-hero", src: "images/cleveland/municipal-stadium-00-main-87982a4e.jpg", placeholder: "Drop the Cleveland Municipal Stadium aerial \u2014 the lakefront civic bowl between Lake Erie, the rail yards, and downtown Cleveland" })),
         e("div", { className: "cm-hero-scrim" }),
         e(PlatLines, null),
         e("div", { className: "cm-shore" }, "Lake Erie Shoreline"),
@@ -149,7 +149,7 @@
           /* ---- panoramic datum strip ---- */
           e("div", { className: "cm-datum" },
             e("div", { className: "cm-datum-slot" },
-              e(Slot, { id: "cms-pano", src: "uploads/municipal-stadium-01.png", placeholder: "Drop a wide lakefront panorama \u2014 Lake Erie horizon, rail & port corridor, and the downtown Cleveland skyline behind the stadium" }))
+              e(Slot, { id: "cms-pano", src: "images/cleveland/municipal-stadium-01.png", placeholder: "Drop a wide lakefront panorama \u2014 Lake Erie horizon, rail & port corridor, and the downtown Cleveland skyline behind the stadium" }))
           ),
 
           /* ---- lifecycle band ---- */
@@ -208,10 +208,10 @@
             e("div", { className: "cm-rcol" },
               e("div", { className: "cm-coltitle" }, e("div", { className: "t" }, "Civic Plates"), e("div", { className: "ln" })),
               e("div", { className: "cm-photos" },
-                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p1", src: "uploads/municipal-stadium-02-8515c300.jpg", placeholder: "Stripped-classical exterior facade" })),
-                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p2", src: "uploads/municipal-stadium-05-93869c5d.jpg", placeholder: "Open-air bowl & grandstand" })),
-                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p3", src: "uploads/municipal-stadium-04-29bb25b7.jpg", placeholder: "Concourse interior" })),
-                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p4", src: "uploads/municipal-stadium-03-9a103987.jpg", placeholder: "Scoreboard / outfield" }))),
+                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p1", src: "images/cleveland/municipal-stadium-02-8515c300.jpg", placeholder: "Stripped-classical exterior facade" })),
+                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p2", src: "images/cleveland/municipal-stadium-05-93869c5d.jpg", placeholder: "Open-air bowl & grandstand" })),
+                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p3", src: "images/cleveland/municipal-stadium-04-29bb25b7.jpg", placeholder: "Concourse interior" })),
+                e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p4", src: "images/cleveland/municipal-stadium-03-9a103987.jpg", placeholder: "Scoreboard / outfield" }))),
               e("div", { className: "cm-instr" },
                 Protractor ? e(Protractor, { orientation: D.orientation, degrees: D.orientation_degrees }) : null,
                 e("div", { className: "cm-fdims" },
@@ -295,7 +295,7 @@
 
               /* night-game photo */
               e("div", { className: "cm-vphoto" },
-                e(Slot, { id: "cms-night", src: "uploads/municipal-stadium-06.jpg", placeholder: "Night game under the lights \u2014 Aug 13, 1990" }))
+                e(Slot, { id: "cms-night", src: "images/cleveland/municipal-stadium-06.jpg", placeholder: "Night game under the lights \u2014 Aug 13, 1990" }))
             )
           ),
 

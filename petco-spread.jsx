@@ -91,7 +91,7 @@
       /* ============== LEFT PAGE / HERO ============== */
       e("div", { className: "pk-page pk-left", "data-screen-label": "Petco Park \u2014 hero" },
         e("div", { className: "pk-hero-slot" },
-          e(Slot, { id: "petco-hero", src: "uploads/petco-park-00-main-5eb1df62.jpg",
+          e(Slot, { id: "petco-hero", src: "images/petco/petco-park-00-main-5eb1df62.jpg",
             placeholder: "Drop the Petco Park dusk district aerial \u2014 the preserved Western Metal Supply building, downtown East Village street grid, Gallagher Square, open concourses & the bay beyond. Avoid field-centered framing." })),
         e("div", { className: "pk-hero-scrim" }),
         e("div", { className: "pk-folio" }, "VISIT", e("b", null, "NO. " + D.visit_order)),

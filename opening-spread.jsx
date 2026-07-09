@@ -27,6 +27,7 @@
     "op-l02": "images/opening/op-l02-v3.jpg",
     "op-l04": "images/opening/op-l04-v3.jpg",
     "op-l14": "images/opening/op-l14-v3.jpg",
+    "op-l10": "images/opening/target-field.jpg",
   };
 
   function Cell(props) {

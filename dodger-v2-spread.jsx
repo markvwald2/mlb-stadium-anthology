@@ -23,7 +23,7 @@
   ];
 
   function Slot(props) {
-    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src,
+    return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect", src: props.src || ("images/dodger/" + props.id + ".webp"),
       style: { width: "100%", height: "100%" } });
   }
 
@@ -146,7 +146,7 @@
       /* ============== LEFT / AERIAL ============== */
       e("div", { className: "dv2-page dv2-left", "data-screen-label": "Dodger Stadium \u2014 aerial" },
         e("div", { className: "dv2-hero-slot" },
-          e(Slot, { id: "dodger-v2-hero", src: "assets/dodger-stadium-hero.jpg",
+          e(Slot, { id: "dodger-v2-hero", src: "images/dodger/dodger-stadium-hero.jpg",
             placeholder: "Drop the elevated Chavez Ravine aerial \u2014 the open-air bowl geometry and color-coded decks, the hillside siting and terraced parking, with downtown Los Angeles in the distance. Let the photograph dominate." })),
         e("div", { className: "dv2-hero-scrim" }),
         e("div", { className: "dv2-folio" },
