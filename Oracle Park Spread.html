@@ -26,6 +26,7 @@
     position: relative;
     width: 2550px; height: 1088px;
     overflow: hidden;
+    letter-spacing: -0.5px;   /* mirror the DesignCanvas .dc-card inherited tracking so print == design */
     --ink: #1C1B19;            /* warm charcoal */
     --ink-2: #514C44;          /* warm gray */
     --ink-3: #837C6E;          /* light label gray */
@@ -254,7 +255,7 @@
   .op-box tbody tr.awayrow td.tm { color: var(--dodger); }
   .op-scorenote { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em;
     color: var(--ink-2); margin-top: 9px; }
-  .op-decisions { display: flex; gap: 30px; margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--rule); }
+  .op-decisions { display: flex; gap: 11px; margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--rule); }
   .op-decisions .d { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
   .op-decisions .d .dk { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .1em;
     color: var(--orange-deep); flex: none; }

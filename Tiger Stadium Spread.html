@@ -31,6 +31,11 @@
     --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.38' intercept='0.69'/%3E%3CfeFuncG type='linear' slope='0.38' intercept='0.69'/%3E%3CfeFuncB type='linear' slope='0.38' intercept='0.69'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background: var(--paper); font-family: "Spectral", Georgia, serif; color: var(--ink);
     text-rendering: geometricPrecision; font-kerning: normal;
+    /* mirror the DesignCanvas artboard card's inherited tracking so the PDF/print
+       path (which has no card) lays out identically — otherwise untracked Spectral
+       text (prose, facts values) renders wider in print, changing wrapping and
+       stretching the field-watermark row. Elements with explicit tracking win. */
+    letter-spacing: -0.5px;
   }
   .ts-page { position: absolute; top: 0; height: 1088px; }
   .ts-left  { left: 0;     width: 1275px; background: #161514; overflow: hidden; }

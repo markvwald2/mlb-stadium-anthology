@@ -1,11 +1,11 @@
-/* jacket-app.jsx — mount the full dust jacket in a pan/zoom design canvas and
+/* jacket-app.jsx — mount the full ImageWrap cover in a pan/zoom design canvas and
    provide the SINGLE-PAGE press-ready PDF path (one wide sheet, not split).
 
-   The jacket is built on a 3498.6 × 1112.5 design canvas (= 34.986 × 11.125 in
+   The cover is built on a 2668.1 × 1162.5 design canvas (= 26.681 × 11.625 in
    page-with-bleed @ 100 ppi). The print harness scales that 1:1 onto a
-   34.986 × 11.125 in sheet (SCALE = 96/100 = 0.96 — nothing resized), so the
-   whole wrap — flaps, covers, spine — bleeds to the sheet edge in one PDF.
-   Blurb Large Landscape, Hardcover Dust Jacket cover spec. */
+   26.681 × 11.625 in sheet (SCALE = 96/100 = 0.96 — nothing resized), so the
+   whole wrap — covers and spine, no flaps — bleeds to the sheet edge in one PDF.
+   Blurb Large Landscape, Hardcover ImageWrap cover spec (96 pp). */
 (function () {
   const { DesignCanvas, DCSection, DCArtboard } = window;
   const Spread = window.JacketSpread;
@@ -189,7 +189,7 @@
       },
         React.createElement(DCArtboard, {
           id: "jacket-sheet",
-          label: "Back cover (Father\u2019s Day) \u00b7 spine \u00b7 front cover (Big League) + flaps",
+          label: "Back cover (Father\u2019s Day) \u00b7 spine \u00b7 front cover (Big League)",
           width: G.CANVAS_W, height: G.CANVAS_H,
           style: { boxShadow: "none", position: "relative", background: PAPER }
         },

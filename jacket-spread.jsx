@@ -1,7 +1,7 @@
-/* jacket-spread.jsx — the full wraparound DUST JACKET as one wide sheet.
-   Laid flat, outside-up, reading left→right:
-     [back flap] [BACK COVER = "Happy 2026 Father's Day" poster]
-     [spine] [FRONT COVER = "Big League NL ◇ AL Ballparks"] [front flap]
+/* jacket-spread.jsx — the full wraparound IMAGEWRAP cover as one wide sheet.
+   Laid flat, outside-up, reading left→right (no flaps):
+     [BACK COVER = "Happy 2026 Father's Day" poster]
+     [spine] [FRONT COVER = "Big League NL ◇ AL Ballparks"]
 
    Reuses the front-cover photo grid (COVER_DATA, images/cover) and the
    Father's-Day poster grid (OPENING_DATA.right, images/opening), so the slot

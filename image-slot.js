@@ -635,6 +635,10 @@
       const g = this._geom();
       const fit = this.getAttribute('fit') || 'cover';
       const pp = this._printActive();
+      // Print path: bake the exact visible crop to a right-sized JPEG and draw
+      // it through the real <img> (see _paintPrintCrop) instead of a lossless
+      // background-image flatten. Short-circuits the screen geometry below.
+      if (pp && this.hasAttribute('data-filled')) { this._paintPrintCrop(); return; }
       if (fit !== 'cover' || !g) {
         // Non-cover, or dimensions not known yet (before img load).
         this._img.style.width = '100%';
@@ -681,15 +685,108 @@
       }
     }
 
-    // ── Print flatten ───────────────────────────────────────────────────────
-    // Chrome's print engine mis-renders the transformed, oversized shadow-DOM
-    // <img> when an ancestor combines transform:scale() with clip-path (the
-    // press harness sets body.pp-mode and does exactly that). Hero plates drop
-    // out; small frames stretch to the box. So in pp-mode we flatten the
-    // current crop onto the frame as a plain background-image — which prints
-    // reliably and rasterizes like any photo — and hide the fragile <img>.
+    // ── Print crop (press-grade, JPEG-preserving) ────────────────────────────
+    // The press harness renders inside body.pp-mode with a transform:scale()
+    // ancestor. Painting the photo as a CSS background-image (the old path)
+    // prints reliably but Chrome's PDF backend can only serialize a background
+    // layer as a *lossless* Flate bitmap — a 3MB source hero ballooned to ~34MB
+    // per page. A real <img> that isn't oversized/transformed prints reliably
+    // AND lets Skia embed it as JPEG (DCTDecode). So in pp-mode we bake the
+    // exact visible crop to a canvas at 300 DPI (design is 100 px/in, so 3×
+    // the frame's CSS px), JPEG-encode it, and hand that to the shadow <img>
+    // sized to fill the frame 1:1 (frame clip-path still gives the shape).
     _printActive() {
       return !!(document.body && document.body.classList.contains('pp-mode'));
+    }
+    _paintPrintCrop() {
+      const url = this._userUrl || this.getAttribute('src') || '';
+      if (!url) return;
+      const fit = this.getAttribute('fit') || 'cover';
+      const cw0 = this.clientWidth, ch0 = this.clientHeight;
+      if (!cw0 || !ch0) return;
+      const v = this._view;
+      // Cache key: same source + crop + frame size → reuse the baked JPEG and
+      // just (re)apply styles. Guards against the baked-img 'load' event and
+      // store-triggered re-renders re-baking (or looping) endlessly.
+      const key = url + '|' + fit + '|' + v.s.toFixed(4) + ',' + v.x.toFixed(3) +
+        ',' + v.y.toFixed(3) + '|' + cw0 + 'x' + ch0;
+      if (this._bakeKey === key && this._img.getAttribute('src') === this._bakedUrl) {
+        this._applyBakedStyles();
+        return;
+      }
+      this._bakeKey = key; // set before async so re-entry during the load bails
+      const DPI_MULT = 3; // 100 design-px/in × 3 = 300 DPI at true print size
+      const src = new Image();
+      src.onload = () => {
+        if (this._bakeKey !== key) return; // superseded by a newer crop/size
+        const iw = src.naturalWidth, ih = src.naturalHeight;
+        if (!iw || !ih) return;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        try {
+          if (fit === 'fill') {
+            const cw = Math.max(1, Math.min(Math.round(cw0 * DPI_MULT), iw));
+            const ch = Math.max(1, Math.round(cw * ch0 / cw0));
+            canvas.width = cw; canvas.height = ch;
+            ctx.drawImage(src, 0, 0, iw, ih, 0, 0, cw, ch);
+          } else if (fit === 'contain') {
+            const cw = Math.max(1, Math.round(cw0 * DPI_MULT));
+            const ch = Math.max(1, Math.round(ch0 * DPI_MULT));
+            canvas.width = cw; canvas.height = ch;
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, cw, ch);
+            const sc = Math.min(cw / iw, ch / ih);
+            const dw = iw * sc, dh = ih * sc;
+            ctx.drawImage(src, 0, 0, iw, ih, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+          } else {
+            // cover — reproduce the exact pan/zoom crop.
+            const base = Math.max(cw0 / iw, ch0 / ih) * v.s;
+            const W = iw * base, H = ih * base;               // displayed px in frame space
+            const lx = cw0 * (50 + v.x) / 100 - W / 2;
+            const ty = ch0 * (50 + v.y) / 100 - H / 2;
+            let sx = -lx / base, sy = -ty / base;             // source-px crop origin
+            let sw = cw0 / base, sh = ch0 / base;             // source-px crop size
+            // Clamp the source rect inside the image (fp guard; pan is already clamped).
+            sx = Math.max(0, Math.min(sx, iw)); sy = Math.max(0, Math.min(sy, ih));
+            sw = Math.min(sw, iw - sx); sh = Math.min(sh, ih - sy);
+            const cw = Math.max(1, Math.min(Math.round(cw0 * DPI_MULT), Math.round(sw)));
+            const ch = Math.max(1, Math.round(cw * ch0 / cw0));
+            canvas.width = cw; canvas.height = ch;
+            ctx.drawImage(src, sx, sy, sw, sh, 0, 0, cw, ch);
+          }
+          // Slots flagged `transparent` bake to PNG so an alpha image (e.g. a
+          // cut-out elevation drawing) keeps its transparency — JPEG has no
+          // alpha channel and composites transparent pixels onto black.
+          this._bakedUrl = this.hasAttribute('transparent')
+            ? canvas.toDataURL('image/png')
+            : canvas.toDataURL('image/jpeg', 0.9);
+        } catch (e) {
+          // Tainted/decoded failure — fall back to the lossless background flatten
+          // so the page still prints (just larger).
+          this._bakeKey = null;
+          this._paintFrameBg('cover', (50 + v.x) + '% ' + (50 + v.y) + '%');
+          return;
+        }
+        this._img.src = this._bakedUrl;
+        this._applyBakedStyles();
+      };
+      src.onerror = () => { if (this._bakeKey === key) this._bakeKey = null; };
+      src.src = url;
+    }
+    // Frame-filling, un-transformed, pre-cropped: the well-behaved <img> case
+    // Chrome prints correctly and embeds as JPEG. No transform (the old print
+    // dropout was tied to transformed/oversized imgs). Frame clip-path/radius
+    // still shapes it.
+    _applyBakedStyles() {
+      this._clearFrameBg();
+      const im = this._img;
+      im.style.width = '100%'; im.style.height = '100%';
+      im.style.left = '0'; im.style.top = '0';
+      im.style.transform = 'none';
+      im.style.objectFit = 'fill';
+      im.style.objectPosition = '';
+      im.style.display = 'block';
+      if (this._spill) this._spill.style.display = 'none';
     }
     _paintFrameBg(size, pos) {
       const url = this._img.currentSrc || this._img.getAttribute('src') || '';
@@ -763,7 +860,9 @@
       // Toggle via style.display — the [hidden] attribute alone loses to
       // the display:flex / display:block rules in the stylesheet above.
       if (url) {
-        if (this._img.getAttribute('src') !== url) {
+        // In print mode _paintPrintCrop owns _img.src (the baked JPEG crop);
+        // don't overwrite it with the original here.
+        if (!this._printActive() && this._img.getAttribute('src') !== url) {
           this._img.src = url;
           this._ghost.src = url;
         }

@@ -37,7 +37,7 @@
               e("div", { className: "jc-gen-era-name", style: { color: g.accent } }, g.title),
               e("div", { className: "jc-gen-era-desc" }, g.desc)),
             e("div", { className: "jc-gen-draw" },
-              e("image-slot", { id: g.slot, src: "images/book-intro/" + g.slot + ".webp", shape: "rect", maxdim: 1100, placeholder: "elevation drawing" })),
+              e("image-slot", { id: g.slot, src: "images/book-intro/" + g.slot + ".webp", shape: "rect", maxdim: 1100, transparent: "", placeholder: "elevation drawing" })),
             e("p", { className: "jc-gen-parks", style: g.parksStyle || null }, g.parks.join(", ")));
         })));
   }

@@ -34,6 +34,13 @@
     --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.36' intercept='0.71'/%3E%3CfeFuncG type='linear' slope='0.36' intercept='0.71'/%3E%3CfeFuncB type='linear' slope='0.36' intercept='0.71'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background: var(--paper); font-family: "Spectral", Georgia, serif; color: var(--ink);
     text-rendering: geometricPrecision; font-kerning: normal;
+    /* Mirror the DesignCanvas artboard card's inherited tracking so the PDF/print
+       path (which has no card) lays out identically. Without this, untracked
+       Spectral siblings (facts/ribbon/etc.) render wider in print, grow, and
+       steal ~16px from the flex prose box — which then can't hold 19.2px leading.
+       The prose keeps its own explicit 0px tracking; elements with explicit
+       tracking override this. Restores the prose box to its design height. */
+    letter-spacing: -0.5px;
   }
   .yk-page { position: absolute; top: 0; height: 1088px; }
   .yk-left  { left: 0;     width: 1275px; background: var(--night); overflow: hidden; }
@@ -143,7 +150,7 @@
   .yk-bay .frame image-slot { width: 100%; height: 100%; display: block; }
 
   /* ---- metadata ribbon (civic datum) ---- */
-  .yk-ribbon { flex: none; display: grid; grid-template-columns: 1fr 1.05fr 1.55fr 0.82fr 0.73fr 1.12fr 1.18fr; margin-top: 8px;
+  .yk-ribbon { flex: none; display: grid; grid-template-columns: 1fr 1.2fr 1.4fr 0.82fr 0.73fr 1.12fr 1.18fr; margin-top: 8px;
     border-top: 1px solid var(--navy); border-bottom: 1px solid var(--rule-2); }
   .yk-rb { padding: 7px 13px; border-left: 1px solid var(--rule); }
   .yk-rb:first-child { border-left: 0; padding-left: 2px; }
@@ -152,6 +159,7 @@
   .yk-rb .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
     color: var(--navy); margin-top: 4px; line-height: 1.2; }
   .yk-rb .v.sm { font-size: 12px; }
+  .yk-rb .v.nw { white-space: nowrap; }
 
   /* ---- TIER 2 : the monument (facts | instruments) ---- */
   .yk-monument { flex: none; margin-top: 8px; }
@@ -173,7 +181,7 @@
   .yk-ftable { width: 100%; border-collapse: collapse; }
   .yk-ftable tr { border-bottom: 1px solid var(--rule); }
   .yk-ftable tr:last-child { border-bottom: 0; }
-  .yk-ftable th { text-align: left; vertical-align: baseline; width: 100px; padding: 1px 10px 1px 0;
+  .yk-ftable th { text-align: left; vertical-align: baseline; width: 86px; padding: 1px 8px 1px 0;
     font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); }
   .yk-ftable td { vertical-align: baseline; padding: 1px 0; font-family: "Spectral", serif;
@@ -210,13 +218,13 @@
 
   /* Honors — All-Star + World Series as one decorative year-rule */
   .yk-honors { flex: none; margin-top: 6px; padding: 7px 0; border-top: 1px solid var(--navy);
-    border-bottom: 1px solid var(--rule-2); display: flex; align-items: baseline; gap: 10px; white-space: nowrap; }
+    border-bottom: 1px solid var(--rule-2); display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
   .yk-honors .hgroup { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
-  .yk-honors .hgroup:last-child { flex: 0 1 auto; min-width: 0; }
+  .yk-honors .hgroup:last-child { flex: 1 1 auto; min-width: 0; }
   /* World Series: all years condensed onto ONE row via tight tracking so the
      full honors rule fits on a single line within the trim */
-  .yk-honors .hgroup:last-child .yk-ws-grid { flex-wrap: nowrap; justify-content: flex-start;
-    gap: 0 2px; flex: 0 1 auto; }
+  .yk-honors .hgroup:last-child .yk-ws-grid { flex-wrap: nowrap; justify-content: space-between;
+    gap: 0 1px; flex: 1 1 auto; }
   .yk-honors .hlab { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--navy); flex: none; }
   .yk-honors .hsep { align-self: stretch; width: 1px; background: var(--rule-2); flex: none; }
@@ -225,7 +233,7 @@
     color: var(--navy); line-height: 1.4; }
 
   /* ---- TIER 3 : stadium context (single unified block) ---- */
-  .yk-context { flex: 1; margin-top: 7px; display: flex; flex-direction: column; min-height: 0;
+  .yk-context { flex: 0 0 auto; margin-top: 7px; display: flex; flex-direction: column; min-height: 0;
     position: relative; }
   .yk-ctx-wm { position: absolute; right: -10px; bottom: -6px; width: 360px; z-index: 0; pointer-events: none; }
   .yk-ctxh { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex: none; position: relative; z-index: 1; }
@@ -233,25 +241,29 @@
     letter-spacing: .2em; text-transform: uppercase; color: var(--navy); white-space: nowrap; }
   .yk-ctxh .ln { flex: 1; height: 1px; background: var(--rule); }
   .yk-ctxh .ln.nav { background: var(--navy); height: 2px; flex: 0 0 30px; }
-  .yk-ctx { position: relative; z-index: 1; flex: 1 1 auto; min-height: 0;
-    column-count: 3; column-gap: 32px; column-fill: auto;
+  .yk-ctx { position: relative; z-index: 1; flex: 0 0 200px; min-height: 0;
+    column-count: 3; column-gap: 32px; column-fill: balance;
     column-rule: 1px solid var(--rule); }
-  .yk-ctx p { margin: 0 0 7px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 18.7px;
-    letter-spacing: 0px;
+  .yk-ctx p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 19.2px;
+    /* slight negative tracking pulls the balanced 3-column prose in one line so it
+       clears the flex box (at 0px it fills to the exact bottom edge and spills
+       under the visit band in the PDF). Applied in both contexts for parity. */
+    letter-spacing: -0.4px;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .yk-ctx p:last-child { margin-bottom: 0; }
   .yk-ctx p:first-child::first-letter { font-family: "Oswald", sans-serif; font-weight: 700;
     font-size: 47px; float: left; line-height: .82; padding: 4px 8px 0 0; color: var(--navy); }
 
   /* ---- VISIT SECTION : night / illuminated navy band ---- */
-  .yk-visit { flex: none; margin-top: 10px; background: var(--navy); color: #E7EAF0;
+  .yk-visit { flex: 1 1 auto; margin-top: 4px; background: var(--navy); color: #E7EAF0;
     position: relative; overflow: hidden; }
   /* fine pinstripe ruling inside the navy band — restrained */
   .yk-visit::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
     background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.045) 0 1px, transparent 1px 40px); }
-  .yk-visit-inner { position: relative; z-index: 1; padding: 11px 18px 12px;
+  .yk-visit-inner { position: relative; z-index: 1; padding: 11px 18px 12px; height: 100%; box-sizing: border-box;
     display: grid; grid-template-columns: 0.92fr 1.55fr 0.92fr; gap: 0; }
-  .yk-vcol { padding: 0 18px; border-left: 1px solid rgba(255,255,255,.13); display: flex; flex-direction: column; min-width: 0; }
+  .yk-vcol { padding: 0 18px; border-left: 1px solid rgba(255,255,255,.13); display: flex; flex-direction: column; min-width: 0;
+    justify-content: space-between; }
   .yk-vcol:first-child { border-left: 0; padding-left: 0; }
   .yk-vcol:last-child { padding-right: 0; }
   .yk-vh { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .18em;

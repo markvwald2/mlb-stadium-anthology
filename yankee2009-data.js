@@ -61,7 +61,7 @@ window.YK2009 = {
   away_team_abbreviation: "MIN",
   game_result: "Yankees 6, Twins 3",
   attendance: "35,911",
-  first_pitch: "7:08PM EDT",
+  first_pitch: "7:08 PM EDT",
   game_duration: "3:08",
   pitching_matchup: "Kyle Gibson (MIN) vs James Paxton (NYY)",
   // Pitching results combined per brief: W / L / S

@@ -109,7 +109,7 @@
       /* ============ LEFT PAGE / HERO ============ */
       e("div", { className: "mla-page mla-left" },
         e("div", { className: "mla-hero-slot" },
-          e(Slot, { id: "marlins-hero", src: "images/marlins/marlins-hero.webp", placeholder: "Drop the Marlins Park hero \u2014 aerial looking down at the white retractable-roof shell, glass facade, Little Havana / former Orange Bowl site & Miami skyline beyond", shape: "rect" })
+          e(Slot, { id: "marlins-hero", src: "images/marlins/marlins-hero-hd.jpg", placeholder: "Drop the Marlins Park hero \u2014 aerial looking down at the white retractable-roof shell, glass facade, Little Havana / former Orange Bowl site & Miami skyline beyond", shape: "rect" })
         ),
         e("div", { className: "mla-hero-scrim" }),
 

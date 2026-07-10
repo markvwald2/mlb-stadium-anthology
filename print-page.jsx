@@ -138,23 +138,26 @@
   function injectCSS() {
     if (document.getElementById("pp-style")) return;
     const css = `
-      /* Self-hosted Oswald (variable, wght 200–700). Declared here — injected
-         into <head> AFTER each spread's Google-Fonts <link>, so it wins the
-         cascade for family "Oswald" during export. Being local it loads
-         instantly (no swap/synthesis race) and Chrome embeds a real subset
-         into the PDF, fixing the publisher's non-embedded-font rejection. */
-      @font-face {
-        font-family: "Oswald";
-        src: url("fonts/Oswald-VariableFont_wght.ttf") format("truetype-variations");
-        font-weight: 200 700;
-        font-style: normal;
-        font-display: block;
-      }
+      /* Oswald: DO NOT self-host the variable font here. Chrome's Skia
+         print-to-PDF backend does NOT subset/embed variable fonts — it
+         collapses "Oswald-VariableFont_wght.ttf" to its Regular master,
+         SYNTHESIZES the other weights (they show up as unembedded
+         "Oswald-Regular_Bold/SemiBold/Medium" instances), and Blurb rejects
+         the file for non-embedded fonts. Instead we rely on the STATIC
+         per-weight Oswald faces each spread already loads via its Google-Fonts
+         <link> (wght@300;400;500;600;700). Skia embeds those as real subsets —
+         exactly like Anton / Spectral / Space Mono in the same PDFs.
+         ensureFontsLoaded() below force-loads every registered static weight
+         before "safe to print", so there is no swap/synthesis race. */
 
       html, body { margin: 0; padding: 0; }
       body.pp-mode { background: #3a3a3e; }
       body.pp-mode #root { display: flex; align-items: flex-start; justify-content: center; padding: 28px; min-height: 100vh; box-sizing: border-box; overflow: auto; }
-      body.pp-mode .pp-page { flex: 0 0 auto; box-shadow: none; }
+      /* On SCREEN the page is fit-to-viewport (via CSS zoom, so the layout box
+         shrinks and flex-centering keeps it centered) — makes the preview look
+         like the whole spread page instead of a cropped native-size sheet. zoom
+         is reset for print below, so the exported PDF stays exact native scale. */
+      body.pp-mode .pp-page { flex: 0 0 auto; box-shadow: 0 8px 40px rgba(0,0,0,.45); }
 
       #pp-fontbadge {
         position: fixed; top: 12px; left: 12px; z-index: 9999;
@@ -218,6 +221,56 @@
     })();
   }
 
+  // On-screen only: shrink the native-size page to fit the viewport so the
+  // preview reads like the whole spread page, not a cropped sheet. Uses `zoom`
+  // (reflows the layout box → flex-centering keeps it centered, no scrollbars).
+  // Never runs at true 1:1 upscale; caps at 1. Print resets zoom via CSS.
+  // Staging differs by context:
+  //  • TOP-LEVEL (a real print tab, Cmd+P target): center the native-size page
+  //    and shrink it with CSS `zoom` to fit the window so it previews like the
+  //    whole page. `zoom` resets to 1 for print (below) → exact native PDF.
+  //  • EMBEDDED (host "present" iframe): the host does its OWN scale-to-fit, so
+  //    we must NOT also zoom (the two stack and crop). Instead shrink-wrap #root
+  //    to the page's exact bounds so the host fits the real page rectangle.
+  function isTopLevel() {
+    try { return window.top === window.self; } catch (e) { return false; }
+  }
+  function fitPreview() {
+    const page = document.querySelector(".pp-page");
+    if (!page || !isTopLevel()) return !!page;
+    const pad = 40;
+    const z = Math.min(1, (window.innerWidth - pad) / PAGE_W, (window.innerHeight - pad) / PAGE_H);
+    page.style.zoom = String(z > 0 ? z : 1);
+    return true;
+  }
+  function applyStaging() {
+    const root = document.getElementById("root");
+    const page = document.querySelector(".pp-page");
+    if (!root || !page) return false;
+    if (isTopLevel()) {
+      root.style.cssText =
+        "display:flex;align-items:flex-start;justify-content:center;padding:28px;min-height:100vh;box-sizing:border-box;";
+      fitPreview();
+    } else {
+      // Let the host present frame own the scaling: page at its true bounds.
+      // Use block + max-content so #root shrink-wraps to the page with NO inline
+      // baseline gap — and WITHOUT touching line-height (that would inherit into
+      // the page and collapse text rows like the line score).
+      document.body.style.background = "transparent";
+      root.style.cssText = "display:block;width:max-content;padding:0;margin:0;min-height:0;";
+      page.style.zoom = "";
+    }
+    return true;
+  }
+  function startFitPreview() {
+    let elapsed = 0;
+    const timer = setInterval(function () {
+      elapsed += 120;
+      if (applyStaging() || elapsed > 12000) clearInterval(timer);
+    }, 120);
+    window.addEventListener("resize", fitPreview);
+  }
+
   window.PrintPage = PrintPage;
-  window.PrintPageInit = function () { injectCSS(); ensureFontsLoaded(); };
+  window.PrintPageInit = function () { injectCSS(); ensureFontsLoaded(); startFitPreview(); };
 })();

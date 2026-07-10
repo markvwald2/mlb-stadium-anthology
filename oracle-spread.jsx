@@ -178,7 +178,7 @@
                   e("div", { className: "op-modh sm" }, "Game Facts"),
                   e("div", { className: "op-gtable" },
                     grow("Visit", e(React.Fragment, null, e("span", { style: { fontWeight: 700, color: "var(--orange-deep)" } }, D.visit_order + " of " + D.visit_total), " \u00b7 " + D.trip_name)),
-                    grow("Date / Time", D.featured_day + " \u00b7 " + D.featured_date + " \u00b7 " + D.first_pitch),
+                    grow("Date / Time", D.featured_day + " \u00b7 " + D.featured_date + " \u00b7 " + D.first_pitch, { letterSpacing: "1px" }),
                     grow("Matchup", D.away_team + " at " + D.home_team),
                     growStrong("Result", D.result_line),
                     grow("Pitching", D.starter_away + " (" + D.away_abbr + ") vs " + D.starter_home + " (" + D.home_abbr + ")"),
@@ -221,7 +221,7 @@
                 noteCell("Elevation", D.elevation),
                 noteCell("Coordinates", (D.coordinates_n + " / " + D.coordinates_w).replace(/\u00b0\s+/g, "\u00b0"), "coord"),
                 noteCell("Orientation", D.field.orientation + " / " + D.field.orientation_degrees + "\u00b0"),
-                noteCell("Construction Start", D.construction_start),
+                noteCell("GROUNDBREAKING", D.construction_start),
                 noteCostCell(),
                 noteCell("Financing", D.financing_method, "wide"),
                 noteAddrCell()))
@@ -244,9 +244,9 @@
       e("div", { className: "k" }, k),
       e("div", { className: "v" }, v));
   }
-  function grow(k, v) {
+  function grow(k, v, kStyle) {
     return e("div", { className: "grow" },
-      e("div", { className: "k" }, k),
+      e("div", { className: "k", style: kStyle || undefined }, k),
       e("div", { className: "v" }, v));
   }
   function growStrong(k, v) {

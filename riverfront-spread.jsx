@@ -48,7 +48,7 @@
         /* ===== LEFT / HERO ===== */
         React.createElement("div", { className: "rf-page rf-left" },
           React.createElement("div", { className: "rf-hero-slot" },
-            React.createElement(Slot, { id: "rf-hero", placeholder: "Riverfront Stadium \u00b7 field view", src: "images/riverfront/riverfront-00-main-v4-92ea5aed.jpg", maxdim: 1400 })),
+            React.createElement(Slot, { id: "rf-hero", placeholder: "Riverfront Stadium \u00b7 field view", src: "images/riverfront/riverfront-00-main-hd.jpg", maxdim: 1400 })),
           React.createElement("div", { className: "rf-hero-scrim" }),
           React.createElement(Rings, { className: "rf-hero-rings", stroke: "#EDEAE0", op: 0.16, rings: [250, 222, 196, 172] }),
           React.createElement("div", { className: "rf-hero-title" },

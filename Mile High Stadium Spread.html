@@ -44,6 +44,12 @@
     background: var(--paper);
     font-kerning: normal;
     text-rendering: geometricPrecision;
+    /* Mirror the DesignCanvas artboard card's inherited tracking so the PDF/print
+       path (which has no card) lays out identically. Without this, untracked
+       Spectral text (prose, facts values, ribbon, scorecard) renders wider in
+       print, wraps to extra lines, grows the right page and shoves the visit
+       section off the bottom. Elements with explicit tracking override this. */
+    letter-spacing: -0.5px;
   }
 
   .mh-page { position: absolute; top: 0; height: 1088px; }
@@ -171,6 +177,14 @@
     float: left; font-family: "Anton", sans-serif; font-weight: 400; color: var(--purple);
     font-size: 46px; line-height: .72; margin: 3px 7px 0 0; text-transform: uppercase;
   }
+
+  /* Print/design parity: the design page mounts this spread inside a DesignCanvas
+     artboard whose card carries an inherited `letter-spacing: -0.5px`; the PDF
+     harness has no card. The fix is the single root-level `letter-spacing: -0.5px`
+     on `.mh-spread` above, applied in BOTH contexts, so every untracked Spectral
+     element wraps identically (design page unchanged — it already had -0.5px).
+     (Superseded the old print-only `body.pp-mode` -0.4px patch, which was
+     approximate and only covered the prose + finance value.) */
 
   /* ---------- VISIT SUMMARY STRIP ---------- */
   .mh-vstrip { display: flex; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }

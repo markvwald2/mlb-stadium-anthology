@@ -27,6 +27,7 @@
     position: relative;
     width: 2550px; height: 1088px;
     overflow: hidden;
+    letter-spacing: -0.5px;   /* mirror the DesignCanvas .dc-card inherited tracking so print == design */
     --ink: #23211C;
     --ink-2: #514B40;
     --ink-3: #857C6B;
@@ -205,7 +206,7 @@
   .tm-context .tm-h { border-bottom-color: var(--navy); border-bottom-width: 1.5px; }
   .tm-prose { margin-top: 8px; flex: 1; min-height: 0;
     column-count: 3; column-gap: 36px; column-rule: 1px solid var(--rule); }
-  .tm-prose p { margin: 0 0 15px; font-family: "Spectral", serif; font-size: 16.5px; line-height: 26px;
+  .tm-prose p { margin: 0 0 12px; font-family: "Spectral", serif; font-size: 16.5px; line-height: 26.05px;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .tm-prose .fw-dropcap { font-family: "Zilla Slab", serif; font-weight: 900;
     float: left; font-size: 58px; line-height: .70; padding: 4px 9px 0 0; color: var(--green); }

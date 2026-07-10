@@ -193,10 +193,10 @@
   function factRow(k, v) {
     return e("tr", null, e("th", null, k), e("td", null, v));
   }
-  function rb(k, v, sm) {
+  function rb(k, v, sm, nw) {
     return e("div", { className: "yk-rb" },
       e("div", { className: "k" }, k),
-      e("div", { className: "v" + (sm ? " sm" : "") }, v));
+      e("div", { className: "v" + (sm ? " sm" : "") + (nw ? " nw" : "") }, v));
   }
   function virow(k, v, cls) {
     return e("div", { className: "yk-virow" + (cls ? " " + cls : "") }, e("div", { className: "k" }, k), e("div", { className: "v" }, v));
@@ -300,11 +300,11 @@
           /* metadata ribbon */
           e("div", { className: "yk-ribbon" },
             rb("Team", D.team_name, true),
-            rb("League / Division", "American League East", true),
+            rb("League / Division", "American League East", true, true),
             rb("Classification", "Jewel Box & Early Concrete", true),
             rb("Years Active", D.years_active),
             rb("Visit No.", D.visit_order + " of 42"),
-            rb("Coordinates", D.coordinates, true),
+            rb("Coordinates", D.coordinates, true, true),
             rb("Capacity", D.capacity_opening + " \u2192 " + D.capacity_current, true)
           ),
 

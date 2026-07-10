@@ -24,9 +24,9 @@
   // slots whose photo file was replaced post-publish: point at a fresh filename
   // so the serve layer can't hand back a stale-cached copy of the old path.
   const SRC_OVERRIDE = {
-    "op-l02": "images/opening/op-l02-v3.jpg",
-    "op-l04": "images/opening/op-l04-v3.jpg",
-    "op-l14": "images/opening/op-l14-v3.jpg",
+    "op-l02": "images/opening/op-l02-v4.jpg",
+    "op-l04": "images/opening/op-l04-v4.jpg",
+    "op-l14": "images/opening/op-l14-v4.jpg",
     "op-l10": "images/opening/target-field.jpg",
   };
 

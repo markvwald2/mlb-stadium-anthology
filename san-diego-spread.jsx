@@ -170,9 +170,9 @@
 
               /* three documentary apertures (4:3) */
               e("div", { className: "sd-apertures" },
-                e("div", { className: "ap" }, e(Slot, { id: "sd-p1", src: "images/san-diego/sd-p1.webp", placeholder: "Exterior \u00b7 round circulation tower & ramps" })),
-                e("div", { className: "ap" }, e(Slot, { id: "sd-p2", src: "images/san-diego/sd-p2.webp", placeholder: "Open-air seating bowl" })),
-                e("div", { className: "ap" }, e(Slot, { id: "sd-p3", src: "images/san-diego/sd-p3.webp", placeholder: "Ramp / concourse detail" }))),
+                e("div", { className: "ap" }, e(Slot, { id: "sd-p1", src: "images/san-diego/sd-p1-hd.jpg", placeholder: "Exterior \u00b7 round circulation tower & ramps" })),
+                e("div", { className: "ap" }, e(Slot, { id: "sd-p2", src: "images/san-diego/sd-p2-hd.png", placeholder: "Open-air seating bowl" })),
+                e("div", { className: "ap" }, e(Slot, { id: "sd-p3", src: "images/san-diego/sd-p3-hd.jpg", placeholder: "Ramp / concourse detail" }))),
 
               /* lifecycle — quiet name-history sequence (tower markings) */
               e("div", { className: "sd-lifecycle" },

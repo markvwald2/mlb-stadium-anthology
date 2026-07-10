@@ -255,7 +255,7 @@ Two single-page PDFs per spread (correct for perfect-bound book). The artboard
 >     binding edge** (the binding edge is mapped flush to the trim line)
 >   - safe 0.25 in top/bottom/outside · 0.50 in binding edge
 >
-> This matches the Blurb **Large Landscape, Hardcover Dust Jacket (98 pp),
+> This matches the Blurb **Large Landscape, Hardcover ImageWrap (96 pp),
 > interior page** spec. The earlier legacy harness stretched the design onto a
 > 13 × 11 in trim / 13.25 × 11.25 in sheet — that scaling is **gone**; all
 > spreads now re-export at the corrected size. Fonts are force-loaded and
