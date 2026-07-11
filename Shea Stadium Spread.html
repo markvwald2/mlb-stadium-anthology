@@ -290,7 +290,7 @@
 
   /* weather strip inside scoreboard */
   /* weather strip — single baseline row: cloud · 82° · Overcast │ wind │ humidity */
-  .shea-wx { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 21px;
+  .shea-wx { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 10px;
     padding-top: 12px; border-top: 1px solid rgba(233,228,215,.16); }
   .shea-wx .wx-icon { display: flex; align-items: center; flex: none; }
   .shea-wx .wx-deg { flex: none; font-family: "Spectral", serif; font-weight: 700; font-size: 19px; color: #F1ECDF;
@@ -303,15 +303,33 @@
   .shea-wx .wx-metric .wxv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px; color: #E8E2D3;
     white-space: nowrap; }
 
-  /* first-visit banner — bottom-right of the scoreboard, below the weather */
-  .shea-firstvisit { align-self: stretch; margin-top: auto; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;
-    padding: 6px 11px 7px; background: rgba(232,83,26,.16); border-left: 3px solid var(--orange); }
+  /* first-visit block — bottom of the scoreboard, below the weather */
+  .shea-firstvisit { align-self: stretch; margin-top: auto; margin-bottom: 5px; display: flex;
+    flex-direction: column; gap: 7px; padding: 9px 13px 10px; background: rgba(232,83,26,.16);
+    border-left: 3px solid var(--orange); }
+  .shea-firstvisit .fv-head { display: flex; align-items: center; gap: 9px; }
   .shea-firstvisit .fk { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--orange); white-space: nowrap; }
   .shea-firstvisit .fdiv { width: 1px; height: 12px; background: rgba(232,83,26,.45); }
-  .shea-firstvisit .ftrip { font-family: "Saira Semi Condensed", sans-serif; font-weight: 600; font-size: 12px;
-    letter-spacing: .1em; text-transform: uppercase; color: #ECE6D6; white-space: nowrap; }
-  .shea-firstvisit .fv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: #ECE6D6; white-space: nowrap; }
+  .shea-firstvisit .fdate { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px;
+    color: #ECE6D6; white-space: nowrap; }
+  .shea-firstvisit .fv-line { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .shea-firstvisit .fv-score { display: flex; align-items: baseline; gap: 8px; }
+  .shea-firstvisit .fv-score .tw,
+  .shea-firstvisit .fv-score .tl { font-family: "Saira Semi Condensed", sans-serif; font-weight: 600; font-size: 13px;
+    letter-spacing: .08em; text-transform: uppercase; color: #ECE6D6; }
+  .shea-firstvisit .fv-score .sc { font-family: "Spectral", serif; font-weight: 700; font-size: 20px; line-height: 1; color: #ECE6D6;
+    font-variant-numeric: tabular-nums; }
+  .shea-firstvisit .fv-score .sc.win { color: var(--orange); }
+  .shea-firstvisit .fv-score .dash { font-family: "Spectral", serif; font-weight: 700; font-size: 15px; color: rgba(236,230,214,.5); }
+  .shea-firstvisit .fv-note { font-family: "Saira Semi Condensed", sans-serif; font-weight: 500; font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: rgba(236,230,214,.62); white-space: nowrap; }
+  .shea-firstvisit .fv-dec { display: flex; align-items: baseline; gap: 15px; padding-top: 6px;
+    border-top: 1px solid rgba(232,83,26,.28); }
+  .shea-firstvisit .fv-dec .di { display: flex; align-items: baseline; gap: 5px; }
+  .shea-firstvisit .fv-dec .dk { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 12px;
+    letter-spacing: .06em; color: var(--orange); }
+  .shea-firstvisit .fv-dec .dv { font-family: "Spectral", serif; font-size: 13px; color: #ECE6D6; }
 
   /* ---- material / memory cue rail ---- */
   .shea-cues { display: grid; grid-template-columns: repeat(6, 1fr); margin-top: 11px; flex: none;

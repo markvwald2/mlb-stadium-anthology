@@ -92,7 +92,7 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         e("div", { className: "shp-page shp-left", "data-screen-label": "Sutter Health Park hero" },
           e("div", { className: "shp-hero-slot" },
-            e(Slot, { id: "sutter-hero", src: "images/sutter/sutter-health-park-00-main.jpg", placeholder: "Drop the Sutter Health Park aerial \u2014 ballpark + Sacramento River + Tower Bridge + urban edge" })),
+            e(Slot, { id: "sutter-hero", src: "images/sutter/sutter-health-park-00-main-PD.jpg", placeholder: "Drop the Sutter Health Park aerial \u2014 ballpark + Sacramento River + Tower Bridge + urban edge" })),
           e("div", { className: "shp-hero-scrim" }),
           e("div", { className: "shp-hero-folio" }, "Interim Riverfront Warehouse \u00b7 Temporary MLB"),
 

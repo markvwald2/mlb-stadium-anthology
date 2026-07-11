@@ -226,18 +226,19 @@
                   e("div", { className: "tn" }, e("span", { className: "ab" }, V.home_abbr), e("span", { className: "nm" }, "Rays")),
                   e("img", { src: "assets/tampa-bay-rays-logo.svg", alt: V.home_team })),
                 e("div", { className: "tf-result" }, V.result),
-                Board(D.box),
-                e("div", { className: "tf-dec", style: { marginTop: "7px" } },
-                  e("div", { className: "d" }, e("span", { className: "t w" }, "W"), e("span", { className: "n" }, P.win)),
-                  e("div", { className: "d" }, e("span", { className: "t l" }, "L"), e("span", { className: "n" }, P.loss)),
-                  e("div", { className: "d" }, e("span", { className: "t s" }, "SV"), e("span", { className: "n" }, P.save))))))),
+                e("div", { style: { transform: "translateY(-10px)" } },
+                  Board(D.box),
+                  e("div", { className: "tf-dec", style: { marginTop: "4px" } },
+                    e("div", { className: "d" }, e("span", { className: "t w" }, "W"), e("span", { className: "n" }, P.win)),
+                    e("div", { className: "d" }, e("span", { className: "t l" }, "L"), e("span", { className: "n" }, P.loss)),
+                    e("div", { className: "d" }, e("span", { className: "t s" }, "SV"), e("span", { className: "n" }, P.save)))))))),
 
         /* ---- Bay E : field diagram | bottom-right photo ---- */
         e("div", { className: "tf-bay", style: rect(BAYS.e) },
           e("div", { className: "tf-e-grid" },
             // LEFT: field diagram
             e("div", { className: "tf-fieldfig" },
-              e(Head, { title: "Field Diagram", code: F.orientation + " " + F.bearing + "\u00b0" }),
+              e(Head, { title: "Field Diagram" }),
               window.TropicanaProtractor ? e(window.TropicanaProtractor, {
                 lf: F.left_field, cf: F.center_field, rf: F.right_field,
                 orientation: F.orientation, bearing: F.bearing }) : null,

@@ -98,7 +98,7 @@
       /* ============ LEFT PAGE / HERO ============ */
       e("div", { className: "chf-page chf-left" },
         e("div", { className: "chf-hero-slot" },
-          e(Slot, { id: "chase-hero", src: "images/chase/chase-field-00-main-c30fef9a.jpg", placeholder: "Drop the Chase Field hero \u2014 aerial of the retractable roof, downtown Phoenix grid, desert basin & mountains at dusk", shape: "rect" })
+          e(Slot, { id: "chase-hero", src: "images/chase/chase-field-00-main-PS.jpg", placeholder: "Drop the Chase Field hero \u2014 aerial of the retractable roof, downtown Phoenix grid, desert basin & mountains at dusk", shape: "rect" })
         ),
         // Diamondbacks mark, upper-left
         e("img", { className: "chf-hero-logo", src: "assets/arizona-diamondbacks-logo.svg", alt: "Arizona Diamondbacks" }),

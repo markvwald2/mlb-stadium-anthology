@@ -61,7 +61,6 @@
   .bz-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .bz-hero-scrim { position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(180deg, rgba(8,6,4,.62) 0%, rgba(8,6,4,.5) 14%, rgba(8,6,4,.34) 24%, rgba(8,6,4,.16) 34%, rgba(8,6,4,0) 46%),
       linear-gradient(0deg, rgba(10,8,6,.55) 0%, rgba(10,8,6,.2) 12%, rgba(10,8,6,0) 24%); }
 
   .bz-folio { position: absolute; right: 58px; bottom: 58px; z-index: 5;
@@ -166,7 +165,7 @@
 
   .bz-facts { display: flex; flex-direction: column; }
   .bz-frow { display: grid; grid-template-columns: 78px 1fr; gap: 9px; align-items: baseline;
-    padding: 1px 0; border-bottom: 1px solid var(--rule); }
+    padding: 0 0; border-bottom: 1px solid var(--rule); }
   .bz-frow:last-child { border-bottom: 0; }
   .bz-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .05em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.2; }
@@ -176,15 +175,30 @@
     color: var(--ink-2); line-height: 1.22; }
   .bz-frow .v .vs.roman { font-style: normal; }
 
-  .bz-field { margin-top: 3px; padding-top: 3px; border-top: 1.5px solid var(--navy); }
+  /* Preceded By — vertical lineage timeline */
+  .bz-lineage-row { align-items: start; }
+  .bz-lineage { list-style: none; margin: -4px 0 1px; padding: 0; position: relative; min-width: 0; }
+  .bz-lineage::before { content: ""; position: absolute; left: 3px; top: 7px; bottom: 7px; width: 1.5px;
+    background: var(--red); opacity: .5; }
+  .bz-lin-item { position: relative; display: grid; grid-template-columns: 13px 1fr; align-items: baseline;
+    column-gap: 8px; padding: 1.5px 0; }
+  .bz-lin-item .dot { grid-column: 1; align-self: baseline; width: 7px; height: 7px; margin-top: 3px;
+    border-radius: 50%; background: var(--red); box-shadow: 0 0 0 2.5px var(--paper); position: relative; z-index: 1; }
+  .bz-lin-item .txt { grid-column: 2; min-width: 0; }
+  .bz-lin-item .nm { font-family: "Spectral", serif; font-weight: 600; font-size: 12.5px; color: var(--ink);
+    line-height: 1.18; }
+  .bz-lin-item .yr { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .01em;
+    color: var(--ink-3); line-height: 1.18; margin-left: 6px; white-space: nowrap; }
+
+  .bz-field { margin-top: 1px; padding-top: 2px; border-top: 1.5px solid var(--navy); }
   .bz-field-head { display: flex; flex-direction: column; gap: 2px; align-items: center; }
   .bz-field-head .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--navy); text-align: center; }
   .bz-field-head .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-3); }
-  .bz-fieldfig { margin: 12px 0 0; width: 100%; display: flex; justify-content: center; }
+  .bz-fieldfig { margin: 9px 0 0; width: 100%; display: flex; justify-content: center; }
   .bz-fieldfig .fd-wrap { width: 100%; display: flex; justify-content: center; }
-  .bz-fieldfig .fd-svg { width: 196px; height: auto; max-width: 100%; display: block;  overflow: visible; }
+  .bz-fieldfig .fd-svg { width: 166px; height: auto; max-width: 100%; display: block;  overflow: visible; }
 
   /* ---- BAY 2 : Stadium Context ---- */
   .bz-prose { margin-top: 2px; }

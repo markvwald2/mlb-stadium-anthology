@@ -256,12 +256,12 @@
               e("div", { className: "tt" }, "Stadium", e("span", null, "Context"))),
             e("div", { className: "yf-baybody" },
               e("div", { className: "yf-ctx" },
-                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17px" } }, D.stadium_context[0]),
-                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17px" } }, D.stadium_context[1]),
+                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17.2px" } }, D.stadium_context[0]),
+                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17.2px" } }, D.stadium_context[1]),
                 e("div", { className: "yf-ctx-photo" },
                   e(Slot, { id: "yf-ctx-photo", src: "images/yankee2009/hero-facade.jpg", placeholder: "The monumental limestone street wall along River Avenue / 161st Street \u2014 facade and replicated frieze in its Bronx setting" })),
-                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17px" } }, D.stadium_context[2]),
-                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17px" } }, D.stadium_context[3])))
+                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17.2px" } }, D.stadium_context[2]),
+                e("p", { style: { letterSpacing: "-0.5px", lineHeight: "17.2px" } }, D.stadium_context[3])))
           ),
 
           /* ===== BAY 5 — VISIT & GAME ARTIFACT ===== */

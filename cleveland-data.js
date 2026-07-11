@@ -8,7 +8,7 @@ window.CMS = {
   source_name: "Municipal Stadium",
   classification_era: "Postwar Municipal",
   years_active: "1931\u20131993",
-  years_active_note: "1931\u20131993 for MLB",
+  years_active_note: "1931\u20131993",
   stadium_type: "Open-air municipal multipurpose stadium",
   status: "Demolished",
 

@@ -38,7 +38,7 @@ window.ANAHEIM = {
     ["Years Active", "1966\u2013Present"],
     ["Opened", "Apr 9, 1966"],
     ["Construction", "Began 1964"],
-    ["Address", "2000 E Gene Autry Way\nAnaheim, California", { letterSpacing: "0px", width: "100px" }],
+    ["Address", "2000 E Gene Autry Way\nAnaheim, California", { letterSpacing: "-0.4px", width: "100px" }],
     ["Location", "Suburban"],
     ["Coordinates", "33.8006\u00b0 N, 117.8834\u00b0 W"],
     ["Elevation", "148 ft"],

@@ -94,6 +94,21 @@
         <path d="M20 19 L20 13 Q20 11 22 11 Q24 11 24 13 L24 19" />
         <line x1="4" y1="9" x2="26" y2="9" />
       </g>;
+    } else if (kind === "postwar") {
+      // monumental municipal facade: pediment on columns
+      body = <g {...s}>
+        <path d="M4 9 L15 4 L26 9 Z" />
+        <line x1="4" y1="9" x2="26" y2="9" />
+        <line x1="8" y1="9" x2="8" y2="19" /><line x1="15" y1="9" x2="15" y2="19" /><line x1="22" y1="9" x2="22" y2="19" />
+        <line x1="4" y1="19" x2="26" y2="19" />
+      </g>;
+    } else if (kind === "modernist") {
+      // baseball-only modern bowl: cantilever roof plane over open field
+      body = <g {...s}>
+        <path d="M3 8 L27 8 L23 12 L7 12 Z" />
+        <path d="M6 19 Q15 13 24 19" />
+        <line x1="15" y1="12" x2="15" y2="15" />
+      </g>;
     } else if (kind === "multi") {
       // circular multi-purpose bowl (concentric ellipses)
       body = <g {...s}>
@@ -201,11 +216,11 @@
             <div key={it.key} style={{ position: "absolute", left: 0, top: ty, width: 150 }}>
               <div style={{ position: "absolute", left: -1, top: 3, width: 13, height: 13, borderRadius: "50%", background: it.color, boxShadow: "0 0 0 3px var(--paper)" }}></div>
               <div className="bc-era-date" style={{ marginLeft: 26 }}>{it.dates}</div>
-              <div style={{ marginLeft: 26, marginTop: 8, marginBottom: 4 }}>
+              <div style={{ marginLeft: 26, marginTop: 1, marginBottom: 0 }}>
                 <EraIcon kind={it.icon} size={28} color={it.color} />
               </div>
-              <div className="bc-era-name" style={{ marginLeft: 26 }}>
-                {it.name.map((ln, k) => <div key={k}>{ln}</div>)}
+              <div className="bc-era-name" style={{ marginLeft: 26, ...(it.nameStyle || {}) }}>
+                {Array.isArray(it.name) ? it.name.join(" ") : it.name}
               </div>
               <div className="bc-era-desc" style={{ marginLeft: 26 }}>{it.desc}</div>
             </div>);
@@ -218,8 +233,8 @@
   // ── comparative atlas grid ───────────────────────────────────────────────
   function AtlasGrid({ atlas, x, y, w, title, dense, template, pad, minH }) {
     const tmpl = template || (dense ?
-    "132px 268px 1fr 1fr 1.28fr" :
-    "168px 1fr 1.05fr 0.92fr 1.18fr");
+    "132px 268px 1fr 1.28fr" :
+    "168px 1fr 1.05fr 1.18fr");
     const cellPad = pad || (dense ? "5px 12px 5px 0" : "11px 14px 11px 0");
     const cellFont = dense ? 12 : 12;
     const eraFont = dense ? 12 : 13.5;
@@ -241,9 +256,8 @@
                   {dense ? null : <div className="bc-atlas-years">{r.years}</div>}
                 </div>
               </div>
-              <div className="bc-atlas-cell bc-atlas-text parks" style={{ ...cellStyle, letterSpacing: "-0.1px" }}>{r.parks}</div>
+              <div className="bc-atlas-cell bc-atlas-text parks" style={{ ...cellStyle, letterSpacing: r.parksLS || "-0.1px" }}>{r.parks}</div>
               <div className="bc-atlas-cell bc-atlas-text" style={cellStyle}>{r.logic}</div>
-              <div className="bc-atlas-cell bc-atlas-text" style={cellStyle}>{r.access}</div>
               <div className="bc-atlas-cell bc-atlas-text" style={{ ...cellStyle, letterSpacing: "-0.7px" }}>{r.trait}</div>
             </React.Fragment>
           )}

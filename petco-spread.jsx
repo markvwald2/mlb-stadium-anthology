@@ -33,7 +33,7 @@
       e("span", { className: "nm" }, props.title),
       props.note ? e("span", { className: "nt" }, props.note) : null);
   }
-  function Sub(props) { return e("div", { className: "pk-sub" }, e("span", { className: "t" }, props.children)); }
+  function Sub(props) { return e("div", { className: "pk-sub" + (props.mod ? " " + props.mod : "") }, e("span", { className: "t" }, props.children)); }
   function schedRow(row, i) {
     return e("div", { className: "pk-srow", key: i },
       e("div", { className: "k" }, row[0]),
@@ -105,7 +105,7 @@
           e("div", { className: "pk-rail-foot" },
             e("div", { className: "pk-rail-mark" },
               e("div", { className: "m1" }, D.landmark[0]),
-              e("div", { className: "m2" }, D.landmark[1] + " \u00b7 " + D.landmark[2])),
+              e("div", { className: "m2" }, (D.landmark[1] + " " + D.landmark[2]).toUpperCase())),
             e("div", { className: "pk-rail-rule" }),
             e("div", { className: "pk-rail-logos" },
               e("img", { src: "assets/san-diego-padres-logo.svg", alt: "San Diego Padres" }),
@@ -144,7 +144,7 @@
             schedRow(["Era", "Retro Classic"], "ec"),
             schedRow(["Preceded By", D.preceded_by], "pb")),
           e(Sub, null, "Field Geometry"),
-          window.PetcoProtractor ? e("div", { style: { display: "flex", justifyContent: "center" } },
+          window.PetcoProtractor ? e("div", { style: { display: "flex", justifyContent: "center", marginTop: "10px" } },
             e("div", { style: { width: "198px" } },
               e(window.PetcoProtractor, { lf: F.left_field, cf: F.center_field, rf: F.right_field,
                 orientation: F.orientation, degrees: F.degrees }))) : null),
@@ -166,7 +166,7 @@
                 e(Slot, { id: D.windows[1][0], placeholder: D.windows[1][1], src: D.windows[1][2] }))))),
 
         /* ---------- BAY D : VISIT INFORMATION (game artifact) ---------- */
-        e("div", { className: "pk-bay", style: bayStyle(BAYS.d) },
+        e("div", { className: "pk-bay", style: Object.assign(bayStyle(BAYS.d), { justifyContent: "space-between" }) },
           e(BayHead, { title: "Visit Information" }),
           e("div", { className: "pk-vhead", style: { marginTop: "0" } },
             e("div", { className: "vh-top" },
@@ -190,20 +190,24 @@
             e("div", { className: "girow" }, e("span", { className: "k" }, "First Pitch"), e("span", { className: "v" }, V.first_pitch)),
             e("div", { className: "girow" }, e("span", { className: "k" }, "Time of Game"), e("span", { className: "v" }, V.duration))),
 
-          e(Sub, null, "Weather"),
+          e(Sub, { mod: "up" }, "Weather"),
           e("div", { className: "pk-wx" },
             wxCell("temp", W.temperature, "Temp"),
             wxCell("sun", W.conditions, "Sky"),
             wxCell("wind", W.wind, "Wind"),
             wxCell("drop", W.humidity, "Humidity")),
 
-          e(Sub, null, "Pitching"),
+          e(Sub, { mod: "up" }, "Pitching"),
           e("div", { className: "pk-matchup" },
             e("span", { className: "mt" }, P.away_team),
             e("span", { className: "mn" }, P.away),
             e("span", { className: "vs" }, "vs"),
             e("span", { className: "mt" }, P.home_team),
             e("span", { className: "mn" }, P.home)),
+
+          e("figure", { className: "pk-vfig" },
+            e(Slot, { id: "petco-visit-photo", src: "images/petco/petco-park-01alt.jpg",
+              placeholder: "Group photo in the seats" })),
 
           e(Sub, null, "Line Score"),
           e("div", { className: "pk-board" }, Board(D.box)),
@@ -216,8 +220,8 @@
 
           e("div", { className: "pk-vlogos" },
             e("span", { className: "lw" }, e("img", { src: "assets/san-diego-padres-logo.svg", alt: "Padres" })),
-            e("span", { className: "lw" }, e("img", { src: "assets/nl-logo.png", alt: "National League" })),
-            e("span", { className: "lw" }, e("img", { src: "assets/mlb-logo.svg", alt: "MLB" }))))
+            e("span", { className: "lw" }, e("img", { src: "assets/mlb-logo.svg", alt: "MLB" })),
+            e("span", { className: "lw" }, e("img", { src: "assets/nl-logo.png", alt: "National League" }))))
       )
     );
   }

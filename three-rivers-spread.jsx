@@ -223,7 +223,7 @@
 
             e("div", { className: "trs-context" },
               e("img", { src: "popcorn-bucket.svg?v=5", className: "trs-ctx-wm", alt: "" }),
-              D.stadium_context.map((p, i) => e("p", { key: i }, p)))),
+              D.stadium_context.map((p, i) => e("p", { key: i, style: { lineHeight: "17.55px" } }, p)))),
 
           /* ---- divider ---- */
           e("div", { className: "trs-zonerule" }),
@@ -243,7 +243,7 @@
                 e("div", { className: "lab" }, D.visit_type)),
               e("div", { className: "fc" }, Icon("moon", { size: 22, stroke: "#23211C", sw: 1.4 }),
                 e("div", { className: "lab" }, D.game_kind),
-                e("div", { className: "sub" }, D.day_night + " Games")),
+                e("div", { className: "sub" }, "Twi-Night")),
               e("div", { className: "fc" }, Icon("clock", { size: 22, stroke: "#23211C", sw: 1.4 }),
                 e("div", { className: "lab two" }, g1.first_pitch.replace(" EDT", "")),
                 e("div", { className: "lab two" }, g2.first_pitch.replace(" EDT", "")),

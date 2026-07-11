@@ -114,7 +114,7 @@
           <span style={{ display: "block", width: "100%", height: 0, borderTop: "2px solid var(--ink)" }}></span>
         </div>
         <AtlasGrid atlas={D.ATLAS} x={1340} y={620} w={795} dense
-        template="120px 1fr 1fr 1fr 1.06fr" pad="2px 12px 2px 0" minH={30} />
+        template="1.8fr 2fr 2.15fr 2fr" pad="1px 14px 1px 0" minH={20} />
 
         {/* closing paragraphs — full width beneath both columns */}
         <div className="bc-region" style={{ left: 1340, top: 818, width: 1165, height: 0, borderTop: "1px solid var(--rule)" }}></div>

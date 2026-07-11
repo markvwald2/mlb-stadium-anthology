@@ -96,7 +96,7 @@
             e("span", { className: "txt" }, "South Philadelphia Sports Complex"))),
 
         e("div", { className: "vet-hero-foot" },
-          e("img", { className: "vet-logo", src: "assets/phillies-script-p-v2.svg", alt: "Phillies" }),
+          e("img", { className: "vet-logo", src: "assets/phillies-script-p-v2-fill.svg", alt: "Phillies" }),
           e("img", { className: "vet-logo", src: "assets/nl-logo.png", alt: "National League" }),
           e("img", { className: "vet-logo", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }))),
 

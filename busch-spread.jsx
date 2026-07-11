@@ -28,6 +28,25 @@
         e("span", { className: "vm" }, row[1]),
         row[2] ? e("span", { className: "vs" + (row[3] === "roman" ? " roman" : "") }, row[2]) : null));
   }
+  function precededRow(row, i) {
+    const items = row[1].split("\n").map(function (s) {
+      const m = s.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
+      return m ? { nm: m[1], yr: m[2] } : { nm: s.trim(), yr: "" };
+    });
+    return e("div", { className: "bz-frow bz-lineage-row", key: i },
+      e("div", { className: "k" }, row[0]),
+      e("ol", { className: "bz-lineage" },
+        items.map(function (it, j) {
+          return e("li", { className: "bz-lin-item", key: j },
+            e("span", { className: "dot" }),
+            e("span", { className: "txt" },
+              e("span", { className: "nm" }, it.nm),
+              it.yr ? e("span", { className: "yr" }, it.yr) : null));
+        })));
+  }
+  function factOrLineage(row, i) {
+    return row[0] === "Preceded By" ? precededRow(row, i) : factRow(row, i);
+  }
   function ribbonLines(val) {
     return val.split("\n").map((ln, i) => e("span", { className: "rl-ln", key: i }, ln));
   }
@@ -90,7 +109,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "bz-page bz-left", "data-screen-label": "Busch Stadium \u2014 hero" },
         e("div", { className: "bz-hero-slot" },
-          e(Slot, { id: "busch-hero", src: "images/busch/busch-stadium-00-main.jpg", placeholder: "Drop the Busch Stadium hero \u2014 dusk aerial: brick & cast-stone mass, the open bowl, downtown skyline, the Gateway Arch and the Mississippi River bridges beyond" })),
+          e(Slot, { id: "busch-hero", src: "images/busch/busch-stadium-00-main-alt.jpg", placeholder: "Drop the Busch Stadium hero \u2014 dusk aerial: brick & cast-stone mass, the open bowl, downtown skyline, the Gateway Arch and the Mississippi River bridges beyond" })),
         e("div", { className: "bz-hero-scrim" }),
 
         e("div", { className: "bz-folio" }, "VISIT NO. " + D.visit_order),
@@ -144,7 +163,7 @@
         /* -- BAY 1 : Stadium Facts + Field Dimensions protractor -- */
         e("div", { className: "bz-col bz-col-facts" },
           e(SecHead, { title: "Stadium Facts", note: "MUSEUM RECORD" }),
-          e("div", { className: "bz-facts" }, D.facts.map(factRow)),
+          e("div", { className: "bz-facts" }, D.facts.map(factOrLineage)),
           e("div", { className: "bz-field" },
             e("div", { className: "bz-field-head" }),
             e("figure", { className: "bz-fieldfig" },

@@ -78,7 +78,6 @@
           e("path", { d: fieldPath, fill: "none", stroke: fieldLine, strokeWidth: 1.2, strokeLinejoin: "round" }),
           e("path", { d: inArc, fill: "none", stroke: draft, strokeWidth: 0.8, opacity: 0.55 }),
           e("path", { d: dia, fill: "none", stroke: ink2, strokeWidth: 1, strokeLinejoin: "round" }),
-          e("circle", { cx: mound[0], cy: mound[1], r: 2, fill: "none", stroke: ink2, strokeWidth: 0.9 }),
           [b1, b2, b3].map((b, i) => e("rect", { key: i, x: b[0] - 2, y: b[1] - 2, width: 4, height: 4, fill: paperHi, stroke: ink2, strokeWidth: 0.9, transform: "rotate(45 " + b[0] + " " + b[1] + ")" })),
           e("rect", { x: home[0] - 2.4, y: home[1] - 2.4, width: 4.8, height: 4.8, fill: red, transform: "rotate(45 " + home[0] + " " + home[1] + ")" })
         ),
@@ -93,7 +92,6 @@
         e("circle", { cx: C[0], cy: C[1], r: 2.6, fill: accent }),
         e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 19, tone: "navy", padX: 7 }),
         // orientation cue
-        e("text", { x: ntip[0] + 12, y: ntip[1] - 4, textAnchor: "start", style: { fontFamily: "'Oswald',sans-serif", fontWeight: 600, fontSize: "13px", fill: ink2, letterSpacing: ".14em" } }, orientation),
         // distance chips
         chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 19 }))
       )

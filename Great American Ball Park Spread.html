@@ -130,8 +130,8 @@
   .gabp-meta .mcell .v { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; color: #ECE6D8; line-height: 1.18; }
   .gabp-meta .mcell .v.mono { font-family: "Space Mono", monospace; font-weight: 400; font-size: 13px; letter-spacing: .01em; }
   .gabp-meta .logos { margin-left: auto; flex-direction: row; align-items: center; gap: 26px; border-left: 0; padding-right: 0; }
-  .gabp-meta .logos .reds { height: 60px; width: auto; display: block; }
-  .gabp-meta .logos .mlb { height: 42px; width: auto; display: block; }
+  .gabp-meta .logos .reds { height: 48px; width: auto; display: block; }
+  .gabp-meta .logos .mlb { height: 42px; width: auto; display: block; margin-left: -10px; }
   .gabp-meta .logos .nl { height: 50px; width: auto; display: block; }
   .gabp-addr {
     position: absolute; left: 60px; right: 60px; bottom: 54px; z-index: 5;
@@ -205,7 +205,7 @@
   .gabp-lineage .nm { font-family: "Spectral", serif; font-size: 12px; color: var(--ink-2); line-height: 1.18; }
   .gabp-lineage li.last .nm { color: var(--ink); font-weight: 600; }
 
-  .gabp-fp { margin: 2px 0 0; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .gabp-fp { margin: -10px 0 0; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
   .gabp-fp .fd-wrap { width: 100%; display: flex; justify-content: center; }
   .gabp-fp .fd-svg { width: auto; height: 166px; max-width: 100%; display: block;  overflow: visible; }
 
@@ -249,6 +249,7 @@
   .feat-score { display: flex; align-items: center; gap: 13px; padding-bottom: 10px; margin-bottom: 10px;
     border-bottom: 1px solid var(--rule); }
   .feat-score .tlogo { height: 48px; width: auto; flex: none; display: block; }
+  .feat-score .tlogo:last-of-type { height: 38px; }
   .feat-score .tname { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 16px;
     letter-spacing: .04em; text-transform: uppercase; color: var(--ink); line-height: 1; white-space: nowrap; }
   .feat-score .tname.home { color: var(--red-bright); }

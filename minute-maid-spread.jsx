@@ -105,7 +105,7 @@
       /* ============== LEFT PAGE / HERO ============== */
       e("div", { className: "mm-page mm-left", "data-screen-label": "Minute Maid Park \u2014 hero" },
         e("div", { className: "mm-hero-slot" },
-          e(Slot, { id: "mmp-hero", src: "images/minute-maid/minute-maid-park-00-main-563895c1.jpg",
+          e(Slot, { id: "mmp-hero", src: "images/minute-maid/minute-maid-park-00-main-PS.jpg",
             placeholder: "Drop the Minute Maid Park hero \u2014 dusk interior toward left field: the train, Crawford Boxes, downtown skyline & the open retractable roof" })),
         e("div", { className: "mm-hero-scrim" }),
 

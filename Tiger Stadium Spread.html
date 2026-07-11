@@ -232,8 +232,10 @@
   .ts-scorerow { display: flex; align-items: center; justify-content: space-between; gap: 12px;
     padding: 4px 0; border-bottom: 1px solid var(--rule); flex: 1; }
   .ts-scorerow:last-of-type { border-bottom: 0; }
-  .ts-scorerow .tm { font-family: "Anton", sans-serif; font-weight: 400; font-size: 27px; line-height: 1;
-    letter-spacing: .01em; color: var(--ink-2); }
+  .ts-scorerow .tm { display: flex; align-items: center; gap: 9px; font-family: "Anton", sans-serif; font-weight: 400; font-size: 21px; line-height: 1;
+    letter-spacing: .01em; color: var(--ink-2); min-width: 0; }
+  .ts-scorerow .tm .tlogo { height: 30px; width: 30px; object-fit: contain; flex: none; }
+  .ts-scorerow .tm span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .ts-scorerow.win .tm { color: var(--navy); }
   .ts-scorerow .sc { font-family: "Anton", sans-serif; font-size: 27px; line-height: 1; color: var(--ink-2);
     font-variant-numeric: tabular-nums; }
@@ -255,7 +257,7 @@
   .ts-line .sep { border-left: 1px solid var(--rule-2); }
   .ts-line .rhe { font-weight: 700; color: var(--ink); }
   .ts-line tbody tr:last-child td { border-bottom: 0; }
-  .ts-pitch { margin-top: auto; padding-top: 8px; }
+  .ts-pitch { margin-top: auto; padding-top: 8px; margin-bottom: 8px; }
   .ts-prow { display: flex; flex-direction: column; gap: 1px; margin-bottom: 4px; }
   .ts-prow:last-child { margin-bottom: 0; }
   .ts-prow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;

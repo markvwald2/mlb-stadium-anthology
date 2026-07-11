@@ -35,17 +35,17 @@
     // verbatim names & order; sum = 42). `wide:true` gives a double-width column
     // whose roster runs in two sub-columns (Retro Classic, 16 parks).
     generations: [
-      { title: "Jewel Box & Early Concrete", desc: "Concrete ballparks woven into local streets, where intimate asymmetry emerged from constrained urban sites.", accent: RUST, slot: "jc-g1", parksStyle: { fontSize: "11px" },
+      { title: "Jewel Box & Early Concrete", desc: "Concrete ballparks woven into local streets, where intimate asymmetry emerged from constrained urban sites.", accent: "#3F6075", slot: "jc-g1", parksStyle: { fontSize: "11px" },
         parks: ["Wrigley Field", "Comiskey Park", "Yankee Stadium", "Tiger Stadium", "Fenway Park"] },
-      { title: "Postwar Municipal", desc: "Civic-scale stadiums, expressing public ambition through monumental form and automobile access.", accent: OLIVE, slot: "jc-g2",
+      { title: "Postwar Municipal", desc: "Civic-scale stadiums, expressing public ambition through monumental form and automobile access.", accent: "#7C6A4A", slot: "jc-g2",
         parks: ["Milwaukee County Stadium", "Cleveland Municipal Stadium", "Memorial Stadium"] },
-      { title: "Modernist Baseball-Specific", desc: "Baseball-only modernism emphasizing geometry, sightlines, and architectural expression over historical reference.", accent: STEEL, slot: "jc-g3",
+      { title: "Modernist Baseball-Specific", desc: "Baseball-only modernism emphasizing geometry, sightlines, and architectural expression over historical reference.", accent: "#5E7A86", slot: "jc-g3",
         parks: ["Dodger Stadium", "Anaheim Stadium", "Royals Stadium", "New Comiskey Park", "Marlins Park"] },
-      { title: "Multipurpose Shared Use", desc: "Concrete bowls focused on flexibility, where adaptability and efficiency outweighed baseball intimacy.", accent: CHAR, slot: "jc-g4", parksStyle: { letterSpacing: "-0.1px" },
+      { title: "Multipurpose Shared Use", desc: "Concrete bowls focused on flexibility, where adaptability and efficiency outweighed baseball intimacy.", accent: "#8A8276", slot: "jc-g4", parksStyle: { letterSpacing: "-0.1px" },
         parks: ["Jack Murphy", "Shea", "Riverfront", "Three Rivers", "The Vet", "Mile High", "Tropicana Field", "Rogers Centre"] },
-      { title: "Retro Classic", desc: "Baseball-only parks reintroducing asymmetry, local materials, urban context, and renewed sense of place.", accent: BRICK, slot: "jc-g5", wide: true, parksStyle: { fontSize: "10px", letterSpacing: "-0.1px" },
+      { title: "Retro Classic", desc: "Baseball-only parks reintroducing asymmetry, local materials, urban context, and renewed sense of place.", accent: "#9C3A28", slot: "jc-g5", wide: true, parksStyle: { fontSize: "10px", letterSpacing: "-0.1px" },
         parks: ["Coors", "Progressive", "Comerica", "Miller", "Safeco", "Petco", "GABP", "PNC", "Citi", "Yankee", "Citizens Bank", "Camden", "Minute Maid", "Chase Field", "Sutter Health", "Oracle"] },
-      { title: "Contemporary Mixed Use", desc: "Ballparks anchoring mixed-use districts, where baseball became one element of a year-round entertainment destination.", accent: NAVY, slot: "jc-g6",
+      { title: "Contemporary Mixed Use", desc: "Ballparks anchoring mixed-use districts, where baseball became one element of a year-round entertainment destination.", accent: "#4F6B57", slot: "jc-g6",
         parks: ["Busch Stadium", "SunTrust Park", "Nationals Park", "Globe Life Field", "Target Field"] }
     ]
   };

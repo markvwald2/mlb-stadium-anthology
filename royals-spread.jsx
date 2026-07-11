@@ -19,7 +19,7 @@
     );
   }
 
-  /* The Royals mark — official KC Royals shield logo. */
+  /* The Royals mark — official full-color KC Royals shield. */
   function Crown() {
     return React.createElement("img", {
       className: "rs-crown", src: "assets/royals-logo.svg",
@@ -198,11 +198,13 @@
                     )
                   ),
                   React.createElement("div", { className: "rs-matchup" },
-                    React.createElement("img", { className: "mlogo", src: "assets/angels-logo-1986.png", alt: "California Angels" }),
+                    React.createElement("div", { className: "rs-coin" },
+                      React.createElement("img", { className: "mlogo", src: "assets/angels-logo-1986.png", alt: "California Angels" })),
                     teamScore(D.box.away.abbr, D.box.away.r, D.box.away.r > D.box.home.r),
                     React.createElement("span", { className: "at" }, "AT"),
                     teamScore(D.box.home.abbr, D.box.home.r, D.box.home.r > D.box.away.r),
-                    React.createElement("img", { className: "mlogo", src: "assets/royals-logo.svg", alt: "Kansas City Royals" })
+                    React.createElement("div", { className: "rs-coin home" },
+                      React.createElement("img", { className: "mlogo", src: "assets/royals-logo.svg", alt: "Kansas City Royals" }))
                   ),
                   BoxScore(D.box),
                   React.createElement("div", { className: "rs-vcols", style: { marginTop: 10 } },

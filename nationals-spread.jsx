@@ -141,7 +141,7 @@
                   React.createElement("div", { className: "np-diagram" },
                     React.createElement("div", { className: "np-modh" },
                       React.createElement("span", null, "Field Plan"),
-                      React.createElement("span", { className: "ix" }, "N \u00b7 " + D.field.orientation_degrees + "\u00b0")),
+                      React.createElement("span", { className: "ix" }, "NNE \u00b7 " + D.field.orientation_degrees + "\u00b0")),
                     React.createElement("figure", { className: "np-fp" },
                       FieldDiagram ? React.createElement(FieldDiagram, {
                         lf: D.field.left_field, cf: D.field.center_field, rf: D.field.right_field,

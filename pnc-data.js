@@ -24,7 +24,7 @@ window.PNC = {
   facts: [
     ["Opened", "April 9, 2001"],
     ["Construction Start", "Apr 7, 1999"],
-    ["Renovations", "Scoreboard, club, seating, concessions, outfield, social-space, and technology upgrades"],
+    ["Renovations", "Scoreboard, club, premium seating, concessions, outfield, social-space, and technology upgrades"],
     ["Capacity", "38,362 opening \u00b7 38,747 current"],
     ["Surface", "Natural grass (Kentucky bluegrass)"],
     ["Architect", "HOK Sport and L.D. Astorino & Associates"],
@@ -53,7 +53,7 @@ window.PNC = {
   architectural_style: "Retro-classic riverfront ballpark with civic limestone architecture",
   facade_material: "Kasota limestone facade with brick bases, terra-cotta tile, masonry arches, and green steel",
   stadium_cost: "$216 million",
-  stadium_cost_adjusted: "$393 million",
+  stadium_cost_adjusted: "$393M",
   financing_method: "Publicly financed through Pennsylvania, Allegheny County, Pittsburgh, and stadium-authority sources, with Pirates lease / private participation",
 
   // ---- Historical context (museum wall text) ----

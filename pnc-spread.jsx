@@ -154,7 +154,7 @@
                 React.createElement("div", { className: "pnc-mod context" },
                   React.createElement("div", { className: "pnc-modh" }, "Skyline & Bridge"),
                   React.createElement("div", { className: "pnc-ctx" },
-                    D.context.map((p, i) => React.createElement("p", { key: i }, p)))),
+                    D.context.map((p, i) => React.createElement("p", { key: i, style: { lineHeight: "21.23px" } }, p)))),
 
                 React.createElement("div", { className: "pnc-visit" },
                   React.createElement("div", { className: "pnc-bar" },

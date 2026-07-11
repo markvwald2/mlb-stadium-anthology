@@ -204,12 +204,12 @@
     letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 
   /* lifecycle ladder (now its own column) */
-  .yk-life { padding-left: 18px; }
+  .yk-life { padding-left: 18px; display: flex; flex-direction: column; height: 100%; }
   .yk-life .hd { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: #E9E3D3; margin-bottom: 7px;
     background-color: #0C2340; padding: 4px 8px; }
   .yk-liferow { display: grid; grid-template-columns: 64px 1fr; align-items: baseline; gap: 10px;
-    padding: 2.5px 0; border-bottom: 1px dotted var(--rule-2); }
+    flex: 1 1 0; align-content: center; border-bottom: 1px dotted var(--rule-2); }
   .yk-liferow:last-child { border-bottom: 0; }
   .yk-liferow .y { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: var(--brass); }
   .yk-liferow .lab { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;

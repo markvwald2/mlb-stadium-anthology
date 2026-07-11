@@ -36,7 +36,7 @@ window.RIVERFRONT = {
   coordinates: "39.0967\u00b0 N, 84.5083\u00b0 W",
 
   // ---- Lineage ----
-  name_history: "Riverfront Stadium (1970\u20131996); Cinergy Field (1996\u20132002)",
+  name_history: "Riverfront Stadium (1970\u20131996) \u2192 Cinergy Field (1996\u20132002)",
   preceded_by: "Union Grounds (1869\u201370) \u00b7 Avenue Grounds (1876\u201379) \u00b7 Bank Street Grounds (1880\u201383) \u00b7 League Park (1884\u20131901) \u00b7 Palace of the Fans (1902\u201311) \u00b7 Redland Field / Crosley Field (1912\u201370)",
 
   // ---- Construction & era timeline ----

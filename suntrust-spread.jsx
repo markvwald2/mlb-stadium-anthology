@@ -80,12 +80,12 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "st-page st-left", "data-screen-label": "SunTrust Park \u2014 hero" },
         e("div", { className: "st-hero-slot" },
-          e(Slot, { id: "suntrust-hero", src: "images/suntrust/hero.jpg", placeholder: "Drop the SunTrust Park hero \u2014 high aerial of the open-air bowl embedded in The Battery: red-brick & precast facade, steel seating-bowl canopy, plaza frontage, structured parking, freeway-edge arrival" })),
+          e(Slot, { id: "suntrust-hero", src: "images/suntrust/suntrust-park-00-main-PS.jpg", placeholder: "Drop the SunTrust Park hero \u2014 high aerial of the open-air bowl embedded in The Battery: red-brick & precast facade, steel seating-bowl canopy, plaza frontage, structured parking, freeway-edge arrival" })),
         e("div", { className: "st-hero-scrim" }),
 
         e("img", { className: "st-hero-logo", src: "assets/atlanta-braves-logo.svg", alt: "Atlanta Braves" }),
         e("div", { className: "st-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
-        e("div", { className: "st-spine" }, "EST. " + D.est + "  \u00b7  THE BATTERY ATLANTA  \u00b7  VISIT " + D.visit_order),
+        e("div", { className: "st-spine" }, "EST. " + D.est + "  \u00b7  THE BATTERY ATLANTA"),
 
         e("div", { className: "st-hero-title" },
           e("div", { className: "st-eyebrow" }, "EDGE-CITY BALLPARK \u00b7 CUMBERLAND, GEORGIA"),

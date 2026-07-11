@@ -12,6 +12,8 @@
   const ERA = {
     wooden: "#6E7A4F", // olive
     jewel: "#3F6075", // steel blue
+    postwar: "#7C6A4A", // municipal bronze
+    modernist: "#5E7A86", // modern slate-teal
     multi: "#8A8276", // concrete gray
     retro: "#9C3A28", // brick red
     district: "#4F6B57", // weathered green
@@ -19,11 +21,13 @@
 
   // ── left-page outer-margin timeline (Spread 1) ──────────────────────────
   const TIMELINE = [
-    { key: "wooden", dates: "1880s\u20131890s", name: ["WOODEN", "PARKS"], desc: "Timber grandstands, streetcar cities, intimate scale.", color: ERA.wooden, icon: "wooden" },
-    { key: "jewel", dates: "1900s\u20131930s", name: ["JEWEL BOX", "ERA"], desc: "Concrete & steel, cantilevers, civic architecture.", color: ERA.jewel, icon: "jewel" },
-    { key: "multi", dates: "1940s\u20131970s", name: ["MULTIPURPOSE", "ERA"], desc: "Automobiles, freeways, multi-use efficiency.", color: ERA.multi, icon: "multi" },
-    { key: "retro", dates: "1990s\u20132000s", name: ["RETRO-CLASSIC", "ERA"], desc: "Asymmetry, brick, skyline, memory restored.", color: ERA.retro, icon: "retro" },
-    { key: "district", dates: "2010s\u2013PRESENT", name: ["DISTRICT", "ERA"], desc: "Mixed-use districts, year-round revenue platforms.", color: ERA.district, icon: "district" },
+    { key: "wooden", dates: "1880s\u20131890s", name: "WOODEN PARKS", desc: "Timber grandstands, streetcar cities, intimate scale.", color: ERA.wooden, icon: "wooden" },
+    { key: "jewel", dates: "1900s\u20131930s", name: "JEWEL BOX ERA", desc: "Concrete & steel, cantilevers, civic architecture.", color: ERA.jewel, icon: "jewel" },
+    { key: "postwar", dates: "1930s\u20131950s", name: "POSTWAR MUNICIPAL", desc: "Civic-scale stadiums, monumental form, automobile access.", color: ERA.postwar, icon: "postwar" },
+    { key: "multi", dates: "1940s\u20131970s", name: "MULTIPURPOSE ERA", desc: "Automobiles, freeways, multi-use efficiency.", color: ERA.multi, icon: "multi" },
+    { key: "modernist", dates: "1960s\u20131970s", name: "MODERN BASEBALL-ONLY", nameStyle: { letterSpacing: "-0.3px" }, desc: "Baseball-only geometry, sightlines, and modern expression.", color: ERA.modernist, icon: "modernist" },
+    { key: "retro", dates: "1990s\u20132000s", name: "RETRO-CLASSIC ERA", desc: "Asymmetry, brick, skyline, memory restored.", color: ERA.retro, icon: "retro" },
+    { key: "district", dates: "2010s\u2013PRESENT", name: "DISTRICT ERA", desc: "Mixed-use districts, year-round revenue platforms.", color: ERA.district, icon: "district" },
   ];
 
   // ── manuscript prose, verbatim ───────────────────────────────────────────
@@ -77,7 +81,7 @@
 
   const CONCLUSION = [
     "What remains beyond dispute is the larger architectural history. Baseball stadiums evolved from combustible urban pavilions into civic masonry icons, then into infrastructural machines, then into self-conscious memory palaces, and finally into district-scale real-estate engines. Each generation rebuilt the ballpark around its own idea of the city: streetcar neighborhoods, highway access, public authority, private revenue, downtown revival, climate control, digital entry, and year-round development.",
-    "But the ballpark has never been only an argument about architecture. It is also one of the places where families learn how time moves. Fathers bring sons through turnstiles; sons grow old enough to bring fathers back. A child remembers the first impossible green of the field, the height of the upper deck, the sound of a crowd rising before he understands why. Years later, the same memory returns through a different gate, in a different city, under a different corporate name, with the old park gone and the game somehow still waiting.",
+    "But the ballpark has never been only an argument about architecture and civic planning. It is also one of the places where families learn how time moves. Fathers bring sons through turnstiles; sons grow old enough to bring fathers back. A child remembers the first impossible green of the field, the height of the upper deck, the sound of a crowd rising before he understands why. Years later, the same memory returns through a different gate, in a different city, under a different corporate name, with the old park gone and the game somehow still waiting.",
     "The game itself offers the illusion of permanence. Sixty feet six inches from mound to plate. Ninety feet between bases. A diamond fixed in the middle of an ever-changing civic argument. Around it, nearly everything has shifted: grandstands, roofs, scoreboards, concourses, parking lots, transit lines, luxury clubs, skylines. The field remembers continuity; the ballpark records the change. And somewhere between them, across all the miles and summers, the game keeps carrying us back to the people who first taught us where to look.",
   ];
 
@@ -99,16 +103,18 @@
     camden: { id: "bp-camden", title: "ORIOLE PARK AT CAMDEN YARDS", meta: "1992 \u00b7 HOK Sport / Populous", caption: "Brick and the looming B&O Warehouse made the ballpark feel discovered, not dropped in.", kind: "photo" },
     district: { id: "bp-district-aerial", title: "THE BATTERY ATLANTA / TRUIST PARK", meta: "2017 \u00b7 Populous", caption: "Ballpark and district designed as one commercial proposition \u2014 a year-round mixed-use anchor.", kind: "photo" },
     southEnd: { id: "bp-south-end", title: "SOUTH END GROUNDS, BOSTON", meta: "1890s \u00b7 timber era", caption: "A representative urban timber park \u2014 porous to the neighborhood.", kind: "photo" },
-    yankee: { id: "bp-yankee-1923", title: "YANKEE STADIUM, BRONX", meta: "1923 \u00b7 Osborn Engineering", caption: "The triple-decked giant often called baseball\u2019s first modern ballpark.", kind: "photo" },
+    yankee: { id: "bp-yankee-1923", title: "YANKEE STADIUM, BRONX", meta: "1923 \u00b7 Osborn Engineering", caption: "The triple-decked giant generally considered baseball\u2019s first modern ballpark.", kind: "photo" },
   };
 
   // ── "Ballpark evolution at a glance" comparison ──────────────────────────
   const ATLAS = {
-    cols: ["ERA", "REPRESENTATIVE PARKS", "PLANNING LOGIC", "PRIMARY ACCESS", "DEFINING TRAIT"],
+    cols: ["ERA", "REPRESENTATIVE PARKS", "PLANNING LOGIC", "DEFINING TRAIT"],
     rows: [
       { color: ERA.wooden, era: "Wooden Parks", years: "1880s\u201390s", parks: "Baker Bowl \u00b7 Polo Grounds", logic: "Fit the irregular city block", access: "Streetcar & excursion train", trait: "Timber grandstands; fire-prone" },
       { color: ERA.jewel, era: "Jewel Boxes", years: "1910s\u201320s", parks: "Fenway \u00b7 Wrigley \u00b7 Tiger", logic: "Durable civic permanence", access: "Streetcar & subway", trait: "Steel/masonry; site asymmetry" },
-      { color: ERA.multi, era: "Multi-Purpose", years: "1960s\u201370s", parks: "Dodger \u00b7 Astrodome \u00b7 Riverfront", logic: "Dual-use efficiency", access: "Automobile & freeway", trait: "Circular bowl; turf and parking" },
+      { color: ERA.postwar, era: "Postwar Municipal", years: "1930s\u201350s", parks: "County \u00b7 Cleveland \u00b7 Memorial", logic: "Monumental civic ambition", access: "Automobile & municipal siting", trait: "Civic-scale multipurpose bowl" },
+      { color: ERA.multi, era: "Multi-Purpose", years: "1960s\u201370s", parks: "Astrodome \u00b7 Riverfront \u00b7 The Vet", parksLS: "-0.2px", logic: "Dual-use efficiency", access: "Automobile & freeway", trait: "Circular bowl; turf and parking" },
+      { color: ERA.modernist, era: "Modern Baseball-Only", years: "1960s\u201370s", parks: "Dodger \u00b7 Anaheim \u00b7 Royals", logic: "Baseball-only modern geometry", access: "Automobile & sports complex", trait: "Clean modernist form; symmetry" },
       { color: ERA.retro, era: "Retro-Classic", years: "1990s\u20132000s", parks: "Camden Yards \u00b7 Oracle \u00b7 PNC", logic: "Urban specificity restored", access: "Transit + revived downtown", trait: "Brick, skyline views, real grass" },
       { color: ERA.district, era: "District", years: "2000s\u2013now", parks: "Nationals \u00b7 Truist \u00b7 Globe Life", logic: "Real-estate revenue platform", access: "Multimodal + mixed-use", trait: "Year-round mixed-use anchor" },
     ],

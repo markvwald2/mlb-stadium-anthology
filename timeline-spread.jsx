@@ -455,7 +455,7 @@
       out.push(
         <g key={"lg" + i}>
           {glyph}
-          <text x={lx + SW + GAPsl} y={yRow} dominantBaseline="central" fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="14" fill={C.ink} letterSpacing="0.08em">{it.label.toUpperCase()}</text>
+          <text x={lx + SW + GAPsl - (it.kind === "diamond" ? 7 : 0)} y={yRow} dominantBaseline="central" fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="14" fill={C.ink} letterSpacing="0.08em">{it.label.toUpperCase()}</text>
         </g>
       );
       x += widths[i] + GAPit;
