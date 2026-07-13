@@ -54,6 +54,17 @@
     background:
       linear-gradient(180deg, rgba(10,22,43,.6) 0%, rgba(10,22,43,.34) 16%, rgba(10,22,43,0) 32%),
       linear-gradient(0deg, rgba(10,22,43,.55) 0%, rgba(10,22,43,.12) 26%, rgba(10,22,43,0) 42%); }
+  /* Chrome's print-to-PDF rasterizer composites this semi-transparent navy
+     scrim heavier than the screen compositor, so the hero prints noticeably
+     darker than the design page. Lighten the scrim alphas for print only so
+     the exported PDF matches the on-screen weight. (Screen is unchanged.) */
+  @media print {
+    .as-hero-scrim {
+      background:
+        linear-gradient(180deg, rgba(10,22,43,.34) 0%, rgba(10,22,43,.19) 16%, rgba(10,22,43,0) 32%),
+        linear-gradient(0deg, rgba(10,22,43,.31) 0%, rgba(10,22,43,.07) 26%, rgba(10,22,43,0) 42%) !important;
+    }
+  }
 
   .as-folio { position: absolute; left: 64px; bottom: 96px; z-index: 6; display: flex; align-items: stretch;
     border: 1px solid rgba(242,236,221,.5); }

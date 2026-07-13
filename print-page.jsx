@@ -181,7 +181,13 @@
         @page { size: 12.625in 10.875in; margin: 0; }
         html, body { background: #fff !important; margin: 0 !important; padding: 0 !important; width: 12.625in !important; height: 10.875in !important; }
         body.pp-mode #root { padding: 0 !important; margin: 0 !important; display: block !important; min-height: 0 !important; overflow: visible !important; }
-        body.pp-mode .pp-page { box-shadow: none !important; margin: 0 !important; }
+        /* CRITICAL: fitPreview() leaves a fractional inline zoom on .pp-page to
+           fit the window on screen. If it leaks into print the PDF renders at
+           that fractional scale and CSS-grid columns round sub-pixel leftward,
+           tipping the RIGHTMOST column's text into extra wrapping. Force the
+           page back to true native scale for print — the holder keeps its own
+           0.96 content zoom, which is what we want embedded. */
+        body.pp-mode .pp-page { box-shadow: none !important; margin: 0 !important; zoom: 1 !important; }
         .pp-guides, #pp-fontbadge { display: none !important; }
         * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
 

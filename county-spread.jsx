@@ -116,7 +116,7 @@
               e("div", { className: "lm-id-top" },
                 e("div", { className: "lm-id-logos" },
                   e("div", { className: "lm-id-glove braves" }, e("img", { src: "assets/milwaukee-braves-cap.svg", alt: "Milwaukee Braves" })),
-                  e("div", { className: "lm-id-glove" }, e("img", { src: "assets/brewers-glove-sm.png", alt: "Milwaukee Brewers" }))),
+                  e("div", { className: "lm-id-glove" }, e("img", { src: "assets/milwaukee-brewers-ball-in-glove.svg", alt: "Milwaukee Brewers" }))),
                 e("div", { className: "lm-id-name" },
                   e("div", { className: "nm" }, "Milwaukee"),
                   e("div", { className: "clubs" }, "Braves & Brewers"),

@@ -8,6 +8,39 @@
   const Field = window.ComiskeyField;
   const Pinwheel = window.ComiskeyPinwheel;
 
+  // BulbBorder: places a lamp on every corner + evenly distributed lamps along
+  // each edge, measured from the host box's live size (survives font reflow /
+  // print export via ResizeObserver + fonts.ready).
+  function BulbBorder(props) {
+    const ref = React.useRef(null);
+    const [dots, setDots] = React.useState([]);
+    React.useLayoutEffect(function () {
+      const el = ref.current; if (!el) return;
+      const host = el.parentElement; if (!host) return;
+      function measure() {
+        const w = host.clientWidth, h = host.clientHeight;
+        const inset = props.inset, spacing = props.spacing;
+        const x0 = inset, x1 = w - inset, y0 = inset, y1 = h - inset;
+        const wSpan = Math.max(0, x1 - x0), hSpan = Math.max(0, y1 - y0);
+        const nx = Math.max(1, Math.round(wSpan / spacing));
+        const ny = Math.max(1, Math.round(hSpan / spacing));
+        const pts = [];
+        for (let i = 0; i <= nx; i++) { const x = x0 + wSpan * i / nx; pts.push([x, y0]); pts.push([x, y1]); }
+        for (let j = 1; j < ny; j++) { const y = y0 + hSpan * j / ny; pts.push([x0, y]); pts.push([x1, y]); }
+        setDots(pts);
+      }
+      measure();
+      const ro = new ResizeObserver(measure); ro.observe(host);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+      return function () { ro.disconnect(); };
+    }, [props.inset, props.spacing]);
+    return e("div", { className: "cm-lampwrap", ref: ref },
+      dots.map(function (p, i) {
+        return e("i", { key: i, className: "cm-lamp" + (props.sm ? " sm" : ""),
+          style: { left: p[0] + "px", top: p[1] + "px" } });
+      }));
+  }
+
   function Slot(props) {
     return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect" }, props.src ? { src: props.src } : {}));
   }
@@ -67,6 +100,7 @@
 
         /* lit stat plate */
         e("div", { className: "cm-statplate" },
+          e(BulbBorder, { inset: 6, spacing: 12, sm: true }),
           e("div", { className: "cm-statinner" },
             e("div", { className: "cm-stat" }, e("div", { className: "k" }, "Opened"), e("div", { className: "v" }, "1910")),
             e("div", { className: "cm-stat" }, e("div", { className: "k" }, "Closed"), e("div", { className: "v" }, "1990")))),
@@ -77,6 +111,7 @@
             Pinwheel ? e(Pinwheel, { size: 17, color: "#F0D384" }) : null,
             "The Exploding Scoreboard"),
           e("div", { className: "cm-title-marquee" },
+            e(BulbBorder, { inset: 8.5, spacing: 17 }),
             e("div", { className: "cm-title-inner" },
               e("h1", { className: "cm-title-text" }, "Comiskey Park"))),
           e("div", { className: "cm-loc" },
