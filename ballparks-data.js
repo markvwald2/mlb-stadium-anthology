@@ -51,7 +51,7 @@
 
     rows: [
       r(1,  "Cubs",      "Wrigley Field",                true,  "National League", "1914", "", "1953", "1988"),
-      r(2,  "Braves",    "Milwaukee County Stadium",     false, "National League", "1953", "2000", "1955", "1988", "milwaukee-braves-cap.svg", 0.82),
+      r(2,  "Braves",    "Milwaukee County Stadium",     false, "National League", "1953", "2000", "1953", "1988", "milwaukee-braves-cap.svg", 0.82),
       r(3,  "White Sox", "Comiskey Park",                false, "AL West",     "1910", "1990", "1969", "1988", "white-sox-1969.png"),
       r(4,  "Dodgers",   "Dodger Stadium",               true,  "NL West",    "1962", "", "1970", "2010"),
       r(5,  "Padres",    "San Diego Stadium",            false, "NL West",     "1969", "2003", "1972", "1972", "padres-friar.svg"),

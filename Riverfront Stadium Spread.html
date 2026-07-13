@@ -95,7 +95,7 @@
   .rf-hero-meta .dem { color: var(--red); }
 
   /* ---------- RIGHT PAGE ---------- */
-  .rf-rp { position: absolute; inset: 0; padding: 28px 46px 40px 44px; display: flex; flex-direction: column; }
+  .rf-rp { position: absolute; inset: 0; padding: 28px 46px 40px 64px; display: flex; flex-direction: column; }
   /* large faint concentric-ring watermark — the organizing bowl */
   .rf-watermark { position: absolute; top: 150px; right: -360px; width: 1020px; height: 1020px; opacity: .9; pointer-events: none; z-index: 0; }
   .rf-rp > * { position: relative; z-index: 1; }
@@ -130,7 +130,7 @@
 
   /* facts table */
   .colhdr { margin: 0 0 10px; padding-bottom: 7px; border-bottom: 1px solid var(--rule-strong); font-size: 12px; letter-spacing: .14em; }
-  .rf-facts { display: flex; flex-direction: column; justify-content: space-between; }
+  .rf-facts { display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 6px; }
   .rf-facts .row { display: grid; grid-template-columns: 98px 1fr; gap: 11px; padding: 3px 0; border-bottom: 1px solid var(--rule); align-items: start; }
   .rf-facts .row:first-of-type { border-top: 0; }
   .rf-facts .row:has(+ .rf-pb) { border-bottom: 0; }
@@ -150,10 +150,11 @@
   .rf-vband .vcol.rf-vlogos { border-left: 0; }
   .rf-vlogos .plq { width: 100%; display: flex; align-items: center; justify-content: center; }
   .rf-vlogos .rf-logo { height: 46px; width: auto; display: block; }
-  .rf-mid { display: flex; flex-direction: column; justify-content: space-between; }
-  .rf-mid .rf-fd-wrap { max-width: 196px; margin: 0 auto 2px; }
-  .rf-mid .blk { margin-top: 8px; }
-  .rf-mid .blk + .blk { margin-top: 0; padding-top: 8px; border-top: 1px solid var(--rule); }
+  .rf-mid { display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 6px; }
+  .rf-mid .rf-fd-wrap { max-width: 176px; margin: 0 auto 2px; }
+  .rf-mid .blk { margin-top: 0; }
+  .rf-mid .rf-fd-wrap + .blk { margin-top: 0; }
+  .rf-mid .blk + .blk { margin-top: 0; padding-top: 11px; border-top: 1px solid var(--rule); }
   .rf-mid .blk .k { margin-bottom: 3px; font-size: 12px; }
   .rf-mid .blk .v { font-size: 12px; line-height: 1.26; }
 
@@ -165,7 +166,7 @@
   /* circle diagram */
   .rf-fd-wrap { width: 100%; }
   .rf-fd-svg { width: 100%; height: auto; display: block; overflow: visible; }
-  .rf-fd-dist { font-family: "Space Mono", monospace; font-size: 23px; font-weight: 700; fill: var(--ink); }
+  .rf-fd-dist { font-family: "Space Mono", monospace; font-size: 26px; font-weight: 700; fill: var(--ink); }
   .rf-fd-n { font-family: "Archivo", sans-serif; font-weight: 700; font-size: 13px; fill: var(--ink-2); }
   .rf-fd-axis { font-family: "Archivo Expanded","Archivo",sans-serif; font-weight: 700; font-size: 23px; fill: var(--red); }
   .rf-fd-cap { display: flex; justify-content: space-between; margin-top: 6px; font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .06em; color: var(--ink-3); text-transform: uppercase; }

@@ -65,13 +65,22 @@
     }
     const translateY = 0; // design top bleed (y 0–12.5) fills the 0.125in top bleed
 
+    // Scale the page with `zoom`, NOT `transform: scale()`. A composited
+    // transform makes Chrome's print pipeline rasterize the page into GPU tiles
+    // and leave hairline SEAMS at tile boundaries (visible as a faint vertical/
+    // horizontal line across flat color fields — e.g. straight through a solid
+    // sign). `zoom` is a paint-time scale with no compositing layer, so no
+    // tiling and no seams. Geometry is identical: zoom multiplies the element's
+    // own `left`/`top`/`width`, so the offset is expressed in DESIGN px
+    // (translateX / SCALE); clip-path stays in the element's pre-zoom design-px
+    // coordinate space, unchanged.
     const holderStyle = {
       position: "absolute",
-      top: 0, left: 0,
+      top: (translateY / SCALE) + "px",
+      left: (translateX / SCALE) + "px",
       width: SPREAD_W + "px",
       height: SPREAD_H + "px",
-      transformOrigin: "top left",
-      transform: "translate(" + translateX + "px," + translateY + "px) scale(" + SCALE + ")",
+      zoom: SCALE,
       WebkitClipPath: clipPath,
       clipPath: clipPath,
     };

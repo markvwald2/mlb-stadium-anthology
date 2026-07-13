@@ -63,7 +63,7 @@ window.SUNTRUST = {
     ["Setting", "Open-air ballpark integrated with", "mixed-use entertainment district"],
     ["Construction Start", "Sep 16, 2014"],
     ["Opening Day", "Apr 14, 2017"],
-    ["Original Cost", "$622 million", "$818 million adj."],
+    ["Cost", "$622 million", "$818 million adj."],
     ["Financing", "Public\u2013private partnership", "Cobb County / Cobb-Marietta authority bonds and Cumberland CID support funded part of the stadium; the Braves funded the balance and The Battery development"],
     ["Renovations", "Ongoing technology, hospitality, premium seating & entertainment-district upgrades"],
     ["Location", "Urban / Suburban", "entertainment district"]

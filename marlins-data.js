@@ -37,7 +37,7 @@ window.MARLINS = {
     ["Groundbreaking", "Jul 1, 2009"],
     ["Opening Capacity", "36,742"],
     ["Current Capacity", "37,442"],
-    ["Surface", "Mixed / changed over time", "Celebration bermudagrass 2012; Platinum TE paspalum 2014\u2013'19; Shaw Sports Turf B1K since 2020", { vsStyle: { letterSpacing: "-0.6px" } }],
+    ["Surface", "Mixed / changed over time", "Celebration bermudagrass 2012; Platinum TE paspalum 2014\u2013'19; Shaw Sports Turf B1K since '20", { vsStyle: { letterSpacing: "-0.6px" } }],
     ["Type", "Retractable-roof baseball-only ballpark"],
     ["Roof", "Retractable"],
     ["Location", "Urban"],
@@ -51,10 +51,10 @@ window.MARLINS = {
   lifecycle: [
     ["Architect", "Populous"],
     ["Style", "Contemporary neomodern retractable-roof ballpark"],
-    ["Facade", "White stucco, silver metal, exposed steel, and extensive glass facade / retractable panels"],
+    ["Facade", "White stucco, silver metal, exposed steel, and extensive glass facade / retractable panels", null, { vmStyle: { letterSpacing: "-0.6px" } }],
     ["Name History", "Marlins Park (2012\u20132020)\nloanDepot park (2021\u2013Present)"],
     ["Preceded By", "Pro Player Stadium / Sun Life Stadium"],
-    ["Renovations", "Home-run sculpture removed; seating, scoreboard, club, field, and fan-space updates"],
+    ["Renovations", "Home-run sculpture removed; seating, club, scoreboard, field, and fan-space updates", null, { vmStyle: { letterSpacing: "-0.5px" } }],
     ["Financing", "Public-private; Miami-Dade County and City of Miami public bonds, with a Marlins private contribution"]
   ],
 

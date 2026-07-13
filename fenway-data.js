@@ -67,9 +67,9 @@ window.FENWAY = {
     ]},
     { era: "2002\u2013Present", title: "Modernization", items: [
       { yr: "2003", note: "Green Monster Seats added atop the left-field wall." },
-      { yr: "2006", note: "State Street Pavilion and additional roof-deck seating added above the grandstand." },
-      { yr: "2010", note: "New center-field video board and expanded fan amenities beyond the bleachers." },
-      { yr: "2017", note: "Dugouts repositioned forward to improve sightlines and create additional seating." },
+      { yr: "2006", note: "State St. Pavilion and additional roof-deck seating added above the grandstand." },
+      { yr: "2010", note: "New center-field video board and expanded fan amenities beyond the bleachers.", ls: "-0.6px" },
+      { yr: "2017", note: "Dugouts moved forward to improve sightlines and create additional seating." },
       { yr: "2022", note: "Bleacher Overlook viewing platform added behind the right-field bleachers." }
     ]}
   ],

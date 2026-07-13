@@ -42,7 +42,7 @@
   }
   .cbp-page { position: absolute; top: 0; height: 1088px; }
   .cbp-left  { left: 0; width: 1275px; background: #15100A; overflow: hidden; }
-  .cbp-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; }
+  .cbp-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; border-left: 26px solid transparent; }
   .cbp-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
     background-image: var(--grain); background-size: 300px 210px; opacity: .26; mix-blend-mode: multiply; }
   .cbp-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
@@ -55,7 +55,7 @@
     background:
       linear-gradient(0deg, rgba(10,8,6,.82) 0%, rgba(10,8,6,.32) 8%, rgba(10,8,6,0) 18%); }
 
-  .cbp-folio { position: absolute; right: 56px; top: 58px; z-index: 5; text-align: right;
+  .cbp-folio { position: absolute; right: 66px; top: 58px; z-index: 5; text-align: right;
     font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .26em;
     color: rgba(232,224,206,.62); text-transform: uppercase; line-height: 1.8; }
   .cbp-folio b { display: block; color: #E8DEC8; font-weight: 700; }
@@ -322,7 +322,6 @@
   <script src="citizens-data.js"></script>
   <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
-  <script type="text/babel" src="citizens-diagram.jsx"></script>
   <script type="text/babel" src="citizens-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="citizens-spread.jsx"></script>

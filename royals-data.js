@@ -13,7 +13,7 @@ window.ROYALS = {
   city: "Kansas City",
   state: "Missouri",
   team_name: "Kansas City Royals",
-  league: "American League",
+  league: "American",
   division: "AL Central",
   opened: "April 10, 1973",
   status: "Active",

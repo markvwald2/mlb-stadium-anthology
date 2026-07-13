@@ -11,7 +11,6 @@
 (function () {
   const e = React.createElement;
   const D = window.CBP;
-  const Dg = window.CBPDiagrams || {};
 
   /* ---- right-page geometry (local coords 0..1275; safe x 37.5..1237.5) ---- */
   /* Outer margins matched to the 18px column gutter: content spans 55..1219

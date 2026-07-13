@@ -131,7 +131,7 @@
                   e("span", { className: "ti" }, grp.title)),
                 grp.items.map((it, j) => e("div", { key: j, className: "fw-life-row" },
                   e("span", { className: "fw-life-yr" }, it.yr),
-                  e("span", { className: "fw-life-note" }, it.note))))))
+                  e("span", { className: "fw-life-note", style: it.ls ? { letterSpacing: it.ls } : null }, it.note))))))
           ),
           e("div", { className: "fw-brick-plate" },
             e("div", { className: "fw-brick-marks" },

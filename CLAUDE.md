@@ -30,11 +30,12 @@ straddling the fold. Nothing readable — text, key labels, logos, score lines,
 faces, important image subjects — may cross or sit inside it. Only full-bleed
 art / color fields / quiet grid continuation may pass through.
 
-**Safe boxes for critical content (0.25 in inside trim):**
-- Left page:  x ∈ [37.5, 1237.5], y ∈ [37.5, 1050.5]
-- Right page: x ∈ [1312.5, 2512.5], y ∈ [37.5, 1050.5]
-  (Left-safe right edge and right-safe left edge coincide with the gutter
-  bounds, so respecting the safe box automatically clears the gutter.)
+**Safe boxes for critical content — Blurb spec (AUTHORITATIVE): 0.25 in outer/top/bottom, 0.50 in BINDING edge:**
+- Left page:  x ∈ [37.5, 1212.5], y ∈ [37.5, 1050.5]   (binding edge = right/fold → 0.50 in)
+- Right page: x ∈ [1337.5, 2512.5], y ∈ [37.5, 1050.5]  (binding edge = left/fold → 0.50 in)
+  (Binding-edge safe is 0.50 in per the Blurb Large Landscape Hardcover product
+  spec — it OVERRIDES the older 0.25 in binding assumption. The binding-side safe
+  bound therefore sits 50 px inside the fold trim, well past the gutter zone.)
 
 **Rules of thumb**
 - Extend full-bleed art, photos, backgrounds, maps, and color fields all the way

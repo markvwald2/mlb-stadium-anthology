@@ -120,10 +120,10 @@
   }
 
   /* ---- a single lineage monument block ---- */
-  function Lin(name, note, cur) {
+  function Lin(name, note, cur, ntStyle) {
     return e("div", { className: "yf-lin" + (cur ? " cur" : "") },
       e("div", { className: "nm" }, name),
-      note ? e("div", { className: "nt" }, note) : null);
+      note ? e("div", { className: "nt", style: ntStyle || null }, note) : null);
   }
 
   function Spread() {
@@ -217,11 +217,11 @@
               /* engraved cornerstone — the monument: style, facade, cost & financing */
               e("div", { className: "yf-cornerstone" },
                 e("div", { className: "cs-text" },
-                  e("div", { className: "k" }, "Architectural Style"),
+                  e("div", { className: "k", style: { letterSpacing: "1.5px" } }, "Architectural Style"),
                   e("div", { className: "v", style: { letterSpacing: "0.2px" } }, D.architectural_style)),
                 e("div", { className: "cs-text" },
                   e("div", { className: "k" }, "Facade"),
-                  e("div", { className: "v" }, D.facade_material)),
+                  e("div", { className: "v", style: { letterSpacing: "-0.1px" } }, D.facade_material)),
                 e("div", { className: "cs-fin" },
                   e("div", { className: "k" }, "Financing"),
                   e("div", { className: "v" }, D.financing_method)))
@@ -235,9 +235,9 @@
               e("div", { className: "tt" }, "Lineage of a", e("span", null, "Franchise"))),
             e("div", { className: "yf-baybody" },
               e("div", { className: "yf-lineage" },
-                Lin("Hilltop Park", "Manhattan, 1903\u20131912"),
+                Lin("Hilltop Park", "Manhattan, 1903\u20131912", false, { letterSpacing: "1.4px" }),
                 e("div", { className: "yf-conn" }),
-                Lin("Polo Grounds", "Manhattan, 1913\u20131922"),
+                Lin("Polo Grounds", "Manhattan, 1913\u20131922", false, { letterSpacing: "1.4px" }),
                 e("div", { className: "yf-conn" }),
                 Lin("Yankee Stadium", "The Bronx, 1923\u20132008"),
                 e("div", { className: "yf-conn" }),

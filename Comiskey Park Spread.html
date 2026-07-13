@@ -111,7 +111,7 @@
 
   /* =================== RIGHT / SCOREBOARD MACHINE =================== */
   .cm-ghost { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .9; }
-  .cm-rp { position: absolute; inset: 26px; z-index: 2; display: flex; flex-direction: column; padding: 15px;
+  .cm-rp { position: absolute; top: 26px; right: 26px; bottom: 26px; left: 48px; z-index: 2; display: flex; flex-direction: column; padding: 15px;
     background: linear-gradient(180deg,#221B12 0%, #16110A 60%, #120D07 100%);
     border: 3px solid var(--steel-deep);
     box-shadow: inset 0 0 0 2px var(--steel-edge), inset 0 2px 0 var(--steel-hi),
@@ -297,6 +297,24 @@
   .cm-field .cap b { color: var(--silver); font-weight: 600; }
 
   #root { min-height: 100vh; }
+
+  /* Chrome's print rasterizer TILES large blurred box-shadows (both outer drop
+     shadows and blurred INSET shadows) into dark rectangular seams — on this
+     spread they merge into a "scrim" band across the top of the page. The
+     seams are invisible on screen and appear only in the print/PDF raster.
+     Fix: in print, strip every blurred shadow on the steel elements and keep
+     only crisp 0-blur rings/borders, so the machined-steel look survives with
+     no tiling artifacts. */
+  @media print {
+    .cm-rp {
+      box-shadow: inset 0 0 0 2px var(--steel-edge), 0 0 0 1px #000 !important; }
+    .cm-photopanel .bezel {
+      box-shadow: inset 0 0 0 1px rgba(74,64,41,.6) !important; }
+    .cm-statplate { box-shadow: inset 0 0 0 1px #2E2716 !important; }
+    .cm-ribbon, .cm-module, .cm-panel, .cm-nameplate, .cm-firstvisit,
+    .cm-board, .cm-title-marquee, .cm-title-inner, .cm-pbody {
+      box-shadow: none !important; }
+  }
 </style>
 </head>
 <body>

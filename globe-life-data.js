@@ -45,7 +45,7 @@ window.GLOBE = {
     ]},
     { cat: "Structure", rows: [
       ["Roof", "Retractable"],
-      ["Type", "Retractable-roof baseball-only ballpark", { ls: "-0.5px" }],
+      ["Type", "Retractable-roof baseball-only ballpark", { ls: "-0.7px" }],
       ["Surface", "Artificial turf (Shaw Sports Turf B1K)"],
       ["Capacity", "40,300"]
     ]},

@@ -69,7 +69,7 @@
     color: #C2BBA8; margin-top: 8px; text-shadow: 0 1px 8px rgba(0,0,0,.55); }
 
   /* --- right page shell --- */
-  .we-rp { position: absolute; inset: 0; padding: 28px 38px 38px; display: flex; flex-direction: column; gap: 10px; z-index: 2; }
+  .we-rp { position: absolute; inset: 0; padding: 28px 38px 38px 70px; display: flex; flex-direction: column; gap: 10px; z-index: 2; }
 
   /* photo strip */
   .we-photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; height: 158px; flex: none; }
@@ -130,7 +130,7 @@
     font-family: "Anton", sans-serif; font-size: 138px; line-height: .8; color: rgba(28,61,114,.13); white-space: nowrap; user-select: none; }
   .we-ctx { position: relative; z-index: 1; }
   .we-ctx p { margin: 0 0 3px; font-family: "Spectral", serif; font-size: 12px; line-height: 17.7px;
-    letter-spacing: 0; color: var(--ink); text-align: justify; hyphens: auto; }
+    letter-spacing: -0.3px; color: var(--ink); text-align: justify; hyphens: auto; }
   .we-ctx p:last-child { margin-bottom: 0; }
 
   /* construction & finance strip */
@@ -194,7 +194,7 @@
   .we-wx-item { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
   .we-wx-ico { stroke: var(--ink-2); width: 26px; height: 26px; }
   .we-wx-val { font-family: "Spectral", serif; font-weight: 700; font-size: 13px; color: var(--ink); line-height: 1.05; }
-  .we-wx-lab { font-family: "Spectral", serif; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .we-wx-lab { font-family: "Spectral", serif; font-size: 12px; letter-spacing: -0.6px; text-transform: uppercase; color: var(--ink-3); }
   /* ribbon league logo */
   .we-rc.logo { gap: 3px; }
   .we-rc .nl-logo { height: 30px; width: auto; display: block; margin: 0 auto 2px; }
@@ -212,11 +212,31 @@
   .we-vlog-year .evrow { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
   .we-vlog-year .evrow .d { font-family: "Spectral", serif; font-weight: 700; font-size: 12px; color: var(--ink); flex: none; }
   .we-vlog-year .evrow .opp { font-family: "Spectral", serif; font-size: 12px; color: var(--ink-2); }
-  .we-vlog-year .evrow .n { font-family: "Spectral", serif; font-style: italic; font-size: 12px; color: var(--ink-3); text-transform: capitalize; }
+  .we-vlog-year .evrow .n { font-family: "Spectral", serif; font-style: italic; font-size: 12px; color: var(--ink-3); text-transform: none; }
   .we-vlog-year .evrow.feat .d, .we-vlog-year .evrow.feat .opp { color: var(--cubs-blue); }
   .we-vlog-year .evrow.feat .n { color: var(--cubs-blue); font-style: normal; font-weight: 600; }
 
   #root { min-height: 100vh; }
+
+  /* Print: Chrome's rasterizer draws a seam along the vertical symmetry axis of
+     the sign's `radial-gradient(... at 50% 0%)` highlight — landing exactly down
+     the middle of the title — and tiles the panel's blurred shadows into edge
+     seams. In print, drop the radial highlight (flat linear red only) and keep
+     only the crisp solid inset rings; both artifacts disappear. */
+  @media print {
+    .we-hero-mast .wf-logo {
+      background: linear-gradient(180deg, #CC1531 0%, #B00E28 100%) !important;
+      box-shadow:
+        inset 0 0 0 6px #B00E28,
+        inset 0 0 0 7.5px rgba(241,231,210,.85) !important;
+    }
+    /* mix-blend-mode / filter force Chrome to composite + tile-raster the whole
+       page for print, leaving a vertical seam that shows over the flat red sign.
+       Neutralize both: paint the grain as a plain low-opacity overlay, and drop
+       the flag's drop-shadow filter. */
+    .we-right::after { mix-blend-mode: normal !important; opacity: .14 !important; }
+    .we-vtab-flag { filter: none !important; }
+  }
 </style>
 </head>
 <body>

@@ -39,7 +39,7 @@
   }
   .mm-page { position: absolute; top: 0; height: 1088px; }
   .mm-left  { left: 0; width: 1275px; background: #0C1622; overflow: hidden; }
-  .mm-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; }
+  .mm-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; border-left: 20px solid transparent; }
   .mm-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background-image: var(--grain); background-size: 300px 210px; opacity: .34; mix-blend-mode: multiply; }
   .mm-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
@@ -120,7 +120,7 @@
 
   /* ============ RIGHT PAGE — FIVE TRACK BAYS ============ */
   /* steel frame just inside the trim safe margin */
-  .mm-frame { position: absolute; left: 30px; top: 30px; right: 30px; bottom: 30px; z-index: 1;
+  .mm-frame { position: absolute; left: 30px; top: 30px; right: 40px; bottom: 30px; z-index: 1;
     border: 1.5px solid var(--steel); pointer-events: none; }
   .mm-frame::before { content: ""; position: absolute; inset: 4px; border: 1px solid rgba(111,110,104,.4); }
   .mm-rivet { position: absolute; width: 7px; height: 7px; border-radius: 50%; z-index: 3;
@@ -134,7 +134,7 @@
   .mm-track i { position: absolute; left: -2.5px; width: 5px; height: 5px; border-radius: 50%;
     background: var(--rule-strong); opacity: .7; }
 
-  .mm-bay { position: absolute; top: 56px; z-index: 4; display: flex; flex-direction: column; }
+  .mm-bay { position: absolute; top: 49px; z-index: 4; display: flex; flex-direction: column; }
   .mm-bayhead { display: flex; flex-direction: column; align-items: center; gap: 3px;
     padding: 9px 6px 10px; background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
     color: var(--paper-hi); margin-bottom: 14px; }
@@ -246,10 +246,10 @@
   .mm-vrow .v { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink); line-height: 1.2; }
   .mm-vrow .v.hi { color: var(--brick); }
 
-  .mm-wx { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 6px; margin-top: 4px; }
+  .mm-wx { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: 8px 6px; margin-top: 4px; }
   .mm-wcell { display: flex; align-items: center; gap: 7px; }
   .mm-wcell .tx { display: flex; flex-direction: column; }
-  .mm-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1; }
+  .mm-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1; white-space: nowrap; }
   .mm-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
 
@@ -287,12 +287,12 @@
   .mm-photo43 { width: 100%; aspect-ratio: 4 / 3; height: auto; }
   .mm-photo-fill { width: 100%; flex: 1 1 0; min-height: 0; }
   .mm-photo-fill image-slot { height: 100%; }
-  .mm-de-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 9px 0; align-items: start; }
+  .mm-de-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 0 2px; align-items: start; }
   .mm-de-col { display: flex; flex-direction: column; min-width: 0; }
   .mm-de-col .mm-figblock { margin-bottom: 0; }
-  .mm-deblock { margin-top: 9px; }
+  .mm-deblock { margin-top: 5px; }
   .mm-logos-de { margin-top: 14px; }
-  .mm-bay-de .mm-vrow { padding: 3px 0; }
+  .mm-bay-de .mm-vrow { padding: 3px 0; grid-template-columns: 72px 1fr; gap: 7px; }
   .mm-bay-de .mm-h { margin-bottom: 6px; padding-bottom: 3px; }
   /* full-width pitching strip — three pitchers across */
   .mm-pitch3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
@@ -336,7 +336,6 @@
   <script src="minute-maid-data.js"></script>
   <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
-  <script type="text/babel" src="minute-maid-diagram.jsx"></script>
   <script type="text/babel" src="minute-maid-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="minute-maid-spread.jsx"></script>

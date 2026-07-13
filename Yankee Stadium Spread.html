@@ -117,7 +117,7 @@
   /* =================== RIGHT / LIMESTONE CIVIC SHEET =================== */
   .yk-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
     background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
-  .yk-rp { position: absolute; top: 38px; left: 40px; right: 40px; bottom: 40px; z-index: 2; display: flex; flex-direction: column; }
+  .yk-rp { position: absolute; top: 38px; left: 64px; right: 40px; bottom: 40px; z-index: 2; display: flex; flex-direction: column; }
 
   /* ---- frieze crown bled flush to the top & sides of the right page ---- */
   .yk-crown { position: absolute; top: -25.5px; left: -40px; width: 1275px !important; height: 25px;
@@ -244,11 +244,11 @@
   .yk-ctx { position: relative; z-index: 1; flex: 0 0 200px; min-height: 0;
     column-count: 3; column-gap: 32px; column-fill: balance;
     column-rule: 1px solid var(--rule); }
-  .yk-ctx p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 19.2px;
+  .yk-ctx p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 19px;
     /* slight negative tracking pulls the balanced 3-column prose in one line so it
        clears the flex box (at 0px it fills to the exact bottom edge and spills
        under the visit band in the PDF). Applied in both contexts for parity. */
-    letter-spacing: -0.4px;
+    letter-spacing: -0.5px;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .yk-ctx p:last-child { margin-bottom: 0; }
   .yk-ctx p:first-child::first-letter { font-family: "Oswald", sans-serif; font-weight: 700;

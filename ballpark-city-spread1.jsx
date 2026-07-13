@@ -74,15 +74,15 @@
 
         {/* ============================ RIGHT PAGE =========================== */}
         <SectionHead label="WOODEN PARKS AND THE SEARCH FOR PERMANENCE" num="I" width={840}
-        style={{ position: "absolute", left: 1335, top: 58, fontSize: 21 }} />
+        style={{ position: "absolute", left: 1339, top: 58, fontSize: 21 }} />
 
-        <Body paras={D.WOODEN} x={1335} y={104} w={840} h={366}
+        <Body paras={D.WOODEN} x={1339} y={104} w={840} h={366}
         cols={3} gap={28} size={13} lh={1.45} dropcap />
 
         <SectionHead label="THE JEWEL BOX IDEAL" num="II" width={840}
-        style={{ position: "absolute", left: 1335, top: 486, fontSize: 21 }} />
+        style={{ position: "absolute", left: 1339, top: 486, fontSize: 21 }} />
 
-        <Body paras={D.JEWEL} x={1335} y={528} w={840} h={301}
+        <Body paras={D.JEWEL} x={1339} y={528} w={840} h={301}
         cols={3} gap={28} size={12.9} lh={1.45} dropcap />
 
         {/* ---- right-hand figure strip ---- */}
@@ -99,10 +99,10 @@
         </div>
 
         {/* bottom figure row — four equal figures across the foot of the page */}
-        <Figure fig={D.FIGS.fenway} x={1335} y={834} w={264} imgH={132} />
-        <Figure fig={D.FIGS.wrigley} x={1619} y={834} w={264} imgH={132} />
-        <Figure fig={D.FIGS.southEnd} x={1903} y={834} w={264} imgH={132} />
-        <Figure fig={D.FIGS.yankee} x={2187} y={834} w={264} imgH={132} />
+        <Figure fig={D.FIGS.fenway} x={1339} y={834} w={264} imgH={132} />
+        <Figure fig={D.FIGS.wrigley} x={1623} y={834} w={264} imgH={132} />
+        <Figure fig={D.FIGS.southEnd} x={1907} y={834} w={264} imgH={132} />
+        <Figure fig={D.FIGS.yankee} x={2191} y={834} w={264} imgH={132} />
 
         {/* (running heads removed — bottom band now carries the figure row) */}
       </div>);

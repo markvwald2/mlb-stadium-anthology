@@ -104,7 +104,7 @@
   /* =================== RIGHT / FAÇADE PAGE =================== */
   .cp-right::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
     background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
-  .cp-facade { position: absolute; top: 36px; right: 37px; bottom: 36px; left: 38px; z-index: 2;
+  .cp-facade { position: absolute; top: 36px; right: 37px; bottom: 36px; left: 64px; z-index: 2;
     display: flex; flex-direction: column; }
 
   /* top steel girder / lintel */
@@ -179,7 +179,7 @@
   .cp-lc:nth-child(1), .cp-lc:nth-child(2) { border-bottom: 1px solid var(--rule); }
   .cp-lc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--ink-3); }
-  .cp-lc .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px; color: var(--ink); margin-top: 3px; }
+  .cp-lc .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px; color: var(--ink); margin-top: 3px; letter-spacing: -0.6px; }
 
   /* engraved note line */
   .cp-note { font-family: "Spectral", serif; font-size: 12px; line-height: 1.4; color: var(--ink-2);
@@ -200,7 +200,7 @@
   /* center bay — stadium context essay (museum wall panel) */
   .cp-ctx { flex: 1; min-height: 0; }
   .cp-ctx p { margin: 0 0 5px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.28;
-    color: var(--ink); text-align: justify; hyphens: auto; }
+    color: var(--ink); text-align: justify; hyphens: auto; letter-spacing: -0.6px; }
   .cp-ctx p:last-child { margin-bottom: 0; }
   .cp-dropcap { font-family: "Anton", sans-serif; font-weight: 400; font-size: 40px; float: left;
     line-height: .7; padding: 4px 8px 0 0; color: var(--orange); }

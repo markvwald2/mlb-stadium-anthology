@@ -210,7 +210,7 @@
             e(SecHead, { title: "Kasota Stone", note: "METRODOME \u2192 TARGET FIELD" }),
             e("div", { className: "tf-prose4" },
               D.stadium_context.map((p, i) => e("p", { key: i,
-                style: { letterSpacing: "-0.4px" } }, p))))
+                style: { letterSpacing: "-0.5px" } }, p))))
         )
       )
     );

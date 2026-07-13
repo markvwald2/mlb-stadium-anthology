@@ -19,11 +19,11 @@
   /* right-page geometry (local 0..1275; safe x 37.5..1237.5, y 37.5..1050.5) */
   const BAYS = {
     a: { left: 46,  top: 96,  width: 462, height: 220 },
-    b: { left: 546, top: 96,  width: 689, height: 220 },
+    b: { left: 546, top: 96,  width: 669, height: 220 },
     c: { left: 46,  top: 340, width: 870, height: 458 },
-    f: { left: 936, top: 340, width: 299, height: 458 },
+    f: { left: 936, top: 340, width: 279, height: 458 },
     d: { left: 46,  top: 822, width: 588, height: 226 },
-    e: { left: 672, top: 822, width: 563, height: 226 }
+    e: { left: 672, top: 822, width: 543, height: 226 }
   };
   const HSEAMS = [84, 328, 810];                 // full-width horizontal seams
   const VSEAMS = [[524, 96, 220], [926, 340, 458], [651, 822, 226]]; // [x, top, height]
@@ -150,7 +150,7 @@
           left: s[0] + "px", top: s[1] + "px", height: s[2] + "px", borderLeft: "1.5px solid var(--seam)" } })),
 
         /* ---- Bay 1 : page masthead ---- */
-        e("div", { className: "tf-bay", style: { left: "46px", top: "40px", width: "1189px", height: "34px" } },
+        e("div", { className: "tf-bay", style: { left: "46px", top: "40px", width: "1169px", height: "34px" } },
           e("div", { className: "tf-sec" },
             e("div", { className: "marque" },
               e("svg", { className: "glyph", width: 30, height: 22, viewBox: "0 0 30 22", fill: "none" },

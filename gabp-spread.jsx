@@ -104,9 +104,10 @@
   }
 
   function ribCell(k, v, i) {
+    var vStyle = k === "Location" ? { letterSpacing: "0.4px" } : null;
     return e("div", { className: "rcell", key: i },
       e("div", { className: "k" }, k),
-      e("div", { className: "v" }, v));
+      e("div", { className: "v", style: vStyle }, v));
   }
   function factRow(k, v, i) {
     var vStyle = k === "Style" ? { letterSpacing: "-0.7px" } : null;

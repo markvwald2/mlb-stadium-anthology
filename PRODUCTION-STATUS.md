@@ -7,7 +7,7 @@ per spread; do not mark a spread done without their say-so.
 Legend: ✅ done · ⬜ not yet confirmed
 
 > **2026-06-27 — all sign-offs reset.** The interior export was re-sized to the
-> correct Blurb Large Landscape Hardcover Dust Jacket interior spec
+> correct Blurb Large Landscape Hardcover ImageWrap interior spec
 > (page 12.625 × 10.875 in / 909 × 783 pt; trim 12.5 × 10.625 in; no binding-edge
 > bleed; content now prints at true native scale instead of the old ~3% stretch).
 > Every spread is back to ⬜ pending a full visual re-inspection. Prior

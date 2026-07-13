@@ -31,7 +31,7 @@
     return e("div", { className: "mla-frow", key: i },
       e("div", { className: "k" }, row[0]),
       e("div", { className: "v" + (opts.inline ? " vinline" : "") },
-        e("span", { className: "vm" }, row[1]),
+        e("span", { className: "vm", style: opts.vmStyle || null }, row[1]),
         row[2] ? e("span", { className: "vs", style: opts.vsStyle || null }, row[2]) : null
       )
     );

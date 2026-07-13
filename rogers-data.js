@@ -29,7 +29,7 @@ window.ROGERS = {
     ["Groundbreaking", "Oct 3, 1986"],
     ["Opening Day", "Jun 3, 1989"],
     ["Capacity", "41,500 (originally 50,516)"],
-    ["Surface", "Artificial - AstroTurf 3D Xtreme with dirt infield"],
+    ["Surface", "Artificial - AstroTurf 3D Xtreme with dirt infield", null, { vm: { letterSpacing: "-0.6px" } }],
     ["Architect", "Rod Robbie and Michael Allen", "Structural design by Adjeleian Allen Rubeli"],
     ["Type", "Multipurpose retractable-roof stadium adapted increasingly toward baseball"],
     ["Style", "Late multipurpose high-tech retractable-dome stadium, now retrofitted toward baseball-specific use"],
@@ -107,7 +107,7 @@ window.ROGERS = {
   build: [
     ["Facade", "Concrete-and-steel multipurpose shell with steel/PVC retractable-roof panels and selective glazed edges"],
     ["Original Cost", "$470 million", "$1.26 billion adjusted"],
-    ["Financing", "Public-private partnership led by Ontario, Canada, and Toronto public entities with private corporate participation; later privately acquired by Rogers Communications Inc"],
+    ["Financing", "Public-private partnership led by Ontario, Canada, and Toronto public entities with private corporate participation; later privately acquired by Rogers Communications Inc", null, { vm: { letterSpacing: "-0.6px" } }],
     ["Coordinates", "43.6414\u00b0 N, 79.3892\u00b0 W"],
     ["Address", "1 Blue Jays Way, Toronto, ON M5V 1J1, Canada"]
   ],

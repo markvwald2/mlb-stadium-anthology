@@ -188,16 +188,21 @@
             e("div", { className: "st-lifecycle" },
               e(SecHead, { title: "Development & Life Cycle", note: "ECONOMICS", scarlet: true }),
               (function () {
-                const lc = D.lifecycle.filter(r => r[0] !== "Financing" && r[0] !== "Status");
+                const lc = D.lifecycle.filter(r => ["Financing", "Status", "Setting", "Renovations"].indexOf(r[0]) === -1);
                 return e("div", { className: "st-lc-cols" },
-                  e("div", { className: "st-lc-col" }, lc.slice(0, 4).map(factRow)),
-                  e("div", { className: "st-lc-col" }, lc.slice(4).map(factRow)));
+                  e("div", { className: "st-lc-col" }, lc.slice(0, 3).map(factRow)),
+                  e("div", { className: "st-lc-col" }, lc.slice(3).map(factRow)));
               })(),
               (function () {
-                const fin = D.lifecycle.find(r => r[0] === "Financing");
-                return fin ? e("div", { className: "st-finnote" },
-                  e("span", { className: "fk" }, "Financing"),
-                  e("span", { className: "fv" }, fin[1] + " \u2014 " + fin[2])) : null;
+                const note = (label, text) => e("div", { className: "st-finnote" },
+                  e("span", { className: "fk" }, label),
+                  e("span", { className: "fv" }, text));
+                const get = k => D.lifecycle.find(r => r[0] === k);
+                const setting = get("Setting"), reno = get("Renovations"), fin = get("Financing");
+                return e(React.Fragment, null,
+                  setting ? note("Setting", setting[1] + (setting[2] ? " " + setting[2] : "")) : null,
+                  reno ? note("Renovations", reno[1] + (reno[2] ? " " + reno[2] : "")) : null,
+                  fin ? note("Financing", fin[1] + (fin[2] ? " \u2014 " + fin[2] : "")) : null);
               })()))
         )
       )

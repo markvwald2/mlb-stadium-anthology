@@ -101,7 +101,7 @@
 
   /* ============ RIGHT PAGE ============ */
   /* outer padding clears the 0.375in trim-safe margin + gutter safety on the left. */
-  .ms-rp { position: absolute; inset: 0; padding: 38px 40px 40px 44px; display: flex; flex-direction: column; gap: 16px; z-index: 2; }
+  .ms-rp { position: absolute; inset: 0; padding: 38px 40px 40px 64px; display: flex; flex-direction: column; gap: 16px; z-index: 2; }
 
   /* monograph section header — thin double rule, carved label */
   .ms-sec {
@@ -233,8 +233,8 @@
 
   /* ---- RIGHT BAY : Stadium Context prose ---- */
   .ms-ctx { columns: 1; }
-  .ms-ctx p { margin: 0 0 8px; font-family: "Spectral", serif; font-size: 12px; line-height: 1.57;
-    color: var(--ink); text-align: justify; hyphens: auto; }
+  .ms-ctx p { margin: 0 0 8px; font-family: "Spectral", serif; font-size: 12px; line-height: 17.5px;
+    letter-spacing: -0.1px; color: var(--ink); text-align: justify; hyphens: auto; }
   .ms-ctx p:first-child::first-letter {
     font-family: "Cinzel", serif; font-weight: 700; font-size: 40px; line-height: .82;
     float: left; padding: 4px 7px 0 0; color: var(--orange-deep);

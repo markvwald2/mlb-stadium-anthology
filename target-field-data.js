@@ -34,7 +34,7 @@ window.TARGET = {
   // ---- Stadium Facts (core specification, boxed left column) ----
   facts: [
     ["Opened", "Apr 12, 2010"],
-    ["Construction Start", "Aug 30, 2007"],
+    ["Groundbreaking", "Aug 30, 2007"],
     ["Architect", "Populous"],
     ["Type", "Open-air, baseball-only"],
     ["Era", "Ballpark District"],

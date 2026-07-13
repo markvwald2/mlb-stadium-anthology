@@ -106,7 +106,7 @@
   .vet-logo { height: 52px; width: auto; display: block; filter: drop-shadow(0 2px 9px rgba(0,0,0,.6)); }
 
   /* ============ RIGHT PAGE ============ */
-  .vet-rp { position: absolute; inset: 0; padding: 39.5px 40px 39.5px; display: flex; flex-direction: column; z-index: 2; }
+  .vet-rp { position: absolute; inset: 0; padding: 39.5px 40px 39.5px 64px; display: flex; flex-direction: column; z-index: 2; }
 
   /* ---- operations metadata ribbon ---- */
   .vet-ribbon { display: grid; grid-template-columns: 0.9fr 1fr 1.15fr 0.95fr 0.85fr 1.35fr 1.05fr; flex: none;
@@ -199,14 +199,14 @@
   /* stadium context — full-width multi-column monograph body */
   .vet-context-band { margin-top: 7px; border-top: 1px solid var(--rule-strong); padding-top: 8px; }
   .vet-context { column-count: 3; column-gap: 30px; position: relative; }
-  .vet-context p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 13px; line-height: 1.32;
+  .vet-context p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 13px; line-height: 16px; letter-spacing: -0.2px;
     color: var(--ink); text-align: justify; hyphens: auto; }
   .vet-context p:last-child { margin-bottom: 0; }
   .vet-context p:first-of-type::first-letter { font-family: "Anton", sans-serif; font-weight: 400; font-size: 38px;
     line-height: .74; float: left; padding: 4px 8px 0 0; color: var(--red); }
 
   /* ---- VISIT SECTION (scoreboard annex) ---- */
-  .vet-visit { margin-top: 7px; }
+  .vet-visit { margin-top: 15px; }
   .vet-scoreboard { background: var(--black); margin-top: 5px; display: flex; position: relative;
     box-shadow: inset 0 0 0 1px rgba(215,178,90,.28); }
   .vet-scoreboard::before { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(215,178,90,.16); pointer-events: none; }
@@ -272,8 +272,8 @@
   .vet-wxrow .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; color: #E9E3D4; }
 
   /* ---- material / concept ribbon ---- */
-  .vet-cues { display: grid; grid-template-columns: repeat(6, 1fr); margin-top: 7px; flex: none;
-    border-top: 2px solid var(--ink); padding-top: 8px; }
+  .vet-cues { display: grid; grid-template-columns: repeat(6, 1fr); margin-top: 0; flex: none;
+    border-top: 2px solid var(--ink); padding-top: 5px; }
   .vet-cue { padding: 0 10px; border-left: 1px solid var(--rule); display: flex; flex-direction: column; gap: 3px; align-items: center; text-align: center; justify-content: center; }
   .vet-cue:first-child { border-left: 0; }
   .vet-cue .t { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .02em;

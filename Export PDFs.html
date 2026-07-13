@@ -122,13 +122,14 @@
       <p class="lede">Each spread → two single-page vector PDFs (left + right). Export in Chrome; I'll mark cells done as you finish them.</p>
     </div>
     <div class="head-right">
-      <button type="button" class="popall" id="popAll">Open all pages ↗</button>
+      <button type="button" class="popall" id="popAll">Open next 20 ↗</button>
+      <button type="button" class="popall" id="popReset" style="background:#f4f1ea;color:#1c1a17;">Reset</button>
       <div class="progress" id="progress">— / — pages done</div>
     </div>
   </header>
 
   <div class="steps">
-    <p style="margin:0 0 10px;font-size:13.5px;color:#5b4a28;"><strong>Interior page spec (Blurb Large Landscape, Hardcover Dust Jacket):</strong>
+    <p style="margin:0 0 10px;font-size:13.5px;color:#5b4a28;"><strong>Interior page spec (Blurb Large Landscape, Hardcover ImageWrap):</strong>
     page <code>12.625 × 10.875 in</code> (909 × 783 pt) · trim <code>12.5 × 10.625 in</code> ·
     bleed 0.125 in top/bottom/outside, <strong>none on the binding edge</strong> ·
     safe 0.25 in outside/top/bottom, 0.5 in binding. The <em>guides</em> links draw these
@@ -151,50 +152,50 @@
   // status: "pending" | "done" — tell me when a spread is finished and I'll flip it.
   const spreads = [
     { name: "Cover wrap (flapless)", file: "Front Cover.html",           status: "done", single: true },
-    { name: "Collection Opener",     file: "Book Intro.html",             status: "done", single: true },
-    { name: "Rogers Centre",       file: "Rogers Centre Spread.html",       status: "done" },
-    { name: "Globe Life Field",    file: "Globe Life Field Spread.html",    status: "done" },
-    { name: "Yankee Stadium 2009", file: "Yankee Stadium 2009 Spread.html", status: "done" },
-    { name: "Fenway Park",         file: "Fenway Park Spread.html",          status: "done" },
-    { name: "Target Field",        file: "Target Field Spread.html",         status: "done" },
-    { name: "Anaheim Stadium",     file: "Anaheim Stadium Spread.html",      status: "done" },
-    { name: "PNC Park",            file: "PNC Park Spread.html",             status: "done" },
-    { name: "Dodger Stadium",      file: "Dodger Stadium Spread.html",       status: "done" },
-    { name: "Comiskey Park",       file: "Comiskey Park Spread.html",        status: "done" },
-    { name: "New Comiskey Park",   file: "New Comiskey Park Spread.html",     status: "done" },
-    { name: "Wrigley Field",       file: "Wrigley Field Spread.html",         status: "done" },
-    { name: "Yankee Stadium",      file: "Yankee Stadium Spread.html",        status: "done" },
-    { name: "Tiger Stadium",       file: "Tiger Stadium Spread.html",         status: "done" },
-    { name: "Cleveland Municipal Stadium", file: "Cleveland Municipal Stadium Spread.html", status: "done" },
-    { name: "Milwaukee County Stadium",    file: "Milwaukee County Stadium Spread.html",    status: "done" },
-    { name: "Memorial Stadium",    file: "Memorial Stadium Spread.html",      status: "done" },
-    { name: "Shea Stadium",        file: "Shea Stadium Spread.html",          status: "done" },
-    { name: "Riverfront Stadium",  file: "Riverfront Stadium Spread.html",    status: "done" },
-    { name: "Three Rivers Stadium", file: "Three Rivers Stadium Spread.html", status: "done" },
-    { name: "Veterans Stadium",    file: "Veterans Stadium Spread.html",      status: "done" },
-    { name: "Royals Stadium",      file: "Royals Stadium Spread.html",        status: "done" },
-    { name: "San Diego Stadium",   file: "San Diego Stadium Spread.html",     status: "done" },
-    { name: "Mile High Stadium",   file: "Mile High Stadium Spread.html",     status: "done" },
-    { name: "Oriole Park at Camden Yards", file: "Oriole Park at Camden Yards Spread.html", status: "done" },
-    { name: "Progressive Field",   file: "Progressive Field Spread.html",     status: "done" },
-    { name: "Coors Field",         file: "Coors Field Spread.html",           status: "done" },
-    { name: "Chase Field",         file: "Chase Field Spread.html",           status: "done" },
-    { name: "Safeco Field",        file: "Safeco Field Spread.html",          status: "done" },
-    { name: "Comerica Park",       file: "Comerica Park Spread.html",         status: "done" },
-    { name: "Minute Maid Park",    file: "Minute Maid Park Spread.html",      status: "done" },
-    { name: "Great American Ball Park", file: "Great American Ball Park Spread.html", status: "done" },
-    { name: "Citizens Bank Park",  file: "Citizens Bank Park Spread.html",    status: "done" },
-    { name: "Petco Park",          file: "Petco Park Spread.html",            status: "done" },
-    { name: "Busch Stadium",       file: "Busch Stadium Spread.html",         status: "done" },
-    { name: "Nationals Park",      file: "Nationals Park Spread.html",        status: "done" },
-    { name: "Citi Field",          file: "Citi Field Spread.html",            status: "done" },
-    { name: "Marlins Park",        file: "Marlins Park Spread.html",          status: "done" },
-    { name: "Oracle Park",         file: "Oracle Park Spread.html",           status: "done" },
-    { name: "SunTrust Park",       file: "SunTrust Park Spread.html",         status: "done" },
-    { name: "American Family Field", file: "American Family Field Spread.html", status: "done" },
-    { name: "Sutter Health Park",  file: "Sutter Health Park Spread.html",    status: "done" },
-    { name: "Tropicana Field",     file: "Tropicana Field Spread.html",       status: "done" },
-    { name: "The Ballpark & the City \u2014 Spread 1", file: "The Ballpark and the City - Spread 1.html", status: "done" },
+    { name: "Collection Opener",     file: "Book Intro.html",             status: "pending", single: true },
+    { name: "Rogers Centre",       file: "Rogers Centre Spread.html",       status: "pending" },
+    { name: "Globe Life Field",    file: "Globe Life Field Spread.html",    status: "pending" },
+    { name: "Yankee Stadium 2009", file: "Yankee Stadium 2009 Spread.html", status: "pending" },
+    { name: "Fenway Park",         file: "Fenway Park Spread.html",          status: "pending" },
+    { name: "Target Field",        file: "Target Field Spread.html",         status: "pending" },
+    { name: "Anaheim Stadium",     file: "Anaheim Stadium Spread.html",      status: "pending" },
+    { name: "PNC Park",            file: "PNC Park Spread.html",             status: "pending" },
+    { name: "Dodger Stadium",      file: "Dodger Stadium Spread.html",       status: "pending" },
+    { name: "Comiskey Park",       file: "Comiskey Park Spread.html",        status: "pending" },
+    { name: "New Comiskey Park",   file: "New Comiskey Park Spread.html",     status: "pending" },
+    { name: "Wrigley Field",       file: "Wrigley Field Spread.html",         status: "pending" },
+    { name: "Yankee Stadium",      file: "Yankee Stadium Spread.html",        status: "pending" },
+    { name: "Tiger Stadium",       file: "Tiger Stadium Spread.html",         status: "pending" },
+    { name: "Cleveland Municipal Stadium", file: "Cleveland Municipal Stadium Spread.html", status: "pending" },
+    { name: "Milwaukee County Stadium",    file: "Milwaukee County Stadium Spread.html",    status: "pending" },
+    { name: "Memorial Stadium",    file: "Memorial Stadium Spread.html",      status: "pending" },
+    { name: "Shea Stadium",        file: "Shea Stadium Spread.html",          status: "pending" },
+    { name: "Riverfront Stadium",  file: "Riverfront Stadium Spread.html",    status: "pending" },
+    { name: "Three Rivers Stadium", file: "Three Rivers Stadium Spread.html", status: "pending" },
+    { name: "Veterans Stadium",    file: "Veterans Stadium Spread.html",      status: "pending" },
+    { name: "Royals Stadium",      file: "Royals Stadium Spread.html",        status: "pending" },
+    { name: "San Diego Stadium",   file: "San Diego Stadium Spread.html",     status: "pending" },
+    { name: "Mile High Stadium",   file: "Mile High Stadium Spread.html",     status: "pending" },
+    { name: "Oriole Park at Camden Yards", file: "Oriole Park at Camden Yards Spread.html", status: "pending" },
+    { name: "Progressive Field",   file: "Progressive Field Spread.html",     status: "pending" },
+    { name: "Coors Field",         file: "Coors Field Spread.html",           status: "pending" },
+    { name: "Chase Field",         file: "Chase Field Spread.html",           status: "pending" },
+    { name: "Safeco Field",        file: "Safeco Field Spread.html",          status: "pending" },
+    { name: "Comerica Park",       file: "Comerica Park Spread.html",         status: "pending" },
+    { name: "Minute Maid Park",    file: "Minute Maid Park Spread.html",      status: "pending" },
+    { name: "Great American Ball Park", file: "Great American Ball Park Spread.html", status: "pending" },
+    { name: "Citizens Bank Park",  file: "Citizens Bank Park Spread.html",    status: "pending" },
+    { name: "Petco Park",          file: "Petco Park Spread.html",            status: "pending" },
+    { name: "Busch Stadium",       file: "Busch Stadium Spread.html",         status: "pending" },
+    { name: "Nationals Park",      file: "Nationals Park Spread.html",        status: "pending" },
+    { name: "Citi Field",          file: "Citi Field Spread.html",            status: "pending" },
+    { name: "Marlins Park",        file: "Marlins Park Spread.html",          status: "pending" },
+    { name: "Oracle Park",         file: "Oracle Park Spread.html",           status: "pending" },
+    { name: "SunTrust Park",       file: "SunTrust Park Spread.html",         status: "pending" },
+    { name: "American Family Field", file: "American Family Field Spread.html", status: "pending" },
+    { name: "Sutter Health Park",  file: "Sutter Health Park Spread.html",    status: "pending" },
+    { name: "Tropicana Field",     file: "Tropicana Field Spread.html",       status: "pending" },
+    { name: "The Ballpark & the City \u2014 Spread 1", file: "The Ballpark and the City - Spread 1.html", status: "pending" },
     { name: "The Ballpark & the City \u2014 Spread 2", file: "The Ballpark and the City - Spread 2.html", status: "done" },
     { name: "MLB Stadium Timeline", file: "MLB Stadium Timeline Spread.html", status: "done" },
     { name: "The Road Trips",       file: "Road Trips Overview Spread.html", status: "done" },
@@ -258,22 +259,43 @@
   // so warn that the buttons won't open until the sheet is popped out.
   // (present-mode links self-authorize, so no pop-out / token notice is needed)
 
-  // Pop out every print page in order. Collect each cell's page links and open
-  // them on a short stagger so the browser doesn't swallow them as a popup burst.
-  document.getElementById("popAll").addEventListener("click", (e) => {
-    const btn = e.currentTarget;
-    const links = [...grid.querySelectorAll('a.btn')].map(a => a.href);
-    btn.disabled = true;
-    let i = 0;
-    const label = btn.textContent;
+  // Pop out print pages in batches of 20, remembering where we left off across
+  // clicks (survives reload via localStorage). Opens them on a short stagger so
+  // the browser doesn't swallow them as a popup burst.
+  const BATCH = 20;
+  const CURSOR_KEY = "exportpdf.cursor";
+  const allLinks = [...grid.querySelectorAll('a.btn')].map(a => a.href);
+  const popBtn = document.getElementById("popAll");
+  const resetBtn = document.getElementById("popReset");
+
+  function getCursor() { return Math.min(+localStorage.getItem(CURSOR_KEY) || 0, allLinks.length); }
+  function refreshLabel() {
+    const c = getCursor();
+    if (c >= allLinks.length) { popBtn.textContent = "All " + allLinks.length + " opened ✓"; popBtn.disabled = true; }
+    else {
+      const end = Math.min(c + BATCH, allLinks.length);
+      popBtn.disabled = false;
+      popBtn.textContent = `Open ${c + 1}–${end} of ${allLinks.length} ↗`;
+    }
+  }
+  refreshLabel();
+
+  popBtn.addEventListener("click", () => {
+    const start = getCursor();
+    if (start >= allLinks.length) return;
+    const end = Math.min(start + BATCH, allLinks.length);
+    popBtn.disabled = true;
+    let i = start;
     (function next() {
-      if (i >= links.length) { btn.disabled = false; btn.textContent = label; return; }
-      btn.textContent = `Opening ${i + 1} / ${links.length}…`;
-      window.open(links[i], "_blank", "noopener");
+      if (i >= end) { localStorage.setItem(CURSOR_KEY, end); refreshLabel(); return; }
+      popBtn.textContent = `Opening ${i + 1} / ${end}…`;
+      window.open(allLinks[i], "_blank", "noopener");
       i++;
       setTimeout(next, 350);
     })();
   });
+
+  resetBtn.addEventListener("click", () => { localStorage.setItem(CURSOR_KEY, 0); refreshLabel(); });
 
   const total = spreads.reduce((n, s) => n + (s.single ? 1 : 2), 0);
   const doneCount = spreads.filter(s => s.status === "done").reduce((n, s) => n + (s.single ? 1 : 2), 0);

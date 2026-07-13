@@ -84,7 +84,7 @@
     font-size: 13px; letter-spacing: .22em; color: var(--orange-bright); }
   .op-hero-coord-txt .ll { font-size: 12px; color: rgba(233,228,216,.7); }
 
-  .op-hero-title { position: absolute; left: 60px; right: 60px; bottom: 100px; z-index: 5; }
+  .op-hero-title { position: absolute; left: 60px; right: 64px; bottom: 100px; z-index: 5; }
   .op-hero-name {
     margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
     font-size: 134px; line-height: .82; letter-spacing: .004em; text-transform: uppercase;
@@ -108,7 +108,7 @@
 
   /* ============ RIGHT PAGE ============ */
   .op-shoreline { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 0; pointer-events: none; overflow: hidden; mix-blend-mode: multiply; }
-  .op-rp { position: absolute; inset: 0; padding: 38px 40px 49px 40px; z-index: 2;
+  .op-rp { position: absolute; inset: 0; padding: 38px 40px 49px 64px; z-index: 2;
     display: flex; flex-direction: column; gap: 10px; }
 
   /* section headers */
@@ -188,16 +188,16 @@
   .op-ctx p:last-child { margin-bottom: 0; }
   /* column 1 leading opened up so its text bottom-aligns with the hairline;
      the middle/right flow shares the same leading so columns end together */
-  .op-ctx-col1 p { line-height: 20.14px; }
+  .op-ctx-col1 p { line-height: 18.1px; letter-spacing: -0.2px; }
   /* 1.65 leading; the flow is given extra height (336px vs the ~317.5px row) so
      that at this leading the prose still fits in TWO columns instead of spilling
      into a 4th. Both inner columns end just above the China Basin label. */
-  .op-ctx-rest p { line-height: 20.14px; }
+  .op-ctx-rest p { line-height: 19px; letter-spacing: -0.2px; }
   /* diagram pinned to the top of column 2; the middle text begins 10px below the
      orange McCovey Cove label, which sits just beneath the diagram. */
   .op-ctx-fig { position: absolute; top: 335px; left: 724px; width: 180px; margin: 0; z-index: 3;
     display: flex; justify-content: center; }
-  .op-ctx-figgap { height: 227px; break-inside: avoid; -webkit-column-break-inside: avoid; }
+  .op-ctx-figgap { height: 235px; break-inside: avoid; -webkit-column-break-inside: avoid; }
   .op-ctx-fig .fd-wrap { width: 100%; display: flex; justify-content: center; }
   .op-ctx-fig .fd-svg { width: 100%; max-width: 180px; height: auto; display: block; overflow: visible; }
 

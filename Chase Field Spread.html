@@ -65,7 +65,7 @@
 
   .chf-hero-logo { position: absolute; left: 60px; top: 54px; height: 96px; width: auto; z-index: 5;
     filter: drop-shadow(0 2px 10px rgba(0,0,0,.45)); }
-  .chf-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
+  .chf-folio { position: absolute; right: 66px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(236,228,212,.62); text-transform: uppercase; }
 
@@ -82,7 +82,7 @@
   .chf-roofline .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .3em;
     color: rgba(232,224,208,.66); text-transform: uppercase; flex: none; }
 
-  .chf-hero-title { position: absolute; left: auto; right: 58px; top: 120px; z-index: 5; text-align: right; }
+  .chf-hero-title { position: absolute; left: auto; right: 66px; top: 120px; z-index: 5; text-align: right; }
   .chf-name {
     position: relative; margin: 0; font-family: "Ultra", serif; font-weight: 400;
     font-size: 112px; line-height: .96; letter-spacing: .006em; text-transform: uppercase;
@@ -113,7 +113,7 @@
 
   /* ============ RIGHT PAGE ============ */
   /* 40px padding clears the 0.25in safe inset + gutter zone (content starts x=1315). */
-  .chf-rp { position: absolute; inset: 0; padding: 40px 40px 38px 40px;
+  .chf-rp { position: absolute; inset: 0; padding: 40px 40px 38px 64px;
     display: flex; flex-direction: column; gap: 16px; z-index: 2; }
 
   /* ---- photo strip ---- */
@@ -179,7 +179,7 @@
   .chf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--ink-3); }
   .chf-frow .v { display: flex; flex-direction: column; gap: 2px; }
-  .chf-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink); line-height: 1.26; }
+  .chf-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 13px; color: var(--ink); line-height: 1.26; letter-spacing: -0.6px; }
   .chf-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12px;
     color: var(--ink-2); line-height: 1.28; }
 
@@ -231,7 +231,7 @@
 
   /* prose columns */
   .chf-prose p { margin: 0 0 11px; font-family: "Spectral", serif; font-size: 14px; line-height: 20px;
-    color: var(--ink); text-align: justify; hyphens: auto; }
+    color: var(--ink); text-align: justify; hyphens: auto; letter-spacing: -0.6px; }
   .chf-prose p:last-child { margin-bottom: 0; }
 
   #root { min-height: 100vh; }
@@ -258,7 +258,6 @@
   <script src="chase-data.js"></script>
   <script src="field-labels.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
-  <script type="text/babel" src="chase-field.jsx"></script>
   <script type="text/babel" src="chase-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="chase-spread.jsx"></script>

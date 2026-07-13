@@ -103,7 +103,7 @@
                   factRow("Division", "National League West/Central"),
                   factRow("Opened", D.opened),
                   factRow("Architect", D.architect),
-                  factRow("Style", D.architectural_style),
+                  factRow("Style", D.architectural_style, { letterSpacing: "-0.7px" }),
                   factRow("Structure", D.facade_material),
                   factRow("Surface", D.surface),
                   factRow("Capacity", D.capacity_opening + " (originally " + D.capacity_current + ")"),
@@ -142,14 +142,14 @@
                     React.createElement("div", { className: "val v" }, D.financing_method)),
                   React.createElement("div", { className: "blk" },
                     React.createElement("div", { className: "lbl k" }, "Renovations"),
-                    React.createElement("div", { className: "val v" }, D.renovations))
+                    React.createElement("div", { className: "val v", style: { letterSpacing: "-0.7px" } }, D.renovations))
                 ),
 
                 /* col 3 — context */
                 React.createElement("div", { className: "rf-context" },
                   React.createElement("div", { className: "lbl colhdr" }, "The Concrete Circle"),
                   React.createElement("div", { className: "body" },
-                    D.stadium_context.map((p, i) => React.createElement("p", { key: i }, p)))
+                    D.stadium_context.map((p, i) => React.createElement("p", { key: i, style: { letterSpacing: "0.1px", lineHeight: "17px" } }, p)))
                 )
               )
             ),
@@ -231,10 +231,10 @@
   }
 
   /* helpers */
-  function factRow(k, v) {
+  function factRow(k, v, valStyle) {
     return React.createElement("div", { className: "row" },
       React.createElement("div", { className: "lbl" }, k),
-      React.createElement("div", { className: "val" }, v));
+      React.createElement("div", { className: "val", style: valStyle || null }, v));
   }
   function vrow(k, v) {
     return React.createElement("div", { className: "rf-vrow" },

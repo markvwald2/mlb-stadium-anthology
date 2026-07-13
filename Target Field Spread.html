@@ -74,7 +74,7 @@
       drop-shadow(0.7px 0.7px 0 #fff) drop-shadow(-0.7px 0.7px 0 #fff)
       drop-shadow(0.7px -0.7px 0 #fff) drop-shadow(-0.7px -0.7px 0 #fff)
       drop-shadow(0 3px 11px rgba(0,0,0,.45)); }
-  .tf-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
+  .tf-folio { position: absolute; right: 66px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(228,222,206,.62); text-transform: uppercase; }
   .tf-spine { position: absolute; right: 54px; top: 50%; z-index: 5;
@@ -90,7 +90,7 @@
     color: rgba(236,229,213,.95); text-transform: uppercase; flex: none;
     text-shadow: 0 1px 6px rgba(0,0,0,.55); }
 
-  .tf-hero-title { position: absolute; left: 60px; right: 58px; top: 122px; z-index: 5; }
+  .tf-hero-title { position: absolute; left: 60px; right: 66px; top: 122px; z-index: 5; }
   .tf-name {
     position: relative; margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
     font-size: 132px; line-height: .92; letter-spacing: .01em; text-transform: uppercase; white-space: nowrap;
@@ -127,7 +127,7 @@
   /* Two structurally identical columns — STADIUM | VISIT — share a top
      metadata ribbon and stand on a full-width STADIUM CONTEXT ground plane.
      40px padding clears the 0.25in safe inset + gutter zone (content x>=1315). */
-  .tf-rp { position: absolute; inset: 0; padding: 38px 40px 40px 40px;
+  .tf-rp { position: absolute; inset: 0; padding: 38px 40px 40px 64px;
     display: flex; flex-direction: column; z-index: 2; }
 
   /* ---- top metadata ribbon — the bridge between the twins ---- */
@@ -213,7 +213,7 @@
   .tf-frow { display: grid; grid-template-columns: 116px 1fr; gap: 10px; align-items: start;
     padding: 2.5px 0; border-bottom: 1px solid var(--rule); }
   /* stadium facts breathe to fill the column space beneath them */
-  .tf-sd-facts .tf-frow { padding: 5.5px 0; }
+  .tf-sd-facts .tf-frow { padding: 5.5px 0; grid-template-columns: 92px 1fr; }
   .tf-frow:last-child { border-bottom: 0; }
   .tf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.3; }

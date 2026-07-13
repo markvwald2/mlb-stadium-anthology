@@ -56,7 +56,7 @@ window.WRIGLEY = {
   // ---- Visit history (curated display log; years + known opponents) ----
   visit_log: [
     { year: "1953", games: [
-      { date: "Jun 17", opponent: "Dodgers", note: "First MLB Game" },
+      { date: "Jun 17", opponent: "Pirates", note: "First MLB Game (16 innings)" },
       { date: "Jun 19", opponent: "Dodgers", note: "Doubleheader" }
     ] },
     { year: "1969\u201370", games: [ { date: "Multiple games", opponent: "", note: "" } ] },

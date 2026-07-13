@@ -8,8 +8,6 @@
 (function () {
   const e = React.createElement;
   const D = window.MMP;
-  const Dg = window.MMPDiagrams || {};
-
   // ---- right-page bay geometry (local coords 0..1275) ----
   const BAYS = {
     A: { left: 44,   width: 158 },
@@ -19,9 +17,9 @@
     E: { left: 1034, width: 198 }
   };
   const TRACKS = [214, 456, 828];
-  const BAY_TOP = 56, BAY_H = 990;
+  const BAY_TOP = 49, BAY_H = 990;
   // shared photo band spanning Bay A (Identity) + Bay B (Stadium Record)
-  const AB_PHOTO = { left: 44, top: 814, width: 406, height: 232 };
+  const AB_PHOTO = { left: 44, top: 807, width: 406, height: 232 };
 
   function Slot(props) {
     return e("image-slot", { id: props.id, placeholder: props.placeholder, shape: "rect",
@@ -31,7 +29,7 @@
   function SecHead(props) {
     return e("div", { className: "mm-h" },
       e("span", { className: "t" }, props.title),
-      props.note ? e("span", { className: "n" }, props.note) : null);
+      props.note ? e("span", { className: "n", style: props.noteStyle }, props.note) : null);
   }
   function Bay(props) {
     const g = BAYS[props.id];
@@ -72,9 +70,9 @@
     if (kind === "drop") return e("svg", c, e("path", { d: "M12 2.8l5 6.2a6.4 6.4 0 1 1-10 0z" }));
     return null;
   }
-  function wxCell(icon, value, label, ls) {
+  function wxCell(icon, value, label, vstyle) {
     return e("div", { className: "mm-wcell" }, WxIcon(icon),
-      e("div", { className: "tx" }, e("div", { className: "wv", style: ls ? { letterSpacing: ls } : null }, value), e("div", { className: "wl" }, label)));
+      e("div", { className: "tx" }, e("div", { className: "wv", style: vstyle || null }, value), e("div", { className: "wl" }, label)));
   }
 
   function Board(box) {
@@ -137,9 +135,9 @@
         // steel terminal frame + corner rivets
         e("div", { className: "mm-frame" }),
         e("span", { className: "mm-rivet", style: { left: "27px", top: "27px" } }),
-        e("span", { className: "mm-rivet", style: { right: "27px", top: "27px" } }),
+        e("span", { className: "mm-rivet", style: { right: "40px", top: "27px" } }),
         e("span", { className: "mm-rivet", style: { left: "27px", bottom: "27px" } }),
-        e("span", { className: "mm-rivet", style: { right: "27px", bottom: "27px" } }),
+        e("span", { className: "mm-rivet", style: { right: "40px", bottom: "27px" } }),
 
         // vertical steel-track rules with rivets
         TRACKS.map((x, i) =>
@@ -194,7 +192,7 @@
         ),
 
         /* ----- BAY D + E : FIELD & VISIT (merged right region) ----- */
-        e("div", { className: "mm-bay mm-bay-de", style: { left: "834px", width: "398px", height: BAY_H + "px" } },
+        e("div", { className: "mm-bay mm-bay-de", style: { left: "834px", width: "370px", height: BAY_H + "px" } },
           e("div", { className: "mm-bayhead" },
             e("span", { className: "star" }, "\u273B"),
             e("span", { className: "nm" }, "Field & Visit")),
@@ -213,7 +211,7 @@
             // RIGHT : visit facts
             e("div", { className: "mm-de-col" },
               e("div", { className: "mm-figblock" },
-                e(SecHead, { title: "Visit No. " + D.visit_order, note: "SEP 11, 2021" }),
+                e(SecHead, { title: "Visit No. " + D.visit_order, note: "SEP 11, 2021", noteStyle: { letterSpacing: "0px" } }),
                 e("div", null, D.visit.map(vRow))))),
 
           // line score — spans the full column
@@ -227,7 +225,7 @@
             e("div", { className: "mm-wx mm-wx-line" },
               wxCell("temp", D.weather.temperature, "Temp"),
               wxCell("sky", D.weather.conditions, "Sky"),
-              wxCell("wind", D.weather.wind, "Wind", "-1.2px"),
+              wxCell("wind", D.weather.wind, "Wind", { letterSpacing: "-1px", fontSize: "15px" }),
               wxCell("drop", D.weather.humidity, "Humidity"))),
 
           // pitching matchup — full-width strip, three pitchers across
@@ -236,16 +234,13 @@
             e("div", { className: "mm-pitch3" },
               e("div", { className: "pcell" },
                 e("span", { className: "pteam" }, D.pitching.away_team + " \u00b7 Starter"),
-                e("span", { className: "pname" }, D.pitching.away),
-                e("span", { className: "pdec" }, "Decision " + D.pitching.away_dec)),
+                e("span", { className: "pname" }, D.pitching.away + " (" + D.pitching.away_dec + ")")),
               e("div", { className: "pcell" },
                 e("span", { className: "pteam" }, D.pitching.home_team + " \u00b7 Starter"),
-                e("span", { className: "pname" }, D.pitching.home),
-                e("span", { className: "pdec" }, "Decision " + D.pitching.home_dec)),
+                e("span", { className: "pname" }, D.pitching.home + " (" + D.pitching.home_dec + ")")),
               e("div", { className: "pcell" },
                 e("span", { className: "pteam" }, "Save"),
-                e("span", { className: "pname" }, D.pitching.save),
-                e("span", { className: "pdec" }, "SV")))),
+                e("span", { className: "pname" }, D.pitching.save)))),
 
           // bottom photo — Crawford Boxes & the left-field train, spanning the column
           e("figure", { className: "mm-plate-photo mm-photo-fill mm-deblock", style: { width: "100%" } },

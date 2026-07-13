@@ -82,7 +82,6 @@
           e("line", { x1: home[0], y1: home[1], x2: lf[0], y2: lf[1], stroke: chalk, strokeWidth: 1, opacity: .8 }),
           e("line", { x1: home[0], y1: home[1], x2: rf[0], y2: rf[1], stroke: chalk, strokeWidth: 1, opacity: .8 }),
           e("path", { d: dia, fill: clay, stroke: chalk, strokeWidth: 1.2, strokeLinejoin: "round" }),
-          e("circle", { cx: mound[0], cy: mound[1], r: 2.4, fill: clay, stroke: chalk, strokeWidth: .8 }),
           e("circle", { cx: apl[0], cy: apl[1], r: 4.4, fill: apple, stroke: "#7E0C1A", strokeWidth: 1 })),
         // protractor arc + ticks + numerals
         e("path", { d: protArc, fill: "none", stroke: ink3, strokeWidth: 1, opacity: 0.55 }),

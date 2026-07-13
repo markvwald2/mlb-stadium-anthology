@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preflight Report — MLB Book v3</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    background: #f4f1ea; color: #1c1a17; line-height: 1.45;
+    padding: 56px 48px 90px;
+  }
+  a { color: #7a5a2e; }
+  a:hover { color: #1c1a17; }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  h1 { font-size: 30px; letter-spacing: 0.01em; margin: 0 0 6px; font-weight: 600; }
+  .lede { margin: 0 0 4px; font-size: 16px; color: #4a463f; max-width: 70ch; }
+  .meta { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; color: #8a8478; margin: 8px 0 0; }
+
+  .counts { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0 30px; }
+  .stat { border: 1px solid #d8d2c4; background: #fffdf8; border-radius: 5px; padding: 12px 18px; min-width: 120px; }
+  .stat .n { font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+  .stat .l { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #8a8478; margin-top: 3px; }
+  .stat.open  .n { color: #9a5a2a; }
+  .stat.dpi   .n { color: #8a5a86; }
+  .stat.note  .n { color: #5a4a86; }
+  .stat.clean .n { color: #436b2c; }
+
+  section { margin: 0 0 34px; }
+  h2 { font-size: 13px; font-family: ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #6a655b; border-bottom: 1.5px solid #1c1a17; padding-bottom: 6px; margin: 0 0 4px; display: flex; justify-content: space-between; align-items: baseline; }
+  h2 .sub { font-size: 11px; color: #a09a8c; letter-spacing: 0.04em; text-transform: none; }
+  .groupnote { font-size: 14px; color: #5b564d; margin: 10px 0 14px; max-width: 82ch; }
+
+  .banner { margin: 0 0 26px; padding: 15px 20px; background: #eef2ea; border: 1px solid #c2d3b4; border-left-width: 4px; border-radius: 4px; font-size: 14px; color: #34402c; max-width: 84ch; }
+  .banner b { color: #1c1a17; }
+  .banner code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; background: #e0e8d6; padding: 1px 5px; border-radius: 3px; }
+
+  .row {
+    display: grid; grid-template-columns: 210px 58px 1fr 118px;
+    gap: 14px; align-items: baseline;
+    padding: 10px 4px; border-bottom: 1px solid #e4ddcd;
+  }
+  .row:last-child { border-bottom: 0; }
+  .row .sp { font-weight: 600; font-size: 15px; }
+  .row .pg { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; color: #8a8478; letter-spacing: 0.06em; text-transform: uppercase; }
+  .row .dt { font-size: 13.5px; color: #322f2a; }
+  .row .dt code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; background: #efeadd; padding: 1px 5px; border-radius: 3px; }
+  .badge { justify-self: start; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; white-space: nowrap; }
+  .b-open  { background: #fbf0e0; color: #8a5a26; border: 1px solid #d8ab63; }
+  .b-done  { background: #e7f0e0; color: #3f6b26; border: 1px solid #98c078; }
+  .stat.done .n { color: #436b2c; }
+  .b-note  { background: #ece7f3; color: #5a4a86; border: 1px solid #b0a4d0; }
+  .b-dpi   { background: #f2e8f0; color: #7a4a76; border: 1px solid #c8a4c2; }
+  .sev { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10px; color: #a09a8c; }
+
+  .clean-list { font-size: 13.5px; color: #4a463f; line-height: 1.9; }
+  .clean-list b { color: #1c1a17; font-weight: 600; }
+
+  .foot { margin-top: 8px; font-size: 12.5px; color: #8a8478; max-width: 84ch; }
+  .foot code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Preflight Report</h1>
+  <p class="lede">Full press-preflight sweep of every page on the live render — bounds / safe-area / gutter,
+  type-size floor, body-prose uniformity, drop caps, and photo DPI. Measured against the authoritative
+  Blurb geometry in <code style="font-family:ui-monospace,Menlo,monospace;font-size:12px">CLAUDE.md</code>:
+  0.25&nbsp;in outer/top/bottom safe, 0.50&nbsp;in binding safe (left-page&nbsp;x&nbsp;&le;&nbsp;1212.5,
+  right-page&nbsp;x&nbsp;&ge;&nbsp;1337.5), gutter zone 1237.5–1312.5, 12&nbsp;px type floor.</p>
+  <p class="meta" id="stamp">Full-sweep preflight of the live render · 51 pages · 2026-07-12</p>
+
+  <div class="counts" id="counts"></div>
+
+  <div class="banner">
+    <b>Two things fixed in the preflight tooling itself this pass</b> (both affected earlier reports):
+    (1) <b>root detection was transform-blind</b> — <code>preflight.js</code> grabbed <code>&lt;html&gt;</code>
+    (scale 1) instead of the design-canvas content card, so at any non-1&nbsp;zoom the screen→design mapping
+    was wrong. Every geometry sweep has been re-run with the corrected, transform-aware root. (2) The font
+    floor was raised <code>10&nbsp;px&nbsp;→&nbsp;12&nbsp;px</code> and the binding-safe bound tightened from the
+    gutter edge (1237.5/1312.5) to the true 0.50&nbsp;in line (1212.5/1337.5). Consequence: the MLB Timeline
+    "19" label, previously cleared as a false positive from a <code>getBBox</code> user-space read (1211),
+    actually paints at design <code>x=1225</code> once its transform is applied — a real finding, listed below.
+  </div>
+
+  <section id="s-bindL"></section>
+  <section id="s-bindR"></section>
+  <section id="s-bottom"></section>
+  <section id="s-font"></section>
+  <section id="s-prose"></section>
+  <section id="s-dpi"></section>
+
+  <section>
+    <h2>Clean — no bounds / type / prose findings <span class="sub" id="cleanCount"></span></h2>
+    <p class="groupnote" style="margin-bottom:8px">Geometry, type floor, prose uniformity and drop caps all pass.
+    Many of these still carry small raster <em>logos</em> below 300&nbsp;DPI (see the DPI section) — that is a
+    shared-asset issue, not a per-page layout defect.</p>
+    <p class="clean-list" id="cleanList"></p>
+  </section>
+
+  <p class="foot">
+    <b>Photo DPI is now live</b> — the image slots are filled, so DPI was decoded from true pixels (not the
+    preview's downsampled <code>naturalWidth</code>). Hero and in-page document <em>photographs</em> pass
+    (300–395&nbsp;DPI); every sub-300 flag is a small raster <em>logo/mark</em>. <b>Cover &amp; single-page matter</b>
+    were swept with a symmetric 0.25&nbsp;in safe box (the harness can't tell which edge binds on a lone page);
+    treat the binding side as needing 0.50&nbsp;in when you place art there.
+    Diagram instrument ticks (0/30/60/90/N, decade labels) at 8.3–11.9&nbsp;px are within the &ge;8.3&nbsp;px
+    instrument allowance and are not flagged as data-type failures.
+  </p>
+</div>
+
+<script>
+  // status: "open" | "note" | "dpi"
+  const findings = {
+    bindL: {
+      title: "\u2460 Left-page content past the 0.50\u2009in binding-safe",
+      sub: "left-page x must be \u2264 1212.5",
+      note: "RESOLVED. These were empty title-CONTAINER boxes whose right edge sat at the module\u2019s right offset; the actual ink is left-set and stops well short of the fold. Fixed by pulling each container\u2019s right offset inside 1212.5 (glyphs never moved). All four now measure x1 \u2264 1211.",
+      items: [
+        { sp: "Progressive Field",   pg: "Left",  status: "done", sev: "x1=1209",  dt: "Survey-footer <code>.pf-geofoot</code> right offset 56\u2009\u2192\u200966\u2009px \u2014 address line box ends at <code>x1=1209</code>." },
+        { sp: "American Family Field", pg: "Left", status: "done", sev: "x1=1211", dt: "<code>.amf-hero-title</code> right offset 58\u2009\u2192\u200964\u2009px \u2014 box ends at <code>x1=1211</code>; glyphs end near x=584." },
+        { sp: "Nationals Park",      pg: "Left",  status: "done", sev: "x1=1211",  dt: "<code>.np-hero-head</code> right offset 60\u2009\u2192\u200964\u2009px \u2014 box ends at <code>x1=1211</code>." },
+        { sp: "Oracle Park",         pg: "Left",  status: "done", sev: "x1=1211",  dt: "<code>.op-hero-title</code> right offset 60\u2009\u2192\u200964\u2009px \u2014 box ends at <code>x1=1211</code>." }
+      ]
+    },
+    bindR: {
+      title: "\u2461 Right-page content inside the 0.50\u2009in binding-safe",
+      sub: "right-page x should be \u2265 1337.5",
+      note: "Right-page content whose LEFT edge sits inside the fold-side binding margin.",
+      items: [
+        { sp: "The Ballpark & the City \u2014 1", pg: "Right", status: "done", sev: "x0=1339", dt: "RESOLVED. Real ink (section numerals I/II, drop-cap bodies, captions \u2014 11 runs) shared <code>left: 1335</code>; column left offset shifted 1335\u2009\u2192\u20091339 (widths unchanged, no rewrap). All now at <code>x0=1339</code> \u2265 1337.5." }
+      ]
+    },
+    bottom: {
+      title: "\u2462 Bottom-safe",
+      sub: "y should be \u2264 1050.5",
+      note: "",
+      items: [
+        { sp: "Safeco Field", pg: "Right", status: "done", sev: "y1=1048.5", dt: "RESOLVED. Prose leading tightened (<code>.tm-prose p</code> 24\u2009\u2192\u200923px) and <code>.tm-visit</code> nudged up (<code>top</code> 878\u2009\u2192\u2009875) \u2014 footer <code>\u201cFirst pitch 7:05\u2009PM\u2009PDT \u00b7 Att. 46,171\u201d</code> now bottoms at <code>y1=1048.5</code> \u2264 1050.5." }
+      ]
+    },
+    font: {
+      title: "\u2463 Type-size floor (< 12\u2009px reader text)",
+      sub: "12\u2009px hard floor (\u22488.5\u2009pt)",
+      note: "Readable body/label text below the 12\u2009px hard floor. (Instrument ticks are exempt \u2265 8.3\u2009px and not listed.) The earlier report's \u201cmatter passed the type floor\u201d note predates the corrected 12\u2009px floor.",
+      items: [
+        { sp: "Book Intro", pg: "Single", status: "note", sev: "11px (accepted)", dt: "ACCEPTED EXCEPTION (this page only). All non-title Stadium Era text — <code>.jc-gen-era-desc</code> and <code>.jc-gen-parks</code> (incl. the 16-park Retro Classic column) — is now uniformly <b>11px</b>, no overflow. The six-column generational overview is too tight for a true 12px without dropping content, so 11px is signed off as the floor for this spread." },
+        { sp: "Book Intro", pg: "Single", status: "done", sev: "y0=38.5", dt: "RESOLVED. <code>.jc-inner</code> top padding 40\u2009\u2192\u200950px \u2014 headline + deck nudged down (headline ink top now <code>y0=38.5</code> \u2265 37.5); the <code>flex:1</code> mosaic absorbed the shift so bottom ink stays at 1045." }
+      ]
+    },
+    prose: {
+      title: "\u2464 Body-prose uniformity",
+      sub: "one size / tracking / leading per prose block",
+      note: "",
+      items: [
+        { sp: "Oracle Park", pg: "Right", status: "note", sev: "leading", dt: "<code>.op-ctx-rest</code> two paragraphs carry inline <code>line-height</code> overrides (<b>20px</b> and <b>18.3px</b>) vs the block\u2019s 18\u2009px \u2014 deliberate column-balancing tuning, but non-uniform per the rule. Unify only if the two inner columns still bottom-align afterward." }
+      ]
+    },
+    dpi: {
+      title: "\u2465 Photo / logo DPI (< 300)",
+      sub: "photos pass; sub-300 flags are raster logos",
+      note: "RESOLVED \u2014 all logo/mark DPI flags cleared. The shared MLB silhouette and the per-spread team marks (SunTrust, Royals crown, Chase, Marlins, Three Rivers) are now vector SVGs, so they are resolution-independent at any placed size. American Family Field's ball-in-glove was the last raster and is now a full-color vector SVG too. PHOTOGRAPHS already passed everywhere (300\u2013395\u2009DPI).",
+      items: [
+      ]
+    }
+  };
+
+  const clean = [
+    "Rogers Centre","Globe Life Field","Yankee Stadium 2009","Fenway Park","Target Field","Anaheim Stadium",
+    "PNC Park","Dodger Stadium","Comiskey Park","New Comiskey Park","Wrigley Field","Yankee Stadium",
+    "Tiger Stadium","Cleveland Municipal Stadium","Milwaukee County Stadium","Memorial Stadium","Shea Stadium",
+    "Riverfront Stadium","Three Rivers Stadium","Veterans Stadium","Royals Stadium","San Diego Stadium",
+    "Mile High Stadium","Oriole Park at Camden Yards","Coors Field","Chase Field","Comerica Park",
+    "Minute Maid Park","Great American Ball Park","Citizens Bank Park","Petco Park","Busch Stadium",
+    "Marlins Park","SunTrust Park","Sutter Health Park","Tropicana Field","Citi Field","The Ballpark & the City \u2014 2",
+    "Road Trips Overview","Front Cover","All Trip Games","Ballparks Visited","Closing Page"
+  ];
+
+  const badge = (s) => {
+    const map = { open: ["b-open","Open"], note: ["b-note","Note"], dpi: ["b-dpi","DPI"], done: ["b-done","Fixed"] };
+    const [cls, lbl] = map[s] || map.open;
+    return `<span class="badge ${cls}">${lbl}</span>`;
+  };
+
+  function renderGroup(id, g) {
+    const el = document.getElementById(id);
+    const rows = g.items.map(it => `
+      <div class="row">
+        <div class="sp">${it.sp}<div class="sev">${it.sev || ""}</div></div>
+        <div class="pg">${it.pg}</div>
+        <div class="dt">${it.dt}</div>
+        ${badge(it.status)}
+      </div>`).join("");
+    el.innerHTML = `
+      <h2>${g.title} <span class="sub">${g.sub}</span></h2>
+      ${g.note ? `<p class="groupnote">${g.note}</p>` : ""}
+      ${rows}`;
+  }
+  renderGroup("s-bindL",  findings.bindL);
+  renderGroup("s-bindR",  findings.bindR);
+  renderGroup("s-bottom", findings.bottom);
+  renderGroup("s-font",   findings.font);
+  renderGroup("s-prose",  findings.prose);
+  renderGroup("s-dpi",    findings.dpi);
+
+  document.getElementById("cleanList").innerHTML = clean.map(c => `<b>${c}</b>`).join(" &middot; ");
+  document.getElementById("cleanCount").textContent = clean.length + " pages";
+
+  const all = Object.values(findings).flatMap(g => g.items);
+  const nDone = all.filter(i => i.status === "done").length;
+  const nOpen = all.filter(i => i.status === "open").length;
+  const nNote = all.filter(i => i.status === "note").length;
+  const nDpi  = all.filter(i => i.status === "dpi").length;
+  document.getElementById("counts").innerHTML = `
+    <div class="stat open"><div class="n">${nOpen}</div><div class="l">Open findings</div></div>
+    <div class="stat done"><div class="n">${nDone}</div><div class="l">Fixed</div></div>
+    <div class="stat note"><div class="n">${nNote}</div><div class="l">Borderline / intentional</div></div>
+    <div class="stat dpi"><div class="n">${nDpi}</div><div class="l">DPI (logos)</div></div>
+    <div class="stat clean"><div class="n">${clean.length}</div><div class="l">Clean pages</div></div>`;
+</script>
+</body>
+</html>

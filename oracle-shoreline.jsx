@@ -37,7 +37,7 @@
 
   // page-coords annotations (tuned to the baked registration; in the water zones)
   const LABELS = [
-    { x: 1115, y: 665, t: "CHINA BASIN", rot: 0, anchor: "middle" }
+    { x: 1115, y: 705, t: "CHINA BASIN", rot: 0, anchor: "middle" }
   ];
   const COVE = { x: 830, y: 523 }; // McCovey Cove marker — off the right-field corner (page coords)
 

@@ -168,7 +168,7 @@
         /* ---- identity / classification — the main roof track ---- */
         e("div", { className: "amf-identity" },
           e("div", { className: "amf-id-mark" },
-            e("img", { src: "assets/brewers-ball-in-glove.png", alt: "Milwaukee Brewers" })),
+            e("img", { src: "assets/milwaukee-brewers-ball-in-glove.svg", alt: "Milwaukee Brewers" })),
           D.identity.map((row, i) =>
             e("div", { className: "amf-id-cell", key: i },
               e("div", { className: "rl" }, row[0]),

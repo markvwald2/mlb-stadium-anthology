@@ -25,7 +25,7 @@
     introLead: "Let\u2019s see\u2026 Yes, Yes, No, Yes\u2026",
     intro:
       "Between 1986 and 2025, twelve trips took us to ballparks across the country and across the " +
-      "major leagues. Expertly planned around efficient routes and packed schedules, each game " +
+      "major leagues. Expertly planned around efficient routes, roadside hotels, and packed schedules, each game " +
       "checked another stadium off the poster that hung on our bedroom wall.",
 
     // right-page "by the numbers" cluster — six metrics, distinct from the

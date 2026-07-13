@@ -162,7 +162,7 @@
                       e("div", { className: "op-ctx-rest" },
                         e("div", { className: "op-ctx-figgap", "aria-hidden": "true" }),
                         e("p", null, D.context[2]),
-                        e("p", null, D.context[3]))
+                        e("p", { style: { letterSpacing: "-0.2px" } }, D.context[3]))
                     )
                   )))),
 

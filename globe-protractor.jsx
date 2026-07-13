@@ -75,19 +75,21 @@
           e("linearGradient", { id: "glfProtGrass", x1: "0", y1: "0", x2: "0", y2: "1" },
             e("stop", { offset: "0", stopColor: turfHi }), e("stop", { offset: "1", stopColor: turf }))
         ),
-        e("g", { transform: "translate(0 25) rotate(" + deg + " " + C[0] + " " + C[1] + ")" },
-          e("path", { d: grassPath, fill: "url(#glfProtGrass)", stroke: wallInk, strokeWidth: 1.6, strokeLinejoin: "round" }),
-          e("path", { d: dia, fill: clay, stroke: clayEdge, strokeWidth: 1, strokeLinejoin: "round", opacity: 0.92 })
-        ),
-        e("path", { d: protArc, fill: "none", stroke: ink3, strokeWidth: 1.1, opacity: 0.6 }),
-        ticks, nums,
-        e("text", { x: nlab[0], y: nlab[1] - 30, textAnchor: "middle", style: { fontFamily: "'Saira Condensed',sans-serif", fontWeight: 700, fontSize: "26px", fill: ink, letterSpacing: ".04em" } }, "N"),
-        e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink2, strokeWidth: 1.1, strokeDasharray: "3 3" }),
-        e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2.2, strokeLinecap: "round" }),
-        e("polygon", { points: head, fill: black }),
-        e("circle", { cx: C[0], cy: C[1], r: 3, fill: accent }),
-        e(Chip, { x: bc.x + 37, y: bc.y, text: deg + "\u00b0", size: 37, tone: "accent", padX: 7 }),
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1] + 25, text: c.t, size: 37 }))
+        e("g", { transform: "translate(0 25)" },
+          e("g", { transform: "rotate(" + deg + " " + C[0] + " " + C[1] + ")" },
+            e("path", { d: grassPath, fill: "url(#glfProtGrass)", stroke: wallInk, strokeWidth: 1.6, strokeLinejoin: "round" }),
+            e("path", { d: dia, fill: clay, stroke: clayEdge, strokeWidth: 1, strokeLinejoin: "round", opacity: 0.92 })
+          ),
+          e("path", { d: protArc, fill: "none", stroke: ink3, strokeWidth: 1.1, opacity: 0.6 }),
+          ticks, nums,
+          e("text", { x: nlab[0], y: nlab[1] - 5, textAnchor: "middle", style: { fontFamily: "'Saira Condensed',sans-serif", fontWeight: 700, fontSize: "26px", fill: ink, letterSpacing: ".04em" } }, "N"),
+          e("line", { x1: C[0], y1: C[1], x2: polar(C, PR, 0)[0], y2: polar(C, PR, 0)[1], stroke: ink2, strokeWidth: 1.1, strokeDasharray: "3 3" }),
+          e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2.2, strokeLinecap: "round" }),
+          e("polygon", { points: head, fill: black }),
+          e("circle", { cx: C[0], cy: C[1], r: 3, fill: accent }),
+          e(Chip, { x: bc.x + 37, y: bc.y, text: deg + "\u00b0", size: 37, tone: "accent", padX: 7 }),
+          chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 37 }))
+        )
       )
     );
   }

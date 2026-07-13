@@ -44,7 +44,7 @@ window.RIVERFRONT = {
   opening_day: "Jun 30, 1970",
   final_game: "Sep 22, 2002",
   demolition_year: "2002",
-  renovations: "Artificial turf, seating, scoreboard, luxury, and football/baseball updates; partial seating removal before demolition",
+  renovations: "Artificial turf, seating, scoreboard, luxury, and football/ baseball updates; partial seating removal before demolition",
 
   // ---- Field geometry ----
   left_field_distance: "330 ft",

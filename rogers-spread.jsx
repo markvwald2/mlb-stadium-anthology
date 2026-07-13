@@ -48,7 +48,7 @@
       e("div", { className: "rc-frow", key: i },
         e("div", { className: "k" }, row[0]),
         e("div", { className: "v" },
-          e("span", { className: "vm" }, row[1]),
+          e("span", { className: "vm", style: row[3] && row[3].vm ? row[3].vm : null }, row[1]),
           row[2] ? e("span", { className: "vs" }, row[2]) : null
         )
       )

@@ -94,7 +94,7 @@
       { year: "2018", name: "Florida / Georgia", accent: "#2C4A6E", col: 2, games: [
         g("May 26", "Marlins Park",              "Marlins", "Nationals"),
         g("May 27", "Tropicana Field",           "Rays", "Orioles"),
-        g("May 28", "SunTrust Stadium",          "Braves", "Mets"),
+        g("May 28", "SunTrust Park",             "Braves", "Mets"),
       ] },
       { year: "2019", name: "Northeast v2", accent: "#25345A", col: 2, games: [
         g("May 1",  "Nationals Park",            "Nationals", "Cardinals"),

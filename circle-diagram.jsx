@@ -73,7 +73,6 @@
           React.createElement("line", { x1: home[0], y1: home[1], x2: cfPt[0], y2: cfPt[1], stroke: red, strokeWidth: 0.9, strokeDasharray: "3 3", opacity: 0.8 }),
           // infield
           React.createElement("path", { d: diamond, fill: "none", stroke: slate, strokeWidth: 1 }),
-          React.createElement("circle", { cx: mound[0], cy: mound[1], r: 2.4, fill: slate }),
           React.createElement("rect", { x: home[0] - 2.4, y: home[1] - 2.4, width: 4.8, height: 4.8, fill: red }),
           // distance labels
           React.createElement("text", { x: rfPole[0] + 6, y: rfPole[1] - 4, className: "rf-fd-dist" }, rf),

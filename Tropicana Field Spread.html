@@ -50,7 +50,7 @@
 
   .tf-page { position: absolute; top: 0; height: 1088px; }
   .tf-left  { left: 0; width: 1275px; background: #0d1217; overflow: hidden; }
-  .tf-right { left: 1275px; width: 1275px; background: var(--concrete); overflow: hidden; }
+  .tf-right { left: 1275px; width: 1275px; background: var(--concrete); overflow: hidden; border-left: 20px solid transparent; }
   .tf-right::after { content: ""; position: absolute; inset: 0; pointer-events: none;
     background-image: var(--grain); background-size: 300px 210px; opacity: .42; mix-blend-mode: multiply; }
   .tf-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px;
@@ -67,7 +67,7 @@
       linear-gradient(0deg, rgba(4,10,20,.6) 0%, rgba(5,12,23,.32) 12%, rgba(6,14,27,.08) 25%, rgba(6,14,27,0) 38%);
   }
 
-  .tf-folio { position: absolute; right: 56px; top: 54px; z-index: 5;
+  .tf-folio { position: absolute; right: 66px; top: 54px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .24em;
     color: rgba(12,44,86,.9); text-transform: uppercase; display: flex; gap: 10px; align-items: center;
     text-shadow: 0 1px 5px rgba(255,255,255,.6); }

@@ -99,7 +99,7 @@
                 React.createElement("img", { className: "team-logo", src: "assets/royals-logo.svg", alt: "Kansas City Royals" }),
                 React.createElement("div", { className: "tx" },
                   React.createElement("div", { className: "rs-lbl" }, "Team"),
-                  React.createElement("div", { className: "rv" }, D.team_name))
+                  React.createElement("div", { className: "rv", style: { letterSpacing: "-0.7px" } }, D.team_name))
               ),
               React.createElement("div", { className: "cell league-cell" },
                 React.createElement("img", { className: "league-logo", src: "assets/american-league-logo.png", alt: "American League" }),
@@ -207,7 +207,7 @@
                       React.createElement("img", { className: "mlogo", src: "assets/royals-logo.svg", alt: "Kansas City Royals" }))
                   ),
                   BoxScore(D.box),
-                  React.createElement("div", { className: "rs-vcols", style: { marginTop: 10 } },
+                  React.createElement("div", { className: "rs-vcols pit", style: { marginTop: 10 } },
                     React.createElement("div", null,
                       vrow("Home SP", D.home_starting_pitcher),
                       vrow("Away SP", D.away_starting_pitcher)

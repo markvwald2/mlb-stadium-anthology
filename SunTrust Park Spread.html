@@ -64,7 +64,7 @@
 
   .st-hero-logo { position: absolute; right: 60px; bottom: 58px; height: 70px; width: auto; z-index: 5;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,.55)); }
-  .st-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
+  .st-folio { position: absolute; right: 66px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(231,224,206,.64); text-transform: uppercase; }
   .st-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
@@ -79,7 +79,7 @@
   .st-roofline .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .3em;
     color: rgba(231,224,206,.74); text-transform: uppercase; flex: none; }
 
-  .st-hero-title { position: absolute; left: 58px; right: 58px; bottom: 96px; z-index: 5; }
+  .st-hero-title { position: absolute; left: 58px; right: 66px; bottom: 96px; z-index: 5; }
   .st-eyebrow { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 16px;
     letter-spacing: .34em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
   .st-name {
@@ -112,7 +112,7 @@
 
   /* ============ RIGHT PAGE / THE SITE PLAN ============ */
   /* 40px padding clears the 0.25in safe inset + gutter zone (content x>=1315). */
-  .st-rp { position: absolute; inset: 0; padding: 38px 52px 40px 40px;
+  .st-rp { position: absolute; inset: 0; padding: 38px 52px 40px 64px;
     display: flex; flex-direction: column; z-index: 2; }
 
   /* ---- top metadata ribbon ---- */
@@ -263,7 +263,7 @@
     border-top: 2px solid var(--navy); padding-top: 12px; }
   .st-context .st-h { border-bottom: 0; padding-bottom: 0; margin-bottom: 9px; }
   .st-prose { column-count: 2; column-gap: 24px; }
-  .st-prose p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 1.44;
+  .st-prose p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 12.5px; line-height: 1.44; letter-spacing: -0.6px;
     color: var(--ink); text-align: justify; hyphens: auto; break-inside: avoid; }
   .st-prose p + p { text-indent: 13px; }
   .st-prose p:last-child { margin-bottom: 0; }
@@ -276,10 +276,11 @@
   .st-lc-cols { flex: 0 0 auto; display: grid; grid-template-columns: 1fr 1fr; column-gap: 22px; align-items: start; }
   .st-lc-col { display: flex; flex-direction: column; justify-content: flex-start; }
   .st-lc-col .st-frow { grid-template-columns: 92px 1fr; padding: 7px 0; }
+  .st-lc-col:last-child .st-frow { grid-template-columns: 62px 1fr; }
   .st-lc-col .st-frow .v .vm { font-size: 12px; line-height: 1.3; }
   .st-lc-col .st-frow .v .vs { font-size: 12px; }
   .st-finnote { margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--rule);
-    display: grid; grid-template-columns: 64px 1fr; column-gap: 10px; align-items: start; }
+    display: grid; grid-template-columns: 80px 1fr; column-gap: 10px; align-items: start; }
   .st-finnote .fk { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: .04em;
     text-transform: uppercase; color: var(--scarlet); line-height: 1.3; }
   .st-finnote .fv { font-family: "Spectral", serif; font-size: 12px; line-height: 1.4; color: var(--ink-2); }

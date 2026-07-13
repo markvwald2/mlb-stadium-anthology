@@ -57,7 +57,7 @@
   .rs-page { position: absolute; top: 0; height: 1088px; }
   .rs-left  { left: 0; width: 1275px; overflow: hidden;
     background: linear-gradient(176deg, #16407A 0%, #0E2E58 46%, #081E3B 100%); }
-  .rs-right { left: 1275px; width: 1275px; background: var(--paper); }
+  .rs-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; border-left: 26px solid transparent; }
   .rs-gutter {
     display: none;
   }
@@ -211,6 +211,7 @@
 
   .rs-vcols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 22px; }
   .rs-vrow { display: grid; grid-template-columns: 84px 1fr; gap: 8px; padding: 3.5px 0; align-items: baseline; }
+  .rs-vcols.pit .rs-vrow { grid-template-columns: 60px 1fr; }
 
   .rs-matchup { flex: 1; display: flex; align-items: center; justify-content: center; gap: 18px; margin: 8px 0; }
   .rs-matchup .mlogo { height: 66px; width: auto; flex: none; display: block; }

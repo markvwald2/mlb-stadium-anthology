@@ -63,7 +63,7 @@
     background:
       linear-gradient(0deg, rgba(10,8,6,.55) 0%, rgba(10,8,6,.2) 12%, rgba(10,8,6,0) 24%); }
 
-  .bz-folio { position: absolute; right: 58px; bottom: 58px; z-index: 5;
+  .bz-folio { position: absolute; right: 66px; bottom: 58px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(233,226,210,.66); text-transform: uppercase; }
   .bz-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
@@ -80,7 +80,7 @@
     color: rgba(233,226,210,.74); text-transform: uppercase; flex: none; }
 */
 
-  .bz-hero-title { position: absolute; left: 58px; right: 58px; top: 56px; z-index: 5; }
+  .bz-hero-title { position: absolute; left: 58px; right: 66px; top: 56px; z-index: 5; }
   .bz-name {
     position: relative; margin: 0; font-family: "Abril Fatface", Georgia, serif; font-weight: 400;
     font-size: 100px; line-height: .9; letter-spacing: 0; text-transform: uppercase; white-space: nowrap;
@@ -114,7 +114,7 @@
   .bz-armature { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 0; pointer-events: none; }
 
   /* ---- five documentary photo bays across the top (with captions) ---- */
-  .bz-strip { position: absolute; left: 38px; top: 44px; width: 1199px;
+  .bz-strip { position: absolute; left: 64px; top: 44px; width: 1173px;
     display: flex; gap: 18px; align-items: flex-start; z-index: 4; }
   .bz-bay { flex: 1 1 0; min-width: 0; margin: 0; display: flex; flex-direction: column; }
   .bz-bay image-slot { width: 100%; height: 196px; display: block;
@@ -125,7 +125,7 @@
     color: var(--ink-2); line-height: 1.2; }
 
   /* ---- metadata ribbon — the bridge track ---- */
-  .bz-ribbon { position: absolute; left: 38px; top: 252px; width: 1199px; z-index: 6;
+  .bz-ribbon { position: absolute; left: 64px; top: 252px; width: 1173px; z-index: 6;
     display: flex; align-items: stretch;
     border-top: 2px solid var(--navy); border-bottom: 2px solid var(--navy);
     background: linear-gradient(0deg, rgba(223,214,192,.5), rgba(244,238,223,.85)); }
@@ -143,7 +143,7 @@
     letter-spacing: .12em; text-transform: uppercase; color: var(--red); white-space: nowrap; }
   .bz-rib-cell .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px;
     letter-spacing: .01em; text-transform: uppercase; color: var(--ink); line-height: 1.1; }
-  .bz-rib-cell .rl-ln { display: block; }
+  .bz-rib-cell .rl-ln { display: block; letter-spacing: -0.07px; }
   .bz-rib-cell .rv.vorder { display: flex; align-items: baseline; gap: 6px; }
   .bz-rib-cell .vo-num { font-weight: 700; font-size: 27px; color: var(--red); line-height: 1; }
   .bz-rib-cell .vo-of { font-weight: 600; font-size: 13px; color: var(--ink); line-height: 1; white-space: nowrap; }
@@ -159,9 +159,9 @@
 
   /* ---- BAY 1 : Stadium Facts + protractor ---- */
   .bz-col { position: absolute; z-index: 6; }
-  .bz-col-facts   { left: 38px;  top: 342px; width: 285px; bottom: 40px; }
-  .bz-col-context { left: 347px; top: 342px; width: 408px; bottom: 40px; }
-  .bz-col-visit   { left: 781px; top: 342px; width: 456px; bottom: 40px; }
+  .bz-col-facts   { left: 64px;  top: 342px; width: 285px; bottom: 40px; }
+  .bz-col-context { left: 373px; top: 342px; width: 408px; bottom: 40px; }
+  .bz-col-visit   { left: 807px; top: 342px; width: 430px; bottom: 40px; }
 
   .bz-facts { display: flex; flex-direction: column; }
   .bz-frow { display: grid; grid-template-columns: 78px 1fr; gap: 9px; align-items: baseline;

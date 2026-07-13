@@ -7,7 +7,6 @@
 (function () {
   const e = React.createElement;
   const D = window.CHASE;
-  const ChaseField = window.ChaseField;
   const ChaseProtractor = window.ChaseProtractor;
   const SEDONA = "#A3392B";
 

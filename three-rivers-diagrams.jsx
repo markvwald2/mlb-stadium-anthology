@@ -45,7 +45,6 @@
         e("line", { x1: home[0], y1: home[1], x2: lfPole[0], y2: lfPole[1], stroke: chalk, strokeWidth: 1.3, opacity: .85 }),
         e("line", { x1: home[0], y1: home[1], x2: rfPole[0], y2: rfPole[1], stroke: chalk, strokeWidth: 1.3, opacity: .85 }),
         e("path", { d: dia, fill: clay, stroke: chalk, strokeWidth: 1.4, strokeLinejoin: "round" }),
-        e("circle", { cx: mound[0], cy: mound[1], r: 3.4, fill: clay, stroke: chalk, strokeWidth: .9 }),
         base(b1, "b1"), base(b2, "b2"), base(b3, "b3"), base(home, "hp", 5.2),
         e("circle", { cx: apex[0], cy: apex[1], r: 2.4, fill: GOLD }),
         dist(apex[0], apex[1] - 9, cf + " FT", "middle"),

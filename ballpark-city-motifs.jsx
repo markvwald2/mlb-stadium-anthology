@@ -200,32 +200,46 @@
   }
 
   // ── era timeline rail (Spread 1 left margin) ─────────────────────────────
-  function TimelineRail({ items, x, y, h, headLabel }) {
-    const top = 64; // first era baseline offset
-    const step = (h - top) / (items.length - 1);
+  function TimelineRail({ items, x, y, h, headLabel, gap = 22 }) {
+    // Items flow naturally with a CONSTANT gap between them, so eras with
+    // shorter descriptions don't leave an oversized hole below them. The spine
+    // is measured from the first dot centre to the last dot centre.
+    const listRef = React.useRef(null);
+    const firstItem = React.useRef(null);
+    const lastItem = React.useRef(null);
+    const [spine, setSpine] = React.useState({ top: 0, height: 0 });
+    React.useLayoutEffect(() => {
+      if (!firstItem.current || !lastItem.current) return;
+      const DOT_CENTER = 3 + 6.5; // dot top offset + half its 13px height
+      const t0 = firstItem.current.offsetTop + DOT_CENTER;
+      const t1 = lastItem.current.offsetTop + DOT_CENTER;
+      setSpine({ top: t0, height: t1 - t0 });
+    }, [items]);
     return (
       <div className="bc-region" style={{ left: x, top: y, width: 150, height: h }}>
-        <div className="bc-rail-head" style={{ marginBottom: 18 }}>
+        <div className="bc-rail-head" style={{ marginBottom: 22 }}>
           {headLabel.map((ln, i) => <div key={i}>{ln}</div>)}
         </div>
-        {/* spine */}
-        <div style={{ position: "absolute", left: 5, top: top + 5, width: 2, height: step * (items.length - 1), background: C.rule2 }}></div>
-        {items.map((it, i) => {
-          const ty = top + i * step;
-          return (
-            <div key={it.key} style={{ position: "absolute", left: 0, top: ty, width: 150 }}>
-              <div style={{ position: "absolute", left: -1, top: 3, width: 13, height: 13, borderRadius: "50%", background: it.color, boxShadow: "0 0 0 3px var(--paper)" }}></div>
-              <div className="bc-era-date" style={{ marginLeft: 26 }}>{it.dates}</div>
-              <div style={{ marginLeft: 26, marginTop: 1, marginBottom: 0 }}>
-                <EraIcon kind={it.icon} size={28} color={it.color} />
-              </div>
-              <div className="bc-era-name" style={{ marginLeft: 26, ...(it.nameStyle || {}) }}>
-                {Array.isArray(it.name) ? it.name.join(" ") : it.name}
-              </div>
-              <div className="bc-era-desc" style={{ marginLeft: 26 }}>{it.desc}</div>
-            </div>);
+        <div ref={listRef} style={{ position: "relative", display: "flex", flexDirection: "column", gap: gap }}>
+          {/* spine */}
+          <div style={{ position: "absolute", left: 5, top: spine.top, width: 2, height: spine.height, background: C.rule2 }}></div>
+          {items.map((it, i) => {
+            const ref = i === 0 ? firstItem : i === items.length - 1 ? lastItem : null;
+            return (
+              <div key={it.key} ref={ref} style={{ position: "relative", width: 150 }}>
+                <div style={{ position: "absolute", left: -1, top: 3, width: 13, height: 13, borderRadius: "50%", background: it.color, boxShadow: "0 0 0 3px var(--paper)" }}></div>
+                <div className="bc-era-date" style={{ marginLeft: 26 }}>{it.dates}</div>
+                <div style={{ marginLeft: 26, marginTop: 1, marginBottom: 0 }}>
+                  <EraIcon kind={it.icon} size={28} color={it.color} />
+                </div>
+                <div className="bc-era-name" style={{ marginLeft: 26, ...(it.nameStyle || {}) }}>
+                  {Array.isArray(it.name) ? it.name.join(" ") : it.name}
+                </div>
+                <div className="bc-era-desc" style={{ marginLeft: 26 }}>{it.desc}</div>
+              </div>);
 
-        })}
+          })}
+        </div>
       </div>);
 
   }

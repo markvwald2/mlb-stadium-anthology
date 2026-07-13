@@ -307,8 +307,8 @@
 
         {/* ---- fold-split 1950 marker: the mid-century decade falls on the binding,
              so its label is split "19" | gutter | "50" and reads across the spread ---- */}
-        <text x={1211} y={CHART_TOP - 9} textAnchor="end" fontFamily="'Space Mono', monospace" fontSize="14" fill={C.ink2} letterSpacing="0.04em">19</text>
-        <text x={1340} y={CHART_TOP - 9} textAnchor="start" fontFamily="'Space Mono', monospace" fontSize="14" fill={C.ink2} letterSpacing="0.04em">50</text>
+        <text x={1205} y={CHART_TOP - 9} textAnchor="end" fontFamily="'Space Mono', monospace" fontSize="14" fill={C.ink2} letterSpacing="0.04em">19</text>
+        <text x={1346} y={CHART_TOP - 9} textAnchor="start" fontFamily="'Space Mono', monospace" fontSize="14" fill={C.ink2} letterSpacing="0.04em">50</text>
 
         {/* ---- franchise rail labels (single line, auto-fit) ---- */}
         {lanes.map((f, i) => {
@@ -333,18 +333,23 @@
         })}
 
         {/* ---- inside labels ---- */}
-        {layout.bars.filter(b => b.inside).map((b, k) => (
+        {layout.bars.filter(b => b.inside).map((b, k) => {
+          const rawSpanX = b.spanX != null ? b.spanX : (b.x1 - 7);
+          // clamp left-page near-fold span year-labels out of the 0.5in binding-safe
+          const spanX = (rawSpanX > 1198 && rawSpanX < 1262) ? 1194 : rawSpanX;
+          return (
           <g key={"il" + k}>
             <text x={b.x0 + 7} y={b.cy} dominantBaseline="central" textAnchor="start"
               fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="11" fill={C.paperHi}
               letterSpacing="0.01em">{b.t.stadium}</text>
             {b.span ? (
-              <text x={b.spanX != null ? b.spanX : (b.x1 - 7)} y={b.cy} dominantBaseline="central" textAnchor="end"
+              <text x={spanX} y={b.cy} dominantBaseline="central" textAnchor="end"
                 fontFamily="'Space Mono', monospace" fontSize="12" fill={b.t.visited ? "rgba(244,238,223,.7)" : "rgba(244,238,223,.72)"}
                 letterSpacing="0.02em">{b.span}</text>
             ) : null}
           </g>
-        ))}
+          );
+        })}
 
         {/* ---- rename notches ---- */}
         {layout.ticks.map((t, k) => (

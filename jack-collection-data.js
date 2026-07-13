@@ -8,7 +8,7 @@
 
   window.JACK_COLLECTION = {
     headline: { a: "All 30 Current Ballparks", b: "42 Stadiums Total" },
-    deck: "Visits spanning every active Major League Baseball ballpark, plus twelve predecessor stadiums visited across eight decades.",
+    deck: "Visits spanning every active Major League Baseball stadium, plus twelve predecessor ballparks visited across eight decades.",
 
     // documentary mosaic — 12-col × 6-row grid, 13 tiles. Deliberate mix of
     // landscape (~1.75:1), portrait (~2:3), and square (~1.15:1) — staggered
@@ -43,7 +43,7 @@
         parks: ["Dodger Stadium", "Anaheim Stadium", "Royals Stadium", "New Comiskey Park", "Marlins Park"] },
       { title: "Multipurpose Shared Use", desc: "Concrete bowls focused on flexibility, where adaptability and efficiency outweighed baseball intimacy.", accent: "#8A8276", slot: "jc-g4", parksStyle: { letterSpacing: "-0.1px" },
         parks: ["Jack Murphy", "Shea", "Riverfront", "Three Rivers", "The Vet", "Mile High", "Tropicana Field", "Rogers Centre"] },
-      { title: "Retro Classic", desc: "Baseball-only parks reintroducing asymmetry, local materials, urban context, and renewed sense of place.", accent: "#9C3A28", slot: "jc-g5", wide: true, parksStyle: { fontSize: "10px", letterSpacing: "-0.1px" },
+      { title: "Retro Classic", desc: "Baseball-only parks reintroducing asymmetry, local materials, urban context, and renewed sense of place.", accent: "#9C3A28", slot: "jc-g5", wide: true, parksStyle: { fontSize: "11px", letterSpacing: "-0.5px" },
         parks: ["Coors", "Progressive", "Comerica", "Miller", "Safeco", "Petco", "GABP", "PNC", "Citi", "Yankee", "Citizens Bank", "Camden", "Minute Maid", "Chase Field", "Sutter Health", "Oracle"] },
       { title: "Contemporary Mixed Use", desc: "Ballparks anchoring mixed-use districts, where baseball became one element of a year-round entertainment destination.", accent: "#4F6B57", slot: "jc-g6",
         parks: ["Busch Stadium", "SunTrust Park", "Nationals Park", "Globe Life Field", "Target Field"] }

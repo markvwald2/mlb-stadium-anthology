@@ -160,7 +160,7 @@
                     e("div", { className: "vet-frow" },
                       e("div", { className: "k" }, "Address"),
                       e("div", { className: "v" }, "3501 S Broad Street", e("br"), "Philadelphia, PA 19148", e("br"), "(former site)")),
-                    fact("Cost", D.original_cost + " (" + D.adjusted_cost + " adj.)")))),
+                    fact("Cost", D.original_cost + " (" + D.adjusted_cost.replace(" million", "M") + " adj.)")))),
 
               e("div", { className: "vet-instr-zone" },
                 e("div", { className: "vet-colhdr" }, "Field Plan"),

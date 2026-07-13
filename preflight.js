@@ -19,21 +19,37 @@
      5. All text >= 10px (design px).
 */
 (function () {
+  // Authoritative Blurb safe boxes (CLAUDE.md): 0.25 in outer/top/bottom,
+  // 0.50 in binding edge → left-page x <= 1212.5, right-page x >= 1337.5.
   const SAFE = {
-    LEFT:  { x0: 37.5,   x1: 1237.5, y0: 37.5, y1: 1050.5 },
-    RIGHT: { x0: 1312.5, x1: 2512.5, y0: 37.5, y1: 1050.5 },
+    LEFT:  { x0: 37.5,   x1: 1212.5, y0: 37.5, y1: 1050.5 },
+    RIGHT: { x0: 1337.5, x1: 2512.5, y0: 37.5, y1: 1050.5 },
     GUT:   { x0: 1237.5, x1: 1312.5 },
   };
   const MIN_DPI = 300;
-  const MIN_FONT = 10;       // design px
+  const MIN_FONT = 12;       // design px — hard reader-data floor (CLAUDE.md)
+  const MIN_FONT_SVG = 8.3;  // instrument-tick allowance for SVG glance-marks (6 pt)
   const TOL = 0.5;           // px slack on bounds
   const PROSE_MIN_CHARS = 240;
 
+  function depth(el) { let d = 0; while ((el = el.parentElement)) d++; return d; }
+  // Pick the DEEPEST element whose offset box matches the design size. The
+  // design-canvas host wraps the content in a pan/zoom transform, so HTML/BODY
+  // and the canvas viewport all report 2550x1088 by offset while sitting at
+  // scale 1 / offset 0 — using them would ignore the transform. The innermost
+  // match is the actual content card, whose getBoundingClientRect reflects the
+  // live pan/zoom so screen->design mapping is correct at any zoom.
+  function deepestMatch(pred) {
+    const m = [...document.querySelectorAll("*")]
+      .filter((el) => !["HTML", "BODY"].includes(el.tagName))
+      .filter(pred);
+    if (!m.length) return null;
+    return m.sort((a, b) => depth(b) - depth(a))[0];
+  }
   function findRoot() {
-    const all = [...document.querySelectorAll("*")];
-    const m2550 = all.find((el) => Math.abs(el.offsetWidth - 2550) < 2 && Math.abs(el.offsetHeight - 1088) < 2);
+    const m2550 = deepestMatch((el) => Math.abs(el.offsetWidth - 2550) < 2 && Math.abs(el.offsetHeight - 1088) < 2);
     if (m2550) return { el: m2550, designW: 2550, single: false };
-    const m1275 = all.find((el) => Math.abs(el.offsetWidth - 1275) < 2 && Math.abs(el.offsetHeight - 1088) < 2);
+    const m1275 = deepestMatch((el) => Math.abs(el.offsetWidth - 1275) < 2 && Math.abs(el.offsetHeight - 1088) < 2);
     if (m1275) return { el: m1275, designW: 1275, single: true };
     return { el: document.body, designW: 2550, single: false };
   }
@@ -51,6 +67,9 @@
   }
   function isTextLeaf(el) {
     if (["IMAGE-SLOT", "IMG", "SVG", "SCRIPT", "STYLE"].includes(el.tagName)) return false;
+    // SVG-namespaced text is handled by the dedicated svg-text sweep (which
+    // applies the 8.3px instrument-tick allowance) — don't double-count it here.
+    if (el.namespaceURI === "http://www.w3.org/2000/svg") return false;
     if (isChrome(el)) return false;
     if (!ownText(el)) return false;
     // no child element that itself holds direct text (so we measure the tightest box)
@@ -188,20 +207,25 @@
       report.checks.prose = { pass: blocks.every((b) => b.uniform), blocks: blocks.filter((b) => !b.uniform || opts.verbose), totalBlocks: blocks.length };
     })();
 
-    /* ---- 5. min font size ---- */
+    /* ---- 5. min font size ----
+       HTML reader text: hard 12px floor.
+       SVG text: instrument-tick allowance to 8.3px, but 8.3–12px flagged as
+       REVIEW so a human decides tick (ok) vs. data-label (must bump). */
     (function () {
       const items = [...root.querySelectorAll("*")].filter(isTextLeaf);
-      const bad = [];
+      const bad = [], review = [];
       for (const el of items) {
         const px = parseFloat(getComputedStyle(el).fontSize);
         if (px < MIN_FONT - 0.01) bad.push({ sel: shortSel(el), px: +px.toFixed(1), text: el.textContent.trim().slice(0, 36) });
       }
-      // also svg text
+      // svg text: below the 8.3px instrument floor = fail; 8.3–12px = review band
       for (const el of root.querySelectorAll("svg text, svg tspan")) {
         const px = parseFloat(getComputedStyle(el).fontSize);
-        if (px && px < MIN_FONT - 0.01) bad.push({ sel: "svg text", px: +px.toFixed(1), text: el.textContent.trim().slice(0, 36) });
+        if (!px) continue;
+        if (px < MIN_FONT_SVG - 0.01) bad.push({ sel: "svg text", px: +px.toFixed(1), text: el.textContent.trim().slice(0, 36) });
+        else if (px < MIN_FONT - 0.01) review.push({ sel: "svg text", px: +px.toFixed(1), text: el.textContent.trim().slice(0, 36) });
       }
-      report.checks.minfont = { pass: bad.length === 0, checked: items.length, under: bad };
+      report.checks.minfont = { pass: bad.length === 0, checked: items.length, under: bad, reviewSvg: review };
     })();
 
     /* ---- summary ---- */

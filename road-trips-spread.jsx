@@ -142,7 +142,7 @@
               e("span", { className: "rt-stat-l" }, s.l)))))),
       e("div", { className: "rt-intro" },
         e("div", { className: "rt-intro-lead" }, D.introLead),
-        e("div", { style: { letterSpacing: "-0.2px", fontSize: "15px" } }, D.intro)),
+        e("div", { style: { letterSpacing: "-0.2px", fontSize: "15px", width: "527px", height: "98px", textAlign: "justify" } }, D.intro)),
 
       // ============ HEADER — RIGHT: by the numbers ============
       e("div", { className: "rt-numbers" },
