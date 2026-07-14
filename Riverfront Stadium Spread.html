@@ -55,14 +55,22 @@
   .rf-gutter { display: none; }
 
   /* ---------- LEFT / HERO ---------- */
-  .rf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .rf-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .rf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .rf-hero-scrim {
-    position: absolute; inset: 0; pointer-events: none;
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(10,12,15,.55) 0%, rgba(10,12,15,.20) 14%, rgba(10,12,15,0) 30%),
       linear-gradient(0deg, rgba(10,12,15,.42) 0%, rgba(10,12,15,.14) 9%, rgba(10,12,15,0) 18%);
   }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .rf-hero-slot  { transform: translateZ(0) !important; }
+    .rf-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* faint bowl-ring motif over the hero (top-right) */
   .rf-hero-rings { position: absolute; top: -260px; right: -240px; width: 760px; height: 760px; opacity: .5; pointer-events: none; }
   .rf-hero-folio {

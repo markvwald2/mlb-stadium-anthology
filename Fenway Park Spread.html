@@ -45,12 +45,20 @@
 
   /* ---------------- LEFT PAGE (hero) ---------------- */
   .fw-left { left: 0; width: 1275px; background: #11140F; overflow: hidden; }
-  .fw-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .fw-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .fw-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .fw-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(0deg, rgba(12,35,64,.74) 0%, rgba(12,35,64,.42) 12%, rgba(12,35,64,.04) 26%, rgba(12,35,64,0) 36%),
       linear-gradient(180deg, rgba(12,35,64,.36) 0%, rgba(12,35,64,0) 16%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .fw-hero-slot  { transform: translateZ(0) !important; }
+    .fw-hero-scrim { transform: translateZ(0) !important; }
+  }
+
 
   .fw-mast { position: absolute; top: 50px; left: 56px; z-index: 5; display: flex; align-items: center; gap: 14px; }
   .fw-mast .mlb { height: 46px; width: auto; display: block; border-radius: 4px; box-shadow: 0 3px 14px rgba(0,0,0,.5); }

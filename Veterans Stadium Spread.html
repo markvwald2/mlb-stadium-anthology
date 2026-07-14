@@ -62,7 +62,7 @@
     background: rgba(0,0,0,.16); z-index: 6; pointer-events: none; }
 
   /* ============ LEFT / HERO ============ */
-  .vet-hero-slot { position: absolute; inset: 0; }
+  .vet-hero-slot { position: absolute; inset: 0; z-index: 1; }
   .vet-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .vet-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
@@ -70,6 +70,14 @@
       linear-gradient(180deg, rgba(12,11,8,.30) 0%, rgba(12,11,8,0) 18%),
       linear-gradient(0deg, rgba(9,8,5,.80) 0%, rgba(9,8,5,.5) 20%, rgba(9,8,5,.18) 40%, rgba(9,8,5,0) 56%);
   }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .vet-hero-slot  { transform: translateZ(0) !important; }
+    .vet-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* faint octorad civic plan, integrated into the lower asphalt */
   .vet-hero-plan { position: absolute; left: 430px; bottom: -120px; width: 760px; height: 760px; z-index: 3; pointer-events: none; }
   .vet-hero-survey { position: absolute; right: -190px; top: -180px; width: 520px; height: 520px; z-index: 3; pointer-events: none; }

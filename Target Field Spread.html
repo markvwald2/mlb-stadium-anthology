@@ -61,11 +61,19 @@
     background: rgba(0,0,0,.15); z-index: 30; pointer-events: none; }
 
   /* ============ LEFT / HERO ============ */
-  .tf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .tf-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .tf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .tf-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .tf-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(8,12,18,.6) 0%, rgba(8,12,18,.4) 16%, rgba(8,12,18,.16) 30%, rgba(8,12,18,0) 42%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .tf-hero-slot  { transform: translateZ(0) !important; }
+    .tf-hero-scrim { transform: translateZ(0) !important; }
+  }
+
 
   .tf-hero-logo { position: absolute; left: 60px; bottom: 56px; height: 104px; width: auto; z-index: 5;
     filter:

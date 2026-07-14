@@ -108,9 +108,12 @@
               e("div", { className: "m2" }, (D.landmark[1] + " " + D.landmark[2]).toUpperCase())),
             e("div", { className: "pk-rail-rule" }),
             e("div", { className: "pk-rail-logos" },
-              e("img", { src: "assets/san-diego-padres-logo.svg", alt: "San Diego Padres" }),
-              e("img", { src: "assets/mlb-logo.svg", alt: "MLB" }),
-              e("img", { src: "assets/nl-logo.png", alt: "National League" }))))
+              e("span", { className: "lw" },
+                e("img", { src: "assets/san-diego-padres-logo.svg", alt: "San Diego Padres" })),
+              e("span", { className: "lw" },
+                e("img", { src: "assets/mlb-logo.svg", alt: "MLB" })),
+              e("span", { className: "lw" },
+                e("img", { src: "assets/nl-logo.png", alt: "National League" })))))
       ),
 
       /* ============== RIGHT PAGE / WAREHOUSE BAYS ============== */

@@ -52,12 +52,20 @@
   .pf-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px; background: rgba(0,0,0,.15); z-index: 6; pointer-events: none; }
 
   /* ===================== LEFT / HERO ===================== */
-  .pf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .pf-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .pf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .pf-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .pf-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(12,14,18,.66) 0%, rgba(12,14,18,.28) 16%, rgba(12,14,18,0) 30%),
       linear-gradient(0deg, rgba(12,14,18,.78) 0%, rgba(12,14,18,.32) 22%, rgba(12,14,18,0) 40%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .pf-hero-slot  { transform: translateZ(0) !important; }
+    .pf-hero-scrim { transform: translateZ(0) !important; }
+  }
+
 
   /* cyan drafting overlay */
   .pf-draft { position: absolute; inset: 0; z-index: 3; pointer-events: none;

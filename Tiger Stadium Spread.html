@@ -45,12 +45,20 @@
     background: rgba(0,0,0,.22); z-index: 8; pointer-events: none; }
 
   /* =================== LEFT / AERIAL PLATE =================== */
-  .ts-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .ts-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .ts-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .ts-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .ts-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(0deg, rgba(11,11,10,.68) 0%, rgba(11,11,10,.40) 14%, rgba(11,11,10,.08) 30%, rgba(11,11,10,0) 42%),
       linear-gradient(90deg, rgba(11,11,10,.62) 0%, rgba(11,11,10,.18) 26%, rgba(11,11,10,0) 46%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .ts-hero-slot  { transform: translateZ(0) !important; }
+    .ts-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* faint parcel/plat linework emanating across the plate */
   .ts-plat-lines { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .5; }
 

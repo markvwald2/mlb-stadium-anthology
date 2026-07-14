@@ -59,7 +59,7 @@
     background: rgba(0,0,0,.16); z-index: 6; pointer-events: none; }
 
   /* ============ LEFT / HERO ============ */
-  .trs-hero-slot { position: absolute; inset: 0; }
+  .trs-hero-slot { position: absolute; inset: 0; z-index: 1; }
   .trs-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .trs-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
@@ -69,6 +69,14 @@
       radial-gradient(80% 62% at 6% 100%, rgba(9,8,7,.88) 0%, rgba(9,8,7,.44) 46%, rgba(9,8,7,0) 74%),
       radial-gradient(56% 44% at 95% 100%, rgba(9,8,7,.80) 0%, rgba(9,8,7,.36) 46%, rgba(9,8,7,0) 72%);
   }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .trs-hero-slot  { transform: translateZ(0) !important; }
+    .trs-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* radial survey / drafting geometry — quiet decorative linework, clipped at fold */
   .trs-survey-bl { position: absolute; left: -210px; bottom: -230px; width: 600px; height: 600px; z-index: 3; pointer-events: none; }
   .trs-survey-br { position: absolute; right: -230px; bottom: -210px; width: 560px; height: 560px; z-index: 3; pointer-events: none; }

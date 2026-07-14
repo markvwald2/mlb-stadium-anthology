@@ -54,11 +54,19 @@
     box-shadow: 0 0 5px var(--bulb-2); display: block; }
 
   /* =================== LEFT / AERIAL PLATE =================== */
-  .cm-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .cm-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .cm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .cm-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(0deg, rgba(8,7,5,.5) 0%, rgba(8,7,5,.16) 10%, rgba(8,7,5,0) 20%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .cm-hero-slot  { transform: translateZ(0) !important; }
+    .cm-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* faint scoreboard-pylon verticals rising over the plate */
   .cm-pylons { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: .5; }
 

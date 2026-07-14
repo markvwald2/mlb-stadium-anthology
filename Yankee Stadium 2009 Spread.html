@@ -43,12 +43,20 @@
     background: rgba(0,0,0,.18); z-index: 9; pointer-events: none; }
 
   /* =================== LEFT / DUSK FACADE HERO =================== */
-  .yf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .yf-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .yf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .yf-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .yf-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(14,18,25,.92) 0%, rgba(14,18,25,.55) 16%, rgba(14,18,25,.05) 30%, rgba(14,18,25,0) 42%),
       linear-gradient(0deg, rgba(14,18,25,.62) 0%, rgba(14,18,25,.16) 13%, rgba(14,18,25,0) 28%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .yf-hero-slot  { transform: translateZ(0) !important; }
+    .yf-hero-scrim { transform: translateZ(0) !important; }
+  }
+
 
   /* logo mast — restrained stone wells over the sky */
   .yf-hero-mast { position: absolute; bottom: 50px; left: 56px; z-index: 6; display: flex; align-items: center; gap: 13px; }

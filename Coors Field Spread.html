@@ -58,10 +58,18 @@
   .cf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1; }
   .cf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .cf-hero-scrim {
-    position: absolute; inset: 0; pointer-events: none; z-index: 3;
+    position: absolute; inset: 0; pointer-events: none; z-index: 2; z-index: 3;
     background:
       linear-gradient(0deg, rgba(16,14,11,.62) 0%, rgba(16,14,11,.22) 11%, rgba(16,14,11,0) 24%);
   }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .cf-hero-slot  { transform: translateZ(0) !important; }
+    .cf-hero-scrim { transform: translateZ(0) !important; }
+  }
+
 
   /* the Mile-High Datum — surveyor benchmark + coordinate read-out, lower-right */
   .cf-datum { position: absolute; right: 78px; bottom: 56px; z-index: 5; width: 360px; height: 300px; pointer-events: none; }

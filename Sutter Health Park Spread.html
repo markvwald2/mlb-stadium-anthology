@@ -58,14 +58,22 @@
   .shp-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px; background: rgba(0,0,0,.16); z-index: 9; pointer-events: none; }
 
   /* ============ LEFT / HERO ============ */
-  .shp-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .shp-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .shp-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .shp-hero-scrim {
-    position: absolute; inset: 0; pointer-events: none;
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(12,10,7,.30) 0%, rgba(12,10,7,0) 20%),
       linear-gradient(0deg, rgba(12,10,7,.90) 0%, rgba(12,10,7,.55) 20%, rgba(12,10,7,.08) 42%, rgba(12,10,7,0) 56%);
   }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .shp-hero-slot  { transform: translateZ(0) !important; }
+    .shp-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   .shp-hero-folio {
     position: absolute; left: 60px; top: 56px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .24em;

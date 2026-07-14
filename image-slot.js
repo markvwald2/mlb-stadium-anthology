@@ -622,6 +622,12 @@
     }
 
     _clampView() {
+      // In print mode `this._img` holds the BAKED crop (already cover-cropped to
+      // ~frame aspect), not the source. Clamping against it would compute almost
+      // zero pan room and collapse a valid stored pan (authored & clamped on
+      // screen against the true source dims) toward zero — visibly shifting the
+      // photo in the exported PDF. The stored view is already valid; leave it.
+      if (this._printActive()) return;
       // Pan range on each axis is half the overflow past the frame edge.
       const g = this._geom();
       if (!g) return;

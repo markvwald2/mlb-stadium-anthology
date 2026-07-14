@@ -46,11 +46,19 @@
     background: rgba(0,0,0,.16); z-index: 40; pointer-events: none; }
 
   /* ============ LEFT / HERO ============ */
-  .mm-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .mm-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .mm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .mm-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .mm-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(6,9,15,.72) 0%, rgba(6,9,15,.34) 16%, rgba(6,9,15,.08) 30%, rgba(6,9,15,0) 42%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .mm-hero-slot  { transform: translateZ(0) !important; }
+    .mm-hero-scrim { transform: translateZ(0) !important; }
+  }
+
 
   .mm-astros { position: absolute; right: 58px; top: 50px; height: 98px; width: auto; z-index: 5;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,.55)); }

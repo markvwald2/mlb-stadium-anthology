@@ -66,11 +66,19 @@
   .rs-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1; }
   .rs-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .rs-hero-scrim {
-    position: absolute; inset: 0; pointer-events: none; z-index: 3;
+    position: absolute; inset: 0; pointer-events: none; z-index: 2; z-index: 3;
     background:
       linear-gradient(180deg, rgba(6,18,38,.64) 0%, rgba(6,18,38,.3) 20%, rgba(6,18,38,0) 42%),
       linear-gradient(0deg, rgba(6,18,38,.46) 0%, rgba(6,18,38,0) 18%);
   }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .rs-hero-slot  { transform: translateZ(0) !important; }
+    .rs-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* the famous outfield fountains — a fine cascade motif along the right edge */
   .rs-fountains { position: absolute; top: 0; right: 0; width: 360px; height: 1088px; z-index: 2; opacity: .5; pointer-events: none; }
   /* crown emblem, upper-left */

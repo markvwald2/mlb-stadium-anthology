@@ -55,12 +55,20 @@
     background: rgba(0,0,0,.16); z-index: 30; pointer-events: none; }
 
   /* ============ LEFT / HERO ============ */
-  .st-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .st-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .st-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .st-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .st-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(11,14,20,.52) 0%, rgba(11,14,20,0) 24%),
       linear-gradient(0deg, rgba(9,11,16,.95) 0%, rgba(9,11,16,.72) 16%, rgba(9,11,16,.12) 34%, rgba(9,11,16,0) 46%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .st-hero-slot  { transform: translateZ(0) !important; }
+    .st-hero-scrim { transform: translateZ(0) !important; }
+  }
+
 
   .st-hero-logo { position: absolute; right: 60px; bottom: 58px; height: 70px; width: auto; z-index: 5;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,.55)); }

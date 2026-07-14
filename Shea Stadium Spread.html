@@ -63,7 +63,7 @@
     background: rgba(0,0,0,.16); z-index: 6; pointer-events: none; }
 
   /* ============ LEFT / HERO ============ */
-  .shea-hero-slot { position: absolute; inset: 0; }
+  .shea-hero-slot { position: absolute; inset: 0; z-index: 1; }
   .shea-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .shea-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
@@ -71,6 +71,14 @@
       linear-gradient(180deg, rgba(14,16,22,.5) 0%, rgba(14,16,22,0) 24%),
       linear-gradient(0deg, rgba(11,12,17,.55) 0%, rgba(11,12,17,.2) 12%, rgba(11,12,17,0) 26%);
   }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .shea-hero-slot  { transform: translateZ(0) !important; }
+    .shea-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* faint open-air bowl plan integrated low-left */
   .shea-hero-bowl { position: absolute; left: -150px; bottom: -180px; width: 720px; height: 720px; z-index: 3; pointer-events: none; }
 

@@ -47,7 +47,7 @@
         <div className="bc-fold-shade"></div>
 
         {/* ============================ LEFT PAGE ============================ */}
-        <TimelineRail items={D.TIMELINE} x={45} y={54} h={880}
+        <TimelineRail items={D.TIMELINE} x={45} y={54} h={880} gap={15}
         headLabel={["THE LONG ARC", "OF BALLPARK", "EVOLUTION"]} />
 
         <div className="bc-region bc-chapter-kicker" style={{ left: 230, top: 70, width: 964 }}>

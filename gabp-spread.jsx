@@ -17,13 +17,37 @@
   function Stack(props) {
     return e("div", { className: "gabp-stack " + (props.cls || "") },
       e("div", { className: "cap" }),
-      e("div", { className: "shaft" }),
+      e("div", { className: "shaft" },
+        e("svg", { className: "gabp-stack-brace", viewBox: "0 0 18 180", preserveAspectRatio: "none", "aria-hidden": "true", role: "presentation" },
+          e("line", { x1: 2, y1: 0, x2: 2, y2: 180 }),
+          e("line", { x1: 16, y1: 0, x2: 16, y2: 180 }),
+          e("line", { x1: 2, y1: 0, x2: 16, y2: 36 }),
+          e("line", { x1: 16, y1: 0, x2: 2, y2: 36 }),
+          e("line", { x1: 2, y1: 36, x2: 16, y2: 72 }),
+          e("line", { x1: 16, y1: 36, x2: 2, y2: 72 }),
+          e("line", { x1: 2, y1: 72, x2: 16, y2: 108 }),
+          e("line", { x1: 16, y1: 72, x2: 2, y2: 108 }),
+          e("line", { x1: 2, y1: 108, x2: 16, y2: 144 }),
+          e("line", { x1: 16, y1: 108, x2: 2, y2: 144 }),
+          e("line", { x1: 2, y1: 144, x2: 16, y2: 180 }),
+          e("line", { x1: 16, y1: 144, x2: 2, y2: 180 }))),
       e("div", { className: "foot" }));
   }
 
-  /* Low Ohio-River datum rule — subtle repeating wave, editorial not nautical. */
+  /* Low Ohio-River datum rule — one continuous inline-SVG wave (a repeated
+     data-URI tile exposes its joins as uneven bumps in the Skia PDF). */
   function RiverRule(props) {
-    return e("div", { className: "gabp-river " + (props.cls || ""), role: "presentation" });
+    var W = 1275, step = 32;
+    var makeWave = function (y) {
+      var d = "M 0 " + y;
+      for (var x = 0; x < W; x += step) {
+        d += " Q " + (x + 8) + " " + (y - 4) + " " + (x + 16) + " " + y + " T " + (x + 32) + " " + y;
+      }
+      return d;
+    };
+    return e("svg", { className: "gabp-river " + (props.cls || ""), viewBox: "0 0 1275 14", preserveAspectRatio: "none", role: "presentation", "aria-hidden": "true" },
+      e("path", { d: makeWave(4), fill: "none", stroke: "#A9A08C", strokeWidth: 1.1 }),
+      e("path", { d: makeWave(10), fill: "none", stroke: "#A9A08C", strokeWidth: 1.1 }));
   }
 
   /* Ohio-River course watermark — one broad sweeping channel + banks + current,
@@ -128,11 +152,13 @@
         e("span", { className: "v" }, v)));
   }
   function footCell(k, v, kind, i) {
+    var kStyle = k === "Classification Era" ? { letterSpacing: "0.7px" } : null;
+    var vStyle = k === "Location" ? { letterSpacing: "0.4px" } : null;
     return e("div", { className: "fcell", key: i },
       FootIcon(kind),
       e("div", { className: "ftxt" },
-        e("div", { className: "k" }, k),
-        e("div", { className: "v" }, v)));
+        e("div", { className: "k", style: kStyle }, k),
+        e("div", { className: "v", style: vStyle }, v)));
   }
   function photoWell(id, placeholder, src) {
     return e("div", { className: "gabp-well", "data-slot": id },

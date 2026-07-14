@@ -58,11 +58,19 @@
     background: rgba(0,0,0,.5); z-index: 60; pointer-events: none; }
 
   /* ============ LEFT / HERO (near full-bleed photo) ============ */
-  .pk-hero-slot { position: absolute; left: 0; top: 0; width: 1275px; height: 1088px; }
+  .pk-hero-slot { z-index: 1; position: absolute; left: 0; top: 0; width: 1275px; height: 1088px; }
   .pk-hero-slot image-slot { width: 100%; height: 100%; display: block; }
-  .pk-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .pk-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(10,8,5,.5) 0%, rgba(10,8,5,0) 20%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .pk-hero-slot  { transform: translateZ(0) !important; }
+    .pk-hero-scrim { transform: translateZ(0) !important; }
+  }
+
 
   .pk-folio { position: absolute; right: 68px; top: 52px; z-index: 5; text-align: right;
     font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .26em;
@@ -101,9 +109,13 @@
     text-transform: uppercase; color: var(--gold); margin-top: 5px; }
   .pk-rail-rule { width: 56px; height: 1px; background: rgba(201,154,74,.55); }
   .pk-rail-logos { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-  .pk-rail-logos img { box-sizing: content-box; height: 23px; width: auto; max-width: 50px; display: block; object-fit: contain;
+  .pk-rail-logos .lw { display: flex; align-items: center; justify-content: center;
     background: linear-gradient(180deg, #EDE3CF, #D6C7A9); padding: 6px 8px; border-radius: 5px;
     border: 1px solid rgba(0,0,0,.3); box-shadow: 0 1px 4px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.5); }
+  .pk-rail-logos img { height: 23px; width: auto; max-width: 50px; display: block; object-fit: contain; }
+  @media print {
+    .pk-rail-logos .lw { background: #E4D6BC !important; box-shadow: none !important; }
+  }
 
   /* ============ RIGHT PAGE / MONOGRAPH SHEET ============ */
   .pk-underlay { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1; pointer-events: none; }

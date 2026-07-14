@@ -42,12 +42,20 @@
     background: rgba(0,0,0,.22); z-index: 8; pointer-events: none; }
 
   /* =================== LEFT / AERIAL HERO PLATE =================== */
-  .cm-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .cm-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .cm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .cm-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .cm-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(0deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.18) 10%, rgba(10,12,16,0) 22%),
       linear-gradient(90deg, rgba(10,12,16,.60) 0%, rgba(10,12,16,.16) 26%, rgba(10,12,16,0) 46%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .cm-hero-slot  { transform: translateZ(0) !important; }
+    .cm-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* faint datum / survey linework over the plate */
   .cm-plat-lines { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .5; }
 

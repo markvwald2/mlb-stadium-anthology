@@ -58,7 +58,7 @@
     background: rgba(14,20,23,.18); z-index: 8; pointer-events: none; }
 
   /* ============ LEFT / INTERIOR HERO ============ */
-  .glf-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .glf-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .glf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .glf-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
@@ -66,6 +66,14 @@
       linear-gradient(180deg, rgba(8,12,14,.36) 0%, rgba(8,12,14,0) 26%),
       linear-gradient(0deg, rgba(8,11,13,.72) 0%, rgba(8,11,13,.50) 16%, rgba(8,11,13,.11) 38%, rgba(8,11,13,0) 52%);
   }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .glf-hero-slot  { transform: translateZ(0) !important; }
+    .glf-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* faint steel-mullion overlay — engineered, not a photo trope */
   .glf-left::before {
     content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: .10;

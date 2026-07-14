@@ -55,11 +55,19 @@
   .cy-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px; background: rgba(0,0,0,.18); z-index: 6; pointer-events: none; }
 
   /* ===================== LEFT / HERO ===================== */
-  .cy-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .cy-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .cy-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .cy-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .cy-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(0deg, rgba(12,11,8,.58) 0%, rgba(12,11,8,.34) 12%, rgba(12,11,8,.08) 27%, rgba(12,11,8,0) 40%); }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .cy-hero-slot  { transform: translateZ(0) !important; }
+    .cy-hero-scrim { transform: translateZ(0) !important; }
+  }
+
   /* faint architectural / rail-alignment grid over the image */
   .cy-hero-grid { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background-image:

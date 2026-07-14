@@ -40,28 +40,31 @@
   .we-spread::after { content: ""; position: absolute; top: 0; bottom: 0; left: 1275px; width: 1px; background: rgba(0,0,0,.16); z-index: 6; pointer-events: none; }
 
   /* --- left / aerial --- */
-  .we-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; }
+  .we-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1; }
   .we-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .we-hero-scrim { position: absolute; inset: 0; pointer-events: none;
+  .we-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(0deg, rgba(10,10,9,.82) 0%, rgba(10,10,9,.42) 14%, rgba(10,10,9,.05) 30%, rgba(10,10,9,0) 42%),
       radial-gradient(90% 60% at 4% 100%, rgba(10,10,9,.6) 0%, rgba(10,10,9,.2) 34%, rgba(10,10,9,0) 60%); }
+  @media print {
+    /* image-slot renders its <img> with a transform → its own composited layer.
+       In the Skia print-to-PDF backend that layer composites LAST and paints over
+       a plain sibling overlay regardless of z-index (the on-screen preview honors
+       z-index, so it looks fine there). Fix: composite the SLOT too, so the img's
+       layer stays CONTAINED inside the slot's layer at z-index 1, below the scrim
+       at z-index 2. (Compositing the scrim alone is not enough — the img layer
+       escapes an un-composited slot.) */
+    .we-hero-slot  { transform: translateZ(0) !important; }
+    .we-hero-scrim { transform: translateZ(0) !important; }
+  }
   .we-hero-block { position: absolute; left: 64px; right: auto; max-width: 560px; bottom: 60px; z-index: 5;
     border-left: 2px solid rgba(241,231,210,.72); padding-left: 20px; }
   .we-hero-loc { font-family: "Spectral", serif; font-style: italic; font-weight: 500; font-size: 27px;
     color: #F1EBDB; text-shadow: 0 2px 14px rgba(0,0,0,.55); }
   .we-hero-mast { position: absolute; top: 56px; left: 64px; z-index: 5; display: flex; align-items: center; }
-  .we-hero-mast .wf-logo { display: block; width: 436px; height: auto; padding: 20px 26px; border-radius: 10px;
-    background:
-      radial-gradient(120% 150% at 50% 0%, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 42%),
-      linear-gradient(180deg, #CC1531 0%, #B00E28 100%);
-    border: 3px solid #F1E7D2;
-    box-shadow:
-      inset 0 0 0 6px #B00E28,
-      inset 0 0 0 7.5px rgba(241,231,210,.85),
-      inset 0 2px 10px rgba(255,255,255,.16),
-      inset 0 -10px 22px rgba(0,0,0,.22),
-      0 8px 26px rgba(0,0,0,.45); }
+  .we-hero-mast .wf-logo { display: block; width: 508px; height: auto;
+    background: none !important; border: 0 !important; box-shadow: none !important;
+    padding: 0 !important; border-radius: 0 !important; }
   .we-hero-rule { width: 200px; height: 2px; background: #4E7FD0; margin: 16px 0 14px; }
   .we-hero-stats div { font-family: "Spectral", serif; font-weight: 600; font-size: 14px; letter-spacing: .18em;
     text-transform: uppercase; color: #E4DDCC; line-height: 1.6; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
@@ -218,18 +221,10 @@
 
   #root { min-height: 100vh; }
 
-  /* Print: Chrome's rasterizer draws a seam along the vertical symmetry axis of
-     the sign's `radial-gradient(... at 50% 0%)` highlight — landing exactly down
-     the middle of the title — and tiles the panel's blurred shadows into edge
-     seams. In print, drop the radial highlight (flat linear red only) and keep
-     only the crisp solid inset rings; both artifacts disappear. */
+  /* The Wrigley sign panel (red field, cream border, inset rings) is drawn as
+     vector geometry INSIDE the inline SVG — not as CSS paint on the SVG element.
+     This keeps it true vector through print with no rasterized tile seams. */
   @media print {
-    .we-hero-mast .wf-logo {
-      background: linear-gradient(180deg, #CC1531 0%, #B00E28 100%) !important;
-      box-shadow:
-        inset 0 0 0 6px #B00E28,
-        inset 0 0 0 7.5px rgba(241,231,210,.85) !important;
-    }
     /* mix-blend-mode / filter force Chrome to composite + tile-raster the whole
        page for print, leaving a vertical seam that shows over the flat red sign.
        Neutralize both: paint the grain as a plain low-opacity overlay, and drop

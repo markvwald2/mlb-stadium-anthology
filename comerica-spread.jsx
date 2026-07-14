@@ -61,9 +61,31 @@
       e("tbody", null, row(box.away, "away"), row(box.home, "home")));
   }
 
+  /* ---- crisp vector masonry sized to the pier width (running bond) ---- */
+  function brickSvg(w) {
+    const rowH = 20, mortarLines = [], shadow = [], joints = [];
+    const H = 1088;                     // pier spans full canvas height
+    for (let y = 0; y <= H; y += rowH) {
+      mortarLines.push(e("line", { key: "m" + y, className: "mortar", x1: 0, y1: y, x2: w, y2: y }));
+      shadow.push(e("line", { key: "s" + y, className: "mortar-sh", x1: 0, y1: y + 1.6, x2: w, y2: y + 1.6 }));
+    }
+    // running bond: alternate courses carry a single centre head-joint
+    let course = 0;
+    for (let y = 0; y < H; y += rowH, course++) {
+      if (course % 2 === 0) {
+        joints.push(e("line", { key: "j" + y, className: "mortar", x1: w / 2, y1: y, x2: w / 2, y2: y + rowH }));
+        joints.push(e("line", { key: "js" + y, className: "mortar-sh", x1: w / 2 + 1.4, y1: y, x2: w / 2 + 1.4, y2: y + rowH }));
+      }
+    }
+    return e("svg", { className: "brick", width: w, height: H,
+      xmlns: "http://www.w3.org/2000/svg" },
+      mortarLines, shadow, joints);
+  }
+
   /* ---- brick pier with limestone cap + engraved keystone ---- */
-  function Pier(col) {
+  function Pier(col, w) {
     return e("div", { className: "cp-pier", style: { gridColumn: col } },
+      brickSvg(w),
       e("div", { className: "cap-top" }),
       e("div", { className: "cap-sill" }),
       e("div", { className: "keystone" },
@@ -216,7 +238,7 @@
         e("div", { className: "cp-facade" },
           e("div", { className: "cp-girder" }),
           e("div", { className: "cp-grid" },
-            Pier(1), Pier(3), Pier(5), Pier(7),
+            Pier(1, 36), Pier(3, 28), Pier(5, 28), Pier(7, 36),
             PhotoBay(2, "cp-ph1", "Exterior entrance \u2014 brick fa\u00e7ade & tiger sculptures along Woodward Avenue"),
             PhotoBay(4, "cp-ph2", "Interior seating bowl \u2014 field, grandstand, and downtown skyline beyond"),
             PhotoBay(6, "cp-ph3", "Scoreboard & skyline \u2014 main video board with the city behind"),

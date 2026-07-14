@@ -83,7 +83,7 @@
       /* ===================== LEFT PAGE / HERO ===================== */
       e("div", { className: "pf-page pf-left", "data-screen-label": "Progressive Field hero" },
         e("div", { className: "pf-hero-slot" },
-          e(Slot, { id: "prog-hero", src: "images/progressive/progressive-field-00-main-03ebb94f.jpg", placeholder: "Drop the Progressive Field hero \u2014 painted exposed steel, light towers, seating bowl, downtown Cleveland skyline beyond the outfield" })),
+          e(Slot, { id: "prog-hero", src: "images/progressive/progressive-field-00-main-ps-v2.jpg", placeholder: "Drop the Progressive Field hero \u2014 painted exposed steel, light towers, seating bowl, downtown Cleveland skyline beyond the outfield" })),
         e("div", { className: "pf-hero-scrim" }),
 
         /* faint cyan drafting overlay */

@@ -60,9 +60,17 @@
   .mh-hero-slot { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1; }
   .mh-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .mh-hero-scrim {
-    position: absolute; inset: 0; pointer-events: none; z-index: 3;
+    position: absolute; inset: 0; pointer-events: none; z-index: 2; z-index: 3;
     background: linear-gradient(180deg, rgba(238,233,222,.72) 0%, rgba(238,233,222,.28) 12%, rgba(238,233,222,0) 24%);
   }
+  @media print {
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
+       layer that paints over a plain sibling scrim regardless of z-index.
+       Composite the slot too so the img layer stays contained below the scrim. */
+    .mh-hero-slot  { transform: translateZ(0) !important; }
+    .mh-hero-scrim { transform: translateZ(0) !important; }
+  }
+
 
   /* ── top masthead: title + elevation, purple on the pale sky ── */
   .mh-topmast {
