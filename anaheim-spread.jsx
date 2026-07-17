@@ -116,6 +116,7 @@
         e("div", { className: "as-hero-slot" },
           e(Slot, { id: "anaheim-hero",
             placeholder: "Drop the Big A / freeway hero \u2014 the roadside sign mast and halo above Angel Stadium at dusk, the bowl and parking fields with the freeway sweeping past. Let the photograph dominate." })),
+
         e("div", { className: "as-hero-scrim" }),
 
         e("div", { className: "as-folio" },

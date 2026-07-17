@@ -28,7 +28,7 @@ window.GABP = {
   // ---- Right-page metadata ribbon (8 cells) ----
   ribbon: [
     ["Opened", "Mar 31, 2003"],
-    ["Capacity", "42,271 \u2192 45,814"],
+    ["Capacity", "42,271 \u2192 42,319"],
     ["Years Active", "2003\u2013Present"],
     ["Surface", "Natural Grass"],
     ["Type", "Open-Air Baseball"],

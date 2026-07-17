@@ -51,9 +51,7 @@
   .as-hero-slot { position: absolute; inset: 0; z-index: 1; }
   .as-hero-slot image-slot { width: 100%; height: 100%; display: block; }
   .as-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    background:
-      linear-gradient(180deg, rgba(10,22,43,.6) 0%, rgba(10,22,43,.34) 16%, rgba(10,22,43,0) 32%),
-      linear-gradient(0deg, rgba(10,22,43,.55) 0%, rgba(10,22,43,.12) 26%, rgba(10,22,43,0) 42%); }
+    background: radial-gradient(120% 90% at 0% 100%, rgba(10,22,43,.62) 0%, rgba(10,22,43,.2) 34%, rgba(10,22,43,0) 58%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.

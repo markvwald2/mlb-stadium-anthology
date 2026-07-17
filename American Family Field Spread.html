@@ -64,11 +64,24 @@
       linear-gradient(to bottom right, rgba(8,11,18,.9) 0%, rgba(8,11,18,.6) 18%, rgba(8,11,18,.28) 34%, rgba(8,11,18,.06) 48%, rgba(8,11,18,0) 58%),
       linear-gradient(0deg, rgba(8,11,18,.82) 0%, rgba(8,11,18,.30) 12%, rgba(8,11,18,0) 24%); }
   @media print {
-    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
-       layer that paints over a plain sibling scrim regardless of z-index.
-       Composite the slot too so the img layer stays contained below the scrim. */
+    /* Skia print-to-PDF: keep the baked image and scrim in predictable
+       composited layers so z-index ordering survives print export. */
     .amf-hero-slot  { transform: translateZ(0) !important; }
     .amf-hero-scrim { transform: translateZ(0) !important; }
+    /* Print-only lightening overlay for the left-page PDF. Applied via the
+       scrim's own gradients + a flat white wash rather than a CSS
+       filter:brightness() on the image slot — a filter would make Chrome/Skia
+       rasterize the page and greatly inflate the PDF size. */
+    .amf-hero-scrim {
+      background:
+        linear-gradient(to bottom right, rgba(8,11,18,.34) 0%, rgba(8,11,18,.20) 18%, rgba(8,11,18,.07) 34%, rgba(8,11,18,0) 48%),
+        linear-gradient(0deg, rgba(8,11,18,.10) 0%, rgba(8,11,18,0) 18%) !important;
+    }
+    /* The fanned photo panels are rotate()-transformed; their blurred
+       box-shadow gets tiled by Chrome's print rasterizer into axis-aligned
+       grey "ghost" rectangles behind each photo. Drop the blur in print —
+       the 2px paper border + navy outline still define each plate. */
+    .amf-panel image-slot { box-shadow: none !important; }
   }
 
 
@@ -178,7 +191,7 @@
   /* ---- the pivot hub: field dimensions + protractor ---- */
   .amf-hub { position: absolute; left: 524px; top: 534px; width: 240px; z-index: 7;
     display: flex; flex-direction: column; align-items: center; }
-  .amf-hub-head { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-bottom: 2px; }
+  .amf-hub-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 2px; margin-bottom: 2px; }
   .amf-hub-head .t { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .16em;
     text-transform: uppercase; color: var(--navy); }
   .amf-hub-head .n { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .12em;
@@ -251,12 +264,12 @@
   .amf-gcap .sp { color: var(--rule-strong); }
 
   /* ---- outermost roof panel: stadium context ---- */
-  .amf-context { position: absolute; left: 858px; top: 96px; width: 358px; bottom: 44px; z-index: 6;
+  .amf-context { position: absolute; left: 886px; top: 96px; width: 330px; bottom: 44px; z-index: 6;
     display: flex; flex-direction: column; }
   .amf-context .amf-h { border-bottom-color: var(--navy); border-bottom-width: 1.5px; }
   .amf-context .amf-h, .amf-prose { position: relative; z-index: 1; }
   .amf-prose { margin-top: 2px; columns: 1; }
-  .amf-prose p { margin: 0 0 9px; font-family: "Spectral", serif; font-size: 14.3px; line-height: 24.2px;
+  .amf-prose p { margin: 0 0 3px; font-family: "Spectral", serif; font-size: 14.3px; line-height: 22px;
     letter-spacing: 0.1px; color: var(--ink); text-align: justify; hyphens: auto; }
   .amf-prose p:first-of-type::first-letter { font-family: "Anton", sans-serif; font-weight: 400;
     float: left; font-size: 56px; line-height: .8; padding: 4px 9px 0 0; color: var(--brick); }
@@ -264,11 +277,11 @@
 
   /* Wisconsin state-outline watermark behind the context prose */
   .amf-ctx-watermark { position: absolute; left: 50%; top: 53%; transform: translate(-50%, -50%);
-    width: 338px; z-index: 0; opacity: .09; pointer-events: none; }
+    width: 304px; z-index: 0; opacity: .09; pointer-events: none; }
   .amf-ctx-watermark img { width: 100%; height: auto; display: block; }
 
   /* a bold steel mullion dividing the fan from the context panel */
-  .amf-mullion { position: absolute; left: 846px; top: 90px; bottom: 40px; width: 2px; z-index: 5;
+  .amf-mullion { position: absolute; left: 874px; top: 90px; bottom: 40px; width: 2px; z-index: 5;
     background: var(--rule-strong); }
 
   #root { min-height: 100vh; }

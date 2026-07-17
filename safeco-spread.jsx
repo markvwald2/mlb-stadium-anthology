@@ -126,7 +126,7 @@
 
         e("img", { className: "tm-hero-logo", src: "assets/seattle-mariners-logo.svg", alt: "Seattle Mariners" }),
         e("div", { className: "tm-folio" }, "VISIT NO. " + D.visit_order),
-        e("div", { className: "tm-spine" }, "EST. " + D.est + "  \u00b7  SEATTLE, WASHINGTON  \u00b7  VISIT " + D.visit_order),
+        e("div", { className: "tm-spine" }, "EST. " + D.est + "  \u00b7  SEATTLE, WASHINGTON"),
 
         // a single canopy datum line across the hero — the shelter idea, stated quietly
         e("div", { className: "tm-roofline" },

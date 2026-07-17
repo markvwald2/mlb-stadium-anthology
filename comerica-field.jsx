@@ -84,8 +84,7 @@
       // field group (rotated to the field axis bearing)
       e("g", { transform: "rotate(" + deg + " " + C[0] + " " + C[1] + ")" },
         e("path", { d: grassPath, fill: navy, fillOpacity: 0.07, stroke: wallInk, strokeWidth: 1.5, strokeLinejoin: "round" }),
-        e("path", { d: dia, fill: clay, fillOpacity: 0.55, stroke: clayEdge, strokeWidth: 1, strokeLinejoin: "round" }),
-        e("circle", { cx: home[0], cy: home[1] - R * 0.42, r: 2.4, fill: clayEdge })
+        e("path", { d: dia, fill: clay, fillOpacity: 0.55, stroke: clayEdge, strokeWidth: 1, strokeLinejoin: "round" })
       ),
       // protractor arc + ticks + numerals
       e("path", { d: protArc, fill: "none", stroke: ink3, strokeWidth: 1, opacity: 0.6 }),

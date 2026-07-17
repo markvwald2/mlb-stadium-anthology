@@ -25,7 +25,7 @@ window.PNC = {
     ["Opened", "April 9, 2001"],
     ["Construction Start", "Apr 7, 1999"],
     ["Renovations", "Scoreboard, club, premium seating, concessions, outfield, social-space, and technology upgrades"],
-    ["Capacity", "38,362 opening \u00b7 38,747 current"],
+    ["Capacity", "37,898 opening \u00b7 38,747 current"],
     ["Surface", "Natural grass (Kentucky bluegrass)"],
     ["Architect", "HOK Sport and L.D. Astorino & Associates"],
     ["Type", "Open-air baseball-only ballpark"],

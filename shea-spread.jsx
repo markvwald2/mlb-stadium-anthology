@@ -19,10 +19,10 @@
       e("i", { style: { background: WHITE, boxShadow: "inset 0 0 0 1px rgba(0,0,0,.16)" } }));
   }
 
-  function dc(k, v, cls) {
+  function dc(k, v, cls, st) {
     return e("div", { className: "shea-dc" },
       e("div", { className: "k" }, k),
-      e("div", { className: "v " + (cls || "") }, v));
+      e("div", { className: "v " + (cls || ""), style: st || undefined }, v));
   }
   function fact(k, v) {
     if (v == null || v === "") return null;
@@ -30,9 +30,9 @@
       e("div", { className: "k" }, k),
       e("div", { className: "v" }, v));
   }
-  function lrow(k, v) {
+  function lrow(k, v, kStyle) {
     return e("div", { className: "shea-lrow" },
-      e("div", { className: "k" }, k),
+      e("div", { className: "k", style: kStyle }, k),
       e("div", { className: "v" }, v));
   }
   function gi(k, v, cls) {
@@ -81,7 +81,7 @@
         e("div", { className: "shea-marker" },
           e("div", { className: "panel" }),
           e("div", { className: "yrs" },
-            e("div", { className: "yr" }, "1964"),
+            e("div", { className: "yr", style: { textAlign: "center" } }, "1964"),
             e("div", { className: "yr bot" }, "2008"))),
         e("div", { className: "shea-hero-folio" }, "World\u2019s Fair Grounds", e("br"), "Multipurpose Era"),
 
@@ -128,9 +128,9 @@
           e("div", { className: "shea-datum" },
             dc("Team", D.team_short, "orange"),
             dc("Division", "NL East", "blue"),
-            dc("Classification", "Multipurpose Shared Use"),
+            dc("Classification", "Multipurpose Shared Use", "", { letterSpacing: "-0.1px" }),
             dc("Years Active", D.years_active),
-            dc("Architect", D.architect),
+            dc("Architect", D.architect, "", { letterSpacing: "0px" }),
             dc("Coordinates", D.coordinates, "mono"),
             dc("Capacity", D.capacity_current)),
 
@@ -183,7 +183,7 @@
                     e("span", { className: "bt" }, "Lifecycle"),
                     e("span", { className: "bn" }, "CIVIC SCHEDULE")),
                   e("div", { className: "shea-life" },
-                    lrow("Groundbreaking", D.construction_start),
+                    lrow("Groundbreaking", D.construction_start, { letterSpacing: "0.4px" }),
                     lrow("Opening Day", D.opening_day),
                     lrow("All-Star Game", D.all_star_games),
                     lrow("Final Game", D.final_game),

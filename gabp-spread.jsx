@@ -41,7 +41,7 @@
     var makeWave = function (y) {
       var d = "M 0 " + y;
       for (var x = 0; x < W; x += step) {
-        d += " Q " + (x + 8) + " " + (y - 4) + " " + (x + 16) + " " + y + " T " + (x + 32) + " " + y;
+        d += " Q " + (x + 8) + " " + (y - 4) + " " + (x + 16) + " " + y + " T " + Math.min(x + 32, W) + " " + y;
       }
       return d;
     };

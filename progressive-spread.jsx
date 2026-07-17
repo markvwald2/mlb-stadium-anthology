@@ -88,8 +88,6 @@
 
         /* faint cyan drafting overlay */
         e("div", { className: "pf-draft", "aria-hidden": "true" },
-          e("div", { className: "pf-dlabel elev" },
-            e("span", { className: "lead" }), e("span", null, "ELEV. 650'\u20130\"")),
           e("div", { className: "pf-dlabel gridn" }, "GRID N")),
 
         e("div", { className: "pf-hero-folio" },

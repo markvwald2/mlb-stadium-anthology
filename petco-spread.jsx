@@ -17,12 +17,12 @@
   /* ---- right-page geometry (local coords 0..1275; safe x 37.5..1237.5) ---- */
   const BAYTOP = 44, BAYBOT = 1048, BAYH = BAYBOT - BAYTOP;
   const BAYS = {
-    a: { left: 55,  width: 332 },
-    b: { left: 401, width: 528 },
-    d: { left: 943, width: 276 }
+    a: { left: 48.5,  width: 332 },
+    b: { left: 394.5, width: 528 },
+    d: { left: 936.5, width: 276 }
   };
   // steel drafting separators centered in the gutters: [x, top, height]
-  const SEPS = [[393, 96, 944], [935, 96, 944]];
+  const SEPS = [[386.5, 96, 944], [928.5, 96, 944]];
 
   function Slot(props) {
     return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect",

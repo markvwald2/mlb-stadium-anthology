@@ -213,7 +213,7 @@
                 e(Sec, { tag: "The Visit", no: "04", color: "#B9912A" }),
                 e("div", { className: "dv2-sec sub", style: { marginLeft: 0, fontFamily: "'Barlow Semi Condensed',sans-serif", fontWeight: 500, fontSize: "12px", letterSpacing: ".2em", textTransform: "uppercase", color: "var(--ink2)", whiteSpace: "nowrap", lineHeight: 1.1 } },
                   V.trip + " \u00b7 " + V.span)))),
-          e("div", { className: "dv2-visit-other", style: { position: "absolute", right: "50px", top: "2px", height: "44px", alignItems: "center" } },
+          e("div", { className: "dv2-visit-other", style: { position: "absolute", right: "37.5px", top: "2px", height: "44px", alignItems: "center" } },
             e("div", { className: "ov-label" }, "Other Visits"),
             e("div", { className: "ov-grid" },
               V.other_visits.map(function (v, i) {

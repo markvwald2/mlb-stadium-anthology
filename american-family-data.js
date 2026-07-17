@@ -95,7 +95,7 @@ window.AMFAM = {
   // ---- Weather strip ----
   weather: {
     temperature: "78\u00b0",
-    conditions: "Mostly Clear",
+    conditions: "Clear",
     wind: "5 mph WSW",
     humidity: "47%"
   },

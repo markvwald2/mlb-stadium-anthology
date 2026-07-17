@@ -20,7 +20,7 @@ window.SANDIEGO = {
   team_name: "Padres",
   league: "National League",
   division: "NL West",
-  opened: "1969",
+  opened: "August 20, 1967",
   years_active_mlb: "1969\u20132003 (MLB)",
   architect: "Frank L. Hope and Associates",
   architectural_style: "Expressionist Brutalist multipurpose stadium",

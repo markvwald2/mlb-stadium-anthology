@@ -183,7 +183,7 @@
               e("span", { className: "tag" },
                 e("span", { className: "t-main" }, "Group Visit"),
                 e("span", { className: "t-dot" }, "\u00b7"),
-                e("span", { className: "t-sub" }, "Saturday Aug 17, 2024")),
+                e("span", { className: "t-sub" }, "Saturday, Aug 17, 2024")),
               e("span", { className: "ord" }, "40 of " + D.visit_total_book)),
 
             /* facts (left) + team marks (right), ledger & pitching distributed to fill */

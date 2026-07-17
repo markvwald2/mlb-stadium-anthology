@@ -21,12 +21,18 @@
   // images/opening/<slot>.jpg is in place.
   const NO_PHOTO = {};
 
-  // slots whose photo file was replaced post-publish: point at a fresh filename
-  // so the serve layer can't hand back a stale-cached copy of the old path.
+  // slots whose photo file was replaced post-publish. The print bake fetches
+  // its source via a detached new Image(), which the preview image proxy
+  // downscales to ~260px — that (not the src path) was the ~80-96 PPI culprit.
+  // So op-l02/l04/l14 resolve to full-res base64 data URIs (window.OPENING_HIRES,
+  // from opening-hires-src.js): a data URI is decoded locally and never proxied,
+  // so the bake reads the true high-res source. Bare-path fallback keeps ?v= for
+  // HTTP-cache safety, and the on-disk op-l0N.jpg are also v4 content.
+  const HIRES = window.OPENING_HIRES || {};
   const SRC_OVERRIDE = {
-    "op-l02": "images/opening/op-l02-v4.jpg",
-    "op-l04": "images/opening/op-l04-v4.jpg",
-    "op-l14": "images/opening/op-l14-v4.jpg",
+    "op-l02": HIRES["op-l02"] || "images/opening/op-l02-v4.jpg?v=20260714",
+    "op-l04": HIRES["op-l04"] || "images/opening/op-l04-v4.jpg?v=20260714",
+    "op-l14": HIRES["op-l14"] || "images/opening/op-l14-v4.jpg?v=20260714",
     "op-l10": "images/opening/target-field.jpg",
   };
 

@@ -211,7 +211,7 @@
                 )
               ),
               e("div", { className: "mla-mod" },
-                e(SecHead, { title: "Weather", note: "FIRST VISIT" }),
+                e(SecHead, { title: "Outdoor Weather", note: "ROOF CLOSED" }),
                 e("div", { className: "mla-weather" },
                   wxCell("temp", D.weather.temperature, "Temp"),
                   wxCell("rain", D.weather.conditions, "Conditions"),

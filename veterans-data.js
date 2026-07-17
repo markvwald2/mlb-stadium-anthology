@@ -37,7 +37,7 @@ window.VETERANS = {
   surface_type: "Artificial",
   surface: "AstroTurf 1971\u20132001; NexTurf 2001\u20132003",
   capacity_opening: "56,371",
-  capacity_current: "65,352",
+  capacity_current: "62,382",
   capacity_combined: "65,352 (originally 56,371)",
   elevation: "20 ft",
   coordinates: "39.9067\u00b0 N, 75.1711\u00b0 W",
@@ -58,7 +58,7 @@ window.VETERANS = {
 
   // ---- Field geometry ----
   left_field_distance: "330 ft",
-  center_field_distance: "371 ft",
+  center_field_distance: "408 ft",
   right_field_distance: "330 ft",
   orientation: "ENE",
   orientation_degrees: 67.5,

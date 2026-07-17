@@ -27,7 +27,7 @@ window.ORACLE = {
     ["Opened", "April 11, 2000"],
     ["Years Active", "2000\u2013present"],
     ["Renovations", "Scoreboard, seating, concession, center-field, and waterfront-edge upgrades"],
-    ["Capacity", "42,000 \u00b7 originally 41,503"],
+    ["Capacity", "41,331 \u00b7 originally 40,930"],
     ["Surface", "Natural grass (Tifway 419 bermudagrass)"],
     ["Architect", "HOK Sport"],
     ["Type", "Open-air baseball-only waterfront ballpark"],

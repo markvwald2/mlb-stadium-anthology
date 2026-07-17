@@ -722,10 +722,14 @@
       }
       this._bakeKey = key; // set before async so re-entry during the load bails
       const DPI_MULT = 3; // 100 design-px/in × 3 = 300 DPI at true print size
-      const src = new Image();
-      src.onload = () => {
+      // Decode with createImageBitmap when available: an HTMLImageElement
+      // resolves an MPF/multi-picture JPEG (some source photos carry an APP2
+      // preview) to its *embedded thumbnail*, silently capping the bake at a
+      // few hundred px → ~80 PPI embeds. createImageBitmap always decodes the
+      // full primary frame. Falls back to new Image() if unavailable/failing.
+      const draw = (src) => {
         if (this._bakeKey !== key) return; // superseded by a newer crop/size
-        const iw = src.naturalWidth, ih = src.naturalHeight;
+        const iw = src.naturalWidth || src.width, ih = src.naturalHeight || src.height;
         if (!iw || !ih) return;
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
@@ -775,9 +779,23 @@
         }
         this._img.src = this._bakedUrl;
         this._applyBakedStyles();
+        if (src.close) { try { src.close(); } catch (e) {} } // free ImageBitmap
       };
-      src.onerror = () => { if (this._bakeKey === key) this._bakeKey = null; };
-      src.src = url;
+      const fallbackDecode = () => {
+        const src = new Image();
+        src.onload = () => draw(src);
+        src.onerror = () => { if (this._bakeKey === key) this._bakeKey = null; };
+        src.src = url;
+      };
+      if (typeof createImageBitmap === 'function') {
+        fetch(url)
+          .then((r) => r.blob())
+          .then((b) => createImageBitmap(b))
+          .then((bm) => draw(bm))
+          .catch(fallbackDecode);
+      } else {
+        fallbackDecode();
+      }
     }
     // Frame-filling, un-transformed, pre-cropped: the well-behaved <img> case
     // Chrome prints correctly and embeds as JPEG. No transform (the old print

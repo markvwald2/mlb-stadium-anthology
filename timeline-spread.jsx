@@ -90,6 +90,7 @@
           // a tenure covers xOf(start) -> xOf(lastSeason + 1): the full width of every season it held.
           let x0 = xOf(t.start);
           let x1 = xOf(sEnd + 1);
+          if (ti === 0 && x0 < PLOT_X0) x0 = PLOT_X0; // clamp a pre-axis opener (e.g. 1888) to the chart floor
           let shift = 0; // uniform shifts only (nudge / right-margin); diamonds follow this, NOT the gap trims below
           const prev = ti > 0 ? ten[ti - 1] : null;
           const next = ti + 1 < ten.length ? ten[ti + 1] : null;
@@ -165,7 +166,8 @@
           { x: aboveX, y: b.barY + BARH + gap / 2 - lh / 2, anchor: "start", down: true, ax: stemX },                          // below
         ];
         // labelAbove primaries prefer the above slot, then below, then the inline right/left
-        const order = b.t.labelAbove ? [cands[2], cands[3], cands[0], cands[1]] : cands;
+        const order = b.t.labelAbove ? [cands[2], cands[3], cands[0], cands[1]]
+          : b.t.labelBelow ? [cands[3], cands[0], cands[1], cands[2]] : cands;
         let chosen = null;
         for (const c of order) {
           const r = { x: c.x, y: c.y, w: tw, h: lh };
@@ -176,7 +178,7 @@
           if (!bad) for (const p of placed) { if (hit(r, p, 1.5)) { bad = true; break; } }
           if (!bad) { chosen = c; break; }
         }
-        if (!chosen) chosen = cands[2]; // forced fallback → above (sits in gap, avoids neighbour text)
+        if (!chosen) chosen = b.t.labelBelow ? cands[3] : cands[2]; // forced fallback → below when requested, else above
         const r = { x: chosen.x, y: chosen.y, w: tw, h: lh };
         placed.push(r);
         // leader geometry

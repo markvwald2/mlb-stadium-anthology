@@ -77,7 +77,7 @@
       /* ============ LEFT / NIGHT-AERIAL HERO ============ */
       e("div", { className: "lm-page lm-left", "data-screen-label": "Milwaukee County Stadium — hero (left page)" },
         e("div", { className: "lm-hero-slot" },
-          e(Slot, { id: "mcs-hero", src: "images/county/county-stadium-00-main-2ee57177.jpg", placeholder: "Drop the Milwaukee County Stadium night / dusk aerial \u2014 the open municipal bowl, light towers, giant outfield scoreboard, and the fairgrounds parking fields" })),
+          e(Slot, { id: "mcs-hero", src: "images/county/county-stadium-00-main-adjusted.jpg", placeholder: "Drop the Milwaukee County Stadium night / dusk aerial \u2014 the open municipal bowl, light towers, giant outfield scoreboard, and the fairgrounds parking fields" })),
         e("div", { className: "lm-hero-scrim" }),
 
         e("div", { className: "lm-hero-datum" }, D.coordinates,

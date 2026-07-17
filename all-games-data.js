@@ -61,7 +61,7 @@
     // column assignment balances the two columns (col 1 = first five trips).
     trips: [
       { year: "1986", name: "Southern California", accent: "#9B3A2E", col: 1, games: [
-        g("Aug 17", "Anaheim Stadium",          "Angels", "A's", null, { Angels: "angels-logo-1986.png" }),
+        g("Aug 17", "Anaheim Stadium",          "Angels", "A's", null, { Angels: { logo: "angels-logo-1986.png", scale: 0.9 } }),
         g("Aug 18", "Dodger Stadium",           "Dodgers", "Mets"),
         g("Aug 19", "Dodger Stadium",           "Dodgers", "Mets"),
       ] },

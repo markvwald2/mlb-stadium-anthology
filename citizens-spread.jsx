@@ -16,21 +16,25 @@
   /* Outer margins matched to the 18px column gutter: content spans 55..1219
      inside the 37.5..1237.5 safe box (≈18px clear on every edge). Pillars are
      centered in each gutter. */
-  const LINTEL = { left: 55, top: 44, width: 1164, height: 54 };
+  /* Content authored for a 1275 padding box but .cbp-right's border-left:26 +
+     box-sizing:border-box leaves a 1249 padding box. Shift every x left by 12.5
+     so the content centers between the steel frame hairlines. */
+  const DX = -12.5;
+  const LINTEL = { left: 55 + DX, top: 44, width: 1164, height: 54 };
   const TOPY = 116, TOPH = 708;            // 116 .. 824
   const BANDY = 840, BANDH = 206;          // 840 .. 1046
   const BAYS = {
-    photo:   { left: 55,  top: TOPY, width: 158, height: TOPH },
-    facts:   { left: 231, top: TOPY, width: 227, height: TOPH },
-    context: { left: 476, top: TOPY, width: 384, height: 930 },
-    visit:   { left: 878, top: 116,  width: 341, height: 930 }
+    photo:   { left: 55 + DX,  top: TOPY, width: 158, height: TOPH },
+    facts:   { left: 231 + DX, top: TOPY, width: 227, height: TOPH },
+    context: { left: 476 + DX, top: TOPY, width: 384, height: 930 },
+    visit:   { left: 878 + DX, top: 116,  width: 341, height: 930 }
   };
-  const BAND = { left: 55, top: BANDY, width: 403, height: BANDH };
+  const BAND = { left: 55 + DX, top: BANDY, width: 403, height: BANDH };
   // vertical brick pilasters: [x, top, height] — centered in the 18px gutters
   const PILLARS = [
-    [219, 110, 720],
-    [464, 110, 936],
-    [866, 110, 942]
+    [219 + DX, 110, 720],
+    [464 + DX, 110, 936],
+    [866 + DX, 110, 942]
   ];
 
   function Slot(props) {

@@ -47,7 +47,7 @@ window.CBP = {
      [label, value, sub]  — sub renders as a small italic gloss. */
   facts: [
     ["Opened", "Apr 12, 2004", "groundbreaking Jun 28, 2001"],
-    ["Capacity", "43,500"],
+    ["Capacity", "43,500 \u00b7 currently 42,901"],
     ["Surface", "Natural grass", "Riviera Bermuda outfield \u00b7 Kentucky bluegrass infield"],
     ["Roof", "Open air", "open-air, baseball-only ballpark"],
     ["Architect", "EwingCole \u00b7 HOK Sport"],
@@ -98,7 +98,7 @@ window.CBP = {
     { name: "Citizens Bank Park", years: "2004\u2013present", terminus: true }
   ],
   // ongoing upgrades — verbatim renovations sentence (from the brief) + category icons
-  renovation_note: "Multi-million dollar concourse expansions and fan-friendly social spaces to upgraded technology and a redesigned Hall of Fame Club",
+  renovation_note: "Multimillion-dollar concourse expansions, fan-friendly social spaces, upgraded technology, and a redesigned Hall of Fame Club.",
   renovations: [
     { label: "Scoreboards", icon: "score" },
     { label: "Concessions", icon: "concession" },

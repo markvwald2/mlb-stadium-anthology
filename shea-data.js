@@ -36,7 +36,7 @@ window.SHEA = {
   surface_type: "Natural grass",
   surface: "Kentucky bluegrass",
   capacity_opening: "55,300",
-  capacity_current: "60,372",
+  capacity_current: "55,601",
   elevation: "10 ft",
   coordinates: "40.7556\u00b0 N, 73.8481\u00b0 W",
   address_line1: "123-01 Roosevelt Avenue",

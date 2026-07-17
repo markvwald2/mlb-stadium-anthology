@@ -99,7 +99,7 @@
             /* --- datum ribbon --- */
             React.createElement("div", { className: "np-ribbon" },
               ribCell("Team", D.team_name, "team"),
-              ribCell("League", D.division),
+              ribCell("Division", D.division),
               ribCell("Era", D.classification_era),
               ribCell("Years Active", D.years_active),
               ribCell("All-Star Game", D.all_star),

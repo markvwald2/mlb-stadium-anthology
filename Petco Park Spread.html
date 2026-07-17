@@ -79,8 +79,8 @@
 
   /* ---- slim black-steel title rail (vertically mounted signage) ---- */
   .pk-rail { position: absolute; left: 0; top: 0; width: 152px; height: 1088px; z-index: 6;
-    background:
-      linear-gradient(90deg, #0E0C07 0%, #1A1710 52%, #131009 100%);
+    background-color: #131009;
+    background-image: linear-gradient(90deg, #0E0C07 0%, #1A1710 52%, #131009 100%);
     border-right: 1px solid rgba(201,154,74,.42);
     box-shadow: 14px 0 30px rgba(0,0,0,.55), inset -1px 0 0 rgba(232,222,201,.06);
     display: flex; flex-direction: column; align-items: center;
@@ -115,6 +115,9 @@
   .pk-rail-logos img { height: 23px; width: auto; max-width: 50px; display: block; object-fit: contain; }
   @media print {
     .pk-rail-logos .lw { background: #E4D6BC !important; box-shadow: none !important; }
+    /* Chrome drops bare linear-gradient backgrounds in print/PDF; force the
+       near-black rail to a solid color longhand so it never prints transparent. */
+    .pk-rail { background-image: none !important; background-color: #14100A !important; }
   }
 
   /* ============ RIGHT PAGE / MONOGRAPH SHEET ============ */
@@ -222,7 +225,7 @@
     border: 1px solid #0C0A06; border-top: 2px solid var(--gold);
     color: var(--ink-on); padding: 6px 12px 7px; }
   .pk-vhead .vh-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
-  .pk-vhead .vh-no { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 1.7px;
+  .pk-vhead .vh-no { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 1.6px;
     color: var(--gold-hi); }
   .pk-vhead .vh-tag { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .14em; color: var(--ink-on2); }
   .pk-vhead .vh-sub { font-family: "Spectral", serif; font-style: italic; font-size: 12px;
@@ -268,7 +271,7 @@
   .pk-matchup .vs { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-on3); flex: none; margin: 0 1px; }
 
-  .pk-pitch { margin-bottom: 6px; }
+  .pk-pitch { margin-bottom: 6px; padding-left: 11px; }
   .pk-pitch .prow { display: grid; grid-template-columns: 30px 1fr 26px; gap: 8px; align-items: baseline;
     padding: 3px 0; border-bottom: 1px solid var(--rule); }
   .pk-pitch .prow:last-child { border-bottom: 0; }
@@ -292,11 +295,11 @@
   .pk-board tbody tr:last-child td { border-bottom: 0; }
   .pk-board tbody tr.win td.tm { color: var(--gold-hi); }
 
-  .pk-vlogos { display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    padding-top: 9px; border-top: 1px solid var(--rule-hi); }
-  .pk-vlogos .lw { flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; }
-  .pk-vlogos img { box-sizing: content-box; height: 30px; width: auto; max-width: 52px; display: block; object-fit: contain;
-    background: linear-gradient(180deg, #F2E9D6, #E1D4B9); padding: 8px 10px; border-radius: 6px;
+  .pk-vlogos { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 16px;
+    padding-top: 12px; border-top: 1px solid var(--rule-hi); }
+  .pk-vlogos .lw { flex: 1; display: flex; align-items: center; justify-content: center; height: 34px; }
+  .pk-vlogos img { box-sizing: content-box; height: 26px; width: auto; max-width: 52px; display: block; object-fit: contain;
+    background: linear-gradient(180deg, #F2E9D6, #E1D4B9); padding: 6px 9px; border-radius: 6px;
     border: 1px solid rgba(0,0,0,.22); box-shadow: 0 2px 6px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.55); }
 
   #root { min-height: 100vh; }

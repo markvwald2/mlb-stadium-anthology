@@ -188,7 +188,7 @@
             e("div", { className: "tf-keyfoot" },
               e("div", { className: "tf-logos" },
                 e("img", { src: "assets/tampa-bay-rays-logo.svg", alt: "Rays" }),
-                e("img", { src: "assets/mlb-logo.svg", alt: "MLB", style: { height: "30.8px" } }),
+                e("img", { src: "assets/mlb-logo.svg", alt: "MLB", style: { height: "23.8px" } }),
                 e("img", { className: "al", src: "assets/american-league-logo.png", alt: "American League" }))))),
 
         /* ---- Bay D : Game Operations display ---- */
@@ -211,7 +211,7 @@
                     e("span", { className: "nm" }, P.away), e("span", { className: "ab" }, V.away_abbr),
                     e("span", { className: "vs" }, "vs"),
                     e("span", { className: "nm" }, P.home), e("span", { className: "ab" }, V.home_abbr))),
-                e("div", { className: "tf-ops-sub" }, "Conditions \u00b7 Climate-Controlled"),
+                e("div", { className: "tf-ops-sub" }, "Conditions \u00b7 Exterior Weather"),
                 e("div", { className: "tf-wx" },
                   wxCell("temp", W.temperature, "Temp"),
                   wxCell("sky", W.conditions, "Sky"),

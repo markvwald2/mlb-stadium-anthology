@@ -34,7 +34,7 @@ window.TMOBILE = {
     ["Years Active", "1999\u2013Present"],
     ["Visit Order", "22"],
     ["Coordinates", "47.591\u00b0N \u00b7 122.333\u00b0W"],
-    ["Opening Capacity", "47,116"]
+    ["Opening Capacity", "46,621"]
   ],
 
   // ---- Stadium facts (museum-style tabular, single-line) ----
@@ -45,7 +45,7 @@ window.TMOBILE = {
     ["Stadium Type", "Open-air, retractable umbrella roof"],
     ["Roof", "Retractable canopy (not enclosed)"],
     ["Facade", "Brick & exposed steel; steel canopy"],
-    ["CAPACITY", "47,943"],
+    ["CAPACITY", "47,368"],
     ["Preceded By", "Kingdome"],
     ["Address", "1250 1st Ave S, Seattle, WA 98134"]
   ],

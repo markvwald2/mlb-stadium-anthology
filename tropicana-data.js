@@ -53,7 +53,7 @@ window.TROPICANA = {
     ["Groundbreaking", "Nov 22, 1986"],
     ["Location", "Downtown edge \u00b7 St. Petersburg"],
     ["Opening Day", "Mar 3, 1990", "as Florida Suncoast Dome"],
-    ["MLB Tenant", "Rays, 1998\u2013present"],
+    ["MLB Tenant", "Rays, 1998\u20132024, 2026-present"],
     ["Name History", "Florida Suncoast Dome (1990\u201393)\nThunderDome (1993\u201396)\nTropicana Field (1996\u2013present)"],
     ["Original Cost", "$130M (1990)", "$320M adjusted"],
     ["Renovations", "Field, catwalk, lighting, scoreboard, seating, turf, ray tank & fan-space updates; storm-damage & forced relocation during the 2025 season"]

@@ -90,7 +90,7 @@ window.CITI = {
   starter_away: "Tyler Mahle",
   matchup_line: "Tyler Mahle (CIN) vs Noah Syndergaard (NYM)",
   decisions_line: "W: Noah Syndergaard \u00b7 L: Tyler Mahle",
-  game_note: "Noah Syndergaard became the first pitcher since the Dodgers\u2019 Bob Welch (also vs the Reds on June 17, 1983) to hit a home run and throw a complete-game in a shutout in a 1-0 victory.",
+  game_note: "Noah Syndergaard became the first pitcher since the Dodgers\u2019 Bob Welch (also vs the Reds on June 17, 1983) to hit a home run and throw a complete-game shutout in a 1-0 victory.",
 
   // ---- Line score (verbatim) ----
   box: {

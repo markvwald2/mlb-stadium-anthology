@@ -52,7 +52,7 @@ window.MMP = {
   // ---- Bay B : museum facts ----
   facts: [
     ["Opened", "Mar 30, 2000", "groundbreaking Nov 1, 1997"],
-    ["Capacity", "40,950"],
+    ["Capacity", "41,592", "originally 40,950"],
     ["Surface", "Natural grass", "Seashore Paspalum"],
     ["Architect", "HOK Sport"],
     ["Roof", "Retractable"],

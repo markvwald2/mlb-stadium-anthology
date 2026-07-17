@@ -138,11 +138,11 @@
   .shp-frame { position: absolute; inset: 0; width: 1275px; height: 1088px; z-index: 1;
     color: var(--yellow); opacity: var(--shp-frame-op, 1); pointer-events: none; }
   .shp-bays { position: absolute; inset: 0; z-index: 2;
-    padding: 64px 40px 60px 40px; display: flex; gap: 52px; align-items: stretch; }
+    padding: 64px 42px 60px 66px; display: flex; gap: 0; justify-content: space-around; align-items: stretch; }
 
   .shp-bay { position: relative; display: flex; flex-direction: column; min-width: 0; }
   .shp-bay-id    { flex: 0 0 320px; padding: 16px 15px; border: 1px solid var(--rule-strong);
-    background-color: rgba(154,74,57,.045); transform: translateX(13px); }
+    background-color: rgba(154,74,57,.045); }
   .shp-bay-id::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
     opacity: var(--shp-brick-op, 1);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cg stroke='%237E3A2D' stroke-opacity='0.08' stroke-width='1'%3E%3Cline x1='0' y1='0' x2='48' y2='0'/%3E%3Cline x1='0' y1='24' x2='48' y2='24'/%3E%3Cline x1='0' y1='0' x2='0' y2='24'/%3E%3Cline x1='24' y1='24' x2='24' y2='48'/%3E%3C/g%3E%3C/svg%3E");

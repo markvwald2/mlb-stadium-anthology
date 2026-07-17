@@ -59,8 +59,8 @@
   .dv2-hero-slot image-slot { width: 100%; height: 100%; display: block; }
   .dv2-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(180deg, rgba(9,25,52,.48) 0%, rgba(9,25,52,.28) 13%, rgba(9,25,52,.08) 34%, rgba(9,25,52,0) 52%),
-      linear-gradient(0deg, rgba(9,25,52,.22) 0%, rgba(9,25,52,0) 16%); }
+      linear-gradient(180deg, rgba(30,58,182,.48) 0%, rgba(30,58,182,.28) 13%, rgba(30,58,182,.08) 34%, rgba(30,58,182,0) 52%),
+      linear-gradient(0deg, rgba(30,58,182,.22) 0%, rgba(30,58,182,0) 16%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
@@ -93,8 +93,8 @@
 
   /* ===================== RIGHT / TERRACES (shared) ===================== */
   .dv2-band { position: absolute; left: 0; width: 1275px; overflow: hidden; }
-  .dv2-pad { position: absolute; left: 65px; right: 50px; }
-  .dv2-edge { position: absolute; left: 65px; right: 50px; height: 3px; top: 0; }
+  .dv2-pad { position: absolute; left: 65px; right: 37.5px; }
+  .dv2-edge { position: absolute; left: 65px; right: 37.5px; height: 3px; top: 0; }
 
   .dv2-sec { display: flex; align-items: baseline; gap: 13px; }
   .dv2-sec .tag { font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: 27px;
@@ -104,12 +104,12 @@
     letter-spacing: .2em; text-transform: uppercase; color: var(--ink2); margin-left: auto; white-space: nowrap; }
 
   /* ---- BAND 1 / photo frieze + identity ribbon ---- */
-  .dv2-frieze { position: absolute; left: 65px; right: 50px; display: flex; gap: 6px; }
+  .dv2-frieze { position: absolute; left: 65px; right: 37.5px; display: flex; gap: 6px; }
   .dv2-frieze figure { flex: 1 1 0; min-width: 0; margin: 0; height: 100%; background: #DfD6C2;
     border-bottom: 3px solid var(--sky); }
   .dv2-frieze image-slot { display: block; width: 100%; height: 100%; }
 
-  .dv2-ribbon { position: absolute; left: 65px; right: 50px; display: flex; height: 50px; align-items: stretch;
+  .dv2-ribbon { position: absolute; left: 65px; right: 37.5px; display: flex; height: 50px; align-items: stretch;
     border-top: 1.5px solid var(--sky); }
   .dv2-ribbon .rc { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: center;
     padding: 4px 12px 4px 14px; position: relative; }
@@ -188,7 +188,7 @@
     letter-spacing: .01em; color: var(--ink); white-space: nowrap; line-height: 1.05; }
   .dv2-visit-other .ov-opp { font-family: "Barlow Semi Condensed", sans-serif; font-size: 12px;
     font-weight: 500; letter-spacing: .02em; color: var(--ink2); white-space: nowrap; margin-top: 0; line-height: 1.05; }
-  .dv2-panels { position: absolute; left: 65px; right: 50px;
+  .dv2-panels { position: absolute; left: 65px; right: 37.5px;
     display: flex; flex-direction: row; gap: 16px; align-items: stretch; }
 
   .dv2-gm { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column;

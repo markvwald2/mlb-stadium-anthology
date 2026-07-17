@@ -94,7 +94,7 @@
 
   // ── image figures (user-filled slots) ────────────────────────────────────
   const FIGS = {
-    bakerBowl: { id: "bp-baker-bowl", title: "BAKER BOWL, PHILADELPHIA", meta: "c. 1895 \u00b7 John D. Allen", caption: "Rebuilt after an 1894 fire, this steel-and-brick park introduced cantilevering to reduce obstructed seats.", kind: "photo" },
+    bakerBowl: { id: "bp-baker-bowl", title: "BAKER BOWL, PHILADELPHIA", meta: "c. 1895 \u00b7 John D. Allen", caption: "Rebuilt after an 1894 fire, this steel-and-brick park pioneered cantilevering to reduce obstructed seats.", kind: "photo" },
     poloGrounds: { id: "bp-polo-grounds", title: "THE POLO GROUNDS, NEW YORK", meta: "c. 1911 \u00b7 Henry B. Herts", caption: "After a 1911 fire, a concrete-and-steel reconstruction preserved the site\u2019s peculiar \u201cbathtub\u201d profile.", kind: "photo" },
     fenway: { id: "bp-fenway-plan", title: "FENWAY PARK, BOSTON", meta: "1912 \u00b7 James E. McLaughlin", caption: "Asymmetrical geometry, tight to the street grid.", kind: "plan" },
     wrigley: { id: "bp-wrigley-plan", title: "WRIGLEY FIELD, CHICAGO", meta: "1914 \u00b7 Zachary Taylor Davis", caption: "Neighborhood streets define the jewel box.", kind: "plan" },
@@ -136,7 +136,7 @@
     items: [
       { icon: "materials", label: "FIRE, STEEL & SPANS", body: "Wooden parks burned; steel, brick, and concrete made larger decks, safer structures, and column-free sightlines possible. Later roofs, domes, artificial turf, and sustainability standards extended the material brief from durability to environmental control." },
       { icon: "money", label: "BONDS, RIGHTS & REAL ESTATE", body: "The ballpark moved from owner-built structure to public-finance project and revenue platform. Tax-supported bonds, naming rights, premium clubs, sponsorships, and adjacent real estate reshaped what a stadium had the potential to earn." },
-      { icon: "access", label: "ROUTES, SEATS & SIGHTLINES", body: "Accessibility became part of the building form. Wheelchair access seating, companion seats, accessible routes, wider concourses, and sightlines over standing spectators changed the way bowls and circulation systems were planned." },
+      { icon: "access", label: "ROUTES, SEATS & SIGHTLINES", body: "Accessibility became part of the building form. Wheelchair-accessible seating, companion seats, accessible routes, wider concourses, and sightlines over standing spectators changed the way bowls and circulation systems were planned." },
       { icon: "risk", label: "NETTING, APPS & LIABILITY", body: "The modern visit is shaped by safety and software as much as concrete. Extended foul-ball netting, digital ticketing, app-based entry, mobile ordering, and risk management made code, policy, and liability part of stadium design." },
     ],
   };

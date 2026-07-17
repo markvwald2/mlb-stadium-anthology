@@ -61,7 +61,8 @@
   .bz-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .bz-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(0deg, rgba(10,8,6,.55) 0%, rgba(10,8,6,.2) 12%, rgba(10,8,6,0) 24%); }
+      linear-gradient(180deg, rgba(14,22,44,.62) 0%, rgba(14,22,44,.34) 14%, rgba(14,22,44,0) 30%),
+      linear-gradient(0deg, rgba(14,22,44,.58) 0%, rgba(14,22,44,.22) 12%, rgba(14,22,44,0) 24%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
@@ -74,7 +75,7 @@
   .bz-folio { position: absolute; right: 66px; bottom: 58px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(233,226,210,.66); text-transform: uppercase; }
-  .bz-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
+  .bz-spine { position: absolute; left: 61px; top: 612px; z-index: 5;
     transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .34em;
     color: rgba(233,226,210,.46); text-transform: uppercase; white-space: nowrap; }
@@ -92,7 +93,7 @@
   .bz-name {
     position: relative; margin: 0; font-family: "Abril Fatface", Georgia, serif; font-weight: 400;
     font-size: 100px; line-height: .9; letter-spacing: 0; text-transform: uppercase; white-space: nowrap;
-    color: #F2ECDC; -webkit-text-fill-color: #F2ECDC; text-shadow: 0 4px 28px rgba(0,0,0,.5);
+    color: #F2ECDC; -webkit-text-fill-color: #F2ECDC; text-shadow: 0 1px 8px rgba(0,0,0,.35);
   }
   .bz-name::after {
     content: attr(data-t); position: absolute; left: 0; top: 0; pointer-events: none;

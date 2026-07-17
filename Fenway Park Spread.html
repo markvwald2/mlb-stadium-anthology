@@ -49,7 +49,7 @@
   .fw-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .fw-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(0deg, rgba(12,35,64,.74) 0%, rgba(12,35,64,.42) 12%, rgba(12,35,64,.04) 26%, rgba(12,35,64,0) 36%),
+      linear-gradient(0deg, rgba(16,20,26,.74) 0%, rgba(16,20,26,.42) 12%, rgba(16,20,26,.04) 26%, rgba(16,20,26,0) 36%),
       linear-gradient(180deg, rgba(12,35,64,.36) 0%, rgba(12,35,64,0) 16%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
@@ -57,6 +57,32 @@
        Composite the slot too so the img layer stays contained below the scrim. */
     .fw-hero-slot  { transform: translateZ(0) !important; }
     .fw-hero-scrim { transform: translateZ(0) !important; }
+
+    /* Acrobat/PDF compatibility: simplify the right page. Removes transparent
+       wall overlays, gradients/shadows, and filter effects that Acrobat may
+       flatten incorrectly (dark bands, green/darkened cream panels). Browser
+       appearance is unchanged. */
+    .fw-right {
+      background: #1F3D29 !important;
+    }
+    .fw-right::before {
+      display: none !important;
+    }
+    .fw-panel {
+      background: #EBE4D2 !important;
+      box-shadow: none !important;
+    }
+    .fw-bay-frame,
+    .fw-field-bay,
+    .fw-brick-plate,
+    .fw-sb-cell,
+    .fw-sb-tot,
+    .fw-game {
+      box-shadow: none !important;
+    }
+    .fw-brick-marks img {
+      filter: none !important;
+    }
   }
 
 

@@ -42,7 +42,7 @@
     return e("g", { key: "post" + key }, els);
   }
   function BridgeFrame() {
-    const x0 = 40, x1 = 1248, yTop = 46, yBot = 1044, posts = [386, 858];
+    const x0 = 66, x1 = 1233, yTop = 46, yBot = 1044, posts = [411, 857];
     const rivets = [];
     for (let x = x0 + 26; x < x1; x += 52) {
       rivets.push(e("circle", { key: "rt" + x, cx: x, cy: yTop, r: 1.7, fill: "#8A6210" }));

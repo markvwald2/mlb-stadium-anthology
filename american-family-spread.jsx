@@ -129,12 +129,16 @@
   }
 
   function Spread() {
+    const heroSrc = new URLSearchParams(location.search).get("print")
+      ? "images/american-family/miller-park-00-main-print.jpg"
+      : "images/american-family/miller-park-00-main-c17983a5.jpg";
+
     return e("div", { className: "amf-spread", "data-screen-label": "American Family Field spread" },
 
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "amf-page amf-left", "data-screen-label": "American Family Field — hero" },
         e("div", { className: "amf-hero-slot" },
-          e(Slot, { id: "amfam-hero", src: "images/american-family/miller-park-00-main-c17983a5.jpg", placeholder: "Drop the American Family Field hero \u2014 night aerial of the fan-shaped retractable roof, brick-and-steel mass, surrounding lots & the Menomonee valley" })),
+          e(Slot, { id: "amfam-hero", src: heroSrc, placeholder: "Drop the American Family Field hero \u2014 night aerial of the fan-shaped retractable roof, brick-and-steel mass, surrounding lots & the Menomonee valley" })),
         e("div", { className: "amf-hero-scrim" }),
 
         e("img", { className: "amf-hero-logo", src: "assets/milwaukee-brewers-logo.svg", alt: "Milwaukee Brewers" }),
@@ -245,7 +249,7 @@
         e("div", { className: "amf-context" },
           e("div", { className: "amf-ctx-watermark" },
             e("img", { src: "assets/wisconsin-outline.svg", alt: "" })),
-          e(SecHead, { title: "The Pivoting Fan", note: "MILLER PARK \u2192 AMERICAN FAMILY FIELD", noteStyle: { letterSpacing: "-0.7px", fontSize: "12px" } }),
+          e(SecHead, { title: "The Pivoting Fan", note: "MILLER PARK \u2192 AM FAM FIELD", noteStyle: { letterSpacing: "0px", fontSize: "12px" } }),
           e("div", { className: "amf-prose" },
             D.stadium_context.map((p, i) => e("p", { key: i }, p)))
         )
