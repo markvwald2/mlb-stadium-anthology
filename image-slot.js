@@ -721,7 +721,13 @@
         return;
       }
       this._bakeKey = key; // set before async so re-entry during the load bails
-      const DPI_MULT = 3; // 100 design-px/in × 3 = 300 DPI at true print size
+      const DPI_MULT = 3.2; // 100 design-px/in × 3.2 → ~320 DPI target; headroom
+      // over the 300 floor absorbs flex/zoom layout rounding at print (a slot
+      // whose placed box lands ~2% larger than its floored clientW/H would bake
+      // just under 300 at a flat 3×). Self-limiting: the cover bake is capped at
+      // the available source width, so a photo whose SOURCE is the true limit
+      // (e.g. a just-enough full-bleed hero) still tops out near 300 and does not
+      // inflate the PDF — only photos with ample source gain the extra pixels.
       // Decode with createImageBitmap when available: an HTMLImageElement
       // resolves an MPF/multi-picture JPEG (some source photos carry an APP2
       // preview) to its *embedded thumbnail*, silently capping the bake at a

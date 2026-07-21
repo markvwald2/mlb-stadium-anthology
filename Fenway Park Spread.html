@@ -315,7 +315,11 @@
     font-family: "Jost", sans-serif; font-size: 12px; letter-spacing: .1em; }
 
   /* ===== two equal game blocks ===== */
-  .fw-games { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; min-height: 0; }
+  .fw-games { position: relative; flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; min-height: 0; }
+  .fw-morse { position: absolute; left: 50%; top: 50%; z-index: 3;
+    transform: translate(calc(-50% + 1px),-50%) rotate(90deg); transform-origin: center; pointer-events: none; }
+  .fw-morse svg { display: block; width: 257px; height: 64px; }
+  .fw-morse svg path { fill: #F4EFE0; }
   .fw-game { position: relative; display: flex; flex-direction: column; min-width: 0; padding: 10px 13px 10px;
     border: 2px solid rgba(226,217,192,.72); border-radius: 0; background: #1E3A27;
     box-shadow: inset 0 1px 0 rgba(231,222,198,.06); }

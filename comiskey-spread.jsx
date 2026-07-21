@@ -272,9 +272,12 @@
             e("div", { className: "cm-module" },
               e("div", { className: "cm-mhead" }, e("div", { className: "t" }, "Field Dimensions"), e("div", { className: "ln" })),
               e("div", { className: "cm-mbody" },
-                e("div", { className: "cm-field" },
-                  Field ? e(Field, { lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
-                    orientation: D.orientation, degrees: D.orientation_degrees }) : null))),
+                e("div", { className: "cm-fieldwrap" },
+                  e("div", { className: "cm-field" },
+                    Field ? e(Field, { lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
+                      orientation: D.orientation, degrees: D.orientation_degrees }) : null),
+                  e("img", { className: "cm-battedsign", src: "images/comiskey/comiskey-batted-balls-sign.png",
+                    alt: "Vintage Watch For Batted Balls ballpark sign" })))),
 
             /* LIFECYCLE */
             e("div", { className: "cm-module" },

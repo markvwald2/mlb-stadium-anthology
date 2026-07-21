@@ -119,7 +119,6 @@
           e("div", { className: "shea-sechead", "data-screen-label": "Stadium Section" },
             Tab(),
             e("div", { className: "htxt" },
-              Icon("panels", { size: 23, stroke: "#23211C", sw: 1.6 }),
               e("h2", null, "Stadium Section"),
               e("span", { className: "ln" }),
               e("span", { className: "eyebrow" }, D.era_short))),
@@ -146,7 +145,7 @@
               e("span", { className: "tick" })),
             e("div", { className: "shea-plate" },
               e("span", { className: "pnum" }, "03"),
-              e("image-slot", { id: "shea-p3", src: "images/shea/shea-stadium-03.jpg", placeholder: "Scoreboard / outfield \u00b7 Home Run Apple", shape: "rect" }),
+              e("image-slot", { id: "shea-p3", src: "images/shea/shea-stadium-03v2.jpg", placeholder: "Scoreboard / outfield \u00b7 Home Run Apple", shape: "rect" }),
               e("span", { className: "tick" }))),
 
           /* ---- center: Stadium Context exhibition panel ---- */

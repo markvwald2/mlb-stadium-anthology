@@ -120,7 +120,9 @@
                         lf: D.left_field_distance, cf: D.center_field_distance, rf: D.right_field_distance,
                         orientation: D.orientation, degrees: D.orientation_degrees, accent: "#1C3D72"
                       }) : null)),
-                  React.createElement("div", { className: "we-fd-nick" }, "\u201CThe Friendly Confines\u201D"))),
+                  React.createElement("div", { className: "we-fd-nick" }, "\u201CThe Friendly Confines\u201D")),
+                React.createElement("div", { className: "we-fd-photo" },
+                  React.createElement(Slot, { id: "wrigley-ivy-400", src: "images/wrigley/wrigley-field-05.jpg", fit: "cover", placeholder: "Ivy wall & 400 marker" }))),
 
               React.createElement("div", { className: "we-context" },
                 React.createElement("div", { className: "we-watermark" }, "1914"),

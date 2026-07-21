@@ -186,7 +186,7 @@
                 e("span", { className: "t" }, "Visit Section")),
 
               e("div", { className: "cy-game" },
-                e("div", { className: "eyebrow" }, D.trip_name + " Trip \u00b7 " + D.featured_day + ", " + D.featured_date),
+                e("div", { className: "eyebrow" }, (D.featured_day + ", " + D.featured_date).toUpperCase()),
                 e("div", { className: "match" },
                   e("div", { className: "tcol" },
                     e("img", { src: "assets/tampa-bay-rays-logo.svg", alt: D.away_team }),
@@ -196,6 +196,8 @@
                     e("img", { src: "assets/baltimore-orioles-logo.svg", alt: D.home_team }),
                     e("span", { className: "code home" }, D.home_abbr))),
                 e("div", { className: "result" }, D.result_line),
+                e("div", { className: "gnote" },
+                  e("b", null, "Note"), "Make-up of May 5, 2019 rainout"),
                 e("div", { className: "gmeta" },
                   gstat("Attendance", D.attendance),
                   gstat("First Pitch", D.first_pitch),

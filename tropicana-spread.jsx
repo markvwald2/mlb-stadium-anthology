@@ -160,7 +160,7 @@
               e("h2", null, "Tropicana Field")),
             e("div", { className: "scale" },
               Array.from({ length: 30 }, (_, i) => e("span", { className: "t" + (i % 5 === 0 ? " big" : ""), key: i }))),
-            e("span", { className: "stamp" }, "FACILITY RECORD \u00b7 " + D.bay_caption.toUpperCase()))),
+            e("span", { className: "stamp" }, "BALLPARK RECORD \u00b7 " + D.bay_caption.toUpperCase()))),
 
         /* ---- Bay A : single roof-bay photo ---- */
         e("div", { className: "tf-bay", style: rect(BAYS.a) },

@@ -97,9 +97,9 @@
         e("line", { x1: C[0], y1: C[1], x2: ntip[0], y2: ntip[1], stroke: accent, strokeWidth: 2.2, strokeLinecap: "round" }),
         e("polygon", { points: head, fill: black }),
         e("circle", { cx: C[0], cy: C[1], r: 3, fill: accent }),
-        e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 16, tone: "blue", padX: 7 }),
+        e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 18, tone: "blue", padX: 7 }),
         // distance chips
-        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 16 }))
+        chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 18 }))
       )
     );
   }

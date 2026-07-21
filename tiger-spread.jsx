@@ -129,7 +129,7 @@
           /* sheet header / title-block */
           e("div", { className: "ts-head" },
             e("div", { className: "hl" },
-              e("div", { className: "over" }, "Plat of the Corner Lot"),
+              e("div", { className: "over" }, "Corktown \u00b7 Detroit \u00b7 Michigan"),
               e("div", { className: "nm" }, "Tiger Stadium")),
             e("div", { className: "hr" },
               e("div", { className: "cell" }, e("div", { className: "k" }, "Status"), e("div", { className: "v", style: { color: "#C5491B" } }, D.status)),

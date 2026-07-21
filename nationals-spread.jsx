@@ -69,7 +69,7 @@
         /* ===================== LEFT PAGE / HERO ===================== */
         React.createElement("div", { className: "np-page np-left", "data-screen-label": "Nationals Park hero" },
           React.createElement("div", { className: "np-hero-slot" },
-            React.createElement(Slot, { id: "nats-hero", src: "images/nationals/nationals-park-00-main-2c43bc04.jpg", placeholder: "Drop the Nationals Park aerial \u2014 bowl + Navy Yard / Capitol Riverfront district + Anacostia River" })),
+            React.createElement(Slot, { id: "nats-hero", src: "images/nationals/nationals-park-00-main-PS.jpg", placeholder: "Drop the Nationals Park aerial \u2014 bowl + Navy Yard / Capitol Riverfront district + Anacostia River" })),
           React.createElement("div", { className: "np-hero-scrim" }),
 
           React.createElement("div", { className: "np-hero-head" },

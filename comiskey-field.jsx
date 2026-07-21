@@ -90,7 +90,13 @@
       e("circle", { cx: C[0], cy: C[1], r: 3, fill: bulb }),
       e(Chip, { x: bc.x, y: bc.y, text: deg + "\u00b0", size: 26, padX: 7, col: brick }),
       // distance chips
-      chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 26 }))
+      chips.map((c, i) => e(Chip, { key: "d" + i, x: c.p[0], y: c.p[1], text: c.t, size: 26 })),
+      // batted-ball path arcing out over the first-base dugout to an X in the seats
+      // (screen space — the first-base line runs horizontally after the 45deg rotation)
+      e("path", { d: "M 116 262 Q 138 268 150 292", fill: "none", stroke: bulb, strokeWidth: 1.6, strokeDasharray: "2 6", strokeLinecap: "round", opacity: 0.92 }),
+      e("g", { stroke: brick, strokeWidth: 2.6, strokeLinecap: "round" },
+        e("line", { x1: 144, y1: 286, x2: 156, y2: 298 }),
+        e("line", { x1: 156, y1: 286, x2: 144, y2: 298 }))
     );
   }
 
