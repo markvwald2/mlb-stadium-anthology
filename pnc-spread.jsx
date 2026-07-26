@@ -88,11 +88,11 @@
               React.createElement(PMark, { tone: "gold" })),
             metaCell("Est.", "2001"),
             metaCell("Configuration", "Open Air"),
-            metaCell("Use", "Baseball Only"),
-            React.createElement("div", { className: "cell logos" },
-              React.createElement("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "MLB" }),
-              React.createElement("img", { className: "nl-logo", src: "assets/nl-logo.png", alt: "National League" }))
+            metaCell("Use", "Baseball Only")
           ),
+          React.createElement("div", { className: "pnc-hero-logos" },
+            React.createElement("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "MLB" }),
+            React.createElement("img", { className: "nl-logo", src: "assets/nl-logo.png", alt: "National League" })),
           React.createElement("div", { className: "pnc-addr" },
             React.createElement("span", null, D.address),
             React.createElement("span", { className: "dot" }, "\u00b7"),

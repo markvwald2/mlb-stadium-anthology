@@ -44,7 +44,7 @@
       { title: "Multipurpose Shared Use", desc: "Concrete bowls focused on flexibility, where adaptability and efficiency outweighed baseball intimacy.", accent: "#8A8276", slot: "jc-g4", parksStyle: { letterSpacing: "-0.1px" },
         parks: ["Jack Murphy", "Shea", "Riverfront", "Three Rivers", "The Vet", "Mile High", "Tropicana Field", "Rogers Centre"] },
       { title: "Retro Classic", desc: "Baseball-only parks reintroducing asymmetry, local materials, urban context, and renewed sense of place.", accent: "#9C3A28", slot: "jc-g5", wide: true, parksStyle: { fontSize: "11px", letterSpacing: "-0.5px" },
-        parks: ["Coors", "Progressive", "Comerica", "Miller", "Safeco", "Petco", "GABP", "PNC", "Citi", "Yankee", "Citizens Bank", "Camden", "Minute Maid", "Chase Field", "Sutter Health", "Oracle"] },
+        parks: ["Coors", "Progressive", "Comerica", "Miller", "Safeco", "Petco", "GABP", "Oracle", "Camden", "Citizens Bank", "Yankee", "Minute Maid", "Chase Field", "Sutter Health", "PNC", "Citi"] },
       { title: "Contemporary Mixed Use", desc: "Ballparks anchoring mixed-use districts, where baseball became one element of a year-round entertainment destination.", accent: "#4F6B57", slot: "jc-g6",
         parks: ["Busch Stadium", "SunTrust Park", "Nationals Park", "Globe Life Field", "Target Field"] }
     ]

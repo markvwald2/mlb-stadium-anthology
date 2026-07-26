@@ -35,7 +35,7 @@
       // green Monster-signage plaque, lower-left
       e("div", { className: "fw-plaque" },
         e("div", { className: "fw-plaque-rivets" }),
-        e("div", { className: "fw-plaque-name" }, "FENWAY PARK"),
+        e("div", { className: "fw-plaque-name fw-ds", "data-t": "FENWAY PARK" }, "FENWAY PARK"),
         e("div", { className: "fw-plaque-loc" }, D.city + ", " + D.state),
         e("div", { className: "fw-plaque-years" }, D.years_active),
         e("div", { className: "fw-plaque-sub" }, D.league + " EAST \u00b7 " + D.team_name)

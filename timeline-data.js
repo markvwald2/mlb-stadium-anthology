@@ -159,7 +159,7 @@
     ]},
     { lines: ["Seattle Mariners"], tenures: [
       { stadium: "Kingdome", start: 1977, end: 1999, visited: false, visitYears: [], visitCount: 0, renames: [] },
-      { stadium: "Safeco Field", start: 1999, end: 2026, visited: true, visitYears: [2003], visitCount: 1, renames: [{ year: 2019, name: "T-Mobile" }] },
+      { stadium: "Safeco Field", start: 1999, end: 2026, visited: true, visitYears: [2002], visitCount: 1, renames: [{ year: 2019, name: "T-Mobile" }] },
     ]},
     { lines: ["Toronto Blue Jays"], tenures: [
       { stadium: "Exhibition Stadium", start: 1977, end: 1989, visited: false, visitYears: [], visitCount: 0, renames: [] },

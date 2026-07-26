@@ -91,6 +91,7 @@
   .gabp-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
+      linear-gradient(180deg, rgba(58,102,158,.55) 0%, rgba(74,120,176,.34) 8%, rgba(90,134,186,.16) 15%, rgba(90,134,186,0) 23%),
       linear-gradient(0deg, rgba(10,9,8,.68) 0%, rgba(10,9,8,.34) 12%, rgba(10,9,8,.06) 24%, rgba(10,9,8,0) 34%);
   }
   @media print {
@@ -121,7 +122,9 @@
     margin: 0; font-family: "Big Shoulders Display", sans-serif; font-weight: 800;
     font-size: 100px; line-height: .84; letter-spacing: .005em; text-transform: uppercase;
     text-align: center; color: var(--red-bright);
-    text-shadow: 0 1px 4px rgba(0,0,0,.28);
+    text-shadow: 0 3px 5px rgba(0,0,0,.38);
+    /* the 2.8px white stroke swallows a small ghost offset — push it clear */
+    --gs-x: 3px; --gs-y: 5px; --gs-alpha: .34;
     -webkit-text-stroke: 2.8px #ffffff; paint-order: stroke fill;
   }
   .gabp-hero-loc { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 22px; }
@@ -145,7 +148,7 @@
   .gabp-meta .mcell .v.mono { font-family: "Space Mono", monospace; font-weight: 400; font-size: 13px; letter-spacing: .01em; }
   .gabp-meta .logos { margin-left: auto; flex-direction: row; align-items: center; gap: 26px; border-left: 0; padding-right: 0; }
   .gabp-meta .logos .reds { height: 48px; width: auto; display: block; }
-  .gabp-meta .logos .mlb { height: 42px; width: auto; display: block; margin-left: -10px; }
+  .gabp-meta .logos .mlb { height: 37.8px; width: auto; display: block; margin-left: -10px; }
   .gabp-meta .logos .nl { height: 50px; width: auto; display: block; }
   .gabp-addr {
     position: absolute; left: 60px; right: 60px; bottom: 54px; z-index: 5;
@@ -340,5 +343,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="gabp-spread.jsx"></script>
   <script type="text/babel" src="gabp-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

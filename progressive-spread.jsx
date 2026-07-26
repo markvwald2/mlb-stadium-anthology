@@ -86,21 +86,17 @@
           e(Slot, { id: "prog-hero", src: "images/progressive/progressive-field-00-main-ps-v2.jpg", placeholder: "Drop the Progressive Field hero \u2014 painted exposed steel, light towers, seating bowl, downtown Cleveland skyline beyond the outfield" })),
         e("div", { className: "pf-hero-scrim" }),
 
-        /* faint cyan drafting overlay */
-        e("div", { className: "pf-draft", "aria-hidden": "true" },
-          e("div", { className: "pf-dlabel gridn" }, "GRID N")),
-
         e("div", { className: "pf-hero-folio" },
           e("span", null, D.folio)),
 
         /* fabricated-steel sign band title */
         e("div", { className: "pf-band" },
           e("span", { className: "rail t" }), e("span", { className: "rail b" }),
-          e("span", { className: "star l" }, "\u2605"),
-          e("h1", { className: "pf-band-name" }, "Progressive Field"),
-          e("span", { className: "star r" }, "\u2605")),
+          e("span", { className: "star l pf-ds", "data-t": "\u2605" }, "\u2605"),
+          e("h1", { className: "pf-band-name pf-ds", "data-t": "Progressive Field" }, "Progressive Field"),
+          e("span", { className: "star r pf-ds", "data-t": "\u2605" }, "\u2605")),
         e("div", { className: "pf-subplate" },
-          e("span", { className: "city" }, D.city + ", " + D.state)),
+          e("span", { className: "city pf-ds", "data-t": D.city + ", " + D.state }, D.city + ", " + D.state)),
 
         /* coordinates / elevation / address — survey footer strip (no box) */
         e("div", { className: "pf-geofoot" },

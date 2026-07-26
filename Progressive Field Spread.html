@@ -56,8 +56,8 @@
   .pf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .pf-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(180deg, rgba(12,14,18,.66) 0%, rgba(12,14,18,.28) 16%, rgba(12,14,18,0) 30%),
-      linear-gradient(0deg, rgba(12,14,18,.78) 0%, rgba(12,14,18,.32) 22%, rgba(12,14,18,0) 40%); }
+      linear-gradient(180deg, rgba(12,14,18,.66) 0%, rgba(12,14,18,.28) 13%, rgba(12,14,18,0) 24%),
+      linear-gradient(0deg, rgba(12,14,18,.78) 0%, rgba(12,14,18,.32) 13%, rgba(12,14,18,0) 24%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
@@ -67,13 +67,29 @@
   }
 
 
+  /* Print-safe hero shadow: Chrome's HTML-to-PDF pipeline drops CSS text-shadow /
+     filter: drop-shadow() while keeping glyphs vector, so blurred shadows can never be
+     trusted here. Instead each hero string carries a DUPLICATE copy of itself (::before,
+     content: attr(data-t)) offset a few px behind the real text in a translucent dark ink —
+     ordinary vector glyph runs, so it prints exactly as it screens. The real text stays the
+     only selectable copy; the ghost is a pseudo-element, invisible to text selection.
+     --dsx/--dsy = offset, --dsc = ghost ink. .pf-ds2 adds a second, opposite-offset ghost. */
+  .pf-ds { position: relative; z-index: 0; }
+  .pf-ds::before, .pf-ds2::after {
+    content: attr(data-t); position: absolute; z-index: -1; pointer-events: none; left: 0; top: 0;
+    white-space: pre; letter-spacing: inherit; text-transform: inherit;
+    color: var(--dsc, rgba(10,12,16,.6)); -webkit-text-fill-color: var(--dsc, rgba(10,12,16,.6)); }
+  .pf-ds::before { transform: translate(var(--dsx, 2px), var(--dsy, 3px)); }
+  .pf-ds2::after { transform: translate(calc(-1 * var(--dsx, 2px)), calc(-1 * var(--dsy, 3px))); }
+
   /* cyan drafting overlay */
   .pf-draft { position: absolute; inset: 0; z-index: 3; pointer-events: none;
     font-family: "Space Mono", monospace; color: rgba(150,190,228,.62); text-transform: uppercase; }
-  .pf-draft .pf-dlabel { position: absolute; font-size: 13px; letter-spacing: .22em; text-shadow: 0 1px 6px rgba(0,0,0,.55); }
+  .pf-draft .pf-dlabel { position: absolute; font-size: 13px; letter-spacing: .22em;
+    text-shadow: 0 1px 6px rgba(0,0,0,.55); }
   .pf-draft .elev { top: 92px; left: 84px; display: flex; align-items: center; gap: 12px; }
   .pf-draft .elev .lead { width: 64px; height: 1px; background: rgba(150,190,228,.55); }
-  .pf-draft .gridn { top: 92px; left: 760px; letter-spacing: .3em; }
+  .pf-draft .gridn { top: 252px; left: auto; right: 66px; letter-spacing: .3em; }
   .pf-draft .struct { position: absolute; left: 40px; right: 240px; bottom: 132px; height: 0;
     border-top: 1px dashed rgba(150,190,228,.4); }
   .pf-draft .structlab { bottom: 116px; left: 300px; font-size: 12px; letter-spacing: .26em; color: rgba(150,190,228,.5); }
@@ -92,16 +108,17 @@
     box-shadow: 0 1px 5px rgba(0,0,0,.55); }
   .pf-band .rail.t { top: 12px; } .pf-band .rail.b { bottom: 12px; }
   .pf-band .star { position: absolute; color: var(--red); font-size: 38px; line-height: 1;
-    text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+    --dsx: 1.5px; --dsy: 2px; --dsc: rgba(10,12,16,.3); }
+  .pf-band .star.pf-ds { position: absolute; }
   .pf-band .star.l { left: 34px; } .pf-band .star.r { right: 34px; }
   .pf-band-name { margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
     font-size: 92px; line-height: 1; letter-spacing: .04em; color: #F7F5EE; text-transform: uppercase;
-    white-space: nowrap; text-shadow: 0 2px 3px rgba(0,0,0,.92), 0 4px 26px rgba(0,0,0,.8), 0 0 42px rgba(0,0,0,.55); }
+    white-space: nowrap; --dsx: 3px; --dsy: 3.5px; --dsc: rgba(10,12,16,.21); }
 
   .pf-subplate { position: absolute; left: 56px; width: 1086px; top: 194px; z-index: 4; text-align: center; }
   .pf-subplate .city { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 23px;
     letter-spacing: .42em; text-transform: uppercase; color: rgba(232,230,222,.9); white-space: nowrap;
-    text-shadow: 0 1px 8px rgba(0,0,0,.6); }
+    --dsx: 1px; --dsy: 1.5px; --dsc: rgba(10,12,16,.25); }
 
   .pf-geofoot { position: absolute; left: 56px; right: 66px; bottom: 56px; z-index: 4;
     padding-top: 12px; border-top: 1px solid rgba(150,190,228,.42);

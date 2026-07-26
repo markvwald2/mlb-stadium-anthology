@@ -46,8 +46,7 @@
   .cm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .cm-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(0deg, rgba(10,12,16,.55) 0%, rgba(10,12,16,.18) 10%, rgba(10,12,16,0) 22%),
-      linear-gradient(90deg, rgba(10,12,16,.60) 0%, rgba(10,12,16,.16) 26%, rgba(10,12,16,0) 46%); }
+      linear-gradient(90deg, rgba(10,20,48,.44) 0%, rgba(10,20,48,.11) 26%, rgba(10,20,48,0) 42%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
@@ -78,8 +77,8 @@
   .cm-hero-datum { position: absolute; bottom: 50px; left: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-weight: 700; font-size: 12.5px;
     letter-spacing: .26em; text-transform: uppercase; color: #C9D2D8; }
-  .cm-hero-datum .sub { display: block; font-family: "Oswald", sans-serif; font-weight: 300;
-    font-size: 12px; letter-spacing: .2em; color: #8C97A1; margin-top: 7px; }
+  .cm-hero-datum .sub { display: block; font-family: "Oswald", sans-serif; font-weight: 400;
+    font-size: 12px; letter-spacing: .2em; color: #C4CDD4; margin-top: 7px; }
 
   /* title block now top-left — engraved civic-monument lettering */
   .cm-hero-block { position: absolute; left: 64px; top: 58px; right: 120px; z-index: 5; }
@@ -87,8 +86,17 @@
     letter-spacing: .28em; text-transform: uppercase; color: #D9B7B0; margin-bottom: 16px;
     display: flex; align-items: center; gap: 12px; }
   .cm-hero-kicker::before { content: ""; width: 30px; height: 1.5px; background: var(--red-bright); display: block; }
+  /* Print-safe ghost shadow: Chrome's HTML-to-PDF pipeline drops blurred text-shadow while
+     keeping glyphs vector. Each string carries a DUPLICATE of itself (::before, content:
+     attr(data-t)) offset behind the real text in translucent ink — plain vector glyphs, so
+     it prints as it screens. */
+  .cm-ds { position: relative; z-index: 0; }
+  .cm-ds::before { content: attr(data-t); position: absolute; z-index: -1; pointer-events: none;
+    left: 0; top: 0; white-space: pre; letter-spacing: inherit; text-transform: inherit;
+    color: var(--dsc, rgba(8,8,10,.28)); -webkit-text-fill-color: var(--dsc, rgba(8,8,10,.28));
+    transform: translate(var(--dsx, 1.5px), var(--dsy, 2px)); }
   .cm-hero-name { margin: 0; font-family: "Saira Condensed", sans-serif; text-transform: uppercase;
-    color: #F1ECDE; text-shadow: 0 3px 28px rgba(0,0,0,.6); }
+    color: #F1ECDE; --dsx: 2px; --dsy: 3px; --dsc: rgba(8,8,10,.3); }
   .cm-hero-name .l1 { display: block; font-weight: 500; font-size: 54px; line-height: 1.05;
     letter-spacing: .14em; color: #CBD2D6; }
   .cm-hero-name .l2 { display: block; font-weight: 800; font-size: 96px; line-height: 1.0;
@@ -96,10 +104,11 @@
   .cm-hero-loc { display: flex; align-items: center; gap: 16px; margin-top: 8px; }
   .cm-hero-loc .bar { width: 60px; height: 3px; background: var(--red-bright); display: block; flex: none; }
   .cm-hero-loc .txt { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 27px;
-    letter-spacing: .03em; text-transform: uppercase; color: var(--red-bright);
-    text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+    letter-spacing: .03em; text-transform: uppercase; color: #CBD2D6;
+    --dsx: 1.5px; --dsy: 2px; --dsc: rgba(8,8,10,.3); }
   .cm-hero-team { margin-top: 10px; font-family: "Oswald", sans-serif; font-weight: 400; font-size: 21px;
-    letter-spacing: .12em; text-transform: uppercase; color: #E4DECF; text-shadow: 0 2px 12px rgba(0,0,0,.55); }
+    letter-spacing: .12em; text-transform: uppercase; color: #E4DECF;
+    --dsx: 1.5px; --dsy: 2px; --dsc: rgba(8,8,10,.3); }
   .cm-hero-era { margin-top: 20px; display: flex; align-items: center; gap: 14px; }
   .cm-hero-era .cmark { width: 36px; height: 50px; flex: none; opacity: .96; }
   .cm-hero-era .cmark img { width: 100%; height: 100%; object-fit: contain; display: block; }

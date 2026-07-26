@@ -58,15 +58,14 @@
   .st-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .st-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .st-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    background:
-      linear-gradient(180deg, rgba(11,14,20,.52) 0%, rgba(11,14,20,0) 24%),
-      linear-gradient(0deg, rgba(9,11,16,.95) 0%, rgba(9,11,16,.72) 16%, rgba(9,11,16,.12) 34%, rgba(9,11,16,0) 46%); }
+    background: linear-gradient(0deg, rgba(10,18,38,.42) 0%, rgba(10,18,38,.26) 14%, rgba(10,18,38,.08) 28%, rgba(10,18,38,0) 38%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
        Composite the slot too so the img layer stays contained below the scrim. */
     .st-hero-slot  { transform: translateZ(0) !important; }
     .st-hero-scrim { transform: translateZ(0) !important; }
+    .st-hero-title { transform: translateZ(0) !important; }
   }
 
 
@@ -74,7 +73,7 @@
     filter: drop-shadow(0 2px 12px rgba(0,0,0,.55)); }
   .st-folio { position: absolute; right: 66px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
-    color: rgba(231,224,206,.64); text-transform: uppercase; }
+    color: rgba(38,44,54,.72); text-transform: uppercase; }
   .st-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
     transform: translateY(calc(-50% - 50px)) rotate(180deg); writing-mode: vertical-rl;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .34em;
@@ -114,9 +113,9 @@
   .st-marks { position: absolute; left: 60px; top: 58px; z-index: 5;
     display: flex; align-items: center; gap: 18px; white-space: nowrap; }
   .st-marks .mlb { height: 44px; width: auto; display: block; }
-  .st-marks .divln { width: 1px; height: 30px; background: rgba(231,224,206,.34); }
+  .st-marks .divln { width: 1px; height: 30px; background: rgba(38,44,54,.30); }
   .st-marks .dv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 16px;
-    letter-spacing: .22em; text-transform: uppercase; color: rgba(231,224,206,.82); }
+    letter-spacing: .22em; text-transform: uppercase; color: rgba(38,44,54,.76); }
 
   /* ============ RIGHT PAGE / THE SITE PLAN ============ */
   /* 40px padding clears the 0.25in safe inset + gutter zone (content x>=1315). */
@@ -326,5 +325,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="suntrust-spread.jsx"></script>
   <script type="text/babel" src="suntrust-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

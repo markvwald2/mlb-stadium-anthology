@@ -19,8 +19,8 @@
         e("img", { className: "bp-logo", src: "assets/" + (row.logo || L[row.team] || "mlb-logo.svg"), alt: "",
           style: Object.assign(
             {},
-            (row.logoScale || row.logoDy)
-              ? { transform: "translateY(" + (row.logoDy || 0) + "px) scale(" + (row.logoScale || 1) + ")" }
+            (row.logoScale || row.logoDy || row.logoDx)
+              ? { transform: "translate(" + (row.logoDx || 0) + "px," + (row.logoDy || 0) + "px) scale(" + (row.logoScale || 1) + ")" }
               : null,
             row.logoFilter ? { filter: row.logoFilter, opacity: 1 } : null) })),
       e("div", { className: "bp-main" },

@@ -110,13 +110,14 @@
       e("div", { className: "tf-page tf-left", "data-screen-label": "Target Field \u2014 hero" },
         e("div", { className: "tf-hero-slot" },
           e(Slot, { id: "target-hero", src: "images/target/hero.jpg", placeholder: "Drop the Target Field hero \u2014 high aerial of the open-air bowl fitted into the North Loop: freight-rail corridors, warehouse blocks, the downtown Minneapolis grid, limestone-and-glass facade" })),
+
         e("div", { className: "tf-hero-scrim" }),
 
         e("img", { className: "tf-hero-logo", src: "assets/twins-insignia.svg", alt: "Minnesota Twins" }),
         e("div", { className: "tf-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
 
         e("div", { className: "tf-hero-title" },
-          D.name_lines.map((ln, i) => e("h1", { className: "tf-name", "data-t": ln, key: i }, ln)),
+          D.name_lines.map((ln, i) => e("h1", { className: "tf-name tf-ds", "data-t": ln, key: i }, ln)),
           e("div", { className: "tf-sub" },
             e("span", { className: "txt" }, D.city + ", " + D.state)),
           e("div", { className: "tf-openair" }, "OPEN-AIR \u00b7 NORTH LOOP, MINNEAPOLIS"),

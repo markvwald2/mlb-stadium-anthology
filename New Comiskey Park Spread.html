@@ -67,20 +67,9 @@
   /* ============ LEFT / HERO ============ */
   .nc-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .nc-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .nc-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    background:
-      linear-gradient(180deg, rgba(7,8,10,.5) 0%, rgba(7,8,10,.22) 14%, rgba(7,8,10,0) 30%),
-      linear-gradient(0deg, rgba(7,8,10,.8) 0%, rgba(7,8,10,.28) 12%, rgba(7,8,10,0) 26%); }
-  @media print {
-    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
-       layer that paints over a plain sibling scrim regardless of z-index.
-       Composite the slot too so the img layer stays contained below the scrim. */
-    .nc-hero-slot  { transform: translateZ(0) !important; }
-    .nc-hero-scrim { transform: translateZ(0) !important; }
-  }
 
 
-  .nc-folio { position: absolute; right: 66px; bottom: 70px; z-index: 5;
+  .nc-folio { position: absolute; right: 66px; bottom: 126px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(224,222,214,.62); text-transform: uppercase; }
   .nc-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
@@ -104,7 +93,8 @@
   .nc-chord .stud { width: 5px; height: 5px; background: var(--silver-hi); flex: none; transform: rotate(45deg); }
   .nc-kicker { display: flex; align-items: center; gap: 16px; margin: 14px 0 -10px; }
   .nc-kicker .lbl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 65px;
-    letter-spacing: 5px; text-transform: uppercase; color: #D8D4C8; }
+    letter-spacing: 5px; text-transform: uppercase; color: #D8D4C8;
+    text-shadow: 0 3px 26px rgba(0,0,0,.5); }
   .nc-kicker .est { font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .22em;
     color: rgba(224,222,214,.66); text-transform: uppercase; }
   .nc-name { margin: 0; font-family: "Oswald", sans-serif; font-weight: 600;
@@ -119,8 +109,8 @@
     color: rgba(224,222,214,.82); }
   .nc-coords .dot { color: var(--silver); }
 
-  .nc-marks { position: absolute; left: 60px; right: 58px; bottom: 60px; z-index: 5;
-    display: flex; align-items: center; gap: 20px; white-space: nowrap; }
+  .nc-marks { position: absolute; right: 66px; bottom: 60px; z-index: 5;
+    display: flex; align-items: center; justify-content: flex-end; gap: 20px; white-space: nowrap; }
   .nc-marks .mlb { height: 42px; width: auto; display: block; }
   .nc-marks .sox { height: 50px; width: auto; display: block; opacity: .96; }
   .nc-marks .divln { width: 1px; height: 28px; background: rgba(224,222,214,.32); }
@@ -378,5 +368,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="new-comiskey-spread.jsx"></script>
   <script type="text/babel" src="new-comiskey-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

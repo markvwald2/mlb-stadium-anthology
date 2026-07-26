@@ -77,40 +77,39 @@ window.TMOBILE = {
 
   // ---- Featured visit / game ----
   visit_matchup: "Boston Red Sox at Seattle Mariners",
-  visit_result: "Mariners 10, Red Sox 5",
+  visit_result: "MARINERS 4, RED SOX 3",
   visit_day: "Friday",
-  visit_date: "Aug 15, 2003",
+  visit_date: "Aug 15, 2002",
   visit_trip: "Seattle",
   first_pitch: "7:05 PM PDT",
-  game_duration: "3:28",
-  game_type: "Night",
+  game_duration: "3:12",
   attendance: "46,171",
   conditions: "Open-air natural-grass ballpark with retractable canopy",
 
   // visit facts (compact stack — values not duplicated in the line-score caption)
   visit_facts: [
     ["Visit Order", "22"],
-    ["Date", "Friday \u00b7 Aug 15, 2003"],
-    ["Trip", "Seattle"],
-    ["Game Type", "Night"]
+    ["Date", "Friday \u00b7 Aug 15, 2002"],
+    ["Weather", "83\u00b0 \u00b7 Clear"],
+    ["Wind / Hum.", "6 mph NW \u00b7 43%"]
   ],
 
   // ---- Pitching decisions ----
   pitching: {
     away_team: "BOS",
-    away_starter: "Jeff Suppan",
+    away_starter: "Casey Fossum",
     home_team: "SEA",
-    home_starter: "Jamie Moyer",
-    win: "Julio Mateo",
-    loss: "Mike Timlin",
-    save: "Shigetoshi Hasegawa"
+    home_starter: "Freddy Garcia",
+    win: "Freddy Garcia",
+    loss: "Casey Fossum",
+    save: "Kazuhiro Sasaki"
   },
 
   // ---- Featured game / line score (the scorecard band) ----
   box: {
     innings: 9,
-    away: { abbr: "BOS", name: "Red Sox", byInning: [0, 0, 0, 1, 1, 2, 0, 1, 0], r: 5, h: 8, e: 1 },
-    home: { abbr: "SEA", name: "Mariners", byInning: [0, 2, 1, 1, 0, 4, 0, 2, "x"], r: 10, h: 13, e: 0 }
+    away: { abbr: "BOS", name: "Red Sox", byInning: [0, 0, 1, 0, 0, 2, 0, 0, 0], r: 3, h: 10, e: 1 },
+    home: { abbr: "SEA", name: "Mariners", byInning: [0, 0, 0, 4, 0, 0, 0, 0, "x"], r: 4, h: 8, e: 0 }
   },
 
   // ---- Stadium context (ONE unified body — museum wall text, paragraph breaks intact) ----

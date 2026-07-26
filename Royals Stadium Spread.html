@@ -67,9 +67,7 @@
   .rs-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .rs-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2; z-index: 3;
-    background:
-      linear-gradient(180deg, rgba(6,18,38,.64) 0%, rgba(6,18,38,.3) 20%, rgba(6,18,38,0) 42%),
-      linear-gradient(0deg, rgba(6,18,38,.46) 0%, rgba(6,18,38,0) 18%);
+    background: linear-gradient(0deg, rgba(6,18,38,.23) 0%, rgba(6,18,38,0) 18%);
   }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
@@ -300,5 +298,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="royals-spread.jsx"></script>
   <script type="text/babel" src="royals-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

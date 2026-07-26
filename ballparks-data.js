@@ -25,10 +25,10 @@
   };
 
   // r(order, team, stadium, current, division, from, to, firstVisit, lastVisit)
-  function r(n, team, stadium, current, division, from, to, fv, lv, logo, logoScale, logoDy, logoFilter) {
+  function r(n, team, stadium, current, division, from, to, fv, lv, logo, logoScale, logoDy, logoFilter, logoDx) {
     return { n: n, team: team, stadium: stadium, current: current, division: division || "",
       from: from, to: to, fv: fv, lv: lv, logo: logo || "",
-      logoScale: logoScale || 0, logoDy: logoDy || 0, logoFilter: logoFilter || "",
+      logoScale: logoScale || 0, logoDy: logoDy || 0, logoDx: logoDx || 0, logoFilter: logoFilter || "",
       decade: (Math.floor(parseInt(fv, 10) / 10) * 10) + "s" };
   }
 
@@ -53,8 +53,8 @@
       r(1,  "Cubs",      "Wrigley Field",                true,  "National League", "1914", "", "1953", "1988"),
       r(2,  "Braves",    "Milwaukee County Stadium",     false, "National League", "1953", "2000", "1953", "1988", "milwaukee-braves-cap.svg", 0.82),
       r(3,  "White Sox", "Comiskey Park",                false, "AL West",     "1910", "1990", "1969", "1988", "white-sox-1969.png"),
-      r(4,  "Dodgers",   "Dodger Stadium",               true,  "NL West",    "1962", "", "1970", "2010"),
-      r(5,  "Padres",    "San Diego Stadium",            false, "NL West",     "1969", "2003", "1972", "1972", "padres-friar.svg"),
+      r(4,  "Dodgers",   "Dodger Stadium",               true,  "NL West",    "1962", "", "1970", "2010", "", 1.1),
+      r(5,  "Padres",    "San Diego Stadium",            false, "NL West",     "1969", "2003", "1972", "1972", "padres-friar.svg", 1.21, 0, "", 2.5),
       r(6,  "Angels",    "Angel Stadium",                true,  "AL West",    "1966", "", "1986", "2006", "angels-logo-1986.png"),
       r(7,  "Yankees",   "Yankee Stadium",               false, "AL East",     "1923", "2008", "1987", "2001"),
       r(8,  "Mets",      "Shea Stadium",                 false, "NL East",     "1964", "2008", "1987", "1990"),
@@ -71,8 +71,8 @@
       r(19, "Tigers",    "Comerica Park",                true,  "AL Central", "2000", "", "2001", "2023", "tigers-script-inline.svg"),
       r(20, "White Sox", "Rate Field",                   true,  "AL Central", "1991", "", "2001", "2001"),
 
-      r(21, "Brewers",   "American Family Field",        true,  "NL Central", "2001", "", "2001", "2023"),
-      r(22, "Mariners",  "T-Mobile Park",                true,  "AL West",    "1999", "", "2003", "2003"),
+      r(21, "Brewers",   "American Family Field",        true,  "NL Central", "2001", "", "2001", "2023", "", 1.1),
+      r(22, "Mariners",  "T-Mobile Park",                true,  "AL West",    "1999", "", "2002", "2002"),
       r(23, "Padres",    "Petco Park",                   true,  "NL West",    "2004", "", "2009", "2009"),
       r(24, "Reds",      "Great American Ball Park",     true,  "NL Central", "2003", "", "2011", "2011"),
       r(25, "Pirates",   "PNC Park",                     true,  "NL Central", "2001", "", "2011", "2011"),

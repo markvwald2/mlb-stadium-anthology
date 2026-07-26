@@ -93,7 +93,6 @@
       e("div", { className: "nc-page nc-left", "data-screen-label": "New Comiskey Park \u2014 hero" },
         e("div", { className: "nc-hero-slot" },
           e(Slot, { id: "nc-hero", src: "images/new-comiskey/guaranteed-rate-field-00-main-PS.jpg", placeholder: "Drop the New Comiskey Park hero \u2014 dusk / night view emphasizing the late-modern concrete bowl, steep upper-deck massing, exposed structure, the black steel roof canopy silhouette, and the field glow emerging from inside the mass. Avoid skyline emphasis, fireworks dominance, crowd-energy photography" })),
-        e("div", { className: "nc-hero-scrim" }),
 
         e("div", { className: "nc-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
 
@@ -172,7 +171,7 @@
               e(ZoneHead, { rn: "II", title: "Concrete Before Camden", note: "The Last Modern Park", tstyle: { fontSize: "24px", letterSpacing: "-0.9px" } }),
               e("div", { className: "nc-spine-body" },
                 e("div", { className: "nc-canopy" },
-                  e(Slot, { id: "nc-canopy", src: "images/new-comiskey/guaranteed-rate-field-aerial-dusk.jpg", placeholder: "Aerial dusk view of New Comiskey Park with the Chicago skyline beyond — the bowl, canopy, and South Side context" })),
+                  e(Slot, { id: "nc-canopy", src: "images/new-comiskey/guaranteed-rate-field-02.jpg", placeholder: "Aerial dusk view of New Comiskey Park with the Chicago skyline beyond — the bowl, canopy, and South Side context" })),
                 e("div", { className: "nc-ctx" },
                   e(SecHead, { title: "The Park That Aged Overnight", note: "1991 \u2192 PRESENT" }),
                   e("div", { className: "nc-ctx-cols" },

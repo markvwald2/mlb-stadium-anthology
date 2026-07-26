@@ -64,18 +64,11 @@
   /* ============ LEFT / HERO ============ */
   .vet-hero-slot { position: absolute; inset: 0; z-index: 1; }
   .vet-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .vet-hero-scrim {
-    position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    background:
-      linear-gradient(180deg, rgba(12,11,8,.30) 0%, rgba(12,11,8,0) 18%),
-      linear-gradient(0deg, rgba(9,8,5,.80) 0%, rgba(9,8,5,.5) 20%, rgba(9,8,5,.18) 40%, rgba(9,8,5,0) 56%);
-  }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
        Composite the slot too so the img layer stays contained below the scrim. */
     .vet-hero-slot  { transform: translateZ(0) !important; }
-    .vet-hero-scrim { transform: translateZ(0) !important; }
   }
 
   /* faint octorad civic plan, integrated into the lower asphalt */
@@ -112,6 +105,7 @@
   /* bottom-right: bare league / team logos */
   .vet-hero-foot { position: absolute; right: 64px; bottom: 54px; z-index: 5; display: flex; align-items: center; gap: 26px; }
   .vet-logo { height: 52px; width: auto; display: block; filter: drop-shadow(0 2px 9px rgba(0,0,0,.6)); }
+  .vet-logo[src*="mlb-logo"] { height: 33.8px; }
 
   /* ============ RIGHT PAGE ============ */
   .vet-rp { position: absolute; inset: 0; padding: 39.5px 40px 39.5px 64px; display: flex; flex-direction: column; z-index: 2; }
@@ -317,5 +311,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="veterans-spread.jsx"></script>
   <script type="text/babel" src="veterans-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

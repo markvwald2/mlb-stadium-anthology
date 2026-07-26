@@ -79,7 +79,6 @@
             src: "images/veterans/veterans-stadium-00-main-9c2d2c47.jpg",
             placeholder: "Elevated aerial \u2014 complete circular bowl, surrounding parking fields, South Philadelphia sports complex; skyline secondary",
             shape: "rect" })),
-        e("div", { className: "vet-hero-scrim" }),
         e(Survey, { className: "vet-hero-survey", stroke: "#CFC8B6", op: 0.16 }),
 
         e("div", { className: "vet-marker" },

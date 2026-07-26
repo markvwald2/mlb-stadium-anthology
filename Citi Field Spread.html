@@ -61,7 +61,6 @@
   .cf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .cf-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(180deg, rgba(14,12,10,.44) 0%, rgba(14,12,10,0) 24%),
       linear-gradient(0deg, rgba(14,12,10,.82) 0%, rgba(14,12,10,.5) 11%, rgba(14,12,10,.1) 28%, rgba(14,12,10,0) 40%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
@@ -85,7 +84,7 @@
   .cf-hero-folio { position: absolute; left: 96px; top: 52px; z-index: 5;
     display: flex; align-items: center; gap: 13px;
     font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .26em;
-    color: rgba(234,226,208,.72); text-transform: uppercase; }
+    color: rgba(30,26,22,.80); text-transform: uppercase; }
   .cf-hero-folio .tick { width: 26px; height: 2px; background: var(--orange); }
 
   /* hero title — carved-stone civic signage (subway-era condensed proportions) */
@@ -110,7 +109,7 @@
   .cf-hero-marks { position: absolute; right: 56px; top: 44px; z-index: 5;
     display: flex; align-items: center; gap: 20px; }
   .cf-hero-marks .cap { height: 60px; width: auto; display: block; }
-  .cf-hero-marks .mlb { height: 27px; width: auto; display: block; opacity: .92; }
+  .cf-hero-marks .mlb { height: 32.4px; width: auto; display: block; opacity: .92; }
   .cf-hero-colophon { position: absolute; left: 64px; bottom: 40px; z-index: 5;
     display: flex; align-items: center; gap: 14px;
     font-family: "Space Mono", monospace; font-size: 12.5px; letter-spacing: .05em;
@@ -354,5 +353,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="citi-spread.jsx"></script>
   <script type="text/babel" src="citi-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

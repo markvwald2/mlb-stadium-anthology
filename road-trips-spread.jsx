@@ -116,6 +116,7 @@
       t.route.map((r) => (typeof r === "string" ? { n: r } : r)).filter((r) => !r.alt).map((r, i) =>
         e("div", { key: i, className: "rt-plate" + (r.stamp ? " rt-plate-stamped" : ""), style: { aspectRatio: t.plateAr } },
           e(Slot, { id: "rt-" + t.key + "-" + i, ph: r.n }),
+          r.stamp ? e("div", { className: "rt-plate-stamp rt-plate-stamp-shadow" }, r.stamp) : null,
           r.stamp ? e("div", { className: "rt-plate-stamp" }, r.stamp) : null)));
   }
 

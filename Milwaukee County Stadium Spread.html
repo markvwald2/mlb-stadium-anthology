@@ -69,8 +69,7 @@
     background-color: transparent;
     background-image: radial-gradient(circle at 50% 50%, #ffd866 0 1.5px, #f4b223 1.5px 2.5px, rgba(244,178,35,.10) 2.9px, transparent 3.3px);
     background-size: 9px 9px; background-position: 0 0;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 8px rgba(244,178,35,.40)); }
+    -webkit-text-fill-color: transparent; }
   .lm-bulb.sm { background-size: 6.5px 6.5px;
     background-image: radial-gradient(circle at 50% 50%, #ffd866 0 1.05px, #f4b223 1.05px 1.85px, rgba(244,178,35,.10) 2.1px, transparent 2.5px); }
 
@@ -79,8 +78,7 @@
   .lm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .lm-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(180deg, rgba(6,10,18,.55) 0%, rgba(6,10,18,.36) 22%, rgba(6,10,18,.12) 44%, rgba(6,10,18,0) 60%),
-      linear-gradient(90deg, rgba(6,10,18,.28) 0%, rgba(6,10,18,.05) 32%, rgba(6,10,18,0) 52%); }
+      linear-gradient(180deg, rgba(6,20,44,.55) 0%, rgba(7,22,48,.36) 22%, rgba(8,24,50,.12) 44%, rgba(8,24,50,0) 60%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
@@ -132,8 +130,7 @@
   /* the font supplies the dots — neutralize the lamp-dot clip, fill solid + glow */
   .lm-hero-name.lm-matrix .lm-bulb { background: none;
     -webkit-background-clip: border-box; background-clip: border-box;
-    -webkit-text-fill-color: #f7c23a; color: #f7c23a;
-    filter: drop-shadow(0 0 7px rgba(244,178,35,.5)) drop-shadow(0 0 18px rgba(244,178,35,.22)); }
+    -webkit-text-fill-color: #f7c23a; color: #f7c23a; }
   .lm-hero-loc { display: flex; align-items: center; gap: 16px; margin-top: 30px; }
   .lm-hero-loc .bar { width: 58px; height: 3px; background: var(--red); display: block; flex: none;
     box-shadow: 0 0 8px rgba(210,80,42,.6); }
@@ -278,7 +275,7 @@
   .lm-allstar .k { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
   .lm-allstar .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 13px; color: var(--amber-hi);
-    text-shadow: 0 0 7px rgba(244,178,35,.45); letter-spacing: .04em; }
+    letter-spacing: .04em; }
 
   /* field-dimensions bay */
   /* pin the protractor toward the top of its bay so its lower bearing label
@@ -292,7 +289,7 @@
   .lm-fd-dims .c .k { font-family: "Saira Condensed", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; color: var(--muted); }
   .lm-fd-dims .c .v { font-family: "Space Mono", monospace; font-weight: 700; font-size: 15px; color: var(--amber-hi);
-    text-shadow: 0 0 6px rgba(244,178,35,.35); margin-top: 1px; }
+    margin-top: 1px; }
   .lm-fd-orient { display: flex; align-items: baseline; justify-content: space-between; margin-top: 6px;
     border-top: 1px solid rgba(244,178,35,.14); padding-top: 5px; }
   .lm-fd-orient .k { font-family: "Saira Condensed", sans-serif; font-weight: 500; font-size: 12px;
@@ -328,7 +325,7 @@
   .lm-gresult .bd { gap: 0; }
   .lm-score-line { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 22px;
     line-height: 1; letter-spacing: .01em; text-transform: uppercase; color: var(--cream); }
-  .lm-score-line .win { color: var(--amber-hi); text-shadow: 0 0 9px rgba(244,178,35,.45); }
+  .lm-score-line .win { color: var(--amber-hi); }
   .lm-matchup { font-family: "Saira Condensed", sans-serif; font-weight: 400; font-size: 12px;
     letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 3px; margin-bottom: 5px; }
   .lm-vrows { display: flex; flex-direction: column; flex: 1 1 auto; }

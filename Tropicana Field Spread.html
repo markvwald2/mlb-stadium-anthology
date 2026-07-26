@@ -59,12 +59,13 @@
   /* ============ LEFT / HERO ============ */
   .tf-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .tf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  /* light wash up top (for dark title on the bright dome), faint grounding at base */
+  /* light wash up top (for dark title on the bright dome), navy wash down the binding-side
+     left edge (for the white spine text) */
   .tf-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
       linear-gradient(180deg, rgba(236,240,244,.52) 0%, rgba(236,240,244,.14) 15%, rgba(236,240,244,0) 28%),
-      linear-gradient(0deg, rgba(4,10,20,.6) 0%, rgba(5,12,23,.32) 12%, rgba(6,14,27,.08) 25%, rgba(6,14,27,0) 38%);
+      linear-gradient(90deg, rgba(2,14,34,.31) 0%, rgba(3,15,36,.2) 5%, rgba(3,16,38,.075) 11%, rgba(4,17,40,0) 17%);
   }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
@@ -77,22 +78,23 @@
 
   .tf-folio { position: absolute; right: 66px; top: 54px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: .24em;
-    color: rgba(12,44,86,.9); text-transform: uppercase; display: flex; gap: 10px; align-items: center;
-    text-shadow: 0 1px 5px rgba(255,255,255,.6); }
+    color: rgba(12,44,86,.9); text-transform: uppercase; display: flex; gap: 10px; align-items: center; }
   .tf-folio b { color: #092C5C; font-weight: 700; }
+  /* Print-safe ghost shadow: Chrome's HTML-to-PDF pipeline drops blurred text-shadow while
+     keeping glyphs vector. Each string carries a DUPLICATE of itself (::before, content:
+     attr(data-t)) offset behind the real text in translucent ink — plain vector glyphs, so
+     it prints as it screens. */
+  .tf-ds { position: relative; z-index: 0; }
+  .tf-ds::before { content: attr(data-t); position: absolute; z-index: -1; pointer-events: none;
+    left: 0; top: 0; white-space: pre; letter-spacing: inherit; text-transform: inherit;
+    color: var(--dsc, rgba(3,8,16,.28)); -webkit-text-fill-color: var(--dsc, rgba(3,8,16,.28));
+    transform: translate(var(--dsx, 1.5px), var(--dsy, 2px)); }
   .tf-spine { position: absolute; left: 40px; top: 50%; z-index: 5;
     transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
     font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .32em;
-    color: rgba(226,236,248,.68); text-transform: uppercase; white-space: nowrap;
-    text-shadow: 0 1px 7px rgba(3,8,16,.8); }
+    color: rgba(240,246,253,.92); text-transform: uppercase; white-space: nowrap; }
 
   /* cartographic datum line across the top, reading the coordinates */
-  .tf-datum { position: absolute; left: 56px; right: 336px; top: 60px; z-index: 4;
-    display: flex; align-items: center; gap: 15px; pointer-events: none; }
-  .tf-datum .ln { flex: 1; height: 1px; background: rgba(220,232,246,.42); }
-  .tf-datum .tk { width: 1px; height: 9px; background: rgba(220,232,246,.62); flex: none; }
-  .tf-datum .cap { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .24em;
-    color: rgba(226,236,248,.92); text-transform: uppercase; flex: none; text-shadow: 0 1px 7px rgba(3,8,16,.8); }
 
   /* ---- title, anchored at the top on the light wash, inverted to dark ink ---- */
   .tf-titleblock { position: absolute; left: 60px; top: 54px; z-index: 5; max-width: 900px; }
@@ -101,8 +103,7 @@
     text-transform: uppercase; color: #2E6AA6; }
   .tf-eyebrow .dot { width: 6px; height: 6px; background: var(--yellow); border-radius: 50%; flex: none; }
   .tf-title { margin: 0; font-family: "Saira Condensed", "Saira", sans-serif; font-weight: 600;
-    font-size: 118px; line-height: .84; letter-spacing: .004em; text-transform: uppercase; color: var(--navy);
-    text-shadow: 0 2px 22px rgba(240,244,248,.7); }
+    font-size: 118px; line-height: .84; letter-spacing: .004em; text-transform: uppercase; color: var(--navy); }
   .tf-title span { display: block; }
   .tf-title .l2 { font-weight: 300; color: #3f78b5; }
   .tf-cityrow { display: flex; align-items: center; gap: 18px; margin-top: 26px; }

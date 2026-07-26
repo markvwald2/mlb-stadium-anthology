@@ -80,7 +80,7 @@
       /* ================= LEFT PAGE / HERO ================= */
       e("div", { className: "st-page st-left", "data-screen-label": "SunTrust Park \u2014 hero" },
         e("div", { className: "st-hero-slot" },
-          e(Slot, { id: "suntrust-hero", src: "images/suntrust/suntrust-park-00-main-PS.jpg", placeholder: "Drop the SunTrust Park hero \u2014 high aerial of the open-air bowl embedded in The Battery: red-brick & precast facade, steel seating-bowl canopy, plaza frontage, structured parking, freeway-edge arrival" })),
+          e(Slot, { id: "suntrust-hero-v2", src: "images/suntrust/suntrust-park-00-main-v2.jpg", placeholder: "Drop the SunTrust Park hero \u2014 high aerial of the open-air bowl embedded in The Battery: red-brick & precast facade, steel seating-bowl canopy, plaza frontage, structured parking, freeway-edge arrival" })),
         e("div", { className: "st-hero-scrim" }),
 
         e("img", { className: "st-hero-logo", src: "assets/atlanta-braves-logo.svg", alt: "Atlanta Braves" }),

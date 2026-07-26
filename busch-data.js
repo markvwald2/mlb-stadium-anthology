@@ -36,13 +36,12 @@ window.BUSCH = {
   // [key, value, optional sub-value]
   facts: [
     ["Opened", "Apr 10, 2006"],
-    ["Construction Start", "Jan 17, 2004"],
+    ["GROUNDBREAKING", "Jan 17, 2004", null, null, "tight"],
     ["Surface", "Natural grass", "Tahoma 31 hybrid bermudagrass since 2023; previously Kentucky bluegrass"],
-    ["Roof", "Open Air"],
     ["Stadium Type", "Open-air baseball-only ballpark"],
     ["Architect", "Populous, with HOK Sport heritage"],
     ["Facade", "Red brick & limestone / cast-stone masonry; exposed structural steel entrance arch"],
-    ["Original Cost", "$365 million", "adjusted $583 million"],
+    ["COST", "$365 million", "adjusted $583 million", "inline"],
     ["Financing", "Primarily privately financed (Cardinals ownership); limited state / local public assistance & infrastructure support"],
     ["Renovations", "Ballpark Village phased development; scoreboard, club, seating & hospitality upgrades"],
     ["Location", "Downtown \u00b7 700 Clark Avenue"],

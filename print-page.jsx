@@ -177,6 +177,25 @@
       #pp-fontbadge[data-state="loading"] { background: #5b4a28; color: #ffe6ad; border-color: #8a6d2e; }
       #pp-fontbadge[data-state="ready"]   { background: #25391f; color: #c8e6b6; border-color: #4f7a37; }
 
+      /* Print guard: present only while fonts load (JS removes it when ready).
+         On screen it is a slim top banner; in print it fills the whole page so a
+         premature export is an obvious "DO NOT SUBMIT" sheet, never a silently
+         broken PDF with synthesized faux weights. */
+      #pp-printguard {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 9998;
+        font: 700 13px/1.3 ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .04em;
+        text-align: center; padding: 8px 14px; background: #7a1420; color: #ffe1e1;
+        pointer-events: none;
+      }
+      @media print {
+        #pp-printguard {
+          position: fixed; inset: 0; z-index: 99999;
+          display: flex; align-items: center; justify-content: center;
+          padding: 8% 12%; font-size: 40px; line-height: 1.35; letter-spacing: .02em;
+          background: #7a1420; color: #fff;
+        }
+      }
+
       @media print {
         @page { size: 12.625in 10.875in; margin: 0; }
         html, body { background: #fff !important; margin: 0 !important; padding: 0 !important; width: 12.625in !important; height: 10.875in !important; }
@@ -198,6 +217,23 @@
            both blurs in print kills the banding with no legibility loss. */
         * { text-shadow: none !important; }
         img { filter: none !important; }
+
+        /* Opt-in: elements marked data-pp-shadow keep a halo in print, but as a
+           TIGHT blur only (<=9px). Small radii don't hit the tiling path that
+           produced the rectangular seams, so the legibility shadow survives
+           without banding. Set --pp-shadow-color per element to retint. */
+        [data-pp-shadow][data-pp-shadow][data-pp-shadow] { --pp-shadow-color: 0,0,0;
+          text-shadow:
+            0 0 1.5px rgba(var(--pp-shadow-color),.98),
+            0 0 3px rgba(var(--pp-shadow-color),.95),
+            0 0 6px rgba(var(--pp-shadow-color),.9),
+            0 1px 4px rgba(var(--pp-shadow-color),.9),
+            0 2px 9px rgba(var(--pp-shadow-color),.8) !important; }
+        [data-pp-shadow="soft"][data-pp-shadow][data-pp-shadow] {
+          text-shadow:
+            0 0 3px rgba(var(--pp-shadow-color),.7),
+            0 1px 5px rgba(var(--pp-shadow-color),.8),
+            0 2px 9px rgba(var(--pp-shadow-color),.6) !important; }
       }
     `;
     const el = document.createElement("style");
@@ -221,6 +257,33 @@
     attach();
     document.addEventListener("DOMContentLoaded", attach);
 
+    // Until fonts are confirmed loaded, PHYSICALLY block a print. If the user
+    // hits Cmd/Ctrl+P (or the browser menu → Print) too early, Chrome embeds
+    // synthesized faux weights (e.g. "Oswald-Regular_Medium/_Bold") that Blurb
+    // rejects as non-embedded. Two guards:
+    //   1. swallow the Cmd/Ctrl+P keydown and alert while not ready, and
+    //   2. a full-bleed @media-print overlay so any print that slips through
+    //      (menu → Print) comes out as an obvious "DO NOT SUBMIT" page rather
+    //      than a silently-broken PDF.
+    let fontsReady = false;
+    const guardKey = (e) => {
+      if (fontsReady) return;
+      const k = (e.key || "").toLowerCase();
+      if ((e.metaKey || e.ctrlKey) && k === "p") {
+        e.preventDefault();
+        e.stopPropagation();
+        alert("Fonts are still loading — wait for the green \u201CFonts embedded \u2713\u201D badge before printing, or the PDF will contain non-embedded fonts.");
+      }
+    };
+    window.addEventListener("keydown", guardKey, true);
+
+    const guard = document.createElement("div");
+    guard.id = "pp-printguard";
+    guard.textContent = "FONTS NOT YET LOADED \u2014 DO NOT SUBMIT THIS PDF. Wait for the green badge and re-export.";
+    const attachGuard = () => { if (document.body && !guard.isConnected) document.body.appendChild(guard); };
+    attachGuard();
+    document.addEventListener("DOMContentLoaded", attachGuard);
+
     (async function run() {
       try {
         // first pass: let the linked Google-Fonts stylesheet parse & register faces
@@ -231,6 +294,9 @@
         await document.fonts.ready;
       } catch (e) { /* fall through to ready state regardless */ }
       attach();
+      fontsReady = true;
+      window.removeEventListener("keydown", guardKey, true);
+      if (guard.isConnected) guard.remove();
       badge.setAttribute("data-state", "ready");
       badge.textContent = "Fonts embedded \u2713 \u00b7 safe to print";
     })();

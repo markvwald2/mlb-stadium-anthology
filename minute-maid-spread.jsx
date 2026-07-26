@@ -198,7 +198,7 @@
             e("span", { className: "nm" }, "Field & Visit")),
 
           // dominant 4:3 roof photo
-          e("figure", { className: "mm-plate-photo mm-photo-fill", style: { width: "100%" } },
+          e("figure", { className: "mm-plate-photo mm-photo-fill", style: { width: "100%", transform: "translateY(-3px)" } },
             e(Slot, { id: D.photos[1][0], src: "images/minute-maid/minute-maid-park-01.jpg", position: "50% 22%", placeholder: D.photos[1][1] })),
 
           // two-column data band : field geometry | visit facts

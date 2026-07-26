@@ -60,12 +60,6 @@
   /* ============ LEFT / HERO ============ */
   .pnc-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .pnc-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .pnc-hero-scrim {
-    position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    background:
-      linear-gradient(180deg, rgba(8,8,9,.34) 0%, rgba(8,8,9,0) 22%),
-      linear-gradient(0deg, rgba(8,8,9,.92) 0%, rgba(8,8,9,.62) 20%, rgba(8,8,9,.10) 40%, rgba(8,8,9,0) 52%);
-  }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
@@ -74,10 +68,14 @@
     .pnc-hero-scrim { transform: translateZ(0) !important; }
   }
 
+  .pnc-hero-scrim {
+    position: absolute; inset: 0; pointer-events: none; z-index: 2;
+    background: linear-gradient(38deg, rgba(8,8,9,.82) 0%, rgba(8,8,9,.52) 12%, rgba(8,8,9,.24) 24%, rgba(8,8,9,.06) 32%, rgba(8,8,9,0) 38%);
+  }
   .pnc-hero-folio {
     position: absolute; left: 64px; top: 60px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 15px; letter-spacing: .26em;
-    color: rgba(235,229,216,.66); text-transform: uppercase;
+    color: rgba(16,22,30,.78); text-transform: uppercase;
   }
 
   .pnc-hero-title { position: absolute; left: 60px; right: 60px; bottom: 198px; z-index: 5;
@@ -93,9 +91,17 @@
     position: relative; margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
     font-size: 132px; line-height: .8; letter-spacing: .006em; text-transform: uppercase;
     color: #EFE8D7; display: flex; flex-direction: column;
-    text-shadow: 0 3px 28px rgba(0,0,0,.55), 0 1px 0 rgba(0,0,0,.25);
   }
-  .pnc-hero-name span { display: block; }
+  /* Shadows live on the SPANS, not the h1: the print ghost-shadow helper ghosts
+     the outermost element that carries a shadow and skips its descendants, so a
+     shadow on the h1 would flatten both lines into one plane in the PDF.
+     Both lines throw the same UP-AND-RIGHT duplicate, so the light reads
+     consistently — and because PNC sits above PARK, PARK's copy lands on PNC
+     and pushes it back. --gs-* carries the same offset into the vector PDF. */
+  .pnc-hero-name span { display: block;
+    text-shadow: 1.2px -1.8px 4px rgba(8,8,10,.3);
+    --gs-x: 1.2px; --gs-y: -1.8px; --gs-alpha: .25; }
+  .pnc-hero-name .two { position: relative; margin-top: -6px; }
   .pnc-hero-loc { display: inline-flex; align-items: center; gap: 14px; margin-top: 22px; margin-left: 10px; }
   .pnc-hero-loc .dot { width: 9px; height: 9px; background: var(--gold-bright); flex: none; transform: rotate(45deg); }
   .pnc-hero-loc .txt {
@@ -105,8 +111,8 @@
 
   /* metadata strip */
   .pnc-meta {
-    position: absolute; left: 60px; right: 60px; bottom: 96px; z-index: 5;
-    display: flex; align-items: stretch;
+    position: absolute; left: 60px; right: auto; bottom: 96px; z-index: 5;
+    display: inline-flex; align-items: stretch;
     border-top: 1px solid rgba(228,220,200,.32);
     border-bottom: 1px solid rgba(228,220,200,.32);
   }
@@ -116,9 +122,9 @@
   .pnc-meta .cell.brand { justify-content: center; align-items: center; padding-left: 15px; padding-right: 15px; }
   .pnc-meta .cell .k { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: rgba(206,198,180,.7); }
   .pnc-meta .cell .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 17px; letter-spacing: .16em; text-transform: uppercase; color: #ECE6D8; }
-  .pnc-meta .logos { margin-left: auto; flex-direction: row; align-items: center; gap: 20px; border-left: 0; }
-  .pnc-meta .logos .mlb { height: 40px; width: auto; display: block; border-radius: 3px; }
-  .pnc-meta .logos .nl-logo { height: 52px; width: auto; display: block; }
+  .pnc-hero-logos { position: absolute; right: 64px; top: 54px; z-index: 5; display: flex; align-items: center; gap: 20px; }
+  .pnc-hero-logos .mlb { height: 40px; width: auto; display: block; border-radius: 3px; }
+  .pnc-hero-logos .nl-logo { height: 52px; width: auto; display: block; }
   .pnc-addr {
     position: absolute; left: 60px; right: 60px; bottom: 56px; z-index: 5;
     font-family: "Oswald", sans-serif; font-weight: 400; font-size: 14px;
@@ -320,5 +326,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="pnc-spread.jsx"></script>
   <script type="text/babel" src="pnc-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

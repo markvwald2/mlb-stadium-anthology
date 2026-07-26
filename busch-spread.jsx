@@ -23,8 +23,8 @@
   }
   function factRow(row, i) {
     return e("div", { className: "bz-frow", key: i },
-      e("div", { className: "k" }, row[0]),
-      e("div", { className: "v" },
+      e("div", { className: "k" + (row[4] === "tight" ? " k-tight" : "") }, row[0]),
+      e("div", { className: "v" + (row[3] === "inline" ? " v-inline" : "") },
         e("span", { className: "vm" }, row[1]),
         row[2] ? e("span", { className: "vs" + (row[3] === "roman" ? " roman" : "") }, row[2]) : null));
   }
@@ -116,12 +116,13 @@
         e("div", { className: "bz-spine" }, "EST. " + D.est + "  \u00b7  ST. LOUIS, MISSOURI  \u00b7  VISIT " + D.visit_order),
 
         e("div", { className: "bz-hero-title" },
-          D.name_lines.map((ln, i) => e("h1", { className: "bz-name", "data-t": ln, key: i }, ln)),
+          D.name_lines.map((ln, i) => e("h1", { className: "bz-name bz-ds", "data-t": ln, key: i }, ln)),
           e("div", { className: "bz-sub" },
-            e("span", { className: "txt" }, D.city + ", " + D.state)),
+            e("span", { className: "bar" }),
+            e("span", { className: "txt bz-ds", "data-t": D.city + ", " + D.state }, D.city + ", " + D.state)),
           e("div", { className: "bz-geo" },
-            e("span", { className: "ln" }, D.coordinates),
-            e("span", { className: "ln" }, "ELEVATION " + D.elevation.toUpperCase()))),
+            e("span", { className: "ln bz-ds", "data-t": D.coordinates }, D.coordinates),
+            e("span", { className: "ln bz-ds", "data-t": "ELEVATION " + D.elevation.toUpperCase() }, "ELEVATION " + D.elevation.toUpperCase()))),
 
         e("div", { className: "bz-marks" },
           e("img", { className: "cards", src: "assets/cardinals-stl-insignia.svg", alt: "St. Louis Cardinals" }),

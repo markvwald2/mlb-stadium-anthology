@@ -58,7 +58,7 @@
   .cm-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .cm-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(0deg, rgba(8,7,5,.5) 0%, rgba(8,7,5,.16) 10%, rgba(8,7,5,0) 20%); }
+      linear-gradient(180deg, rgba(58,102,158,.55) 0%, rgba(74,120,176,.34) 16%, rgba(90,134,186,.16) 30%, rgba(90,134,186,0) 46%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
@@ -73,7 +73,7 @@
   /* stat plate — lit vertical marquee, now bottom-left */
   .cm-statplate { position: absolute; bottom: 52px; left: 58px; z-index: 6;
     background: #110D07; border: 2px solid #04030100; padding: 12px; border-radius: 2px;
-    box-shadow: 0 12px 34px rgba(0,0,0,.55), inset 0 0 0 1px #2E2716; }
+    box-shadow: 0 5px 16px rgba(0,0,0,.32), inset 0 0 0 1px #2E2716; }
   /* stat-plate bulbs are also placed by <BulbBorder> (sm variant) */
   .cm-statinner { position: relative; background: linear-gradient(180deg,#1E1810,#140F08);
     border: 1px solid #3A3120; padding: 2px 20px; }
@@ -115,6 +115,7 @@
   .cm-foot-logos { display: flex; gap: 12px; }
   .cm-logo-well { flex: none; display: flex; align-items: center; justify-content: center; }
   .cm-logo-well img { height: 48px; width: auto; display: block; }
+  .cm-logo-well img[src*="mlb-logo"] { height: 30.7px; }
   .cm-foot-addr { font-family: "Oswald", sans-serif; font-weight: 400; font-size: 13.5px; letter-spacing: .12em;
     text-transform: uppercase; color: #2A2118; line-height: 1.55; }
   .cm-foot-addr b { color: #1A1610; font-weight: 700; }
@@ -359,5 +360,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="comiskey-spread.jsx"></script>
   <script type="text/babel" src="comiskey-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

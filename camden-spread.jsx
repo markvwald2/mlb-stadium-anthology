@@ -115,9 +115,9 @@
         e("div", { className: "cy-hero-colophon" },
           e("span", null, D.address),
           e("span", { className: "dot" }, "\u25AA"),
-          e("span", null, D.coordinates_n + ", " + D.coordinates_w),
+          e("span", null, "Elev. ", e("em", { className: "hl" }, D.elevation)),
           e("span", { className: "dot" }, "\u25AA"),
-          e("span", null, "Elev. ", e("em", { className: "hl" }, D.elevation)))
+          e("span", null, D.coordinates_n + ", " + D.coordinates_w))
       ),
 
       /* ===================== RIGHT PAGE ===================== */

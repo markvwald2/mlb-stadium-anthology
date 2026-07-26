@@ -25,7 +25,7 @@ window.THREE_RIVERS = {
   architect: "Deeter Ritchey Sippel",
   architectural_style: "Circular multipurpose concrete doughnut stadium",
   stadium_type_facts: "Open-air circular multipurpose stadium",
-  facade: "Regular precast concrete structural system with exposed concrete circular bowl",
+  facade: "Precast concrete structural system with exposed concrete circular bowl",
   surface_type: "Artificial turf",
   surface: "Tartan Turf 1970\u20131982; AstroTurf 1983\u20132000",
   capacity_opening: "47,942",
@@ -47,7 +47,7 @@ window.THREE_RIVERS = {
   renovations: "Artificial turf, seating, scoreboard, suite, football, and baseball updates across Pirates and Steelers tenancies",
 
   // ---- Lineage ----
-  preceded_by: "Recreation Park; Exposition Park; Forbes Field",
+  preceded_by: "Recreation Park (1887–1890)\nExposition Park (1891–1909)\nForbes Field (1909–1970)",
   succeeded_by: "PNC Park",
 
   // ---- Field geometry ----

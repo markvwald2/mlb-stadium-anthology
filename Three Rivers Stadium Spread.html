@@ -61,18 +61,14 @@
   /* ============ LEFT / HERO ============ */
   .trs-hero-slot { position: absolute; inset: 0; z-index: 1; }
   .trs-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .trs-hero-scrim {
-    position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  /* bottom-only scrim — seats the foot block and crest; no top/side gradients */
+  .trs-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(180deg, rgba(9,8,7,.54) 0%, rgba(9,8,7,.27) 22%, rgba(9,8,7,.05) 40%, rgba(9,8,7,0) 50%),
-      radial-gradient(64% 54% at 0% 0%, rgba(9,8,7,.60) 0%, rgba(9,8,7,.22) 48%, rgba(9,8,7,0) 74%),
-      radial-gradient(80% 62% at 6% 100%, rgba(9,8,7,.88) 0%, rgba(9,8,7,.44) 46%, rgba(9,8,7,0) 74%),
-      radial-gradient(56% 44% at 95% 100%, rgba(9,8,7,.80) 0%, rgba(9,8,7,.36) 46%, rgba(9,8,7,0) 72%);
-  }
+      linear-gradient(180deg, rgba(9,8,7,.4) 0%, rgba(9,8,7,.3) 5%, rgba(9,8,7,.12) 12%, rgba(9,8,7,0) 20%),
+      linear-gradient(0deg, rgba(9,8,7,.66) 0%, rgba(9,8,7,.46) 9%, rgba(9,8,7,.2) 18%, rgba(9,8,7,0) 29%); }
   @media print {
-    /* Skia print-to-PDF: image-slot <img> transform makes its own composited
-       layer that paints over a plain sibling scrim regardless of z-index.
-       Composite the slot too so the img layer stays contained below the scrim. */
+    /* Skia print-to-PDF: image-slot <img> transform makes its own composited layer that
+       paints over a plain sibling scrim regardless of z-index. Composite the slot too. */
     .trs-hero-slot  { transform: translateZ(0) !important; }
     .trs-hero-scrim { transform: translateZ(0) !important; }
   }
@@ -88,39 +84,52 @@
   }
 
   /* Pirates crest — top right */
+  /* Print-safe ghost shadow: Chrome's HTML-to-PDF pipeline drops CSS text-shadow while
+     keeping glyphs vector, so blurred shadows can't be trusted. Each string carries a
+     DUPLICATE of itself (::before, content: attr(data-t)) offset behind the real text in
+     translucent dark ink — ordinary vector glyphs, so it prints as it screens. */
+  .trs-ds { position: relative; z-index: 0; }
+  .trs-ds::before { content: attr(data-t); position: absolute; z-index: -1; pointer-events: none;
+    left: 0; top: 0; white-space: pre; letter-spacing: inherit; text-transform: inherit;
+    font-style: inherit; color: var(--dsc, rgba(8,8,10,.34)); -webkit-text-fill-color: var(--dsc, rgba(8,8,10,.34));
+    transform: translate(var(--dsx, 2px), var(--dsy, 2.5px)); }
+
+  /* Drafting plates: flat solid ink behind hero strings that cross variable-luminance
+     photo. No blur — prints exactly as it screens, unlike a gradient scrim or shadow. */
+  .trs-plate { background: rgba(13,11,9,.9); padding: 7px 14px 8px; }
+
   .trs-hero-crest { position: absolute; right: 72px; bottom: 58px; z-index: 5;
-    display: flex; align-items: center; gap: 20px;
-    filter: drop-shadow(0 2px 12px rgba(0,0,0,.6)); }
+    display: flex; align-items: center; gap: 20px; }
   .trs-hero-crest .pmark { height: 82px; width: auto; display: block; order: 2; }
   .trs-hero-crest .tt { text-align: right; order: 1; }
   .trs-hero-crest .tt .nm { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 30px;
     letter-spacing: .04em; text-transform: uppercase; color: var(--gold-pirate); line-height: 1;
-    text-shadow: 0 1px 8px rgba(0,0,0,.75); white-space: nowrap; }
+    white-space: nowrap; }
   .trs-hero-crest .tt .sub { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 15px;
     letter-spacing: .16em; text-transform: uppercase; color: #E7DFCD; margin-top: 8px;
-    text-shadow: 0 1px 6px rgba(0,0,0,.75); white-space: nowrap; }
+    white-space: nowrap; }
 
   .trs-hero-title { position: absolute; left: 64px; right: 96px; top: 70px; z-index: 5; }
-  .trs-hero-eyebrow { display: inline-flex; align-items: center; gap: 13px; margin: 0 0 18px;
+  .trs-hero-eyebrow { display: flex; width: fit-content; align-items: center; gap: 13px; margin: 0 0 18px;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .3em; text-transform: uppercase;
-    color: #F6DBA0; text-shadow: 0 1px 3px rgba(0,0,0,.9), 0 2px 16px rgba(0,0,0,.75); }
+    color: #F6DBA0; }
   .trs-hero-eyebrow .dd { width: 5px; height: 5px; background: var(--gold-pirate); transform: rotate(45deg); flex: none; }
   .trs-hero-name { margin: 0; line-height: .82; }
   .trs-hero-name .l1 { display: block; font-family: "Spectral", serif; font-weight: 700; font-style: italic;
     font-size: 82px; letter-spacing: -.006em; color: var(--gold-pirate);
-    text-shadow: 0 2px 22px rgba(0,0,0,.62); }
+    --dsx: 2.5px; --dsy: 3px; --dsc: rgba(8,8,10,.3); }
   .trs-hero-name .l2 { display: block; font-family: "Anton", sans-serif; font-weight: 400;
     font-size: 152px; letter-spacing: .008em; text-transform: uppercase; color: #F3ECDB; line-height: .84;
-    text-shadow: 0 3px 30px rgba(0,0,0,.62); margin-top: 4px; }
+    margin-top: 4px; --dsx: 3px; --dsy: 3.5px; --dsc: rgba(8,8,10,.3); }
   .trs-hero-foot { position: absolute; left: 64px; right: 96px; bottom: 56px; z-index: 5; }
   .trs-hero-loc { display: inline-flex; align-items: center; gap: 16px; margin-top: 0; }
   .trs-hero-loc .bar { width: 54px; height: 3px; background: var(--gold-pirate); flex: none; }
   .trs-hero-loc .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 26px;
     letter-spacing: .28em; text-transform: uppercase; color: var(--gold-pirate); white-space: nowrap; }
-  .trs-hero-meta { margin-top: 15px; font-family: "Space Mono", monospace; font-size: 14px;
+  .trs-hero-meta { margin: 15px 0 0; display: block; width: fit-content; font-family: "Space Mono", monospace; font-size: 14px;
     letter-spacing: .14em; text-transform: uppercase; color: #C4BDAD; }
   .trs-hero-meta .dem { color: var(--gold-pirate); }
-  .trs-hero-rivers { margin-top: 15px; display: inline-flex; align-items: center; gap: 11px;
+  .trs-hero-rivers { margin: 15px 0 0; display: flex; width: fit-content; align-items: center; gap: 11px;
     font-family: "Oswald", sans-serif; font-weight: 500; font-size: 14.5px; letter-spacing: .2em;
     text-transform: uppercase; color: #E7DFCD; }
   .trs-hero-rivers .sep { color: var(--gold-pirate); font-weight: 600; }
@@ -165,7 +174,7 @@
   .trs-frow:last-child { border-bottom: 0; }
   .trs-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.2; }
-  .trs-frow .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; color: var(--ink); line-height: 1.22; }
+  .trs-frow .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; color: var(--ink); line-height: 1.22; white-space: pre-line; }
 
   /* ---- context prose ---- */
   .trs-context { column-count: 2; column-gap: 26px; flex: 1 1 auto; margin-bottom: 0; min-height: 0; position: relative;

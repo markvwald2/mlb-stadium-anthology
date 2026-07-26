@@ -48,9 +48,7 @@
   .fw-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .fw-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .fw-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    background:
-      linear-gradient(0deg, rgba(16,20,26,.74) 0%, rgba(16,20,26,.42) 12%, rgba(16,20,26,.04) 26%, rgba(16,20,26,0) 36%),
-      linear-gradient(180deg, rgba(12,35,64,.36) 0%, rgba(12,35,64,0) 16%); }
+    background: none; }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
@@ -83,6 +81,13 @@
     .fw-brick-marks img {
       filter: none !important;
     }
+    /* plaque: flat green fill — gradients on this plate drop out in PDF */
+    .fw-plaque {
+      background: #214129 !important;
+      box-shadow: none !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
   }
 
 
@@ -104,9 +109,19 @@
     background: var(--rivet); box-shadow: inset 0 1px 1px rgba(0,0,0,.6), 0 1px 1px rgba(255,255,255,.06); }
   .fw-plaque::before { top: 13px; left: 13px; } .fw-plaque::after { top: 13px; right: 13px; }
   .fw-plaque-rivets::before { bottom: 4px; left: 4px; } .fw-plaque-rivets::after { bottom: 4px; right: 4px; }
+  /* Print-safe ghost shadow: Chrome's HTML-to-PDF pipeline drops blurred text-shadow while
+     keeping glyphs vector. The string carries a DUPLICATE of itself (::before, content:
+     attr(data-t)) offset behind the real text in translucent ink — plain vector glyphs, so
+     it prints as it screens. The hard 0 2px 0 offset survives print and stays. */
+  .fw-ds { position: relative; z-index: 0; }
+  .fw-ds::before { content: attr(data-t); position: absolute; z-index: -1; pointer-events: none;
+    left: 0; top: 0; white-space: pre; letter-spacing: inherit; text-transform: inherit;
+    color: var(--dsc, rgba(11,24,16,.4)); -webkit-text-fill-color: var(--dsc, rgba(11,24,16,.4));
+    transform: translate(var(--dsx, 2px), var(--dsy, 2.5px)); }
   .fw-plaque-name { font-family: "Jost", sans-serif; font-weight: 600; font-size: 52px; line-height: .9;
     white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; color: #ECE4CC;
-    text-shadow: 0 2px 0 rgba(11,24,16,.6), 0 5px 16px rgba(0,0,0,.4); }
+    text-shadow: 0 2px 0 rgba(11,24,16,.6);
+    --dsx: 1.5px; --dsy: 2px; --dsc: rgba(6,16,10,.28); }
   .fw-plaque-loc { font-family: "Spectral", serif; font-style: italic; font-weight: 500; font-size: 26px;
     color: #E2DAC2; margin-top: 6px; letter-spacing: .01em; }
   .fw-plaque-years { font-family: "Jost", sans-serif; font-weight: 500; font-size: 21px; letter-spacing: .22em;

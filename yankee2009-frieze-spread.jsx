@@ -167,7 +167,10 @@
           e("span", { className: "t" }, "The Franchise Frieze"),
           e("span", { className: "s" }, "Memory as a Building Material"),
           e("div", { className: "yf-retired" },
-            e("span", { className: "rn" }, [1,2,3,4,5,6,7,8,8,9,10,15,16,20,21,23,32,37,42,42,44,46,49,51].join(" ")))),
+            e("span", { className: "rn" },
+              [1,2,3,4,5,6,7,8,8,9,10,15,16,20,21,23,32,37].join(" ") + " ",
+              e("span", { style: { color: "#005A9C" } }, "42"),
+              " " + [42,44,46,49,51].join(" ")))),
 
         /* ---------------- five monumental bays ---------------- */
         e("div", { className: "yf-bays" },

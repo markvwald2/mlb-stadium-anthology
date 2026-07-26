@@ -65,7 +65,7 @@
   .tf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
   .tf-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(180deg, rgba(8,12,18,.6) 0%, rgba(8,12,18,.4) 16%, rgba(8,12,18,.16) 30%, rgba(8,12,18,0) 42%); }
+      linear-gradient(180deg, rgba(6,18,40,.5) 0%, rgba(7,20,44,.48) 24%, rgba(8,22,46,.44) 32%, rgba(8,22,46,.2) 38%, rgba(8,22,46,0) 46%); }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
        layer that paints over a plain sibling scrim regardless of z-index.
@@ -89,15 +89,23 @@
     display: flex; align-items: center; gap: 12px; opacity: .9; pointer-events: none; }
   .tf-roofline .ln { flex: 1; height: 1px; background: rgba(231,224,206,.55); }
   .tf-roofline .tk { width: 1px; height: 11px; background: rgba(231,224,206,.7); flex: none; }
-  .tf-roofline .cap { font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: .3em;
-    color: rgba(236,229,213,.95); text-transform: uppercase; flex: none;
-    text-shadow: 0 1px 6px rgba(0,0,0,.55); }
+  /* Print-safe ghost shadow: Chrome's HTML-to-PDF pipeline drops blurred text-shadow while
+     keeping glyphs vector. Each string carries a DUPLICATE of itself (::before, content:
+     keeping glyphs vector. Each string carries a DUPLICATE of itself (::before, content:
+     attr(data-t)) offset behind the real text in translucent ink — plain vector glyphs, so
+     it prints as it screens. */
+  .tf-ds { position: relative; z-index: 0; }
+  .tf-ds::before { content: attr(data-t); position: absolute; z-index: -1; pointer-events: none;
+    left: 0; top: 0; white-space: pre; letter-spacing: inherit; text-transform: inherit;
+    color: var(--dsc, rgba(8,8,10,.28)); -webkit-text-fill-color: var(--dsc, rgba(8,8,10,.28));
+    transform: translate(var(--dsx, 1.5px), var(--dsy, 2px)); }
 
   .tf-hero-title { position: absolute; left: 60px; right: 66px; top: 122px; z-index: 5; }
   .tf-name {
     position: relative; margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
     font-size: 132px; line-height: .92; letter-spacing: .01em; text-transform: uppercase; white-space: nowrap;
-    color: #F1EAD6; -webkit-text-fill-color: #F1EAD6; text-shadow: 0 2px 16px rgba(0,0,0,.5);
+    color: #F1EAD6; -webkit-text-fill-color: #F1EAD6;
+    --dsx: 2px; --dsy: 3px; --dsc: rgba(8,8,10,.28);
   }
   .tf-name::after {
     content: attr(data-t); position: absolute; left: 0; top: 0; pointer-events: none;
@@ -111,8 +119,7 @@
   .tf-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 17px;
     letter-spacing: .42em; text-transform: uppercase; color: #CBA96B; white-space: nowrap; }
   .tf-openair { margin-top: 13px; font-family: "Space Mono", monospace; font-size: 12px;
-    letter-spacing: .3em; text-transform: uppercase; color: rgba(236,229,213,.92);
-    text-shadow: 0 1px 6px rgba(0,0,0,.55); }
+    letter-spacing: .3em; text-transform: uppercase; color: rgba(236,229,213,.92); }
   .tf-coords { margin-top: 9px; display: flex; align-items: center; gap: 11px;
     font-family: "Space Mono", monospace; font-size: 12.5px; letter-spacing: 0px;
     color: rgba(228,222,206,.8); }

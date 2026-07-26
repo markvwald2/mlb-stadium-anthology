@@ -59,31 +59,12 @@
   /* ============ LEFT / HERO ============ */
   .amf-hero-slot { position: absolute; inset: 0; z-index: 1; width: 1275px; height: 1088px; }
   .amf-hero-slot image-slot { width: 1275px; height: 1088px; display: block; }
-  .amf-hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 2;
-    background:
-      linear-gradient(to bottom right, rgba(8,11,18,.9) 0%, rgba(8,11,18,.6) 18%, rgba(8,11,18,.28) 34%, rgba(8,11,18,.06) 48%, rgba(8,11,18,0) 58%),
-      linear-gradient(0deg, rgba(8,11,18,.82) 0%, rgba(8,11,18,.30) 12%, rgba(8,11,18,0) 24%); }
   @media print {
-    /* In pp-mode the image-slot bakes its crop to an UNTRANSFORMED <img> that
-       fills the frame 1:1 (see image-slot.js _applyBakedStyles), so the
-       screen-only "transformed <img> paints over the scrim" problem does NOT
-       exist in print — normal z-index already keeps .amf-hero-scrim (z2) above
-       the img. Promoting the slot with translateZ(0) here only forced the hero
-       into a transparency-group layer that Chrome's Skia PDF backend re-blends
-       DARKER than the preview (the actual cause of the dark PDF — reducing the
-       scrim did nothing because the scrim wasn't the culprit). Keep both layers
-       un-promoted so the PDF composites exactly like the preview. */
+    /* The hero slot must NOT be promoted to its own compositing layer here:
+       translateZ(0) forces it into a transparency group that Chrome's Skia PDF
+       backend re-blends DARKER than the preview — the actual cause of the dark
+       left-page PDF. Kept un-promoted so the PDF composites like the preview. */
     .amf-hero-slot  { transform: translateZ(0) !important; }
-    .amf-hero-scrim { transform: translateZ(0) !important; }
-    /* Print-only lightening overlay for the left-page PDF. Applied via the
-       scrim's own gradients + a flat white wash rather than a CSS
-       filter:brightness() on the image slot — a filter would make Chrome/Skia
-       rasterize the page and greatly inflate the PDF size. */
-    .amf-hero-scrim {
-      background:
-        linear-gradient(to bottom right, rgba(8,11,18,.58) 0%, rgba(8,11,18,.38) 18%, rgba(8,11,18,.16) 34%, rgba(8,11,18,.03) 48%, rgba(8,11,18,0) 58%),
-        linear-gradient(0deg, rgba(8,11,18,.46) 0%, rgba(8,11,18,.16) 12%, rgba(8,11,18,0) 24%) !important;
-    }
     /* The fanned photo panels are rotate()-transformed; their blurred
        box-shadow gets tiled by Chrome's print rasterizer into axis-aligned
        grey "ghost" rectangles behind each photo. Drop the blur in print —
@@ -97,7 +78,7 @@
   .amf-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(226,222,210,.62); text-transform: uppercase; }
-  .amf-spine { position: absolute; left: 115px; top: 460px; z-index: 5;
+  .amf-spine { position: absolute; left: 113px; top: 460px; z-index: 5;
     transform: rotate(180deg); writing-mode: vertical-rl;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: 3px; text-align: left;
     color: rgba(226,222,210,.48); text-transform: uppercase; white-space: nowrap; }
@@ -322,5 +303,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="american-family-spread.jsx"></script>
   <script type="text/babel" src="american-family-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

@@ -59,17 +59,27 @@
   }
   .we-hero-block { position: absolute; left: 64px; right: auto; max-width: 560px; bottom: 60px; z-index: 5;
     border-left: 2px solid rgba(241,231,210,.72); padding-left: 20px; }
+  /* Print-safe ghost shadow: Chrome's HTML-to-PDF pipeline drops blurred text-shadow while
+     keeping glyphs vector. Each string carries a DUPLICATE of itself (::before, content:
+     attr(data-t)) offset behind the real text in translucent ink — plain vector glyphs, so
+     it prints as it screens. */
+  .we-ds { position: relative; z-index: 0; }
+  .we-ds::before { content: attr(data-t); position: absolute; z-index: -1; pointer-events: none;
+    left: 0; top: 0; white-space: pre; letter-spacing: inherit; text-transform: inherit;
+    font-style: inherit; color: var(--dsc, rgba(8,8,10,.28)); -webkit-text-fill-color: var(--dsc, rgba(8,8,10,.28));
+    transform: translate(var(--dsx, 1.5px), var(--dsy, 2px)); }
   .we-hero-loc { font-family: "Spectral", serif; font-style: italic; font-weight: 500; font-size: 27px;
-    color: #F1EBDB; text-shadow: 0 2px 14px rgba(0,0,0,.55); }
+    color: #F1EBDB; --dsx: 1.5px; --dsy: 2px; --dsc: rgba(8,8,10,.3); }
   .we-hero-mast { position: absolute; top: 56px; left: 64px; z-index: 5; display: flex; align-items: center; }
   .we-hero-mast .wf-logo { display: block; width: 508px; height: auto;
     background: none !important; border: 0 !important; box-shadow: none !important;
     padding: 0 !important; border-radius: 0 !important; }
   .we-hero-rule { width: 200px; height: 2px; background: #4E7FD0; margin: 16px 0 14px; }
   .we-hero-stats div { font-family: "Spectral", serif; font-weight: 600; font-size: 14px; letter-spacing: .18em;
-    text-transform: uppercase; color: #E4DDCC; line-height: 1.6; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
+    text-transform: uppercase; color: #E4DDCC; line-height: 1.6;
+    --dsx: 1px; --dsy: 1.5px; --dsc: rgba(8,8,10,.3); }
   .we-hero-colophon { font-family: "Spectral", serif; font-size: 12px; letter-spacing: .1em;
-    color: #C2BBA8; margin-top: 8px; text-shadow: 0 1px 8px rgba(0,0,0,.55); }
+    color: #C2BBA8; margin-top: 8px; --dsx: 1px; --dsy: 1.5px; --dsc: rgba(8,8,10,.3); }
 
   /* --- right page shell --- */
   .we-rp { position: absolute; inset: 0; padding: 37.5px 37.5px 37.5px 70px; display: flex; flex-direction: column; gap: 10px; z-index: 2; }

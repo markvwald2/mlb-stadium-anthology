@@ -8,6 +8,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
+  /* Self-hosted single-weight Oswald faces, each aliased at font-weight:normal.
+     All Oswald type on this spread is SVG <text>; Chrome's print-to-PDF grabs
+     the "Oswald" Regular master and SYNTHESIZES 500/700 for SVG text, embedding
+     non-embeddable "Oswald-Regular_Medium/_Bold" (Blurb rejects them). A family
+     with exactly one normal-weight face can't be synthesized — Chrome embeds it
+     verbatim. Metrics are identical to Google Oswald 500/700, so canvas
+     width-measurement (which still uses "Oswald") stays exact. */
+  @font-face { font-family: "Oswald Med"; src: url("oswald-med.woff2") format("woff2"); font-weight: normal; font-style: normal; font-display: block; }
+  @font-face { font-family: "Oswald Bd";  src: url("oswald-bd.woff2")  format("woff2"); font-weight: normal; font-style: normal; font-display: block; }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {

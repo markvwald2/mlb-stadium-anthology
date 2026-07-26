@@ -63,8 +63,8 @@
   .glf-hero-scrim {
     position: absolute; inset: 0; pointer-events: none; z-index: 2;
     background:
-      linear-gradient(180deg, rgba(8,12,14,.36) 0%, rgba(8,12,14,0) 26%),
-      linear-gradient(0deg, rgba(8,11,13,.72) 0%, rgba(8,11,13,.50) 16%, rgba(8,11,13,.11) 38%, rgba(8,11,13,0) 52%);
+      linear-gradient(180deg, rgba(10,20,48,.08) 0%, rgba(10,20,48,0) 26%),
+      linear-gradient(0deg, rgba(10,20,48,.17) 0%, rgba(10,20,48,.11) 16%, rgba(10,20,48,.025) 38%, rgba(10,20,48,0) 52%);
   }
   @media print {
     /* Skia print-to-PDF: image-slot <img> transform makes its own composited
@@ -119,7 +119,7 @@
 
   .glf-marks { position: absolute; right: 75px; bottom: 60px; left: auto; top: auto; z-index: 6;
     display: flex; align-items: center; gap: 16px; white-space: nowrap; }
-  .glf-marks .mlb { height: 40px; width: auto; display: block; }
+  .glf-marks .mlb { height: 32px; width: auto; display: block; }
   .glf-marks .al { height: 36px; width: auto; display: block; background: #fff;
     padding: 3px 5px; border-radius: 2px; }
   .glf-marks .div { width: 1px; height: 28px; background: rgba(220,227,231,.34); }
@@ -328,5 +328,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="globe-life-spread.jsx"></script>
   <script type="text/babel" src="globe-life-app.jsx"></script>
+  <script src="ghost-shadow.js"></script>
 </body>
 </html>

@@ -122,7 +122,7 @@
       e("div", { className: "tm-page tm-left", "data-screen-label": "Safeco Field — hero" },
         e("div", { className: "tm-hero-slot" },
           e(Slot, { id: "tmobile-hero", src: "images/safeco/safeco-hero.jpg", placeholder: "Drop the Safeco Field hero \u2014 elevated / aerial view where the retractable steel canopy is unmistakable above the lit field, with the SoDo rail corridor, port cranes & downtown edge beyond" })),
-        e("div", { className: "tm-hero-scrim" }),
+
 
         e("img", { className: "tm-hero-logo", src: "assets/seattle-mariners-logo.svg", alt: "Seattle Mariners" }),
         e("div", { className: "tm-folio" }, "VISIT NO. " + D.visit_order),
@@ -135,9 +135,9 @@
           e("span", { className: "ln" }), e("span", { className: "tk" })),
 
         e("div", { className: "tm-hero-title" },
-          D.name_lines.map((ln, i) => e("h1", { className: "tm-name", key: i }, ln)),
+          D.name_lines.map((ln, i) => e("h1", { className: "tm-name tm-ds", key: i, "data-t": ln }, ln)),
           e("div", { className: "tm-sub" },
-            e("span", { className: "place" }, D.city + " \u00b7 " + D.state))),
+            e("span", { className: "place tm-ds", "data-t": D.city + " \u00b7 " + D.state }, D.city + " \u00b7 " + D.state))),
 
         // engineering annotation — single-line metadata, lower-left
         e("div", { className: "tm-annot" },
@@ -226,7 +226,7 @@
           e("div", { className: "tm-visit-head" },
             e("span", { className: "tag" }, "The Visit"),
             e("span", { className: "ttl" }, D.visit_result),
-            e("span", { className: "meta" }, D.visit_matchup + "  \u00b7  " + D.visit_day + ", " + D.visit_date)),
+            e("span", { className: "meta" }, (D.visit_matchup + "  \u00b7  " + D.visit_day + ", " + D.visit_date).toUpperCase())),
 
           e("div", { className: "tm-visit-grid" },
             // featured visit facts

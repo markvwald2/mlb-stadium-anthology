@@ -210,7 +210,9 @@
                   React.createElement("span", { className: "plq" },
                     React.createElement("img", { src: "assets/reds.svg", alt: "Cincinnati Reds", className: "rf-logo" })),
                   React.createElement("span", { className: "plq" },
-                    React.createElement("img", { src: "assets/nl-logo.png", alt: "National League", className: "rf-logo" }))
+                    React.createElement("img", { src: "assets/nl-logo.png", alt: "National League", className: "rf-logo" })),
+                  React.createElement("span", { className: "plq" },
+                    React.createElement("img", { src: "assets/mlb-logo.svg", alt: "Major League Baseball", className: "rf-logo mlb" }))
                 )
               )
             ),

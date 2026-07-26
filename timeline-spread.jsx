@@ -318,7 +318,7 @@
           const r = layout.rail[i];
           return (
             <text key={"rail" + i} x={LABEL_R} y={cy} textAnchor="end" dominantBaseline="central"
-              fontFamily="Oswald, sans-serif" fontWeight="500" fontSize={r.font} fill={C.ink}
+              fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize={r.font} fill={C.ink}
               letterSpacing="0.04em">{r.name}</text>
           );
         })}
@@ -342,7 +342,7 @@
           return (
           <g key={"il" + k}>
             <text x={b.x0 + 7} y={b.cy} dominantBaseline="central" textAnchor="start"
-              fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="11" fill={C.paperHi}
+              fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.paperHi}
               letterSpacing="0.01em">{b.t.stadium}</text>
             {b.span ? (
               <text x={spanX} y={b.cy} dominantBaseline="central" textAnchor="end"
@@ -363,7 +363,7 @@
           <g key={"el" + k}>
             <line x1={b.ext.leader.x1} y1={b.ext.leader.y1} x2={b.ext.leader.x2} y2={b.ext.leader.y2} stroke={C.ink3} strokeWidth="0.8" />
             <text x={b.ext.x} y={b.ext.y} dominantBaseline="central" textAnchor={b.ext.anchor}
-              fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="11" fill={C.ink} letterSpacing="0.01em">{b.ext.txt}</text>
+              fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.ink} letterSpacing="0.01em">{b.ext.txt}</text>
           </g>
         ))}
 
@@ -377,7 +377,7 @@
               <line x1={mid} y1={barBottom} x2={mid} y2={l1 - 9} stroke={C.ink3} strokeWidth="0.8" />
               {b.t.belowLabel.map((ln, j) => (
                 <text key={j} x={mid} y={l1 + j * 12.5} textAnchor="middle" dominantBaseline="central"
-                  fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="11" fill={C.ink} letterSpacing="0.01em">{ln}</text>
+                  fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.ink} letterSpacing="0.01em">{ln}</text>
               ))}
             </g>
           );
@@ -389,11 +389,11 @@
             <g key={"rn" + k}>
               <line x1={r.leader.x1} y1={r.leader.y1} x2={r.leader.x2} y2={r.leader.y2} stroke={C.ink3} strokeWidth="0.8" />
               <text x={r.x} y={r.y} dominantBaseline="central" textAnchor="start"
-                fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="11" fill={C.ink} letterSpacing="0.01em">{r.txt}</text>
+                fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.ink} letterSpacing="0.01em">{r.txt}</text>
             </g>
           ) : (
             <text key={"rn" + k} x={r.x} y={r.y} dominantBaseline="central" textAnchor="start"
-              fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="11" fill={C.paperHi} letterSpacing="0.01em">{r.txt}</text>
+              fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.paperHi} letterSpacing="0.01em">{r.txt}</text>
           )
         ))}
 
@@ -410,15 +410,15 @@
         })}
 
         {/* ============ HEADER BAND ============ (sits entirely above the top axis labels) */}
-        <text x="52" y="90" fontFamily="Oswald, sans-serif" fontWeight="700" fontSize="44" fill={C.ink} letterSpacing="0.005em">MLB STADIUM TIMELINE</text>
+        <text x="52" y="90" fontFamily="'Oswald Bd', sans-serif" fontWeight="400" fontSize="44" fill={C.ink} letterSpacing="0.005em">MLB STADIUM TIMELINE</text>
         <text x="54" y="107" fontFamily="Spectral, serif" fontStyle="italic" fontSize="16" letterSpacing="0.04em" fill={C.ink3}>Franchise stadium tenures, name changes, and known visits, 1890&#8211;2026.</text>
 
         {/* legend — right page */}
         <Legend C={C} />
 
         {/* ============ FOOTER BAND ============ (above 0.25in bottom safe line) */}
-        <text x={PLOT_X1} y="1046" textAnchor="end" fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="13" fill={C.ink2} letterSpacing="0.12em">
-          30 FRANCHISES&#160;&#160;&#183;&#160;&#160;105 STADIUM TENURES&#160;&#160;&#183;&#160;&#160;43 VISITED
+        <text x={PLOT_X1} y="1046" textAnchor="end" fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="13" fill={C.ink2} letterSpacing="0.12em">
+          30 FRANCHISES&#160;&#160;&#183;&#160;&#160;105 STADIUM TENURES&#160;&#160;&#183;&#160;&#160;43 TENURES VISITED
         </text>
       </svg>
     );
@@ -462,7 +462,7 @@
       out.push(
         <g key={"lg" + i}>
           {glyph}
-          <text x={lx + SW + GAPsl - (it.kind === "diamond" ? 7 : 0)} y={yRow} dominantBaseline="central" fontFamily="Oswald, sans-serif" fontWeight="500" fontSize="14" fill={C.ink} letterSpacing="0.08em">{it.label.toUpperCase()}</text>
+          <text x={lx + SW + GAPsl - (it.kind === "diamond" ? 7 : 0)} y={yRow} dominantBaseline="central" fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="14" fill={C.ink} letterSpacing="0.08em">{it.label.toUpperCase()}</text>
         </g>
       );
       x += widths[i] + GAPit;

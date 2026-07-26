@@ -252,7 +252,9 @@
         /* title block */
         e("div", { className: "yk-hero-block" },
           e("div", { className: "yk-hero-kicker" }, "The Bronx \u00b7 American League"),
-          e("h1", { className: "yk-hero-name" }, "Yankee", e("span", { className: "l2" }, "Stadium")),
+          e("h1", { className: "yk-hero-name" },
+            e("span", { className: "l1 yk-ds", "data-t": "Yankee" }, "Yankee"),
+            e("span", { className: "l2 yk-ds", "data-t": "Stadium" }, "Stadium")),
           e("div", { className: "yk-hero-rule" },
             e("div", { className: "band" }),
             e("div", { className: "band thin" })),
