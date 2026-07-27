@@ -74,9 +74,8 @@
 
   /* Weather glyphs — fine line-art. */
   function WxIcon() {
-    return e("svg", { width: 38, height: 38, viewBox: "0 0 24 24", fill: "none", stroke: "#5A5147", strokeWidth: 1.05, strokeLinecap: "round", strokeLinejoin: "round", className: "gabp-wx-ico" },
-      e("path", { d: "M7 15a4 4 0 0 1 .4-7.98 5.5 5.5 0 0 1 10.6 1.48A3.5 3.5 0 0 1 17.5 15z" }),
-      e("path", { d: "M8 18.4l-1.1 2.1M12 18.4l-1.1 2.1M16 18.4l-1.1 2.1" }));
+    return window.WxIcons.react("drizzle", { width: 38, height: 38, stroke: "#5A5147",
+      strokeWidth: 1.05, className: "gabp-wx-ico" });
   }
   function WxRowIcon(kind) {
     const c = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "#5A5147", strokeWidth: 1.7, strokeLinecap: "round", strokeLinejoin: "round", className: "gabp-wxr-ico" };
@@ -129,8 +128,9 @@
 
   function ribCell(k, v, i) {
     var vStyle = k === "Location" ? { letterSpacing: "0.4px" } : null;
+    var kStyle = k === "All-Star Game" ? { letterSpacing: "1px" } : null;
     return e("div", { className: "rcell", key: i },
-      e("div", { className: "k" }, k),
+      e("div", { className: "k", style: kStyle }, k),
       e("div", { className: "v", style: vStyle }, v));
   }
   function factRow(k, v, i) {

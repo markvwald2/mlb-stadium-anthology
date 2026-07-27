@@ -50,7 +50,7 @@
     return e("div", { className: "mm-frow", key: i },
       e("div", { className: "k" }, row[0]),
       e("div", { className: "v" },
-        e("span", { className: "vm" }, row[1]),
+        e("span", { className: "vm", style: row[0] === "Style" ? { letterSpacing: "-0.6px" } : null }, row[1]),
         row[2] ? e("span", { className: "vs" }, row[2]) : null));
   }
   function vRow(row, i) {
@@ -63,6 +63,8 @@
   function WxIcon(kind) {
     const c = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "#524A3C",
       strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", style: { flex: "none" } };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c, e("path", { d: "M14 14.5V5a2 2 0 1 0-4 0v9.5a4 4 0 1 0 4 0z" }), e("path", { d: "M12 14V8" }));
     if (kind === "sky") return e("svg", c, e("circle", { cx: 12, cy: 12, r: 4.4 }),
       e("path", { d: "M12 3v1.8M12 19.2V21M3 12h1.8M19.2 12H21M5.5 5.5l1.3 1.3M17.2 17.2l1.3 1.3M18.5 5.5l-1.3 1.3M6.8 17.2l-1.3 1.3" }));

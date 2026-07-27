@@ -16,7 +16,7 @@
 
   const STRIP = [
     ["dodger-v2-s1", "Exterior approach \u2014 the terraced parking levels and concrete entry stepping up the Chavez Ravine hillside"],
-    ["dodger-v2-s2", "Seating bowl detail \u2014 the open-air, color-coded decks carved into the grade"],
+    ["dodger-v2-s2", "Seating bowl detail \u2014 the open-air, color-coded decks carved into the grade", "images/dodger/dodger-stadium-02-level.jpg"],
     ["dodger-v2-s3", "Scoreboard view \u2014 the faceted mid-century sign / billboard structure beyond center field"],
     ["dodger-v2-s4", "Concourse \u2014 the open-air pedestrian level along the upper decks"],
     ["dodger-v2-s5", "Historic construction \u2014 Chavez Ravine grading and the bowl under construction, early 1960s"]
@@ -93,16 +93,9 @@
   }
 
   /* understated line-art "partly cloudy" glyph (sun behind a cloud) */
-  function WeatherIcon() {
-    return e("svg", { className: "wxicon", viewBox: "0 0 48 40", fill: "none",
-        stroke: "currentColor", strokeWidth: 2.4, strokeLinecap: "round", strokeLinejoin: "round" },
-      e("circle", { cx: 15, cy: 13, r: 6 }),
-      e("line", { x1: 15, y1: 2, x2: 15, y2: 4.5 }),
-      e("line", { x1: 4, y1: 13, x2: 6.5, y2: 13 }),
-      e("line", { x1: 7.2, y1: 5.2, x2: 9, y2: 7 }),
-      e("line", { x1: 22.8, y1: 5.2, x2: 21, y2: 7 }),
-      e("line", { x1: 7.2, y1: 20.8, x2: 9, y2: 19 }),
-      e("path", { d: "M19 33h14.5a6.4 6.4 0 0 0 .6-12.77A9.4 9.4 0 0 0 16.7 19 6.9 6.9 0 0 0 19 33z" }));
+  function WeatherIcon(p) {
+    return window.WxIcons.react(p && p.cond, { className: "wxicon", viewBox: "0 0 48 40",
+      stroke: "currentColor", strokeWidth: 1.44, wrapTransform: "translate(4 0) scale(1.6667)" });
   }
 
   /* A horizontal four-zone game module: metadata · result+linescore · pitching · conditions.
@@ -126,12 +119,14 @@
           e("div", { className: "dv2-rline" }, Line(g.box))),
         e("div", { className: "z z-pitch" },
           pitchRow("w", "WP", g.win),
+          e("div", { className: "pgap" }, e("i", null)),
           pitchRow("l", "LP", g.loss),
+          e("div", { className: "pgap" }, e("i", null)),
           pitchRow("s", "SV", g.save)),
         e("div", { className: "z z-cond" },
           e("div", null,
             e("div", { className: "dv2-cond-wx" },
-              e(WeatherIcon, null),
+              e(WeatherIcon, { cond: w.conditions }),
               e("div", { className: "ct" }, w.temperature)),
             e("div", { className: "cc" }, w.conditions)),
           e("div", { className: "dv2-cond-row" }, w.wind),
@@ -169,7 +164,7 @@
         /* ---- BAND 1 · SKY · identity ---- */
         e("div", { className: "dv2-band", style: { top: "0px", height: "255px", background: "var(--sky-bg)" } },
           e("div", { className: "dv2-frieze", style: { top: "38px", height: "160px" } },
-            STRIP.map((s, i) => e("figure", { key: i }, e(Slot, { id: s[0], placeholder: s[1] })))),
+            STRIP.map((s, i) => e("figure", { key: i }, e(Slot, { id: s[0], placeholder: s[1], src: s[2] })))),
           e("div", { className: "dv2-ribbon", style: { top: "202px" } },
             e("div", { className: "rc logos" },
               e("div", { className: "dv2-lock" },
@@ -190,6 +185,7 @@
             e("div", { style: { display: "flex", gap: "28px", alignItems: "flex-start" } },
               e(SpecGrid, null),
               e("div", { className: "dv2-fieldcol", style: { flex: "0 0 200px" } },
+                e("div", { className: "fc-allstar" }, "All-Star Games 1980, 2022"),
                 e("div", { className: "fc-h" }, "Field Plan \u00b7 " + F.orientation + " " + F.degrees + "\u00b0"),
                 window.DodgerV2Field ? e(window.DodgerV2Field, { lf: F.left_field, cf: F.center_field, rf: F.right_field, orientation: F.orientation, degrees: F.degrees, accent: "var(--turq-ax)", counterRotate: 26 }) : null)))),
 

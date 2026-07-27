@@ -93,7 +93,7 @@
   .cy-hero-plate .bolt.tr { right: 8px; top: 8px; }
   .cy-hero-plate .bolt.bl { left: 8px; bottom: 8px; }
   .cy-hero-plate .bolt.br { right: 8px; bottom: 8px; }
-  .cy-hero-name { margin: 0; font-family: "Bebas Neue", sans-serif; line-height: .9;
+  .cy-hero-name { --dsx: 2px; --dsy: 2px; margin: 0; font-family: "Bebas Neue", sans-serif; line-height: .9;
     letter-spacing: .045em; color: #263D2F; }
   .cy-hero-name .l1, .cy-hero-name .l2 { display: block; white-space: nowrap; font-size: 104px; }
   .cy-hero-rule { height: 1px; background: rgba(33,30,24,.30); margin: 14px 0 11px; }
@@ -156,12 +156,12 @@
   /* metadata datum ribbon — the warehouse spine (green steel) */
   .cy-ribbon { display: flex; align-items: stretch; flex: none; background: var(--steel);
     border-top: 1px solid rgba(231,224,208,.16); border-bottom: 4px solid var(--steel-deep); }
-  .cy-rc { flex: 1; padding: 11px 20px; border-left: 1px solid rgba(231,224,208,.16);
+  .cy-rc { flex: 1 1 auto; padding: 11px 20px; border-left: 1px solid rgba(231,224,208,.16);
     display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
   .cy-rc:first-child { border-left: 0; }
-  .cy-rc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .2em;
+  .cy-rc .k { white-space: nowrap; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .2em;
     text-transform: uppercase; color: var(--steel-pale); }
-  .cy-rc .v { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .05em;
+  .cy-rc .v { white-space: nowrap; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .05em;
     text-transform: uppercase; color: #F1EADB; line-height: 1.05; }
   .cy-rc .v.mono { font-family: "Space Mono", monospace; font-weight: 400; font-size: 13px; letter-spacing: 0; }
   .cy-rc .v.big { font-size: 24px; }
@@ -172,7 +172,7 @@
   .cy-rc.brand .id { display: flex; flex-direction: column; gap: 1px; }
   .cy-rc.brand .sub { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--steel-pale); line-height: 1.34; white-space: nowrap; }
-  .cy-rc.vo { flex: 0 0 auto; }
+  .cy-rc.vo { flex: 1 1 auto; }
   .cy-rc.vo .v { white-space: nowrap; }
 
   /* ===================== BODY — two zones on the datum ===================== */
@@ -328,7 +328,8 @@
   <script src="image-slot.js"></script>
   <script src="camden-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="camden-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="camden-spread.jsx"></script>

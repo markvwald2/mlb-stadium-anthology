@@ -35,6 +35,8 @@
 
   function WxIcon(kind) {
     const c = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "#E7E0D0", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round", className: "ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "sun") return e("svg", c, e("circle", { cx: 12, cy: 12, r: 4 }), e("path", { d: "M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" }));
     if (kind === "temp") return e("svg", c, e("path", { d: "M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0z" }));
     if (kind === "wind") return e("svg", c, e("path", { d: "M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 16h13a2.5 2.5 0 1 1-2.5 2.5M3 12h7" }));
@@ -148,7 +150,7 @@
                   factRow("Surface", D.surface + " (" + D.playing_surface_type.toLowerCase() + ")"),
                   factRow("Capacity", D.capacity_opening + " \u2192 " + D.capacity_current),
                   factRow("Renovations", D.renovations),
-                  factRow("All-Star Games", D.all_star_games),
+                  factRow(e("span", { style: { letterSpacing: "-0.6px" } }, "All-Star Games"), D.all_star_games),
                   factRow("Cost", D.stadium_cost + " (" + D.stadium_cost_adjusted + " adj.)"),
                   factRow("Financing", D.financing_method),
                   factRow("Elevation", D.elevation),

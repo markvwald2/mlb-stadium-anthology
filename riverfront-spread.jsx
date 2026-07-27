@@ -33,6 +33,8 @@
 
   function WxIcon(kind) {
     const c = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "none", stroke: "#E7E5DE", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round", className: "ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "sun") return React.createElement("svg", c, React.createElement("circle", { cx: 12, cy: 12, r: 4 }), React.createElement("path", { d: "M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" }));
     if (kind === "temp") return React.createElement("svg", c, React.createElement("path", { d: "M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0z" }));
     if (kind === "wind") return React.createElement("svg", c, React.createElement("path", { d: "M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 16h13a2.5 2.5 0 1 1-2.5 2.5M3 12h7" }));
@@ -112,13 +114,22 @@
                   React.createElement("div", { className: "rf-pb" },
                     React.createElement("div", { className: "pbitem" },
                       React.createElement("div", { className: "lbl k" }, "Preceded By"),
-                      React.createElement("div", { className: "val v" },
-                        D.preceded_by.split(" \u00b7 ").map(function (s, i, a) {
-                          return React.createElement(React.Fragment, { key: i }, s, i < a.length - 1 ? React.createElement("br", null) : null);
+                      React.createElement("div", { className: "val v pbcols" },
+                        D.preceded_by.split(" \u00b7 ").map(function (s, i) {
+                          const m = s.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
+                          return React.createElement("div", { className: "pbe", key: i },
+                            React.createElement("span", { className: "pbn" }, m ? m[1] : s),
+                            m ? React.createElement("span", { className: "pbd" }, m[2]) : null);
                         }))),
                     React.createElement("div", { className: "pbitem" },
                       React.createElement("div", { className: "lbl k" }, "Name History"),
-                      React.createElement("div", { className: "val v" }, D.name_history)),
+                      React.createElement("div", { className: "val v pbcols" },
+                        D.name_history.split(" \u2192 ").map(function (s, i) {
+                          const m = s.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
+                          return React.createElement("div", { className: "pbe", key: i },
+                            React.createElement("span", { className: "pbn" }, m ? m[1] : s),
+                            m ? React.createElement("span", { className: "pbd" }, m[2]) : null);
+                        }))),
                     React.createElement("div", { className: "pbitem" },
                       React.createElement("div", { className: "lbl k" }, "Successor"),
                       React.createElement("div", { className: "val v" }, D.succeeded_by)))
@@ -133,9 +144,13 @@
                   }) : null,
                   React.createElement("div", { className: "blk" },
                     React.createElement("div", { className: "lbl k" }, "Construction & Era"),
-                    React.createElement("div", { className: "val v" },
-                      ["- Construction start " + D.construction_start, "- Opened " + D.opening_day, "- Final game " + D.final_game, "- Razed " + D.demolition_year].map(function (s, i, a) {
-                        return React.createElement(React.Fragment, { key: i }, s, i < a.length - 1 ? React.createElement("br", null) : null);
+                    React.createElement("div", { className: "val v erasteps" },
+                      [["Construction start", D.construction_start], ["Opened", D.opening_day], ["All-Star Games", "1970, 1988"], ["Final game", D.final_game], ["Razed", D.demolition_year]].map(function (r, i) {
+                        const MO = { Jan: "January", Feb: "February", Mar: "March", Apr: "April", Jun: "June", Jul: "July", Aug: "August", Sep: "September", Oct: "October", Nov: "November", Dec: "December" };
+                        const dt = String(r[1]).replace(/^(Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b/, function (m) { return MO[m]; });
+                        return React.createElement("div", { className: "pbe", key: i },
+                          React.createElement("span", { className: "pbn" }, r[0]),
+                          React.createElement("span", { className: "pbd" }, dt));
                       }))),
                   React.createElement("div", { className: "blk" },
                     React.createElement("div", { className: "lbl k" }, "Financing"),

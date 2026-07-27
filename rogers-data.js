@@ -28,7 +28,7 @@ window.ROGERS = {
     ["Years Active", "1989\u2013Present"],
     ["Groundbreaking", "Oct 3, 1986"],
     ["Opening Day", "Jun 3, 1989"],
-    ["Capacity", "41,500 (originally 50,516)"],
+    ["All-Star Game", "1991"],
     ["Surface", "Artificial - AstroTurf 3D Xtreme with dirt infield", null, { vm: { letterSpacing: "-0.6px" } }],
     ["Architect", "Rod Robbie and Michael Allen", "Structural design by Adjeleian Allen Rubeli"],
     ["Type", "Multipurpose retractable-roof stadium adapted increasingly toward baseball"],
@@ -44,7 +44,8 @@ window.ROGERS = {
     ["Era", "Multipurpose Shared Use", "era"],
     ["Roof", "Retractable", "roof"],
     ["Location", "Downtown", "pin"],
-    ["Elevation", "250 ft", "elev"]
+    ["Elevation", "250 ft", "elev"],
+    ["Capacity", "41,500 (originally 50,516)", "group"]
   ],
 
   // ---- retractable roof diagram (honest: only Codex-supported labels) ----

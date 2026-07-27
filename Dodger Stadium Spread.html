@@ -153,6 +153,9 @@
   .dv2-spec .cell.wide .k { color: var(--ink3); }
   .dv2-spec .cell.wide .v { font-size: 12px; line-height: 1.18; font-weight: 500; }
 
+  .dv2-fieldcol .fc-allstar { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 600; font-size: 12px;
+    letter-spacing: .07em; text-transform: uppercase; color: var(--ink2); line-height: 1.2; position: absolute; bottom: 100%; padding-bottom: 5px; }
+  .dv2-fieldcol { position: relative; }
   .dv2-fieldcol .fc-h { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--turq-ax); border-top: 1px solid var(--turq); padding-top: 5px; margin-bottom: 2px; line-height: 1.2; }
   .dv2-fig { display: block; width: 100%; height: auto; overflow: visible;
@@ -246,9 +249,10 @@
   .dv2-line td.rc { font-weight: 700; }
 
   /* zone 3 — pitching */
-  .dv2-gm .z-pitch .prow { display: flex; align-items: baseline; gap: 10px; padding: 6px 0;
-    border-top: 1px solid var(--hair); }
-  .dv2-gm .z-pitch .prow:first-child { border-top: 0; }
+  .dv2-gm .z-pitch { display: grid; grid-template-rows: auto 1fr auto 1fr auto; }
+  .dv2-gm .z-pitch .prow { display: flex; align-items: baseline; gap: 10px; }
+  .dv2-gm .z-pitch .pgap { display: flex; align-items: center; }
+  .dv2-gm .z-pitch .pgap i { display: block; width: 100%; height: 1px; background: var(--hair); }
   .dv2-pit .pl, .z-pitch .pl { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 700; font-size: 12px;
     letter-spacing: .05em; flex: none; width: 20px; }
   .z-pitch .pl.w { color: var(--turq-ax); } .z-pitch .pl.l { color: var(--red); } .z-pitch .pl.s { color: var(--ink3); }
@@ -262,6 +266,7 @@
     line-height: .9; color: var(--ink); }
   .dv2-gm .z-cond .cc { font-family: "Barlow Semi Condensed", sans-serif; font-weight: 500; font-size: 13px;
     color: var(--ink2); margin-top: 6px; }
+  .dv2-gm .z-cond .dv2-cond-row:nth-child(2) { padding-top: 12px; margin-bottom: -4px; }
   .dv2-cond-row { padding-top: 8px; border-top: 1px solid var(--hair);
     font-family: "Barlow Semi Condensed", sans-serif; font-weight: 500; font-size: 12px;
     color: var(--ink2); font-variant-numeric: tabular-nums; }
@@ -290,7 +295,8 @@
   <script src="image-slot.js"></script>
   <script src="dodger-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="dodger-v2-field.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="dodger-v2-spread.jsx"></script>

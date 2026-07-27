@@ -54,6 +54,7 @@ window.AMFAM = {
   lifecycle: [
     ["GROUNDBREAKING", "Nov 9, 1996"],
     ["Opened", "April 6, 2001"],
+    ["All-Star Game", "2002"],
     ["Cost", "$400 million"],
     ["Adjusted Cost", "$727 million"],
     ["Financing", "Public-private; SE Wisconsin Pro Baseball Park District sales-tax bonds, Brewers/private"]

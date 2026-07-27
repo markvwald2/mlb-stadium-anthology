@@ -113,7 +113,7 @@
 
         e("div", { className: "tf-hero-scrim" }),
 
-        e("img", { className: "tf-hero-logo", src: "assets/twins-insignia.svg", alt: "Minnesota Twins" }),
+        e("img", { className: "tf-hero-logo", "data-lg": "", src: "assets/twins-insignia.svg", alt: "Minnesota Twins" }),
         e("div", { className: "tf-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
 
         e("div", { className: "tf-hero-title" },
@@ -148,6 +148,7 @@
             ribCell("Capacity", D.capacity_opening),
             ribCell("League", D.league, { logo: "assets/american-league-logo.png" }),
             ribCell("Division", D.division),
+            ribCell("All-Star Game", "2014"),
             ribCell("Visit", D.visit_order + " of " + D.visit_total)),
 
           /* ---- the twin ledgers ---- */

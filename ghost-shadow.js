@@ -99,7 +99,7 @@
 
       var fs = parseFloat(cs.fontSize) || 16, big = fs >= 40;
       var a = Math.max(0.22, Math.min(0.38, dark[0].alpha));
-      var gx = big ? 1.5 : 1, gy = big ? 2 : 1.5;
+      var gx = big ? 2 : 1, gy = big ? 2 : 1.5;
       /* Offset DIRECTION must follow the shadow it replaces: a shadow authored
          with a negative y (light from below) has to ghost upward, not down. */
       var oy = (dark[0].nums && dark[0].nums.length > 1) ? dark[0].nums[1] : 1;

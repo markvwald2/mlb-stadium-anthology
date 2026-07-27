@@ -28,13 +28,14 @@
     if (v == null || v === "") return null;
     const vProps = { className: "v" };
     if (opts && opts.style) vProps.style = opts.style;
+    const rowCls = "trs-frow" + (opts && opts.cls ? " " + opts.cls : "");
     if (typeof v === "string" && v.indexOf("<") !== -1) {
       vProps.dangerouslySetInnerHTML = { __html: v };
-      return e("div", { className: "trs-frow" },
+      return e("div", { className: rowCls },
         e("div", { className: "k" }, k),
         e("div", vProps));
     }
-    return e("div", { className: "trs-frow" },
+    return e("div", { className: rowCls },
       e("div", { className: "k" }, k),
       e("div", vProps, v));
   }
@@ -151,7 +152,7 @@
         e(Survey, { className: "trs-survey-bl", stroke: "#E3CB7C", op: 0.5 }),
         e(Survey, { className: "trs-survey-br", stroke: "#E3CB7C", op: 0.42 }),
         e("div", { className: "trs-hero-crest" },
-          e("img", { src: "assets/pirates-p.svg", className: "pmark", alt: "Pittsburgh Pirates" }),
+          e("img", { src: "assets/pirates-p.svg", className: "pmark", "data-lg": "", alt: "Pittsburgh Pirates" }),
           e("div", { className: "tt" },
             e("div", { className: "nm" }, D.team_name),
             e("div", { className: "sub" }, D.league + "  \u00b7  " + D.division))),
@@ -199,6 +200,7 @@
                 fact("Years Active", D.years_active),
                 fact("Construction", D.construction_start),
                 fact("Opening Day", D.opening_day),
+                fact("All-Star Games", "1974, 1994", { cls: "allstar" }),
                 fact("Final Game", D.final_game),
                 fact("Demolition", D.demolition_year),
                 fact("Status", D.status),

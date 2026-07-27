@@ -27,14 +27,8 @@
 
   /* ---- weather icon (partly cloudy) ---- */
   function WxPartly() {
-    return e("svg", { className: "op-wx-ico", width: "60", height: "48", viewBox: "0 0 60 48", fill: "none", stroke: "#514C44", strokeWidth: "1.6", strokeLinecap: "round", strokeLinejoin: "round" },
-      e("circle", { cx: "21", cy: "16", r: "7.5" }),
-      e("g", { opacity: "0.9" },
-        e("line", { x1: "21", y1: "3", x2: "21", y2: "6.5" }),
-        e("line", { x1: "33", y1: "16", x2: "29.5", y2: "16" }),
-        e("line", { x1: "12.5", y1: "7.5", x2: "15", y2: "10" }),
-        e("line", { x1: "29.5", y1: "7.5", x2: "27", y2: "10" })),
-      e("path", { d: "M27 38a8.5 8.5 0 0 1 .9-16.95 11 11 0 0 1 21 3.1A7 7 0 0 1 48 38z", fill: "#F1ECDF" }));
+    return window.WxIcons.react("partly", { className: "op-wx-ico", width: "60", height: "48",
+      viewBox: "0 0 60 48", stroke: "#514C44", strokeWidth: 0.8, wrapTransform: "translate(6 0) scale(2)" });
   }
   function WxRowIcon(kind) {
     const c = { width: 19, height: 19, viewBox: "0 0 24 24", fill: "none", stroke: "#514C44", strokeWidth: 1.7, strokeLinecap: "round", strokeLinejoin: "round", className: "op-wxr-ico" };
@@ -220,8 +214,8 @@
               e("div", { className: "op-ngrid" },
                 noteCell("Elevation", D.elevation),
                 noteCell("Coordinates", (D.coordinates_n + " / " + D.coordinates_w).replace(/\u00b0\s+/g, "\u00b0"), "coord"),
-                noteCell("Orientation", D.field.orientation + " / " + D.field.orientation_degrees + "\u00b0"),
                 noteCell("GROUNDBREAKING", D.construction_start),
+                noteCell("All-Star Game", "2007"),
                 noteCostCell(),
                 noteCell("Financing", D.financing_method, "wide"),
                 noteAddrCell()))
@@ -268,8 +262,8 @@
   }
   function noteCell(k, v, cls) {
     return e("div", { className: "nc " + (cls || "") },
-      e("div", { className: "k" }, k),
-      e("div", { className: "v" }, v));
+      e("div", { className: "k", style: k === "All-Star Game" ? { letterSpacing: "1.1px" } : undefined }, k),
+      e("div", { className: "v", style: (k === "Elevation" || k === "GROUNDBREAKING" || k === "All-Star Game") ? { fontSize: "14px" } : (k === "Coordinates" ? { lineHeight: "14px" } : undefined) }, v));
   }
   function noteCostCell() {
     return e("div", { className: "nc cost" },

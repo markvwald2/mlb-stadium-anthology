@@ -34,6 +34,8 @@
 
   function WxIcon(kind) {
     const common = { width: 28, height: 28, viewBox: "0 0 24 24", fill: "none", stroke: C.primary.hex, strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", className: "ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, common);
     if (kind === "drizzle") return React.createElement("svg", common,
       React.createElement("path", { d: "M7 15h9a3.5 3.5 0 0 0 .4-6.98A5 5 0 0 0 7.5 7.2 3.9 3.9 0 0 0 7 15z" }),
       React.createElement("path", { d: "M8 18l-1 2M12 18l-1 2M16 18l-1 2" }));

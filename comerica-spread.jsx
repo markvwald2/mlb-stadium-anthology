@@ -18,6 +18,8 @@
   /* ---- small line icons ---- */
   function wxIcon(kind) {
     const c = { className: "ico", viewBox: "0 0 24 24", strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c, e("path", { d: "M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0z" }), e("path", { d: "M12 9v6" }));
     if (kind === "sun")  return e("svg", c, e("circle", { cx: 12, cy: 12, r: 4 }), e("path", { d: "M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" }));
     if (kind === "wind") return e("svg", c, e("path", { d: "M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 16h13a2.5 2.5 0 1 1-2.5 2.5M3 12h7" }));

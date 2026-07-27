@@ -65,8 +65,8 @@
     /* Chrome/Skia print rasterizer tiles blurred box-shadows over the hero into
        axis-aligned grey "ghost" rectangles that read as a shadow box around the
        title. Drop the blurs in print — the rule and logo well hold on their own. */
-    .yk-hero-rule .band { box-shadow: none !important; }
-    .yk-logo-well { box-shadow: none !important; }
+    /* superseded: print-page.jsx promotes blurred shadows to their own
+       composited layer, which prints clean. */
   }
 
   /* faint vertical pinstripe field over the hero — restrained structure, never wallpaper */

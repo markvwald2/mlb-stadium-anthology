@@ -92,11 +92,11 @@
     background-image: radial-gradient(circle, rgba(201,154,74,.5) 0 1.2px, transparent 1.6px);
     background-size: 4px 64px; background-repeat: repeat-y; opacity: .6; }
 
+  .pk-rail-name, .pk-rail-name * { --gs-x: 1.5px; --gs-y: 2px; }
   .pk-rail-name { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; }
   .pk-rail-name .vert { writing-mode: vertical-rl; transform: rotate(180deg); display: flex; gap: 13px; align-items: center; }
   .pk-rail-name .nm { font-family: "Saira Condensed", sans-serif; font-weight: 800; font-size: 58px;
-    letter-spacing: .05em; text-transform: uppercase; color: #EFE6CE; line-height: 1;
-    text-shadow: 0 0 1px rgba(0,0,0,.6); }
+    letter-spacing: .05em; text-transform: uppercase; color: #EFE6CE; line-height: 1; }
   .pk-rail-name .pl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 16.5px;
     letter-spacing: .42em; text-transform: uppercase; color: var(--gold); line-height: 1;
     transform: translateY(50px); }
@@ -114,7 +114,7 @@
     border: 1px solid rgba(0,0,0,.3); box-shadow: 0 1px 4px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.5); }
   .pk-rail-logos img { height: 23px; width: auto; max-width: 50px; display: block; object-fit: contain; }
   @media print {
-    .pk-rail-logos .lw { background: #E4D6BC !important; box-shadow: none !important; }
+    .pk-rail-logos .lw { background: #E4D6BC !important; }
     /* Chrome drops bare linear-gradient backgrounds in print/PDF; force the
        near-black rail to a solid color longhand so it never prints transparent. */
     .pk-rail { background-image: none !important; background-color: #14100A !important; }
@@ -332,7 +332,8 @@
   <script src="image-slot.js"></script>
   <script src="petco-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="petco-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="petco-spread.jsx"></script>

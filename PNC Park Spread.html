@@ -100,7 +100,7 @@
      and pushes it back. --gs-* carries the same offset into the vector PDF. */
   .pnc-hero-name span { display: block;
     text-shadow: 1.2px -1.8px 4px rgba(8,8,10,.3);
-    --gs-x: 1.2px; --gs-y: -1.8px; --gs-alpha: .25; }
+    --gs-x: 1.2px; --gs-y: -1.8px; --gs-alpha: .35; }
   .pnc-hero-name .two { position: relative; margin-top: -6px; }
   .pnc-hero-loc { display: inline-flex; align-items: center; gap: 14px; margin-top: 22px; margin-left: 10px; }
   .pnc-hero-loc .dot { width: 9px; height: 9px; background: var(--gold-bright); flex: none; transform: rotate(45deg); }
@@ -165,11 +165,13 @@
 
   /* identity ribbon */
   .pnc-ribbon { display: flex; background: var(--black); flex: none; }
-  .pnc-ribbon .rc { flex: 1; padding: 7px 14px; border-left: 1px solid rgba(255,255,255,.12);
+  .pnc-ribbon .rc { flex: 1 1 auto; padding: 7px 14px; border-left: 1px solid rgba(255,255,255,.12);
     display: flex; flex-direction: column; justify-content: center; gap: 5px; min-width: 0; }
   .pnc-ribbon .rc:first-child { border-left: 0; }
   .pnc-ribbon .rc.logo { flex: 0 0 auto; flex-direction: row; align-items: center; justify-content: center; padding-left: 18px; padding-right: 18px; }
-  .pnc-ribbon .rc.team { flex: 1.5; }
+  .pnc-ribbon .rc.team { flex: 0 0 auto; }
+  .pnc-ribbon .rc.allstar .k { letter-spacing: .04em; }
+  .pnc-ribbon .rc .k, .pnc-ribbon .rc .v { white-space: nowrap; }
   .pnc-ribbon .rc.team .v { white-space: nowrap; letter-spacing: .02em; }
   .pnc-ribbon .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--gold-bright); }
@@ -321,7 +323,8 @@
   <script src="image-slot.js"></script>
   <script src="pnc-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="pnc-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="pnc-spread.jsx"></script>

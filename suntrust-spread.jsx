@@ -83,7 +83,7 @@
           e(Slot, { id: "suntrust-hero-v2", src: "images/suntrust/suntrust-park-00-main-v2.jpg", placeholder: "Drop the SunTrust Park hero \u2014 high aerial of the open-air bowl embedded in The Battery: red-brick & precast facade, steel seating-bowl canopy, plaza frontage, structured parking, freeway-edge arrival" })),
         e("div", { className: "st-hero-scrim" }),
 
-        e("img", { className: "st-hero-logo", src: "assets/atlanta-braves-logo.svg", alt: "Atlanta Braves" }),
+        e("img", { className: "st-hero-logo", "data-lg": "", src: "assets/atlanta-braves-logo.svg", alt: "Atlanta Braves" }),
         e("div", { className: "st-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
         e("div", { className: "st-spine" }, "EST. " + D.est + "  \u00b7  THE BATTERY ATLANTA"),
 
@@ -99,7 +99,7 @@
             e("span", null, "ELEV. " + D.elevation))),
 
         e("div", { className: "st-marks" },
-          e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
+          e("img", { className: "mlb", "data-lg": "", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
           e("span", { className: "divln" }),
           e("span", { className: "dv" }, D.league + " \u00b7 " + D.division))
       ),
@@ -114,6 +114,7 @@
             ribCell("League", D.league, { logo: "assets/nl-logo.png" }),
             ribCell("Division", D.division),
             ribCell("Years Active", D.years_active),
+            ribCell("All-Star Game", "2025"),
             ribCell("Status", D.status),
             ribCell("Capacity", D.capacity_ribbon, { sub: D.capacity_note }),
             e("div", { className: "cell feature" },

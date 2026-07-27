@@ -216,7 +216,17 @@
            purely cosmetic drop-shadows over dark hero art — so neutralizing
            both blurs in print kills the banding with no legibility loss. */
         * { text-shadow: none !important; }
-        img { filter: none !important; }
+        img:not([data-pp-filter]) { filter: none !important; }
+        /* Opt-in: a keyline that separates a full-colour mark from the photo
+           behind it. It must be built from CENTRED shadows — directional ±.5px
+           offsets round asymmetrically at print's .96 zoom (.48px snaps to 0 on
+           one side and 1 on the other), which visibly shifts the outline off the
+           mark. A stack of zero-offset sub-pixel blurs can't shift: it is
+           symmetric by construction, and radii this small never reach Chrome's
+           blur-tiling path. */
+        img[data-pp-filter="keyline"][data-pp-filter] {
+          filter: drop-shadow(0 0 .8px #fff) drop-shadow(0 0 .8px #fff)
+            drop-shadow(0 0 .8px #fff) !important; }
 
         /* Opt-in: elements marked data-pp-shadow keep a halo in print, but as a
            TIGHT blur only (<=9px). Small radii don't hit the tiling path that
@@ -234,12 +244,66 @@
             0 0 3px rgba(var(--pp-shadow-color),.7),
             0 1px 5px rgba(var(--pp-shadow-color),.8),
             0 2px 9px rgba(var(--pp-shadow-color),.6) !important; }
+
+        /* Blurred OUTER box-shadows: Chrome's print rasterizer tiles them into
+           grey rectangular seams — UNLESS the shadowed element is promoted to
+           its own composited layer, in which case the blur rasterizes as one
+           continuous surface and prints clean (cf. the Anaheim placard, whose
+           hero layers are composited). promoteShadows() tags every element
+           carrying a blurred non-inset shadow; this rule promotes them. */
+        [data-pp-promote] { transform: translateZ(0) !important; }
+        [data-pp-promote][data-pp-xf] { transform: var(--pp-xf) translateZ(0) !important; }
       }
     `;
     const el = document.createElement("style");
     el.id = "pp-style";
     el.textContent = css;
     document.head.appendChild(el);
+  }
+
+  // ---- composited-layer promotion for blurred outer shadows ----
+  // A non-inset shadow with blur > 0 tiles into seams in Chrome's print raster.
+  // Promoting the element to its own layer fixes it with no visual change.
+  function splitLayers(v) {
+    const out = []; let d = 0, cur = "";
+    for (const ch of v) {
+      if (ch === "(") d++; if (ch === ")") d--;
+      if (ch === "," && d === 0) { out.push(cur); cur = ""; } else cur += ch;
+    }
+    if (cur.trim()) out.push(cur);
+    return out;
+  }
+  function hasBlurredOuterShadow(v) {
+    if (!v || v === "none") return false;
+    return splitLayers(v).some(function (L) {
+      if (/\binset\b/.test(L)) return false;
+      const n = L.match(/-?[\d.]+px/g);
+      return !!n && n.length >= 3 && parseFloat(n[2]) > 0.5;
+    });
+  }
+  function promoteShadows() {
+    const nodes = document.querySelectorAll(".pp-page *");
+    for (const el of nodes) {
+      if (el.hasAttribute("data-pp-promote")) continue;
+      const cs = getComputedStyle(el);
+      if (!hasBlurredOuterShadow(cs.boxShadow)) continue;
+      // A transform makes this element the containing block for abs/fixed
+      // descendants. Skip static elements that hold any — promoting them could
+      // reposition a child that resolves against an ancestor further up.
+      if (cs.position === "static") {
+        let risky = false;
+        for (const kid of el.querySelectorAll("*")) {
+          const p = getComputedStyle(kid).position;
+          if (p === "absolute" || p === "fixed") { risky = true; break; }
+        }
+        if (risky) continue;
+      }
+      if (cs.transform && cs.transform !== "none") {
+        el.style.setProperty("--pp-xf", cs.transform);
+        el.setAttribute("data-pp-xf", "");
+      }
+      el.setAttribute("data-pp-promote", "");
+    }
   }
 
   // Force EVERY declared @font-face (all weights/families) to fully download
@@ -353,5 +417,10 @@
   }
 
   window.PrintPage = PrintPage;
-  window.PrintPageInit = function () { injectCSS(); ensureFontsLoaded(); startFitPreview(); };
+  window.PrintPageInit = function () {
+    injectCSS(); ensureFontsLoaded(); startFitPreview();
+    setTimeout(promoteShadows, 1200);
+    setTimeout(promoteShadows, 3000);
+    window.addEventListener("beforeprint", promoteShadows);
+  };
 })();

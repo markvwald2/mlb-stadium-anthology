@@ -23,7 +23,7 @@
   }
   function factRow(row, i) {
     return e("div", { className: "bz-frow", key: i },
-      e("div", { className: "k" + (row[4] === "tight" ? " k-tight" : "") }, row[0]),
+      e("div", { className: "k" + (row[4] === "tight" ? " k-tight" : ""), style: row[0] === "All-Star Game" ? { letterSpacing: "0.4px" } : undefined }, row[0]),
       e("div", { className: "v" + (row[3] === "inline" ? " v-inline" : "") },
         e("span", { className: "vm" }, row[1]),
         row[2] ? e("span", { className: "vs" + (row[3] === "roman" ? " roman" : "") }, row[2]) : null));
@@ -54,6 +54,8 @@
   function WxIcon(kind) {
     const c = { width: 26, height: 26, viewBox: "0 0 24 24", fill: "none", stroke: "#544D42",
       strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", className: "bz-wico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c, e("path", { d: "M14 14.5V5a2 2 0 1 0-4 0v9.5a4 4 0 1 0 4 0z" }), e("path", { d: "M12 14V8" }));
     if (kind === "sky") return e("svg", c, e("circle", { cx: 12, cy: 12, r: 4.4 }),
       e("path", { d: "M12 3v1.8M12 19.2V21M3 12h1.8M19.2 12H21M5.5 5.5l1.3 1.3M17.2 17.2l1.3 1.3M18.5 5.5l-1.3 1.3M6.8 17.2l-1.3 1.3" }));
@@ -125,8 +127,8 @@
             e("span", { className: "ln bz-ds", "data-t": "ELEVATION " + D.elevation.toUpperCase() }, "ELEVATION " + D.elevation.toUpperCase()))),
 
         e("div", { className: "bz-marks" },
-          e("img", { className: "cards", src: "assets/cardinals-stl-insignia.svg", alt: "St. Louis Cardinals" }),
-          e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
+          e("img", { className: "cards", "data-lg": "", src: "assets/cardinals-stl-insignia.svg", alt: "St. Louis Cardinals" }),
+          e("img", { className: "mlb", "data-lg": "", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
           e("span", { className: "lg" },
             e("span", null, "National"),
             e("span", null, "League")))
@@ -175,7 +177,8 @@
         e("div", { className: "bz-col bz-col-context" },
           e(SecHead, { title: "Arches & Skyline", note: "DOWNTOWN BALLPARK \u2192 DISTRICT" }),
           e("div", { className: "bz-prose" },
-            D.stadium_context.map((p, i) => e("p", { key: i }, p)))),
+            D.stadium_context.map((p, i) => e("p", { key: i }, p))),
+          e("div", { className: "bz-locline", style: { fontWeight: 400 } }, "Downtown \u00b7 700 Clark Avenue, St. Louis, MO 63102")),
 
         /* -- BAY 3 : Visit Section — framed press-box report -- */
         e("div", { className: "bz-col bz-col-visit" },

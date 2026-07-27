@@ -22,7 +22,7 @@
   /* The Royals mark — official full-color KC Royals shield. */
   function Crown() {
     return React.createElement("img", {
-      className: "rs-crown", src: "assets/royals-logo.svg",
+      className: "rs-crown", src: "assets/royals-logo.svg", "data-pp-filter": "keyline",
       alt: "Kansas City Royals", role: "img"
     });
   }
@@ -46,6 +46,8 @@
 
   function WxIcon(kind) {
     const common = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "#EDE6D5", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round", className: "ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, common);
     if (kind === "temp") return React.createElement("svg", common,
       React.createElement("path", { d: "M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0z" }));
     if (kind === "sun") return React.createElement("svg", common,
@@ -123,7 +125,7 @@
                   React.createElement("div", { className: "rs-ledger" },
                     ledgerRow("Architect", D.architect),
                     ledgerRow("Style", D.architectural_style),
-                    ledgerRow("Type", D.stadium_type),
+                    ledgerRow("Type", D.stadium_type, { letterSpacing: "-0.6px" }),
                     ledgerRow("Field", D.surface),
                     ledgerRow("Facade", D.facade_material),
                     ledgerRow("Capacity", D.capacity_current + " (" + D.capacity_opening + " originally)"),
@@ -131,6 +133,7 @@
                     ledgerRow("Address", D.address),
                     ledgerRow("Coords", D.coordinates),
                     ledgerRow("Elevation", "870 feet"),
+                    ledgerRow("All-Star Games", "1973, 2012", null, { letterSpacing: "0.3px" }),
                     ledgerRow("Financing", D.financing_method)
                   )
                 ),
@@ -258,10 +261,10 @@
       React.createElement("div", { className: "rs-lbl" }, label),
       React.createElement("div", { className: "rv" }, value));
   }
-  function ledgerRow(label, value) {
+  function ledgerRow(label, value, style, lblStyle) {
     return React.createElement("div", { className: "row" },
-      React.createElement("div", { className: "rs-lbl" }, label),
-      React.createElement("div", { className: "rs-val" }, value));
+      React.createElement("div", { className: "rs-lbl", style: lblStyle }, label),
+      React.createElement("div", { className: "rs-val", style: style }, value));
   }
   function vrow(label, value) {
     return React.createElement("div", { className: "rs-vrow" },

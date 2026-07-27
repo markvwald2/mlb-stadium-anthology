@@ -49,7 +49,7 @@ window.SUNTRUST = {
     ["Roof", "Open air"],
     ["Surface", "Natural grass", "Seashore Paspalum Platinum TE"],
     ["Capacity", "41,108", "41,149 opening"],
-    ["Facade", "Red brick masonry with precast stone, steel structure, and large metal seating-bowl canopy"],
+    ["Facade", "Red brick masonry with precast stone, steel structure, and large metal seating-bowl canopy over open-air concourses"],
     ["Elevation", "1,010 ft"],
     ["Name History", "SunTrust Park (2017\u20132019)\nTruist Park (2020\u2013present)"],
     ["Preceded By", "Atlanta\u2013Fulton County Stadium (1966\u20131996)\nTurner Field (1997\u20132016)"],
@@ -60,7 +60,7 @@ window.SUNTRUST = {
   lifecycle: [
     ["Classification", "Ballpark District"],
     ["Status", "Active"],
-    ["Setting", "Open-air ballpark integrated with", "mixed-use entertainment district"],
+    ["Setting", "Open-air ballpark integrated with", "mixed-use entertainment, retail, and hospitality district"],
     ["Construction Start", "Sep 16, 2014"],
     ["Opening Day", "Apr 14, 2017"],
     ["Cost", "$622 million", "$818 million adj."],

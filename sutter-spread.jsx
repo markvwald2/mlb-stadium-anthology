@@ -76,6 +76,8 @@
   }
   function WxIcon(kind) {
     const c = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "#6B6253", strokeWidth: 1.7, strokeLinecap: "round", strokeLinejoin: "round", className: "shp-wxr-ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "wind") return e("svg", c,
       e("path", { d: "M3 8h11a2.5 2.5 0 1 0-2.5-2.5" }),
       e("path", { d: "M3 16h15a2.5 2.5 0 1 1-2.5 2.5" }),
@@ -127,9 +129,9 @@
               e("span", { className: "dot" }, "\u00b7"),
               e("span", null, "MLB use opened ", e("em", null, D.opened_mlb))),
             e("div", { className: "shp-colophon" },
-              e("span", { className: "shp-colo-as", role: "img", "aria-label": "Athletics" }),
+              e("span", { className: "shp-colo-as", "data-lg": "", role: "img", "aria-label": "Athletics" }),
               e("span", { className: "shp-colo-div" }),
-              e("img", { className: "shp-colo-mlb", src: "assets/mlb-logo.svg", alt: "MLB" }),
+              e("img", { className: "shp-colo-mlb", "data-lg": "", src: "assets/mlb-logo.svg", alt: "MLB" }),
               e("span", { className: "shp-colo-txt" }, "Major League Baseball")))
         ),
 

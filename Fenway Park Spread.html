@@ -94,7 +94,7 @@
   .fw-mast { position: absolute; top: 50px; left: 56px; z-index: 5; display: flex; align-items: center; gap: 14px; }
   .fw-mast .mlb { height: 46px; width: auto; display: block; border-radius: 4px; box-shadow: 0 3px 14px rgba(0,0,0,.5); }
   .fw-mast .mast-div { width: 1px; height: 34px; background: rgba(231,222,198,.32); display: block; }
-  .fw-mast .al { height: 50px; width: auto; display: block; filter: drop-shadow(0 2px 9px rgba(0,0,0,.6)); }
+  .fw-mast .al { height: 50px; width: auto; display: block; }
 
   /* green Monster-signage plaque */
   .fw-plaque { position: absolute; left: 56px; bottom: 64px; z-index: 5; width: auto;
@@ -120,8 +120,7 @@
     transform: translate(var(--dsx, 2px), var(--dsy, 2.5px)); }
   .fw-plaque-name { font-family: "Jost", sans-serif; font-weight: 600; font-size: 52px; line-height: .9;
     white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; color: #ECE4CC;
-    text-shadow: 0 2px 0 rgba(11,24,16,.6);
-    --dsx: 1.5px; --dsy: 2px; --dsc: rgba(6,16,10,.28); }
+    --dsx: 2px; --dsy: 2px; --dsc: rgba(6,16,10,.28); }
   .fw-plaque-loc { font-family: "Spectral", serif; font-style: italic; font-weight: 500; font-size: 26px;
     color: #E2DAC2; margin-top: 6px; letter-spacing: .01em; }
   .fw-plaque-years { font-family: "Jost", sans-serif; font-weight: 500; font-size: 21px; letter-spacing: .22em;
@@ -251,7 +250,7 @@
       linear-gradient(180deg, var(--brick-hi), var(--brick) 55%, var(--brick-lo));
     box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 0 22px rgba(0,0,0,.3); }
   .fw-brick-marks { display: flex; flex-direction: column; align-items: center; justify-content: space-around; gap: 11px; flex: 1; min-height: 0; }
-  .fw-brick-marks img { height: 34px; width: auto; max-width: 100%; display: block; filter: drop-shadow(0 2px 4px rgba(0,0,0,.4)); }
+  .fw-brick-marks img { height: 34px; width: auto; max-width: 100%; display: block; }
   .fw-brick-marks img.mlb { height: 32px; }
   .fw-brick-est { display: flex; flex-direction: column; align-items: center; gap: 4px;
     border-top: 1px solid rgba(231,222,198,.28); padding-top: 9px; }
@@ -316,15 +315,13 @@
   .fw-sb-cell { aspect-ratio: 1 / 0.9; display: flex; align-items: center; justify-content: center;
     background: linear-gradient(180deg, #20402B, #1A3624); border: 0; border-radius: 0;
     font-family: "Jost", sans-serif; font-weight: 600; font-size: 18px; letter-spacing: .02em; color: #EDE5CD;
-    box-shadow: inset 0 0 0 1px rgba(231,222,198,.05), inset 0 1px 5px rgba(0,0,0,.6);
-    text-shadow: 0 1px 0 rgba(0,0,0,.4); }
+    box-shadow: inset 0 0 0 1px rgba(231,222,198,.05), inset 0 1px 5px rgba(0,0,0,.6); }
   .fw-sb-cell.num { aspect-ratio: auto; background: none; border: 0; box-shadow: none; text-shadow: none;
     font-size: 12px; color: var(--cream-dim); height: 16px; }
   .fw-sb-tot { display: flex; align-items: center; justify-content: center;
     background: linear-gradient(180deg, #20402B, #1A3624); border: 0; border-radius: 0;
     font-family: "Jost", sans-serif; font-weight: 600; font-size: 19px; letter-spacing: .02em; color: #EDE5CD;
-    box-shadow: inset 0 0 0 1px rgba(231,222,198,.05), inset 0 1px 5px rgba(0,0,0,.6);
-    text-shadow: 0 1px 0 rgba(0,0,0,.4); min-height: 100%; }
+    box-shadow: inset 0 0 0 1px rgba(231,222,198,.05), inset 0 1px 5px rgba(0,0,0,.6); min-height: 100%; }
   .fw-sb-tot.r { color: #EDE5CD; }
   .fw-sb-tot.lab { background: none; border: 0; box-shadow: none; text-shadow: none; color: var(--cream-dim);
     font-family: "Jost", sans-serif; font-size: 12px; letter-spacing: .1em; }
@@ -368,15 +365,15 @@
   .fw-game-recs-left .fw-game-rec .v { font-family: "MatrixTitle", "Space Mono", monospace;
     font-weight: 700; font-size: 14px; letter-spacing: .04em; line-height: 1; padding: 5px; text-align: center;
     background: #0A0D0A; border: 1px solid rgba(0,0,0,.55);
-    color: rgb(246, 217, 147); text-shadow: 0 0 2px rgba(251,192,45,.45), 0 0 4px rgba(251,176,30,.22); }
+    color: rgb(246, 217, 147); }
   .fw-game-pw { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
   .fw-game-pitch { display: flex; gap: 14px; flex-wrap: wrap; flex: 1; min-width: 0; }
   .fw-game-pitch span { display: inline-flex; align-items: center; gap: 6px;
     font-family: "Spectral", serif; font-size: 12px; color: var(--cream-2); }
   .fw-game-pitch b.lt { flex: none; width: 16px; height: 16px; border-radius: 50%;
     display: inline-flex; align-items: center; justify-content: center;
-    font-family: "Jost", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0; line-height: 1;
-    color: rgba(255,255,255,.92); text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0; line-height: 1;
+    color: rgba(255,255,255,.92);
     border: 1px solid rgba(0,0,0,.5);
     box-shadow: inset 0 1.5px 2px rgba(255,255,255,.55), inset 0 -2px 3px rgba(0,0,0,.45),
       0 0 0 1.5px rgba(0,0,0,.22), 0 0 6px var(--lt-glow); }

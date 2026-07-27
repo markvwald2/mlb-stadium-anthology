@@ -40,6 +40,8 @@
   function WxIcon(kind) {
     const c = { width: 25, height: 25, viewBox: "0 0 24 24", fill: "none",
       stroke: "#46555C", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", className: "mla-wico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c,
       e("path", { d: "M14 14.5V5a2 2 0 1 0-4 0v9.5a4 4 0 1 0 4 0z" }),
       e("path", { d: "M12 9v6.5" }));
@@ -114,7 +116,7 @@
         e("div", { className: "mla-hero-scrim" }),
 
         // Marlins mark, upper-left
-        e("img", { className: "mla-hero-logo", src: "assets/miami-marlins-logo.svg", alt: "Miami Marlins" }),
+        e("img", { className: "mla-hero-logo", "data-lg": "", src: "assets/miami-marlins-logo.svg", alt: "Miami Marlins" }),
 
         // folio, upper-right
         e("div", { className: "mla-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
@@ -169,6 +171,7 @@
             ribCell("Division", D.division_short),
             ribCell("Classification", D.classification_ribbon, false, "wide"),
             ribCell("Years Active", D.years_active),
+            ribCell("All-Star Game", "2017"),
             ribCell("Visit Order", D.visit_order + " of " + D.visit_total),
             ribCell("Status", D.status)
           ),

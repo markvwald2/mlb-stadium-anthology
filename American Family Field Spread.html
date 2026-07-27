@@ -69,12 +69,12 @@
        box-shadow gets tiled by Chrome's print rasterizer into axis-aligned
        grey "ghost" rectangles behind each photo. Drop the blur in print —
        the 2px paper border + navy outline still define each plate. */
-    .amf-panel image-slot { box-shadow: none !important; }
+    /* superseded: print-page.jsx now promotes blurred shadows to their own
+       composited layer, which prints clean — no need to strip them. */
   }
 
 
-  .amf-hero-logo { position: absolute; right: 60px; top: 40px; height: 58px; width: auto; z-index: 5;
-    filter: drop-shadow(0 2px 12px rgba(0,0,0,.5)); }
+  .amf-hero-logo { position: absolute; right: 60px; top: 40px; height: 58px; width: auto; z-index: 5; }
   .amf-folio { position: absolute; right: 58px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(226,222,210,.62); text-transform: uppercase; }
@@ -141,7 +141,6 @@
     background: linear-gradient(0deg, rgba(236,228,210,.55), rgba(244,237,221,.85)); }
   .amf-id-mark { flex: 0 0 auto; display: flex; align-items: center; justify-content: center;
     padding: 6px 14px 6px 4px; position: relative; }
-  .amf-id-mark::after { content: ""; position: absolute; right: 0; top: 10px; bottom: 10px; width: 3px; background: var(--gold); }
   .amf-id-mark img { height: 50px; width: auto; display: block; }
   .amf-id-cell { flex: 1 1 0; min-width: 0; padding: 8px 12px; border-left: 1px solid var(--rule);
     display: flex; flex-direction: column; justify-content: center; gap: 3px; }
@@ -160,11 +159,12 @@
   .amf-facts.tight .amf-frow { padding: 1px 0; }
   /* airier row spacing in the two spec columns to fill the white space beneath */
   .amf-specs .amf-bay.left .amf-frow { padding: 2px 0; }
-  .amf-specs .amf-bay.right .amf-frow { padding: 5px 0; }
+  .amf-specs .amf-bay.right .amf-frow { padding: 2px 0; }
   .amf-frow:last-child { border-bottom: 0; }
   .amf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .06em;
     text-transform: uppercase; color: var(--ink-3); }
   .amf-frow .v { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .amf-frow.inline .v { flex-direction: row; align-items: baseline; gap: 6px; flex-wrap: wrap; }
   .amf-frow .v .vm { font-family: "Spectral", serif; font-weight: 500; font-size: 12.5px; color: var(--ink); line-height: 1.22; }
   .amf-frow .v .vs { font-family: "Spectral", serif; font-style: italic; font-weight: 400; font-size: 12px;
     color: var(--ink-2); line-height: 1.24; }
@@ -298,11 +298,13 @@
   <script src="image-slot.js"></script>
   <script src="american-family-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="american-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="american-family-spread.jsx"></script>
   <script type="text/babel" src="american-family-app.jsx"></script>
   <script src="ghost-shadow.js"></script>
+  <script src="logo-ghost.js"></script>
 </body>
 </html>

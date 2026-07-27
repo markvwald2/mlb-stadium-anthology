@@ -34,7 +34,7 @@ window.SANDIEGO = {
   stadium_cost_adjusted: "$268 million",
   financing_method: "Publicly financed by the City of San Diego as a municipal multipurpose stadium",
   all_star_games: "1978 \u00b7 1992",
-  renovations: "Expanded 1984; enclosed and enlarged for football 1997",
+  renovations: "Expanded outfield seating expansion in 1984; enlarged and enclosed for football in 1997",
   succeeded_by: "Petco Park",
   address: "9449 Friars Road, San Diego, CA 92108 (former site)",
   coordinates: "32.7831\u00b0 N, 117.1194\u00b0 W",

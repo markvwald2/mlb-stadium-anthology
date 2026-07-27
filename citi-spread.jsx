@@ -74,6 +74,8 @@
 
   function wxIcon(kind) {
     const c = { width: 26, height: 26, viewBox: "0 0 24 24", fill: "none", stroke: "#5A5447", strokeWidth: 1.35, strokeLinecap: "round", strokeLinejoin: "round", className: "cf-wx-ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c, e("path", { d: "M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0z" }), e("path", { d: "M12 9v6" }));
     if (kind === "cloud") return e("svg", c, e("path", { d: "M7 18h9a3.5 3.5 0 0 0 .5-6.96A5 5 0 0 0 7 11a3.5 3.5 0 0 0 0 7z" }), e("path", { d: "M16.5 7.5a2.6 2.6 0 0 1 3 1.4" }));
     if (kind === "wind") return e("svg", c, e("path", { d: "M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 16h13a2.5 2.5 0 1 1-2.5 2.5M3 12h7" }));
@@ -263,7 +265,7 @@
                 e("div", { className: "cf-modh sm" }, "Weather"),
                 e("div", { className: "cf-weather" },
                   wx("temp", D.weather.temperature, "Temp"),
-                  wx("cloud", D.weather.conditions, "Sky"),
+                  wx("partly", D.weather.conditions, "Sky"),
                   wx("wind", D.weather.wind, "Wind"),
                   wx("drop", D.weather.humidity, "Humidity")))
             )),

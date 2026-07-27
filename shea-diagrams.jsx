@@ -95,6 +95,8 @@
     const c = { width: opts.size || 22, height: opts.size || 22, viewBox: "0 0 24 24", fill: "none",
       stroke: opts.stroke || INK, strokeWidth: opts.sw || 1.5, strokeLinecap: "round",
       strokeLinejoin: "round", className: opts.className };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     switch (kind) {
       // stacked color-panel placard (Stadium Section marker)
       case "panels": return e("svg", c,

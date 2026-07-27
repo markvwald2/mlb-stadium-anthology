@@ -35,11 +35,12 @@ window.CHASE = {
     ["Status", "Active"],
     ["Construction Start", "Nov 16, 1995"],
     ["Capacity (Opening)", "48,500"],
+    ["All-Star Game", "2011"],
     ["Surface", "Mixed / changed over time", "(DeAnza zoysia blend 1998, Bull\u2019s Eye Bermuda 1999\u20132018; Shaw Sports Turf B1K since 2019)"],
     ["Renovations", "Center-field and seating changes, synthetic turf conversion, scoreboard and premium-area upgrades, pool and hospitality updates"],
     ["Architect", "Ellerbe Becket, with Bill Johnson Design"],
     ["Architectural Style", "Retro-modern retractable-roof ballpark with industrial warehouse-scale massing"],
-    ["Type", "Retractable-roof baseball-only ballpark"],
+    ["Type", "Retractable-roof baseball-only park"],
     ["Roof", "Retractable"],
     ["Facade", "Steel frame with concrete, gray metal panels, glass, and an operable retractable-roof enclosure"],
     ["Previous Name", "Bank One Ballpark (1998\u20132005)"],
@@ -62,7 +63,6 @@ window.CHASE = {
   // ---- Visit information (40 of 42) ----
   visit: [
     ["First Visit", "Apr 29, 2024"],
-    ["Other Visits", "\u2014"],
     ["Game", "LAD at ARI"],
     ["Result", "Dodgers 8, Diamondbacks 4"],
     ["Attendance", "36,985"],

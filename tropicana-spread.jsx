@@ -58,6 +58,8 @@
   function WxIcon(kind) {
     const c = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "#9fc6ee",
       strokeWidth: 1.5, strokeLinecap: "round", strokeLinejoin: "round", style: { flex: "none" } };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c, e("path", { d: "M14 14.5V5a2 2 0 1 0-4 0v9.5a4 4 0 1 0 4 0z" }), e("path", { d: "M12 14V8" }));
     if (kind === "sky") return e("svg", c, e("path", { d: "M6 16a4 4 0 0 1 .6-7.96A5 5 0 0 1 16.5 9 3.5 3.5 0 0 1 17 16z" }), e("path", { d: "M9 19l-1 2M13 19l-1 2M17 19l-1 2" }));
     if (kind === "wind") return e("svg", c, e("path", { d: "M3 8h10a2.4 2.4 0 1 0-2.4-2.4M3 16h13a2.4 2.4 0 1 1-2.4 2.4M3 12h7" }));
@@ -123,8 +125,8 @@
           e("p", { className: "tf-eyebrow" },
             e("span", { className: "dot" }), "Fixed-dome multipurpose \u00b7 Est. 1990"),
           e("h1", { className: "tf-title" },
-            e("span", null, D.name_lines[0]),
-            e("span", { className: "l2" }, D.name_lines[1])),
+            e("span", { className: "tf-ds", "data-t": D.name_lines[0] }, D.name_lines[0]),
+            e("span", { className: "l2 tf-ds", "data-t": D.name_lines[1] }, D.name_lines[1])),
           e("div", { className: "tf-cityrow" },
             e("span", { className: "bar" }),
             e("span", { className: "txt" }, D.city + ", " + D.state)))
@@ -214,7 +216,7 @@
                 e("div", { className: "tf-ops-sub" }, "Conditions \u00b7 Exterior Weather"),
                 e("div", { className: "tf-wx" },
                   wxCell("temp", W.temperature, "Temp"),
-                  wxCell("sky", W.conditions, "Sky"),
+                  wxCell("drizzle", W.conditions, "Sky"),
                   wxCell("wind", W.wind, "Wind"),
                   wxCell("drop", W.humidity, "Humidity"))),
               // right ops col — matchup, result, line score

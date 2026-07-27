@@ -97,7 +97,7 @@
     margin: 0; font-family: "Anton", sans-serif; font-weight: 400;
     font-size: 134px; line-height: .82; letter-spacing: .004em; text-transform: uppercase;
     color: #F0EAD9;
-    text-shadow: 0 3px 30px rgba(0,0,0,.55), 0 1px 0 rgba(0,0,0,.25);
+    text-shadow: 0 3px 30px rgba(0,0,0,.55);
   }
   .op-hero-loc { display: inline-flex; align-items: center; gap: 16px; margin-top: 28px; }
   .op-hero-loc .bar { width: 56px; height: 3px; background: var(--orange-bright); flex: none; }
@@ -217,6 +217,7 @@
   .op-vgrid > div:first-child { padding-left: 0; }
   .op-vgrid > div:last-child { padding-right: 0; }
   .op-vwx, .op-vscore { border-left: 1px solid var(--rule); }
+  .op-vscore { min-height: 206px; }
   /* visit photo: one container, one card, one slot.
      Resize the plate via width/height here; pan/zoom the image inside the slot. */
   .op-vphoto { display: flex; align-items: stretch; justify-content: flex-end; margin-top: 0; padding-left: 0; }
@@ -272,11 +273,11 @@
 
   /* ---- ballpark notes band ---- */
   .op-notes { flex: none; display: flex; flex-direction: column; gap: 9px; margin-top: -4px; }
-  .op-ngrid { display: grid; grid-template-columns: 0.62fr 1fr 0.72fr 0.92fr 0.78fr 1.7fr 1.25fr; gap: 0; }
+  .op-ngrid { display: grid; grid-template-columns: 0.62fr 0.92fr 0.95fr 0.8fr 0.78fr 1.7fr 1.15fr; gap: 0; }
   .op-ngrid .nc { padding: 0 16px; border-left: 1px solid var(--rule); min-width: 0; }
   .op-ngrid .nc:first-child { padding-left: 0; border-left: 0; }
   .op-ngrid .nc:last-child { padding-right: 0; }
-  .op-ngrid .nc .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
+  .op-ngrid .nc .k { white-space: nowrap; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
   .op-ngrid .nc .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; line-height: 1.3; color: var(--ink); }
   .op-ngrid .nc.coord .v { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: -.01em; line-height: 1.4; }
@@ -316,6 +317,7 @@
   <script src="field-labels.js"></script>
   <script src="oracle-data.js"></script>
   <script src="oracle-shore-store.js"></script>
+  <script src="weather-icons.js"></script>
   <script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="oracle-protractor.jsx"></script>
   <script type="text/babel" src="oracle-shoreline.jsx"></script>

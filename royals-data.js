@@ -19,7 +19,7 @@ window.ROYALS = {
   status: "Active",
   architect: "Kivett and Myers",
   architectural_style: "Modernist baseball-only stadium with fountain-focused sports-complex planning",
-  stadium_type: "Open-air baseball-only stadium in a sports complex",
+  stadium_type: "Open-air baseball-only stadium in sports complex",
   roof_type: "Open Air",
   playing_surface_type: "Mixed / changed over time",
   surface: "AstroTurf 1973\u20131994; seasonal natural-grass blend since 1995",

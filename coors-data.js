@@ -36,7 +36,7 @@ window.COORS = {
   lon: "104.9942\u00b0 W",
   stadium_cost: "$300 million",
   stadium_cost_adjusted: "$634 million",
-  financing_method: "Public-private; Denver metropolitan stadium-district sales-tax bonds funded the majority, with a Rockies/private contribution",
+  financing_method: "Denver metropolitan stadium-district sales-tax bonds funded the majority, with a Rockies/private contribution",
   address: "2001 Blake Street, Denver, CO 80205",
   location_classification: "Downtown",
   construction_start: "Oct 16, 1992",

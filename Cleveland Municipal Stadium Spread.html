@@ -96,7 +96,7 @@
     color: var(--dsc, rgba(8,8,10,.28)); -webkit-text-fill-color: var(--dsc, rgba(8,8,10,.28));
     transform: translate(var(--dsx, 1.5px), var(--dsy, 2px)); }
   .cm-hero-name { margin: 0; font-family: "Saira Condensed", sans-serif; text-transform: uppercase;
-    color: #F1ECDE; --dsx: 2px; --dsy: 3px; --dsc: rgba(8,8,10,.3); }
+    color: #F1ECDE; --dsx: 2px; --dsy: 2px; --dsc: rgba(8,8,10,.3); }
   .cm-hero-name .l1 { display: block; font-weight: 500; font-size: 54px; line-height: 1.05;
     letter-spacing: .14em; color: #CBD2D6; }
   .cm-hero-name .l2 { display: block; font-weight: 800; font-size: 96px; line-height: 1.0;
@@ -354,6 +354,7 @@
   .cm-foot .sep { color: var(--rule-2); }
   .cm-foot .end { margin-left: auto; color: var(--red); font-weight: 700;
     font-family: "Oswald", sans-serif; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; }
+  .cm-foot .end .yrs { color: var(--ink); font-weight: 600; }
 
   #root { min-height: 100vh; }
 </style>
@@ -380,7 +381,8 @@
   <script src="image-slot.js"></script>
   <script src="cleveland-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="cleveland-field.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="cleveland-spread.jsx"></script>

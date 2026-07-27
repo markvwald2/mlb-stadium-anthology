@@ -116,6 +116,8 @@
     const c = { width: opts.size || 22, height: opts.size || 22, viewBox: "0 0 24 24", fill: "none",
       stroke: opts.stroke || INK, strokeWidth: opts.sw || 1.5, strokeLinecap: "round",
       strokeLinejoin: "round", className: opts.className };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     switch (kind) {
       case "crosshair": return e("svg", c, e("circle", { cx: 12, cy: 12, r: 8 }),
         e("line", { x1: 12, y1: 1, x2: 12, y2: 5 }), e("line", { x1: 12, y1: 19, x2: 12, y2: 23 }),

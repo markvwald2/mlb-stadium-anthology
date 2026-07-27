@@ -15,6 +15,8 @@
   /* ---- weather / utility line icons ---- */
   function Icon(kind, cls) {
     const c = { className: cls || "ico", viewBox: "0 0 24 24", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     const P = (d) => e("path", { d: d });
     if (kind === "temp") return e("svg", c, P("M14 14.5V5a2 2 0 1 0-4 0v9.5a4 4 0 1 0 4 0z"));
     if (kind === "sun")  return e("svg", c, e("circle", { cx: 12, cy: 12, r: 4 }), P("M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"));
@@ -95,7 +97,12 @@
           e("div", { className: "lm-hero-era" },
             e("span", { className: "dot" }),
             e("span", { className: "t" }, "Status"),
-            e("span", { className: "v" }, D.status + " " + D.demolition_year + " \u00b7 Succeeded by " + D.succeeded_by)))
+            e("span", { className: "v" }, D.status + " " + D.demolition_year + " \u00b7 Succeeded by " + D.succeeded_by))),
+
+        e("div", { className: "lm-hero-visit" },
+          e("span", { className: "lab" }, "Visit Order"),
+          e("span", { className: "n" }, D.visit_order),
+          e("span", { className: "of" }, e("i", null, "of"), e("b", null, "42")))
       ),
 
       /* ============ RIGHT / SCOREBOARD FACE ============ */

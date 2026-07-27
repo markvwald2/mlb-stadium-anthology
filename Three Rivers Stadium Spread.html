@@ -117,10 +117,10 @@
   .trs-hero-name { margin: 0; line-height: .82; }
   .trs-hero-name .l1 { display: block; font-family: "Spectral", serif; font-weight: 700; font-style: italic;
     font-size: 82px; letter-spacing: -.006em; color: var(--gold-pirate);
-    --dsx: 2.5px; --dsy: 3px; --dsc: rgba(8,8,10,.3); }
+    --dsx: 2px; --dsy: 2px; --dsc: rgba(8,8,10,.3); }
   .trs-hero-name .l2 { display: block; font-family: "Anton", sans-serif; font-weight: 400;
     font-size: 152px; letter-spacing: .008em; text-transform: uppercase; color: #F3ECDB; line-height: .84;
-    margin-top: 4px; --dsx: 3px; --dsy: 3.5px; --dsc: rgba(8,8,10,.3); }
+    margin-top: 4px; --dsx: 2px; --dsy: 2px; --dsc: rgba(8,8,10,.3); }
   .trs-hero-foot { position: absolute; left: 64px; right: 96px; bottom: 56px; z-index: 5; }
   .trs-hero-loc { display: inline-flex; align-items: center; gap: 16px; margin-top: 0; }
   .trs-hero-loc .bar { width: 54px; height: 3px; background: var(--gold-pirate); flex: none; }
@@ -135,8 +135,7 @@
   .trs-hero-rivers .sep { color: var(--gold-pirate); font-weight: 600; }
 
   .trs-hero-team { margin-top: 26px; display: flex; align-items: center; gap: 22px; }
-  .trs-hero-team .pmark { height: 66px; width: auto; display: block;
-    filter: drop-shadow(0 2px 10px rgba(0,0,0,.5)); }
+  .trs-hero-team .pmark { height: 66px; width: auto; display: block; }
   .trs-hero-team .tt .nm { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 27px;
     letter-spacing: .03em; text-transform: uppercase; color: var(--gold-pirate); line-height: 1; white-space: nowrap; }
   .trs-hero-team .tt .sub { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 14px;
@@ -165,15 +164,17 @@
   .trs-photos image-slot { width: 100%; height: 150px; display: block; border: 1px solid var(--rule-strong); }
 
   /* ---- facts table ---- */
-  .trs-facts { display: grid; grid-template-columns: 1fr 1fr; flex: none; margin-bottom: 12px; }
+  .trs-facts { display: grid; grid-template-columns: 1fr 1fr; flex: none; margin-bottom: 12px; height: 354px; }
   .trs-facts .fcol { display: flex; flex-direction: column; }
+  .trs-facts .fcol > .trs-frow { flex: 1 1 auto; }
   .trs-facts .fcol:last-child { border-left: 1px solid var(--rule); padding-left: 24px; }
   .trs-facts .fcol:first-child { padding-right: 24px; }
-  .trs-frow { display: grid; grid-template-columns: 86px 1fr; gap: 10px; padding: 2.6px 0;
+  .trs-frow { display: grid; grid-template-columns: 86px 1fr; gap: 10px; padding: 1.3px 0;
     border-bottom: 1px solid var(--rule); align-items: baseline; }
   .trs-frow:last-child { border-bottom: 0; }
   .trs-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .1em;
     text-transform: uppercase; color: var(--ink-3); line-height: 1.2; }
+  .trs-frow.allstar .k { letter-spacing: .02em; white-space: nowrap; }
   .trs-frow .v { font-family: "Spectral", serif; font-weight: 500; font-size: 12px; color: var(--ink); line-height: 1.22; white-space: pre-line; }
 
   /* ---- context prose ---- */
@@ -367,11 +368,13 @@
   <script src="image-slot.js"></script>
   <script src="three-rivers-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="three-rivers-diagrams.jsx"></script>
   <script type="text/babel" src="three-rivers-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="three-rivers-spread.jsx"></script>
   <script type="text/babel" src="three-rivers-app.jsx"></script>
+  <script src="logo-ghost.js"></script>
 </body>
 </html>

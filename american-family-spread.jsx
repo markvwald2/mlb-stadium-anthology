@@ -42,7 +42,7 @@
       props.note ? e("span", { className: "n", style: props.noteStyle || undefined }, props.note) : null);
   }
   function factRow(row, i) {
-    return e("div", { className: "amf-frow", key: i },
+    return e("div", { className: "amf-frow" + (row[0] === "Surface" ? " inline" : ""), key: i },
       e("div", { className: "k" }, row[0]),
       e("div", { className: "v" },
         e("span", { className: "vm" }, row[1]),
@@ -51,6 +51,8 @@
   function WxIcon(kind) {
     const c = { width: 24, height: 24, viewBox: "0 0 24 24", fill: "none", stroke: "#564E40",
       strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", className: "amf-wico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c, e("path", { d: "M14 14.5V5a2 2 0 1 0-4 0v9.5a4 4 0 1 0 4 0z" }), e("path", { d: "M12 14V8" }));
     if (kind === "sky") return e("svg", c, e("circle", { cx: 12, cy: 12, r: 4.6 }),
       e("path", { d: "M12 3v1.8M12 19.2V21M3 12h1.8M19.2 12H21M5.5 5.5l1.3 1.3M17.2 17.2l1.3 1.3M18.5 5.5l-1.3 1.3M6.8 17.2l-1.3 1.3" }));
@@ -136,7 +138,7 @@
         e("div", { className: "amf-hero-slot" },
           e(Slot, { id: "amfam-hero", src: "images/american-family/miller-park-00-main-c17983a5.jpg", placeholder: "Drop the American Family Field hero \u2014 night aerial of the fan-shaped retractable roof, brick-and-steel mass, surrounding lots & the Menomonee valley" })),
 
-        e("img", { className: "amf-hero-logo", src: "assets/milwaukee-brewers-logo.svg", alt: "Milwaukee Brewers" }),
+        e("img", { className: "amf-hero-logo", "data-lg": "", src: "assets/milwaukee-brewers-logo.svg", alt: "Milwaukee Brewers" }),
         e("div", { className: "amf-spine" }, "EST. " + D.est + "  \u00b7  MILWAUKEE, WISCONSIN  \u00b7  VISIT " + D.visit_order),
 
         // a single faint roof-track datum line across the hero — the fan idea, stated quietly
@@ -152,9 +154,9 @@
             e("span", { className: "txt" }, D.city + ", " + D.state))),
 
         e("div", { className: "amf-marks" },
-          e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
+          e("img", { className: "mlb", "data-lg": "", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
           e("span", { className: "divln" }),
-          e("img", { className: "nl", src: "assets/nl-logo.png", alt: "National League" }),
+          e("img", { className: "nl", "data-lg": "", src: "assets/nl-logo.png", alt: "National League" }),
           e("span", { className: "divln" }),
           e("span", { className: "dv" }, "National League \u00b7 " + D.division))
       ),
@@ -187,8 +189,7 @@
         /* ---- field dimensions + protractor, AT the pivot hub ---- */
         e("div", { className: "amf-hub" },
           e("div", { className: "amf-hub-head" },
-            e("span", { className: "t" }, "Field Dimensions"),
-            e("span", { className: "n" }, "ORIENTED " + D.field.orientation + " \u00b7 " + D.field.degrees + "\u00b0")),
+            e("span", { className: "t" }, "Field Dimensions")),
           e("figure", { className: "amf-fieldfig" },
             Protractor ? e(Protractor, { lf: D.field.left_field, cf: D.field.center_field,
               rf: D.field.right_field, orientation: D.field.orientation, degrees: D.field.degrees }) : null)),

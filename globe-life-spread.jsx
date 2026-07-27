@@ -37,6 +37,8 @@
   function WxIcon(kind) {
     const c = { width: 24, height: 24, viewBox: "0 0 24 24", fill: "none",
       stroke: "#41494E", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", className: "glf-wico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c,
       e("path", { d: "M12 3.5a2.2 2.2 0 0 1 2.2 2.2v8.1a3.6 3.6 0 1 1-4.4 0V5.7A2.2 2.2 0 0 1 12 3.5z" }),
       e("path", { d: "M12 9.5v5.2" }));
@@ -128,7 +130,7 @@
         ),
 
         // upper-left wayfinding mark
-        e("img", { className: "glf-hero-logo", src: "assets/texas-rangers-logo.svg", alt: "Texas Rangers" }),
+        e("img", { className: "glf-hero-logo", "data-lg": "", src: "assets/texas-rangers-logo.svg", alt: "Texas Rangers" }),
         e("div", { className: "glf-spine" }, "GLOBE LIFE FIELD  \u00b7  ARLINGTON, TEXAS  \u00b7  THE ENORMOUS ROOM" ),
 
         // compact engineered signage title, lower-left
@@ -146,8 +148,8 @@
 
         // colophon — league marks, bottom-right
         e("div", { className: "glf-marks" },
-          e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-          e("img", { className: "al", src: "assets/american-league-logo.png", alt: "American League" })
+          e("img", { className: "mlb", "data-lg": "", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
+          e("img", { className: "al", "data-lg": "", src: "assets/american-league-logo.png", alt: "American League" })
         )
       ),
 

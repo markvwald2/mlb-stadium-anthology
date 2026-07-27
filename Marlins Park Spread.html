@@ -77,8 +77,7 @@
   }
 
 
-  .mla-hero-logo { position: absolute; left: 60px; top: 54px; height: 92px; width: auto; z-index: 5;
-    filter: drop-shadow(0 2px 10px rgba(0,0,0,.45)); }
+  .mla-hero-logo { position: absolute; left: 60px; top: 54px; height: 92px; width: auto; z-index: 5; }
   .mla-folio { position: absolute; right: 66px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(228,238,238,.66); text-transform: uppercase; }
@@ -162,15 +161,14 @@
   .mla-ribbon { display: flex; align-items: stretch; flex: none;
     border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink);
     background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(232,240,239,.3)); }
-  .mla-ribbon .cell { flex: 1; padding: 9px 14px; border-left: 1px solid var(--rule);
+  .mla-ribbon .cell { flex: 1 1 auto; padding: 9px 14px; border-left: 1px solid var(--rule);
     display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
   .mla-ribbon .cell.mark { flex: 0 0 auto; align-items: center; justify-content: center;
     border-left: 0; padding: 6px 16px 6px 2px; position: relative; }
-  .mla-ribbon .cell.mark::after { content: ""; position: absolute; right: 0; top: 11px; bottom: 11px;
-    width: 3px; background: var(--caliente); }
   .mla-ribbon .rib-logo { height: 44px; width: auto; display: block; }
   .mla-ribbon .cell.coords { flex: 1.2; }
-  .mla-ribbon .cell.wide { flex: 1.7; }
+  .mla-ribbon .cell.wide { flex: 1 1 auto; }
+  .mla-ribbon .rv { white-space: nowrap; }
   .mla-ribbon .cell.wide .rv { white-space: nowrap; }
   .mla-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--miami-deep); white-space: nowrap; }
@@ -304,11 +302,13 @@
   <script src="image-slot.js"></script>
   <script src="marlins-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="marlins-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="marlins-spread.jsx"></script>
   <script type="text/babel" src="marlins-app.jsx"></script>
   <script src="ghost-shadow.js"></script>
+  <script src="logo-ghost.js"></script>
 </body>
 </html>

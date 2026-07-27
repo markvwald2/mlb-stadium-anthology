@@ -23,6 +23,8 @@
     green: "#1E6B53", greenStroke: "#103F30",
     gold: "#E0A21C", goldStroke: "#7C5510",
     rename: "#46423B", seam: "#C7BA9C",
+    star: "#A82E22", starStroke: "#6C120F",
+    band: "rgba(36,32,28,0.062)", bandEdge: "rgba(90,83,74,0.34)",
   };
 
   // ---- geometry ----
@@ -47,6 +49,31 @@
   // (YMAX-YMIN+1) seasons, so the divisor is +1 and xOf(YMAX+1) == PLOT_X1.
   const xOf = (yr) => PLOT_X0 + (yr - YMIN) * PX_SEASON + (yr >= GUT_SPLIT ? GUT_GAP : 0);
   const lanes = D.FRANCHISES;
+  const ERAS = D.ERAS;
+
+  // ---- ROAD-TRIP RULES ---------------------------------------------------
+  // One vertical rule per documented trip, on its season, with a diamond at the
+  // chart top. Two trips share 2024, so a same-year group is spread symmetrically
+  // inside its season slot (+-3.5px) so both rules read.
+  const TRIPS = (function () {
+    const src = (window.ROADTRIPS && window.ROADTRIPS.trips) || [];
+    const byYear = {};
+    src.forEach((t) => { (byYear[t.year] = byYear[t.year] || []).push(t); });
+    return src.map((t) => {
+      const g = byYear[t.year], i = g.indexOf(t), n = g.length;
+      return { key: t.key, year: t.year, accent: t.accent, x: xOf(+t.year + 0.5) + (i - (n - 1) / 2) * 3.5 };
+    });
+  })();
+  // Footer tally is DERIVED from the charted data so it can never drift from the
+  // bars a reader can count. Basis: every tenure row that is drawn, including the
+  // Braves' 1914-15 Fenway sublet and the Rays' 2026 return to Tropicana Field.
+  const TALLY = {
+    franchises: D.FRANCHISES.length,
+    // The Rays' 2026 Tropicana return is drawn as its own bar but is the SAME
+    // occupancy of an already-counted park, so it is excluded from the tally.
+    tenures: D.FRANCHISES.reduce((n, f) => n + f.tenures.filter((t) => !t.noLabel).length, 0),
+    visited: D.FRANCHISES.reduce((n, f) => n + f.tenures.filter((t) => t.visited && !t.noLabel).length, 0),
+  };
   const N = lanes.length;
   const laneH = (CHART_BOT - CHART_TOP) / N;
 
@@ -73,9 +100,23 @@
         return (txt, font) => { ctx.font = font; return ctx.measureText(txt).width; };
       })();
       const F_IN = "500 11px Oswald, sans-serif";
-      const F_SPAN = "400 12px 'Space Mono', monospace";
+      const F_SPAN = "400 11px Oswald, sans-serif";  // Regular master — lighter than the 500 used for names, and embeddable (no synthesis).
+                                                     // 11px = 7.9pt: BELOW the project's 12px readable floor, by explicit request.
       const F_EXT = "500 11px Oswald, sans-serif";
       const lh = 11.5;
+      // canvas measureText ignores the SVG letter-spacing we render with, so every
+      // width used for fitting adds it back (0.01em @11px = 0.11px/char, 0.02em @12px = 0.24px/char)
+      // year span text. The end year is abbreviated to two digits only when it
+      // shares a century with the start — 1912-99, but 1970-2000, never 1970-00.
+      const sameCentury = (t) => Math.floor(t.start / 100) === Math.floor(t.end / 100);
+      const spanFor = (t) => t.spanText || (t.end >= YMAX ? (t.start + "-")
+        : (t.start + "-" + (sameCentury(t) ? ("0" + (t.end % 100)).slice(-2) : t.end)));
+      // tightest legible form: both years to two digits, no apostrophe (62-64).
+      // Same-century only — across a century boundary two digits are ambiguous.
+      const compactFor = (t) => (t.spanText || !(t.end >= YMAX || sameCentury(t))) ? null
+        : ("\u2019" + ("0" + (t.start % 100)).slice(-2) + "-" + (t.end >= YMAX ? "" : ("0" + (t.end % 100)).slice(-2)));
+      const TRACK = {}; TRACK[F_IN] = 0.11; TRACK[F_SPAN] = 0.22;   // spans render at 0.02em/11px TRACK[F_EXT] = 0.11;
+      const mw = (txt, font) => measure(txt, font) + txt.length * (TRACK[font] || 0.11);
 
       const bars = [];
       const obstacles = [];
@@ -113,23 +154,57 @@
         });
       });
 
+      // ---- marker positions, computed BEFORE labels so the label fitter can dodge them.
+      // A visit's marker centers on the MIDDLE of its season slot (xOf(yr+0.5)),
+      // carrying only the uniform bar shift (nudge / right-margin) -- never the
+      // offseason gap trim -- so every marker sits half-a-season inside the bar
+      // edges with no overhang.
+      const DR = 7.1;
+      bars.forEach((b) => {
+        const at = (yr) => {
+          let x = clamp(xOf(yr + 0.5) + b.shift, b.x0 + DR, b.x1 - DR);
+          if (x > GUT0 && x < GUT1) x = GUT0 - 6;
+          return x;
+        };
+        const marks = [];
+        (b.t.visitYears || []).forEach((yr) => marks.push({ x: at(yr), half: 7.1, kind: "visit" }));
+        (b.t.asgYears || []).forEach((yr) => {
+          if (yr < b.t.start || yr > b.t.end) return;
+          marks.push({ x: at(yr), half: 4.8, kind: "asg", yr: yr });
+        });
+        marks.sort((p, q) => p.x - q.x);
+        b.marks = marks;
+      });
+
+      const AVOID_X = [];
+      for (let y = 1890; y <= 2020; y += 10) AVOID_X.push(xOf(y));
+      AVOID_X.push(xOf(GUT_SPLIT) - GUT_GAP, PLOT_X1, FOLD);
+      {
+        const yrCount = {};
+        bars.forEach((b) => b.marks.forEach((m) => { if (m.kind === "asg") yrCount[m.yr] = (yrCount[m.yr] || 0) + 1; }));
+        bars.forEach((b) => b.marks.forEach((m) => { if (m.kind === "asg" && yrCount[m.yr] > 1) AVOID_X.push(m.x); }));
+      }
+
       // decide inside vs external
       const externals = [];
       bars.forEach((b) => {
         if (b.t.noLabel || b.t.belowLabel) { b.inside = false; return; } // bar drawn; custom/no label handled separately
-        if (b.t.labelOutside || b.t.labelAbove) { b.inside = false; externals.push(b); return; } // force primary to an external callout
-        const nameW = measure(b.t.stadium, F_IN);
+        if (b.t.labelOutside || b.t.labelAbove || b.t.labelLeft) { b.inside = false; externals.push(b); return; } // force primary to an external callout
+        const nameW = mw(b.t.stadium, F_IN) + (b.t.gapPx || 0);
         const nameFits = b.w >= nameW + 16;
         const nameInGutter = inLabelGutter(b.x0 + 7, b.x0 + 7 + nameW);
         const denseVisits = (b.t.visitYears || []).length >= 8; // e.g. Coors (every year) — keep bar clear for the diamond run
         if (nameFits && !nameInGutter && !denseVisits) {
           b.inside = true;
           b.nameW = nameW;
-          const span = b.t.spanText || (b.t.end >= YMAX ? (b.t.start + "\u2013now")
-            : (b.t.start + "\u2013" + ("0" + (b.t.end % 100)).slice(-2)));
-          const spanW = measure(span, F_SPAN);
-          if (b.w >= nameW + spanW + 26) {
-            let spanX = b.x1 - 7;                              // default: right end of the bar
+          let span = b.t.noSpan ? null : spanFor(b.t);
+          let spanW = span ? mw(span, F_SPAN) : 0;
+          if (span && b.w < nameW + spanW + 26) {
+            const cp = compactFor(b.t);
+            if (cp) { const cw = mw(cp, F_SPAN); if (b.w >= nameW + cw + 14) { span = cp; spanW = cw; b.spanCompacted = true; } }
+          }
+          if (span && b.w >= nameW + spanW + 26) {
+            let spanX = b.x1 - 4;                              // default: right end of the bar
             if (inLabelGutter(spanX - spanW, spanX)) {
               // bar terminates at the fold, so its right-end span lands in the
               // binding band. Pull the span back to the gutter's LEFT face so it
@@ -147,12 +222,30 @@
         }
       });
 
+      // Bars whose NAME sits outside (or auto-flowed outside) can still carry their
+      // year span on the bar itself — offer one wherever the bar has the width.
+      bars.forEach((b) => {
+        if (b.span || b.inside || b.t.noLabel || b.t.noSpan) return;   // inside bars already made a name-aware span decision
+        let span = spanFor(b.t);
+        let spanW = mw(span, F_SPAN);
+        if (b.w < spanW + 16) {
+          const cp = compactFor(b.t);
+          if (!cp) return;
+          const cw = mw(cp, F_SPAN);
+          if (b.w < cw + 6) return;
+          span = cp; spanW = cw; b.spanCompacted = true;
+        }
+        const spanX = b.x1 - 4;
+        if (inLabelGutter(spanX - spanW, spanX)) return;
+        b.span = span; b.spanW = spanW; b.spanX = spanX;
+      });
+
       // place externals — narrowest bars first so boxed-in ones claim gap space
       externals.sort((a, b) => a.w - b.w);
       const placed = [];
       externals.forEach((b) => {
         const txt = b.t.stadium;
-        const tw = measure(txt, F_EXT);
+        const tw = mw(txt, F_EXT);
         const mid = (b.x0 + b.x1) / 2;
         const gap = laneH - BARH;
         // labelOutside primaries anchor their above/below label to the bar START
@@ -166,7 +259,8 @@
           { x: aboveX, y: b.barY + BARH + gap / 2 - lh / 2, anchor: "start", down: true, ax: stemX },                          // below
         ];
         // labelAbove primaries prefer the above slot, then below, then the inline right/left
-        const order = b.t.labelAbove ? [cands[2], cands[3], cands[0], cands[1]]
+        const order = b.t.labelLeft ? [cands[1], cands[2], cands[3], cands[0]]
+          : b.t.labelAbove ? [cands[2], cands[3], cands[0], cands[1]]
           : b.t.labelBelow ? [cands[3], cands[0], cands[1], cands[2]] : cands;
         let chosen = null;
         for (const c of order) {
@@ -178,19 +272,44 @@
           if (!bad) for (const p of placed) { if (hit(r, p, 1.5)) { bad = true; break; } }
           if (!bad) { chosen = c; break; }
         }
-        if (!chosen) chosen = b.t.labelBelow ? cands[3] : cands[2]; // forced fallback → below when requested, else above
+        if (!chosen) chosen = b.t.labelLeft ? cands[1] : b.t.labelBelow ? cands[3] : cands[2]; // forced fallback
         const r = { x: chosen.x, y: chosen.y, w: tw, h: lh };
         placed.push(r);
         // leader geometry
+        // Above/below callouts use a STRICTLY VERTICAL stem: pick an x that is both on
+        // the bar and under the label, then slide it off any decade rule / star tie.
         let leader = null;
-        if (chosen.up) leader = { x1: chosen.ax, y1: b.barY, x2: clamp(chosen.ax, chosen.x + 3, chosen.x + tw - 3), y2: chosen.y + lh - 1.5 };
-        else if (chosen.down) leader = { x1: chosen.ax, y1: b.barY + BARH, x2: clamp(chosen.ax, chosen.x + 3, chosen.x + tw - 3), y2: chosen.y + 1.5 };
-        else leader = { x1: chosen.lx1, y1: chosen.ly1, x2: chosen.lx2, y2: chosen.ly2 };
-        b.ext = { x: chosen.x, y: chosen.y + lh / 2, anchor: chosen.anchor, txt, leader };
+        if (chosen.up || chosen.down) {
+          const lx = chosen.x + (b.t.extDx || 0);
+          const lo2 = Math.max(lx + 3, b.x0 + 3), hi2 = Math.min(lx + tw - 3, b.x1 - 3);
+          if (lo2 <= hi2) {
+            let ax = clamp(chosen.ax, lo2, hi2);
+            const bad = (x) => AVOID_X.some((v) => Math.abs(v - x) < 2.2);
+            if (bad(ax)) {
+              for (const dd of [4, -4, 6, -6, 8, -8, 11, -11, 15, -15]) {
+                const c = ax + dd;
+                if (!bad(c) && c >= lo2 && c <= hi2) { ax = c; break; }
+              }
+            }
+            leader = chosen.up
+              ? { x1: ax, y1: b.barY, x2: ax, y2: chosen.y + lh - 1.5 }
+              : { x1: ax, y1: b.barY + BARH, x2: ax, y2: chosen.y + 1.5 };
+          } else {
+            // label sits clear of its bar horizontally — angled leader is unavoidable
+            leader = chosen.up
+              ? { x1: chosen.ax, y1: b.barY, x2: clamp(chosen.ax, lx + 3, lx + tw - 3), y2: chosen.y + lh - 1.5 }
+              : { x1: chosen.ax, y1: b.barY + BARH, x2: clamp(chosen.ax, lx + 3, lx + tw - 3), y2: chosen.y + 1.5 };
+          }
+        } else {
+          leader = { x1: chosen.lx1, y1: chosen.ly1, x2: chosen.lx2, y2: chosen.ly2 };
+        }
+        // manual horizontal nudge for a callout that would otherwise sit under a star tie
+        const edx = b.t.extDx || 0;
+        b.ext = { x: chosen.x + edx, y: chosen.y + lh / 2, anchor: chosen.anchor, txt, leader };
       });
 
       // visit diamonds + rename ticks
-      const diamonds = [], ticks = [], renameLabels = [];
+      const diamonds = [], ticks = [], renameLabels = [], stars = [];
       const F_RN = "500 11px Oswald, sans-serif";
       bars.forEach((b) => {
         const barEnd = b.x1;
@@ -206,7 +325,7 @@
           if (!r.name || (r.name === b.t.stadium && !r.relabel)) return;
           const tickX = xOf(r.year);
           if (tickX > GUT0 && tickX < GUT1) return;
-          const tw = measure(r.name, F_RN);
+          const tw = mw(r.name, F_RN) + (r.gapPx || 0);
           // r.above → callout above the bar at the tick (for tight end-segment renames)
           if (r.above) {
             const gap = laneH - BARH;
@@ -228,20 +347,250 @@
           if (startX > FOLD && startX < 1337.5) startX = 1337.5;
           if (!r.force && startX + tw > segEnd) return;            // no room in segment (unless forced)
           if (inGutter(startX - 2, startX + tw + 2)) return;      // gutter
-          renameLabels.push({ x: startX, y: b.cy, txt: r.name });
+          renameLabels.push({ x: startX + (r.dx || 0), y: b.cy, txt: r.name, gapAfter: r.gapAfter, gapPx: r.gapPx, visited: b.t.visited, bar: b, lo: tickX + 4, hi: segEnd });
         });
-        // a visit's marker centers on the MIDDLE of its season slot (xOf(yr+0.5)),
-        // carrying only the uniform bar shift (nudge / right-margin) -- never the
-        // offseason gap trim -- so every diamond sits half-a-season inside the bar
-        // edges with no overhang. A light clamp (diamond half-width) keeps the rare
-        // shared-season visit on an in-season-split bar off the very edge.
-        const DR = 7.1;
-        b.t.visitYears.forEach((yr) => {
-          let x = clamp(xOf(yr + 0.5) + b.shift, b.x0 + DR, b.x1 - DR);
-          if (x > GUT0 && x < GUT1) x = GUT0 - 6;
-          diamonds.push({ x, y: b.cy });
+        b.marks.forEach((m) => {
+          if (m.kind === "visit") { diamonds.push({ x: m.x, y: b.cy }); return; }
+          // an All-Star year that is ALSO a visit year: the star sits dead-centre on
+          // the diamond, so it drops its white keyline and lets the gold ring show
+          const onGold = b.marks.some((o) => o.kind === "visit" && Math.abs(o.x - m.x) < 1);
+          stars.push({ x: m.x, y: b.cy, onGold, yr: m.yr });
         });
       });
+
+      /* ---------- fit on-bar text around the markers ----------
+         Every label that sits ON a bar (stadium name, post-rename name, year
+         span) is tested against the marker footprints. Resolution order:
+           1. leave it where it is, if it already clears everything;
+           2. slide it left/right — smallest move that clears (spans prefer left,
+              since they are right-anchored);
+           3. multi-word labels only: split at a word space and widen THAT gap so
+              the marker sits centred in it, equidistant from both words.
+         Anything that still cannot clear is left put and reported in `moves`. */
+      const MPAD = 3;        // air between a glyph and a marker edge
+      const moves = [], spanCallouts = [];
+      function fitOnBar(txt, font, wantX, b, lo, hi, occ, preferLeft, splitFirst) {
+        const forb = b.marks.map((m) => [m.x - m.half - MPAD, m.x + m.half + MPAD]);
+        forb.push([LG0, LG1]);                       // binding-safe band
+        const w = mw(txt, font);
+        const free = (a, z) => a >= lo - 0.01 && z <= hi + 0.01
+          && !forb.some((f) => a < f[1] && z > f[0])
+          && !occ.some((o) => a < o[1] + 4 && z > o[0] - 4);
+        if (free(wantX, wantX + w)) return { x: wantX, x1: wantX + w };
+        const trySplit = () => {
+          const words = txt.split(" ");
+          let best = null;
+          for (let g = 1; g < words.length; g++) {
+            const pre = words.slice(0, g).join(" ");
+            const suf = words.slice(g).join(" ");
+            const preAdv = mw(pre, font), preSp = mw(pre + " ", font), sufW = mw(suf, font);
+            for (const m of b.marks) {
+              const nx = m.x - m.half - MPAD - preAdv;   // last GLYPH of the prefix ends just left of the marker
+                                                         // (the trailing word space is blank, so it may run under it)
+              const sufX = m.x + m.half + MPAD;          // suffix starts just right of it
+              const gapPx = sufX - (nx + preSp);
+              if (gapPx < 1) continue;
+              if (!free(nx, nx + preAdv) || !free(sufX, sufX + sufW)) continue;
+              const cost = Math.abs(nx - wantX) + gapPx;
+              if (!best || cost < best.cost) best = { x: nx, x1: sufX + sufW, gapAfter: pre, gapPx, cost, note: 'split after "' + pre + '" (' + gapPx.toFixed(1) + 'px gap centred on the ' + m.kind + ' marker)' };
+            }
+          }
+          return best;
+        };
+        if (splitFirst) { const sp = trySplit(); if (sp) return sp; }
+        for (let d = 0.5; d <= 220; d += 0.5) {
+          const order = preferLeft ? [-d, d] : [d, -d];
+          for (const sgn of order) {
+            if (free(wantX + sgn, wantX + sgn + w)) {
+              return { x: wantX + sgn, x1: wantX + sgn + w, note: "nudged " + (sgn > 0 ? "right " : "left ") + Math.abs(sgn).toFixed(1) + "px" };
+            }
+          }
+        }
+        const best = trySplit();
+        if (best) return best;
+        return { x: wantX, x1: wantX + w, failed: true };
+      }
+      bars.forEach((b) => {
+        const lane = lanes[b.laneIdx].lines.join(" ");
+        const occ = [];
+        const log = (kind, txt, r) => {
+          if (r.note) moves.push({ lane, tenure: b.t.stadium, kind, text: txt, action: r.note });
+          else if (r.failed) moves.push({ lane, tenure: b.t.stadium, kind, text: txt, action: "UNRESOLVED" });
+        };
+        if (b.inside) {
+          const r = fitOnBar(b.t.stadium, F_IN, b.x0 + 7, b, b.x0 + 4, b.x1 - 4, occ, false, b.t.splitFirst);
+          b.nameFit = r; occ.push([r.x, r.x1]); log("stadium name", b.t.stadium, r);
+        }
+        renameLabels.filter((rl) => rl.bar === b).forEach((rl) => {
+          const r = fitOnBar(rl.txt, F_RN, rl.x, b, Math.max(rl.lo, b.x0 + 4), Math.min(rl.hi, b.x1 - 4), occ, false);
+          rl.x = r.x; rl.gapAfter = r.gapAfter; rl.gapPx = r.gapPx; occ.push([r.x, r.x1]); log("rename", rl.txt, r);
+        });
+        if (b.span && b.t.spanPin) {
+          // pinned to the bar's right edge by request — marker collisions allowed
+          b.spanFit = { x: b.x1 - 4 - b.spanW, x1: b.x1 - 4 };
+          occ.push([b.spanFit.x, b.spanFit.x1]);
+          return;
+        }
+        if (b.span) {
+          const want = (b.spanX != null ? b.spanX : b.x1 - 4) - b.spanW;
+          // the span is always the LAST thing on its bar — never allowed to slide
+          // left of the stadium name or a rename label
+          const occRight = occ.reduce((m, o) => Math.max(m, o[1]), b.x0 + 4);
+          const r = fitOnBar(b.span, F_SPAN, want, b, occRight + 4, b.x1 - 4, occ, true);
+          b.spanFit = r;
+          // a span that cannot clear the markers is DROPPED, not overprinted —
+          // it is secondary information the axis already carries.
+          if (r.failed && !b.t.spanText && (b.t.end >= YMAX || sameCentury(b.t))) {
+            // before giving up the bar, try the abbreviated form — '20– instead of 2020–
+            const ab = "\u2019" + ("0" + (b.t.start % 100)).slice(-2) + "-"
+              + (b.t.end >= YMAX ? "" : ("0" + (b.t.end % 100)).slice(-2));   // same-century only, so 2 digits is unambiguous
+            const abW = mw(ab, F_SPAN);
+            const r2 = fitOnBar(ab, F_SPAN, b.x1 - 4 - abW, b, occRight + 4, b.x1 - 4, occ, true);
+            if (!r2.failed) {
+              b.span = ab; b.spanW = abW; b.spanFit = r2; occ.push([r2.x, r2.x1]);
+              moves.push({ lane, tenure: b.t.stadium, kind: "year span", text: ab, action: "abbreviated to fit on the bar" });
+              return;
+            }
+            const cp = compactFor(b.t);
+            if (cp) {
+              const cw = mw(cp, F_SPAN);
+              const r3 = fitOnBar(cp, F_SPAN, b.x1 - 4 - cw, b, occRight + 4, b.x1 - 4, occ, true);
+              if (!r3.failed) {
+                b.span = cp; b.spanW = cw; b.spanFit = r3; occ.push([r3.x, r3.x1]);
+                moves.push({ lane, tenure: b.t.stadium, kind: "year span", text: cp, action: "compacted to two digits to fit on the bar" });
+                return;
+              }
+            }
+          }
+          if (r.failed) {
+            // no room ON the bar → set it in the lane gap instead, in ink, right-aligned
+            // to the bar's end, checked against the bars and the external callouts
+            const lh2 = 12.5, gap = laneH - BARH, w = b.spanW;
+            let put = null;
+            // hug the OWNING bar rather than centring in the lane gap, so the
+            // callout is never equidistant between two rows
+            for (const c of [{ x: b.x1 - 4 - w, y: b.barY - lh2 - 1.5 }, { x: b.x1 - 4 - w, y: b.barY + BARH + 1.5 }]) {
+              const rect = { x: c.x, y: c.y, w, h: lh2 };
+              if (rect.x < PLOT_X0 || rect.x + w > PLOT_X1) continue;
+              if (inLabelGutter(rect.x - 2, rect.x + w + 2)) continue;
+              if (obstacles.some((o) => hit(rect, o, 0.8))) continue;
+              if (placed.some((p) => hit(rect, p, 1.5))) continue;
+              put = rect; break;
+            }
+            if (put) {
+              placed.push(put);
+              spanCallouts.push({ x: put.x, y: put.y + lh2 / 2 + (b.t.spanDy || 0), txt: b.span });
+              moves.push({ lane, tenure: b.t.stadium, kind: "year span", text: b.span, action: "moved into the lane gap above/below the bar (no room on it)" });
+            } else {
+              moves.push({ lane, tenure: b.t.stadium, kind: "year span", text: b.span, action: "dropped — no clear space on or beside the bar" });
+            }
+          }
+          else { occ.push([r.x, r.x1]); log("year span", b.span, r); }
+        }
+      });
+      // ---- inflection-point labels ----------------------------------------
+      // Horizontal label + horizontal leader running to its band. Labels live in
+      // LANE GAPS, which are continuous horizontally, so a leader can travel to its
+      // column without ever crossing a bar. Nothing already on the chart is moved.
+      const F_ERA = "italic 400 12px Spectral, serif";
+      const ERA_WRAP = {};   // year → substring that starts line 2
+      const eraLabels = [], eraKey = [];
+      {
+        // everything already placed that sits in a lane gap
+        const gapObs = [];
+        bars.forEach((bb) => { if (bb.ext) gapObs.push({ x0: bb.ext.x - 2, x1: bb.ext.x + mw(bb.ext.txt, F_EXT) + 2, y: bb.ext.y }); });
+        renameLabels.forEach((r) => { if (r.above) gapObs.push({ x0: r.x - 2, x1: r.x + mw(r.txt, F_RN) + 2, y: r.y }); });
+        spanCallouts.forEach((sc) => gapObs.push({ x0: sc.x - 2, x1: sc.x + 40, y: sc.y }));
+        bars.forEach((bb) => {
+          if (!bb.t.belowLabel) return;
+          const mid = (bb.x0 + bb.x1) / 2;
+          bb.t.belowLabel.forEach((ln, j) => gapObs.push({ x0: mid - mw(ln, F_EXT) / 2 - 2, x1: mid + mw(ln, F_EXT) / 2 + 2, y: bb.barY + BARH + 16 + j * 12.5 }));
+        });
+        // A 12px label's line box (~19px) is TALLER than a lane gap (16.4px), so a
+        // label can only sit where a neighbouring lane is empty at that x. A LEADER
+        // is a hairline, so it can run down the middle of any gap — that is what
+        // lets a label reach a band hundreds of px away without crossing a bar.
+        // rows run top-down so the labels read chronologically down the page:
+        // 1903 highest, 2023 lowest
+        const rows = [];
+        for (let i = 12; i <= 29; i++) rows.push(CHART_TOP + i * laneH);
+        rows.push(CHART_BOT - 14);   // extra row: just above the bottom rule
+        const usedLab = [], usedLead = [];
+        const clearLabel = (y, x0, x1) =>
+          !bars.some((bb) => Math.abs(bb.cy - y) < 17 && bb.x0 < x1 + 4 && bb.x1 > x0 - 4) &&
+          !gapObs.some((o) => Math.abs(o.y - y) < 19 && o.x0 < x1 + 8 && o.x1 > x0 - 8) &&
+          !usedLab.some((o) => Math.abs(o.y - y) < 19 && o.x0 < x1 + 10 && o.x1 > x0 - 10) &&
+          !usedLead.some((o) => Math.abs(o.y - y) < 8 && o.x0 < x1 + 4 && o.x1 > x0 - 4);
+        let leaderRelaxed = false;   // last resort: let the hairline run beneath an existing label
+        const clearLeader = (y, x0, x1) =>
+          !bars.some((bb) => Math.abs(bb.cy - y) < 8 && bb.x0 < x1 && bb.x1 > x0) &&
+          (leaderRelaxed || !gapObs.some((o) => Math.abs(o.y - y) < 9 && o.x0 < x1 && o.x1 > x0)) &&
+          !usedLab.some((o) => Math.abs(o.y - y) < 11 && o.x0 < x1 && o.x1 > x0) &&
+          !usedLead.some((o) => Math.abs(o.y - y) < 5 && o.x0 < x1 && o.x1 > x0);
+        let rowPtr = 0;
+        const seq = ERAS;
+        const rowsSeq = rows;
+        // pinned placements: era year → row index (0 = the row just below lane 12)
+        const ERA_PIN = { 2020: 17, 2023: 16, 1997: [13, 136], 1994: [13, 92], 1981: [13, 70], 1969: [13, 4], 1972: [13, 26], 1973: [13, 48], 1995: [13, 114] };   // 2020 sits in the Bank One Ballpark / Tropicana Field lane gap
+        const order = ERAS.filter((e) => ERA_PIN[e.year]).concat(ERAS.filter((e) => !ERA_PIN[e.year]));
+        order.forEach((e) => {
+          const bandX = xOf(e.year) + (xOf(e.year + 1) - xOf(e.year)) / 2;
+          const txt = e.year + "  " + e.title;
+          const brk = ERA_WRAP[e.year] ? txt.indexOf(ERA_WRAP[e.year]) : -1;
+          const lines = brk > 0 ? [txt.slice(0, brk).trim(), txt.slice(brk)] : [txt];
+          const w = Math.max.apply(null, lines.map((l) => mw(l, F_ERA)));
+          const onLeftPage = bandX < FOLD;
+          const pageLo = onLeftPage ? PLOT_X0 + 4 : LG1 + 4;
+          const pageHi = onLeftPage ? LG0 - 4 : PLOT_X1 - 4;
+          let best = null;
+          // Rows are handed out in order and each era reserves one for every era
+          // still to come, so the labels stay in chronological order down the page.
+          const tryRow = (y, maxOff) => {
+            if (y == null) return false;
+            for (let off = 18; off < (maxOff || 1000); off += 6) {
+              const lx = bandX - off - w;
+              if (lx < pageLo) break;
+              const okLines = lines.every((l, li) => clearLabel(y + li * 13, lx, lx + w));
+              const ly = y + (lines.length - 1) * 6.5;   // leader centred between wrapped lines
+              if (okLines && clearLeader(ly, lx + w + 6, bandX)) {
+                best = { off, x: lx, y, txt, lines, leader: { x1: lx + w - 14, x2: bandX, y: ly } };
+                return true;
+              }
+            }
+            return false;
+          };
+          const remaining = seq.length - 1 - seq.indexOf(e);
+          let hi = Math.min(rowsSeq.length, Math.max(rowPtr + 1, rowsSeq.length - remaining));
+          if (ERA_PIN[e.year] != null) {
+            // pinned row: sit as close to the band as the page allows (slight collisions OK)
+            const pin = ERA_PIN[e.year];
+            const py = rowsSeq[Array.isArray(pin) ? pin[0] : pin] + (Array.isArray(pin) ? pin[1] : 0);
+            if (!tryRow(py, 40)) {
+              const lx = Math.max(pageLo, bandX - 18 - w);
+              best = { off: 18, x: lx, y: py, txt, lines, leader: { x1: lx + w - 14, x2: bandX, y: py + (lines.length - 1) * 6.5 } };
+            }
+            hi = rowPtr;
+          }
+          // pass 1: prefer a row where the leader can be SHORT (same length as 1903/1918)
+          for (let ri = rowPtr; ri < hi && !best; ri++) if (tryRow(rowsSeq[ri], 40)) rowPtr = ri + 1;
+          // pass 2: any length
+          for (let ri = rowPtr; ri < hi && !best; ri++) if (tryRow(rowsSeq[ri])) rowPtr = ri + 1;
+          for (let ri = hi; ri < rowsSeq.length && !best; ri++) if (tryRow(rowsSeq[ri])) rowPtr = ri + 1;
+          if (!best) {
+            leaderRelaxed = true;
+            for (let ri = rowPtr; ri < rowsSeq.length && !best; ri++) if (tryRow(rowsSeq[ri])) rowPtr = ri + 1;
+            for (let ri = 0; ri < rowPtr && !best; ri++) tryRow(rowsSeq[ri]);
+            leaderRelaxed = false;
+          }
+          if (best) {
+            eraLabels.push(best);
+            best.lines.forEach((l, li) => usedLab.push({ y: best.y + li * 13, x0: best.x, x1: best.x + w }));
+            usedLead.push({ y: best.leader.y, x0: Math.min(best.leader.x1, best.leader.x2), x1: Math.max(best.leader.x1, best.leader.x2) });
+          } else eraKey.push(e);
+        });
+      }
+
+      window.__labelMoves = moves;
 
       // franchise rail: single-line names, auto-shrunk only when they would
       // breach the left safe edge (37.5px). Available width = LABEL_R - 37.5.
@@ -257,7 +606,19 @@
         return { name: name, font: p };
       });
 
-      return { bars, diamonds, ticks, rail, renameLabels };
+      // Two tenures can share one All-Star year — the same ballpark used by two
+      // franchises (Sportsman's Park, Shibe Park) or a two-game season (1959-62).
+      // A hairline ties those stars together down the year's column.
+      const byYear = {};
+      stars.forEach((st) => { (byYear[st.yr] = byYear[st.yr] || []).push(st); });
+      const starTies = [];
+      Object.keys(byYear).forEach((yr) => {
+        const g = byYear[yr].slice().sort((a, b) => a.y - b.y);
+        if (g.length < 2) return;
+        for (let i = 0; i + 1 < g.length; i++) starTies.push({ x1: g[i].x, y1: g[i].y, x2: g[i + 1].x, y2: g[i + 1].y });
+      });
+
+      return { bars, diamonds, ticks, rail, renameLabels, stars, spanCallouts, starTies, eraLabels, eraKey };
     }, [ready]);
 
     // ---------- render ----------
@@ -273,6 +634,32 @@
         {lanes.map((f, i) => i % 2 === 1 ? (
           <rect key={"st" + i} x={PLOT_X0 - 8} y={CHART_TOP + i * laneH} width={PLOT_X1 - PLOT_X0 + 16} height={laneH} fill={C.stripe} opacity="0.55" />
         ) : null)}
+
+        {/* ---- inflection-point bands: one season wide, tinted, under the bars so
+             they read through the lane gaps and the axis margins ---- */}
+        {ERAS.map((e) => {
+          const x = xOf(e.year), w = xOf(e.year + 1) - x;
+          return (
+            <g key={"era" + e.year}>
+              <rect x={x} y={CHART_TOP} width={w} height={CHART_BOT - CHART_TOP} fill={C.band} />
+              <line x1={x} y1={CHART_TOP} x2={x} y2={CHART_BOT} stroke={C.bandEdge} strokeWidth="0.8" />
+            </g>
+          );
+        })}
+
+        {/* ---- road-trip rules: one vertical line per trip, full chart height,
+             under the bars so the bars overprint and the rule reads through the
+             lane gaps as a continuous column ---- */}
+        {TRIPS.map((t) => (
+          <line key={"trip" + t.key} x1={t.x} y1={CHART_TOP} x2={t.x} y2={CHART_BOT}
+            stroke={t.accent} strokeWidth="1" opacity="0.45" />
+        ))}
+
+        {/* ---- season hairlines: every year that is not a decade, very faint ---- */}
+        {Array.from({ length: YMAX - YMIN + 1 }, (_, i) => YMIN + i).filter((y) => y % 10 !== 0).map((y) => {
+          const x = xOf(y);
+          return <line key={"sg" + y} x1={x} y1={CHART_TOP} x2={x} y2={CHART_BOT} stroke={C.rule} strokeWidth="0.5" opacity="0.3" />;
+        })}
 
         {/* ---- decade gridlines ---- */}
         {decades.map((y) => {
@@ -312,6 +699,12 @@
         <text x={1205} y={CHART_TOP - 9} textAnchor="end" fontFamily="'Space Mono', monospace" fontSize="14" fill={C.ink2} letterSpacing="0.04em">19</text>
         <text x={1346} y={CHART_TOP - 9} textAnchor="start" fontFamily="'Space Mono', monospace" fontSize="14" fill={C.ink2} letterSpacing="0.04em">50</text>
 
+        {/* ---- road-trip diamonds: head of each trip rule, on the top axis ---- */}
+        {TRIPS.map((t) => (
+          <rect key={"tripd" + t.key} x={t.x - 2.7} y={CHART_TOP - 2.7} width="5.4" height="5.4"
+            fill={t.accent} transform={"rotate(45 " + t.x + " " + CHART_TOP + ")"} />
+        ))}
+
         {/* ---- franchise rail labels (single line, auto-fit) ---- */}
         {lanes.map((f, i) => {
           const cy = CHART_TOP + i * laneH + laneH / 2;
@@ -322,6 +715,12 @@
               letterSpacing="0.04em">{r.name}</text>
           );
         })}
+
+        {/* ---- ties between stars sharing an All-Star year — drawn UNDER the bars, so
+             the connection shows only in the lane gaps and never crosses a label ---- */}
+        {layout.starTies.map((t, k) => (
+          <line key={"tie" + k} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke={C.star} strokeWidth="1.1" opacity="0.85" />
+        ))}
 
         {/* ---- bars ---- */}
         {layout.bars.map((b, k) => {
@@ -334,28 +733,54 @@
           );
         })}
 
-        {/* ---- inside labels ---- */}
-        {layout.bars.filter(b => b.inside).map((b, k) => {
-          const rawSpanX = b.spanX != null ? b.spanX : (b.x1 - 7);
-          // clamp left-page near-fold span year-labels out of the 0.5in binding-safe
-          const spanX = (rawSpanX > 1198 && rawSpanX < 1262) ? 1194 : rawSpanX;
-          return (
-          <g key={"il" + k}>
-            <text x={b.x0 + 7} y={b.cy} dominantBaseline="central" textAnchor="start"
-              fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.paperHi}
-              letterSpacing="0.01em">{b.t.stadium}</text>
-            {b.span ? (
-              <text x={spanX} y={b.cy} dominantBaseline="central" textAnchor="end"
-                fontFamily="'Space Mono', monospace" fontSize="12" fill={b.t.visited ? "rgba(244,238,223,.7)" : "rgba(244,238,223,.72)"}
-                letterSpacing="0.02em">{b.span}</text>
-            ) : null}
+        {/* ---- rename notches — behind the markers and every label, like the bars ---- */}
+        {layout.ticks.map((t, k) => (
+          <line key={"tk" + k} x1={t.x} y1={t.y0} x2={t.x} y2={t.y1} stroke={C.rename} strokeWidth="1.3" opacity="0.85" />
+        ))}
+
+        {/* ---- inflection-point leaders: drawn with the bars so any label prints over them ---- */}
+        {layout.eraLabels.map((e, i) => (
+          <g key={"ell" + i}>
+            <line x1={e.leader.x1} y1={e.leader.y} x2={e.leader.x2 - 4.2} y2={e.leader.y} stroke={C.ink3} strokeWidth="0.8" />
+            <path d={"M " + e.leader.x2 + " " + e.leader.y + " L " + (e.leader.x2 - 5) + " " + (e.leader.y - 2.6) + " L " + (e.leader.x2 - 5) + " " + (e.leader.y + 2.6) + " Z"} fill={C.ink3} />
           </g>
+        ))}
+
+        {/* ---- visit diamonds — sit with the stars just above the bars, so every
+             label prints over them ---- */}
+        {layout.diamonds.map((d, k) => {
+          const hd = 5.4;
+          const path = (s) => `M ${d.x} ${d.y - s} L ${d.x + s} ${d.y} L ${d.x} ${d.y + s} L ${d.x - s} ${d.y} Z`;
+          return (
+            <g key={"dm" + k}>
+              <path d={path(hd + 1.7)} fill={C.paperHi} />
+              <path d={path(hd)} fill={C.gold} stroke={C.goldStroke} strokeWidth="0.9" />
+            </g>
           );
         })}
 
-        {/* ---- rename notches ---- */}
-        {layout.ticks.map((t, k) => (
-          <line key={"tk" + k} x1={t.x} y1={t.y0} x2={t.x} y2={t.y1} stroke={C.rename} strokeWidth="1.3" opacity="0.85" />
+        {/* ---- All-Star Game stars: dated point events in the visit-diamond class,
+             drawn over the gold diamonds but under every label ---- */}
+        {layout.stars.map((s, k) => (
+          <path key={"as" + k} d={starPath(s.x, s.y, 5.0, 2.1)} fill={C.star}
+            stroke={s.onGold ? "none" : "#FFFFFF"} strokeWidth="1.1" strokeLinejoin="round" paintOrder="stroke" />
+        ))}
+
+        {/* ---- inside labels ---- */}
+        {layout.bars.filter(b => b.inside).map((b, k) => (
+          <text key={"il" + k} x={b.nameFit ? b.nameFit.x : b.x0 + 7} y={b.cy} dominantBaseline="central" textAnchor="start"
+            fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.paperHi}
+            letterSpacing="0.01em">{gapped(b.t.stadium, b.nameFit && b.nameFit.gapAfter, b.nameFit && b.nameFit.gapPx)}</text>
+        ))}
+
+        {/* ---- year spans: offered on every bar wide enough, whether its name sits
+             inside the bar or in an external callout ---- */}
+        {layout.bars.filter(b => b.span && !(b.spanFit && b.spanFit.failed)).map((b, k) => (
+          <text key={"sp" + k} x={b.spanFit ? b.spanFit.x : (b.spanX != null ? b.spanX : b.x1 - 4) - b.spanW} y={b.cy}
+            dominantBaseline="central" textAnchor="start"
+            fontFamily="Oswald, sans-serif" fontWeight="400" fontSize="11"
+            fill={b.t.visited ? "rgba(244,238,223,.8)" : "rgba(244,238,223,.82)"}
+            letterSpacing="0.02em">{b.span}</text>
         ))}
 
         {/* ---- external labels + leaders ---- */}
@@ -365,6 +790,12 @@
             <text x={b.ext.x} y={b.ext.y} dominantBaseline="central" textAnchor={b.ext.anchor}
               fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.ink} letterSpacing="0.01em">{b.ext.txt}</text>
           </g>
+        ))}
+
+        {/* ---- year spans that could not fit on their bar, set in the lane gap ---- */}
+        {layout.spanCallouts.map((sc, k) => (
+          <text key={"sc" + k} x={sc.x} y={sc.y} dominantBaseline="central" textAnchor="start"
+            fontFamily="Oswald, sans-serif" fontWeight="400" fontSize="11" fill={C.ink2} letterSpacing="0.02em">{sc.txt}</text>
         ))}
 
         {/* ---- below-label: two centered lines under the bar, vertical leader ---- */}
@@ -393,21 +824,40 @@
             </g>
           ) : (
             <text key={"rn" + k} x={r.x} y={r.y} dominantBaseline="central" textAnchor="start"
-              fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.paperHi} letterSpacing="0.01em">{r.txt}</text>
+              fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="11" fill={C.paperHi}
+              letterSpacing="0.01em">{gapped(r.txt, r.gapAfter, r.gapPx)}</text>
           )
         ))}
 
-        {/* ---- visit diamonds (drawn last — always on top) ---- */}
-        {layout.diamonds.map((d, k) => {
-          const hd = 5.4;
-          const path = (s) => `M ${d.x} ${d.y - s} L ${d.x + s} ${d.y} L ${d.x} ${d.y + s} L ${d.x - s} ${d.y} Z`;
-          return (
-            <g key={"dm" + k}>
-              <path d={path(hd + 1.7)} fill={C.paperHi} />
-              <path d={path(hd)} fill={C.gold} stroke={C.goldStroke} strokeWidth="0.9" />
-            </g>
-          );
-        })}
+        {/* ---- inflection-point labels: horizontal, set left of their band ---- */}
+        {layout.eraLabels.map((e, i) => (
+          <text key={"el" + i} x={e.leader.x1 - 4} y={e.y} dominantBaseline="central" textAnchor="end"
+            fontFamily="Spectral, serif" fontStyle="italic" fontSize="12" fill={C.ink}>
+            {(e.lines || [e.txt]).map((ln, j) => (
+              <tspan key={j} x={e.leader.x1 - 4} dy={j ? 13 : 0}>
+                {j === 0 ? <tspan fontWeight="700">{ln.slice(0, 4)}</tspan> : null}{j === 0 ? ln.slice(4) : ln}
+              </tspan>
+            ))}</text>
+        ))}
+
+        {/* ---- compact key for any band with no room for a label ---- */}
+        {layout.eraKey.length ? (
+          <g>
+            <text x="352" y="638" fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="12" fill={C.ink} letterSpacing="0.14em">INFLECTION POINTS</text>
+            <line x1="352" y1="648" x2="900" y2="648" stroke={C.ruleStrong} strokeWidth="1" />
+            {layout.eraKey.map((e, i) => {
+              const y = 668 + i * 20;
+              return (
+                <g key={"ek" + e.year}>
+                  <rect x="352" y={y - 9} width="7" height="12" fill={C.band} />
+                  <line x1="352" y1={y - 9} x2="352" y2={y + 3} stroke={C.bandEdge} strokeWidth="0.8" />
+                  <text x="372" y={y} fontFamily="Spectral, serif" fontStyle="italic" fontWeight="700" fontSize="12" fill={C.ink}>{e.year}</text>
+                  <text x="412" y={y} fontFamily="Spectral, serif" fontStyle="italic" fontSize="12" fill={C.ink}>{e.title}</text>
+                </g>
+              );
+            })}
+          </g>
+        ) : null}
 
         {/* ============ HEADER BAND ============ (sits entirely above the top axis labels) */}
         <text x="52" y="90" fontFamily="'Oswald Bd', sans-serif" fontWeight="400" fontSize="44" fill={C.ink} letterSpacing="0.005em">MLB STADIUM TIMELINE</text>
@@ -418,13 +868,31 @@
 
         {/* ============ FOOTER BAND ============ (above 0.25in bottom safe line) */}
         <text x={PLOT_X1} y="1046" textAnchor="end" fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="13" fill={C.ink2} letterSpacing="0.12em">
-          30 FRANCHISES&#160;&#160;&#183;&#160;&#160;105 STADIUM TENURES&#160;&#160;&#183;&#160;&#160;43 TENURES VISITED
+          {TALLY.franchises} FRANCHISES&#160;&#160;&#183;&#160;&#160;{TALLY.tenures} STADIUM TENURES&#160;&#160;&#183;&#160;&#160;{TALLY.visited} TENURES VISITED
         </text>
       </svg>
     );
   }
 
   function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+  // widen ONE interior word space so a marker can sit inside the label
+  function gapped(txt, after, px) {
+    if (!after || !px || txt.indexOf(after + " ") !== 0) return txt;
+    const rest = txt.slice(after.length + 1);
+    return [<tspan key="a">{after + " "}</tspan>, <tspan key="b" dx={px}>{rest}</tspan>];
+  }
+
+  // five-point star centred on (cx, cy)
+  function starPath(cx, cy, R, r) {
+    let d = "";
+    for (let i = 0; i < 10; i++) {
+      const rad = (i % 2 === 0) ? R : r;
+      const a = -Math.PI / 2 + i * Math.PI / 5;
+      d += (i ? " L " : "M ") + (cx + rad * Math.cos(a)).toFixed(2) + " " + (cy + rad * Math.sin(a)).toFixed(2);
+    }
+    return d + " Z";
+  }
 
   // legend block, anchored to the right page top band
   function Legend({ C }) {
@@ -433,6 +901,7 @@
       { kind: "bar", fill: C.slate, stroke: C.slateStroke, sw: 0.8, label: "Stadium tenure" },
       { kind: "bar", fill: C.green, stroke: C.greenStroke, sw: 1.4, label: "Visited stadium" },
       { kind: "diamond", label: "Known visit" },
+      { kind: "star", label: "All-Star Game" },
       { kind: "tick", label: "Name change" },
     ];
     // measure-free fixed layout, right aligned ending at 2492
@@ -452,6 +921,9 @@
           <path d={`M ${cx} ${cy - s - 1.6} L ${cx + s + 1.6} ${cy} L ${cx} ${cy + s + 1.6} L ${cx - s - 1.6} ${cy} Z`} fill={C.paperHi} />
           <path d={`M ${cx} ${cy - s} L ${cx + s} ${cy} L ${cx} ${cy + s} L ${cx - s} ${cy} Z`} fill={C.gold} stroke={C.goldStroke} strokeWidth="0.9" />
         </g>;
+      } else if (it.kind === "star") {
+        const cx = lx + SW / 2, cy = yRow - 1;
+        glyph = <path d={starPath(cx, cy, 7.4, 3.1)} fill={C.star} stroke="#FFFFFF" strokeWidth="1.3" strokeLinejoin="round" paintOrder="stroke" />;
       } else {
         const cx = lx + SW / 2;
         glyph = <g>
@@ -462,7 +934,7 @@
       out.push(
         <g key={"lg" + i}>
           {glyph}
-          <text x={lx + SW + GAPsl - (it.kind === "diamond" ? 7 : 0)} y={yRow} dominantBaseline="central" fontFamily="'Oswald Med', sans-serif" fontWeight="400" fontSize="14" fill={C.ink} letterSpacing="0.08em">{it.label.toUpperCase()}</text>
+          <text x={lx + SW + GAPsl - (it.kind === "diamond" || it.kind === "star" ? 7 : 0)} y={yRow} dominantBaseline="central" fontFamily="'Oswald Med', sans-serif" data-lg={it.kind} fontWeight="400" fontSize="14" fill={C.ink} letterSpacing="0.08em">{it.label.toUpperCase()}</text>
         </g>
       );
       x += widths[i] + GAPit;

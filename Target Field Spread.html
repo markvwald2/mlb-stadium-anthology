@@ -75,8 +75,7 @@
   }
 
 
-  .tf-hero-logo { position: absolute; left: 60px; bottom: 56px; height: 104px; width: auto; z-index: 5;
-    filter: drop-shadow(0 3px 11px rgba(0,0,0,.45)); }
+  .tf-hero-logo { position: absolute; left: 60px; bottom: 56px; height: 104px; width: auto; z-index: 5; }
   .tf-folio { position: absolute; right: 66px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(228,222,206,.62); text-transform: uppercase; }
@@ -105,7 +104,7 @@
     position: relative; margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
     font-size: 132px; line-height: .92; letter-spacing: .01em; text-transform: uppercase; white-space: nowrap;
     color: #F1EAD6; -webkit-text-fill-color: #F1EAD6;
-    --dsx: 2px; --dsy: 3px; --dsc: rgba(8,8,10,.28);
+    --dsx: 2px; --dsy: 2px; --dsc: rgba(8,8,10,.28);
   }
   .tf-name::after {
     content: attr(data-t); position: absolute; left: 0; top: 0; pointer-events: none;
@@ -114,8 +113,7 @@
     -webkit-text-fill-color: transparent; color: transparent; mix-blend-mode: multiply; opacity: .5;
   }
   .tf-sub { display: flex; align-items: center; gap: 18px; margin-top: 6px; }
-  .tf-sub .bullseye { height: 50px; width: auto; display: block; flex: none;
-    filter: drop-shadow(0 2px 9px rgba(0,0,0,.5)); }
+  .tf-sub .bullseye { height: 50px; width: auto; display: block; flex: none; }
   .tf-sub .txt { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 17px;
     letter-spacing: .42em; text-transform: uppercase; color: #CBA96B; white-space: nowrap; }
   .tf-openair { margin-top: 13px; font-family: "Space Mono", monospace; font-size: 12px;
@@ -143,13 +141,13 @@
   /* ---- top metadata ribbon — the bridge between the twins ---- */
   .tf-ribbon { display: flex; align-items: stretch; flex: none;
     border-top: 1.5px solid var(--navy); border-bottom: 1.5px solid var(--navy); }
-  .tf-ribbon .cell { flex: 1; padding: 8px 14px; border-left: 1px solid var(--rule);
+  .tf-ribbon .cell { flex: 1 1 auto; padding: 8px 14px; border-left: 1px solid var(--rule);
     display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
   .tf-ribbon .cell:first-child { border-left: 0; padding-left: 2px; }
-  .tf-ribbon .cell.coords { flex: 1.3; }
+  .tf-ribbon .cell.coords { flex: 1 1 auto; }
   .tf-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .12em; text-transform: uppercase; color: var(--red); white-space: nowrap; }
-  .tf-ribbon .rv { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
+  .tf-ribbon .rv { white-space: nowrap; font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .015em; text-transform: uppercase; color: var(--ink); line-height: 1.12; }
   .tf-ribbon .rv.withlogo { display: flex; align-items: center; gap: 7px; }
   .tf-ribbon .rib-mk { height: 21px; width: auto; display: block; flex: none; }
@@ -332,5 +330,6 @@
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="target-field-spread.jsx"></script>
   <script type="text/babel" src="target-field-app.jsx"></script>
+  <script src="logo-ghost.js"></script>
 </body>
 </html>

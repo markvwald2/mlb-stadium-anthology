@@ -109,7 +109,7 @@
               e("div", { className: "cap" }, "National League")),
             e("div", { className: "shea-well" },
               e("div", { className: "box" }, e("img", { src: "assets/mlb-logo.svg", alt: "Major League Baseball" })),
-              e("div", { className: "cap" }, "Major League"))))),
+              e("div", { className: "cap" }, "Major Leagues"))))),
 
       /* ===== RIGHT PAGE ===== */
       e("div", { className: "shea-page shea-right" },

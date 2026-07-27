@@ -25,6 +25,8 @@
   /* weather glyphs — fine line-art on paper */
   function wxIcon(kind) {
     const c = { width: 28, height: 28, viewBox: "0 0 24 24", fill: "none", stroke: "#574F3F", strokeWidth: 1.35, strokeLinecap: "round", strokeLinejoin: "round", className: "cy-wx-ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c, e("path", { d: "M14 14.76V5a2 2 0 1 0-4 0v9.76a4 4 0 1 0 4 0z" }), e("path", { d: "M12 9v6" }));
     if (kind === "sun") return e("svg", c, e("circle", { cx: 12, cy: 12, r: 4 }), e("path", { d: "M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" }));
     if (kind === "wind") return e("svg", c, e("path", { d: "M3 8h10a2.5 2.5 0 1 0-2.5-2.5M3 16h13a2.5 2.5 0 1 1-2.5 2.5M3 12h7" }));
@@ -101,8 +103,8 @@
         /* freight nameplate title block (lower-left) */
         e("div", { className: "cy-hero-plate" },
           e("h1", { className: "cy-hero-name" },
-            e("span", { className: "l1" }, "Oriole Park"),
-            e("span", { className: "l2" }, "at Camden Yards")),
+            e("span", { className: "l1 cy-ds", "data-t": "Oriole Park" }, "Oriole Park"),
+            e("span", { className: "l2 cy-ds", "data-t": "at Camden Yards" }, "at Camden Yards")),
           e("div", { className: "cy-hero-rule" }),
           e("div", { className: "cy-hero-sub" },
             e("span", { className: "city" }, D.city + ", " + D.state),
@@ -142,6 +144,7 @@
               e("div", { className: "k" }, "Classification"),
               e("div", { className: "v" }, D.classification_era)),
             ribCell("Years Active", D.years_active),
+            ribCell("All-Star Game", "1993"),
             e("div", { className: "cy-rc" },
               e("div", { className: "k" }, "Current Capacity"),
               e("div", { className: "v big" }, D.capacity_current)),

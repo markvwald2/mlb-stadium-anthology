@@ -59,6 +59,8 @@
   function Icon(kind, stroke) {
     const c = { width: 26, height: 26, viewBox: "0 0 24 24", fill: "none", stroke: stroke || "#fff",
       strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", className: "rc-ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "group") return e("svg", c,
       e("circle", { cx: 8.5, cy: 8.5, r: 2.6 }), e("circle", { cx: 16, cy: 9, r: 2.2 }),
       e("path", { d: "M3.5 18c0-2.6 2.2-4.4 5-4.4s5 1.8 5 4.4M14.5 17.4c0-2.1 1.5-3.6 3.8-3.6 1.9 0 3.2 1.1 3.2 2.9" }));
@@ -169,15 +171,15 @@
             e("span", { className: "txt" }, D.city + ", " + D.state)
           ),
           e("div", { className: "rc-identity" },
-            e("img", { className: "rc-team-logo", src: D.home_logo, alt: "Toronto Blue Jays" }),
+            e("img", { className: "rc-team-logo", "data-lg": "", src: D.home_logo, alt: "Toronto Blue Jays" }),
             e("div", { className: "rc-id-txt" },
               e("div", { className: "rc-team" }, D.team_name),
               e("div", { className: "rc-lg" },
                 e("span", null, D.league), e("span", { className: "dot" }, "\u00b7"), e("span", { className: "dv" }, D.division))
             ),
             e("span", { className: "rc-id-div" }),
-            e("img", { className: "rc-mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-            e("img", { className: "rc-al", src: "assets/american-league-logo.png", alt: "American League" })
+            e("img", { className: "rc-mlb", "data-lg": "", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
+            e("img", { className: "rc-al", "data-lg": "", src: "assets/american-league-logo.png", alt: "American League" })
           )
         )
       ),

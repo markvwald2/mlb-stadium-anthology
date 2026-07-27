@@ -39,9 +39,14 @@
   function WxIcon(kind) {
     const c = { width: 26, height: 26, viewBox: "0 0 24 24", fill: "none",
       stroke: "#6E665A", strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", className: "chf-wico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "sun") return e("svg", c,
       e("circle", { cx: 12, cy: 12, r: 4.2 }),
       e("path", { d: "M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.2 5.2l1.7 1.7M17.1 17.1l1.7 1.7M18.8 5.2l-1.7 1.7M6.9 17.1l-1.7 1.7" }));
+    if (kind === "temp") return e("svg", c,
+      e("path", { d: "M14 14.5V5a2 2 0 1 0-4 0v9.5a4 4 0 1 0 4 0z" }),
+      e("path", { d: "M12 14V8" }));
     if (kind === "clear") return e("svg", c,
       e("circle", { cx: 12, cy: 12, r: 5 }),
       e("path", { d: "M12 3v1.6M12 19.4V21M3 12h1.6M19.4 12H21M5.6 5.6l1.1 1.1M17.3 17.3l1.1 1.1M18.4 5.6l-1.1 1.1M6.7 17.3l-1.1 1.1" }));
@@ -100,7 +105,7 @@
           e(Slot, { id: "chase-hero", src: "images/chase/chase-field-00-main-PS.jpg", placeholder: "Drop the Chase Field hero \u2014 aerial of the retractable roof, downtown Phoenix grid, desert basin & mountains at dusk", shape: "rect" })
         ),
         // Diamondbacks mark, upper-left
-        e("img", { className: "chf-hero-logo", src: "assets/arizona-diamondbacks-logo.svg", alt: "Arizona Diamondbacks" }),
+        e("img", { className: "chf-hero-logo", "data-lg": "", src: "assets/arizona-diamondbacks-logo.svg", alt: "Arizona Diamondbacks" }),
 
         // folio, upper-right
         e("div", { className: "chf-folio" }, "VISIT " + D.visit_order + " / " + D.visit_total),
@@ -151,7 +156,7 @@
             ),
             ribCell("Team", D.team_short),
             ribCell("League", D.league),
-            ribCell("Stadium Classification", D.classification_ribbon),
+            ribCell("Stadium Classification", D.classification_ribbon, false, { letterSpacing: "1px" }),
             ribCell("Years Active", D.years_active),
             ribCell("Current Capacity", D.capacity_current),
             ribCell("Visit Number", D.visit_order + " of " + D.visit_total)
@@ -177,7 +182,7 @@
               e("div", { className: "chf-mod" },
                 e(SecHead, { title: "Weather" }),
                 e("div", { className: "chf-weather" },
-                  wxCell("sun", D.weather.temperature, "Temp"),
+                  wxCell("temp", D.weather.temperature, "Temp"),
                   wxCell("clear", D.weather.conditions, "Conditions"),
                   wxCell("wind", D.weather.wind, "Wind"),
                   wxCell("drop", D.weather.humidity, "Humidity")
@@ -195,8 +200,7 @@
                 ),
                 e("div", { className: "chf-dec" },
                   e("p", null, e("b", null, "W:"), " ", e("i", null, D.winning_pitcher), " (" + D.winning_team + ")"),
-                  e("p", null, e("b", null, "L:"), " ", e("i", null, D.losing_pitcher), " (" + D.losing_team + ")"),
-                  e("p", { className: "sv" }, e("b", null, "S:"), " " + D.save_pitcher)
+                  e("p", null, e("b", null, "L:"), " ", e("i", null, D.losing_pitcher), " (" + D.losing_team + ")")
                 )
               ),
               e("div", { className: "chf-mod field" },
@@ -231,9 +235,9 @@
     );
   }
 
-  function ribCell(label, value, mono) {
+  function ribCell(label, value, mono, lblStyle) {
     return e("div", { className: "cell" + (mono ? " coords" : "") },
-      e("div", { className: "rl" }, label),
+      e("div", { className: "rl", style: lblStyle }, label),
       e("div", { className: "rv" }, value)
     );
   }

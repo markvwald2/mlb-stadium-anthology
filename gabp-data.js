@@ -30,7 +30,7 @@ window.GABP = {
     ["Opened", "Mar 31, 2003"],
     ["Capacity", "42,271 \u2192 42,319"],
     ["Years Active", "2003\u2013Present"],
-    ["Surface", "Natural Grass"],
+    ["All-Star Game", "2015"],
     ["Type", "Open-Air Baseball"],
     ["Roof", "Open Air"],
     ["Era", "Retro Classic"],
@@ -40,6 +40,7 @@ window.GABP = {
   // ---- Stadium Facts (museum specification sheet) ----
   facts: [
     ["Construction Start", "Aug 1, 2000"],
+    ["Surface", "Natural Grass"],
     ["Architect", "HOK Sport \u00b7 GBBN \u00b7 Moody Nolan"],
     ["Surface", "Perennial ryegrass mixture"],
     ["Facade", "Brick & cast stone/sandstone base, white-painted steel, and glass"],

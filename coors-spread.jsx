@@ -36,6 +36,8 @@
 
   function WxIcon(kind) {
     const common = { width: 30, height: 30, viewBox: "0 0 24 24", fill: "none", stroke: C.primary.hex, strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", className: "ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, common);
     if (kind === "cloud") return React.createElement("svg", common,
       React.createElement("circle", { cx: 8, cy: 9, r: 3.4 }),
       React.createElement("path", { d: "M7 18h9a3.5 3.5 0 0 0 .4-6.98A5 5 0 0 0 7.5 10.2 3.9 3.9 0 0 0 7 18z" }));
@@ -128,6 +130,7 @@
                   React.createElement("div", { className: "cf-facts" },
                     factRow("Opened", D.opening_day),
                     factRow("Years Active", "1995\u2013Present"),
+                    factRow("All-Star Games", "1998, 2021", { letterSpacing: "-0.1px" }),
                     factRow("Capacity", D.capacity_current + " (" + D.capacity_opening + " opening)"),
                     factRow("Surface", D.surface),
                     factRow("Architect", D.architect),
@@ -178,7 +181,7 @@
 
                 /* Home Opener box — integrated scoreboard + game facts */
                 React.createElement("div", { className: "cf-scorecard" },
-                  React.createElement("div", { className: "tab" }, "Home Opener"),
+                  React.createElement("div", { className: "tab" }, "Inaugural Game"),
                   React.createElement("div", { className: "sc-body" },
                     React.createElement("div", { className: "sc-date" }, D.box.date + "  \u00b7  Final / 14 innings"),
                     Scoreboard(D.box),
@@ -188,6 +191,9 @@
                       scInline("Attendance", D.attendance)
                     ),
                     React.createElement("div", { className: "sc-facts-line" },
+                      scInline("SP \u00b7 NYM", "Bobby Jones"),
+                      scInline("SP \u00b7 COL", "Bill Swift"),
+                      React.createElement("span", { className: "scf-spacer" }),
                       scInline("W", D.winning_pitcher),
                       scInline("L", D.losing_pitcher),
                       scInline("Save", D.save_pitcher)
@@ -198,7 +204,7 @@
                 /* weather — single line, matches Home Opener width */
                 React.createElement("div", { className: "cf-weather-strip" },
                   React.createElement("span", { className: "wlabel" }, "Weather"),
-                  React.createElement("span", { className: "witem" }, WxIcon("cloud"), React.createElement("b", null, D.temperature), React.createElement("span", { className: "t" }, D.conditions)),
+                  React.createElement("span", { className: "witem" }, WxIcon("partly"), React.createElement("b", null, D.temperature), React.createElement("span", { className: "t" }, D.conditions)),
                   React.createElement("span", { className: "witem" }, WxIcon("wind"), React.createElement("span", { className: "k" }, "Wind"), React.createElement("b", null, D.wind)),
                   React.createElement("span", { className: "witem" }, WxIcon("drop"), React.createElement("span", { className: "k" }, "Humidity"), React.createElement("b", null, D.humidity))
                 )
@@ -230,9 +236,9 @@
       React.createElement("div", { className: "rl" }, label),
       React.createElement("div", { className: "rv" }, value));
   }
-  function factRow(label, value) {
+  function factRow(label, value, lblStyle) {
     return React.createElement("div", { className: "row" },
-      React.createElement("div", { className: "fl" }, label),
+      React.createElement("div", { className: "fl", style: lblStyle }, label),
       React.createElement("div", { className: "fv" }, value));
   }
   function finCell(label, value) {

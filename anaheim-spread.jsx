@@ -95,15 +95,10 @@
     return e("div", { className: "as-mc" }, e("span", { className: "ml" }, l), e("span", { className: "mv" }, v));
   }
 
-  /* understated line-art "clear" glyph (sun) */
+  /* unified weather icon set — same 26px box, same optical weight */
   function SunIcon() {
-    return e("svg", { className: "as-wxicon", viewBox: "0 0 40 40", fill: "none",
-        stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round" },
-      e("circle", { cx: 20, cy: 20, r: 7 }),
-      [0, 45, 90, 135, 180, 225, 270, 315].map((a, i) => {
-        const t = a * Math.PI / 180, c = Math.cos(t), s = Math.sin(t);
-        return e("line", { key: i, x1: 20 + c * 12, y1: 20 + s * 12, x2: 20 + c * 16, y2: 20 + s * 16 });
-      }));
+    return window.WxIcons.react("sun", { className: "as-wxicon", viewBox: "0 0 40 40",
+      stroke: "currentColor", strokeWidth: 1.32, wrapTransform: "scale(1.6667)" });
   }
 
   function Spread() {
@@ -133,9 +128,9 @@
 
         e("div", { className: "as-coords" }, D.coords_line + "   \u00b7   Elev. 148 ft   \u00b7   Open air"),
         e("div", { className: "as-hero-logos" },
-          e("img", { className: "hl-team", src: "assets/angels-logo-1986.png", alt: "Los Angeles Angels" }),
-          e("img", { className: "hl-al", src: "assets/american-league-logo.png", alt: "American League" }),
-          e("img", { className: "hl-mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }))),
+          e("img", { className: "hl-team", "data-lg": "", src: "assets/angels-logo-1986.png", alt: "Los Angeles Angels" }),
+          e("img", { className: "hl-al", "data-lg": "", src: "assets/american-league-logo.png", alt: "American League" }),
+          e("img", { className: "hl-mlb", "data-lg": "", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }))),
 
       /* ================= RIGHT / WAYFINDING PANEL ================= */
       e("div", { className: "as-page as-right", "data-screen-label": "Angel Stadium \u2014 survey page" },

@@ -43,6 +43,8 @@
   /* Weather glyphs — fine line-art. */
   function WxIcon(kind) {
     const c = { width: 34, height: 34, viewBox: "0 0 24 24", fill: "none", stroke: "#555046", strokeWidth: 1.05, strokeLinecap: "round", strokeLinejoin: "round", className: "pnc-wx-ico" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "drizzle") return React.createElement("svg", c,
       React.createElement("path", { d: "M7 15a4 4 0 0 1 .4-7.98 5.5 5.5 0 0 1 10.6 1.48A3.5 3.5 0 0 1 17.5 15z" }),
       React.createElement("path", { d: "M8 18.5l-1 2M12 18.5l-1 2M16 18.5l-1 2" }));
@@ -129,7 +131,8 @@
               ribCell("Classification", D.classification_era),
               ribCell("Years Active", D.years_active),
               ribCell("Visit Order", D.visit_order + " of 42"),
-              ribCell("Status", D.status)),
+              ribCell("Status", D.status),
+              ribCell("All-Star Game", "2006", "allstar")),
 
             /* --- body grid --- */
             React.createElement("div", { className: "pnc-body" },
@@ -232,8 +235,8 @@
     return React.createElement("div", { className: "pnc-pcard", "data-slot": id },
       React.createElement("image-slot", { id: id, class: "pnc-pslot", shape: "rect", src: "images/pnc/" + id + ".jpg", placeholder: l1 + " " + l2 }));
   }
-  function ribCell(k, v) {
-    return React.createElement("div", { className: "rc" },
+  function ribCell(k, v, cls) {
+    return React.createElement("div", { className: "rc" + (cls ? " " + cls : "") },
       React.createElement("div", { className: "k" }, k),
       React.createElement("div", { className: "v" }, v));
   }

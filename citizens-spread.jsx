@@ -69,6 +69,8 @@
   function WxIcon(kind) {
     const c = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "#574B3D",
       strokeWidth: 1.4, strokeLinecap: "round", strokeLinejoin: "round", style: { flex: "none" } };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     if (kind === "temp") return e("svg", c, e("path", { d: "M14 14.5V5a2 2 0 1 0-4 0v9.5a4 4 0 1 0 4 0z" }), e("path", { d: "M12 14V8" }));
     if (kind === "cloud") return e("svg", c, e("path", { d: "M7 18h9.5a3.5 3.5 0 0 0 .4-6.98 5 5 0 0 0-9.65-1.2A3.9 3.9 0 0 0 7 18z" }));
     if (kind === "wind") return e("svg", c, e("path", { d: "M3 8h10a2.4 2.4 0 1 0-2.4-2.4M3 16h13a2.4 2.4 0 1 1-2.4 2.4M3 12h7" }));

@@ -71,8 +71,7 @@
   }
 
 
-  .chf-hero-logo { position: absolute; left: 60px; top: 54px; height: 96px; width: auto; z-index: 5;
-    filter: drop-shadow(0 2px 10px rgba(0,0,0,.45)); }
+  .chf-hero-logo { position: absolute; left: 60px; top: 54px; height: 96px; width: auto; z-index: 5; }
   .chf-folio { position: absolute; right: 66px; top: 64px; z-index: 5;
     font-family: "Space Mono", monospace; font-size: 14px; letter-spacing: .26em;
     color: rgba(236,228,212,.62); text-transform: uppercase; }
@@ -137,8 +136,6 @@
     display: flex; flex-direction: column; justify-content: center; gap: 4px; min-width: 0; }
   .chf-ribbon .cell.mark { flex: 0 0 auto; align-items: center; justify-content: center;
     border-left: 0; padding: 6px 16px 6px 0; position: relative; }
-  .chf-ribbon .cell.mark::after { content: ""; position: absolute; right: 0; top: 12px; bottom: 12px;
-    width: 3px; background: var(--sedona); }
   .chf-ribbon .rib-logo { height: 46px; width: auto; display: block; }
   .chf-ribbon .cell.coords { flex: 1.25; }
   .chf-ribbon .rl { font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
@@ -150,7 +147,7 @@
 
   /* ---- three-column body ---- */
   .chf-body { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1.28fr; min-height: 0; }
-  .chf-col { display: flex; flex-direction: column; gap: 7px; min-width: 0; padding: 4px 26px 0;
+  .chf-col { display: flex; flex-direction: column; gap: 5px; min-width: 0; min-height: 0; padding: 4px 26px 0;
     position: relative; }
   .chf-col::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0;
     border-bottom: 1px solid var(--rule); }
@@ -182,7 +179,7 @@
   .chf-facts { display: flex; flex-direction: column; }
   .chf-frow { display: grid; grid-template-columns: 124px 1fr; gap: 12px; align-items: baseline;
     padding: 1px 0; border-bottom: 1px solid var(--rule); }
-  .chf-facts.compact .chf-frow { padding: 2px 0; }
+  .chf-facts.compact .chf-frow { padding: 4.6px 0; }
   .chf-frow:last-child { border-bottom: 0; }
   .chf-frow .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .07em;
     text-transform: uppercase; color: var(--ink-3); }
@@ -206,7 +203,7 @@
   .chf-gcap .sep { color: var(--rule-strong); }
 
   /* weather — 2 x 2 */
-  .chf-weather { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 14px; }
+  .chf-weather { display: grid; grid-template-columns: 1fr 1fr; gap: 11px 14px; }
   .chf-wcell { display: flex; align-items: center; gap: 11px; }
   .chf-wcell .chf-wico { flex: none; }
   .chf-wcell .tx { display: flex; flex-direction: column; }
@@ -216,7 +213,7 @@
 
   /* line score */
   .chf-box { width: 100%; border-collapse: collapse; font-family: "Oswald", sans-serif; }
-  .chf-box th, .chf-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 4px 0;
+  .chf-box th, .chf-box td { text-align: center; font-size: 12px; font-weight: 400; padding: 6px 0;
     color: var(--ink); border-bottom: 1px solid var(--rule); }
   .chf-box thead th { color: var(--ink-3); font-weight: 500; font-size: 12px; border-bottom: 1.5px solid var(--ink); }
   .chf-box td.tm, .chf-box th.tm { text-align: left; font-weight: 700; font-size: 12px; letter-spacing: .08em;
@@ -230,7 +227,7 @@
   .chf-box tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
 
   /* decisions */
-  .chf-dec { margin-top: 11px; display: flex; flex-direction: column; gap: 4px; }
+  .chf-dec { margin-top: 11px; display: flex; flex-direction: column; gap: 6px; }
   .chf-dec p { margin: 0; font-family: "Spectral", serif; font-size: 12.5px; color: var(--ink); }
   .chf-dec p b { font-family: "Oswald", sans-serif; font-weight: 700; font-size: 12px; letter-spacing: .06em;
     color: var(--sedona-deep); }
@@ -265,11 +262,13 @@
   <script src="image-slot.js"></script>
   <script src="chase-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="chase-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="chase-spread.jsx"></script>
   <script type="text/babel" src="chase-app.jsx"></script>
   <script src="ghost-shadow.js"></script>
+  <script src="logo-ghost.js"></script>
 </body>
 </html>

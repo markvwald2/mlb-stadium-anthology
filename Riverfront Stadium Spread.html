@@ -139,7 +139,7 @@
   /* facts table */
   .colhdr { margin: 0 0 10px; padding-bottom: 7px; border-bottom: 1px solid var(--rule-strong); font-size: 12px; letter-spacing: .14em; }
   .rf-facts { display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 6px; }
-  .rf-facts .row { display: grid; grid-template-columns: 98px 1fr; gap: 11px; padding: 3px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+  .rf-facts .row { display: grid; grid-template-columns: 98px 1fr; gap: 11px; padding: 1px 0; border-bottom: 1px solid var(--rule); align-items: start; }
   .rf-facts .row:first-of-type { border-top: 0; }
   .rf-facts .row:has(+ .rf-pb) { border-bottom: 0; }
   .rf-facts .row .lbl { padding-top: 2px; font-size: 12px; }
@@ -149,10 +149,18 @@
   .rf-logos { display: flex; align-items: center; justify-content: center; gap: 30px; margin: auto 0; padding: 8px 0; }
   .rf-logo { height: 62px; width: auto; display: block; }
   /* preceded-by block at foot of facts column */
-  .rf-pb { margin-top: 4px; padding-top: 9px; border-top: 1px solid var(--rule-strong); }
-  .rf-pb .pbitem + .pbitem { margin-top: 0; padding-top: 5px; border-top: 1px solid var(--rule); }
-  .rf-pb .k { margin-bottom: 3px; font-size: 12px; }
+  .rf-pb { margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--rule-strong); }
+  .rf-pb .pbitem + .pbitem { margin-top: 9px; padding-top: 9px; border-top: 1px solid var(--rule); }
+  .rf-pb .k { margin-bottom: 6px; font-size: 12px; }
   .rf-pb .v { font-size: 12px; line-height: 1.26; }
+  .rf-pb .pbcols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14px; row-gap: 6px; }
+  .rf-pb .pbe { display: flex; flex-wrap: nowrap; align-items: baseline; gap: 0 5px; min-width: 0; }
+  .rf-pb .pbn { font-size: 12px; line-height: 1.18; letter-spacing: -0.6px; white-space: nowrap; }
+  .rf-pb .pbd { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: -0.2px; color: var(--ink-3); line-height: 1.1; white-space: nowrap; }
+  .erasteps { display: flex; flex-direction: column; gap: 3px; }
+  .erasteps .pbe { display: flex; align-items: baseline; justify-content: flex-start; gap: 10px; }
+  .erasteps .pbn { font-size: 12px; line-height: 1.18; letter-spacing: -0.4px; white-space: nowrap; }
+  .erasteps .pbd { font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: -0.2px; color: var(--ink-3); line-height: 1.1; white-space: nowrap; }
   /* club / league marks at the band's right edge — rendered as light marks on dark */
   .rf-vlogos { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding-left: 6px; transform: translateX(-22px); }
   .rf-vband .vcol.rf-vlogos { border-left: 0; }
@@ -170,7 +178,7 @@
   /* context */
   .rf-context .body { column-count: auto; }
   .rf-context p { margin: 0 0 6px; font-family: "Spectral", serif; font-size: 13.5px; line-height: 1.29; letter-spacing: .1px; color: var(--ink); text-align: justify; hyphens: auto; }
-  .rf-context p:first-child::first-letter { font-weight: 700; font-size: 33px; line-height: .8; float: left; padding: 3px 7px 0 0; color: var(--blueprint); }
+  .rf-context p:first-child::first-letter { font-weight: 700; font-size: 33px; line-height: .8; float: left; padding: 3px 7px 0 0; color: var(--red); }
 
   /* circle diagram */
   .rf-fd-wrap { width: 100%; }
@@ -266,7 +274,8 @@
   <script src="image-slot.js"></script>
   <script src="riverfront-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="circle-diagram.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="riverfront-spread.jsx"></script>

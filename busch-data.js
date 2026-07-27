@@ -37,6 +37,7 @@ window.BUSCH = {
   facts: [
     ["Opened", "Apr 10, 2006"],
     ["GROUNDBREAKING", "Jan 17, 2004", null, null, "tight"],
+    ["All-Star Game", "2009"],
     ["Surface", "Natural grass", "Tahoma 31 hybrid bermudagrass since 2023; previously Kentucky bluegrass"],
     ["Stadium Type", "Open-air baseball-only ballpark"],
     ["Architect", "Populous, with HOK Sport heritage"],
@@ -44,7 +45,6 @@ window.BUSCH = {
     ["COST", "$365 million", "adjusted $583 million", "inline"],
     ["Financing", "Primarily privately financed (Cardinals ownership); limited state / local public assistance & infrastructure support"],
     ["Renovations", "Ballpark Village phased development; scoreboard, club, seating & hospitality upgrades"],
-    ["Location", "Downtown \u00b7 700 Clark Avenue"],
     ["Preceded By", "Sportsman\u2019s Park (1880-1891)\nUnion Park (1892-1897)\nLeague Park (1898)\nRobison Field (1899-1920)\nSportsman\u2019s Park (1920-1952)\nBusch Stadium (1953-1965)\nBusch Stadium II (1966-2005)"]
   ],
 

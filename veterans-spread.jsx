@@ -95,9 +95,9 @@
             e("span", { className: "txt" }, "South Philadelphia Sports Complex"))),
 
         e("div", { className: "vet-hero-foot" },
-          e("img", { className: "vet-logo", src: "assets/phillies-script-p-v2-fill.svg", alt: "Phillies" }),
-          e("img", { className: "vet-logo", src: "assets/nl-logo.png", alt: "National League" }),
-          e("img", { className: "vet-logo", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }))),
+          e("img", { className: "vet-logo", "data-lg": "", src: "assets/phillies-script-p-v2-fill.svg", alt: "Phillies" }),
+          e("img", { className: "vet-logo", "data-lg": "", src: "assets/nl-logo.png", alt: "National League" }),
+          e("img", { className: "vet-logo", "data-lg": "", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }))),
 
       /* ===== RIGHT PAGE ===== */
       e("div", { className: "vet-page vet-right" },

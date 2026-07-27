@@ -242,7 +242,7 @@
     letter-spacing: 0; text-transform: none; color: var(--ink-2); }
   .shea-lin-strip .ln-arr { flex: 1; min-width: 30px; position: relative; height: 12px; margin: 0 16px; }
   .shea-lin-strip .ln-arr::before { content: ""; position: absolute; left: 0; right: 7px; top: 50%; height: 1.5px;
-    background: var(--rule-strong); }
+    transform: translateY(-50%); background: var(--rule-strong); }
   .shea-lin-strip .ln-arr::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
     border-left: 7px solid var(--rule-strong); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
 
@@ -374,7 +374,8 @@
   <script src="image-slot.js"></script>
   <script src="shea-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="shea-diagrams.jsx"></script>
   <script type="text/babel" src="shea-protractor.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>

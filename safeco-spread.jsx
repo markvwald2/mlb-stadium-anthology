@@ -209,7 +209,7 @@
                     e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" })),
                   e("div", { className: "tm-tags" },
                     D.tags.map((t, i) => e("span", { className: "tm-tag", key: i }, t)))))),
-            e("div", { className: "tm-class" }, D.classification_line))
+            e("div", { className: "tm-class" }, "All-Star Games: 2001, 2023"))
         ),
 
         /* ---- unified Stadium Context, full-width 3-bay text field ---- */

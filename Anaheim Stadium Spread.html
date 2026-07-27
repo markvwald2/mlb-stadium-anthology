@@ -68,6 +68,7 @@
   .as-folio .fv { font-family: "Space Mono", monospace; font-weight: 700; font-size: 12px; letter-spacing: .06em;
     color: #151009; background: #B0122B; padding: 6px 12px; display: flex; align-items: center; color: #F4EEDF; }
 
+  .as-title, .as-title * { --gs-x: 1.5px; --gs-y: 2px; }
   .as-title { position: absolute; left: 88px; top: 72px; z-index: 6; display: flex; align-items: flex-start; }
   .as-mast { flex: none; width: 5px; height: 420px; margin-right: 22px;
     background: linear-gradient(180deg, #B0122B 0%, #B0122B 76%, rgba(176,18,43,0) 100%); }
@@ -92,7 +93,7 @@
     font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .12em;
     text-transform: uppercase; color: rgba(255,255,255,.6); }
   .as-hero-logos { position: absolute; top: 107px; right: 64px; z-index: 6; display: flex; align-items: center; gap: 20px; }
-  .as-hero-logos img { display: block; width: auto; object-fit: contain; filter: drop-shadow(0 1px 3px rgba(0,0,0,.55)); }
+  .as-hero-logos img { display: block; width: auto; object-fit: contain; }
   .as-hero-logos .hl-team { height: 42px; }
   .as-hero-logos .hl-al { height: 42px; }
   .as-hero-logos .hl-mlb { height: 31.5px; }
@@ -279,11 +280,13 @@
   <script src="image-slot.js"></script>
   <script src="anaheim-data.js"></script>
   <script src="field-labels.js"></script>
-  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script src="weather-icons.js"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
   <script type="text/babel" src="anaheim-field.jsx"></script>
   <script type="text/babel" src="print-page.jsx"></script>
   <script type="text/babel" src="anaheim-spread.jsx"></script>
   <script type="text/babel" src="anaheim-app.jsx"></script>
   <script src="ghost-shadow.js"></script>
+  <script src="logo-ghost.js"></script>
 </body>
 </html>

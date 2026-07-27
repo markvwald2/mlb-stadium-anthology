@@ -38,6 +38,8 @@
   /* ---- small civic line icons ---- */
   function Icon(kind, cls) {
     const c = { className: cls || "ico", viewBox: "0 0 24 24", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round" };
+    /* unified weather icon set — same box, same stroke, shared geometry */
+    if (window.WxIcons && window.WxIcons.parts(kind)) return window.WxIcons.react(kind, c);
     const P = (d) => e("path", { d: d });
     if (kind === "route")   return e("svg", c, e("circle", { cx: 5, cy: 6, r: 2 }), e("circle", { cx: 19, cy: 18, r: 2 }), P("M5 8v6a4 4 0 0 0 4 4h6"));
     if (kind === "pin")     return e("svg", c, P("M12 21s-6-5.3-6-10a6 6 0 1 1 12 0c0 4.7-6 10-6 10z"), e("circle", { cx: 12, cy: 11, r: 2 }));
@@ -206,7 +208,6 @@
 
             /* right column: photo grid + instruments */
             e("div", { className: "cm-rcol" },
-              e("div", { className: "cm-coltitle" }, e("div", { className: "t" }, "Civic Plates"), e("div", { className: "ln" })),
               e("div", { className: "cm-photos" },
                 e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p1", src: "images/cleveland/municipal-stadium-02-8515c300.jpg", placeholder: "Stripped-classical exterior facade" })),
                 e("div", { className: "cm-pcard" }, e(Slot, { id: "cms-p2", src: "images/cleveland/municipal-stadium-05-93869c5d.jpg", placeholder: "Open-air bowl & grandstand" })),
@@ -289,7 +290,7 @@
               e("div", { className: "cm-vcol cm-weather" },
                 e("div", { className: "cm-vh" }, "Weather"),
                 wx("temp", D.temperature, "Temperature"),
-                wx("sun", D.conditions, "Conditions"),
+                wx("partly", D.conditions, "Conditions"),
                 wx("wind", D.wind, "Wind"),
                 wx("drop", D.humidity, "Humidity")),
 
@@ -304,7 +305,7 @@
             e("span", { className: "plate" }, "Cleveland Municipal Stadium"),
             e("span", { className: "sep" }, "\u2502"),
             e("span", null, "Walker & Weeks \u00b7 Lakefront Bowl \u00b7 1931\u20131993"),
-            e("span", { className: "end" }, "Lakefront Civic Datum"))
+            e("span", { className: "end" }, "All-Star Games: ", e("span", { className: "yrs" }, "1935, 1954, 1960, 1963, 1981")))
         )
       )
     );
