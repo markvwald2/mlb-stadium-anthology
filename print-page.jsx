@@ -357,12 +357,19 @@
         await Promise.all(faces.map((f) => f.load().catch(() => {})));
         await document.fonts.ready;
       } catch (e) { /* fall through to ready state regardless */ }
+      // Optional extra gate a spread can install (e.g. text-to-outline
+      // conversion). Print stays blocked until it resolves.
+      let extraLabel = null;
+      if (window.PPExtraReady) {
+        badge.textContent = "Converting text to outlines\u2026 don\u2019t print yet";
+        try { extraLabel = await window.PPExtraReady; } catch (e) { extraLabel = null; }
+      }
       attach();
       fontsReady = true;
       window.removeEventListener("keydown", guardKey, true);
       if (guard.isConnected) guard.remove();
       badge.setAttribute("data-state", "ready");
-      badge.textContent = "Fonts embedded \u2713 \u00b7 safe to print";
+      badge.textContent = extraLabel || "Fonts embedded \u2713 \u00b7 safe to print";
     })();
   }
 

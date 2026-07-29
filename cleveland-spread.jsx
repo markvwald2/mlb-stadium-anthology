@@ -290,7 +290,7 @@
               e("div", { className: "cm-vcol cm-weather" },
                 e("div", { className: "cm-vh" }, "Weather"),
                 wx("temp", D.temperature, "Temperature"),
-                wx("partly", D.conditions, "Conditions"),
+                wx("partlynight", D.conditions, "Conditions"),
                 wx("wind", D.wind, "Wind"),
                 wx("drop", D.humidity, "Humidity")),
 

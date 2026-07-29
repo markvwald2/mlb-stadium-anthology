@@ -147,6 +147,11 @@
       case "moon": return e("svg", c, e("path", { d: "M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" }));
       case "sun": return e("svg", c, e("circle", { cx: 12, cy: 12, r: 4 }),
         e("path", { d: "M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" }));
+      /* doubleheader / twi-night: sun then crescent — a day game running into a night game */
+      case "doubleheader": return e("svg", c,
+        e("circle", { cx: 4.8, cy: 12, r: 2.3 }),
+        e("path", { d: "M4.8 7.3v1.3M4.8 15.4v1.3M0.1 12h1.3M8.2 12h1.3M1.48 8.68l.85.85M7.28 14.48l.85.85M8.12 8.68l-.85.85M2.33 14.48l-.85.85" }),
+        e("path", { d: "M20.33 7.58a4.43 4.43 0 1 0 3.4 6.55 3.58 3.58 0 0 1-3.4-6.55z" }));
       case "clock": return e("svg", c, e("circle", { cx: 12, cy: 12, r: 8.5 }),
         e("path", { d: "M12 7.5V12l3 2" }));
       case "ticket": return e("svg", c, e("path", { d: "M3 8.5A1.5 1.5 0 0 1 4.5 7h15A1.5 1.5 0 0 1 21 8.5v1a2 2 0 0 0 0 5v1A1.5 1.5 0 0 1 19.5 17h-15A1.5 1.5 0 0 1 3 15.5v-1a2 2 0 0 0 0-5z" }),

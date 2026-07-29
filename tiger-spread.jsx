@@ -262,7 +262,7 @@
             /* weather ribbon — colophon rides as the final cell */
             e("div", { className: "ts-weather" },
               wx("temp", D.temperature, "Temperature"),
-              wx("sun", D.conditions, "Conditions"),
+              wx("crescent", D.conditions, "Conditions"),
               wx("wind", D.wind, "Wind"),
               wx("drop", D.humidity, "Humidity"),
               e("div", { className: "ts-wx ts-colophon" },

@@ -241,7 +241,7 @@
             e(Bay, { label: "Conditions", rule: true },
               e("div", { className: "lm-wxgrid" },
                 wx("temp", D.temperature, "Temperature"),
-                wx("sun", D.conditions, "Conditions"),
+                wx("crescent", D.conditions, "Conditions"),
                 wx("wind", D.wind, "Wind"),
                 wx("drop", D.humidity, "Humidity")))
           )

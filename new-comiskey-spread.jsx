@@ -5,7 +5,7 @@
    black-steel sign band (silver canopy chords, scoreboard fascia).
    RIGHT page: cool concrete spec sheet on a black-steel scoreboard-fascia
    ribbon, divided into three structural zones by steel mullions —
-     I  The Stadium    (specification schedule, lifecycle, names, cost, logos)
+     I  The Stadium    (specification schedule, lifecycle, names, cost)
      II The Correction (Stadium Context in a steel spine + the field instrument)
      III Game Night    (Jul 4, 2001 visit, scoreboard line score, weather)
    No module crosses the fold; photos carry no caption; every populated value
@@ -14,6 +14,9 @@
   const e = React.createElement;
   const D = window.NEWCOMISKEY;
   const Protractor = window.NewComiskeyProtractor;
+
+  // one-line pitching run: surnames only (full names cannot set on one 368px line at 12px)
+  function surname(n) { return String(n).trim().split(/\s+/).slice(-1)[0]; }
 
   function Slot(props) {
     return e("image-slot", Object.assign({
@@ -181,10 +184,7 @@
                     e("div", { className: "nc-ctx-col r" },
                       e("p", { style: { lineHeight: "20.45px", letterSpacing: "-0.2px" } }, D.stadium_context[2]),
                       e("p", { style: { lineHeight: "20.45px", letterSpacing: "-0.2px" } }, D.stadium_context[3])))),
-                e("div", { className: "nc-logos" },
-                  e("img", { className: "sox", src: "assets/chicago-white-sox-logo.svg", alt: "Chicago White Sox" }),
-                  e("img", { className: "mlb", src: "assets/mlb-logo.svg", alt: "Major League Baseball" }),
-                  e("img", { className: "al", src: "assets/american-league-logo.png", alt: "American League" })))),
+                )),
 
             /* ===== ZONE C — GAME NIGHT ===== */
             e("div", { className: "nc-zone c" },
@@ -214,21 +214,26 @@
                       e("span", { className: "tn" }, "White Sox")),
                     e("img", { className: "sox", src: "assets/chicago-white-sox-logo.svg", alt: "Chicago White Sox" }))),
                 e("div", { className: "nc-board" }, LineScore(D.box)),
-                e("div", { className: "nc-dec" },
+                e("div", { className: "nc-dec one" },
                   e("p", null,
-                    e("i", null, P.home), " (" + P.home_team + ") ",
+                    e("i", null, surname(P.home)), " (" + P.home_team + ") ",
                     e("span", { className: "vs" }, "vs"), " ",
-                    e("i", null, P.away), " (" + P.away_team + ")"),
-                  e("p", { className: "sp" },
-                    e("b", null, "W"), " ", e("i", null, P.win), "\u2003",
-                    e("b", null, "L"), " ", e("i", null, P.loss)))),
+                    e("i", null, surname(P.away)), " (" + P.away_team + ")",
+                    e("span", { className: "sep" }, "\u00b7"),
+                    e("b", null, "W"), " ", e("i", null, surname(P.win)),
+                    e("span", { className: "sep" }, "\u00b7"),
+                    e("b", null, "L"), " ", e("i", null, surname(P.loss))))),
               e("div", { className: "nc-wx" },
-                e(SecHead, { title: "Weather", note: "AT FIRST PITCH" }),
-                e("div", { className: "nc-wx-row" },
-                  wxCell(D.weather.temperature, "Temp"),
-                  wxCell(D.weather.conditions, "Sky"),
-                  wxCell(D.weather.wind, "Wind"),
-                  wxCell(D.weather.humidity, "Humidity"))))
+                e("div", { className: "nc-wx-main" },
+                  e(SecHead, { title: "Weather" }),
+                  e("div", { className: "nc-wx-row" },
+                    wxCell(D.weather.temperature, "Temp"),
+                    wxCell(D.weather.wind, "Wind"),
+                    wxCell(D.weather.conditions, "Sky"),
+                    wxCell(D.weather.humidity, "Humidity"))),
+                e("div", { className: "nc-stub" },
+                  e(Slot, { id: "nc-stub-png", src: "images/new-comiskey/new-comiskey-stub.png", transparent: true,
+                    placeholder: "Ticket stub \u2014 MIN at CWS, Jul 4, 2001" }))))
           )
         )
       )

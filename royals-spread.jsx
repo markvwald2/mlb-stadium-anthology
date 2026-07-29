@@ -223,7 +223,7 @@
                   ),
                   React.createElement("div", { className: "rs-wx" },
                     wxCell("temp", D.temperature, null, "Temp"),
-                    wxCell("sun", null, D.conditions, "Sky"),
+                    wxCell("crescent", null, D.conditions, "Sky"),
                     wxCell("wind", null, D.wind, "Wind"),
                     wxCell("drop", D.humidity, null, "Humidity")
                   )

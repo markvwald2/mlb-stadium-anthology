@@ -73,8 +73,11 @@
   .yk-pinstripe { position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .5;
     background-image: repeating-linear-gradient(90deg, rgba(236,230,214,.07) 0 1px, transparent 1px 46px); }
 
-  /* frieze crown clinging to the very top of the hero */
-  .yk-hero-frieze { position: absolute; top: 12.5px; left: 0; right: 0; height: 25px; z-index: 3; pointer-events: none; opacity: 1; }
+  /* frieze crown clinging to the very top of the hero — trim-aware, mirroring the right
+     crown: the run spans outer TRIM (12.5) → fold (1275) so it opens and closes on a full post */
+  .yk-hero-frieze { position: absolute; top: 12.5px; left: 12.5px; width: 1262.5px !important; height: 25px; z-index: 3; pointer-events: none; opacity: 1; }
+  /* bleed-only continuation of the frieze band into the outer 12.5px wedge */
+  .yk-hero-frieze-cap { position: absolute; top: 12.5px; left: 0; width: 13px; height: 25px; z-index: 2; pointer-events: none; background: #F4F0E5; }
   /* solid beam fill across the 12.5px top bleed so the cornice reads to the cut edge */
   .yk-hero-frieze-bleed { position: absolute; top: 0; left: 0; right: 0; height: 13px; z-index: 3; pointer-events: none; background: #F4F0E5; }
 
@@ -138,10 +141,15 @@
   .yk-rp { position: absolute; top: 38px; left: 64px; right: 40px; bottom: 40px; z-index: 2; display: flex; flex-direction: column; }
 
   /* ---- frieze crown bled flush to the top & sides of the right page ---- */
-  .yk-crown { position: absolute; top: -25.5px; left: -40px; width: 1275px !important; height: 25px;
+  .yk-crown { position: absolute; top: -25.5px; left: -64px; width: 1262.5px !important; height: 25px;
     z-index: 3; display: block; }
+  /* end post continued through the outer 12.5px bleed so the run ends on a full post at trim */
+  /* bleed-only continuation of the crown band: fills the outer 12.5px wedge so the
+     navy field reaches the canvas edge. Trim discards it, so the printed closing
+     post stays its natural 10px. */
+  .yk-crown-cap { position: absolute; top: -25.5px; left: 1198.5px; width: 13px; height: 25px; z-index: 2; background: #0C2340; }
   /* solid navy beam fill across the 12.5px top bleed of the right page */
-  .yk-crown-bleed { position: absolute; top: -38px; left: -40px; width: 1275px; height: 13px; z-index: 3; background: #0C2340; }
+  .yk-crown-bleed { position: absolute; top: -38px; left: -64px; width: 1275px; height: 13px; z-index: 3; background: #0C2340; }
 
   /* ---- sheet title-block ---- */
   .yk-head { display: flex; align-items: flex-end; justify-content: space-between;

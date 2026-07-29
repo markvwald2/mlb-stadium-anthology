@@ -88,7 +88,7 @@ window.SUTTER = {
   box: {
     innings: 9,
     away: { abbr: "TOR", byInning: [0, 0, 0, 1, 6, 0, 0, 0, 0], r: 7, h: 12, e: 0 },
-    home: { abbr: "OAK", byInning: [0, 0, 0, 0, 0, 3, 0, 0, 3], r: 6, h: 10, e: 1 }
+    home: { abbr: "ATH", byInning: [0, 0, 0, 0, 0, 3, 0, 0, 3], r: 6, h: 10, e: 1 }
   },
 
   // ---- Weather strip ----

@@ -233,6 +233,7 @@
         e("div", { className: "yk-pinstripe" }),
         e("div", { className: "yk-hero-frieze-bleed" }),
         e(FriezeRow, { className: "yk-hero-frieze", h: 25, vw: 1275, fill: "#F4F0E5", cfg: CIVIC, spans: 14 }),
+        e("div", { className: "yk-hero-frieze-cap" }),
 
         /* Ruth-era origin marker — typographic datum plate, no photo */
         e("div", { className: "yk-ruth" },
@@ -278,6 +279,7 @@
           /* frieze crown */
           e("div", { className: "yk-crown-bleed" }),
           e(FriezeRow, { className: "yk-crown", h: 25, vw: 1275, fill: "#0C2340", cfg: CIVIC, spans: 14 }),
+          e("div", { className: "yk-crown-cap" }),
 
           /* sheet title-block */
           e("div", { className: "yk-head" },

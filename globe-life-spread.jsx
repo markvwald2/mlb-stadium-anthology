@@ -258,7 +258,7 @@
                 e("div", { className: "glf-visit-side" },
                   e("div", { className: "glf-weather" },
                     wxCell("temp", D.weather.temperature, "Temp"),
-                    wxCell("moon", D.weather.conditions, "Conditions"),
+                    wxCell("crescent", D.weather.conditions, "Conditions"),
                     wxCell("wind", D.weather.wind, "Wind"),
                     wxCell("drop", D.weather.humidity, "Humidity")
                   ),

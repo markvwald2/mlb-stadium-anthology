@@ -99,7 +99,7 @@ window.THREE_RIVERS = {
       home_starter: "Zane Smith", away_starter: "Steve Avery",
       winning_pitcher: "Zane Smith", losing_pitcher: "Steve Avery",
       save_pitcher: "Bob Patterson",
-      weather: { temperature: "70\u00b0", conditions: "Mostly Clear", wind: "4 mph N", humidity: "78%", sky: "moon" },
+      weather: { temperature: "70\u00b0", conditions: "Mostly Clear", wind: "4 mph N", humidity: "78%", sky: "crescent" },
       box: {
         away: { abbr: "ATL", byInning: ["0","0","1","0","1","0","2","0","0"], r: 4, h: 5, e: 1 },
         home: { abbr: "PIT", byInning: ["4","0","2","0","0","0","0","0","x"], r: 6, h: 6, e: 1 }

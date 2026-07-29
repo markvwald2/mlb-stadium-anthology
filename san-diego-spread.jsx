@@ -139,7 +139,7 @@
                 /* stadium facts — museum table */
                 e("div", { className: "sd-facts" },
                   e("div", { className: "colhdr" }, "Stadium Facts"),
-                  factRow(e("span", { style: { letterSpacing: "0.5px" } }, "Break ", e("span", { style: { letterSpacing: "-0.9px" } }, "Ground")), D.construction_start),
+                  factRow(e("span", { style: { letterSpacing: "0.4px" } }, "CONSTRUCTION"), D.construction_start),
                   factRow("Opened", D.opened),
                   factRow("Active", D.years_active_mlb),
                   factRow("Architect", D.architect),
@@ -179,7 +179,7 @@
               /* lifecycle — quiet name-history sequence (tower markings) */
               e("div", { className: "sd-lifecycle" },
                 e("div", { className: "sd-seclbl row" }, e("span", { className: "dot" }), e("span", { className: "t" }, "Lifecycle"), e("span", { className: "ln" }),
-                  e("span", { className: "edge" }, "Opened April 8, 1969 \u00b7 Final Game September 28, 2003 \u00b7 Razed " + D.demolition_year)),
+                  e("span", { className: "edge" }, "PADRES OPENER APR 8, 1969 \u00b7 FINAL GAME SEP 28, 2003 \u00b7 RAZED " + D.demolition_year)),
                 e("div", { className: "sd-stations" },
                   D.name_history.map((n, i) =>
                     e("div", { className: "stn" + (i === 0 ? " first" : ""), key: i },
@@ -215,7 +215,7 @@
                         e("span", { className: "dec" }, "L"), " " + D.losing_pitcher)),
                     e("div", { className: "sd-wx" },
                       wx("temp", D.temperature, null, "Temp"),
-                      wx("sun", null, D.conditions, "Sky"),
+                      wx("crescent", null, D.conditions, "Sky"),
                       wx("wind", null, D.wind, "Wind"),
                       wx("drop", D.humidity, null, "Humidity"))),
 

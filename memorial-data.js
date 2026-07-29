@@ -40,7 +40,7 @@ window.MEMORIAL = {
   construction_start: "1921",
   opening_day: "Dec 2, 1922",
   final_game: "Oct 6, 1991",
-  demolition_year: "2002",
+  demolition_year: "2001",
   renovations: "Major 1950s reconstruction; scoreboards, lighting, seating, and football/baseball updates across decades",
 
   // ---- Field geometry ----

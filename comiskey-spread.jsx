@@ -266,7 +266,7 @@
               e("div", { className: "cm-mbody" },
                 e("div", { className: "cm-wxgrid" },
                   wx("temp", D.temperature, "Temperature"),
-                  wx("sun", D.conditions, "Conditions"),
+                  wx("crescent", D.conditions, "Conditions"),
                   wx("wind", "9 SSW", "Wind (mph)"),
                   wx("drop", D.humidity, "Humidity")))),
 

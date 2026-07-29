@@ -78,18 +78,18 @@ window.TMOBILE = {
   // ---- Featured visit / game ----
   visit_matchup: "Boston Red Sox at Seattle Mariners",
   visit_result: "MARINERS 4, RED SOX 3",
-  visit_day: "Friday",
+  visit_day: "Thursday",
   visit_date: "Aug 15, 2002",
   visit_trip: "Seattle",
   first_pitch: "7:05 PM PDT",
   game_duration: "3:12",
-  attendance: "46,171",
+  attendance: "45,645",
   conditions: "Open-air natural-grass ballpark with retractable canopy",
 
   // visit facts (compact stack — values not duplicated in the line-score caption)
   visit_facts: [
     ["Visit Order", "22"],
-    ["Date", "Friday \u00b7 Aug 15, 2002"],
+    ["Date", "Thursday \u00b7 August 15, 2002"],
     ["Weather", "83\u00b0 \u00b7 Clear"],
     ["Wind / Hum.", "6 mph NW \u00b7 43%"]
   ],

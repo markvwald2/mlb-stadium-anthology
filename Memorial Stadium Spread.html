@@ -206,34 +206,37 @@
   .ms-leaguemarks .mlb { height: 30px; width: auto; display: block; opacity: .92; }
 
   .ms-orient { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center;
-    margin-top: 7px; flex: none; width: 100%; }
-  .ms-stage { position: relative; width: 100%; height: 266px; }
+    margin-top: 5px; flex: none; width: 100%; }
+  .ms-stage { position: relative; width: 100%; height: 242px; }
   .ms-orient .fd-wrap { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-54%);
     z-index: 1; display: flex; justify-content: center; }
   .ms-orient .fd-svg { width: 230px; height: 208px; max-width: 100%; display: block; overflow: visible; }
   .ms-orient .cap {
     position: relative; z-index: 1;
     font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .20em;
-    text-transform: uppercase; color: var(--ink-2); margin-top: 8px;
+    text-transform: uppercase; color: var(--ink-2); margin-top: 16px;
   }
 
   /* cornerstone civic record at the base of the arch */
-  .ms-cornerstone { position: relative; z-index: 1; margin-top: auto; width: 100%;
-    border-top: 1px solid var(--rule-strong); padding-top: 8px; }
+  .ms-cornerstone { position: relative; z-index: 1; margin-top: 27px; margin-bottom: auto; width: 100%;
+    border-top: 1px solid var(--rule-strong); padding-top: 6px; }
   .ms-cornerstone .ttl {
     font-family: "Oswald", sans-serif; font-weight: 600; font-size: 12px;
     letter-spacing: .22em; text-transform: uppercase; color: var(--ink-3);
-    text-align: center; margin-bottom: 7px;
+    text-align: center; margin-bottom: 4px;
   }
-  .ms-cs-rows { display: flex; flex-direction: column; }
-  .ms-cs-row { display: flex; align-items: baseline; justify-content: space-between;
-    padding: 3px 0; border-bottom: 1px solid var(--rule); }
+  .ms-cs-rows { display: flex; flex-direction: column; height: 126px; }
+  .ms-cs-row { display: flex; flex: 1 1 0; min-height: 0; align-items: baseline; justify-content: space-between;
+    padding: 1px 0; line-height: 16px; border-bottom: 1px solid var(--rule); }
   .ms-cs-row:last-child { border-bottom: 0; }
   .ms-cs-row .k { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px;
     letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
   .ms-cs-row .v { font-family: "Cinzel", serif; font-weight: 600; font-size: 13px;
-    letter-spacing: .04em; color: var(--ink); white-space: nowrap; }
+    letter-spacing: .05em; color: var(--ink); white-space: nowrap; }
   .ms-cs-row.end .v { color: var(--orange-deep); }
+  .ms-cs-row .k .as { font-family: "Cinzel", serif; font-style: italic; font-weight: 400;
+    font-size: 12px; letter-spacing: -.015em; text-transform: none; color: var(--ink-2); margin-left: 4px; }
+  .ms-cs-row:first-child .k { letter-spacing: .08em; }
 
   /* ---- RIGHT BAY : Stadium Context prose ---- */
   .ms-ctx { columns: 1; }

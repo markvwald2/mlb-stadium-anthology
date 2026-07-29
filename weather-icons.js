@@ -22,6 +22,10 @@
     wind:   [P("M3 8h10a2.4 2.4 0 1 0-2.4-2.4M3 16h13a2.4 2.4 0 1 1-2.4 2.4M3 12h7")],
     drop:   [P("M12 3.1l4.75 6.05a6.15 6.15 0 1 1-9.5 0z")],
     sun:    [C(12, 12, 4.3), P(SUN_RAYS)],
+    // crescent: waning moon at the same optical weight as the sun disc
+    crescent: [P("M14.05 3.15a8.85 8.85 0 1 0 6.8 13.1 7.15 7.15 0 0 1-6.8-13.1z")],
+    // night partly-cloudy: the same cloud body with a small crescent behind it
+    partlynight: [P("M6.95 1.73a5.13 5.13 0 1 0 3.94 7.6 4.15 4.15 0 0 1-3.94-7.6z"), ["g", { transform: "translate(2 3.2)" }, [P(CLOUD_HI)]]],
     cloud:  [["g", { transform: "translate(0 1.4)" }, [P(CLOUD_HI)]]],
     partly: [
       P("m10.4 20.8c-1 0-2-0.6-2.7-1.3-0.8-0.7-1.2-1.7-1.2-2.7 0-1 0.4-2 1.1-2.8q0.1-0.1 0.2-0.2c0.7-0.6 1.5-0.9 2.5-1.2 0.4-0.9 1.2-1.7 2.1-2.2q1.4-0.6 2.7-0.6 0.2 0 0.4 0c1.1 0.2 2.1 0.6 2.8 1.3 0.8 0.8 1.4 1.7 1.6 2.7 0.9 0.1 1.7 0.6 2.2 1.3 0.6 0.6 0.9 1.5 0.8 2.4 0 0.9-0.4 1.7-1 2.3-0.7 0.6-1.5 1-2.4 1h-7.3z"),
@@ -37,6 +41,8 @@
     wind: "wind",
     drop: "drop", droplet: "drop", humidity: "drop", hum: "drop",
     sun: "sun", clear: "sun", sunny: "sun", "mostly clear": "sun", moon: "sun", sky: "sun", night: "sun",
+    crescent: "crescent",
+    partlynight: "partlynight", "partly night": "partlynight", "crescent-cloud": "partlynight",
     partly: "partly", "partly cloudy": "partly", "partly cloudy; mostly clear": "partly", "mostly cloudy": "partly",
     cloud: "cloud", cloudy: "cloud", overcast: "cloud",
     drizzle: "drizzle", "light drizzle": "drizzle",
@@ -95,7 +101,7 @@
   }
 
   window.WxIcons = {
-    KINDS: ["thermo", "wind", "drop", "sun", "partly", "cloud", "drizzle", "rain"],
+    KINDS: ["thermo", "wind", "drop", "sun", "crescent", "partly", "partlynight", "cloud", "drizzle", "rain"],
     parts: parts, react: react, markup: markup, resolve: resolve
   };
 })();

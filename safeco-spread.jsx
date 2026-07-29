@@ -17,6 +17,7 @@
   function Slot(props) {
     return e("image-slot", Object.assign({ id: props.id, placeholder: props.placeholder, shape: "rect" },
       props.src ? { src: props.src } : {},
+      props.transparent ? { transparent: "" } : {},
       props.style ? { style: props.style } : {}));
   }
   // instrument-style compass rose — the Mariners' nautical identity, drawn as a
@@ -107,6 +108,11 @@
     return e("svg", { className: "tm-armature", viewBox: "0 0 1275 1088", preserveAspectRatio: "none" }, ribs, spokes);
   }
 
+  // ---------- ticket stub artifact (Visit section, between Pitching and Line Score) ----------
+  function StubSlot() {
+    return e(Slot, { id: "safeco-stub-png", src: "images/safeco/safeco-stub.png", transparent: true,
+      placeholder: "Safeco Field ticket stub \u2014 Aug 15, 2002" });
+  }
   // ---------- photo strip (roof bays) ----------
   function PhotoStrip() {
     return e("div", { className: "tm-strip" },
@@ -239,16 +245,15 @@
               e(SecHead, { title: "Pitching", green: true }),
               e("div", { className: "tm-pitch" },
                 e("p", { className: "match" },
-                  e("em", null, D.pitching.away_team), " ", D.pitching.away_starter,
-                  e("span", { className: "vs" }, "  vs  "),
+                  e("em", null, D.pitching.away_team), " ", D.pitching.away_starter),
+                e("p", { className: "match" },
                   e("em", null, D.pitching.home_team), " ", D.pitching.home_starter),
-                e("p", { className: "dec" },
-                  e("b", null, "W"), " ", e("i", null, D.pitching.win),
-                  e("span", { className: "sp" }, "  \u00b7  "),
-                  e("b", null, "L"), " ", e("i", null, D.pitching.loss),
-                  e("br", null),
-                  e("b", null, "S"), " ", e("i", null, D.pitching.save))),
-              e("div", { className: "tm-cond" }, D.conditions)),
+                e("p", { className: "dec" }, e("b", null, "W"), " ", e("i", null, D.pitching.win)),
+                e("p", { className: "dec" }, e("b", null, "L"), " ", e("i", null, D.pitching.loss)),
+                e("p", { className: "dec" }, e("b", null, "S"), " ", e("i", null, D.pitching.save)))),
+
+            // ticket stub — the visit's own artifact
+            e("div", { className: "tm-vcol stub" }, e(StubSlot, null)),
 
             // line score — the dominant object
             e("div", { className: "tm-vcol score" },
@@ -257,7 +262,7 @@
               e("div", { className: "tm-gcap" },
                 e("span", null, "First pitch " + D.first_pitch),
                 e("span", { className: "sp" }, "\u00b7"),
-                e("span", null, "Att. " + D.attendance)))
+                e("span", null, "ATT. " + D.attendance)))
           )
         )
       )

@@ -126,7 +126,7 @@
         e("div", { className: "z z-cond" },
           e("div", null,
             e("div", { className: "dv2-cond-wx" },
-              e(WeatherIcon, { cond: w.conditions }),
+              e(WeatherIcon, { cond: w.sky || w.conditions }),
               e("div", { className: "ct" }, w.temperature)),
             e("div", { className: "cc" }, w.conditions)),
           e("div", { className: "dv2-cond-row" }, w.wind),

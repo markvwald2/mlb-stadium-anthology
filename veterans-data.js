@@ -90,7 +90,7 @@ window.VETERANS = {
     home_starter: "Terry Mulholland", away_starter: "Don Robinson",
     winning_pitcher: "Terry Mulholland", losing_pitcher: "Don Robinson",
     // save_pitcher: n/a in source — OMITTED
-    weather: { temperature: "79\u00b0", conditions: "Mostly Clear", wind: "4 mph WSW", humidity: "65%", sky: "moon" },
+    weather: { temperature: "79\u00b0", conditions: "Mostly Clear", wind: "4 mph WSW", humidity: "65%", sky: "crescent" },
     box: {
       away: { abbr: "SF",  byInning: ["0","0","0","0","0","0","0","0","0"], r: 0, h: 0, e: 0 },
       home: { abbr: "PHI", byInning: ["1","0","0","0","3","2","0","0","x"], r: 6, h: 8, e: 1 }

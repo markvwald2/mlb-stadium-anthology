@@ -192,13 +192,20 @@
   .nc-nrow .nm { font-family: "Spectral", serif; font-weight: 600; font-size: 12px; color: var(--ink); line-height: 1.15; }
   .nc-nrow .yr { font-family: "Space Mono", monospace; font-size: 12px; color: var(--ink-3); white-space: nowrap; flex: none; }
 
-  /* ---- logos well (restrained) ---- */
-  .nc-logos { margin-top: auto; padding-top: 14px; display: flex; align-items: center;
-    justify-content: center; gap: 22px; border-top: 1px solid var(--rule-strong); }
-  .nc-logos img { display: block; width: auto; }
-  .nc-logos .sox { height: 44px; }
-  .nc-logos .mlb { height: 32px; }
-  .nc-logos .al  { height: 36px; }
+  /* ---- ticket-stub artifact (replaces the logos well) ----
+     Source 1591x891 transparent PNG; placed 300x168 design px => ~530 DPI. */
+  /* ticket-stub artifact — Game Night foot, right of the weather gauges.
+     Source 1591x891 transparent PNG => well over 300 DPI at this placed size. */
+  .nc-stub { flex: none; align-self: end; display: flex; align-items: flex-end; justify-content: flex-end;
+    position: relative; }
+  /* paper-lift shadow: the stub reads as a loose sheet laid on the page — soft
+     ground shadow pooled under the two bottom corners, lighter at the middle. */
+  .nc-stub::before, .nc-stub::after { content: ""; position: absolute; z-index: 0; bottom: -1px;
+    width: 44%; height: 8px; background: rgba(22,20,18,.4); border-radius: 50%; filter: blur(3.5px); }
+  .nc-stub::before { left: 0; transform: rotate(-2.6deg); }
+  .nc-stub::after { right: 0; transform: rotate(2.6deg); }
+  .nc-stub image-slot { position: relative; z-index: 1; display: block; width: 236px; height: 132px;
+    --slot-frame-bg: transparent; }
   /* field-geometry instrument, grounded at the foot of zone I */
   .nc-fieldwrap { margin-top: auto; padding-top: 5px; border-top: 1px solid var(--rule-strong); }
   .nc-fieldwrap .nc-h { margin-bottom: 5px; }
@@ -223,7 +230,7 @@
     letter-spacing: .08em; color: var(--silver); white-space: nowrap; }
 
   /* canopy photo band (the correction made visible) — no caption per book rule */
-  .nc-canopy { flex: none; height: 300px; margin-bottom: 11px; position: relative; }
+  .nc-canopy { flex: none; height: 367px; margin-bottom: 11px; position: relative; }
   .nc-canopy image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
     border: 1px solid var(--steel); }
 
@@ -258,7 +265,7 @@
   .nc-drow .dv small { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; color: var(--ink-3); letter-spacing: .03em; }
 
   /* ============ ZONE C — GAME NIGHT ============ */
-  .nc-night { flex: none; height: 448px; position: relative; margin-bottom: 12px;
+  .nc-night { flex: none; height: 414px; position: relative; margin-bottom: 12px;
     display: flex; flex-direction: column; gap: 12px; }
   .nc-night-cell { position: relative; flex: 1; min-height: 0; }
   .nc-night-cell image-slot { position: absolute; inset: 0; width: 100%; height: 100%; display: block;
@@ -319,6 +326,8 @@
   .nc-box tbody tr:first-child td { border-bottom: 1px solid rgba(156,155,146,.22); }
 
   /* pitching decisions */
+  .nc-dec.one p { white-space: nowrap; }
+  .nc-dec.one p .sep { color: var(--ink-3); padding: 0 5px; }
   .nc-dec { margin-top: 9px; display: flex; flex-direction: column; gap: 3px; }
   .nc-dec p { margin: 0; font-family: "Spectral", serif; font-size: 12px; color: var(--ink); line-height: 1.38; }
   .nc-dec p .vs { font-style: italic; color: var(--ink-3); }
@@ -329,13 +338,13 @@
   .nc-dec p.sp b { color: var(--ink-3); }
 
   /* weather — broadcast gauges (typographic, no icons), grounded at zone foot */
-  .nc-wx { margin-top: auto; padding-top: 4px; }
-  .nc-wx-row { display: grid; grid-template-columns: 0.75fr 1fr 1.45fr 0.9fr; column-gap: 14px; }
-  .nc-wcell { display: flex; flex-direction: column; gap: 4px; min-width: 0;
-    padding-top: 4px; }
-  .nc-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 16.5px; color: var(--ink);
+  .nc-wx { margin-top: auto; padding-top: 4px; display: flex; align-items: flex-end; gap: 16px; }
+  .nc-wx-main { flex: 0 0 auto; width: 116px; }
+  .nc-wx-row { display: grid; grid-template-columns: 34px 70px; column-gap: 12px; row-gap: 6px; }
+  .nc-wcell { display: flex; flex-direction: column; gap: 4px; padding-top: 4px; }
+  .nc-wcell .wv { font-family: "Spectral", serif; font-weight: 700; font-size: 14px; color: var(--ink);
     line-height: 1; white-space: nowrap; }
-  .nc-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .11em;
+  .nc-wcell .wl { font-family: "Oswald", sans-serif; font-weight: 500; font-size: 12px; letter-spacing: .08em;
     text-transform: uppercase; color: var(--ink-3); }
 
   #root { min-height: 100vh; }

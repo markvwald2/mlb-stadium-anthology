@@ -125,7 +125,7 @@ window.DODGER = {
       box: { innings: 9,
         away: { abbr: "NYM", byInning: [2, 2, 0, 0, 0, 1, 0, 0, 1], r: 6, h: 12, e: 2 },
         home: { abbr: "LAD", byInning: [0, 2, 2, 0, 0, 0, 0, 0, 0], r: 4, h: 9, e: 1 } },
-      weather: { temperature: "83\u00b0", conditions: "Mostly Clear", wind: "10 mph SW", humidity: "47%" }
+      weather: { temperature: "83\u00b0", conditions: "Mostly Clear", wind: "10 mph SW", humidity: "47%", sky: "crescent" }
     }
   ]
 };

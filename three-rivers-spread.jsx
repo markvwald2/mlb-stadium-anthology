@@ -243,7 +243,7 @@
             e("div", { className: "trs-featgrid" },
               e("div", { className: "fc" }, Icon("group", { size: 24, stroke: "#23211C", sw: 1.4 }),
                 e("div", { className: "lab" }, D.visit_type)),
-              e("div", { className: "fc" }, Icon("moon", { size: 22, stroke: "#23211C", sw: 1.4 }),
+              e("div", { className: "fc" }, Icon("doubleheader", { size: 33, stroke: "#23211C", sw: 1.4 }),
                 e("div", { className: "lab" }, D.game_kind),
                 e("div", { className: "sub" }, "Twi-Night")),
               e("div", { className: "fc" }, Icon("clock", { size: 22, stroke: "#23211C", sw: 1.4 }),

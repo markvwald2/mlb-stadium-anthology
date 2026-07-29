@@ -198,7 +198,7 @@
           e(Sub, { mod: "up" }, "Weather"),
           e("div", { className: "pk-wx" },
             wxCell("temp", W.temperature, "Temp"),
-            wxCell("sun", W.conditions, "Sky"),
+            wxCell("crescent", W.conditions, "Sky"),
             wxCell("wind", W.wind, "Wind"),
             wxCell("drop", W.humidity, "Humidity")),
 

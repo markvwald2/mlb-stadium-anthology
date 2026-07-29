@@ -1,0 +1,14 @@
+/* Ticket-stub artifact — Safeco Field spread, Visit section (between Pitching and
+   Line Score). Source 3268x1235 px (transparent PNG cut-out); placed 347x131 design px => well over 300 DPI. */
+.tm-visit-grid{grid-template-columns:263px 118px 1fr 381px!important;column-gap:16px!important}
+.tm-vcol.facts .tm-frow{grid-template-columns:78px 1fr;gap:8px}
+.tm-vcol.pitch{border-left:0!important;border-right:0!important;padding:0!important}
+.tm-pitch .match{margin:0 0 2px}
+.tm-pitch .dec{margin:0}
+.tm-vcol.stub{height:131px;width:347px;justify-self:center;transform:translateX(-2px)}
+.tm-vcol.stub image-slot{display:block;width:347px;height:131px;--slot-frame-bg:transparent}
+.tm-vcol.score{padding-left:0!important;padding-right:0!important}
+.tm-box th,.tm-box td{padding:1.6px 0}
+.tm-box td.tm,.tm-box th.tm{padding-right:6px;letter-spacing:.04em}
+.tm-box th.sep,.tm-box td.sep{padding-left:5px}
+.tm-box thead th:last-child,.tm-box tbody td:last-child,.tm-box thead th:nth-last-child(2),.tm-box tbody td:nth-last-child(2),.tm-box thead th.sep,.tm-box tbody td.sep{width:22px}

@@ -57,7 +57,7 @@
   .rs-page { position: absolute; top: 0; height: 1088px; }
   .rs-left  { left: 0; width: 1275px; overflow: hidden;
     background: linear-gradient(176deg, #16407A 0%, #0E2E58 46%, #081E3B 100%); }
-  .rs-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; border-left: 26px solid transparent; }
+  .rs-right { left: 1275px; width: 1275px; background: var(--paper); overflow: hidden; box-sizing: border-box; padding-left: 26px; }
   .rs-gutter {
     display: none;
   }
@@ -115,7 +115,7 @@
   }
 
   /* ---------- RIGHT PAGE SHELL ---------- */
-  .rs-rp { position: absolute; inset: 0; padding: 44px 45px 92px 50px; display: flex; flex-direction: column; gap: 13px; }
+  .rs-rp { position: absolute; inset: 0 0 0 26px; padding: 44px 45px 92px 50px; display: flex; flex-direction: column; gap: 13px; }
   .rs-body-grid { display: grid; grid-template-columns: 338px 360px 1fr; gap: 22px; align-items: start; flex: 0 0 auto; }
   .rs-col { display: flex; flex-direction: column; gap: 11px; min-width: 0; }
   .rs-body-grid > .rs-col:first-child { justify-content: flex-start; }
@@ -259,7 +259,7 @@
   }
 
   /* ---------- FOOTER ---------- */
-  .rs-footer { position: absolute; left: 0; right: 0; bottom: 0; height: 82px; background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); display: flex; align-items: flex-start; padding: 0 0 0 50px; }
+  .rs-footer { position: absolute; left: 0; right: 0; bottom: 0; height: 82px; background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%); display: flex; align-items: flex-start; padding: 0 0 0 76px; }
   .rs-footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--gold); }
   .rs-footer .fl { display: flex; flex-direction: column; gap: 3px; padding-top: 9px; }
   .rs-footer .fl .plate { font-family: "Space Mono", monospace; font-size: 12px; line-height: 1.1; letter-spacing: .2em; color: #fff; }

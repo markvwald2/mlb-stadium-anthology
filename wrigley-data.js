@@ -34,7 +34,7 @@ window.WRIGLEY = {
   financing_method: "Privately financed by Charles Weeghman for the Federal League Chicago Whales, later acquired by the Cubs",
   address: "1060 W Addison Street, Chicago, IL 60613",
   location_classification: "Urban",
-  construction_start: "Mar 4, 1911",
+  construction_start: "Mar 4, 1914",
   opening_day: "Apr 23, 1914",
   left_field_distance: "355 ft",
   center_field_distance: "400 ft",
