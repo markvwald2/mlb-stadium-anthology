@@ -73,6 +73,9 @@
   // fails silently and the drop is lost on reload). Slots default to the
   // shared STATE_FILE; getStore() memoizes one store per distinct file.
   const STORES = new Map();
+  function publicStateFile(file) {
+    return file && file[0] === '.' ? 'image-slots/' + file.slice(1) : null;
+  }
   function getStore(file) {
     file = file || STATE_FILE;
     const cached = STORES.get(file);
@@ -92,7 +95,11 @@
     function load() {
       if (loadP) return loadP;
       loadP = fetch(file)
-        .then((r) => (r.ok ? r.json() : null))
+        .then((r) => {
+          if (r.ok) return r.json();
+          const fallback = publicStateFile(file);
+          return fallback ? fetch(fallback).then((fr) => (fr.ok ? fr.json() : null)) : null;
+        })
         .then((j) => {
           // Merge: sidecar loses to any in-memory change that raced ahead of
           // the fetch (drop or clear) so neither is clobbered by hydration.

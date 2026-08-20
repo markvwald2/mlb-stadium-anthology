@@ -264,11 +264,7 @@ function DCViewport({ children, minScale = 0.1, maxScale = 8, style = {} }) {
   const vpRef = React.useRef(null);
   const worldRef = React.useRef(null);
   const tf = React.useRef({ x: 0, y: 0, scale: 1 });
-  // Persist viewport across reloads so the user lands back where they were
-  // after an agent edit or browser refresh. The sandbox origin is already
-  // per-project; pathname keeps multiple canvas files in one project apart.
-  const tfKey = 'dc-viewport:' + location.pathname;
-  const saveT = React.useRef(0);
+  const didInitialFit = React.useRef(false);
 
   const lastPostedScale = React.useRef();
   const apply = React.useCallback(() => {
@@ -284,23 +280,16 @@ function DCViewport({ children, minScale = 0.1, maxScale = 8, style = {} }) {
       lastPostedScale.current = scale;
       window.parent.postMessage({ type: '__dc_zoom', scale }, '*');
     }
-    clearTimeout(saveT.current);
-    saveT.current = setTimeout(() => {
-      try {localStorage.setItem(tfKey, JSON.stringify(tf.current));} catch {}
-    }, 200);
-  }, [tfKey]);
+  }, []);
 
   React.useLayoutEffect(() => {
-    const flush = () => {
-      clearTimeout(saveT.current);
-      try {localStorage.setItem(tfKey, JSON.stringify(tf.current));} catch {}
-    };
-    // Fit the world into the viewport with a small margin. Used as the initial
-    // view and as a recovery fallback when a stored viewport would leave the
-    // canvas entirely off-screen (which reads to the user as "didn't render").
+    // Fit the artboard card(s), not the section title/chrome, into the viewport
+    // with a small margin. This makes a spread open as the main event while the
+    // editable title/labels remain available just outside the fitted view.
     const fitToContent = () => {
       const vp = vpRef.current,world = worldRef.current;
       if (!vp || !world) return false;
+      if (!world.querySelector('.dc-card')) return false;
       const vr = vp.getBoundingClientRect();
       // Measure the world's untransformed content size. Both the transform AND
       // --dc-inv-zoom must be neutralized first: the zoom-invariant chrome
@@ -311,7 +300,21 @@ function DCViewport({ children, minScale = 0.1, maxScale = 8, style = {} }) {
       const prevInv = world.style.getPropertyValue('--dc-inv-zoom');
       world.style.transform = 'none';
       world.style.setProperty('--dc-inv-zoom', '1');
-      const cw = world.scrollWidth,ch = world.scrollHeight;
+      const wr = world.getBoundingClientRect();
+      const cards = Array.from(world.querySelectorAll('.dc-card'));
+      const bounds = cards.length ? cards.reduce((b, card) => {
+        const r = card.getBoundingClientRect();
+        return {
+          left: Math.min(b.left, r.left),
+          top: Math.min(b.top, r.top),
+          right: Math.max(b.right, r.right),
+          bottom: Math.max(b.bottom, r.bottom)
+        };
+      }, { left: Infinity, top: Infinity, right: -Infinity, bottom: -Infinity }) : null;
+      const bx = bounds ? bounds.left - wr.left : 0;
+      const by = bounds ? bounds.top - wr.top : 0;
+      const cw = bounds ? bounds.right - bounds.left : world.scrollWidth;
+      const ch = bounds ? bounds.bottom - bounds.top : world.scrollHeight;
       world.style.transform = prev;
       if (prevInv) world.style.setProperty('--dc-inv-zoom', prevInv);else
       world.style.removeProperty('--dc-inv-zoom');
@@ -319,34 +322,16 @@ function DCViewport({ children, minScale = 0.1, maxScale = 8, style = {} }) {
       const margin = 60;
       const scale = Math.min(maxScale, Math.max(minScale,
       Math.min((vr.width - margin * 2) / cw, (vr.height - margin * 2) / ch)));
-      tf.current = { x: (vr.width - cw * scale) / 2, y: (vr.height - ch * scale) / 2, scale };
+      tf.current = {
+        x: (vr.width - cw * scale) / 2 - bx * scale,
+        y: (vr.height - ch * scale) / 2 - by * scale,
+        scale
+      };
       apply();
       return true;
     };
-    // True when the stored transform leaves no part of the world on screen.
-    const worldOffscreen = () => {
-      const vp = vpRef.current,world = worldRef.current;
-      if (!vp || !world) return false;
-      const vr = vp.getBoundingClientRect(),wr = world.getBoundingClientRect();
-      return wr.right < vr.left + 8 || wr.left > vr.right - 8 ||
-      wr.bottom < vr.top + 8 || wr.top > vr.bottom - 8;
-    };
-    try {
-      const s = JSON.parse(localStorage.getItem(tfKey) || 'null');
-      if (s && Number.isFinite(s.x) && Number.isFinite(s.y) && Number.isFinite(s.scale)) {
-        tf.current = { x: s.x, y: s.y, scale: Math.min(maxScale, Math.max(minScale, s.scale)) };
-        apply();
-        // Recover from a stored viewport that parks the canvas out of view.
-        if (worldOffscreen()) fitToContent();
-      } else {
-        fitToContent();
-      }
-    } catch {}
-    // Flush on pagehide and unmount so a reload within the 200ms debounce
-    // window doesn't drop the last pan/zoom.
-    window.addEventListener('pagehide', flush);
-    return () => {window.removeEventListener('pagehide', flush);flush();};
-  }, []);
+    if (!didInitialFit.current && fitToContent()) didInitialFit.current = true;
+  });
 
   React.useEffect(() => {
     const vp = vpRef.current;
